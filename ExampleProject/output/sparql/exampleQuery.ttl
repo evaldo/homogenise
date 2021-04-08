@@ -1,0 +1,65 @@
+prefix np: <http://www.nanopub.org/nschema#> 
+prefix owl: <http://www.w3.org/2002/07/owl#> 
+prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
+prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> 
+prefix prov: <http://www.w3.org/ns/prov#> 
+prefix xsd: <http://www.w3.org/2001/XMLSchema#> 
+prefix uo: <http://purl.obolibrary.org/obo/UO_> 
+prefix sio: <http://semanticscience.org/resource/> 
+prefix stato: <http://purl.obolibrary.org/obo/STATO_> 
+prefix example-kb: <http://example.com/kb/example#> 
+prefix chear: <http://hadatac.org/ont/chear#> 
+prefix hasco: <http://hadatac.org/ont/hasco#> 
+prefix obo: <http://purl.obolibrary.org/obo/> 
+prefix skos: <http://www.w3.org/2008/05/skos#> 
+prefix osm: <http://www.w3.org/2008/05/osm#> 
+
+SELECT DISTINCT ?id ?dataadm ?alta ?municipio ?sexo ?cid ?fuma ?cinternacao ?fe WHERE {
+  ?id_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> osm:idPaciente  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?Paciente_V  ;
+    <http://semanticscience.org/resource/hasValue> ?id .
+
+  ?dataadm_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> osm:dataInternacao  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?Bmh_V  ;
+    <http://semanticscience.org/resource/hasUnit>    sio:Date ;
+    <http://semanticscience.org/resource/inRelationTo>    ?Paciente_V  ;
+    <http://semanticscience.org/resource/hasValue> ?dataadm .
+
+  ?alta_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> osm:dataAlta  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?Bmh_V  ;
+    <http://semanticscience.org/resource/hasUnit>    sio:Date ;
+    <http://semanticscience.org/resource/inRelationTo>    ?Paciente_V  ;
+    <http://semanticscience.org/resource/hasValue> ?alta .
+
+  ?municipio_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> osm:cidadePaciente  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?Bmh_V  ;
+    <http://semanticscience.org/resource/hasValue> ?municipio .
+
+  ?sexo_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> osm:Sexo  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?Paciente_V  ;
+    <http://semanticscience.org/resource/hasValue> ?sexo .
+
+  ?cid_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> osm:Cid10  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?Bmh_V  ;
+    <http://semanticscience.org/resource/hasValue> ?cid .
+
+  ?fuma_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> osm:Tabagismo  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?Paciente_V  ;
+    <http://semanticscience.org/resource/hasValue> ?fuma .
+
+  ?cinternacao_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> osm:tipoInternacao  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?Bmh_V  ;
+    <http://semanticscience.org/resource/hasValue> ?cinternacao .
+
+  ?fe_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> osm:faixaEtaria  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?Bmh_V  ;
+    <http://semanticscience.org/resource/hasValue> ?fe .
+
+
+  ?paciente_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> sio:Human;osm:Paciente  ;
+    osm:hasBmh ?bmh_V .
+
+  ?bmh_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> osm:Bmh  ;
+    osm:isBmhOf ?paciente_V .
+
+}

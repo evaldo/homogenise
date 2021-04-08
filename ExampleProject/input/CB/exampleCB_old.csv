@@ -1,0 +1,7 @@
+Column,Code,Class,Resource,Label,Comment,Definition
+AG,TEN,TEENAGE,osm:Teenage,,,
+AG,ADT,ADULT,osm:Adult,,,
+AG,ELD,ELDERY,osm:Eldery,,,
+CAdmission,1,VOLUNTARY,osm:Voluntary,,,
+CAdmission,2,INVOLUNTARY,osm:Involuntary,,,
+CAdmission,3,COMPULSORY,osm:Compulsory,,,

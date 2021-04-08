@@ -30,4 +30,7 @@
 @prefix stato: <http://purl.obolibrary.org/obo/STATO_>.
 @prefix staging: <http://idea.rpi.edu/ontologies/cancer_staging_terms.owl#>.
 @prefix skos: <http://www.w3.org/2008/05/skos#>.
+@prefix osm: <http://www.w3.org/2008/05/osm#>.
+@prefix example-kb: <http://www.w3.org/2008/05/example#>.
+@prefix oersm: <http://www.w3.org/2008/05/oersm#>.
 

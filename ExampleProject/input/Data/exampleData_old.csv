@@ -1,0 +1,14 @@
+Column1;Column2;Column3;Column4;Column5;Column6;Column7;Column8;Column9;Column10;Column11;Column12;Column13;Column14;Column15;Column16
+Column;Label;Comment;Definition;Attribute;attributeOf;Unit;Format;Time;Entity;Role;Relation;inRelationTo;wasDerivedFrom;wasGeneratedBy;Template
+ID;;;;osm:idPaciente;??paciente;;;;;;;;;;
+DataAdm;;;;osm:dataInternacao;??paciente;sio:Date;??admissao;;;;;??paciente;;;
+Alta;;;;osm:dataAlta;??paciente;sio:Date;??alta;;;;;??paciente;;;
+Município;;;;osm:cidadePaciente;??paciente;;;;;;;;;;
+Sexo;;;;osm:sexo;??paciente;;;;;;;;;;
+Idade;;;;sio:age;??paciente;sio:Year;;;;;;;;;
+Medico;;;;osm:medico;??bmh;;;;;;;;;;
+CID;;;;osm:cid10;??bmh;;;;;;;;;;
+Fuma;;;;osm:tabagismo;??bmh;;;;;;;;;;
+CInternacao;;;;osm:tipoInternacao;??paciente;;;;;;;;;;
+??paciente;;;;;;;;;sio:Human;;;??bmh;;;
+??bmh;;;;;;;;;??bmh;;;??paciente;;;

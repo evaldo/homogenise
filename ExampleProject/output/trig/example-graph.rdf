@@ -1,0 +1,65 @@
+@prefix osm: <http://example.com/> .
+@prefix owl: <http://example.com/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix sio: <http://example.com/> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://example.com/> .
+@prefix rdfs: <http://example.com/> .
+@prefix example-graph: <http://example.com/> .
+@base <http://example.com> .
+
+<http://example.com> rdf:type owl:Ontology ;
+                      owl:versionIRI example-graph: .
+
+
+example-graph:hasValue rdf:type owl:ObjectProperty .
+
+example-graph:Class rdf:type owl:Class .
+
+example-graph:Compulsorio rdf:type owl:NamedIndividual ,
+                      example-graph:Class .
+
+example-graph:F30-F39 rdf:type owl:NamedIndividual ,
+                  example-graph:Class .
+
+example-graph:Involuntario rdf:type owl:NamedIndividual ,
+                       example-graph:Class .
+
+example-graph:Nao rdf:type owl:NamedIndividual ,
+              example-graph:Class .
+
+example-graph:Sim rdf:type owl:NamedIndividual ,
+              example-graph:Class .
+
+example-graph:Voluntario rdf:type owl:NamedIndividual ,
+                     example-graph:Class .
+
+example-graph:Bmh rdf:type owl:NamedIndividual ,
+                           example-graph:Class ;
+                  example-graph:label "bmh"^^example-graph:string ;
+                  example-graph:subClassOf example-graph:Bmh .
+
+example-graph:CID rdf:type owl:NamedIndividual ,
+                           example-graph:Class ;
+                  example-graph::hasValue :F30-F39 ;
+                  example-graph:subClassOf example-graph:cid10 .
+
+example-graph:CInternacao rdf:type owl:NamedIndividual ,
+                                   example-graph:Class ;
+                          :hasValue :Voluntario ;
+                          example-graph:subClassOf example-graph:tipoInternacao .
+
+example-graph:Fuma rdf:type owl:NamedIndividual ,
+                            example-graph:Class ;
+                   :hasValue :Nao ;
+                   example-graph:subClassOf example-graph:Tabagismo .
+
+example-graph:Medico rdf:type owl:NamedIndividual ,
+                              example-graph:Class ;
+                     example-graph:subClassOf example-graph:Medico .
+
+example-graph:paciente rdf:type owl:NamedIndividual ,
+                                example-graph:Class ;
+                       example-graph:label "paciente"^^example-graph:string ;
+                       example-graph:subClassOf example-graph:Human .
+

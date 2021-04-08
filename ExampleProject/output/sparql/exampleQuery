@@ -1,61 +1,329 @@
+prefix np: <http://www.nanopub.org/nschema#> 
 prefix owl: <http://www.w3.org/2002/07/owl#> 
-prefix skos: <http://www.w3.org/2008/05/skos#> 
+prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
 prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> 
 prefix prov: <http://www.w3.org/ns/prov#> 
-prefix hasco: <http://hadatac.org/ont/hasco#> 
-prefix example-kb: <http://example.com/kb/example#> 
-prefix stato: <http://purl.obolibrary.org/obo/STATO_> 
-prefix uo: <http://purl.obolibrary.org/obo/UO_> 
-prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
-prefix chear: <http://hadatac.org/ont/chear#> 
 prefix xsd: <http://www.w3.org/2001/XMLSchema#> 
-prefix np: <http://www.nanopub.org/nschema#> 
-prefix obo: <http://purl.obolibrary.org/obo/> 
+prefix uo: <http://purl.obolibrary.org/obo/UO_> 
 prefix sio: <http://semanticscience.org/resource/> 
+prefix stato: <http://purl.obolibrary.org/obo/STATO_> 
+prefix example-kb: <http://example.com/kb/example#> 
+prefix chear: <http://hadatac.org/ont/chear#> 
+prefix hasco: <http://hadatac.org/ont/hasco#> 
+prefix obo: <http://purl.obolibrary.org/obo/> 
+prefix skos: <http://www.w3.org/2008/05/skos#> 
+prefix osm: <http://www.w3.org/2008/05/osm#> 
+prefix oersm: < http://hadatac.org/ont/oersm#> 
 
-SELECT DISTINCT ?id ?wt1 ?wt2 ?age ?sex ?race ?edu ?smoke WHERE {
-  ?id_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> sio:Identifier  ;
-    <http://semanticscience.org/resource/isAttributeOf>    ?subject_V  ;
-    <http://semanticscience.org/resource/hasValue> ?id .
+SELECT DISTINCT ?id_do_paciente ?data_de_admissao ?nome_do_paciente ?sexo ?idade ?fumante ?grupo_de_cid ?uso_de_substancia_psicoativa ?tipo_de_substancia_psicoativa ?frequencia_de_uso_da_substancia_psicoativa ?foi_internado_em_instituicao_psiquiatrica_no_ultimo_ano? ?quantas_vezes_internado_em_instituicao_psiquiatrica_no_ultimo_ano? ?grupo1_1_sensacao_de_morte_iminente__panico_e-ou_medo_intenso ?grupo1_2_desrealizacao_ou_despersonalizacao ?grupo1_3_queixas_somaticas_persistentes_e-ou_hipocondriacas ?grupo1_4_crise_conversiva_ou_dissociativa ?grupo1_5_pensamentos_e_comportamentos_repetitivos_e-ou_conjunto_de_rituais ?grupo1_6_tristeza_persistente_acompanhada_ou_nao_de_choro ?grupo2_1_ideacao_suicida_e-ou_tentativa_de_suicidio ?grupo2_2_isolamento_social ?grupo2_3_heteroagressividade_e-ou_agressividade ?grupo2_4_euforia ?grupo2_5_delirio-alucinacao ?grupo3_1_delirium_tremens ?grupo3_2_incapacidade_de_reducao_e_controle_do_uso_de_spa ?grupo3_3_manifestacao_de_comportamentos_de_risco_para_si_e_para_terceiros ?grupo4_1_dificuldades_manifestadas_na_infancia_de_compreender_e_transmitir_informacao ?grupo4_2_movimentos_corporais_e_comportamentais_estereotipados ?grupo4_3_regressao ?grupo5_1_perda_progressiva_da_capacidade_funcional_ocupacional_familiar_e_social ?grupo6_1_resistencia_ao_tratamento_e-ou_refratariedade ?grupo6_2_precariedade_de_suporte_familiar-social ?grupo6_3_vulnerabilidade_economica_e_ambiental ?grupo6_4_comorbidade_ou_outra_condicao_cronica_clinica_associada? ?tipo_de_comorbidade_ou_outra_condicao_cronica_clinica_associada ?grupo6_5_adesao_medicamentosa ?pontos_grupo1_1 ?pontos_grupo1_2 ?pontos_grupo1_3 ?pontos_grupo1_4 ?pontos_grupo1_5 ?pontos_grupo1_6 ?pontos_grupo2_1 ?pontos_grupo2_2 ?pontos_grupo2_3 ?pontos_grupo2_4 ?pontos_grupo2_5 ?pontos_grupo3_1 ?pontos_grupo3_2 ?pontos_grupo3_3 ?pontos_grupo4_1 ?pontos_grupo4_2 ?pontos_grupo4_3 ?pontos_grupo5_1 ?pontos_grupo6_1 ?pontos_grupo6_2 ?pontos_grupo6_3 ?pontos_grupo6_4 ?pontos_grupo6_5 ?total ?risco ?grupo_etario WHERE {
+  ?id_do_paciente_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> oersm:IdentificadorDeCadastro  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?paciente_V  ;
+    <http://semanticscience.org/resource/hasUnit>    schema:Interger ;
+    <http://semanticscience.org/resource/hasValue> ?id_do_paciente .
 
-  ?wt1_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> chear:Weight  ;
-    <http://semanticscience.org/resource/isAttributeOf>    ?subject_V  ;
-    <http://semanticscience.org/resource/hasUnit>    obo:UO_0000009 ;
-    <http://semanticscience.org/resource/existsAt>     ?visit1_V  ;
-    <http://semanticscience.org/resource/hasValue> ?wt1 .
+  ?data_de_admissao_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> oersm:DataDeAdmissao  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?dadodeinternacao_V  ;
+    <http://semanticscience.org/resource/hasUnit>    schema:DateTime ;
+    <http://semanticscience.org/resource/hasValue> ?data_de_admissao .
 
-  ?wt2_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> chear:Weight  ;
-    <http://semanticscience.org/resource/isAttributeOf>    ?subject_V  ;
-    <http://semanticscience.org/resource/hasUnit>    obo:UO_0000009 ;
-    <http://semanticscience.org/resource/existsAt>     ?visit2_V  ;
-    <http://semanticscience.org/resource/hasValue> ?wt2 .
+  ?nome_do_paciente_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> oersm:NomeCompleto  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?paciente_V  ;
+    <http://semanticscience.org/resource/hasValue> ?nome_do_paciente .
 
-  ?age_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> sio:Age  ;
-    <http://semanticscience.org/resource/isAttributeOf>    ?subject_V  ;
-    <http://semanticscience.org/resource/hasUnit>    obo:UO_0000036 ;
-    <http://semanticscience.org/resource/hasValue> ?age .
+  ?sexo_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> oersm:Sexo  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?paciente_V  ;
+    <http://semanticscience.org/resource/hasValue> ?sexo .
 
-  ?sex_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> sio:BiologicalSex  ;
-    <http://semanticscience.org/resource/isAttributeOf>    ?subject_V  ;
-    <http://semanticscience.org/resource/hasValue> ?sex .
+  ?idade_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> oersm:Idade  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?paciente_V  ;
+    <http://semanticscience.org/resource/hasUnit>    schema:Interger ;
+    <http://semanticscience.org/resource/hasValue> ?idade .
 
-  ?race_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> chear:Race  ;
-    <http://semanticscience.org/resource/isAttributeOf>    ?subject_V  ;
-    <http://semanticscience.org/resource/hasValue> ?race .
+  ?fumante_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> oersm:Fumante  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?paciente_V  ;
+    <http://semanticscience.org/resource/hasValue> ?fumante .
 
-  ?edu_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> chear:EducationLevel  ;
-    <http://semanticscience.org/resource/isAttributeOf>    ?subject_V  ;
-    <http://semanticscience.org/resource/hasValue> ?edu .
+  ?grupo_de_cid_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> oersm:GrupoDeCID  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?dadoclinico_V  ;
+    <http://semanticscience.org/resource/hasValue> ?grupo_de_cid .
 
-  ?smoke_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> chear:SmokingStatus  ;
-    <http://semanticscience.org/resource/isAttributeOf>    ?subject_V  ;
-    <http://semanticscience.org/resource/hasValue> ?smoke .
+  ?uso_de_substancia_psicoativa_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> oersm:OpcaoDeResposta  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?dadoclinico_V  ;
+    <http://semanticscience.org/resource/hasValue> ?uso_de_substancia_psicoativa .
+
+  ?tipo_de_substancia_psicoativa_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> oersm:TipoDeSubstanciaPsicoativa  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?dadoclinico_V  ;
+    <http://semanticscience.org/resource/hasValue> ?tipo_de_substancia_psicoativa .
+
+  ?frequencia_de_uso_da_substancia_psicoativa_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> oersm:FrequenciaDoUsoDoTipoDeSubstanciaPsicoativa  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?dadoclinico_V  ;
+    <http://semanticscience.org/resource/hasValue> ?frequencia_de_uso_da_substancia_psicoativa .
+
+  ?foi_internado_em_instituicao_psiquiatrica_no_ultimo_ano?_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> oersm:OpcaoDeResposta  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?elementoquestionario_V  ;
+    <http://semanticscience.org/resource/hasValue> ?foi_internado_em_instituicao_psiquiatrica_no_ultimo_ano? .
+
+  ?quantas_vezes_internado_em_instituicao_psiquiatrica_no_ultimo_ano?_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> oersm:quantidadeInterncaoUltimoAno  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?elementoquestionario_V  ;
+    <http://semanticscience.org/resource/hasValue> ?quantas_vezes_internado_em_instituicao_psiquiatrica_no_ultimo_ano? .
+
+  ?grupo1_1_sensacao_de_morte_iminente__panico_e-ou_medo_intenso_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> oersm:Questao  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?questao_V  ;
+    <http://semanticscience.org/resource/hasValue> ?grupo1_1_sensacao_de_morte_iminente__panico_e-ou_medo_intenso .
+
+  ?grupo1_2_desrealizacao_ou_despersonalizacao_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> oersm:Questao  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?questao_V  ;
+    <http://semanticscience.org/resource/hasValue> ?grupo1_2_desrealizacao_ou_despersonalizacao .
+
+  ?grupo1_3_queixas_somaticas_persistentes_e-ou_hipocondriacas_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> oersm:Questao  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?questao_V  ;
+    <http://semanticscience.org/resource/hasValue> ?grupo1_3_queixas_somaticas_persistentes_e-ou_hipocondriacas .
+
+  ?grupo1_4_crise_conversiva_ou_dissociativa_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> oersm:Questao  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?questao_V  ;
+    <http://semanticscience.org/resource/hasValue> ?grupo1_4_crise_conversiva_ou_dissociativa .
+
+  ?grupo1_5_pensamentos_e_comportamentos_repetitivos_e-ou_conjunto_de_rituais_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> oersm:Questao  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?questao_V  ;
+    <http://semanticscience.org/resource/hasValue> ?grupo1_5_pensamentos_e_comportamentos_repetitivos_e-ou_conjunto_de_rituais .
+
+  ?grupo1_6_tristeza_persistente_acompanhada_ou_nao_de_choro_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> oersm:Questao  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?questao_V  ;
+    <http://semanticscience.org/resource/hasValue> ?grupo1_6_tristeza_persistente_acompanhada_ou_nao_de_choro .
+
+  ?grupo2_1_ideacao_suicida_e-ou_tentativa_de_suicidio_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> oersm:Questao  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?questao_V  ;
+    <http://semanticscience.org/resource/hasValue> ?grupo2_1_ideacao_suicida_e-ou_tentativa_de_suicidio .
+
+  ?grupo2_2_isolamento_social_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> oersm:Questao  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?questao_V  ;
+    <http://semanticscience.org/resource/hasValue> ?grupo2_2_isolamento_social .
+
+  ?grupo2_3_heteroagressividade_e-ou_agressividade_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> oersm:Questao  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?questao_V  ;
+    <http://semanticscience.org/resource/hasValue> ?grupo2_3_heteroagressividade_e-ou_agressividade .
+
+  ?grupo2_4_euforia_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> oersm:Questao  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?questao_V  ;
+    <http://semanticscience.org/resource/hasValue> ?grupo2_4_euforia .
+
+  ?grupo2_5_delirio-alucinacao_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> oersm:Questao  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?questao_V  ;
+    <http://semanticscience.org/resource/hasValue> ?grupo2_5_delirio-alucinacao .
+
+  ?grupo3_1_delirium_tremens_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> oersm:Questao  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?questao_V  ;
+    <http://semanticscience.org/resource/hasValue> ?grupo3_1_delirium_tremens .
+
+  ?grupo3_2_incapacidade_de_reducao_e_controle_do_uso_de_spa_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> oersm:Questao  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?questao_V  ;
+    <http://semanticscience.org/resource/hasValue> ?grupo3_2_incapacidade_de_reducao_e_controle_do_uso_de_spa .
+
+  ?grupo3_3_manifestacao_de_comportamentos_de_risco_para_si_e_para_terceiros_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> oersm:Questao  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?questao_V  ;
+    <http://semanticscience.org/resource/hasValue> ?grupo3_3_manifestacao_de_comportamentos_de_risco_para_si_e_para_terceiros .
+
+  ?grupo4_1_dificuldades_manifestadas_na_infancia_de_compreender_e_transmitir_informacao_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> oersm:Questao  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?questao_V  ;
+    <http://semanticscience.org/resource/hasValue> ?grupo4_1_dificuldades_manifestadas_na_infancia_de_compreender_e_transmitir_informacao .
+
+  ?grupo4_2_movimentos_corporais_e_comportamentais_estereotipados_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> oersm:Questao  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?questao_V  ;
+    <http://semanticscience.org/resource/hasValue> ?grupo4_2_movimentos_corporais_e_comportamentais_estereotipados .
+
+  ?grupo4_3_regressao_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> oersm:Questao  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?questao_V  ;
+    <http://semanticscience.org/resource/hasValue> ?grupo4_3_regressao .
+
+  ?grupo5_1_perda_progressiva_da_capacidade_funcional_ocupacional_familiar_e_social_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> oersm:Questao  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?questao_V  ;
+    <http://semanticscience.org/resource/hasValue> ?grupo5_1_perda_progressiva_da_capacidade_funcional_ocupacional_familiar_e_social .
+
+  ?grupo6_1_resistencia_ao_tratamento_e-ou_refratariedade_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> oersm:Questao  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?questao_V  ;
+    <http://semanticscience.org/resource/hasValue> ?grupo6_1_resistencia_ao_tratamento_e-ou_refratariedade .
+
+  ?grupo6_2_precariedade_de_suporte_familiar-social_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> oersm:Questao  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?questao_V  ;
+    <http://semanticscience.org/resource/hasValue> ?grupo6_2_precariedade_de_suporte_familiar-social .
+
+  ?grupo6_3_vulnerabilidade_economica_e_ambiental_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> oersm:Questao  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?questao_V  ;
+    <http://semanticscience.org/resource/hasValue> ?grupo6_3_vulnerabilidade_economica_e_ambiental .
+
+  ?grupo6_4_comorbidade_ou_outra_condicao_cronica_clinica_associada?_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> oersm:Questao  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?questao_V  ;
+    <http://semanticscience.org/resource/hasValue> ?grupo6_4_comorbidade_ou_outra_condicao_cronica_clinica_associada? .
+
+  ?tipo_de_comorbidade_ou_outra_condicao_cronica_clinica_associada_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> oersm:Comorbidade  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?paciente_V  ;
+    <http://semanticscience.org/resource/hasValue> ?tipo_de_comorbidade_ou_outra_condicao_cronica_clinica_associada .
+
+  ?grupo6_5_adesao_medicamentosa_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> oersm:Questao  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?questao_V  ;
+    <http://semanticscience.org/resource/hasValue> ?grupo6_5_adesao_medicamentosa .
+
+  ?pontos_grupo1_1_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> oersm:Pontuacao  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?questao_V  ;
+    <http://semanticscience.org/resource/hasUnit>    schema:Interger ;
+    <http://semanticscience.org/resource/hasValue> ?pontos_grupo1_1 .
+
+  ?pontos_grupo1_2_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> oersm:Pontuacao  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?questao_V  ;
+    <http://semanticscience.org/resource/hasUnit>    schema:Interger ;
+    <http://semanticscience.org/resource/hasValue> ?pontos_grupo1_2 .
+
+  ?pontos_grupo1_3_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> oersm:Pontuacao  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?questao_V  ;
+    <http://semanticscience.org/resource/hasUnit>    schema:Interger ;
+    <http://semanticscience.org/resource/hasValue> ?pontos_grupo1_3 .
+
+  ?pontos_grupo1_4_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> oersm:Pontuacao  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?questao_V  ;
+    <http://semanticscience.org/resource/hasUnit>    schema:Interger ;
+    <http://semanticscience.org/resource/hasValue> ?pontos_grupo1_4 .
+
+  ?pontos_grupo1_5_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> oersm:Pontuacao  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?questao_V  ;
+    <http://semanticscience.org/resource/hasUnit>    schema:Interger ;
+    <http://semanticscience.org/resource/hasValue> ?pontos_grupo1_5 .
+
+  ?pontos_grupo1_6_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> oersm:Pontuacao  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?questao_V  ;
+    <http://semanticscience.org/resource/hasUnit>    schema:Interger ;
+    <http://semanticscience.org/resource/hasValue> ?pontos_grupo1_6 .
+
+  ?pontos_grupo2_1_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> oersm:Pontuacao  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?questao_V  ;
+    <http://semanticscience.org/resource/hasUnit>    schema:Interger ;
+    <http://semanticscience.org/resource/hasValue> ?pontos_grupo2_1 .
+
+  ?pontos_grupo2_2_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> oersm:Pontuacao  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?questao_V  ;
+    <http://semanticscience.org/resource/hasUnit>    schema:Interger ;
+    <http://semanticscience.org/resource/hasValue> ?pontos_grupo2_2 .
+
+  ?pontos_grupo2_3_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> oersm:Pontuacao  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?questao_V  ;
+    <http://semanticscience.org/resource/hasUnit>    schema:Interger ;
+    <http://semanticscience.org/resource/hasValue> ?pontos_grupo2_3 .
+
+  ?pontos_grupo2_4_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> oersm:Pontuacao  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?questao_V  ;
+    <http://semanticscience.org/resource/hasUnit>    schema:Interger ;
+    <http://semanticscience.org/resource/hasValue> ?pontos_grupo2_4 .
+
+  ?pontos_grupo2_5_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> oersm:Pontuacao  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?questao_V  ;
+    <http://semanticscience.org/resource/hasUnit>    schema:Interger ;
+    <http://semanticscience.org/resource/hasValue> ?pontos_grupo2_5 .
+
+  ?pontos_grupo3_1_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> oersm:Pontuacao  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?questao_V  ;
+    <http://semanticscience.org/resource/hasUnit>    schema:Interger ;
+    <http://semanticscience.org/resource/hasValue> ?pontos_grupo3_1 .
+
+  ?pontos_grupo3_2_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> oersm:Pontuacao  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?questao_V  ;
+    <http://semanticscience.org/resource/hasUnit>    schema:Interger ;
+    <http://semanticscience.org/resource/hasValue> ?pontos_grupo3_2 .
+
+  ?pontos_grupo3_3_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> oersm:Pontuacao  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?questao_V  ;
+    <http://semanticscience.org/resource/hasUnit>    schema:Interger ;
+    <http://semanticscience.org/resource/hasValue> ?pontos_grupo3_3 .
+
+  ?pontos_grupo4_1_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> oersm:Pontuacao  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?questao_V  ;
+    <http://semanticscience.org/resource/hasUnit>    schema:Interger ;
+    <http://semanticscience.org/resource/hasValue> ?pontos_grupo4_1 .
+
+  ?pontos_grupo4_2_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> oersm:Pontuacao  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?questao_V  ;
+    <http://semanticscience.org/resource/hasUnit>    schema:Interger ;
+    <http://semanticscience.org/resource/hasValue> ?pontos_grupo4_2 .
+
+  ?pontos_grupo4_3_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> oersm:Pontuacao  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?questao_V  ;
+    <http://semanticscience.org/resource/hasUnit>    schema:Interger ;
+    <http://semanticscience.org/resource/hasValue> ?pontos_grupo4_3 .
+
+  ?pontos_grupo5_1_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> oersm:Pontuacao  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?questao_V  ;
+    <http://semanticscience.org/resource/hasUnit>    schema:Interger ;
+    <http://semanticscience.org/resource/hasValue> ?pontos_grupo5_1 .
+
+  ?pontos_grupo6_1_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> oersm:Pontuacao  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?questao_V  ;
+    <http://semanticscience.org/resource/hasUnit>    schema:Interger ;
+    <http://semanticscience.org/resource/hasValue> ?pontos_grupo6_1 .
+
+  ?pontos_grupo6_2_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> oersm:Pontuacao  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?questao_V  ;
+    <http://semanticscience.org/resource/hasUnit>    schema:Interger ;
+    <http://semanticscience.org/resource/hasValue> ?pontos_grupo6_2 .
+
+  ?pontos_grupo6_3_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> oersm:Pontuacao  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?questao_V  ;
+    <http://semanticscience.org/resource/hasUnit>    schema:Interger ;
+    <http://semanticscience.org/resource/hasValue> ?pontos_grupo6_3 .
+
+  ?pontos_grupo6_4_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> oersm:Pontuacao  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?questao_V  ;
+    <http://semanticscience.org/resource/hasUnit>    schema:Interger ;
+    <http://semanticscience.org/resource/hasValue> ?pontos_grupo6_4 .
+
+  ?pontos_grupo6_5_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> oersm:Pontuacao  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?questao_V  ;
+    <http://semanticscience.org/resource/hasUnit>    schema:Interger ;
+    <http://semanticscience.org/resource/hasValue> ?pontos_grupo6_5 .
+
+  ?total_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> oersm:PontuacaoFinal  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?elementoquestionario_V  ;
+    <http://semanticscience.org/resource/hasUnit>    schema:Interger ;
+    <http://semanticscience.org/resource/hasValue> ?total .
+
+  ?risco_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> oersm:NivelDeRisco  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?paciente_V  ;
+    <http://semanticscience.org/resource/hasValue> ?risco .
+
+  ?grupo_etario_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> oersm:FaixaEtaria  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?paciente_V  ;
+    <http://semanticscience.org/resource/hasValue> ?grupo_etario .
 
 
-  ?subject_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> sio:Human  ;
-    <http://semanticscience.org/resource/hasRole>    [ <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> sio:SubjectRole ;
-      <http://semanticscience.org/resource/inRelationTo>    ?study_V  ].
+  ?questao_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> oersm:Questao  ;
+    oersm:questaoPossui oersm:OpcaoDeResposta .
 
-  ?study_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> hasco:Study .
+  ?questao_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> oersm:Questao  ;
+    oersm:fazParte oersm:GrupoDeQuestao .
+
+  ?questao_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> oersm:Questao  ;
+    oersm:questaoPossui oersm:Pontuacao .
+
+  ?paciente_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> oersm:Paciente  ;
+    oersm:responde oersm:Questao .
+
+  ?dadodeinternacao_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> oersm:DadoDeInternacao .
+
+  ?dadoclinico_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> oersm:DadoClinico .
+
+  ?paciente_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> oersm:Paciente  ;
+    oersm:pacientePossui oersm:DadoDeInternacao .
+
+  ?paciente_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> oersm:Paciente  ;
+    oersm:pacientePossui oersm:FaixaEtaria .
+
+  ?faixaetaria_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> oersm:FaixaEtaria  ;
+    oersm:faixaEtariaPossui oersm:NivelDeRisco .
+
+  ?paciente_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> oersm:Paciente  ;
+    oersm:pacientePossui oersm:PontuacaoFinal .
+
+  ?paciente_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> oersm:Paciente  ;
+    oersm:pacientePossui oersm:DadoClinico .
+
+  ?elementoquestionario_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> oersm:ElementoQuestionario  ;
+    oersm:temElementoQuestionario oersm:Paciente .
 
 }
