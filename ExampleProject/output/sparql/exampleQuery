@@ -326,4 +326,40 @@ SELECT DISTINCT ?id_do_paciente ?data_de_admissao ?nome_do_paciente ?sexo ?idade
   ?elementoquestionario_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> oersm:ElementoQuestionario  ;
     oersm:temElementoQuestionario oersm:Paciente .
 
+  ?paciente_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> oersm:Paciente  ;
+    oersm:pacientePossui oersm:NivelDeRisco .
+
+  ?nivelderisco_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> oersm:NivelDeRisco  ;
+    oersm:nivelDeRiscoOrienta oersm:ProjetoTerapeuticoSingular .
+
+  ?projetoterapeuticosingular_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> oersm:ProjetoTerapeuticoSingular  ;
+    oersm:projetoTerapeuticoSingularEFormadoPor oersm:AcaoTerapeutica .
+
+  ?nivelderiscoalto_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> oersm:NivelDeRiscoAlto  ;
+    oersm:nivelDeRiscoOrienta oersm:AtendimentoMedico .
+
+  ?nivelderiscoalto_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> oersm:NivelDeRiscoAlto  ;
+    oersm:nivelDeRiscoOrienta oersm:InstrumentoAssistencial .
+
+  ?nivelderiscoalto_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> oersm:NivelDeRiscoAlto  ;
+    oersm:nivelDeRiscoOrienta oersm:OficinaDeConvivencia .
+
+  ?nivelderiscomedio_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> oersm:NivelDeRiscoMedio  ;
+    oersm:nivelDeRiscoOrienta oersm:AtendimentoMedico .
+
+  ?nivelderiscomedio_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> oersm:NivelDeRiscoMedio  ;
+    oersm:nivelDeRiscoOrienta oersm:InstrumentoAssistencial .
+
+  ?nivelderiscomedio_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> oersm:NivelDeRiscoMedio  ;
+    oersm:nivelDeRiscoOrienta oersm:OficinaDeConvivencia .
+
+  ?nivelderiscobaixo_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> oersm:NivelDeRiscoBaixo  ;
+    oersm:nivelDeRiscoOrienta oersm:AtendimentoMedico .
+
+  ?nivelderiscobaixo_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> oersm:NivelDeRiscoBaixo  ;
+    oersm:nivelDeRiscoOrienta oersm:InstrumentoAssistencial .
+
+  ?nivelderiscobaixo_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> oersm:NivelDeRiscoBaixo  ;
+    oersm:nivelDeRiscoOrienta oersm:OficinaDeConvivencia .
+
 }
