@@ -16,3 +16,5 @@ Obs.: Irei explicar melhor na sexta como criar variáveis de ambiente e configur
 python sdd2rdf.py  config.ini.example
 
 6-) Utilizar o programa Grapher para geração do grafo: http://www.ldf.fi/service/rdf-grapher
+
+7-) Converter para Turtle: https://issemantic.net/rdf-converter

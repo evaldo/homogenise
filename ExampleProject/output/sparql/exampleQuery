@@ -143,12 +143,12 @@ SELECT DISTINCT ?id_do_paciente ?data_de_admissao ?nome_do_paciente ?sexo ?idade
     <http://semanticscience.org/resource/isAttributeOf>    ?questao_V  ;
     <http://semanticscience.org/resource/hasValue> ?grupo6_1_resistencia_ao_tratamento_e-ou_refratariedade .
 
-  ?grupo6_2_precariedade_de_suporte_familiar-social_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> oersm:Questao  ;
-    <http://semanticscience.org/resource/isAttributeOf>    ?questao_V  ;
+  ?grupo6_2_precariedade_de_suporte_familiar-social_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> oersm:VulnerabilidadeSocial  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?vulnerabilidadesocial_V  ;
     <http://semanticscience.org/resource/hasValue> ?grupo6_2_precariedade_de_suporte_familiar-social .
 
-  ?grupo6_3_vulnerabilidade_economica_e_ambiental_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> oersm:Questao  ;
-    <http://semanticscience.org/resource/isAttributeOf>    ?questao_V  ;
+  ?grupo6_3_vulnerabilidade_economica_e_ambiental_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> oersm:VulnerabilidadeSocial  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?vulnerabilidadesocial_V  ;
     <http://semanticscience.org/resource/hasValue> ?grupo6_3_vulnerabilidade_economica_e_ambiental .
 
   ?grupo6_4_comorbidade_ou_outra_condicao_cronica_clinica_associada?_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> oersm:Questao  ;
@@ -361,5 +361,8 @@ SELECT DISTINCT ?id_do_paciente ?data_de_admissao ?nome_do_paciente ?sexo ?idade
 
   ?nivelderiscobaixo_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> oersm:NivelDeRiscoBaixo  ;
     oersm:nivelDeRiscoOrienta oersm:OficinaDeConvivencia .
+
+  ?vulnerabilidadesocial_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> oersm:VulnerabilidadeSocial  ;
+    oersm:eRespondidaPor oersm:Questao .
 
 }
