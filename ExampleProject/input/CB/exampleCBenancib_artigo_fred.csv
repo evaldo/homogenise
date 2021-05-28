@@ -1,0 +1,13 @@
+Column,Code,Class,Resource,Label,Comment,Definition
+DFaixaEtaria,1,IDOSO,kpionto:faixaetaria,,,
+DFaixaEtaria,2,ADULTO,kpionto:faixaetaria,,,
+DFaixaEtaria,3,ADOLESCENTE,kpionto:faixaetaria,,,
+DCID,4,F00-F09,kpionto:cid,,,
+DCID,5,F30-F39,kpionto:cid,,,
+DCID,6,F60-F69,kpionto:cid,,,
+DCID,7,F90-F98,kpionto:cid,,,
+DTempoMes,8,JANEIRO,kpionto:tempomes,,,
+DTempoMes,9,FEVEREIRO,kpionto:tempomes,,,
+DTempoMes,10,MARCO,kpionto:tempomes,,,
+DTempoAno,11,2021,kpionto:tempoano,,,
+DTempoAno,12,2022,kpionto:tempoano,,,
