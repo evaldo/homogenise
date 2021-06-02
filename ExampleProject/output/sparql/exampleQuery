@@ -137,7 +137,7 @@ SELECT DISTINCT ?id_do_paciente ?data_de_admissao ?nome_do_paciente ?sexo ?idade
     <http://semanticscience.org/resource/hasValue> ?grupo4_3_regressao .
 
   ?grupo5_1_perda_progressiva_da_capacidade_funcional_ocupacional_familiar_e_social_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> oersm:OpcaoDeResposta  ;
-    <http://semanticscience.org/resource/isAttributeOf>    ?questaorespondedependenciaautonomia E ??parametrodevulnerabilidade_V  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?questaorespondedependenciaautonomia_V  ;
     <http://semanticscience.org/resource/hasValue> ?grupo5_1_perda_progressiva_da_capacidade_funcional_ocupacional_familiar_e_social .
 
   ?grupo6_1_resistencia_ao_tratamento_e-ou_refratariedade_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> oersm:OpcaoDeResposta  ;
