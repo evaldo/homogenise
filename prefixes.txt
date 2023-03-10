@@ -1,4 +1,5 @@
 @prefix np: <http://www.nanopub.org/nschema#>.
+@prefix schema: <http://www.nanopub.org/schema#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
@@ -34,3 +35,4 @@
 @prefix example-kb: <http://www.w3.org/2008/05/example#>.
 @prefix ontriscal: <http://www.w3.org/2008/05/ontriscal#>.
 @prefix refiqda: <http://www.w3.org/2008/05/refiqda#>.
+@prefix qualico: <http://www.w3.org/2008/05/qualico#>.
