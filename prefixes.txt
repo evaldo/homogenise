@@ -32,5 +32,5 @@
 @prefix skos: <http://www.w3.org/2008/05/skos#>.
 @prefix osm: <http://www.w3.org/2008/05/osm#>.
 @prefix example-kb: <http://www.w3.org/2008/05/example#>.
-@prefix oersm: <http://www.w3.org/2008/05/oersm#>.
-
+@prefix ontriscal: <http://www.w3.org/2008/05/ontriscal#>.
+@prefix refiqda: <http://www.w3.org/2008/05/refiqda#>.

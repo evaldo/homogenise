@@ -1,1 +1,0 @@
-C:\rdf_wtdo>path C:\Users\evald\AppData\Local\Programs\Python\Python37\Lib\site-packages\pandas;C:\Users\evald\AppData\Local\Programs\Python\Python37;c:\users\evald\appdata\local\programs\python\python37\Scripts

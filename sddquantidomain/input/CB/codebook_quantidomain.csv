@@ -1,0 +1,3 @@
+Column,Code,Class
+risklevel,Initial Risk Level,ontrsical:RiskLevel
+risklevel_final,Final Risk Level,ontrsical:FinalRiskLevel

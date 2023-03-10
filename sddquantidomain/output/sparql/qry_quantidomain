@@ -1,0 +1,164 @@
+prefix np: <http://www.nanopub.org/nschema#> 
+prefix owl: <http://www.w3.org/2002/07/owl#> 
+prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
+prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> 
+prefix prov: <http://www.w3.org/ns/prov#> 
+prefix xsd: <http://www.w3.org/2001/XMLSchema#> 
+prefix uo: <http://purl.obolibrary.org/obo/UO_> 
+prefix sio: <http://semanticscience.org/resource/> 
+prefix stato: <http://purl.obolibrary.org/obo/STATO_> 
+prefix example-kb: <http://example.com/kb/example#> 
+prefix chear: <http://hadatac.org/ont/chear#> 
+prefix hasco: <http://hadatac.org/ont/hasco#> 
+prefix obo: <http://purl.obolibrary.org/obo/> 
+prefix skos: <http://www.w3.org/2008/05/skos#> 
+prefix osm: <http://www.w3.org/2008/05/osm#> 
+prefix oersm: < http://hadatac.org/ont/oersm#> 
+prefix ontriscal: < http://hadatac.org/ont/ontriscal#> 
+prefix kpionto: < http://hadatac.org/ont/kpionto#> 
+
+SELECT DISTINCT ?id_case ?initial_questionnarie ?feeling_of_suffocation_and_difficulty_breathing ?inability_to_relax ?muscle_tension ?sweat ?finalscore ?risklevel ?final_questionnarie ?feeling_of_suffocation_and_difficulty_breathing_final ?inability_to_relax_final ?muscle_tension_final ?sweat_final ?finalscore_final ?risklevel_final WHERE {
+  ?id_case_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> hasco:originalID  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?patient_V  ;
+    <http://semanticscience.org/resource/hasUnit>    schema:Interger ;
+    <http://semanticscience.org/resource/hasValue> ?id_case .
+
+  ?initial_questionnarie_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:FullName  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?beginningquestionnaire_V  ;
+    <http://semanticscience.org/resource/hasValue> ?initial_questionnarie .
+
+  ?feeling_of_suffocation_and_difficulty_breathing_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:QuestionScore  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?feelingofsuffocationscore_V  ;
+    <http://semanticscience.org/resource/hasValue> ?feeling_of_suffocation_and_difficulty_breathing .
+
+  ?inability_to_relax_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:QuestionScore  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?inabilitytorelaxscore_V  ;
+    <http://semanticscience.org/resource/hasValue> ?inability_to_relax .
+
+  ?muscle_tension_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:QuestionScore  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?muscletensionscore_V  ;
+    <http://semanticscience.org/resource/hasValue> ?muscle_tension .
+
+  ?sweat_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:QuestionScore  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?sweatscore_V  ;
+    <http://semanticscience.org/resource/hasValue> ?sweat .
+
+  ?finalscore_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:FinalScore  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?finalscore_V  ;
+    <http://semanticscience.org/resource/hasValue> ?finalscore .
+
+  ?risklevel_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontrsical:RiskLevel  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?risklevel_V  ;
+    <http://semanticscience.org/resource/hasValue> ?risklevel .
+
+  ?final_questionnarie_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:FullName  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?finalquestionnaire_V  ;
+    <http://semanticscience.org/resource/hasValue> ?final_questionnarie .
+
+  ?feeling_of_suffocation_and_difficulty_breathing_final_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:QuestionScore  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?feelingofsuffocation_scorefinal_V  ;
+    <http://semanticscience.org/resource/hasValue> ?feeling_of_suffocation_and_difficulty_breathing_final .
+
+  ?inability_to_relax_final_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:QuestionScore  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?inabilitytorelax_scorefinal_V  ;
+    <http://semanticscience.org/resource/hasValue> ?inability_to_relax_final .
+
+  ?muscle_tension_final_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:QuestionScore  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?muscletension_scorefinal_V  ;
+    <http://semanticscience.org/resource/hasValue> ?muscle_tension_final .
+
+  ?sweat_final_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:QuestionScore  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?sweat_scorefinal_V  ;
+    <http://semanticscience.org/resource/hasValue> ?sweat_final .
+
+  ?finalscore_final_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:FinalScore  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?finalscore_final_V  ;
+    <http://semanticscience.org/resource/hasValue> ?finalscore_final .
+
+  ?risklevel_final_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontrsical:RiskLevel  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?risklevel_final_V  ;
+    <http://semanticscience.org/resource/hasValue> ?risklevel_final .
+
+
+  ?patient_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> hasco:originalID  ;
+    rdf:type sio:Human .
+
+  ?beginningquestionnaire_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:FullName  ;
+    ontriscal:isNameOf ontriscal:Instrument .
+
+  ?patient_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> hasco:originalID  ;
+    ontriscal:patientAnswers ?beginningquestionnaire_V .
+
+  ?feelingofsuffocationscore_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:QuestionScore  ;
+    ontriscal:anwseredByQuestion ontriscal:FeelingOfSuffocationAndDifficultyBreathing .
+
+  ?feelingofsuffocationscore_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:QuestionScore  ;
+    ontriscal:isItemOf ?beginningquestionnaire_V .
+
+  ?inabilitytorelaxscore_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:QuestionScore  ;
+    ontriscal:anwseredByQuestion ontriscal:InabilityRelax .
+
+  ?inabilitytorelaxscore_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:QuestionScore  ;
+    ontriscal:isItemOf ?beginningquestionnaire_V .
+
+  ?muscletensionscore_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:QuestionScore  ;
+    ontriscal:anwseredByQuestion ontriscal:MuscleTension .
+
+  ?muscletensionscore_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:QuestionScore  ;
+    ontriscal:isItemOf ?beginningquestionnaire_V .
+
+  ?sweatscore_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:QuestionScore  ;
+    ontriscal:anwseredByQuestion ontriscal:Sweat .
+
+  ?sweatscore_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:QuestionScore  ;
+    ontriscal:isItemOf ?beginningquestionnaire_V .
+
+  ?finalscore_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:FinalScore  ;
+    ontriscal:isItemOf ?beginningquestionnaire_V .
+
+  ?risklevel_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontrsical:RiskLevel  ;
+    ontriscal:isItemOf ?beginningquestionnaire_V .
+
+  ?patient_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> hasco:originalID  ;
+    ontriscal:patientRecevies ?risklevel_V .
+
+  ?finalquestionnaire_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:FullName  ;
+    ontriscal:isNameOf ontriscal:Instrument .
+
+  ?patient_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> hasco:originalID  ;
+    ontriscal:patientAnswers ?finalquestionnaire_V .
+
+  ?feelingofsuffocation_scorefinal_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:QuestionScore  ;
+    ontriscal:anwseredByQuestion ontriscal:FeelingOfSuffocationAndDifficultyBreathing .
+
+  ?feelingofsuffocation_scorefinal_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:QuestionScore  ;
+    ontriscal:isItemOf ?finalquestionnaire_V .
+
+  ?inabilitytorelax_scorefinal_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:QuestionScore  ;
+    ontriscal:anwseredByQuestion ontriscal:InabilityRelax .
+
+  ?inabilitytorelax_scorefinal_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:QuestionScore  ;
+    ontriscal:isItemOf ?finalquestionnaire_V .
+
+  ?muscletension_scorefinal_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:QuestionScore  ;
+    ontriscal:anwseredByQuestion ontriscal:MuscleTension .
+
+  ?muscletension_scorefinal_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:QuestionScore  ;
+    ontriscal:isItemOf ?finalquestionnaire_V .
+
+  ?sweat_scorefinal_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:QuestionScore  ;
+    ontriscal:anwseredByQuestion ontriscal:Sweat .
+
+  ?sweat_scorefinal_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:QuestionScore  ;
+    ontriscal:isItemOf ?finalquestionnaire_V .
+
+  ?finalscore_final_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:FinalScore  ;
+    ontriscal:isItemOf ?finalquestionnaire_V .
+
+  ?risklevel_final_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontrsical:RiskLevel  ;
+    ontriscal:isItemOf ?finalquestionnaire_V .
+
+  ?patient_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> hasco:originalID  ;
+    ontriscal:patientRecevies ?risklevel_final_V .
+
+}
