@@ -47,7 +47,7 @@ SELECT DISTINCT ?id_case ?initial_questionnarie ?feeling_of_suffocation_and_diff
     <http://semanticscience.org/resource/isAttributeOf>    ?finalscore_V  ;
     <http://semanticscience.org/resource/hasValue> ?finalscore .
 
-  ?risklevel_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontrsical:RiskLevel  ;
+  ?risklevel_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:RiskLevel  ;
     <http://semanticscience.org/resource/isAttributeOf>    ?risklevel_V  ;
     <http://semanticscience.org/resource/hasValue> ?risklevel .
 
@@ -75,7 +75,7 @@ SELECT DISTINCT ?id_case ?initial_questionnarie ?feeling_of_suffocation_and_diff
     <http://semanticscience.org/resource/isAttributeOf>    ?finalscore_final_V  ;
     <http://semanticscience.org/resource/hasValue> ?finalscore_final .
 
-  ?risklevel_final_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontrsical:RiskLevel  ;
+  ?risklevel_final_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:RiskLevel  ;
     <http://semanticscience.org/resource/isAttributeOf>    ?risklevel_final_V  ;
     <http://semanticscience.org/resource/hasValue> ?risklevel_final .
 
@@ -116,7 +116,7 @@ SELECT DISTINCT ?id_case ?initial_questionnarie ?feeling_of_suffocation_and_diff
   ?finalscore_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:FinalScore  ;
     ontriscal:isItemOf ?beginningquestionnaire_V .
 
-  ?risklevel_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontrsical:RiskLevel  ;
+  ?risklevel_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:RiskLevel  ;
     ontriscal:isItemOf ?beginningquestionnaire_V .
 
   ?patient_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> hasco:originalID  ;
@@ -155,7 +155,7 @@ SELECT DISTINCT ?id_case ?initial_questionnarie ?feeling_of_suffocation_and_diff
   ?finalscore_final_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:FinalScore  ;
     ontriscal:isItemOf ?finalquestionnaire_V .
 
-  ?risklevel_final_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontrsical:RiskLevel  ;
+  ?risklevel_final_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:RiskLevel  ;
     ontriscal:isItemOf ?finalquestionnaire_V .
 
   ?patient_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> hasco:originalID  ;

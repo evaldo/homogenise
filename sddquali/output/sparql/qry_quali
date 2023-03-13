@@ -132,13 +132,13 @@ SELECT DISTINCT ?id_case ?document ?source ?id_user ?user ?id_project ?project ?
     rdf:type refiqda:Textsource .
 
   ?project_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> refiqda:Project  ;
-    refiqda:contrains ?symptomofanxietynote_V .
+    refiqda:contains ?symptomofanxietynote_V .
 
   ?project_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> refiqda:Project  ;
-    refiqda:contrains ?iduser_V .
+    refiqda:contains ?iduser_V .
 
   ?project_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> refiqda:Project  ;
-    refiqda:contrains ?patient_V .
+    refiqda:contains ?patient_V .
 
   ?symptomofanxietynote_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> refiqda:Note  ;
     refiqda:appliesTo ?project_V .

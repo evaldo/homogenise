@@ -1,2 +1,3 @@
 id_case,initial_questionnarie,feeling_of_suffocation_and_difficulty_breathing,inability_to_relax,muscle_tension,sweat,finalscore,risklevel,final_questionnarie,feeling_of_suffocation_and_difficulty_breathing_final,inability_to_relax_final,muscle_tension_final,sweat_final,finalscore_final,risklevel_final
 60,Start Treatment,7,6,6,6,25,Medium,Final of Treatment,2,1,1,1,5,Low
+70,Start Treatment,15,26,25,32,98,High,Final of Treatment,9,12,7,6,34,Medium
