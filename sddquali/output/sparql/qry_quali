@@ -24,21 +24,21 @@ SELECT DISTINCT ?id_case ?document ?source ?id_user ?user ?id_project ?project ?
     <http://semanticscience.org/resource/hasValue> ?id_case .
 
   ?document_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> refiqda:NameOfDocument  ;
-    <http://semanticscience.org/resource/isAttributeOf>    ?nameofdocument_V  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?project_V  ;
     <http://semanticscience.org/resource/hasUnit>    schema:String ;
     <http://semanticscience.org/resource/hasValue> ?document .
 
   ?source_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> refiqda:Textsource  ;
-    <http://semanticscience.org/resource/isAttributeOf>    ?typeofdocument_V  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?project_V  ;
     <http://semanticscience.org/resource/hasValue> ?source .
 
   ?id_user_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> refiqda:User  ;
-    <http://semanticscience.org/resource/isAttributeOf>    ?iduser_V  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?project_V  ;
     <http://semanticscience.org/resource/hasUnit>    schema:Interger ;
     <http://semanticscience.org/resource/hasValue> ?id_user .
 
   ?user_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> refiqda:NameOfUser  ;
-    <http://semanticscience.org/resource/isAttributeOf>    ?nameofuser_V  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?project_V  ;
     <http://semanticscience.org/resource/hasUnit>    schema:String ;
     <http://semanticscience.org/resource/hasValue> ?user .
 
@@ -48,105 +48,66 @@ SELECT DISTINCT ?id_case ?document ?source ?id_user ?user ?id_project ?project ?
     <http://semanticscience.org/resource/hasValue> ?id_project .
 
   ?project_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> refiqda:NameOfProject  ;
-    <http://semanticscience.org/resource/isAttributeOf>    ?nameofproject_V  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?project_V  ;
     <http://semanticscience.org/resource/hasUnit>    schema:String ;
     <http://semanticscience.org/resource/hasValue> ?project .
 
-  ?contextualaspect_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> refiqda:Content  ;
-    <http://semanticscience.org/resource/isAttributeOf>    ?contextualaspectnote_V  ;
+  ?contextualaspect_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:ContextualAspect  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?note_V  ;
     <http://semanticscience.org/resource/hasUnit>    schema:String ;
     <http://semanticscience.org/resource/hasValue> ?contextualaspect .
 
-  ?behavioraspects_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> refiqda:Content  ;
-    <http://semanticscience.org/resource/isAttributeOf>    ?behavioraspectsnote_V  ;
+  ?behavioraspects_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:BehaviorAspects  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?note_V  ;
     <http://semanticscience.org/resource/hasUnit>    schema:String ;
     <http://semanticscience.org/resource/hasValue> ?behavioraspects .
 
-  ?corebelief_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> refiqda:Content  ;
-    <http://semanticscience.org/resource/isAttributeOf>    ?corebeliefnote_V  ;
+  ?corebelief_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:CoreBelief  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?note_V  ;
     <http://semanticscience.org/resource/hasUnit>    schema:String ;
     <http://semanticscience.org/resource/hasValue> ?corebelief .
 
-  ?automaticthinking_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> refiqda:Content  ;
-    <http://semanticscience.org/resource/isAttributeOf>    ?authomaticthinkingnote_V  ;
+  ?automaticthinking_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:AutomaticThinking  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?note_V  ;
     <http://semanticscience.org/resource/hasUnit>    schema:String ;
     <http://semanticscience.org/resource/hasValue> ?automaticthinking .
 
-  ?emotion_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> refiqda:Content  ;
-    <http://semanticscience.org/resource/isAttributeOf>    ?emotionnote_V  ;
+  ?emotion_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:Emotion  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?note_V  ;
     <http://semanticscience.org/resource/hasUnit>    schema:String ;
     <http://semanticscience.org/resource/hasValue> ?emotion .
 
-  ?assumption_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> refiqda:Content  ;
-    <http://semanticscience.org/resource/isAttributeOf>    ?assumptionnote_V  ;
+  ?assumption_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:Assumption  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?note_V  ;
     <http://semanticscience.org/resource/hasUnit>    schema:String ;
     <http://semanticscience.org/resource/hasValue> ?assumption .
 
-  ?compensatorystrategy_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> refiqda:Content  ;
-    <http://semanticscience.org/resource/isAttributeOf>    ?compensatorystrategynote_V  ;
+  ?compensatorystrategy_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:CompensatoryStrategy  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?note_V  ;
     <http://semanticscience.org/resource/hasUnit>    schema:String ;
     <http://semanticscience.org/resource/hasValue> ?compensatorystrategy .
 
-  ?symptomofanxiety_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> refiqda:Content  ;
-    <http://semanticscience.org/resource/isAttributeOf>    ?symptomofanxietynote_V  ;
+  ?symptomofanxiety_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:AnxietySymptom  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?note_V  ;
     <http://semanticscience.org/resource/hasUnit>    schema:String ;
     <http://semanticscience.org/resource/hasValue> ?symptomofanxiety .
 
-  ?finalassessement_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> sio:Attribute  ;
+  ?finalassessement_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:PsychiatricEvaluation  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?note_V  ;
     <http://semanticscience.org/resource/hasValue> ?finalassessement .
 
-  ?techiniqueofintervention_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> sio:Attribute  ;
+  ?techiniqueofintervention_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:ClinicalStrategy  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?note_V  ;
     <http://semanticscience.org/resource/hasValue> ?techiniqueofintervention .
 
 
-  ?patient_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> sio:Human .
-
-  ?nameofdocument_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> refiqda:NameOfDocument .
-
-  ?typeofdocument_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> refiqda:Textsource  ;
-    refiqda:documentHas ?nameofdocument_V .
-
-  ?iduser_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> refiqda:User .
-
-  ?nameofuser_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> refiqda:NameOfUser .
-
-  ?project_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> refiqda:Project .
-
-  ?nameofproject_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> refiqda:NameOfProject .
-
-  ?symptomofanxietycode_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> refiqda:Code .
-
-  ?symptomofanxietynote_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> refiqda:Note  ;
-    refiqda:isAppliedIn ?symptomofanxietycode_V .
-
-  ?symptomofanxietycode_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> refiqda:Code  ;
-    refiqda:belongsTo ?patient_V .
-
-  ?project_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> refiqda:Project  ;
-    refiqda:contains ?symptomofanxietynote_V .
-
-  ?project_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> refiqda:Project  ;
-    refiqda:contains ?iduser_V .
-
-  ?project_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> refiqda:Project  ;
-    refiqda:contains ?nameofuser_V .
-
-  ?project_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> refiqda:Project  ;
-    refiqda:contains ?patient_V .
-
-  ?project_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> refiqda:Project  ;
-    refiqda:contains ?nameofproject_V .
-
-  ?symptomofanxietynote_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> refiqda:Note  ;
+  ?patient_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> sio:Human  ;
     refiqda:appliesTo ?project_V .
 
   ?project_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> refiqda:Project  ;
-    qualico:defines qualico:Study .
+    refiqda:hasCase ?patient_V .
 
-  ?iduser_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> refiqda:ID  ;
-    qualico:defines qualico:Persons .
-
-  ?nameofproject_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> refiqda:Name  ;
-    qualico:defines qualico:ResearchArea .
+  ?note_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:AnxietySymptom  ;
+    refiqda:isContainedIn ?project_V .
 
 }
