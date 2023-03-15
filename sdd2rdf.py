@@ -57,7 +57,7 @@ def convertImplicitToKGEntry(*args) :
             return "<" + prefixes[kb] + args[0][2:] + "-" + args[1] + ">"
         else : 
             return "<" + prefixes[kb] + args[0][2:] + ">"
-    elif (':' not in args[0]) :
+    elif ('http:' not in args[0]) or ('https:' not in args[0]) :
         # Check for entry in column list
         for item in explicit_entry_list :
             if args[0] == item.Column :
@@ -112,7 +112,7 @@ def assignVID(implicit_entry_tuples,timeline_tuple,a_tuple,column, npubIdentifie
                 #print("Got here")
                 v_id = hashlib.md5((str(t_tuple) + str(npubIdentifier)).encode("utf-8")).hexdigest()
     if v_id == npubIdentifier : # if it's not in implicit list or timeline
-        print("Warning, " + column + " ID assigned to nanopub ID")
+        print("Warning, " + column + " ID assigned to nanopub ID:" + a_tuple[column])
     return v_id
 
 def assignTerm(col_headers, column, implicit_entry_tuples, a_tuple, row, v_id) :
@@ -185,7 +185,7 @@ def extractExplicitTerm(col_headers,row,term) : # need to write this function
                         if pd.notnull(entry.wasDerivedFrom) :
                             typeString += str(entry.wasDerivedFrom)
                         identifierKey = hashlib.md5((str(row[col_headers.index(key)+1])+typeString).encode("utf-8")).hexdigest()
-                        term = entry.Column + "-" + identifierKey
+                        term = entry.Column.replace(" ","_").replace(",","").replace("(","").replace(")","").replace("/","-").replace("\\","-") + "-" + identifierKey
                         #return extractTemplate(col_headers,row,entry.Template)
         else : # What does it mean for a template reference to not be a schema variable?
             print("Warning: Template reference " + term + " is not be a schema variable")
@@ -293,44 +293,49 @@ def writeClassTime(item, term, input_tuple, assertionString, whereString, swrlSt
 def writeClassRelation(item, term, input_tuple, assertionString, whereString, swrlString) :
     if (pd.notnull(item.inRelationTo)) :
         input_tuple["inRelationTo"]=item.inRelationTo
+        key = item.inRelationTo
+        if checkTemplate(item.inRelationTo) :
+            open_index = item.inRelationTo.find("{")
+            close_index = item.inRelationTo.find("}")
+            key = item.inRelationTo[open_index+1:close_index]
         # If there is a value in the Relation column but not the Role column ...
         if (pd.notnull(item.Relation)) and (pd.isnull(item.Role)) :
-            assertionString += " ;\n        " + item.Relation + " " + convertImplicitToKGEntry(item.inRelationTo)
-            if(isSchemaVar(item.inRelationTo)):
-                whereString += " ;\n    " + item.Relation + " ?" + item.inRelationTo.lower() + "_E "
-                swrlString += item.Relation + "(" + term + " , " + "?" + item.inRelationTo.lower() + "_E) ^ "
+            assertionString += " ;\n        " + item.Relation + " " + convertImplicitToKGEntry(key)
+            if(isSchemaVar(key)):
+                whereString += " ;\n    " + item.Relation + " ?" + key.lower() + "_E "
+                swrlString += item.Relation + "(" + term + " , " + "?" + key.lower() + "_E) ^ "
             else :
-                whereString += " ;\n    " + item.Relation + " " + [item.inRelationTo + " ",item.inRelationTo[1:] + "_V "][checkImplicit(item.inRelationTo)]
-                swrlString += item.Relation + "(" + term + " , " + [item.inRelationTo,item.inRelationTo[1:] + "_V"][checkImplicit(item.inRelationTo)] + ") ^ "
+                whereString += " ;\n    " + item.Relation + " " + [key + " ",key[1:] + "_V "][checkImplicit(key)]
+                swrlString += item.Relation + "(" + term + " , " + [key,key[1:] + "_V"][checkImplicit(key)] + ") ^ "
             input_tuple["Relation"]=item.Relation
         # If there is a value in the Role column but not the Relation column ...
         elif (pd.isnull(item.Relation)) and (pd.notnull(item.Role)) :
-            assertionString += " ;\n        <" + rdfs.subClassOf + ">    \n            [ <" + rdf.type + ">    <" + owl.Restriction + "> ;\n                <" + owl.onProperty + ">    <" + properties_tuple["Role"] + "> ;\n                <" + owl.someValuesFrom + ">    [ <" + rdf.type + ">    <" + owl.Class + "> ;\n                    <" + owl.intersectionOf + "> ( \n                        [ <" + rdf.type + ">    <" + owl.Restriction + "> ;\n                        <" + owl.allValuesFrom + "> " + [item.inRelationTo,convertImplicitToKGEntry(item.inRelationTo)][checkImplicit(item.inRelationTo)] + " ;\n                        <" + owl.onProperty + "> <" + properties_tuple["inRelationTo"] + "> ] <" + item.Role + "> ) ]    ]" 
-            #assertionString += " ;\n        <" + properties_tuple["Role"] + ">    [ <" + rdf.type + ">    " + item.Role + " ;\n            <" + properties_tuple["inRelationTo"] + ">    " + convertImplicitToKGEntry(item.inRelationTo) + " ]"
-            whereString += " ;\n    <" + properties_tuple["Role"] + ">    [ <" + rdf.type + "> " + item.Role + " ;\n      <" + properties_tuple["inRelationTo"] + ">    " + [item.inRelationTo + " ",item.inRelationTo[1:] + "_V "][checkImplicit(item.inRelationTo)] + " ]"
+            assertionString += " ;\n        <" + rdfs.subClassOf + ">    \n            [ <" + rdf.type + ">    <" + owl.Restriction + "> ;\n                <" + owl.onProperty + ">    <" + properties_tuple["Role"] + "> ;\n                <" + owl.someValuesFrom + ">    [ <" + rdf.type + ">    <" + owl.Class + "> ;\n                    <" + owl.intersectionOf + "> ( \n                        [ <" + rdf.type + ">    <" + owl.Restriction + "> ;\n                        <" + owl.allValuesFrom + "> " + [key,convertImplicitToKGEntry(key)][checkImplicit(key)] + " ;\n                        <" + owl.onProperty + "> <" + properties_tuple["inRelationTo"] + "> ] <" + item.Role + "> ) ]    ]" 
+            #assertionString += " ;\n        <" + properties_tuple["Role"] + ">    [ <" + rdf.type + ">    " + item.Role + " ;\n            <" + properties_tuple["inRelationTo"] + ">    " + convertImplicitToKGEntry(key) + " ]"
+            whereString += " ;\n    <" + properties_tuple["Role"] + ">    [ <" + rdf.type + "> " + item.Role + " ;\n      <" + properties_tuple["inRelationTo"] + ">    " + [key + " ",key[1:] + "_V "][checkImplicit(key)] + " ]"
             swrlString += "" # add appropriate swrl term
             input_tuple["Role"]=item.Role
         # If there is a value in the Role and Relation columns ...
         elif (pd.notnull(item.Relation)) and (pd.notnull(item.Role)) :
             input_tuple["Relation"]=item.Relation
             input_tuple["Role"]=item.Role
-            assertionString += " ;\n        <" + rdfs.subClassOf + ">    \n            [ <" + rdf.type + ">    <" + owl.Restriction + "> ;\n                <" + owl.onProperty + ">    <" + properties_tuple["Role"] + "> ;\n                <" + owl.someValuesFrom + ">    [ <" + rdf.type + ">    <" + owl.Class + "> ;\n                    <" + owl.intersectionOf + "> ( \n                        [ <" + rdf.type + ">    <" + owl.Restriction + "> ;\n                        <" + owl.allValuesFrom + "> " + [item.inRelationTo,convertImplicitToKGEntry(item.inRelationTo)][checkImplicit(item.inRelationTo)] + " ;\n                        <" + owl.onProperty + "> <" + item.Relation + "> ] <" + item.Role + "> ) ]    ]" 
-            #assertionString += " ;\n        <" + properties_tuple["inRelationTo"] + ">    " + convertImplicitToKGEntry(item.inRelationTo)
-            if(isSchemaVar(item.inRelationTo)):
-                whereString += " ;\n    <" + properties_tuple["inRelationTo"] + ">    ?" + item.inRelationTo.lower() + "_E "
+            assertionString += " ;\n        <" + rdfs.subClassOf + ">    \n            [ <" + rdf.type + ">    <" + owl.Restriction + "> ;\n                <" + owl.onProperty + ">    <" + properties_tuple["Role"] + "> ;\n                <" + owl.someValuesFrom + ">    [ <" + rdf.type + ">    <" + owl.Class + "> ;\n                    <" + owl.intersectionOf + "> ( \n                        [ <" + rdf.type + ">    <" + owl.Restriction + "> ;\n                        <" + owl.allValuesFrom + "> " + [key,convertImplicitToKGEntry(key)][checkImplicit(key)] + " ;\n                        <" + owl.onProperty + "> <" + item.Relation + "> ] <" + item.Role + "> ) ]    ]" 
+            #assertionString += " ;\n        <" + properties_tuple["inRelationTo"] + ">    " + convertImplicitToKGEntry(key)
+            if(isSchemaVar(key)):
+                whereString += " ;\n    <" + properties_tuple["inRelationTo"] + ">    ?" + key.lower() + "_E "
                 swrlString += "" # add appropriate swrl term
             else :
-                whereString += " ;\n    <" + properties_tuple["inRelationTo"] + ">    " + [item.inRelationTo + " ",item.inRelationTo[1:] + "_V "][checkImplicit(item.inRelationTo)]
+                whereString += " ;\n    <" + properties_tuple["inRelationTo"] + ">    " + [key + " ",key[1:] + "_V "][checkImplicit(key)]
                 swrlString += "" # add appropriate swrl term
         elif (pd.isnull(item.Relation)) and (pd.isnull(item.Role)) :
-            assertionString += " ;\n        <" + rdfs.subClassOf + ">    \n            [ <" + rdf.type + ">    <" + owl.Restriction + "> ;\n                <" + owl.allValuesFrom + ">    " + convertImplicitToKGEntry(item.inRelationTo) + " ;\n                <" + owl.onProperty + ">    <" + properties_tuple["inRelationTo"] + "> ]" 
-            #assertionString += " ;\n        <" + properties_tuple["inRelationTo"] + ">    " + convertImplicitToKGEntry(item.inRelationTo)
-            if(isSchemaVar(item.inRelationTo)):
-                whereString += " ;\n    <" + properties_tuple["inRelationTo"] + ">    ?" + item.inRelationTo.lower() + "_E "
-                swrlString += properties_tuple["inRelationTo"] + "(" + term + " , " + "?" + item.inRelationTo.lower() + "_E) ^ "
+            assertionString += " ;\n        <" + rdfs.subClassOf + ">    \n            [ <" + rdf.type + ">    <" + owl.Restriction + "> ;\n                <" + owl.allValuesFrom + ">    " + convertImplicitToKGEntry(key) + " ;\n                <" + owl.onProperty + ">    <" + properties_tuple["inRelationTo"] + "> ]" 
+            #assertionString += " ;\n        <" + properties_tuple["inRelationTo"] + ">    " + convertImplicitToKGEntry(key)
+            if(isSchemaVar(key)):
+                whereString += " ;\n    <" + properties_tuple["inRelationTo"] + ">    ?" + key.lower() + "_E "
+                swrlString += properties_tuple["inRelationTo"] + "(" + term + " , " + "?" + key.lower() + "_E) ^ "
             else :
-                whereString += " ;\n    <" + properties_tuple["inRelationTo"] + ">    " + [item.inRelationTo + " ",item.inRelationTo[1:] + "_V "][checkImplicit(item.inRelationTo)] 
-                swrlString += properties_tuple["inRelationTo"] + "(" + term + " , " + [item.inRelationTo,item.inRelationTo[1:] + "_V"][checkImplicit(item.inRelationTo)] + ") ^ "
+                whereString += " ;\n    <" + properties_tuple["inRelationTo"] + ">    " + [key + " ",key[1:] + "_V "][checkImplicit(key)] 
+                swrlString += properties_tuple["inRelationTo"] + "(" + term + " , " + [key,key[1:] + "_V"][checkImplicit(key)] + ") ^ "
     elif (pd.notnull(item.Role)) : # if there is a role, but no in relation to
         input_tuple["Role"]=item.Role
         assertionString += " ;\n        <" + rdfs.subClassOf + ">    \n            [ <" + rdf.type + ">    <" + owl.Restriction + "> ;\n                <" + owl.onProperty + ">    <" + properties_tuple["Role"] + "> ;\n                <" + owl.someValuesFrom + ">    [ <" + rdf.type + ">    <" + item.Role + ">    ]    ]" 
@@ -341,43 +346,83 @@ def writeClassRelation(item, term, input_tuple, assertionString, whereString, sw
 
 def writeClassWasDerivedFrom(item, term, input_tuple, provenanceString, whereString, swrlString) :
     if pd.notnull(item.wasDerivedFrom) :
-        provenanceString += " ;\n        <" + rdfs.subClassOf + ">    \n            [ <" + rdf.type + ">    <" + owl.Restriction + "> ;\n                <" + owl.someValuesFrom + ">    " + convertImplicitToKGEntry(item.wasDerivedFrom) + " ;\n                <" + owl.onProperty + ">    <" + properties_tuple["wasDerivedFrom"] + "> ]" 
-        #provenanceString += " ;\n        <" + properties_tuple["wasDerivedFrom"] + ">    " + convertImplicitToKGEntry(item.wasDerivedFrom)
-        input_tuple["wasDerivedFrom"]=item.wasDerivedFrom
-        if(isSchemaVar(item.wasDerivedFrom)):
-            whereString += " ;\n    <" + properties_tuple["wasDerivedFrom"] + ">    ?" + item.wasDerivedFrom.lower() + "_E "
-            swrlString += properties_tuple["wasDerivedFrom"] + "(" + term + " , " + "?" + item.wasDerivedFrom.lower() + "_E) ^ " 
-        
-        elif checkTemplate(item.wasDerivedFrom) :
-            open_index = item.wasDerivedFrom.find("{")
-            close_index = item.wasDerivedFrom.find("}")
-            key = item.wasDerivedFrom[open_index+1:close_index]
-            provenanceString += " ;\n        <" + rdfs.subClassOf + ">    \n            [ <" + rdf.type + ">    <" + owl.Restriction + "> ;\n                <" + owl.someValuesFrom + ">    " + convertImplicitToKGEntry(key) + " ;\n                <" + owl.onProperty + ">    <" + properties_tuple["wasDerivedFrom"] + "> ]" 
-            #provenanceString += " ;\n        <" + properties_tuple["wasDerivedFrom"] + ">    " + convertImplicitToKGEntry(key)
-            whereString += " ;\n    <" + properties_tuple["wasDerivedFrom"] + ">    ?" +  key.lower() + "_E"
-            swrlString += properties_tuple["wasDerivedFrom"] + "(" + term + " , " + [key,key[1:] + "_V"][checkImplicit(key)] + ") ^ "
+        if ',' in item.wasDerivedFrom :
+            derivatives = parseString(item.wasDerivedFrom,',')
+            for derivative in derivatives :
+                provenanceString += " ;\n        <" + rdfs.subClassOf + ">    \n            [ <" + rdf.type + ">    <" + owl.Restriction + "> ;\n                <" + owl.someValuesFrom + ">    " + convertImplicitToKGEntry(derivative) + " ;\n                <" + owl.onProperty + ">    <" + properties_tuple["wasDerivedFrom"] + "> ]" 
+                #provenanceString += " ;\n        <" + properties_tuple["wasDerivedFrom"] + ">    " + convertImplicitToKGEntry(derivative)
+                input_tuple["wasDerivedFrom"]=derivative
+                if(isSchemaVar(derivative)):
+                    whereString += " ;\n    <" + properties_tuple["wasDerivedFrom"] + ">    ?" + derivative.lower() + "_E "
+                    swrlString += properties_tuple["wasDerivedFrom"] + "(" + term + " , " + "?" + derivative.lower() + "_E) ^ " 
+                elif checkTemplate(derivative) :
+                    open_index = derivative.find("{")
+                    close_index = derivative.find("}")
+                    key = derivative[open_index+1:close_index]
+                    print(convertImplicitToKGEntry(key))
+                    provenanceString += " ;\n        <" + rdfs.subClassOf + ">    \n            [ <" + rdf.type + ">    <" + owl.Restriction + "> ;\n                <" + owl.someValuesFrom + ">    " + convertImplicitToKGEntry(key) + " ;\n                <" + owl.onProperty + ">    <" + properties_tuple["wasDerivedFrom"] + "> ]" 
+                    #provenanceString += " ;\n        <" + properties_tuple["wasDerivedFrom"] + ">    " + convertImplicitToKGEntry(key)
+                    whereString += " ;\n    <" + properties_tuple["wasDerivedFrom"] + ">    ?" +  key.lower() + "_E"
+                    swrlString += properties_tuple["wasDerivedFrom"] + "(" + term + " , " + [key,key[1:] + "_V"][checkImplicit(key)] + ") ^ "
+                else :
+                    whereString += " ;\n    <" + properties_tuple["wasDerivedFrom"] + ">    " + [derivative + " ",derivative[1:] + "_V "][checkImplicit(derivative)]
+                    swrlString += properties_tuple["wasDerivedFrom"] + "(" + term + " , " + [derivative,derivative[1:] + "_V"][checkImplicit(derivative)] + ") ^ " 
         else :
-            whereString += " ;\n    <" + properties_tuple["wasDerivedFrom"] + ">    " + [item.wasDerivedFrom + " ",item.wasDerivedFrom[1:] + "_V "][checkImplicit(item.wasDerivedFrom)]
-            swrlString += properties_tuple["wasDerivedFrom"] + "(" + term + " , " + [item.wasDerivedFrom,item.wasDerivedFrom[1:] + "_V"][checkImplicit(item.wasDerivedFrom)] + ") ^ " 
+            provenanceString += " ;\n        <" + rdfs.subClassOf + ">    \n            [ <" + rdf.type + ">    <" + owl.Restriction + "> ;\n                <" + owl.someValuesFrom + ">    " + convertImplicitToKGEntry(item.wasDerivedFrom) + " ;\n                <" + owl.onProperty + ">    <" + properties_tuple["wasDerivedFrom"] + "> ]" 
+            #provenanceString += " ;\n        <" + properties_tuple["wasDerivedFrom"] + ">    " + convertImplicitToKGEntry(item.wasDerivedFrom)
+            input_tuple["wasDerivedFrom"]=item.wasDerivedFrom
+            if(isSchemaVar(item.wasDerivedFrom)):
+                whereString += " ;\n    <" + properties_tuple["wasDerivedFrom"] + ">    ?" + item.wasDerivedFrom.lower() + "_E "
+                swrlString += properties_tuple["wasDerivedFrom"] + "(" + term + " , " + "?" + item.wasDerivedFrom.lower() + "_E) ^ " 
+            elif checkTemplate(item.wasDerivedFrom) :
+                open_index = item.wasDerivedFrom.find("{")
+                close_index = item.wasDerivedFrom.find("}")
+                key = item.wasDerivedFrom[open_index+1:close_index]
+                provenanceString += " ;\n        <" + rdfs.subClassOf + ">    \n            [ <" + rdf.type + ">    <" + owl.Restriction + "> ;\n                <" + owl.someValuesFrom + ">    " + convertImplicitToKGEntry(key) + " ;\n                <" + owl.onProperty + ">    <" + properties_tuple["wasDerivedFrom"] + "> ]" 
+                #provenanceString += " ;\n        <" + properties_tuple["wasDerivedFrom"] + ">    " + convertImplicitToKGEntry(key)
+                whereString += " ;\n    <" + properties_tuple["wasDerivedFrom"] + ">    ?" +  key.lower() + "_E"
+                swrlString += properties_tuple["wasDerivedFrom"] + "(" + term + " , " + [key,key[1:] + "_V"][checkImplicit(key)] + ") ^ "
+            else :
+                whereString += " ;\n    <" + properties_tuple["wasDerivedFrom"] + ">    " + [item.wasDerivedFrom + " ",item.wasDerivedFrom[1:] + "_V "][checkImplicit(item.wasDerivedFrom)]
+                swrlString += properties_tuple["wasDerivedFrom"] + "(" + term + " , " + [item.wasDerivedFrom,item.wasDerivedFrom[1:] + "_V"][checkImplicit(item.wasDerivedFrom)] + ") ^ " 
     return [input_tuple, provenanceString, whereString, swrlString]
 
 def writeClassWasGeneratedBy(item, term, input_tuple, provenanceString, whereString, swrlString) :
     if pd.notnull(item.wasGeneratedBy) :
-        provenanceString += " ;\n        <" + properties_tuple["wasGeneratedBy"] + ">    " + convertImplicitToKGEntry(item.wasGeneratedBy)
-        input_tuple["wasGeneratedBy"]=item.wasGeneratedBy
-        if(isSchemaVar(item.wasGeneratedBy)):
-            whereString += " ;\n    <" + properties_tuple["wasGeneratedBy"] + ">    ?" + item.wasGeneratedBy.lower() + "_E "
-            swrlString += properties_tuple["wasGeneratedBy"] + "(" + term + " , " + "?" + item.wasGeneratedBy.lower() + "_E) ^ " 
-        elif checkTemplate(item.wasGeneratedBy) :
-            open_index = item.wasGeneratedBy.find("{")
-            close_index = item.wasGeneratedBy.find("}")
-            key = item.wasGeneratedBy[open_index+1:close_index]
-            assertionString += " ;\n        <" + properties_tuple["wasGeneratedBy"] + ">    " + convertImplicitToKGEntry(key)
-            whereString += " ;\n    <" + properties_tuple["wasGeneratedBy"] + ">    ?" +  key.lower() + "_E"
-            swrlString += properties_tuple["wasGeneratedBy"] + "(" + term + " , " + [key,key[1:] + "_V"][checkImplicit(key)] + ") ^ "
+        if ',' in item.wasGeneratedBy :
+            generators = parseString(item.wasGeneratedBy,',')
+            for generator in generators :
+                provenanceString += " ;\n        <" + properties_tuple["wasGeneratedBy"] + ">    " + convertImplicitToKGEntry(generator)
+                input_tuple["wasGeneratedBy"]=generator
+                if(isSchemaVar(generator)):
+                    whereString += " ;\n    <" + properties_tuple["wasGeneratedBy"] + ">    ?" + generator.lower() + "_E "
+                    swrlString += properties_tuple["wasGeneratedBy"] + "(" + term + " , " + "?" + generator.lower() + "_E) ^ " 
+                elif checkTemplate(generator) :
+                    open_index = generator.find("{")
+                    close_index = generator.find("}")
+                    key = generator[open_index+1:close_index]
+                    assertionString += " ;\n        <" + properties_tuple["wasGeneratedBy"] + ">    " + convertImplicitToKGEntry(key)
+                    whereString += " ;\n    <" + properties_tuple["wasGeneratedBy"] + ">    ?" +  key.lower() + "_E"
+                    swrlString += properties_tuple["wasGeneratedBy"] + "(" + term + " , " + [key,key[1:] + "_V"][checkImplicit(key)] + ") ^ "
+                else :
+                    whereString += " ;\n    <" + properties_tuple["wasGeneratedBy"] + ">    " + [generator + " ",generator[1:] + "_V "][checkImplicit(generator)]
+                    swrlString += properties_tuple["wasGeneratedBy"] + "(" + term + " , " + [generator,generator[1:] + "_V"][checkImplicit(generator)] + ") ^ " 
         else :
-            whereString += " ;\n    <" + properties_tuple["wasGeneratedBy"] + ">    " + [item.wasGeneratedBy + " ",item.wasGeneratedBy[1:] + "_V "][checkImplicit(item.wasGeneratedBy)]
-            swrlString += properties_tuple["wasGeneratedBy"] + "(" + term + " , " + [item.wasGeneratedBy,item.wasGeneratedBy[1:] + "_V"][checkImplicit(item.wasGeneratedBy)] + ") ^ " 
+            provenanceString += " ;\n        <" + properties_tuple["wasGeneratedBy"] + ">    " + convertImplicitToKGEntry(item.wasGeneratedBy)
+            input_tuple["wasGeneratedBy"]=item.wasGeneratedBy
+            if(isSchemaVar(item.wasGeneratedBy)):
+                whereString += " ;\n    <" + properties_tuple["wasGeneratedBy"] + ">    ?" + item.wasGeneratedBy.lower() + "_E "
+                swrlString += properties_tuple["wasGeneratedBy"] + "(" + term + " , " + "?" + item.wasGeneratedBy.lower() + "_E) ^ " 
+            elif checkTemplate(item.wasGeneratedBy) :
+                open_index = item.wasGeneratedBy.find("{")
+                close_index = item.wasGeneratedBy.find("}")
+                key = item.wasGeneratedBy[open_index+1:close_index]
+                assertionString += " ;\n        <" + properties_tuple["wasGeneratedBy"] + ">    " + convertImplicitToKGEntry(key)
+                whereString += " ;\n    <" + properties_tuple["wasGeneratedBy"] + ">    ?" +  key.lower() + "_E"
+                swrlString += properties_tuple["wasGeneratedBy"] + "(" + term + " , " + [key,key[1:] + "_V"][checkImplicit(key)] + ") ^ "
+            else :
+                whereString += " ;\n    <" + properties_tuple["wasGeneratedBy"] + ">    " + [item.wasGeneratedBy + " ",item.wasGeneratedBy[1:] + "_V "][checkImplicit(item.wasGeneratedBy)]
+                swrlString += properties_tuple["wasGeneratedBy"] + "(" + term + " , " + [item.wasGeneratedBy,item.wasGeneratedBy[1:] + "_V"][checkImplicit(item.wasGeneratedBy)] + ") ^ " 
     return [input_tuple, provenanceString, whereString, swrlString]
 
 def writeImplicitEntryTuples(implicit_entry_list, timeline_tuple, output_file, query_file, swrl_file, dm_fn) :
@@ -387,12 +432,13 @@ def writeImplicitEntryTuples(implicit_entry_list, timeline_tuple, output_file, q
     whereString = '\n'
     swrlString = ''
     datasetIdentifier = hashlib.md5(dm_fn.encode('utf-8')).hexdigest()
-    output_file.write("<" +  prefixes[kb] + "head-implicit_entry-" + datasetIdentifier + "> { ")
-    output_file.write("\n    <" +  prefixes[kb] + "nanoPub-implicit_entry-" + datasetIdentifier + ">    <" + rdf.type + ">    <" +  np.Nanopublication + ">")
-    output_file.write(" ;\n        <" +  np.hasAssertion + ">    <" +  prefixes[kb] + "assertion-implicit_entry-" + datasetIdentifier + ">")
-    output_file.write(" ;\n        <" +  np.hasProvenance + ">    <" +  prefixes[kb] + "provenance-implicit_entry-" + datasetIdentifier + ">")
-    output_file.write(" ;\n        <" +  np.hasPublicationInfo + ">    <" +  prefixes[kb] + "pubInfo-implicit_entry-" + datasetIdentifier + ">")
-    output_file.write(" .\n}\n\n")
+    if nanopublication_option == "enabled" :
+        output_file.write("<" +  prefixes[kb] + "head-implicit_entry-" + datasetIdentifier + "> { ")
+        output_file.write("\n    <" +  prefixes[kb] + "nanoPub-implicit_entry-" + datasetIdentifier + ">    <" + rdf.type + ">    <" +  np.Nanopublication + ">")
+        output_file.write(" ;\n        <" +  np.hasAssertion + ">    <" +  prefixes[kb] + "assertion-implicit_entry-" + datasetIdentifier + ">")
+        output_file.write(" ;\n        <" +  np.hasProvenance + ">    <" +  prefixes[kb] + "provenance-implicit_entry-" + datasetIdentifier + ">")
+        output_file.write(" ;\n        <" +  np.hasPublicationInfo + ">    <" +  prefixes[kb] + "pubInfo-implicit_entry-" + datasetIdentifier + ">")
+        output_file.write(" .\n}\n\n")
     col_headers=list(pd.read_csv(dm_fn).columns.values)
     for item in implicit_entry_list :
         implicit_tuple = {}
@@ -457,14 +503,16 @@ def writeImplicitEntryTuples(implicit_entry_list, timeline_tuple, output_file, q
                     assertionString += " ;\n        <" + properties_tuple["inRelationTo"] + ">    " + convertImplicitToKGEntry(timeEntry['inRelationTo'])
                 assertionString += " .\n"
             provenanceString += "\n    " + convertImplicitToKGEntry(key) + "    <" +  prov.generatedAtTime + ">    \"" + "{:4d}-{:02d}-{:02d}".format(datetime.utcnow().year,datetime.utcnow().month,datetime.utcnow().day) + "T" + "{:02d}:{:02d}:{:02d}".format(datetime.utcnow().hour,datetime.utcnow().minute,datetime.utcnow().second) + "Z\"^^xsd:dateTime .\n"
-    output_file.write("<" +  prefixes[kb] + "assertion-implicit_entry-" + datasetIdentifier + "> {")
-    output_file.write(assertionString + "\n}\n\n")
-    output_file.write("<" +  prefixes[kb] + "provenance-implicit_entry-" + datasetIdentifier + "> {")
-    provenanceString = "\n    <" +  prefixes[kb] + "assertion-implicit_entry-" + datasetIdentifier + ">    <" +  prov.generatedAtTime + ">    \"" + "{:4d}-{:02d}-{:02d}".format(datetime.utcnow().year,datetime.utcnow().month,datetime.utcnow().day) + "T" + "{:02d}:{:02d}:{:02d}".format(datetime.utcnow().hour,datetime.utcnow().minute,datetime.utcnow().second) + "Z\"^^xsd:dateTime .\n" + provenanceString
-    output_file.write(provenanceString + "\n}\n\n")
-    output_file.write("<" +  prefixes[kb] + "pubInfo-implicit_entry-" + datasetIdentifier + "> {\n    <" +  prefixes[kb] + "nanoPub-implicit_entry-" + datasetIdentifier + ">    <" +  prov.generatedAtTime + ">    \"" + "{:4d}-{:02d}-{:02d}".format(datetime.utcnow().year,datetime.utcnow().month,datetime.utcnow().day) + "T" + "{:02d}:{:02d}:{:02d}".format(datetime.utcnow().hour,datetime.utcnow().minute,datetime.utcnow().second) + "Z\"^^xsd:dateTime .\n}\n\n")
+    if nanopublication_option == "enabled" :
+        output_file.write("<" +  prefixes[kb] + "assertion-implicit_entry-" + datasetIdentifier + "> {" + assertionString + "\n}\n\n")
+        output_file.write("<" +  prefixes[kb] + "provenance-implicit_entry-" + datasetIdentifier + "> {")
+        provenanceString = "\n    <" +  prefixes[kb] + "assertion-implicit_entry-" + datasetIdentifier + ">    <" +  prov.generatedAtTime + ">    \"" + "{:4d}-{:02d}-{:02d}".format(datetime.utcnow().year,datetime.utcnow().month,datetime.utcnow().day) + "T" + "{:02d}:{:02d}:{:02d}".format(datetime.utcnow().hour,datetime.utcnow().minute,datetime.utcnow().second) + "Z\"^^xsd:dateTime .\n" + provenanceString
+        output_file.write(provenanceString + "\n}\n\n")
+        output_file.write("<" +  prefixes[kb] + "pubInfo-implicit_entry-" + datasetIdentifier + "> {\n    <" +  prefixes[kb] + "nanoPub-implicit_entry-" + datasetIdentifier + ">    <" +  prov.generatedAtTime + ">    \"" + "{:4d}-{:02d}-{:02d}".format(datetime.utcnow().year,datetime.utcnow().month,datetime.utcnow().day) + "T" + "{:02d}:{:02d}:{:02d}".format(datetime.utcnow().hour,datetime.utcnow().minute,datetime.utcnow().second) + "Z\"^^xsd:dateTime .\n}\n\n")
+    else :
+        output_file.write(assertionString + "\n")
+        output_file.write(provenanceString + "\n")
     whereString += "}"
-    #print(whereString)
     query_file.write(whereString)
     swrl_file.write(swrlString[:-2])
     return implicit_entry_tuples
@@ -478,12 +526,13 @@ def writeExplicitEntryTuples(explicit_entry_list, output_file, query_file, swrl_
     whereString = "WHERE {\n"
     swrlString = ""
     datasetIdentifier = hashlib.md5(dm_fn.encode('utf-8')).hexdigest()
-    output_file.write("<" +  prefixes[kb] + "head-explicit_entry-" + datasetIdentifier + "> { ")
-    output_file.write("\n    <" +  prefixes[kb] + "nanoPub-explicit_entry-" + datasetIdentifier + ">    <" + rdf.type + ">    <" +  np.Nanopublication + ">")
-    output_file.write(" ;\n        <" +  np.hasAssertion + ">    <" +  prefixes[kb] + "assertion-explicit_entry-" + datasetIdentifier + ">")
-    output_file.write(" ;\n        <" +  np.hasProvenance + ">    <" +  prefixes[kb] + "provenance-explicit_entry-" + datasetIdentifier + ">")
-    output_file.write(" ;\n        <" +  np.hasPublicationInfo + ">    <" +  prefixes[kb] + "pubInfo-explicit_entry-" + datasetIdentifier + ">")
-    output_file.write(" .\n}\n\n")
+    if nanopublication_option == "enabled" :
+        output_file.write("<" +  prefixes[kb] + "head-explicit_entry-" + datasetIdentifier + "> { ")
+        output_file.write("\n    <" +  prefixes[kb] + "nanoPub-explicit_entry-" + datasetIdentifier + ">    <" + rdf.type + ">    <" +  np.Nanopublication + ">")
+        output_file.write(" ;\n        <" +  np.hasAssertion + ">    <" +  prefixes[kb] + "assertion-explicit_entry-" + datasetIdentifier + ">")
+        output_file.write(" ;\n        <" +  np.hasProvenance + ">    <" +  prefixes[kb] + "provenance-explicit_entry-" + datasetIdentifier + ">")
+        output_file.write(" ;\n        <" +  np.hasPublicationInfo + ">    <" +  prefixes[kb] + "pubInfo-explicit_entry-" + datasetIdentifier + ">")
+        output_file.write(" .\n}\n\n")
     col_headers=list(pd.read_csv(dm_fn).columns.values)
     for item in explicit_entry_list :
         explicit_entry_tuple = {}
@@ -526,15 +575,16 @@ def writeExplicitEntryTuples(explicit_entry_list, output_file, query_file, swrl_
             publicationInfoString += "\n    <" + prefixes[kb] + term + ">    hasco:hasPosition    \"" + str(item.hasPosition) + "\"^^xsd:integer ."
             explicit_entry_tuple["hasPosition"]=item.hasPosition
         explicit_entry_tuples.append(explicit_entry_tuple)
-    output_file.write("<" +  prefixes[kb] + "assertion-explicit_entry-" + datasetIdentifier + "> {")
-    output_file.write(assertionString + "\n}\n\n")
-    output_file.write("<" +  prefixes[kb] + "provenance-explicit_entry-" + datasetIdentifier + "> {")
-    provenanceString = "\n    <" +  prefixes[kb] + "assertion-explicit_entry-" + datasetIdentifier + ">    <" +  prov.generatedAtTime + ">    \"" + "{:4d}-{:02d}-{:02d}".format(datetime.utcnow().year,datetime.utcnow().month,datetime.utcnow().day) + "T" + "{:02d}:{:02d}:{:02d}".format(datetime.utcnow().hour,datetime.utcnow().minute,datetime.utcnow().second) + "Z\"^^xsd:dateTime .\n" + provenanceString
-    output_file.write(provenanceString + "\n}\n\n")
-    output_file.write("<" +  prefixes[kb] + "pubInfo-explicit_entry-" + datasetIdentifier + "> {\n    <" +  prefixes[kb] + "nanoPub-explicit_entry-" + datasetIdentifier + ">    <" +  prov.generatedAtTime + ">    \"" + "{:4d}-{:02d}-{:02d}".format(datetime.utcnow().year,datetime.utcnow().month,datetime.utcnow().day) + "T" + "{:02d}:{:02d}:{:02d}".format(datetime.utcnow().hour,datetime.utcnow().minute,datetime.utcnow().second) + "Z\"^^xsd:dateTime .")
-    output_file.write(publicationInfoString + "\n}\n\n")
-    #print(selectString)
-    #print(whereString)
+    if nanopublication_option == "enabled" :
+        output_file.write("<" +  prefixes[kb] + "assertion-explicit_entry-" + datasetIdentifier + "> {" + assertionString + "\n}\n\n")
+        output_file.write("<" +  prefixes[kb] + "provenance-explicit_entry-" + datasetIdentifier + "> {")
+        provenanceString = "\n    <" +  prefixes[kb] + "assertion-explicit_entry-" + datasetIdentifier + ">    <" +  prov.generatedAtTime + ">    \"" + "{:4d}-{:02d}-{:02d}".format(datetime.utcnow().year,datetime.utcnow().month,datetime.utcnow().day) + "T" + "{:02d}:{:02d}:{:02d}".format(datetime.utcnow().hour,datetime.utcnow().minute,datetime.utcnow().second) + "Z\"^^xsd:dateTime .\n" + provenanceString
+        output_file.write(provenanceString + "\n}\n\n")
+        output_file.write("<" +  prefixes[kb] + "pubInfo-explicit_entry-" + datasetIdentifier + "> {\n    <" +  prefixes[kb] + "nanoPub-explicit_entry-" + datasetIdentifier + ">    <" +  prov.generatedAtTime + ">    \"" + "{:4d}-{:02d}-{:02d}".format(datetime.utcnow().year,datetime.utcnow().month,datetime.utcnow().day) + "T" + "{:02d}:{:02d}:{:02d}".format(datetime.utcnow().hour,datetime.utcnow().minute,datetime.utcnow().second) + "Z\"^^xsd:dateTime .")
+        output_file.write(publicationInfoString + "\n}\n\n")
+    else :
+        output_file.write(assertionString + "\n")
+        output_file.write(provenanceString + "\n")
     query_file.write(selectString)
     query_file.write(whereString)
     swrl_file.write(swrlString)
@@ -678,12 +728,13 @@ def processInfosheet(output_file, dm_fn, cb_fn, cmap_fn, timeline_fn):
         if "Timeline" in infosheet_tuple : 
             timeline_fn = infosheet_tuple["Timeline"]
         datasetIdentifier = hashlib.md5(dm_fn.encode('utf-8')).hexdigest()
-        output_file.write("<" +  prefixes[kb] + "head-collection_metadata-" + datasetIdentifier + "> { ")
-        output_file.write("\n    <" +  prefixes[kb] + "nanoPub-collection_metadata-" + datasetIdentifier + ">    <" + rdf.type + ">    <" +  np.Nanopublication + ">")
-        output_file.write(" ;\n        <" +  np.hasAssertion + ">    <" +  prefixes[kb] + "assertion-collection_metadata-" + datasetIdentifier + ">")
-        output_file.write(" ;\n        <" +  np.hasProvenance + ">    <" +  prefixes[kb] + "provenance-collection_metadata-" + datasetIdentifier + ">")
-        output_file.write(" ;\n        <" +  np.hasPublicationInfo + ">    <" +  prefixes[kb] + "pubInfo-collection_metadata-" + datasetIdentifier + ">")
-        output_file.write(" .\n}\n\n")
+        if nanopublication_option == "enabled" :
+            output_file.write("<" +  prefixes[kb] + "head-collection_metadata-" + datasetIdentifier + "> { ")
+            output_file.write("\n    <" +  prefixes[kb] + "nanoPub-collection_metadata-" + datasetIdentifier + ">    <" + rdf.type + ">    <" +  np.Nanopublication + ">")
+            output_file.write(" ;\n        <" +  np.hasAssertion + ">    <" +  prefixes[kb] + "assertion-collection_metadata-" + datasetIdentifier + ">")
+            output_file.write(" ;\n        <" +  np.hasProvenance + ">    <" +  prefixes[kb] + "provenance-collection_metadata-" + datasetIdentifier + ">")
+            output_file.write(" ;\n        <" +  np.hasPublicationInfo + ">    <" +  prefixes[kb] + "pubInfo-collection_metadata-" + datasetIdentifier + ">")
+            output_file.write(" .\n}\n\n")
         assertionString = "<" +  prefixes[kb] + "collection-" + datasetIdentifier + ">"
         provenanceString = "    <" +  prefixes[kb] + "collection-" + datasetIdentifier + ">    <http://www.w3.org/ns/prov#generatedAtTime>    \"" + "{:4d}-{:02d}-{:02d}".format(datetime.utcnow().year,datetime.utcnow().month,datetime.utcnow().day) + "T" + "{:02d}:{:02d}:{:02d}".format(datetime.utcnow().hour,datetime.utcnow().minute,datetime.utcnow().second) + "Z\"^^xsd:dateTime"
         if "Type" in infosheet_tuple :
@@ -791,11 +842,15 @@ def processInfosheet(output_file, dm_fn, cb_fn, cmap_fn, timeline_fn):
                 assertionString += " ;\n        <http://www.w3.org/2002/07/owl#imports>    " + [infosheet_tuple["Imports"],"<" + infosheet_tuple["Imports"] + ">"][isURI(infosheet_tuple["Imports"])]
         assertionString += " .\n"
         provenanceString += " .\n"
-        output_file.write("<" +  prefixes[kb] + "assertion-collection_metadata-" + datasetIdentifier + "> {\n    " + assertionString + "\n}\n\n")
-        output_file.write("<" +  prefixes[kb] + "provenance-collection_metadata-" + datasetIdentifier + "> {\n    <" +  prefixes[kb] + "assertion-dataset_metadata-" + datasetIdentifier + ">    <http://www.w3.org/ns/prov#generatedAtTime>    \"" + "{:4d}-{:02d}-{:02d}".format(datetime.utcnow().year,datetime.utcnow().month,datetime.utcnow().day) + "T" + "{:02d}:{:02d}:{:02d}".format(datetime.utcnow().hour,datetime.utcnow().minute,datetime.utcnow().second) + "Z\"^^xsd:dateTime .\n" + provenanceString + "\n}\n\n")
-        output_file.write("<" +  prefixes[kb] + "pubInfo-collection_metadata-" + datasetIdentifier + "> {")
-        publicationInfoString = "\n    <" +  prefixes[kb] + "nanoPub-collection_metadata-" + datasetIdentifier + ">    <http://www.w3.org/ns/prov#generatedAtTime>    \"" + "{:4d}-{:02d}-{:02d}".format(datetime.utcnow().year,datetime.utcnow().month,datetime.utcnow().day) + "T" + "{:02d}:{:02d}:{:02d}".format(datetime.utcnow().hour,datetime.utcnow().minute,datetime.utcnow().second) + "Z\"^^xsd:dateTime .\n"
-        output_file.write(publicationInfoString + "\n}\n\n")
+        if nanopublication_option == "enabled" :
+            output_file.write("<" +  prefixes[kb] + "assertion-collection_metadata-" + datasetIdentifier + "> {\n    " + assertionString + "\n}\n\n")
+            output_file.write("<" +  prefixes[kb] + "provenance-collection_metadata-" + datasetIdentifier + "> {\n    <" +  prefixes[kb] + "assertion-dataset_metadata-" + datasetIdentifier + ">    <http://www.w3.org/ns/prov#generatedAtTime>    \"" + "{:4d}-{:02d}-{:02d}".format(datetime.utcnow().year,datetime.utcnow().month,datetime.utcnow().day) + "T" + "{:02d}:{:02d}:{:02d}".format(datetime.utcnow().hour,datetime.utcnow().minute,datetime.utcnow().second) + "Z\"^^xsd:dateTime .\n" + provenanceString + "\n}\n\n")
+            output_file.write("<" +  prefixes[kb] + "pubInfo-collection_metadata-" + datasetIdentifier + "> {")
+            publicationInfoString = "\n    <" +  prefixes[kb] + "nanoPub-collection_metadata-" + datasetIdentifier + ">    <http://www.w3.org/ns/prov#generatedAtTime>    \"" + "{:4d}-{:02d}-{:02d}".format(datetime.utcnow().year,datetime.utcnow().month,datetime.utcnow().day) + "T" + "{:02d}:{:02d}:{:02d}".format(datetime.utcnow().hour,datetime.utcnow().minute,datetime.utcnow().second) + "Z\"^^xsd:dateTime .\n"
+            output_file.write(publicationInfoString + "\n}\n\n")
+        else :
+            output_file.write(assertionString +"\n\n")
+            output_file.write(provenanceString + "\n")
     return [dm_fn, cb_fn, cmap_fn, timeline_fn]
 
 def processPrefixes(output_file,query_file):
@@ -985,13 +1040,14 @@ def processData(data_fn, output_file, query_file, swrl_file, cb_tuple, timeline_
                         id_string+=str(term)
                 npubIdentifier = hashlib.md5(id_string.encode("utf-8")).hexdigest()
                 try:
-                    output_file.write("<" +  prefixes[kb] + "head-" + npubIdentifier + "> {")
-                    output_file.write("\n    <" +  prefixes[kb] + "nanoPub-" + npubIdentifier + ">")
-                    output_file.write("\n        <" + rdf.type + ">    <" +  np.Nanopublication + ">")
-                    output_file.write(" ;\n        <" +  np.hasAssertion + ">    <" +  prefixes[kb] + "assertion-" + npubIdentifier + ">")
-                    output_file.write(" ;\n        <" +  np.hasProvenance + ">    <" +  prefixes[kb] + "provenance-" + npubIdentifier + ">")
-                    output_file.write(" ;\n        <" +  np.hasPublicationInfo + ">    <" +  prefixes[kb] + "pubInfo-" + npubIdentifier + ">")
-                    output_file.write(" .\n}\n\n")# Nanopublication head
+                    if nanopublication_option == "enabled" :
+                        output_file.write("<" +  prefixes[kb] + "head-" + npubIdentifier + "> {")
+                        output_file.write("\n    <" +  prefixes[kb] + "nanoPub-" + npubIdentifier + ">")
+                        output_file.write("\n        <" + rdf.type + ">    <" +  np.Nanopublication + ">")
+                        output_file.write(" ;\n        <" +  np.hasAssertion + ">    <" +  prefixes[kb] + "assertion-" + npubIdentifier + ">")
+                        output_file.write(" ;\n        <" +  np.hasProvenance + ">    <" +  prefixes[kb] + "provenance-" + npubIdentifier + ">")
+                        output_file.write(" ;\n        <" +  np.hasPublicationInfo + ">    <" +  prefixes[kb] + "pubInfo-" + npubIdentifier + ">")
+                        output_file.write(" .\n}\n\n")# Nanopublication head
 
                     vref_list = []
                     for a_tuple in explicit_entry_tuples :
@@ -1194,6 +1250,8 @@ def processData(data_fn, output_file, query_file, swrl_file, cb_tuple, timeline_
                                                     provenanceString += " ;\n        <" + properties_tuple["wasDerivedFrom"] + ">    " + convertImplicitToKGEntry(derivedFromTerm, v_id)
                                                     if derivedFromTerm not in vref_list :
                                                         vref_list.append(derivedFromTerm)
+                                                elif checkTemplate(derivedFromTerm):
+                                                    provenanceString += " ;\n        <" + properties_tuple["wasDerivedFrom"] + ">    <" + prefixes[kb] + str(extractExplicitTerm(col_headers,row,derivedFromTerm)) + ">"
                                                 else :
                                                     provenanceString += " ;\n        <" + properties_tuple["wasDerivedFrom"] + ">    " + convertImplicitToKGEntry(derivedFromTerm, identifierString)
                                         elif checkImplicit(a_tuple["wasDerivedFrom"]) :
@@ -1202,7 +1260,7 @@ def processData(data_fn, output_file, query_file, swrl_file, cb_tuple, timeline_
                                             if a_tuple["wasDerivedFrom"] not in vref_list :
                                                 vref_list.append(a_tuple["wasDerivedFrom"])
                                         elif checkTemplate(a_tuple["wasDerivedFrom"]):
-                                            assertionString += " ;\n        <" + properties_tuple["wasDerivedFrom"] + ">    <" + prefixes[kb] + str(extractExplicitTerm(col_headers,row,a_tuple["wasDerivedFrom"])) + ">"
+                                            provenanceString += " ;\n        <" + properties_tuple["wasDerivedFrom"] + ">    <" + prefixes[kb] + str(extractExplicitTerm(col_headers,row,a_tuple["wasDerivedFrom"])) + ">"
                                         else :
                                             provenanceString += " ;\n        <" + properties_tuple["wasDerivedFrom"] + ">    " + convertImplicitToKGEntry(a_tuple["wasDerivedFrom"], identifierString)
                                     if "wasGeneratedBy" in a_tuple :
@@ -1214,6 +1272,8 @@ def processData(data_fn, output_file, query_file, swrl_file, cb_tuple, timeline_
                                                     provenanceString += " ;\n        <" + properties_tuple["wasGeneratedBy"] + ">    " + convertImplicitToKGEntry(generatedByTerm, v_id)
                                                     if generatedByTerm not in vref_list :
                                                         vref_list.append(generatedByTerm)
+                                                elif checkTemplate(generatedByTerm):
+                                                    provenanceString += " ;\n        <" + properties_tuple["wasGeneratedBy"] + ">    <" + prefixes[kb] + str(extractExplicitTerm(col_headers,row,generatedByTerm)) + ">"
                                                 else:
                                                     provenanceString += " ;\n        <" + properties_tuple["wasGeneratedBy"] + ">    " + convertImplicitToKGEntry(generatedByTerm, identifierString)
                                         elif checkImplicit(a_tuple["wasGeneratedBy"]) :
@@ -1222,7 +1282,7 @@ def processData(data_fn, output_file, query_file, swrl_file, cb_tuple, timeline_
                                             if a_tuple["wasGeneratedBy"] not in vref_list :
                                                 vref_list.append(a_tuple["wasGeneratedBy"])
                                         elif checkTemplate(a_tuple["wasGeneratedBy"]):
-                                            assertionString += " ;\n        <" + properties_tuple["wasGeneratedBy"] + ">    <" + prefixes[kb] + str(extractExplicitTerm(col_headers,row,a_tuple["wasGeneratedBy"])) + ">"
+                                            provenanceString += " ;\n        <" + properties_tuple["wasGeneratedBy"] + ">    <" + prefixes[kb] + str(extractExplicitTerm(col_headers,row,a_tuple["wasGeneratedBy"])) + ">"
                                         else :
                                             provenanceString += " ;\n        <" + properties_tuple["wasGeneratedBy"] + ">    " + convertImplicitToKGEntry(a_tuple["wasGeneratedBy"], identifierString)
                                         
@@ -1241,14 +1301,17 @@ def processData(data_fn, output_file, query_file, swrl_file, cb_tuple, timeline_
                 except Exception as e:
                     print("Error: Something went wrong when processing explicit tuples: " + str(e))
                     sys.exit(1)
-                output_file.write("<" +  prefixes[kb] + "assertion-" + npubIdentifier + "> {")
-                output_file.write(assertionString + "\n}\n\n")
-                output_file.write("<" +  prefixes[kb] + "provenance-" + npubIdentifier + "> {")
-                provenanceString = "\n    <" +  prefixes[kb] + "assertion-" + npubIdentifier + ">    <" +  prov.generatedAtTime + ">    \"" + "{:4d}-{:02d}-{:02d}".format(datetime.utcnow().year,datetime.utcnow().month,datetime.utcnow().day) + "T" + "{:02d}:{:02d}:{:02d}".format(datetime.utcnow().hour,datetime.utcnow().minute,datetime.utcnow().second) + "Z\"^^xsd:dateTime .\n" + provenanceString
-                output_file.write(provenanceString + "\n}\n\n")
-                output_file.write("<" +  prefixes[kb] + "pubInfo-" + npubIdentifier + "> {")
-                publicationInfoString = "\n    <" +  prefixes[kb] + "nanoPub-" + npubIdentifier + ">    <" +  prov.generatedAtTime + ">    \"" + "{:4d}-{:02d}-{:02d}".format(datetime.utcnow().year,datetime.utcnow().month,datetime.utcnow().day) + "T" + "{:02d}:{:02d}:{:02d}".format(datetime.utcnow().hour,datetime.utcnow().minute,datetime.utcnow().second) + "Z\"^^xsd:dateTime .\n" + publicationInfoString
-                output_file.write(publicationInfoString + "\n}\n\n")
+                if nanopublication_option == "enabled" :
+                    output_file.write("<" +  prefixes[kb] + "assertion-" + npubIdentifier + "> {" + assertionString + "\n}\n\n")
+                    output_file.write("<" +  prefixes[kb] + "provenance-" + npubIdentifier + "> {")
+                    provenanceString = "\n    <" +  prefixes[kb] + "assertion-" + npubIdentifier + ">    <" +  prov.generatedAtTime + ">    \"" + "{:4d}-{:02d}-{:02d}".format(datetime.utcnow().year,datetime.utcnow().month,datetime.utcnow().day) + "T" + "{:02d}:{:02d}:{:02d}".format(datetime.utcnow().hour,datetime.utcnow().minute,datetime.utcnow().second) + "Z\"^^xsd:dateTime .\n" + provenanceString
+                    output_file.write(provenanceString + "\n}\n\n")
+                    output_file.write("<" +  prefixes[kb] + "pubInfo-" + npubIdentifier + "> {")
+                    publicationInfoString = "\n    <" +  prefixes[kb] + "nanoPub-" + npubIdentifier + ">    <" +  prov.generatedAtTime + ">    \"" + "{:4d}-{:02d}-{:02d}".format(datetime.utcnow().year,datetime.utcnow().month,datetime.utcnow().day) + "T" + "{:02d}:{:02d}:{:02d}".format(datetime.utcnow().hour,datetime.utcnow().minute,datetime.utcnow().second) + "Z\"^^xsd:dateTime .\n" + publicationInfoString
+                    output_file.write(publicationInfoString + "\n}\n\n")
+                else :
+                    output_file.write(assertionString + "\n")
+                    output_file.write(provenanceString + "\n")
         except Exception as e :
             print("Warning: Unable to process Data file: " + str(e))
 
@@ -1274,10 +1337,19 @@ def main():
     else :
         data_fn = None
 
+    global nanopublication_option
+    if 'nanopublication' in config['Prefixes'] :
+        nanopublication_option = config['Prefixes']['nanopublication']
+    else :
+        nanopublication_option = "enabled"
+
     if 'out_file' in config['Output Files']:
         out_fn = config['Output Files']['out_file']
     else: 
-        out_fn = "out.trig"
+        if nanopublication_option == "enabled" :
+            out_fn = "out.trig"
+        else :
+            out_fn = "out.ttl"
 
     if 'query_file' in config['Output Files'] :
         query_fn = config['Output Files']['query_file']

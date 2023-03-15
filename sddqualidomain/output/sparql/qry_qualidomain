@@ -1,5 +1,4 @@
 prefix np: <http://www.nanopub.org/nschema#> 
-prefix schema: < http://www.nanopub.org/schema#> 
 prefix owl: <http://www.w3.org/2002/07/owl#> 
 prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
 prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> 
@@ -13,12 +12,10 @@ prefix chear: <http://hadatac.org/ont/chear#>
 prefix hasco: <http://hadatac.org/ont/hasco#> 
 prefix obo: <http://purl.obolibrary.org/obo/> 
 prefix skos: <http://www.w3.org/2008/05/skos#> 
-prefix osm: <http://www.w3.org/2008/05/osm#> 
-prefix oersm: < http://hadatac.org/ont/oersm#> 
-prefix ontriscal: < http://hadatac.org/ont/ontriscal#> 
-prefix qualico: < http://hadatac.org/ont/qualico#> 
-prefix refiqda: < http://hadatac.org/ont/refiqda#> 
-prefix kpionto: < http://hadatac.org/ont/kpionto#> 
+prefix ontriscal: <http://hadatac.org/ont/ontriscal#> 
+prefix refiqda: <http://hadatac.org/ont/refiqda#> 
+prefix qualico: <http://hadatac.org/ont/qualico#> 
+prefix schema: <http://www.w3.org/2000/01/schema#> 
 
 SELECT DISTINCT ?id_case ?document ?source ?id_user ?user ?id_project ?project ?contextualaspect ?behavioraspects ?corebelief ?authomaticthinking ?emotion ?assumption ?compensatorystrategy ?symptomofanxiety ?finalassessement ?techiniqueofintervention WHERE {
   ?id_case_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> hasco:originalID  ;
@@ -27,22 +24,22 @@ SELECT DISTINCT ?id_case ?document ?source ?id_user ?user ?id_project ?project ?
     <http://semanticscience.org/resource/hasValue> ?id_case .
 
   ?document_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:TherapeuticCase  ;
-    <http://semanticscience.org/resource/isAttributeOf>    ?therapeuticcase_V  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?psychotherapy_V  ;
     <http://semanticscience.org/resource/hasUnit>    schema:String ;
     <http://semanticscience.org/resource/hasValue> ?document .
 
   ?source_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:MedicalRecord  ;
-    <http://semanticscience.org/resource/isAttributeOf>    ?mentalhealtheletronicrecord_V  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?psychotherapy_V  ;
     <http://semanticscience.org/resource/hasUnit>    schema:Interger ;
     <http://semanticscience.org/resource/hasValue> ?source .
 
   ?id_user_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:HealthProfessional  ;
-    <http://semanticscience.org/resource/isAttributeOf>    ?mentalhealthprofessional_V  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?psychotherapy_V  ;
     <http://semanticscience.org/resource/hasUnit>    schema:Interger ;
     <http://semanticscience.org/resource/hasValue> ?id_user .
 
   ?user_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:FullName  ;
-    <http://semanticscience.org/resource/isAttributeOf>    ?nameofmentalhealthprofessional_V  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?psychotherapy_V  ;
     <http://semanticscience.org/resource/hasUnit>    schema:String ;
     <http://semanticscience.org/resource/hasValue> ?user .
 
@@ -52,151 +49,73 @@ SELECT DISTINCT ?id_case ?document ?source ?id_user ?user ?id_project ?project ?
     <http://semanticscience.org/resource/hasValue> ?id_project .
 
   ?project_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:FullName  ;
-    <http://semanticscience.org/resource/isAttributeOf>    ?nameoftreatment_V  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?psychotherapy_V  ;
     <http://semanticscience.org/resource/hasUnit>    schema:String ;
     <http://semanticscience.org/resource/hasValue> ?project .
 
   ?contextualaspect_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:ContextualAspect  ;
-    <http://semanticscience.org/resource/isAttributeOf>    ?contextualaspect_V  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?caseconceptualization_V  ;
     <http://semanticscience.org/resource/hasUnit>    schema:String ;
     <http://semanticscience.org/resource/hasValue> ?contextualaspect .
 
   ?behavioraspects_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:BehaviorAspects  ;
-    <http://semanticscience.org/resource/isAttributeOf>    ?behavioraspect_V  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?caseconceptualization_V  ;
     <http://semanticscience.org/resource/hasUnit>    schema:String ;
     <http://semanticscience.org/resource/hasValue> ?behavioraspects .
 
   ?corebelief_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:CoreBelief  ;
-    <http://semanticscience.org/resource/isAttributeOf>    ?corebelief_V  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?caseconceptualization_V  ;
     <http://semanticscience.org/resource/hasUnit>    schema:String ;
     <http://semanticscience.org/resource/hasValue> ?corebelief .
 
   ?authomaticthinking_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:AutomaticThinking  ;
-    <http://semanticscience.org/resource/isAttributeOf>    ?authomaticthinking_V  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?caseconceptualization_V  ;
     <http://semanticscience.org/resource/hasUnit>    schema:String ;
     <http://semanticscience.org/resource/hasValue> ?authomaticthinking .
 
   ?emotion_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:Emotion  ;
-    <http://semanticscience.org/resource/isAttributeOf>    ?emotion_V  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?caseconceptualization_V  ;
     <http://semanticscience.org/resource/hasUnit>    schema:String ;
     <http://semanticscience.org/resource/hasValue> ?emotion .
 
   ?assumption_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:Assumption  ;
-    <http://semanticscience.org/resource/isAttributeOf>    ?assumption_V  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?caseconceptualization_V  ;
     <http://semanticscience.org/resource/hasUnit>    schema:String ;
     <http://semanticscience.org/resource/hasValue> ?assumption .
 
   ?compensatorystrategy_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:CompensatoryStrategy  ;
-    <http://semanticscience.org/resource/isAttributeOf>    ?compensatorystrategy_V  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?caseconceptualization_V  ;
     <http://semanticscience.org/resource/hasUnit>    schema:String ;
     <http://semanticscience.org/resource/hasValue> ?compensatorystrategy .
 
   ?symptomofanxiety_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:AnxietySymptom  ;
-    <http://semanticscience.org/resource/isAttributeOf>    ?anxietysymptom_V  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?caseconceptualization_V  ;
     <http://semanticscience.org/resource/hasUnit>    schema:String ;
     <http://semanticscience.org/resource/hasValue> ?symptomofanxiety .
 
   ?finalassessement_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:PsychiatricEvaluation  ;
-    <http://semanticscience.org/resource/isAttributeOf>    ?finalassessment_V  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?caseconceptualization_V  ;
     <http://semanticscience.org/resource/hasUnit>    schema:String ;
     <http://semanticscience.org/resource/hasValue> ?finalassessement .
 
   ?techiniqueofintervention_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:ClinicalStrategy  ;
-    <http://semanticscience.org/resource/isAttributeOf>    ?clinicalstrategy_V  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?caseconceptualization_V  ;
     <http://semanticscience.org/resource/hasValue> ?techiniqueofintervention .
 
 
-  ?patient_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> hasco:originalID  ;
-    rdf:type sio:Human .
+  ?patient_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> sio:Human  ;
+    ontriscal:isComprehendedBy ?caseconceptualization_V .
 
-  ?patient_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> hasco:originalID  ;
-    ontriscal:patientHas ontriscal:CaseConceptualization .
+  ?caseconceptualization_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:CaseConceptualization  ;
+    ontriscal:supportForUnderstand ?patient_V .
 
-  ?therapeuticcase_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:TherapeuticCase  ;
-    ontriscal:extractedFrom ?mentalhealtheletronicrecord_V .
-
-  ?mentalhealtheletronicrecord_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:MentalHealthEletronicRecord  ;
-    rdf:type ontriscal:MentalHealthInformationSystem .
-
-  ?mentalhealthprofessional_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:HealthProfessional  ;
-    ontriscal:writes ?therapeuticcase_V .
-
-  ?mentalhealthprofessional_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:HealthProfessional  ;
-    ontriscal:treats ?patient_V .
-
-  ?mentalhealthprofessional_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:HealthProfessional  ;
-    ontriscal:maintains ?mentalhealtheletronicrecord_V .
-
-  ?nameofmentalhealthprofessional_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:FullName  ;
-    ontriscal:isNameOf ?mentalhealthprofessional_V .
-
-  ?psychotherapy_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:Psychotherapy  ;
-    ontriscal:appliedBy ?mentalhealthprofessional_V .
-
-  ?nameoftreatment_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:FullName  ;
-    ontriscal:isNameOf ?psychotherapy_V .
-
-  ?contextualaspect_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:ContextualAspect  ;
-    ontriscal:formulates ontriscal:CaseConceptualization .
-
-  ?behavioraspect_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:BehaviorAspect  ;
-    ontriscal:formulates ontriscal:CaseConceptualization .
-
-  ?corebelief_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:CoreBelief  ;
-    ontriscal:formulates ontriscal:CaseConceptualization .
-
-  ?authomaticthinking_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:AuthomaticThinking  ;
-    ontriscal:formulates ontriscal:CaseConceptualization .
+  ?symptomanxiety_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:AnxietySymptom  ;
+    ontriscal:elaboratedBy ?caseconceptualization_V .
 
   ?emotion_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:Emotion  ;
-    ontriscal:formulates ontriscal:CaseConceptualization .
+    ontriscal:elaboratedBy ?caseconceptualization_V .
 
-  ?assumption_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:Assumption  ;
-    ontriscal:formulates ontriscal:CaseConceptualization .
-
-  ?compensatorystrategy_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:CompensatoryStrategy  ;
-    ontriscal:formulates ontriscal:CaseConceptualization .
-
-  ?anxietysymptom_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:AnxietySymptom  ;
-    ontriscal:formulates ontriscal:CaseConceptualization .
-
-  ?clinicalstrategy_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:ClinicalStrategy  ;
-    ontriscal:elaboratedBy ?mentalhealthprofessional_V .
-
-  ?patient_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> hasco:originalID  ;
-    ontriscal:receives ?finalassessment_V .
-
-  ?finalassessment_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:PsychiatricEvaluation  ;
-    ontriscal:elaboratedBy ?mentalhealthprofessional_V .
-
-  ?patient_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> hasco:originalID  ;
-    ontriscal:patientHas ?contextualaspect_V .
-
-  ?patient_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> hasco:originalID  ;
-    ontriscal:patientHas ?behavioraspect_V .
-
-  ?patient_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> hasco:originalID  ;
-    ontriscal:patientHas ?corebelief_V .
-
-  ?patient_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> hasco:originalID  ;
-    ontriscal:patientHas ?authomaticthinking_V .
-
-  ?patient_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> hasco:originalID  ;
-    ontriscal:patientHas ?emotion_V .
-
-  ?patient_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> hasco:originalID  ;
-    ontriscal:patientHas ?assumption_V .
-
-  ?patient_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> hasco:originalID  ;
-    ontriscal:patientHas ?compensatorystrategy_V .
-
-  ?patient_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> hasco:originalID  ;
-    ontriscal:patientHas ?anxietysymptom_V .
-
-  ?patient_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> hasco:originalID  ;
-    ontriscal:patientHas ?clinicalstrategy_V .
-
-  ?patient_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> hasco:originalID  ;
-    ontriscal:patientHas ?finalassessment_V .
+  ?psychotherapy_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:Psychotherapy  ;
+    ontriscal:treats ?patient_V .
 
 }

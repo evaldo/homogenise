@@ -16,6 +16,8 @@
 @prefix osm: <http://www.w3.org/2008/05/osm#> .
 @prefix oersm: <http://hadatac.org/ont/oersm#> .
 @prefix ontriscal: <http://hadatac.org/ont/ontriscal#> .
+@prefix qualico: <http://hadatac.org/ont/qualico#> .
+@prefix refiqda: <http://hadatac.org/ont/refiqda#> .
 @prefix kpionto: <http://hadatac.org/ont/kpionto#> .
 
 <http://hadatac.org/ont/ontriscal#head-collection_metadata-86b5dad3375394184e1b7bffca95a084> { 

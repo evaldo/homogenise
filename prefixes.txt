@@ -32,7 +32,6 @@
 @prefix staging: <http://idea.rpi.edu/ontologies/cancer_staging_terms.owl#>.
 @prefix skos: <http://www.w3.org/2008/05/skos#>.
 @prefix osm: <http://www.w3.org/2008/05/osm#>.
-@prefix example-kb: <http://www.w3.org/2008/05/example#>.
-@prefix ontriscal: <http://www.w3.org/2008/05/ontriscal#>.
-@prefix refiqda: <http://www.w3.org/2008/05/refiqda#>.
-@prefix qualico: <http://www.w3.org/2008/05/qualico#>.
+@prefix ontriscal: <http://hadatac.org/ont/ontriscal#>.
+@prefix refiqda: <http://hadatac.org/ont/refiqda#>.
+@prefix qualico: <http://hadatac.org/ont/qualico#>.

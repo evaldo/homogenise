@@ -13,7 +13,7 @@ chear,http://hadatac.org/ont/chear#
 hasco,http://hadatac.org/ont/hasco#
 obo,http://purl.obolibrary.org/obo/
 skos,http://www.w3.org/2008/05/skos#
-osm,http://www.w3.org/2008/05/osm#
-oersm, http://hadatac.org/ont/oersm#
-ontriscal, http://hadatac.org/ont/ontriscal#
-kpionto, http://hadatac.org/ont/kpionto#
+ontriscal,http://hadatac.org/ont/ontriscal#
+refiqda,http://hadatac.org/ont/refiqda#
+qualico,http://hadatac.org/ont/qualico#
+schema,http://www.w3.org/2000/01/schema#
