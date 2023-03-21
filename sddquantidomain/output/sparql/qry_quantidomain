@@ -19,7 +19,7 @@ prefix schema: <http://www.w3.org/2000/01/schema#>
 
 SELECT DISTINCT ?id_case ?initial_questionnarie ?feeling_of_suffocation_and_difficulty_breathing ?inability_to_relax ?muscle_tension ?sweat ?finalscore ?risklevel ?final_questionnarie ?feeling_of_suffocation_and_difficulty_breathing_final ?inability_to_relax_final ?muscle_tension_final ?sweat_final ?finalscore_final ?risklevel_final WHERE {
   ?id_case_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> hasco:originalID  ;
-    <http://semanticscience.org/resource/isAttributeOf>    ?patient_V  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?case_V  ;
     <http://semanticscience.org/resource/hasUnit>    schema:Interger ;
     <http://semanticscience.org/resource/hasValue> ?id_case .
 
@@ -80,17 +80,17 @@ SELECT DISTINCT ?id_case ?initial_questionnarie ?feeling_of_suffocation_and_diff
     <http://semanticscience.org/resource/hasValue> ?risklevel_final .
 
 
-  ?patient_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> sio:Human  ;
+  ?case_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> sio:Human  ;
     ontriscal:patientAnswersBeginningQuestionnaire ?beginningquestionnaire_V .
 
   ?beginningquestionnaire_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:Questionnarie  ;
-    ontriscal:answeredByBeginningQuestionnaire ?patient_V .
+    ontriscal:answeredByBeginningQuestionnaire ?case_V .
 
-  ?patient_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> sio:Human  ;
+  ?case_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> sio:Human  ;
     ontriscal:patientAnswersFinalQuestionnarie ?finalquestionnaire_V .
 
   ?finalquestionnaire_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:Questionnarie  ;
-    ontriscal:answeredByFinalQuestionnarie ?patient_V .
+    ontriscal:answeredByFinalQuestionnarie ?case_V .
 
   ?finalscoreinitial_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:FinalScore  ;
     ontriscal:finalScoreOfBeginningQuestionnaire ?beginningquestionnaire_V .

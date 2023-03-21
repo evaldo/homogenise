@@ -1,5 +1,5 @@
 Column,Attribute,attributeOf,Entity,Unit,Time,Relation,inRelationTo,Label,Role,Value,wasDerivedFrom,wasGeneratedBy
-id_case,hasco:originalID,??patient,,schema:Interger,,,,,,,,
+id_case,hasco:originalID,??case,,schema:Interger,,,,,,,,
 document,ontriscal:TherapeuticCase,??psychotherapy,,schema:String,,,,,,,,
 Source,ontriscal:MedicalRecord,??psychotherapy,,schema:Interger,,,,,,,,
 id_user,ontriscal:HealthProfessional,??psychotherapy,,schema:Interger,,,,,,,,
@@ -16,8 +16,8 @@ CompensatoryStrategy,ontriscal:CompensatoryStrategy,??caseconceptualization,,sch
 SymptomOfAnxiety,ontriscal:AnxietySymptom,??caseconceptualization,,schema:String,,,,,,,,
 FinalAssessement,ontriscal:PsychiatricEvaluation,??caseconceptualization,,schema:String,,,,,,,,
 TechiniqueOfIntervention,ontriscal:ClinicalStrategy,??caseconceptualization,,,,,,,,,,
-??patient,,,sio:Human,,,ontriscal:isComprehendedBy,??caseconceptualization,,,,,
-??caseconceptualization,,,ontriscal:CaseConceptualization,,,ontriscal:supportForUnderstand,??patient,,,,,
+??case,,,sio:Human,,,ontriscal:isComprehendedBy,??caseconceptualization,,,,,
+??caseconceptualization,,,ontriscal:CaseConceptualization,,,ontriscal:supportForUnderstand,??case,,,,,
 ??symptomanxiety,,,ontriscal:AnxietySymptom,,,ontriscal:elaboratedBy,??caseconceptualization,,,,,
 ??emotion,,,ontriscal:Emotion,,,ontriscal:elaboratedBy,??caseconceptualization,,,,,
-??psychotherapy,,,ontriscal:Psychotherapy,,,ontriscal:treats,??patient,,,,,
+??psychotherapy,,,ontriscal:Psychotherapy,,,ontriscal:treats,??case,,,,,

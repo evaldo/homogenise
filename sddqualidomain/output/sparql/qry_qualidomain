@@ -19,7 +19,7 @@ prefix schema: <http://www.w3.org/2000/01/schema#>
 
 SELECT DISTINCT ?id_case ?document ?source ?id_user ?user ?id_project ?project ?contextualaspect ?behavioraspects ?corebelief ?authomaticthinking ?emotion ?assumption ?compensatorystrategy ?symptomofanxiety ?finalassessement ?techiniqueofintervention WHERE {
   ?id_case_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> hasco:originalID  ;
-    <http://semanticscience.org/resource/isAttributeOf>    ?patient_V  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?case_V  ;
     <http://semanticscience.org/resource/hasUnit>    schema:Interger ;
     <http://semanticscience.org/resource/hasValue> ?id_case .
 
@@ -103,11 +103,11 @@ SELECT DISTINCT ?id_case ?document ?source ?id_user ?user ?id_project ?project ?
     <http://semanticscience.org/resource/hasValue> ?techiniqueofintervention .
 
 
-  ?patient_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> sio:Human  ;
+  ?case_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> sio:Human  ;
     ontriscal:isComprehendedBy ?caseconceptualization_V .
 
   ?caseconceptualization_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:CaseConceptualization  ;
-    ontriscal:supportForUnderstand ?patient_V .
+    ontriscal:supportForUnderstand ?case_V .
 
   ?symptomanxiety_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:AnxietySymptom  ;
     ontriscal:elaboratedBy ?caseconceptualization_V .
@@ -116,6 +116,6 @@ SELECT DISTINCT ?id_case ?document ?source ?id_user ?user ?id_project ?project ?
     ontriscal:elaboratedBy ?caseconceptualization_V .
 
   ?psychotherapy_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:Psychotherapy  ;
-    ontriscal:treats ?patient_V .
+    ontriscal:treats ?case_V .
 
 }
