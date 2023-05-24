@@ -1,0 +1,1209 @@
+@prefix np: <http://www.nanopub.org/nschema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix schema: <http://www.w3.org/2002/07/schema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix uo: <http://purl.obolibrary.org/obo/UO_> .
+@prefix sio: <http://semanticscience.org/resource/> .
+@prefix stato: <http://purl.obolibrary.org/obo/STATO_> .
+@prefix example-kb: <http://example.com/kb/example#> .
+@prefix chear: <http://hadatac.org/ont/chear#> .
+@prefix hasco: <http://hadatac.org/ont/hasco#> .
+@prefix obo: <http://purl.obolibrary.org/obo/> .
+@prefix skos: <http://www.w3.org/2008/05/skos#> .
+@prefix osm: <http://www.w3.org/2008/05/osm#> .
+@prefix oersm: <http://hadatac.org/ont/oersm#> .
+@prefix ontriscal: <http://hadatac.org/ont/ontriscal#> .
+@prefix qualico: <http://hadatac.org/ont/qualico#> .
+@prefix refiqda: <http://hadatac.org/ont/refiqda#> .
+@prefix kpionto: <http://hadatac.org/ont/kpionto#> .
+
+<http://hadatac.org/ont/ontriscal#head-collection_metadata-86b5dad3375394184e1b7bffca95a084> { 
+    <http://hadatac.org/ont/ontriscal#nanoPub-collection_metadata-86b5dad3375394184e1b7bffca95a084>    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://www.nanopub.org/nschema#Nanopublication> ;
+        <http://www.nanopub.org/nschema#hasAssertion>    <http://hadatac.org/ont/ontriscal#assertion-collection_metadata-86b5dad3375394184e1b7bffca95a084> ;
+        <http://www.nanopub.org/nschema#hasProvenance>    <http://hadatac.org/ont/ontriscal#provenance-collection_metadata-86b5dad3375394184e1b7bffca95a084> ;
+        <http://www.nanopub.org/nschema#hasPublicationInfo>    <http://hadatac.org/ont/ontriscal#pubInfo-collection_metadata-86b5dad3375394184e1b7bffca95a084> .
+}
+
+<http://hadatac.org/ont/ontriscal#assertion-collection_metadata-86b5dad3375394184e1b7bffca95a084> {
+    <http://hadatac.org/ont/ontriscal#collection-86b5dad3375394184e1b7bffca95a084>    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://purl.org/dc/dcmitype/Dataset> ;
+        <http://purl.org/dc/terms/title>    "An Example Project"^^xsd:string ;
+        <http://purl.org/dc/terms/alternative>    "Example"^^xsd:string ;
+        <http://www.w3.org/2000/01/rdf-schema#comment>    "This is an example knowledge graph fragment created using the SDD approach."^^xsd:string ;
+        <http://purl.org/dc/terms/description>    "Annotated data from an example project was used to demonstrate the SDD functionality"^^xsd:string ;
+        <http://semanticscience.org/resource/hasIdentifier>    
+            [ <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://semanticscience.org/resource/Identifier> ; 
+            <http://semanticscience.org/resource/hasValue>    "ontriscal"^^xsd:string ] ;
+        <http://purl.org/dc/terms/format>    "csv"^^xsd:string .
+
+}
+
+<http://hadatac.org/ont/ontriscal#provenance-collection_metadata-86b5dad3375394184e1b7bffca95a084> {
+    <http://hadatac.org/ont/ontriscal#assertion-dataset_metadata-86b5dad3375394184e1b7bffca95a084>    <http://www.w3.org/ns/prov#generatedAtTime>    "2023-03-13T13:08:43Z"^^xsd:dateTime .
+    <http://hadatac.org/ont/ontriscal#collection-86b5dad3375394184e1b7bffca95a084>    <http://www.w3.org/ns/prov#generatedAtTime>    "2023-03-13T13:08:43Z"^^xsd:dateTime ;
+        <http://purl.org/dc/terms/created>    "10/03/2023"^^xsd:date ;
+        <http://purl.org/dc/terms/issued>    "10/03/2023"^^xsd:date .
+
+}
+
+<http://hadatac.org/ont/ontriscal#pubInfo-collection_metadata-86b5dad3375394184e1b7bffca95a084> {
+    <http://hadatac.org/ont/ontriscal#nanoPub-collection_metadata-86b5dad3375394184e1b7bffca95a084>    <http://www.w3.org/ns/prov#generatedAtTime>    "2023-03-13T13:08:43Z"^^xsd:dateTime .
+
+}
+
+<http://hadatac.org/ont/ontriscal#head-explicit_entry-86b5dad3375394184e1b7bffca95a084> { 
+    <http://hadatac.org/ont/ontriscal#nanoPub-explicit_entry-86b5dad3375394184e1b7bffca95a084>    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://www.nanopub.org/nschema#Nanopublication> ;
+        <http://www.nanopub.org/nschema#hasAssertion>    <http://hadatac.org/ont/ontriscal#assertion-explicit_entry-86b5dad3375394184e1b7bffca95a084> ;
+        <http://www.nanopub.org/nschema#hasProvenance>    <http://hadatac.org/ont/ontriscal#provenance-explicit_entry-86b5dad3375394184e1b7bffca95a084> ;
+        <http://www.nanopub.org/nschema#hasPublicationInfo>    <http://hadatac.org/ont/ontriscal#pubInfo-explicit_entry-86b5dad3375394184e1b7bffca95a084> .
+}
+
+<http://hadatac.org/ont/ontriscal#assertion-explicit_entry-86b5dad3375394184e1b7bffca95a084> {
+    <http://hadatac.org/ont/ontriscal#id_case>    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    owl:Class ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>    hasco:originalID ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>    
+            [ <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://www.w3.org/2002/07/owl#Restriction> ;
+                <http://www.w3.org/2002/07/owl#allValuesFrom>    <http://hadatac.org/ont/ontriscal#patient> ;
+                <http://www.w3.org/2002/07/owl#onProperty>    <http://semanticscience.org/resource/isAttributeOf> ] ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>    
+            [ <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://www.w3.org/2002/07/owl#Restriction> ;
+                <http://www.w3.org/2002/07/owl#hasValue>    schema:Interger ;
+                <http://www.w3.org/2002/07/owl#onProperty>    <http://semanticscience.org/resource/hasUnit> ] .
+
+    <http://hadatac.org/ont/ontriscal#initial_questionnarie>    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    owl:Class ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>    ontriscal:FullName ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>    
+            [ <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://www.w3.org/2002/07/owl#Restriction> ;
+                <http://www.w3.org/2002/07/owl#allValuesFrom>    <http://hadatac.org/ont/ontriscal#beginningquestionnaire> ;
+                <http://www.w3.org/2002/07/owl#onProperty>    <http://semanticscience.org/resource/isAttributeOf> ] .
+
+    <http://hadatac.org/ont/ontriscal#feeling_of_suffocation_and_difficulty_breathing>    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    owl:Class ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>    ontriscal:QuestionScore ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>    
+            [ <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://www.w3.org/2002/07/owl#Restriction> ;
+                <http://www.w3.org/2002/07/owl#allValuesFrom>    <http://hadatac.org/ont/ontriscal#feelingofsuffocationscore> ;
+                <http://www.w3.org/2002/07/owl#onProperty>    <http://semanticscience.org/resource/isAttributeOf> ] .
+
+    <http://hadatac.org/ont/ontriscal#inability_to_relax>    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    owl:Class ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>    ontriscal:QuestionScore ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>    
+            [ <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://www.w3.org/2002/07/owl#Restriction> ;
+                <http://www.w3.org/2002/07/owl#allValuesFrom>    <http://hadatac.org/ont/ontriscal#inabilitytorelaxscore> ;
+                <http://www.w3.org/2002/07/owl#onProperty>    <http://semanticscience.org/resource/isAttributeOf> ] .
+
+    <http://hadatac.org/ont/ontriscal#muscle_tension>    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    owl:Class ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>    ontriscal:QuestionScore ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>    
+            [ <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://www.w3.org/2002/07/owl#Restriction> ;
+                <http://www.w3.org/2002/07/owl#allValuesFrom>    <http://hadatac.org/ont/ontriscal#muscletensionscore> ;
+                <http://www.w3.org/2002/07/owl#onProperty>    <http://semanticscience.org/resource/isAttributeOf> ] .
+
+    <http://hadatac.org/ont/ontriscal#sweat>    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    owl:Class ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>    ontriscal:QuestionScore ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>    
+            [ <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://www.w3.org/2002/07/owl#Restriction> ;
+                <http://www.w3.org/2002/07/owl#allValuesFrom>    <http://hadatac.org/ont/ontriscal#sweatscore> ;
+                <http://www.w3.org/2002/07/owl#onProperty>    <http://semanticscience.org/resource/isAttributeOf> ] .
+
+    <http://hadatac.org/ont/ontriscal#finalscore>    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    owl:Class ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>    ontriscal:FinalScore ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>    
+            [ <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://www.w3.org/2002/07/owl#Restriction> ;
+                <http://www.w3.org/2002/07/owl#allValuesFrom>    <http://hadatac.org/ont/ontriscal#finalscore> ;
+                <http://www.w3.org/2002/07/owl#onProperty>    <http://semanticscience.org/resource/isAttributeOf> ] .
+
+    <http://hadatac.org/ont/ontriscal#risklevel>    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    owl:Class ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>    ontriscal:RiskLevel ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>    
+            [ <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://www.w3.org/2002/07/owl#Restriction> ;
+                <http://www.w3.org/2002/07/owl#allValuesFrom>    <http://hadatac.org/ont/ontriscal#risklevel> ;
+                <http://www.w3.org/2002/07/owl#onProperty>    <http://semanticscience.org/resource/isAttributeOf> ] .
+
+    <http://hadatac.org/ont/ontriscal#final_questionnarie>    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    owl:Class ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>    ontriscal:FullName ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>    
+            [ <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://www.w3.org/2002/07/owl#Restriction> ;
+                <http://www.w3.org/2002/07/owl#allValuesFrom>    <http://hadatac.org/ont/ontriscal#finalquestionnaire> ;
+                <http://www.w3.org/2002/07/owl#onProperty>    <http://semanticscience.org/resource/isAttributeOf> ] .
+
+    <http://hadatac.org/ont/ontriscal#feeling_of_suffocation_and_difficulty_breathing_final>    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    owl:Class ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>    ontriscal:QuestionScore ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>    
+            [ <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://www.w3.org/2002/07/owl#Restriction> ;
+                <http://www.w3.org/2002/07/owl#allValuesFrom>    <http://hadatac.org/ont/ontriscal#feelingofsuffocation_scorefinal> ;
+                <http://www.w3.org/2002/07/owl#onProperty>    <http://semanticscience.org/resource/isAttributeOf> ] .
+
+    <http://hadatac.org/ont/ontriscal#inability_to_relax_final>    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    owl:Class ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>    ontriscal:QuestionScore ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>    
+            [ <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://www.w3.org/2002/07/owl#Restriction> ;
+                <http://www.w3.org/2002/07/owl#allValuesFrom>    <http://hadatac.org/ont/ontriscal#inabilitytorelax_scorefinal> ;
+                <http://www.w3.org/2002/07/owl#onProperty>    <http://semanticscience.org/resource/isAttributeOf> ] .
+
+    <http://hadatac.org/ont/ontriscal#muscle_tension_final>    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    owl:Class ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>    ontriscal:QuestionScore ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>    
+            [ <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://www.w3.org/2002/07/owl#Restriction> ;
+                <http://www.w3.org/2002/07/owl#allValuesFrom>    <http://hadatac.org/ont/ontriscal#muscletension_scorefinal> ;
+                <http://www.w3.org/2002/07/owl#onProperty>    <http://semanticscience.org/resource/isAttributeOf> ] .
+
+    <http://hadatac.org/ont/ontriscal#sweat_final>    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    owl:Class ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>    ontriscal:QuestionScore ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>    
+            [ <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://www.w3.org/2002/07/owl#Restriction> ;
+                <http://www.w3.org/2002/07/owl#allValuesFrom>    <http://hadatac.org/ont/ontriscal#sweat_scorefinal> ;
+                <http://www.w3.org/2002/07/owl#onProperty>    <http://semanticscience.org/resource/isAttributeOf> ] .
+
+    <http://hadatac.org/ont/ontriscal#finalscore_final>    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    owl:Class ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>    ontriscal:FinalScore ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>    
+            [ <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://www.w3.org/2002/07/owl#Restriction> ;
+                <http://www.w3.org/2002/07/owl#allValuesFrom>    <http://hadatac.org/ont/ontriscal#finalscore_final> ;
+                <http://www.w3.org/2002/07/owl#onProperty>    <http://semanticscience.org/resource/isAttributeOf> ] .
+
+    <http://hadatac.org/ont/ontriscal#risklevel_final>    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    owl:Class ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>    ontriscal:RiskLevel ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>    
+            [ <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://www.w3.org/2002/07/owl#Restriction> ;
+                <http://www.w3.org/2002/07/owl#allValuesFrom>    <http://hadatac.org/ont/ontriscal#risklevel_final> ;
+                <http://www.w3.org/2002/07/owl#onProperty>    <http://semanticscience.org/resource/isAttributeOf> ] .
+
+}
+
+<http://hadatac.org/ont/ontriscal#provenance-explicit_entry-86b5dad3375394184e1b7bffca95a084> {
+    <http://hadatac.org/ont/ontriscal#assertion-explicit_entry-86b5dad3375394184e1b7bffca95a084>    <http://www.w3.org/ns/prov#generatedAtTime>    "2023-03-13T13:08:44Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#id_case>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2023-03-13T13:08:43Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#initial_questionnarie>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2023-03-13T13:08:43Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#feeling_of_suffocation_and_difficulty_breathing>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2023-03-13T13:08:43Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#inability_to_relax>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2023-03-13T13:08:43Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#muscle_tension>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2023-03-13T13:08:43Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#sweat>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2023-03-13T13:08:43Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#finalscore>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2023-03-13T13:08:43Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#risklevel>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2023-03-13T13:08:43Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#final_questionnarie>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2023-03-13T13:08:43Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#feeling_of_suffocation_and_difficulty_breathing_final>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2023-03-13T13:08:44Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#inability_to_relax_final>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2023-03-13T13:08:44Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#muscle_tension_final>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2023-03-13T13:08:44Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#sweat_final>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2023-03-13T13:08:44Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#finalscore_final>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2023-03-13T13:08:44Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#risklevel_final>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2023-03-13T13:08:44Z"^^xsd:dateTime .
+
+}
+
+<http://hadatac.org/ont/ontriscal#pubInfo-explicit_entry-86b5dad3375394184e1b7bffca95a084> {
+    <http://hadatac.org/ont/ontriscal#nanoPub-explicit_entry-86b5dad3375394184e1b7bffca95a084>    <http://www.w3.org/ns/prov#generatedAtTime>    "2023-03-13T13:08:44Z"^^xsd:dateTime .
+}
+
+<http://hadatac.org/ont/ontriscal#head-implicit_entry-86b5dad3375394184e1b7bffca95a084> { 
+    <http://hadatac.org/ont/ontriscal#nanoPub-implicit_entry-86b5dad3375394184e1b7bffca95a084>    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://www.nanopub.org/nschema#Nanopublication> ;
+        <http://www.nanopub.org/nschema#hasAssertion>    <http://hadatac.org/ont/ontriscal#assertion-implicit_entry-86b5dad3375394184e1b7bffca95a084> ;
+        <http://www.nanopub.org/nschema#hasProvenance>    <http://hadatac.org/ont/ontriscal#provenance-implicit_entry-86b5dad3375394184e1b7bffca95a084> ;
+        <http://www.nanopub.org/nschema#hasPublicationInfo>    <http://hadatac.org/ont/ontriscal#pubInfo-implicit_entry-86b5dad3375394184e1b7bffca95a084> .
+}
+
+<http://hadatac.org/ont/ontriscal#assertion-implicit_entry-86b5dad3375394184e1b7bffca95a084> {
+    <http://hadatac.org/ont/ontriscal#patient>    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    owl:Class ;
+        <http://www.w3.org/2000/01/rdf-schema#label>    "patient"^^xsd:string ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>    hasco:originalID ;
+        rdf:type sio:Human .
+
+    <http://hadatac.org/ont/ontriscal#beginningquestionnaire>    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    owl:Class ;
+        <http://www.w3.org/2000/01/rdf-schema#label>    "beginningquestionnaire"^^xsd:string ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>    ontriscal:FullName ;
+        ontriscal:isNameOf ontriscal:Instrument .
+
+    <http://hadatac.org/ont/ontriscal#patient>    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    owl:Class ;
+        <http://www.w3.org/2000/01/rdf-schema#label>    "patient"^^xsd:string ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>    hasco:originalID ;
+        ontriscal:patientAnswers <http://hadatac.org/ont/ontriscal#beginningquestionnaire> .
+
+    <http://hadatac.org/ont/ontriscal#feelingofsuffocationscore>    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    owl:Class ;
+        <http://www.w3.org/2000/01/rdf-schema#label>    "feelingofsuffocationscore"^^xsd:string ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>    ontriscal:QuestionScore ;
+        ontriscal:anwseredByQuestion ontriscal:FeelingOfSuffocationAndDifficultyBreathing .
+
+    <http://hadatac.org/ont/ontriscal#feelingofsuffocationscore>    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    owl:Class ;
+        <http://www.w3.org/2000/01/rdf-schema#label>    "feelingofsuffocationscore"^^xsd:string ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>    ontriscal:QuestionScore ;
+        ontriscal:isItemOf <http://hadatac.org/ont/ontriscal#beginningquestionnaire> .
+
+    <http://hadatac.org/ont/ontriscal#inabilitytorelaxscore>    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    owl:Class ;
+        <http://www.w3.org/2000/01/rdf-schema#label>    "inabilitytorelaxscore"^^xsd:string ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>    ontriscal:QuestionScore ;
+        ontriscal:anwseredByQuestion ontriscal:InabilityRelax .
+
+    <http://hadatac.org/ont/ontriscal#inabilitytorelaxscore>    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    owl:Class ;
+        <http://www.w3.org/2000/01/rdf-schema#label>    "inabilitytorelaxscore"^^xsd:string ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>    ontriscal:QuestionScore ;
+        ontriscal:isItemOf <http://hadatac.org/ont/ontriscal#beginningquestionnaire> .
+
+    <http://hadatac.org/ont/ontriscal#muscletensionscore>    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    owl:Class ;
+        <http://www.w3.org/2000/01/rdf-schema#label>    "muscletensionscore"^^xsd:string ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>    ontriscal:QuestionScore ;
+        ontriscal:anwseredByQuestion ontriscal:MuscleTension .
+
+    <http://hadatac.org/ont/ontriscal#muscletensionscore>    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    owl:Class ;
+        <http://www.w3.org/2000/01/rdf-schema#label>    "muscletensionscore"^^xsd:string ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>    ontriscal:QuestionScore ;
+        ontriscal:isItemOf <http://hadatac.org/ont/ontriscal#beginningquestionnaire> .
+
+    <http://hadatac.org/ont/ontriscal#sweatscore>    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    owl:Class ;
+        <http://www.w3.org/2000/01/rdf-schema#label>    "sweatscore"^^xsd:string ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>    ontriscal:QuestionScore ;
+        ontriscal:anwseredByQuestion ontriscal:Sweat .
+
+    <http://hadatac.org/ont/ontriscal#sweatscore>    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    owl:Class ;
+        <http://www.w3.org/2000/01/rdf-schema#label>    "sweatscore"^^xsd:string ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>    ontriscal:QuestionScore ;
+        ontriscal:isItemOf <http://hadatac.org/ont/ontriscal#beginningquestionnaire> .
+
+    <http://hadatac.org/ont/ontriscal#finalscore>    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    owl:Class ;
+        <http://www.w3.org/2000/01/rdf-schema#label>    "finalscore"^^xsd:string ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>    ontriscal:FinalScore ;
+        ontriscal:isItemOf <http://hadatac.org/ont/ontriscal#beginningquestionnaire> .
+
+    <http://hadatac.org/ont/ontriscal#risklevel>    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    owl:Class ;
+        <http://www.w3.org/2000/01/rdf-schema#label>    "risklevel"^^xsd:string ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>    ontriscal:RiskLevel ;
+        ontriscal:isItemOf <http://hadatac.org/ont/ontriscal#beginningquestionnaire> .
+
+    <http://hadatac.org/ont/ontriscal#patient>    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    owl:Class ;
+        <http://www.w3.org/2000/01/rdf-schema#label>    "patient"^^xsd:string ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>    hasco:originalID ;
+        ontriscal:patientRecevies <http://hadatac.org/ont/ontriscal#risklevel> .
+
+    <http://hadatac.org/ont/ontriscal#finalquestionnaire>    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    owl:Class ;
+        <http://www.w3.org/2000/01/rdf-schema#label>    "finalquestionnaire"^^xsd:string ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>    ontriscal:FullName ;
+        ontriscal:isNameOf ontriscal:Instrument .
+
+    <http://hadatac.org/ont/ontriscal#patient>    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    owl:Class ;
+        <http://www.w3.org/2000/01/rdf-schema#label>    "patient"^^xsd:string ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>    hasco:originalID ;
+        ontriscal:patientAnswers <http://hadatac.org/ont/ontriscal#finalquestionnaire> .
+
+    <http://hadatac.org/ont/ontriscal#feelingofsuffocation_scorefinal>    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    owl:Class ;
+        <http://www.w3.org/2000/01/rdf-schema#label>    "feelingofsuffocation_scorefinal"^^xsd:string ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>    ontriscal:QuestionScore ;
+        ontriscal:anwseredByQuestion ontriscal:FeelingOfSuffocationAndDifficultyBreathing .
+
+    <http://hadatac.org/ont/ontriscal#feelingofsuffocation_scorefinal>    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    owl:Class ;
+        <http://www.w3.org/2000/01/rdf-schema#label>    "feelingofsuffocation_scorefinal"^^xsd:string ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>    ontriscal:QuestionScore ;
+        ontriscal:isItemOf <http://hadatac.org/ont/ontriscal#finalquestionnaire> .
+
+    <http://hadatac.org/ont/ontriscal#inabilitytorelax_scorefinal>    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    owl:Class ;
+        <http://www.w3.org/2000/01/rdf-schema#label>    "inabilitytorelax_scorefinal"^^xsd:string ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>    ontriscal:QuestionScore ;
+        ontriscal:anwseredByQuestion ontriscal:InabilityRelax .
+
+    <http://hadatac.org/ont/ontriscal#inabilitytorelax_scorefinal>    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    owl:Class ;
+        <http://www.w3.org/2000/01/rdf-schema#label>    "inabilitytorelax_scorefinal"^^xsd:string ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>    ontriscal:QuestionScore ;
+        ontriscal:isItemOf <http://hadatac.org/ont/ontriscal#finalquestionnaire> .
+
+    <http://hadatac.org/ont/ontriscal#muscletension_scorefinal>    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    owl:Class ;
+        <http://www.w3.org/2000/01/rdf-schema#label>    "muscletension_scorefinal"^^xsd:string ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>    ontriscal:QuestionScore ;
+        ontriscal:anwseredByQuestion ontriscal:MuscleTension .
+
+    <http://hadatac.org/ont/ontriscal#muscletension_scorefinal>    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    owl:Class ;
+        <http://www.w3.org/2000/01/rdf-schema#label>    "muscletension_scorefinal"^^xsd:string ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>    ontriscal:QuestionScore ;
+        ontriscal:isItemOf <http://hadatac.org/ont/ontriscal#finalquestionnaire> .
+
+    <http://hadatac.org/ont/ontriscal#sweat_scorefinal>    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    owl:Class ;
+        <http://www.w3.org/2000/01/rdf-schema#label>    "sweat_scorefinal"^^xsd:string ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>    ontriscal:QuestionScore ;
+        ontriscal:anwseredByQuestion ontriscal:Sweat .
+
+    <http://hadatac.org/ont/ontriscal#sweat_scorefinal>    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    owl:Class ;
+        <http://www.w3.org/2000/01/rdf-schema#label>    "sweat_scorefinal"^^xsd:string ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>    ontriscal:QuestionScore ;
+        ontriscal:isItemOf <http://hadatac.org/ont/ontriscal#finalquestionnaire> .
+
+    <http://hadatac.org/ont/ontriscal#finalscore_final>    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    owl:Class ;
+        <http://www.w3.org/2000/01/rdf-schema#label>    "finalscore_final"^^xsd:string ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>    ontriscal:FinalScore ;
+        ontriscal:isItemOf <http://hadatac.org/ont/ontriscal#finalquestionnaire> .
+
+    <http://hadatac.org/ont/ontriscal#risklevel_final>    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    owl:Class ;
+        <http://www.w3.org/2000/01/rdf-schema#label>    "risklevel_final"^^xsd:string ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>    ontriscal:RiskLevel ;
+        ontriscal:isItemOf <http://hadatac.org/ont/ontriscal#finalquestionnaire> .
+
+    <http://hadatac.org/ont/ontriscal#patient>    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    owl:Class ;
+        <http://www.w3.org/2000/01/rdf-schema#label>    "patient"^^xsd:string ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>    hasco:originalID ;
+        ontriscal:patientRecevies <http://hadatac.org/ont/ontriscal#risklevel_final> .
+
+}
+
+<http://hadatac.org/ont/ontriscal#provenance-implicit_entry-86b5dad3375394184e1b7bffca95a084> {
+    <http://hadatac.org/ont/ontriscal#assertion-implicit_entry-86b5dad3375394184e1b7bffca95a084>    <http://www.w3.org/ns/prov#generatedAtTime>    "2023-03-13T13:08:45Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#patient>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2023-03-13T13:08:44Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#beginningquestionnaire>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2023-03-13T13:08:44Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#patient>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2023-03-13T13:08:44Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#feelingofsuffocationscore>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2023-03-13T13:08:44Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#feelingofsuffocationscore>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2023-03-13T13:08:44Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#inabilitytorelaxscore>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2023-03-13T13:08:44Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#inabilitytorelaxscore>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2023-03-13T13:08:44Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#muscletensionscore>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2023-03-13T13:08:44Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#muscletensionscore>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2023-03-13T13:08:44Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#sweatscore>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2023-03-13T13:08:44Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#sweatscore>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2023-03-13T13:08:44Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#finalscore>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2023-03-13T13:08:44Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#risklevel>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2023-03-13T13:08:44Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#patient>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2023-03-13T13:08:44Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#finalquestionnaire>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2023-03-13T13:08:44Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#patient>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2023-03-13T13:08:44Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#feelingofsuffocation_scorefinal>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2023-03-13T13:08:44Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#feelingofsuffocation_scorefinal>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2023-03-13T13:08:44Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#inabilitytorelax_scorefinal>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2023-03-13T13:08:44Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#inabilitytorelax_scorefinal>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2023-03-13T13:08:44Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#muscletension_scorefinal>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2023-03-13T13:08:44Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#muscletension_scorefinal>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2023-03-13T13:08:44Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#sweat_scorefinal>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2023-03-13T13:08:44Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#sweat_scorefinal>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2023-03-13T13:08:45Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#finalscore_final>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2023-03-13T13:08:45Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#risklevel_final>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2023-03-13T13:08:45Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#patient>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2023-03-13T13:08:45Z"^^xsd:dateTime .
+
+}
+
+<http://hadatac.org/ont/ontriscal#pubInfo-implicit_entry-86b5dad3375394184e1b7bffca95a084> {
+    <http://hadatac.org/ont/ontriscal#nanoPub-implicit_entry-86b5dad3375394184e1b7bffca95a084>    <http://www.w3.org/ns/prov#generatedAtTime>    "2023-03-13T13:08:45Z"^^xsd:dateTime .
+}
+
+<http://hadatac.org/ont/ontriscal#head-8bb4b80981d1aced083a9de41547b051> {
+    <http://hadatac.org/ont/ontriscal#nanoPub-8bb4b80981d1aced083a9de41547b051>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://www.nanopub.org/nschema#Nanopublication> ;
+        <http://www.nanopub.org/nschema#hasAssertion>    <http://hadatac.org/ont/ontriscal#assertion-8bb4b80981d1aced083a9de41547b051> ;
+        <http://www.nanopub.org/nschema#hasProvenance>    <http://hadatac.org/ont/ontriscal#provenance-8bb4b80981d1aced083a9de41547b051> ;
+        <http://www.nanopub.org/nschema#hasPublicationInfo>    <http://hadatac.org/ont/ontriscal#pubInfo-8bb4b80981d1aced083a9de41547b051> .
+}
+
+<http://hadatac.org/ont/ontriscal#assertion-8bb4b80981d1aced083a9de41547b051> {
+    <http://hadatac.org/ont/ontriscal#id_case-3dc761872e8c6d60c65d979dbda2b55b>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://hadatac.org/ont/ontriscal#id_case> ;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    hasco:originalID ;
+        <http://semanticscience.org/resource/isAttributeOf>    <http://hadatac.org/ont/ontriscal#patient-7f6a870a39c35e6b2d13ddea5ad91759> ;
+        <http://semanticscience.org/resource/hasUnit>    schema:Interger ;
+        <http://semanticscience.org/resource/hasValue>    "60"^^xsd:integer .
+
+    <http://hadatac.org/ont/ontriscal#initial_questionnarie-7521e2f2cebb30b5642df160db7bdeed>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://hadatac.org/ont/ontriscal#initial_questionnarie> ;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    ontriscal:FullName ;
+        <http://semanticscience.org/resource/isAttributeOf>    <http://hadatac.org/ont/ontriscal#beginningquestionnaire-d6cc47895ca9b81bc9be4d41ee91ded0> ;
+        <http://semanticscience.org/resource/hasValue>    "Start Treatment"^^xsd:string .
+
+    <http://hadatac.org/ont/ontriscal#feeling_of_suffocation_and_difficulty_breathing-3b6859ff031e01ba945e52ccdcb97ae0>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://hadatac.org/ont/ontriscal#feeling_of_suffocation_and_difficulty_breathing> ;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    ontriscal:QuestionScore ;
+        <http://semanticscience.org/resource/isAttributeOf>    <http://hadatac.org/ont/ontriscal#feelingofsuffocationscore-cd8f3186bc78ff300a61c06a125fef9b> ;
+        <http://semanticscience.org/resource/hasValue>    "7"^^xsd:integer .
+
+    <http://hadatac.org/ont/ontriscal#inability_to_relax-f575187534be093300e43f7394b5ef1d>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://hadatac.org/ont/ontriscal#inability_to_relax> ;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    ontriscal:QuestionScore ;
+        <http://semanticscience.org/resource/isAttributeOf>    <http://hadatac.org/ont/ontriscal#inabilitytorelaxscore-dd1bbf62ccceadcccb86a5f6ed62e749> ;
+        <http://semanticscience.org/resource/hasValue>    "6"^^xsd:integer .
+
+    <http://hadatac.org/ont/ontriscal#muscle_tension-f575187534be093300e43f7394b5ef1d>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://hadatac.org/ont/ontriscal#muscle_tension> ;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    ontriscal:QuestionScore ;
+        <http://semanticscience.org/resource/isAttributeOf>    <http://hadatac.org/ont/ontriscal#muscletensionscore-03cf95120d94528e77e8bc8d54ea3cf7> ;
+        <http://semanticscience.org/resource/hasValue>    "6"^^xsd:integer .
+
+    <http://hadatac.org/ont/ontriscal#sweat-f575187534be093300e43f7394b5ef1d>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://hadatac.org/ont/ontriscal#sweat> ;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    ontriscal:QuestionScore ;
+        <http://semanticscience.org/resource/isAttributeOf>    <http://hadatac.org/ont/ontriscal#sweatscore-0a8a8cb427290df8233c7aa73548f165> ;
+        <http://semanticscience.org/resource/hasValue>    "6"^^xsd:integer .
+
+    <http://hadatac.org/ont/ontriscal#finalscore-d464548b17c8fb6334d43eb77a01227c>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://hadatac.org/ont/ontriscal#finalscore> ;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    ontriscal:FinalScore ;
+        <http://semanticscience.org/resource/isAttributeOf>    <http://hadatac.org/ont/ontriscal#finalscore-30aba92cb844bdf57f854634cf5cce12> ;
+        <http://semanticscience.org/resource/hasValue>    "25"^^xsd:integer .
+
+    <http://hadatac.org/ont/ontriscal#risklevel-fe2e97f5af1f97374a5f5f43fe7581ef>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://hadatac.org/ont/ontriscal#risklevel> ;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    ontriscal:RiskLevel ;
+        <http://semanticscience.org/resource/isAttributeOf>    <http://hadatac.org/ont/ontriscal#risklevel-57fa8b1b67357b4be3ba67dd0c50e1d5> ;
+        <http://semanticscience.org/resource/hasValue>    "Medium"^^xsd:string .
+
+    <http://hadatac.org/ont/ontriscal#final_questionnarie-49582debeb63731716ccbf3aa0db2264>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://hadatac.org/ont/ontriscal#final_questionnarie> ;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    ontriscal:FullName ;
+        <http://semanticscience.org/resource/isAttributeOf>    <http://hadatac.org/ont/ontriscal#finalquestionnaire-faa7c2acc654955650664ffb0a4ff171> ;
+        <http://semanticscience.org/resource/hasValue>    "Final of Treatment"^^xsd:string .
+
+    <http://hadatac.org/ont/ontriscal#feeling_of_suffocation_and_difficulty_breathing_final-5f09e170679c2885dabe21aba15df846>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://hadatac.org/ont/ontriscal#feeling_of_suffocation_and_difficulty_breathing_final> ;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    ontriscal:QuestionScore ;
+        <http://semanticscience.org/resource/isAttributeOf>    <http://hadatac.org/ont/ontriscal#feelingofsuffocation_scorefinal-6f9952e04332348a05357679b512dee5> ;
+        <http://semanticscience.org/resource/hasValue>    "2"^^xsd:integer .
+
+    <http://hadatac.org/ont/ontriscal#inability_to_relax_final-300f5b60bb5fb3a11d39042ea25e7747>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://hadatac.org/ont/ontriscal#inability_to_relax_final> ;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    ontriscal:QuestionScore ;
+        <http://semanticscience.org/resource/isAttributeOf>    <http://hadatac.org/ont/ontriscal#inabilitytorelax_scorefinal-8a45983fbc6a5de453312d291bf8420f> ;
+        <http://semanticscience.org/resource/hasValue>    "1"^^xsd:integer .
+
+    <http://hadatac.org/ont/ontriscal#muscle_tension_final-300f5b60bb5fb3a11d39042ea25e7747>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://hadatac.org/ont/ontriscal#muscle_tension_final> ;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    ontriscal:QuestionScore ;
+        <http://semanticscience.org/resource/isAttributeOf>    <http://hadatac.org/ont/ontriscal#muscletension_scorefinal-d46833a260a6a1c684529f2ee518b4ab> ;
+        <http://semanticscience.org/resource/hasValue>    "1"^^xsd:integer .
+
+    <http://hadatac.org/ont/ontriscal#sweat_final-300f5b60bb5fb3a11d39042ea25e7747>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://hadatac.org/ont/ontriscal#sweat_final> ;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    ontriscal:QuestionScore ;
+        <http://semanticscience.org/resource/isAttributeOf>    <http://hadatac.org/ont/ontriscal#sweat_scorefinal-70f47f249c6095d714872b04297138d2> ;
+        <http://semanticscience.org/resource/hasValue>    "1"^^xsd:integer .
+
+    <http://hadatac.org/ont/ontriscal#finalscore_final-c4e95073ffd80d59362da8c0c831902f>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://hadatac.org/ont/ontriscal#finalscore_final> ;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    ontriscal:FinalScore ;
+        <http://semanticscience.org/resource/isAttributeOf>    <http://hadatac.org/ont/ontriscal#finalscore_final-936e286e7a260c326568b6d123dedb4c> ;
+        <http://semanticscience.org/resource/hasValue>    "5"^^xsd:integer .
+
+    <http://hadatac.org/ont/ontriscal#risklevel_final-2bbafea08c8394c834dcc6132fad4228>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://hadatac.org/ont/ontriscal#risklevel_final> ;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    ontriscal:RiskLevel ;
+        <http://semanticscience.org/resource/isAttributeOf>    <http://hadatac.org/ont/ontriscal#risklevel_final-9cf996fb8a68379588920c7c211a7461> ;
+        <http://semanticscience.org/resource/hasValue>    "Low"^^xsd:string .
+
+    <http://hadatac.org/ont/ontriscal#patient-8fdbe7acf1b515ad783cd5316ab45067>    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://hadatac.org/ont/ontriscal#patient> ;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    hasco:originalID ;
+        <http://www.w3.org/2000/01/rdf-schema#label>    "patient"^^xsd:string ;
+        rdf:type sio:Human ;
+        rdf:type sio:Human .
+
+    <http://hadatac.org/ont/ontriscal#patient-9edaeae6af0014a4756083af9efbe346>    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://hadatac.org/ont/ontriscal#patient> ;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    hasco:originalID ;
+        <http://www.w3.org/2000/01/rdf-schema#label>    "patient"^^xsd:string ;
+        ontriscal:patientAnswers <http://hadatac.org/ont/ontriscal#beginningquestionnaire-9edaeae6af0014a4756083af9efbe346> ;
+        ontriscal:patientAnswers <http://hadatac.org/ont/ontriscal#beginningquestionnaire-d6cc47895ca9b81bc9be4d41ee91ded0> .
+
+    <http://hadatac.org/ont/ontriscal#patient-dc1fc1a18dfce723569470c6005be96c>    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://hadatac.org/ont/ontriscal#patient> ;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    hasco:originalID ;
+        <http://www.w3.org/2000/01/rdf-schema#label>    "patient"^^xsd:string ;
+        ontriscal:patientRecevies <http://hadatac.org/ont/ontriscal#risklevel-dc1fc1a18dfce723569470c6005be96c> ;
+        ontriscal:patientRecevies <http://hadatac.org/ont/ontriscal#risklevel-57fa8b1b67357b4be3ba67dd0c50e1d5> .
+
+    <http://hadatac.org/ont/ontriscal#patient-c52e870da46391a44779fcf272fde712>    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://hadatac.org/ont/ontriscal#patient> ;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    hasco:originalID ;
+        <http://www.w3.org/2000/01/rdf-schema#label>    "patient"^^xsd:string ;
+        ontriscal:patientAnswers <http://hadatac.org/ont/ontriscal#finalquestionnaire-c52e870da46391a44779fcf272fde712> ;
+        ontriscal:patientAnswers <http://hadatac.org/ont/ontriscal#finalquestionnaire-faa7c2acc654955650664ffb0a4ff171> .
+
+    <http://hadatac.org/ont/ontriscal#patient-7f6a870a39c35e6b2d13ddea5ad91759>    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://hadatac.org/ont/ontriscal#patient> ;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    hasco:originalID ;
+        <http://www.w3.org/2000/01/rdf-schema#label>    "patient"^^xsd:string ;
+        ontriscal:patientRecevies <http://hadatac.org/ont/ontriscal#risklevel_final-7f6a870a39c35e6b2d13ddea5ad91759> ;
+        ontriscal:patientRecevies <http://hadatac.org/ont/ontriscal#risklevel_final-9cf996fb8a68379588920c7c211a7461> .
+
+    <http://hadatac.org/ont/ontriscal#beginningquestionnaire-d6cc47895ca9b81bc9be4d41ee91ded0>    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://hadatac.org/ont/ontriscal#beginningquestionnaire> ;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    ontriscal:FullName ;
+        <http://www.w3.org/2000/01/rdf-schema#label>    "beginningquestionnaire"^^xsd:string ;
+        ontriscal:isNameOf ontriscal:Instrument ;
+        ontriscal:isNameOf ontriscal:Instrument .
+
+    <http://hadatac.org/ont/ontriscal#feelingofsuffocationscore-793a5db502f585bddf0f02fb727f86c8>    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://hadatac.org/ont/ontriscal#feelingofsuffocationscore> ;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    ontriscal:QuestionScore ;
+        <http://www.w3.org/2000/01/rdf-schema#label>    "feelingofsuffocationscore"^^xsd:string ;
+        ontriscal:anwseredByQuestion ontriscal:FeelingOfSuffocationAndDifficultyBreathing ;
+        ontriscal:anwseredByQuestion ontriscal:FeelingOfSuffocationAndDifficultyBreathing .
+
+    <http://hadatac.org/ont/ontriscal#feelingofsuffocationscore-cd8f3186bc78ff300a61c06a125fef9b>    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://hadatac.org/ont/ontriscal#feelingofsuffocationscore> ;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    ontriscal:QuestionScore ;
+        <http://www.w3.org/2000/01/rdf-schema#label>    "feelingofsuffocationscore"^^xsd:string ;
+        ontriscal:isItemOf <http://hadatac.org/ont/ontriscal#beginningquestionnaire-cd8f3186bc78ff300a61c06a125fef9b> ;
+        ontriscal:isItemOf <http://hadatac.org/ont/ontriscal#beginningquestionnaire-d6cc47895ca9b81bc9be4d41ee91ded0> .
+
+    <http://hadatac.org/ont/ontriscal#inabilitytorelaxscore-011938206fa559a4a40eb7ac4aec720f>    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://hadatac.org/ont/ontriscal#inabilitytorelaxscore> ;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    ontriscal:QuestionScore ;
+        <http://www.w3.org/2000/01/rdf-schema#label>    "inabilitytorelaxscore"^^xsd:string ;
+        ontriscal:anwseredByQuestion ontriscal:InabilityRelax ;
+        ontriscal:anwseredByQuestion ontriscal:InabilityRelax .
+
+    <http://hadatac.org/ont/ontriscal#inabilitytorelaxscore-dd1bbf62ccceadcccb86a5f6ed62e749>    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://hadatac.org/ont/ontriscal#inabilitytorelaxscore> ;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    ontriscal:QuestionScore ;
+        <http://www.w3.org/2000/01/rdf-schema#label>    "inabilitytorelaxscore"^^xsd:string ;
+        ontriscal:isItemOf <http://hadatac.org/ont/ontriscal#beginningquestionnaire-dd1bbf62ccceadcccb86a5f6ed62e749> ;
+        ontriscal:isItemOf <http://hadatac.org/ont/ontriscal#beginningquestionnaire-d6cc47895ca9b81bc9be4d41ee91ded0> .
+
+    <http://hadatac.org/ont/ontriscal#muscletensionscore-cd46e88e0a8fb90b68943c902841d228>    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://hadatac.org/ont/ontriscal#muscletensionscore> ;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    ontriscal:QuestionScore ;
+        <http://www.w3.org/2000/01/rdf-schema#label>    "muscletensionscore"^^xsd:string ;
+        ontriscal:anwseredByQuestion ontriscal:MuscleTension ;
+        ontriscal:anwseredByQuestion ontriscal:MuscleTension .
+
+    <http://hadatac.org/ont/ontriscal#muscletensionscore-03cf95120d94528e77e8bc8d54ea3cf7>    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://hadatac.org/ont/ontriscal#muscletensionscore> ;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    ontriscal:QuestionScore ;
+        <http://www.w3.org/2000/01/rdf-schema#label>    "muscletensionscore"^^xsd:string ;
+        ontriscal:isItemOf <http://hadatac.org/ont/ontriscal#beginningquestionnaire-03cf95120d94528e77e8bc8d54ea3cf7> ;
+        ontriscal:isItemOf <http://hadatac.org/ont/ontriscal#beginningquestionnaire-d6cc47895ca9b81bc9be4d41ee91ded0> .
+
+    <http://hadatac.org/ont/ontriscal#sweatscore-e4289d7f1f41fe95cb7d824300969fb5>    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://hadatac.org/ont/ontriscal#sweatscore> ;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    ontriscal:QuestionScore ;
+        <http://www.w3.org/2000/01/rdf-schema#label>    "sweatscore"^^xsd:string ;
+        ontriscal:anwseredByQuestion ontriscal:Sweat ;
+        ontriscal:anwseredByQuestion ontriscal:Sweat .
+
+    <http://hadatac.org/ont/ontriscal#sweatscore-0a8a8cb427290df8233c7aa73548f165>    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://hadatac.org/ont/ontriscal#sweatscore> ;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    ontriscal:QuestionScore ;
+        <http://www.w3.org/2000/01/rdf-schema#label>    "sweatscore"^^xsd:string ;
+        ontriscal:isItemOf <http://hadatac.org/ont/ontriscal#beginningquestionnaire-0a8a8cb427290df8233c7aa73548f165> ;
+        ontriscal:isItemOf <http://hadatac.org/ont/ontriscal#beginningquestionnaire-d6cc47895ca9b81bc9be4d41ee91ded0> .
+
+    <http://hadatac.org/ont/ontriscal#finalscore-30aba92cb844bdf57f854634cf5cce12>    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://hadatac.org/ont/ontriscal#finalscore> ;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    ontriscal:FinalScore ;
+        <http://www.w3.org/2000/01/rdf-schema#label>    "finalscore"^^xsd:string ;
+        ontriscal:isItemOf <http://hadatac.org/ont/ontriscal#beginningquestionnaire-30aba92cb844bdf57f854634cf5cce12> ;
+        ontriscal:isItemOf <http://hadatac.org/ont/ontriscal#beginningquestionnaire-d6cc47895ca9b81bc9be4d41ee91ded0> .
+
+    <http://hadatac.org/ont/ontriscal#risklevel-57fa8b1b67357b4be3ba67dd0c50e1d5>    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://hadatac.org/ont/ontriscal#risklevel> ;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    ontriscal:RiskLevel ;
+        <http://www.w3.org/2000/01/rdf-schema#label>    "risklevel"^^xsd:string ;
+        ontriscal:isItemOf <http://hadatac.org/ont/ontriscal#beginningquestionnaire-57fa8b1b67357b4be3ba67dd0c50e1d5> ;
+        ontriscal:isItemOf <http://hadatac.org/ont/ontriscal#beginningquestionnaire-d6cc47895ca9b81bc9be4d41ee91ded0> .
+
+    <http://hadatac.org/ont/ontriscal#finalquestionnaire-faa7c2acc654955650664ffb0a4ff171>    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://hadatac.org/ont/ontriscal#finalquestionnaire> ;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    ontriscal:FullName ;
+        <http://www.w3.org/2000/01/rdf-schema#label>    "finalquestionnaire"^^xsd:string ;
+        ontriscal:isNameOf ontriscal:Instrument ;
+        ontriscal:isNameOf ontriscal:Instrument .
+
+    <http://hadatac.org/ont/ontriscal#feelingofsuffocation_scorefinal-f528dc17873f432efc4918fd7fb0c90a>    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://hadatac.org/ont/ontriscal#feelingofsuffocation_scorefinal> ;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    ontriscal:QuestionScore ;
+        <http://www.w3.org/2000/01/rdf-schema#label>    "feelingofsuffocation_scorefinal"^^xsd:string ;
+        ontriscal:anwseredByQuestion ontriscal:FeelingOfSuffocationAndDifficultyBreathing ;
+        ontriscal:anwseredByQuestion ontriscal:FeelingOfSuffocationAndDifficultyBreathing .
+
+    <http://hadatac.org/ont/ontriscal#feelingofsuffocation_scorefinal-6f9952e04332348a05357679b512dee5>    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://hadatac.org/ont/ontriscal#feelingofsuffocation_scorefinal> ;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    ontriscal:QuestionScore ;
+        <http://www.w3.org/2000/01/rdf-schema#label>    "feelingofsuffocation_scorefinal"^^xsd:string ;
+        ontriscal:isItemOf <http://hadatac.org/ont/ontriscal#finalquestionnaire-6f9952e04332348a05357679b512dee5> ;
+        ontriscal:isItemOf <http://hadatac.org/ont/ontriscal#finalquestionnaire-faa7c2acc654955650664ffb0a4ff171> .
+
+    <http://hadatac.org/ont/ontriscal#inabilitytorelax_scorefinal-b74e90d2dbb8496f7c927252e53dbfa1>    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://hadatac.org/ont/ontriscal#inabilitytorelax_scorefinal> ;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    ontriscal:QuestionScore ;
+        <http://www.w3.org/2000/01/rdf-schema#label>    "inabilitytorelax_scorefinal"^^xsd:string ;
+        ontriscal:anwseredByQuestion ontriscal:InabilityRelax ;
+        ontriscal:anwseredByQuestion ontriscal:InabilityRelax .
+
+    <http://hadatac.org/ont/ontriscal#inabilitytorelax_scorefinal-8a45983fbc6a5de453312d291bf8420f>    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://hadatac.org/ont/ontriscal#inabilitytorelax_scorefinal> ;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    ontriscal:QuestionScore ;
+        <http://www.w3.org/2000/01/rdf-schema#label>    "inabilitytorelax_scorefinal"^^xsd:string ;
+        ontriscal:isItemOf <http://hadatac.org/ont/ontriscal#finalquestionnaire-8a45983fbc6a5de453312d291bf8420f> ;
+        ontriscal:isItemOf <http://hadatac.org/ont/ontriscal#finalquestionnaire-faa7c2acc654955650664ffb0a4ff171> .
+
+    <http://hadatac.org/ont/ontriscal#muscletension_scorefinal-0dc544766bbebf8b59130918aaee5c71>    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://hadatac.org/ont/ontriscal#muscletension_scorefinal> ;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    ontriscal:QuestionScore ;
+        <http://www.w3.org/2000/01/rdf-schema#label>    "muscletension_scorefinal"^^xsd:string ;
+        ontriscal:anwseredByQuestion ontriscal:MuscleTension ;
+        ontriscal:anwseredByQuestion ontriscal:MuscleTension .
+
+    <http://hadatac.org/ont/ontriscal#muscletension_scorefinal-d46833a260a6a1c684529f2ee518b4ab>    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://hadatac.org/ont/ontriscal#muscletension_scorefinal> ;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    ontriscal:QuestionScore ;
+        <http://www.w3.org/2000/01/rdf-schema#label>    "muscletension_scorefinal"^^xsd:string ;
+        ontriscal:isItemOf <http://hadatac.org/ont/ontriscal#finalquestionnaire-d46833a260a6a1c684529f2ee518b4ab> ;
+        ontriscal:isItemOf <http://hadatac.org/ont/ontriscal#finalquestionnaire-faa7c2acc654955650664ffb0a4ff171> .
+
+    <http://hadatac.org/ont/ontriscal#sweat_scorefinal-dcc549fb8941cbcb2493367d3e1acaad>    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://hadatac.org/ont/ontriscal#sweat_scorefinal> ;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    ontriscal:QuestionScore ;
+        <http://www.w3.org/2000/01/rdf-schema#label>    "sweat_scorefinal"^^xsd:string ;
+        ontriscal:anwseredByQuestion ontriscal:Sweat ;
+        ontriscal:anwseredByQuestion ontriscal:Sweat .
+
+    <http://hadatac.org/ont/ontriscal#sweat_scorefinal-70f47f249c6095d714872b04297138d2>    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://hadatac.org/ont/ontriscal#sweat_scorefinal> ;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    ontriscal:QuestionScore ;
+        <http://www.w3.org/2000/01/rdf-schema#label>    "sweat_scorefinal"^^xsd:string ;
+        ontriscal:isItemOf <http://hadatac.org/ont/ontriscal#finalquestionnaire-70f47f249c6095d714872b04297138d2> ;
+        ontriscal:isItemOf <http://hadatac.org/ont/ontriscal#finalquestionnaire-faa7c2acc654955650664ffb0a4ff171> .
+
+    <http://hadatac.org/ont/ontriscal#finalscore_final-936e286e7a260c326568b6d123dedb4c>    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://hadatac.org/ont/ontriscal#finalscore_final> ;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    ontriscal:FinalScore ;
+        <http://www.w3.org/2000/01/rdf-schema#label>    "finalscore_final"^^xsd:string ;
+        ontriscal:isItemOf <http://hadatac.org/ont/ontriscal#finalquestionnaire-936e286e7a260c326568b6d123dedb4c> ;
+        ontriscal:isItemOf <http://hadatac.org/ont/ontriscal#finalquestionnaire-faa7c2acc654955650664ffb0a4ff171> .
+
+    <http://hadatac.org/ont/ontriscal#risklevel_final-9cf996fb8a68379588920c7c211a7461>    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://hadatac.org/ont/ontriscal#risklevel_final> ;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    ontriscal:RiskLevel ;
+        <http://www.w3.org/2000/01/rdf-schema#label>    "risklevel_final"^^xsd:string ;
+        ontriscal:isItemOf <http://hadatac.org/ont/ontriscal#finalquestionnaire-9cf996fb8a68379588920c7c211a7461> ;
+        ontriscal:isItemOf <http://hadatac.org/ont/ontriscal#finalquestionnaire-faa7c2acc654955650664ffb0a4ff171> .
+
+}
+
+<http://hadatac.org/ont/ontriscal#provenance-8bb4b80981d1aced083a9de41547b051> {
+    <http://hadatac.org/ont/ontriscal#assertion-8bb4b80981d1aced083a9de41547b051>    <http://www.w3.org/ns/prov#generatedAtTime>    "2023-03-13T13:08:47Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#id_case-3dc761872e8c6d60c65d979dbda2b55b>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2023-03-13T13:08:45Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#initial_questionnarie-7521e2f2cebb30b5642df160db7bdeed>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2023-03-13T13:08:45Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#feeling_of_suffocation_and_difficulty_breathing-3b6859ff031e01ba945e52ccdcb97ae0>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2023-03-13T13:08:45Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#inability_to_relax-f575187534be093300e43f7394b5ef1d>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2023-03-13T13:08:45Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#muscle_tension-f575187534be093300e43f7394b5ef1d>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2023-03-13T13:08:45Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#sweat-f575187534be093300e43f7394b5ef1d>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2023-03-13T13:08:45Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#finalscore-d464548b17c8fb6334d43eb77a01227c>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2023-03-13T13:08:45Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#risklevel-fe2e97f5af1f97374a5f5f43fe7581ef>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2023-03-13T13:08:45Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#final_questionnarie-49582debeb63731716ccbf3aa0db2264>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2023-03-13T13:08:45Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#feeling_of_suffocation_and_difficulty_breathing_final-5f09e170679c2885dabe21aba15df846>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2023-03-13T13:08:45Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#inability_to_relax_final-300f5b60bb5fb3a11d39042ea25e7747>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2023-03-13T13:08:45Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#muscle_tension_final-300f5b60bb5fb3a11d39042ea25e7747>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2023-03-13T13:08:45Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#sweat_final-300f5b60bb5fb3a11d39042ea25e7747>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2023-03-13T13:08:45Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#finalscore_final-c4e95073ffd80d59362da8c0c831902f>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2023-03-13T13:08:45Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#risklevel_final-2bbafea08c8394c834dcc6132fad4228>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2023-03-13T13:08:45Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#patient-8fdbe7acf1b515ad783cd5316ab45067>    <http://www.w3.org/ns/prov#generatedAtTime>    "2023-03-13T13:08:45Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#patient-9edaeae6af0014a4756083af9efbe346>    <http://www.w3.org/ns/prov#generatedAtTime>    "2023-03-13T13:08:45Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#patient-dc1fc1a18dfce723569470c6005be96c>    <http://www.w3.org/ns/prov#generatedAtTime>    "2023-03-13T13:08:45Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#patient-c52e870da46391a44779fcf272fde712>    <http://www.w3.org/ns/prov#generatedAtTime>    "2023-03-13T13:08:45Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#patient-7f6a870a39c35e6b2d13ddea5ad91759>    <http://www.w3.org/ns/prov#generatedAtTime>    "2023-03-13T13:08:45Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#beginningquestionnaire-d6cc47895ca9b81bc9be4d41ee91ded0>    <http://www.w3.org/ns/prov#generatedAtTime>    "2023-03-13T13:08:45Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#feelingofsuffocationscore-793a5db502f585bddf0f02fb727f86c8>    <http://www.w3.org/ns/prov#generatedAtTime>    "2023-03-13T13:08:45Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#feelingofsuffocationscore-cd8f3186bc78ff300a61c06a125fef9b>    <http://www.w3.org/ns/prov#generatedAtTime>    "2023-03-13T13:08:45Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#inabilitytorelaxscore-011938206fa559a4a40eb7ac4aec720f>    <http://www.w3.org/ns/prov#generatedAtTime>    "2023-03-13T13:08:45Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#inabilitytorelaxscore-dd1bbf62ccceadcccb86a5f6ed62e749>    <http://www.w3.org/ns/prov#generatedAtTime>    "2023-03-13T13:08:45Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#muscletensionscore-cd46e88e0a8fb90b68943c902841d228>    <http://www.w3.org/ns/prov#generatedAtTime>    "2023-03-13T13:08:46Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#muscletensionscore-03cf95120d94528e77e8bc8d54ea3cf7>    <http://www.w3.org/ns/prov#generatedAtTime>    "2023-03-13T13:08:46Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#sweatscore-e4289d7f1f41fe95cb7d824300969fb5>    <http://www.w3.org/ns/prov#generatedAtTime>    "2023-03-13T13:08:46Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#sweatscore-0a8a8cb427290df8233c7aa73548f165>    <http://www.w3.org/ns/prov#generatedAtTime>    "2023-03-13T13:08:46Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#finalscore-30aba92cb844bdf57f854634cf5cce12>    <http://www.w3.org/ns/prov#generatedAtTime>    "2023-03-13T13:08:46Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#risklevel-57fa8b1b67357b4be3ba67dd0c50e1d5>    <http://www.w3.org/ns/prov#generatedAtTime>    "2023-03-13T13:08:46Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#finalquestionnaire-faa7c2acc654955650664ffb0a4ff171>    <http://www.w3.org/ns/prov#generatedAtTime>    "2023-03-13T13:08:46Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#feelingofsuffocation_scorefinal-f528dc17873f432efc4918fd7fb0c90a>    <http://www.w3.org/ns/prov#generatedAtTime>    "2023-03-13T13:08:46Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#feelingofsuffocation_scorefinal-6f9952e04332348a05357679b512dee5>    <http://www.w3.org/ns/prov#generatedAtTime>    "2023-03-13T13:08:46Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#inabilitytorelax_scorefinal-b74e90d2dbb8496f7c927252e53dbfa1>    <http://www.w3.org/ns/prov#generatedAtTime>    "2023-03-13T13:08:46Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#inabilitytorelax_scorefinal-8a45983fbc6a5de453312d291bf8420f>    <http://www.w3.org/ns/prov#generatedAtTime>    "2023-03-13T13:08:46Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#muscletension_scorefinal-0dc544766bbebf8b59130918aaee5c71>    <http://www.w3.org/ns/prov#generatedAtTime>    "2023-03-13T13:08:46Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#muscletension_scorefinal-d46833a260a6a1c684529f2ee518b4ab>    <http://www.w3.org/ns/prov#generatedAtTime>    "2023-03-13T13:08:46Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#sweat_scorefinal-dcc549fb8941cbcb2493367d3e1acaad>    <http://www.w3.org/ns/prov#generatedAtTime>    "2023-03-13T13:08:46Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#sweat_scorefinal-70f47f249c6095d714872b04297138d2>    <http://www.w3.org/ns/prov#generatedAtTime>    "2023-03-13T13:08:47Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#finalscore_final-936e286e7a260c326568b6d123dedb4c>    <http://www.w3.org/ns/prov#generatedAtTime>    "2023-03-13T13:08:47Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#risklevel_final-9cf996fb8a68379588920c7c211a7461>    <http://www.w3.org/ns/prov#generatedAtTime>    "2023-03-13T13:08:47Z"^^xsd:dateTime .
+
+}
+
+<http://hadatac.org/ont/ontriscal#pubInfo-8bb4b80981d1aced083a9de41547b051> {
+    <http://hadatac.org/ont/ontriscal#nanoPub-8bb4b80981d1aced083a9de41547b051>    <http://www.w3.org/ns/prov#generatedAtTime>    "2023-03-13T13:08:47Z"^^xsd:dateTime .
+
+}
+
+<http://hadatac.org/ont/ontriscal#head-b3bda72484a0beeec01d81bc90960688> {
+    <http://hadatac.org/ont/ontriscal#nanoPub-b3bda72484a0beeec01d81bc90960688>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://www.nanopub.org/nschema#Nanopublication> ;
+        <http://www.nanopub.org/nschema#hasAssertion>    <http://hadatac.org/ont/ontriscal#assertion-b3bda72484a0beeec01d81bc90960688> ;
+        <http://www.nanopub.org/nschema#hasProvenance>    <http://hadatac.org/ont/ontriscal#provenance-b3bda72484a0beeec01d81bc90960688> ;
+        <http://www.nanopub.org/nschema#hasPublicationInfo>    <http://hadatac.org/ont/ontriscal#pubInfo-b3bda72484a0beeec01d81bc90960688> .
+}
+
+<http://hadatac.org/ont/ontriscal#assertion-b3bda72484a0beeec01d81bc90960688> {
+    <http://hadatac.org/ont/ontriscal#id_case-061a3e082308d540356d371214f1c6f4>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://hadatac.org/ont/ontriscal#id_case> ;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    hasco:originalID ;
+        <http://semanticscience.org/resource/isAttributeOf>    <http://hadatac.org/ont/ontriscal#patient-58b45159d9e222fde8fc4a4caf5a4010> ;
+        <http://semanticscience.org/resource/hasUnit>    schema:Interger ;
+        <http://semanticscience.org/resource/hasValue>    "70"^^xsd:integer .
+
+    <http://hadatac.org/ont/ontriscal#initial_questionnarie-7521e2f2cebb30b5642df160db7bdeed>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://hadatac.org/ont/ontriscal#initial_questionnarie> ;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    ontriscal:FullName ;
+        <http://semanticscience.org/resource/isAttributeOf>    <http://hadatac.org/ont/ontriscal#beginningquestionnaire-84557e86dcdffd7a3867bb549b654b79> ;
+        <http://semanticscience.org/resource/hasValue>    "Start Treatment"^^xsd:string .
+
+    <http://hadatac.org/ont/ontriscal#feeling_of_suffocation_and_difficulty_breathing-e59698f2d1c432a1a04151a8d324dbeb>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://hadatac.org/ont/ontriscal#feeling_of_suffocation_and_difficulty_breathing> ;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    ontriscal:QuestionScore ;
+        <http://semanticscience.org/resource/isAttributeOf>    <http://hadatac.org/ont/ontriscal#feelingofsuffocationscore-f79daebc07a847adc6d44063bca39cb3> ;
+        <http://semanticscience.org/resource/hasValue>    "15"^^xsd:integer .
+
+    <http://hadatac.org/ont/ontriscal#inability_to_relax-f8ab07df02773fd1ec89566bb313f490>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://hadatac.org/ont/ontriscal#inability_to_relax> ;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    ontriscal:QuestionScore ;
+        <http://semanticscience.org/resource/isAttributeOf>    <http://hadatac.org/ont/ontriscal#inabilitytorelaxscore-f31fcef2cd6540cb59bddf712d25e27b> ;
+        <http://semanticscience.org/resource/hasValue>    "26"^^xsd:integer .
+
+    <http://hadatac.org/ont/ontriscal#muscle_tension-8e51eadd2dd5c871966ca9b6b9fec3cd>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://hadatac.org/ont/ontriscal#muscle_tension> ;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    ontriscal:QuestionScore ;
+        <http://semanticscience.org/resource/isAttributeOf>    <http://hadatac.org/ont/ontriscal#muscletensionscore-105f963afb2b4481a91b9546cd36286a> ;
+        <http://semanticscience.org/resource/hasValue>    "25"^^xsd:integer .
+
+    <http://hadatac.org/ont/ontriscal#sweat-60e12237d7cd4ff67baf5bc141135050>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://hadatac.org/ont/ontriscal#sweat> ;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    ontriscal:QuestionScore ;
+        <http://semanticscience.org/resource/isAttributeOf>    <http://hadatac.org/ont/ontriscal#sweatscore-e654f645c3d1569557326384fd8fa874> ;
+        <http://semanticscience.org/resource/hasValue>    "32"^^xsd:integer .
+
+    <http://hadatac.org/ont/ontriscal#finalscore-ac5b704f5156fa3f5f2c69dddb006303>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://hadatac.org/ont/ontriscal#finalscore> ;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    ontriscal:FinalScore ;
+        <http://semanticscience.org/resource/isAttributeOf>    <http://hadatac.org/ont/ontriscal#finalscore-918be3b2620811a5a2f4bbabff5d76ec> ;
+        <http://semanticscience.org/resource/hasValue>    "98"^^xsd:integer .
+
+    <http://hadatac.org/ont/ontriscal#risklevel-1eff3edce34d2651e5deabf58791ca9e>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://hadatac.org/ont/ontriscal#risklevel> ;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    ontriscal:RiskLevel ;
+        <http://semanticscience.org/resource/isAttributeOf>    <http://hadatac.org/ont/ontriscal#risklevel-dc551b01f10c6f405df24423e3d98f3b> ;
+        <http://semanticscience.org/resource/hasValue>    "High"^^xsd:string .
+
+    <http://hadatac.org/ont/ontriscal#final_questionnarie-49582debeb63731716ccbf3aa0db2264>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://hadatac.org/ont/ontriscal#final_questionnarie> ;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    ontriscal:FullName ;
+        <http://semanticscience.org/resource/isAttributeOf>    <http://hadatac.org/ont/ontriscal#finalquestionnaire-ff5ae78e325e769cc73419c24046181d> ;
+        <http://semanticscience.org/resource/hasValue>    "Final of Treatment"^^xsd:string .
+
+    <http://hadatac.org/ont/ontriscal#feeling_of_suffocation_and_difficulty_breathing_final-6380dd8b484267d000c5bb406e3211c7>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://hadatac.org/ont/ontriscal#feeling_of_suffocation_and_difficulty_breathing_final> ;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    ontriscal:QuestionScore ;
+        <http://semanticscience.org/resource/isAttributeOf>    <http://hadatac.org/ont/ontriscal#feelingofsuffocation_scorefinal-b4626501f4deeccdd332e2fad25da33d> ;
+        <http://semanticscience.org/resource/hasValue>    "9"^^xsd:integer .
+
+    <http://hadatac.org/ont/ontriscal#inability_to_relax_final-c2c3014b9b6f9d2e84572d64cb96aea7>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://hadatac.org/ont/ontriscal#inability_to_relax_final> ;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    ontriscal:QuestionScore ;
+        <http://semanticscience.org/resource/isAttributeOf>    <http://hadatac.org/ont/ontriscal#inabilitytorelax_scorefinal-70e26b4984f28cc8e6f03a37138a7770> ;
+        <http://semanticscience.org/resource/hasValue>    "12"^^xsd:integer .
+
+    <http://hadatac.org/ont/ontriscal#muscle_tension_final-3b6859ff031e01ba945e52ccdcb97ae0>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://hadatac.org/ont/ontriscal#muscle_tension_final> ;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    ontriscal:QuestionScore ;
+        <http://semanticscience.org/resource/isAttributeOf>    <http://hadatac.org/ont/ontriscal#muscletension_scorefinal-3400c89a15d04778ce4d8438fa5b9c01> ;
+        <http://semanticscience.org/resource/hasValue>    "7"^^xsd:integer .
+
+    <http://hadatac.org/ont/ontriscal#sweat_final-f575187534be093300e43f7394b5ef1d>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://hadatac.org/ont/ontriscal#sweat_final> ;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    ontriscal:QuestionScore ;
+        <http://semanticscience.org/resource/isAttributeOf>    <http://hadatac.org/ont/ontriscal#sweat_scorefinal-3abede8d1c19a0523dbf76ef6b3f88dc> ;
+        <http://semanticscience.org/resource/hasValue>    "6"^^xsd:integer .
+
+    <http://hadatac.org/ont/ontriscal#finalscore_final-7a87470e56b2101e67ffe8d3ba6a1bb2>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://hadatac.org/ont/ontriscal#finalscore_final> ;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    ontriscal:FinalScore ;
+        <http://semanticscience.org/resource/isAttributeOf>    <http://hadatac.org/ont/ontriscal#finalscore_final-78fafdbb28e0b5791fdd5d81f580a11c> ;
+        <http://semanticscience.org/resource/hasValue>    "34"^^xsd:integer .
+
+    <http://hadatac.org/ont/ontriscal#risklevel_final-fe2e97f5af1f97374a5f5f43fe7581ef>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://hadatac.org/ont/ontriscal#risklevel_final> ;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    ontriscal:RiskLevel ;
+        <http://semanticscience.org/resource/isAttributeOf>    <http://hadatac.org/ont/ontriscal#risklevel_final-92cbd858312fece716a1bc4efc7d3ef1> ;
+        <http://semanticscience.org/resource/hasValue>    "Medium"^^xsd:string .
+
+    <http://hadatac.org/ont/ontriscal#patient-2305c3a0416b2840f8f948234873f85d>    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://hadatac.org/ont/ontriscal#patient> ;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    hasco:originalID ;
+        <http://www.w3.org/2000/01/rdf-schema#label>    "patient"^^xsd:string ;
+        rdf:type sio:Human ;
+        rdf:type sio:Human .
+
+    <http://hadatac.org/ont/ontriscal#patient-634f20ae35609bd8ee66a73392281fb7>    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://hadatac.org/ont/ontriscal#patient> ;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    hasco:originalID ;
+        <http://www.w3.org/2000/01/rdf-schema#label>    "patient"^^xsd:string ;
+        ontriscal:patientAnswers <http://hadatac.org/ont/ontriscal#beginningquestionnaire-634f20ae35609bd8ee66a73392281fb7> ;
+        ontriscal:patientAnswers <http://hadatac.org/ont/ontriscal#beginningquestionnaire-84557e86dcdffd7a3867bb549b654b79> .
+
+    <http://hadatac.org/ont/ontriscal#patient-c0122f4a68b450a4ee8e460dd95bba5e>    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://hadatac.org/ont/ontriscal#patient> ;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    hasco:originalID ;
+        <http://www.w3.org/2000/01/rdf-schema#label>    "patient"^^xsd:string ;
+        ontriscal:patientRecevies <http://hadatac.org/ont/ontriscal#risklevel-c0122f4a68b450a4ee8e460dd95bba5e> ;
+        ontriscal:patientRecevies <http://hadatac.org/ont/ontriscal#risklevel-dc551b01f10c6f405df24423e3d98f3b> .
+
+    <http://hadatac.org/ont/ontriscal#patient-3b7297699c87eb22ac003ff8fe191259>    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://hadatac.org/ont/ontriscal#patient> ;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    hasco:originalID ;
+        <http://www.w3.org/2000/01/rdf-schema#label>    "patient"^^xsd:string ;
+        ontriscal:patientAnswers <http://hadatac.org/ont/ontriscal#finalquestionnaire-3b7297699c87eb22ac003ff8fe191259> ;
+        ontriscal:patientAnswers <http://hadatac.org/ont/ontriscal#finalquestionnaire-ff5ae78e325e769cc73419c24046181d> .
+
+    <http://hadatac.org/ont/ontriscal#patient-58b45159d9e222fde8fc4a4caf5a4010>    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://hadatac.org/ont/ontriscal#patient> ;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    hasco:originalID ;
+        <http://www.w3.org/2000/01/rdf-schema#label>    "patient"^^xsd:string ;
+        ontriscal:patientRecevies <http://hadatac.org/ont/ontriscal#risklevel_final-58b45159d9e222fde8fc4a4caf5a4010> ;
+        ontriscal:patientRecevies <http://hadatac.org/ont/ontriscal#risklevel_final-92cbd858312fece716a1bc4efc7d3ef1> .
+
+    <http://hadatac.org/ont/ontriscal#beginningquestionnaire-84557e86dcdffd7a3867bb549b654b79>    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://hadatac.org/ont/ontriscal#beginningquestionnaire> ;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    ontriscal:FullName ;
+        <http://www.w3.org/2000/01/rdf-schema#label>    "beginningquestionnaire"^^xsd:string ;
+        ontriscal:isNameOf ontriscal:Instrument ;
+        ontriscal:isNameOf ontriscal:Instrument .
+
+    <http://hadatac.org/ont/ontriscal#feelingofsuffocationscore-4e1d163c28b0a0a1b7c969b125ef5bff>    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://hadatac.org/ont/ontriscal#feelingofsuffocationscore> ;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    ontriscal:QuestionScore ;
+        <http://www.w3.org/2000/01/rdf-schema#label>    "feelingofsuffocationscore"^^xsd:string ;
+        ontriscal:anwseredByQuestion ontriscal:FeelingOfSuffocationAndDifficultyBreathing ;
+        ontriscal:anwseredByQuestion ontriscal:FeelingOfSuffocationAndDifficultyBreathing .
+
+    <http://hadatac.org/ont/ontriscal#feelingofsuffocationscore-f79daebc07a847adc6d44063bca39cb3>    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://hadatac.org/ont/ontriscal#feelingofsuffocationscore> ;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    ontriscal:QuestionScore ;
+        <http://www.w3.org/2000/01/rdf-schema#label>    "feelingofsuffocationscore"^^xsd:string ;
+        ontriscal:isItemOf <http://hadatac.org/ont/ontriscal#beginningquestionnaire-f79daebc07a847adc6d44063bca39cb3> ;
+        ontriscal:isItemOf <http://hadatac.org/ont/ontriscal#beginningquestionnaire-84557e86dcdffd7a3867bb549b654b79> .
+
+    <http://hadatac.org/ont/ontriscal#inabilitytorelaxscore-aa0b4a2ad7aaad8f3eedda7695624e20>    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://hadatac.org/ont/ontriscal#inabilitytorelaxscore> ;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    ontriscal:QuestionScore ;
+        <http://www.w3.org/2000/01/rdf-schema#label>    "inabilitytorelaxscore"^^xsd:string ;
+        ontriscal:anwseredByQuestion ontriscal:InabilityRelax ;
+        ontriscal:anwseredByQuestion ontriscal:InabilityRelax .
+
+    <http://hadatac.org/ont/ontriscal#inabilitytorelaxscore-f31fcef2cd6540cb59bddf712d25e27b>    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://hadatac.org/ont/ontriscal#inabilitytorelaxscore> ;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    ontriscal:QuestionScore ;
+        <http://www.w3.org/2000/01/rdf-schema#label>    "inabilitytorelaxscore"^^xsd:string ;
+        ontriscal:isItemOf <http://hadatac.org/ont/ontriscal#beginningquestionnaire-f31fcef2cd6540cb59bddf712d25e27b> ;
+        ontriscal:isItemOf <http://hadatac.org/ont/ontriscal#beginningquestionnaire-84557e86dcdffd7a3867bb549b654b79> .
+
+    <http://hadatac.org/ont/ontriscal#muscletensionscore-31e324973b14f439b9a228d44f09a2a9>    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://hadatac.org/ont/ontriscal#muscletensionscore> ;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    ontriscal:QuestionScore ;
+        <http://www.w3.org/2000/01/rdf-schema#label>    "muscletensionscore"^^xsd:string ;
+        ontriscal:anwseredByQuestion ontriscal:MuscleTension ;
+        ontriscal:anwseredByQuestion ontriscal:MuscleTension .
+
+    <http://hadatac.org/ont/ontriscal#muscletensionscore-105f963afb2b4481a91b9546cd36286a>    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://hadatac.org/ont/ontriscal#muscletensionscore> ;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    ontriscal:QuestionScore ;
+        <http://www.w3.org/2000/01/rdf-schema#label>    "muscletensionscore"^^xsd:string ;
+        ontriscal:isItemOf <http://hadatac.org/ont/ontriscal#beginningquestionnaire-105f963afb2b4481a91b9546cd36286a> ;
+        ontriscal:isItemOf <http://hadatac.org/ont/ontriscal#beginningquestionnaire-84557e86dcdffd7a3867bb549b654b79> .
+
+    <http://hadatac.org/ont/ontriscal#sweatscore-180226920f619870dffc10334e5d96e7>    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://hadatac.org/ont/ontriscal#sweatscore> ;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    ontriscal:QuestionScore ;
+        <http://www.w3.org/2000/01/rdf-schema#label>    "sweatscore"^^xsd:string ;
+        ontriscal:anwseredByQuestion ontriscal:Sweat ;
+        ontriscal:anwseredByQuestion ontriscal:Sweat .
+
+    <http://hadatac.org/ont/ontriscal#sweatscore-e654f645c3d1569557326384fd8fa874>    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://hadatac.org/ont/ontriscal#sweatscore> ;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    ontriscal:QuestionScore ;
+        <http://www.w3.org/2000/01/rdf-schema#label>    "sweatscore"^^xsd:string ;
+        ontriscal:isItemOf <http://hadatac.org/ont/ontriscal#beginningquestionnaire-e654f645c3d1569557326384fd8fa874> ;
+        ontriscal:isItemOf <http://hadatac.org/ont/ontriscal#beginningquestionnaire-84557e86dcdffd7a3867bb549b654b79> .
+
+    <http://hadatac.org/ont/ontriscal#finalscore-918be3b2620811a5a2f4bbabff5d76ec>    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://hadatac.org/ont/ontriscal#finalscore> ;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    ontriscal:FinalScore ;
+        <http://www.w3.org/2000/01/rdf-schema#label>    "finalscore"^^xsd:string ;
+        ontriscal:isItemOf <http://hadatac.org/ont/ontriscal#beginningquestionnaire-918be3b2620811a5a2f4bbabff5d76ec> ;
+        ontriscal:isItemOf <http://hadatac.org/ont/ontriscal#beginningquestionnaire-84557e86dcdffd7a3867bb549b654b79> .
+
+    <http://hadatac.org/ont/ontriscal#risklevel-dc551b01f10c6f405df24423e3d98f3b>    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://hadatac.org/ont/ontriscal#risklevel> ;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    ontriscal:RiskLevel ;
+        <http://www.w3.org/2000/01/rdf-schema#label>    "risklevel"^^xsd:string ;
+        ontriscal:isItemOf <http://hadatac.org/ont/ontriscal#beginningquestionnaire-dc551b01f10c6f405df24423e3d98f3b> ;
+        ontriscal:isItemOf <http://hadatac.org/ont/ontriscal#beginningquestionnaire-84557e86dcdffd7a3867bb549b654b79> .
+
+    <http://hadatac.org/ont/ontriscal#finalquestionnaire-ff5ae78e325e769cc73419c24046181d>    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://hadatac.org/ont/ontriscal#finalquestionnaire> ;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    ontriscal:FullName ;
+        <http://www.w3.org/2000/01/rdf-schema#label>    "finalquestionnaire"^^xsd:string ;
+        ontriscal:isNameOf ontriscal:Instrument ;
+        ontriscal:isNameOf ontriscal:Instrument .
+
+    <http://hadatac.org/ont/ontriscal#feelingofsuffocation_scorefinal-fc47b5f3e5730ec8bd0f5cbc7f2daac7>    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://hadatac.org/ont/ontriscal#feelingofsuffocation_scorefinal> ;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    ontriscal:QuestionScore ;
+        <http://www.w3.org/2000/01/rdf-schema#label>    "feelingofsuffocation_scorefinal"^^xsd:string ;
+        ontriscal:anwseredByQuestion ontriscal:FeelingOfSuffocationAndDifficultyBreathing ;
+        ontriscal:anwseredByQuestion ontriscal:FeelingOfSuffocationAndDifficultyBreathing .
+
+    <http://hadatac.org/ont/ontriscal#feelingofsuffocation_scorefinal-b4626501f4deeccdd332e2fad25da33d>    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://hadatac.org/ont/ontriscal#feelingofsuffocation_scorefinal> ;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    ontriscal:QuestionScore ;
+        <http://www.w3.org/2000/01/rdf-schema#label>    "feelingofsuffocation_scorefinal"^^xsd:string ;
+        ontriscal:isItemOf <http://hadatac.org/ont/ontriscal#finalquestionnaire-b4626501f4deeccdd332e2fad25da33d> ;
+        ontriscal:isItemOf <http://hadatac.org/ont/ontriscal#finalquestionnaire-ff5ae78e325e769cc73419c24046181d> .
+
+    <http://hadatac.org/ont/ontriscal#inabilitytorelax_scorefinal-ac1da53d9590891948ea6ab4a3b28f06>    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://hadatac.org/ont/ontriscal#inabilitytorelax_scorefinal> ;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    ontriscal:QuestionScore ;
+        <http://www.w3.org/2000/01/rdf-schema#label>    "inabilitytorelax_scorefinal"^^xsd:string ;
+        ontriscal:anwseredByQuestion ontriscal:InabilityRelax ;
+        ontriscal:anwseredByQuestion ontriscal:InabilityRelax .
+
+    <http://hadatac.org/ont/ontriscal#inabilitytorelax_scorefinal-70e26b4984f28cc8e6f03a37138a7770>    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://hadatac.org/ont/ontriscal#inabilitytorelax_scorefinal> ;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    ontriscal:QuestionScore ;
+        <http://www.w3.org/2000/01/rdf-schema#label>    "inabilitytorelax_scorefinal"^^xsd:string ;
+        ontriscal:isItemOf <http://hadatac.org/ont/ontriscal#finalquestionnaire-70e26b4984f28cc8e6f03a37138a7770> ;
+        ontriscal:isItemOf <http://hadatac.org/ont/ontriscal#finalquestionnaire-ff5ae78e325e769cc73419c24046181d> .
+
+    <http://hadatac.org/ont/ontriscal#muscletension_scorefinal-1ad1325a7c479114ed525a3b41b2b12c>    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://hadatac.org/ont/ontriscal#muscletension_scorefinal> ;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    ontriscal:QuestionScore ;
+        <http://www.w3.org/2000/01/rdf-schema#label>    "muscletension_scorefinal"^^xsd:string ;
+        ontriscal:anwseredByQuestion ontriscal:MuscleTension ;
+        ontriscal:anwseredByQuestion ontriscal:MuscleTension .
+
+    <http://hadatac.org/ont/ontriscal#muscletension_scorefinal-3400c89a15d04778ce4d8438fa5b9c01>    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://hadatac.org/ont/ontriscal#muscletension_scorefinal> ;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    ontriscal:QuestionScore ;
+        <http://www.w3.org/2000/01/rdf-schema#label>    "muscletension_scorefinal"^^xsd:string ;
+        ontriscal:isItemOf <http://hadatac.org/ont/ontriscal#finalquestionnaire-3400c89a15d04778ce4d8438fa5b9c01> ;
+        ontriscal:isItemOf <http://hadatac.org/ont/ontriscal#finalquestionnaire-ff5ae78e325e769cc73419c24046181d> .
+
+    <http://hadatac.org/ont/ontriscal#sweat_scorefinal-515b141249e240286b767f73695880bb>    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://hadatac.org/ont/ontriscal#sweat_scorefinal> ;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    ontriscal:QuestionScore ;
+        <http://www.w3.org/2000/01/rdf-schema#label>    "sweat_scorefinal"^^xsd:string ;
+        ontriscal:anwseredByQuestion ontriscal:Sweat ;
+        ontriscal:anwseredByQuestion ontriscal:Sweat .
+
+    <http://hadatac.org/ont/ontriscal#sweat_scorefinal-3abede8d1c19a0523dbf76ef6b3f88dc>    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://hadatac.org/ont/ontriscal#sweat_scorefinal> ;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    ontriscal:QuestionScore ;
+        <http://www.w3.org/2000/01/rdf-schema#label>    "sweat_scorefinal"^^xsd:string ;
+        ontriscal:isItemOf <http://hadatac.org/ont/ontriscal#finalquestionnaire-3abede8d1c19a0523dbf76ef6b3f88dc> ;
+        ontriscal:isItemOf <http://hadatac.org/ont/ontriscal#finalquestionnaire-ff5ae78e325e769cc73419c24046181d> .
+
+    <http://hadatac.org/ont/ontriscal#finalscore_final-78fafdbb28e0b5791fdd5d81f580a11c>    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://hadatac.org/ont/ontriscal#finalscore_final> ;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    ontriscal:FinalScore ;
+        <http://www.w3.org/2000/01/rdf-schema#label>    "finalscore_final"^^xsd:string ;
+        ontriscal:isItemOf <http://hadatac.org/ont/ontriscal#finalquestionnaire-78fafdbb28e0b5791fdd5d81f580a11c> ;
+        ontriscal:isItemOf <http://hadatac.org/ont/ontriscal#finalquestionnaire-ff5ae78e325e769cc73419c24046181d> .
+
+    <http://hadatac.org/ont/ontriscal#risklevel_final-92cbd858312fece716a1bc4efc7d3ef1>    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://hadatac.org/ont/ontriscal#risklevel_final> ;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    ontriscal:RiskLevel ;
+        <http://www.w3.org/2000/01/rdf-schema#label>    "risklevel_final"^^xsd:string ;
+        ontriscal:isItemOf <http://hadatac.org/ont/ontriscal#finalquestionnaire-92cbd858312fece716a1bc4efc7d3ef1> ;
+        ontriscal:isItemOf <http://hadatac.org/ont/ontriscal#finalquestionnaire-ff5ae78e325e769cc73419c24046181d> .
+
+}
+
+<http://hadatac.org/ont/ontriscal#provenance-b3bda72484a0beeec01d81bc90960688> {
+    <http://hadatac.org/ont/ontriscal#assertion-b3bda72484a0beeec01d81bc90960688>    <http://www.w3.org/ns/prov#generatedAtTime>    "2023-03-13T13:08:50Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#id_case-061a3e082308d540356d371214f1c6f4>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2023-03-13T13:08:47Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#initial_questionnarie-7521e2f2cebb30b5642df160db7bdeed>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2023-03-13T13:08:47Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#feeling_of_suffocation_and_difficulty_breathing-e59698f2d1c432a1a04151a8d324dbeb>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2023-03-13T13:08:47Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#inability_to_relax-f8ab07df02773fd1ec89566bb313f490>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2023-03-13T13:08:47Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#muscle_tension-8e51eadd2dd5c871966ca9b6b9fec3cd>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2023-03-13T13:08:47Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#sweat-60e12237d7cd4ff67baf5bc141135050>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2023-03-13T13:08:47Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#finalscore-ac5b704f5156fa3f5f2c69dddb006303>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2023-03-13T13:08:47Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#risklevel-1eff3edce34d2651e5deabf58791ca9e>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2023-03-13T13:08:47Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#final_questionnarie-49582debeb63731716ccbf3aa0db2264>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2023-03-13T13:08:47Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#feeling_of_suffocation_and_difficulty_breathing_final-6380dd8b484267d000c5bb406e3211c7>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2023-03-13T13:08:47Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#inability_to_relax_final-c2c3014b9b6f9d2e84572d64cb96aea7>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2023-03-13T13:08:47Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#muscle_tension_final-3b6859ff031e01ba945e52ccdcb97ae0>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2023-03-13T13:08:47Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#sweat_final-f575187534be093300e43f7394b5ef1d>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2023-03-13T13:08:48Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#finalscore_final-7a87470e56b2101e67ffe8d3ba6a1bb2>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2023-03-13T13:08:48Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#risklevel_final-fe2e97f5af1f97374a5f5f43fe7581ef>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2023-03-13T13:08:48Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#patient-2305c3a0416b2840f8f948234873f85d>    <http://www.w3.org/ns/prov#generatedAtTime>    "2023-03-13T13:08:48Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#patient-634f20ae35609bd8ee66a73392281fb7>    <http://www.w3.org/ns/prov#generatedAtTime>    "2023-03-13T13:08:48Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#patient-c0122f4a68b450a4ee8e460dd95bba5e>    <http://www.w3.org/ns/prov#generatedAtTime>    "2023-03-13T13:08:48Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#patient-3b7297699c87eb22ac003ff8fe191259>    <http://www.w3.org/ns/prov#generatedAtTime>    "2023-03-13T13:08:48Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#patient-58b45159d9e222fde8fc4a4caf5a4010>    <http://www.w3.org/ns/prov#generatedAtTime>    "2023-03-13T13:08:48Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#beginningquestionnaire-84557e86dcdffd7a3867bb549b654b79>    <http://www.w3.org/ns/prov#generatedAtTime>    "2023-03-13T13:08:48Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#feelingofsuffocationscore-4e1d163c28b0a0a1b7c969b125ef5bff>    <http://www.w3.org/ns/prov#generatedAtTime>    "2023-03-13T13:08:48Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#feelingofsuffocationscore-f79daebc07a847adc6d44063bca39cb3>    <http://www.w3.org/ns/prov#generatedAtTime>    "2023-03-13T13:08:48Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#inabilitytorelaxscore-aa0b4a2ad7aaad8f3eedda7695624e20>    <http://www.w3.org/ns/prov#generatedAtTime>    "2023-03-13T13:08:48Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#inabilitytorelaxscore-f31fcef2cd6540cb59bddf712d25e27b>    <http://www.w3.org/ns/prov#generatedAtTime>    "2023-03-13T13:08:48Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#muscletensionscore-31e324973b14f439b9a228d44f09a2a9>    <http://www.w3.org/ns/prov#generatedAtTime>    "2023-03-13T13:08:48Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#muscletensionscore-105f963afb2b4481a91b9546cd36286a>    <http://www.w3.org/ns/prov#generatedAtTime>    "2023-03-13T13:08:48Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#sweatscore-180226920f619870dffc10334e5d96e7>    <http://www.w3.org/ns/prov#generatedAtTime>    "2023-03-13T13:08:49Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#sweatscore-e654f645c3d1569557326384fd8fa874>    <http://www.w3.org/ns/prov#generatedAtTime>    "2023-03-13T13:08:49Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#finalscore-918be3b2620811a5a2f4bbabff5d76ec>    <http://www.w3.org/ns/prov#generatedAtTime>    "2023-03-13T13:08:49Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#risklevel-dc551b01f10c6f405df24423e3d98f3b>    <http://www.w3.org/ns/prov#generatedAtTime>    "2023-03-13T13:08:49Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#finalquestionnaire-ff5ae78e325e769cc73419c24046181d>    <http://www.w3.org/ns/prov#generatedAtTime>    "2023-03-13T13:08:49Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#feelingofsuffocation_scorefinal-fc47b5f3e5730ec8bd0f5cbc7f2daac7>    <http://www.w3.org/ns/prov#generatedAtTime>    "2023-03-13T13:08:49Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#feelingofsuffocation_scorefinal-b4626501f4deeccdd332e2fad25da33d>    <http://www.w3.org/ns/prov#generatedAtTime>    "2023-03-13T13:08:49Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#inabilitytorelax_scorefinal-ac1da53d9590891948ea6ab4a3b28f06>    <http://www.w3.org/ns/prov#generatedAtTime>    "2023-03-13T13:08:49Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#inabilitytorelax_scorefinal-70e26b4984f28cc8e6f03a37138a7770>    <http://www.w3.org/ns/prov#generatedAtTime>    "2023-03-13T13:08:49Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#muscletension_scorefinal-1ad1325a7c479114ed525a3b41b2b12c>    <http://www.w3.org/ns/prov#generatedAtTime>    "2023-03-13T13:08:49Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#muscletension_scorefinal-3400c89a15d04778ce4d8438fa5b9c01>    <http://www.w3.org/ns/prov#generatedAtTime>    "2023-03-13T13:08:49Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#sweat_scorefinal-515b141249e240286b767f73695880bb>    <http://www.w3.org/ns/prov#generatedAtTime>    "2023-03-13T13:08:49Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#sweat_scorefinal-3abede8d1c19a0523dbf76ef6b3f88dc>    <http://www.w3.org/ns/prov#generatedAtTime>    "2023-03-13T13:08:49Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#finalscore_final-78fafdbb28e0b5791fdd5d81f580a11c>    <http://www.w3.org/ns/prov#generatedAtTime>    "2023-03-13T13:08:49Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#risklevel_final-92cbd858312fece716a1bc4efc7d3ef1>    <http://www.w3.org/ns/prov#generatedAtTime>    "2023-03-13T13:08:50Z"^^xsd:dateTime .
+
+}
+
+<http://hadatac.org/ont/ontriscal#pubInfo-b3bda72484a0beeec01d81bc90960688> {
+    <http://hadatac.org/ont/ontriscal#nanoPub-b3bda72484a0beeec01d81bc90960688>    <http://www.w3.org/ns/prov#generatedAtTime>    "2023-03-13T13:08:50Z"^^xsd:dateTime .
+
+}
+

@@ -1,0 +1,113 @@
+prefix np: <http://www.nanopub.org/nschema#> 
+prefix owl: <http://www.w3.org/2002/07/owl#> 
+prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
+prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> 
+prefix prov: <http://www.w3.org/ns/prov#> 
+prefix xsd: <http://www.w3.org/2001/XMLSchema#> 
+prefix uo: <http://purl.obolibrary.org/obo/UO_> 
+prefix sio: <http://semanticscience.org/resource/> 
+prefix stato: <http://purl.obolibrary.org/obo/STATO_> 
+prefix example-kb: <http://example.com/kb/example#> 
+prefix chear: <http://hadatac.org/ont/chear#> 
+prefix hasco: <http://hadatac.org/ont/hasco#> 
+prefix obo: <http://purl.obolibrary.org/obo/> 
+prefix skos: <http://www.w3.org/2008/05/skos#> 
+prefix ontriscal: <http://hadatac.org/ont/ontriscal#> 
+prefix refiqda: <http://hadatac.org/ont/refiqda#> 
+prefix qualico: <http://hadatac.org/ont/qualico#> 
+prefix schema: <http://www.w3.org/2000/01/schema#> 
+
+SELECT DISTINCT ?id_case ?initial_questionnarie ?warm_sensation ?leg_shaking ?inability_to_relax ?fear_of_the_worst_happening ?dizziness ?accelerated_heart ?balance_disorder ?tremor ?nervous ?feeling_of_suffocation ?hand_tremor ?difficulty_breathing ?fear_to_die ?get_scared ?feeling_faint ?flushed_face ?sweat ?initial_score_bai_scale ?risk_level WHERE {
+  ?id_case_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> hasco:originalID  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?case_V  ;
+    <http://semanticscience.org/resource/hasUnit>    schema:Interger ;
+    <http://semanticscience.org/resource/hasValue> ?id_case .
+
+  ?initial_questionnarie_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:FullName  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?beginningquestionnaire_V  ;
+    <http://semanticscience.org/resource/hasValue> ?initial_questionnarie .
+
+  ?warm_sensation_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:WarmSensation  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?beginningquestionnaire_V  ;
+    <http://semanticscience.org/resource/hasValue> ?warm_sensation .
+
+  ?leg_shaking_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:LegShaking  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?beginningquestionnaire_V  ;
+    <http://semanticscience.org/resource/hasValue> ?leg_shaking .
+
+  ?inability_to_relax_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:InabilityToRelax  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?beginningquestionnaire_V  ;
+    <http://semanticscience.org/resource/hasValue> ?inability_to_relax .
+
+  ?fear_of_the_worst_happening_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:FearOfTheWorstHappening  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?beginningquestionnaire_V  ;
+    <http://semanticscience.org/resource/hasValue> ?fear_of_the_worst_happening .
+
+  ?dizziness_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:Dizziness  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?beginningquestionnaire_V  ;
+    <http://semanticscience.org/resource/hasValue> ?dizziness .
+
+  ?accelerated_heart_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:AcceleratedHeart  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?beginningquestionnaire_V  ;
+    <http://semanticscience.org/resource/hasValue> ?accelerated_heart .
+
+  ?balance_disorder_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:BalanceDisorder  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?beginningquestionnaire_V  ;
+    <http://semanticscience.org/resource/hasValue> ?balance_disorder .
+
+  ?tremor_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:Tremor  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?beginningquestionnaire_V  ;
+    <http://semanticscience.org/resource/hasValue> ?tremor .
+
+  ?nervous_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:Nervous  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?beginningquestionnaire_V  ;
+    <http://semanticscience.org/resource/hasValue> ?nervous .
+
+  ?feeling_of_suffocation_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:FeelingOfSuffocation  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?beginningquestionnaire_V  ;
+    <http://semanticscience.org/resource/hasValue> ?feeling_of_suffocation .
+
+  ?hand_tremor_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:HandTremor  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?beginningquestionnaire_V  ;
+    <http://semanticscience.org/resource/hasValue> ?hand_tremor .
+
+  ?difficulty_breathing_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:DifficultyBreathing  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?beginningquestionnaire_V  ;
+    <http://semanticscience.org/resource/hasValue> ?difficulty_breathing .
+
+  ?fear_to_die_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:FearToDie  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?beginningquestionnaire_V  ;
+    <http://semanticscience.org/resource/hasValue> ?fear_to_die .
+
+  ?get_scared_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:GetScared  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?beginningquestionnaire_V  ;
+    <http://semanticscience.org/resource/hasValue> ?get_scared .
+
+  ?feeling_faint_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:FeelingFaint  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?beginningquestionnaire_V  ;
+    <http://semanticscience.org/resource/hasValue> ?feeling_faint .
+
+  ?flushed_face_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:FlushedFace  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?beginningquestionnaire_V  ;
+    <http://semanticscience.org/resource/hasValue> ?flushed_face .
+
+  ?sweat_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:Sweat  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?beginningquestionnaire_V  ;
+    <http://semanticscience.org/resource/hasValue> ?sweat .
+
+  ?initial_score_bai_scale_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:Score  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?beginningquestionnaire_V  ;
+    <http://semanticscience.org/resource/hasValue> ?initial_score_bai_scale .
+
+  ?risk_level_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:RiskLevel  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?beginningquestionnaire_V  ;
+    <http://semanticscience.org/resource/hasValue> ?risk_level .
+
+
+  ?case_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> sio:Human  ;
+    ontriscal:patientAnswersQuestionnaire ?beginningquestionnaire_V .
+
+  ?beginningquestionnaire_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:Questionnarie  ;
+    ontriscal:questionnaireAnsweredBy ?case_V .
+
+}

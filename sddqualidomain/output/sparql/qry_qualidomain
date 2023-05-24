@@ -17,7 +17,7 @@ prefix refiqda: <http://hadatac.org/ont/refiqda#>
 prefix qualico: <http://hadatac.org/ont/qualico#> 
 prefix schema: <http://www.w3.org/2000/01/schema#> 
 
-SELECT DISTINCT ?id_case ?document ?source ?id_user ?user ?id_project ?project ?contextualaspect ?behavioraspects ?corebelief ?authomaticthinking ?emotion ?assumption ?compensatorystrategy ?symptomofanxiety ?finalassessement ?techiniqueofintervention WHERE {
+SELECT DISTINCT ?id_case ?document ?source ?id_user ?user ?id_project ?project ?fear ?fearoflosingcontrol ?fearofnegativeevaluationbyothers ?frustration ?generalization ?maximizationofthenegative ?minimizationofthepositive ?objectphobic ?perfectionism ?predictionofthefuture ?ruminantthoughts ?selfawareness ?suppositions ?catastrophizing ?cognitiveaspect ?cognitivedistortion ?cognitiverestructuring ?cognitivesymptoms ?devaluation ?difficultyofreasoning ?avoidanceofthreateningsignsorsituations ?behavioraspects ?behaviorsymptoms ?contextualaspect ?manifestcomplaint ?emotionalaspects ?emotionalreasoning ?emotionalsymptoms ?sadness ?corebelief ?intermediatebelief ?problemsolving ?numberofsessions ?patienthistory ?processduration ?sessionduration ?therapeuticgoals ?psychopathology ?anxiety ?increasedheartrate ?lossofspatialperception ?musculartension ?nervous ?physiologicalsymptoms ?shortnessofbreath ?sweating ?tremor ?clinicalstrategies ?copingstrategies ?copingwithstress ?desensitization ?evidenceanalysis ?exposuretechniques ?psychoeducation ?recordingdysfunctionalthoughts ?relaxationtechniques. ?self-instruction ?socraticquestioning ?systematicdesensitization ?thoughtstop ?thought-stoppingandself-instruction WHERE {
   ?id_case_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> hasco:originalID  ;
     <http://semanticscience.org/resource/isAttributeOf>    ?case_V  ;
     <http://semanticscience.org/resource/hasUnit>    schema:Interger ;
@@ -45,7 +45,7 @@ SELECT DISTINCT ?id_case ?document ?source ?id_user ?user ?id_project ?project ?
 
   ?id_project_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:Treatment  ;
     <http://semanticscience.org/resource/isAttributeOf>    ?psychotherapy_V  ;
-    <http://semanticscience.org/resource/hasUnit>    schema:Interger ;
+    <http://semanticscience.org/resource/hasUnit>    schema:String ;
     <http://semanticscience.org/resource/hasValue> ?id_project .
 
   ?project_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:FullName  ;
@@ -53,69 +53,328 @@ SELECT DISTINCT ?id_case ?document ?source ?id_user ?user ?id_project ?project ?
     <http://semanticscience.org/resource/hasUnit>    schema:String ;
     <http://semanticscience.org/resource/hasValue> ?project .
 
-  ?contextualaspect_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:ContextualAspect  ;
+  ?fear_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:EmotionalAspect  ;
     <http://semanticscience.org/resource/isAttributeOf>    ?caseconceptualization_V  ;
     <http://semanticscience.org/resource/hasUnit>    schema:String ;
-    <http://semanticscience.org/resource/hasValue> ?contextualaspect .
+    <http://semanticscience.org/resource/hasValue> ?fear .
+
+  ?fearoflosingcontrol_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:EmotionalAspect  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?caseconceptualization_V  ;
+    <http://semanticscience.org/resource/hasUnit>    schema:String ;
+    <http://semanticscience.org/resource/hasValue> ?fearoflosingcontrol .
+
+  ?fearofnegativeevaluationbyothers_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:CognitiveAspect  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?caseconceptualization_V  ;
+    <http://semanticscience.org/resource/hasUnit>    schema:String ;
+    <http://semanticscience.org/resource/hasValue> ?fearofnegativeevaluationbyothers .
+
+  ?frustration_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:EmotionalAspect  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?caseconceptualization_V  ;
+    <http://semanticscience.org/resource/hasUnit>    schema:String ;
+    <http://semanticscience.org/resource/hasValue> ?frustration .
+
+  ?generalization_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:CognitiveAspect  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?caseconceptualization_V  ;
+    <http://semanticscience.org/resource/hasUnit>    schema:String ;
+    <http://semanticscience.org/resource/hasValue> ?generalization .
+
+  ?maximizationofthenegative_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:Thinking  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?caseconceptualization_V  ;
+    <http://semanticscience.org/resource/hasUnit>    schema:String ;
+    <http://semanticscience.org/resource/hasValue> ?maximizationofthenegative .
+
+  ?minimizationofthepositive_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:Thinking  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?caseconceptualization_V  ;
+    <http://semanticscience.org/resource/hasUnit>    schema:String ;
+    <http://semanticscience.org/resource/hasValue> ?minimizationofthepositive .
+
+  ?objectphobic_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> CognitiveAspect  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?caseconceptualization_V  ;
+    <http://semanticscience.org/resource/hasUnit>    schema:String ;
+    <http://semanticscience.org/resource/hasValue> ?objectphobic .
+
+  ?perfectionism_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:Thinking  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?caseconceptualization_V  ;
+    <http://semanticscience.org/resource/hasUnit>    schema:String ;
+    <http://semanticscience.org/resource/hasValue> ?perfectionism .
+
+  ?predictionofthefuture_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:CognitiveAspect  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?caseconceptualization_V  ;
+    <http://semanticscience.org/resource/hasUnit>    schema:String ;
+    <http://semanticscience.org/resource/hasValue> ?predictionofthefuture .
+
+  ?ruminantthoughts_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:CognitiveAspect  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?caseconceptualization_V  ;
+    <http://semanticscience.org/resource/hasUnit>    schema:String ;
+    <http://semanticscience.org/resource/hasValue> ?ruminantthoughts .
+
+  ?selfawareness_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:CognitiveAspect  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?caseconceptualization_V  ;
+    <http://semanticscience.org/resource/hasUnit>    schema:String ;
+    <http://semanticscience.org/resource/hasValue> ?selfawareness .
+
+  ?suppositions_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:CognitiveAspect  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?caseconceptualization_V  ;
+    <http://semanticscience.org/resource/hasUnit>    schema:String ;
+    <http://semanticscience.org/resource/hasValue> ?suppositions .
+
+  ?catastrophizing_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:CognitiveAspect  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?caseconceptualization_V  ;
+    <http://semanticscience.org/resource/hasUnit>    schema:String ;
+    <http://semanticscience.org/resource/hasValue> ?catastrophizing .
+
+  ?cognitiveaspect_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:CognitiveAspect  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?caseconceptualization_V  ;
+    <http://semanticscience.org/resource/hasUnit>    schema:String ;
+    <http://semanticscience.org/resource/hasValue> ?cognitiveaspect .
+
+  ?cognitivedistortion_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:CognitiveAspect  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?caseconceptualization_V  ;
+    <http://semanticscience.org/resource/hasUnit>    schema:String ;
+    <http://semanticscience.org/resource/hasValue> ?cognitivedistortion .
+
+  ?cognitiverestructuring_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:CognitiveAspect  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?caseconceptualization_V  ;
+    <http://semanticscience.org/resource/hasUnit>    schema:String ;
+    <http://semanticscience.org/resource/hasValue> ?cognitiverestructuring .
+
+  ?cognitivesymptoms_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:CognitiveAspect  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?caseconceptualization_V  ;
+    <http://semanticscience.org/resource/hasUnit>    schema:String ;
+    <http://semanticscience.org/resource/hasValue> ?cognitivesymptoms .
+
+  ?devaluation_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:CognitiveAspect  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?caseconceptualization_V  ;
+    <http://semanticscience.org/resource/hasUnit>    schema:String ;
+    <http://semanticscience.org/resource/hasValue> ?devaluation .
+
+  ?difficultyofreasoning_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:CognitiveAspect  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?caseconceptualization_V  ;
+    <http://semanticscience.org/resource/hasUnit>    schema:String ;
+    <http://semanticscience.org/resource/hasValue> ?difficultyofreasoning .
+
+  ?avoidanceofthreateningsignsorsituations_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:BehaviorAspects  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?caseconceptualization_V  ;
+    <http://semanticscience.org/resource/hasUnit>    schema:String ;
+    <http://semanticscience.org/resource/hasValue> ?avoidanceofthreateningsignsorsituations .
 
   ?behavioraspects_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:BehaviorAspects  ;
     <http://semanticscience.org/resource/isAttributeOf>    ?caseconceptualization_V  ;
     <http://semanticscience.org/resource/hasUnit>    schema:String ;
     <http://semanticscience.org/resource/hasValue> ?behavioraspects .
 
+  ?behaviorsymptoms_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:BehaviorAspects  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?caseconceptualization_V  ;
+    <http://semanticscience.org/resource/hasUnit>    schema:String ;
+    <http://semanticscience.org/resource/hasValue> ?behaviorsymptoms .
+
+  ?contextualaspect_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:ContextualAspect  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?caseconceptualization_V  ;
+    <http://semanticscience.org/resource/hasUnit>    schema:String ;
+    <http://semanticscience.org/resource/hasValue> ?contextualaspect .
+
+  ?manifestcomplaint_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:ContextualAspect  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?caseconceptualization_V  ;
+    <http://semanticscience.org/resource/hasUnit>    schema:String ;
+    <http://semanticscience.org/resource/hasValue> ?manifestcomplaint .
+
+  ?emotionalaspects_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:EmotionalAspect  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?caseconceptualization_V  ;
+    <http://semanticscience.org/resource/hasUnit>    schema:String ;
+    <http://semanticscience.org/resource/hasValue> ?emotionalaspects .
+
+  ?emotionalreasoning_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:EmotionalAspect  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?caseconceptualization_V  ;
+    <http://semanticscience.org/resource/hasUnit>    schema:String ;
+    <http://semanticscience.org/resource/hasValue> ?emotionalreasoning .
+
+  ?emotionalsymptoms_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:EmotionalAspect  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?caseconceptualization_V  ;
+    <http://semanticscience.org/resource/hasUnit>    schema:String ;
+    <http://semanticscience.org/resource/hasValue> ?emotionalsymptoms .
+
+  ?sadness_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:EmotionalAspect  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?caseconceptualization_V  ;
+    <http://semanticscience.org/resource/hasUnit>    schema:String ;
+    <http://semanticscience.org/resource/hasValue> ?sadness .
+
   ?corebelief_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:CoreBelief  ;
     <http://semanticscience.org/resource/isAttributeOf>    ?caseconceptualization_V  ;
     <http://semanticscience.org/resource/hasUnit>    schema:String ;
     <http://semanticscience.org/resource/hasValue> ?corebelief .
 
-  ?authomaticthinking_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:AutomaticThinking  ;
+  ?intermediatebelief_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:IntermediateBelief  ;
     <http://semanticscience.org/resource/isAttributeOf>    ?caseconceptualization_V  ;
     <http://semanticscience.org/resource/hasUnit>    schema:String ;
-    <http://semanticscience.org/resource/hasValue> ?authomaticthinking .
+    <http://semanticscience.org/resource/hasValue> ?intermediatebelief .
 
-  ?emotion_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:Emotion  ;
+  ?problemsolving_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:CopingStrategies  ;
     <http://semanticscience.org/resource/isAttributeOf>    ?caseconceptualization_V  ;
     <http://semanticscience.org/resource/hasUnit>    schema:String ;
-    <http://semanticscience.org/resource/hasValue> ?emotion .
+    <http://semanticscience.org/resource/hasValue> ?problemsolving .
 
-  ?assumption_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:Assumption  ;
+  ?numberofsessions_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:StructureOfTreatmentProcess  ;
     <http://semanticscience.org/resource/isAttributeOf>    ?caseconceptualization_V  ;
     <http://semanticscience.org/resource/hasUnit>    schema:String ;
-    <http://semanticscience.org/resource/hasValue> ?assumption .
+    <http://semanticscience.org/resource/hasValue> ?numberofsessions .
 
-  ?compensatorystrategy_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:CompensatoryStrategy  ;
+  ?patienthistory_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:StructureOfTreatmentProcess  ;
     <http://semanticscience.org/resource/isAttributeOf>    ?caseconceptualization_V  ;
     <http://semanticscience.org/resource/hasUnit>    schema:String ;
-    <http://semanticscience.org/resource/hasValue> ?compensatorystrategy .
+    <http://semanticscience.org/resource/hasValue> ?patienthistory .
 
-  ?symptomofanxiety_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:AnxietySymptom  ;
+  ?processduration_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:StructureOfTreatmentProcess  ;
     <http://semanticscience.org/resource/isAttributeOf>    ?caseconceptualization_V  ;
     <http://semanticscience.org/resource/hasUnit>    schema:String ;
-    <http://semanticscience.org/resource/hasValue> ?symptomofanxiety .
+    <http://semanticscience.org/resource/hasValue> ?processduration .
 
-  ?finalassessement_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:PsychiatricEvaluation  ;
+  ?sessionduration_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:StructureOfTreatmentProcess  ;
     <http://semanticscience.org/resource/isAttributeOf>    ?caseconceptualization_V  ;
     <http://semanticscience.org/resource/hasUnit>    schema:String ;
-    <http://semanticscience.org/resource/hasValue> ?finalassessement .
+    <http://semanticscience.org/resource/hasValue> ?sessionduration .
 
-  ?techiniqueofintervention_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:ClinicalStrategy  ;
+  ?therapeuticgoals_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:StructureOfTreatmentProcess  ;
     <http://semanticscience.org/resource/isAttributeOf>    ?caseconceptualization_V  ;
-    <http://semanticscience.org/resource/hasValue> ?techiniqueofintervention .
+    <http://semanticscience.org/resource/hasUnit>    schema:String ;
+    <http://semanticscience.org/resource/hasValue> ?therapeuticgoals .
+
+  ?psychopathology_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:ClinicalHypothesis  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?caseconceptualization_V  ;
+    <http://semanticscience.org/resource/hasUnit>    schema:String ;
+    <http://semanticscience.org/resource/hasValue> ?psychopathology .
+
+  ?anxiety_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:PhysiologicalSymptoms  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?caseconceptualization_V  ;
+    <http://semanticscience.org/resource/hasUnit>    schema:String ;
+    <http://semanticscience.org/resource/hasValue> ?anxiety .
+
+  ?increasedheartrate_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:PhysiologicalSymptoms  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?caseconceptualization_V  ;
+    <http://semanticscience.org/resource/hasUnit>    schema:String ;
+    <http://semanticscience.org/resource/hasValue> ?increasedheartrate .
+
+  ?lossofspatialperception_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:PhysiologicalSymptoms  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?caseconceptualization_V  ;
+    <http://semanticscience.org/resource/hasUnit>    schema:String ;
+    <http://semanticscience.org/resource/hasValue> ?lossofspatialperception .
+
+  ?musculartension_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:PhysiologicalSymptoms  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?caseconceptualization_V  ;
+    <http://semanticscience.org/resource/hasUnit>    schema:String ;
+    <http://semanticscience.org/resource/hasValue> ?musculartension .
+
+  ?nervous_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:PhysiologicalSymptoms  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?caseconceptualization_V  ;
+    <http://semanticscience.org/resource/hasUnit>    schema:String ;
+    <http://semanticscience.org/resource/hasValue> ?nervous .
+
+  ?physiologicalsymptoms_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:PhysiologicalSymptoms  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?caseconceptualization_V  ;
+    <http://semanticscience.org/resource/hasUnit>    schema:String ;
+    <http://semanticscience.org/resource/hasValue> ?physiologicalsymptoms .
+
+  ?shortnessofbreath_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:PhysiologicalSymptoms  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?caseconceptualization_V  ;
+    <http://semanticscience.org/resource/hasUnit>    schema:String ;
+    <http://semanticscience.org/resource/hasValue> ?shortnessofbreath .
+
+  ?sweating_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:PhysiologicalSymptoms  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?caseconceptualization_V  ;
+    <http://semanticscience.org/resource/hasUnit>    schema:String ;
+    <http://semanticscience.org/resource/hasValue> ?sweating .
+
+  ?tremor_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:PhysiologicalSymptoms  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?caseconceptualization_V  ;
+    <http://semanticscience.org/resource/hasUnit>    schema:String ;
+    <http://semanticscience.org/resource/hasValue> ?tremor .
+
+  ?clinicalstrategies_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:Treatment  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?caseconceptualization_V  ;
+    <http://semanticscience.org/resource/hasUnit>    schema:String ;
+    <http://semanticscience.org/resource/hasValue> ?clinicalstrategies .
+
+  ?copingstrategies_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:Treatment  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?caseconceptualization_V  ;
+    <http://semanticscience.org/resource/hasUnit>    schema:String ;
+    <http://semanticscience.org/resource/hasValue> ?copingstrategies .
+
+  ?copingwithstress_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:Treatment  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?caseconceptualization_V  ;
+    <http://semanticscience.org/resource/hasUnit>    schema:String ;
+    <http://semanticscience.org/resource/hasValue> ?copingwithstress .
+
+  ?desensitization_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:Treatment  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?caseconceptualization_V  ;
+    <http://semanticscience.org/resource/hasUnit>    schema:String ;
+    <http://semanticscience.org/resource/hasValue> ?desensitization .
+
+  ?evidenceanalysis_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:Treatment  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?caseconceptualization_V  ;
+    <http://semanticscience.org/resource/hasUnit>    schema:String ;
+    <http://semanticscience.org/resource/hasValue> ?evidenceanalysis .
+
+  ?exposuretechniques_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:Treatment  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?caseconceptualization_V  ;
+    <http://semanticscience.org/resource/hasUnit>    schema:String ;
+    <http://semanticscience.org/resource/hasValue> ?exposuretechniques .
+
+  ?psychoeducation_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:Treatment  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?caseconceptualization_V  ;
+    <http://semanticscience.org/resource/hasUnit>    schema:String ;
+    <http://semanticscience.org/resource/hasValue> ?psychoeducation .
+
+  ?recordingdysfunctionalthoughts_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:Treatment  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?caseconceptualization_V  ;
+    <http://semanticscience.org/resource/hasUnit>    schema:String ;
+    <http://semanticscience.org/resource/hasValue> ?recordingdysfunctionalthoughts .
+
+  ?relaxationtechniques._E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:Treatment  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?caseconceptualization_V  ;
+    <http://semanticscience.org/resource/hasUnit>    schema:String ;
+    <http://semanticscience.org/resource/hasValue> ?relaxationtechniques. .
+
+  ?self-instruction_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:Treatment  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?caseconceptualization_V  ;
+    <http://semanticscience.org/resource/hasUnit>    schema:String ;
+    <http://semanticscience.org/resource/hasValue> ?self-instruction .
+
+  ?socraticquestioning_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:Treatment  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?caseconceptualization_V  ;
+    <http://semanticscience.org/resource/hasUnit>    schema:String ;
+    <http://semanticscience.org/resource/hasValue> ?socraticquestioning .
+
+  ?systematicdesensitization_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:Treatment  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?caseconceptualization_V  ;
+    <http://semanticscience.org/resource/hasUnit>    schema:String ;
+    <http://semanticscience.org/resource/hasValue> ?systematicdesensitization .
+
+  ?thoughtstop_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:Treatment  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?caseconceptualization_V  ;
+    <http://semanticscience.org/resource/hasUnit>    schema:String ;
+    <http://semanticscience.org/resource/hasValue> ?thoughtstop .
+
+  ?thought-stoppingandself-instruction_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:Treatment  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?caseconceptualization_V  ;
+    <http://semanticscience.org/resource/hasUnit>    schema:String ;
+    <http://semanticscience.org/resource/hasValue> ?thought-stoppingandself-instruction .
 
 
   ?case_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> sio:Human  ;
     ontriscal:isComprehendedBy ?caseconceptualization_V .
 
   ?caseconceptualization_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:CaseConceptualization  ;
-    ontriscal:supportForUnderstand ?case_V .
+    ontriscal:definesCognitiveModelOf ?case_V .
 
-  ?symptomanxiety_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:AnxietySymptom  ;
-    ontriscal:elaboratedBy ?caseconceptualization_V .
+  ?symptomanxiety_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:PhysiologicalSymptoms  ;
+    ontriscal:symptomIsAssociatedWith ?caseconceptualization_V .
 
   ?emotion_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:Emotion  ;
-    ontriscal:elaboratedBy ?caseconceptualization_V .
+    ontriscal:emotionIsAssociatedWith ?caseconceptualization_V .
 
   ?psychotherapy_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:Psychotherapy  ;
     ontriscal:treats ?case_V .
+
+  ?caseconceptualization_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:CaseConceptualization  ;
+    ontriscal:isTechinqueOf ?psychotherapy_V .
 
 }
