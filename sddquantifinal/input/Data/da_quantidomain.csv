@@ -1,2 +1,2 @@
-Id_case,warm_sensation,leg_shaking,inability_to_relax,fear_of_the_worst_happening,dizziness,accelerated_heart,balance_disorder,tremor,nervous,feeling_of_suffocation,hand_tremor,difficulty_breathing,fear_to_die,get_scared,feeling_faint,flushed_face,sweat,final_score_bai_scale,final_risk_level
-4,1,1,1,1,0,1,0,1,1,0,0,0,0,1,0,0,0,8,Ansiedade Leve
+Id_case,final_score_bdi_scale,final_score_bai_scale,risklevel_final
+6,4,11,Ansiedade Leve

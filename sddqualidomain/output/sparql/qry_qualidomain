@@ -17,7 +17,7 @@ prefix refiqda: <http://hadatac.org/ont/refiqda#>
 prefix qualico: <http://hadatac.org/ont/qualico#> 
 prefix schema: <http://www.w3.org/2000/01/schema#> 
 
-SELECT DISTINCT ?id_case ?document ?source ?id_user ?user ?id_project ?project ?behavioraspects ?behaviorsymptoms ?civilstatus ?clinicalstrategies ?cognitiveaspect ?cognitivedistortion ?cognitiverestructuring ?cognitivesymptoms ?contextualaspect ?desensitization ?emotionalsymptoms ?exposuretechniques ?fear ?fearoflosingcontrol ?gender ?increasedheartrate ?intermediatebelief ?manifestcomplaint ?name ?numberofsessions ?objectphobic ?patienthistory ?physiologicalsymptoms ?predictionofthefuture ?processduration ?psychoeducation ?recordingdysfunctionalthoughts ?relaxationtechniques ?selfawareness ?self-instruction ?suppositions ?sweating WHERE {
+SELECT DISTINCT ?id_case ?document ?source ?id_user ?user ?id_project ?project ?behavioraspects ?behaviorsymptoms ?civilstatus ?clinicalstrategies ?cognitiveaspect ?cognitivedistortion ?cognitiverestructuring ?cognitivesymptoms ?contextualaspect ?desensitization ?emotionalsymptoms ?exposuretechniques ?fear ?fearoflosingcontrol ?gender ?increasedheartrate ?intermediatebelief ?manifestcomplaint ?name ?numberofsessions ?objectphobic ?patienthistory ?physiologicalsymptoms ?predictionofthefuture ?processduration ?psychoeducation ?recordingdysfunctionalthoughts ?relaxationtechniques. ?selfawareness ?self-instruction ?suppositions ?sweating ?systematicdesensitization ?therapeuticgoals WHERE {
   ?id_case_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> hasco:originalID  ;
     <http://semanticscience.org/resource/isAttributeOf>    ?case_V  ;
     <http://semanticscience.org/resource/hasUnit>    schema:Interger ;
@@ -68,7 +68,7 @@ SELECT DISTINCT ?id_case ?document ?source ?id_user ?user ?id_project ?project ?
     <http://semanticscience.org/resource/hasUnit>    schema:String ;
     <http://semanticscience.org/resource/hasValue> ?civilstatus .
 
-  ?clinicalstrategies_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:Treament  ;
+  ?clinicalstrategies_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:Treatment  ;
     <http://semanticscience.org/resource/isAttributeOf>    ?caseconceptualization_V  ;
     <http://semanticscience.org/resource/hasUnit>    schema:String ;
     <http://semanticscience.org/resource/hasValue> ?clinicalstrategies .
@@ -108,7 +108,7 @@ SELECT DISTINCT ?id_case ?document ?source ?id_user ?user ?id_project ?project ?
     <http://semanticscience.org/resource/hasUnit>    schema:String ;
     <http://semanticscience.org/resource/hasValue> ?emotionalsymptoms .
 
-  ?exposuretechniques_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:Treament  ;
+  ?exposuretechniques_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:Treatment  ;
     <http://semanticscience.org/resource/isAttributeOf>    ?caseconceptualization_V  ;
     <http://semanticscience.org/resource/hasUnit>    schema:String ;
     <http://semanticscience.org/resource/hasValue> ?exposuretechniques .
@@ -178,7 +178,7 @@ SELECT DISTINCT ?id_case ?document ?source ?id_user ?user ?id_project ?project ?
     <http://semanticscience.org/resource/hasUnit>    schema:String ;
     <http://semanticscience.org/resource/hasValue> ?processduration .
 
-  ?psychoeducation_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:Treament  ;
+  ?psychoeducation_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:Treatment  ;
     <http://semanticscience.org/resource/isAttributeOf>    ?caseconceptualization_V  ;
     <http://semanticscience.org/resource/hasUnit>    schema:String ;
     <http://semanticscience.org/resource/hasValue> ?psychoeducation .
@@ -188,17 +188,17 @@ SELECT DISTINCT ?id_case ?document ?source ?id_user ?user ?id_project ?project ?
     <http://semanticscience.org/resource/hasUnit>    schema:String ;
     <http://semanticscience.org/resource/hasValue> ?recordingdysfunctionalthoughts .
 
-  ?relaxationtechniques_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:Treament  ;
+  ?relaxationtechniques._E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:Treatment  ;
     <http://semanticscience.org/resource/isAttributeOf>    ?caseconceptualization_V  ;
     <http://semanticscience.org/resource/hasUnit>    schema:String ;
-    <http://semanticscience.org/resource/hasValue> ?relaxationtechniques .
+    <http://semanticscience.org/resource/hasValue> ?relaxationtechniques. .
 
   ?selfawareness_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:CognitiveAspect  ;
     <http://semanticscience.org/resource/isAttributeOf>    ?caseconceptualization_V  ;
     <http://semanticscience.org/resource/hasUnit>    schema:String ;
     <http://semanticscience.org/resource/hasValue> ?selfawareness .
 
-  ?self-instruction_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:Treament  ;
+  ?self-instruction_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:Treatment  ;
     <http://semanticscience.org/resource/isAttributeOf>    ?caseconceptualization_V  ;
     <http://semanticscience.org/resource/hasUnit>    schema:String ;
     <http://semanticscience.org/resource/hasValue> ?self-instruction .
@@ -212,6 +212,16 @@ SELECT DISTINCT ?id_case ?document ?source ?id_user ?user ?id_project ?project ?
     <http://semanticscience.org/resource/isAttributeOf>    ?caseconceptualization_V  ;
     <http://semanticscience.org/resource/hasUnit>    schema:String ;
     <http://semanticscience.org/resource/hasValue> ?sweating .
+
+  ?systematicdesensitization_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:PhysiologicalSymptoms  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?caseconceptualization_V  ;
+    <http://semanticscience.org/resource/hasUnit>    schema:String ;
+    <http://semanticscience.org/resource/hasValue> ?systematicdesensitization .
+
+  ?therapeuticgoals_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:Treatment  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?caseconceptualization_V  ;
+    <http://semanticscience.org/resource/hasUnit>    schema:String ;
+    <http://semanticscience.org/resource/hasValue> ?therapeuticgoals .
 
 
   ?case_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> sio:Human  ;

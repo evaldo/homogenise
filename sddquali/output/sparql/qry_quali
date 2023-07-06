@@ -17,7 +17,7 @@ prefix refiqda: <http://hadatac.org/ont/refiqda#>
 prefix qualico: <http://hadatac.org/ont/qualico#> 
 prefix schema: <http://www.w3.org/2000/01/schema#> 
 
-SELECT DISTINCT ?id_case ?document ?source ?id_user ?user ?id_project ?project ?fear ?fearoflosingcontrol ?fearofnegativeevaluationbyothers ?frustration ?generalization ?maximizationofthenegative ?minimizationofthepositive ?objectphobic ?perfectionism ?predictionofthefuture ?ruminantthoughts ?selfawareness ?suppositions ?catastrophizing ?cognitiveaspect ?cognitivedistortion ?cognitiverestructuring ?cognitivesymptoms ?devaluation ?difficultyofreasoning ?avoidanceofthreateningsignsorsituations ?behavioraspects ?behaviorsymptoms ?contextualaspect ?manifestcomplaint ?emotionalaspects ?emotionalreasoning ?emotionalsymptoms ?sadness ?corebelief ?intermediatebelief ?problemsolving ?numberofsessions ?patienthistory ?processduration ?sessionduration ?therapeuticgoals ?psychopathology ?anxiety ?increasedheartrate ?lossofspatialperception ?musculartension ?nervous ?physiologicalsymptoms ?shortnessofbreath ?sweating ?tremor ?clinicalstrategies ?copingstrategies ?copingwithstress ?desensitization ?evidenceanalysis ?exposuretechniques ?psychoeducation ?recordingdysfunctionalthoughts ?relaxationtechniques. ?self-instruction ?socraticquestioning ?systematicdesensitization ?thoughtstop ?thought-stoppingandself-instruction WHERE {
+SELECT DISTINCT ?id_case ?document ?source ?id_user ?user ?id_project ?project ?fear ?fearoflosingcontrol ?fearofnegativeevaluationbyothers ?frustration ?generalization ?maximizationofthenegative ?minimizationofthepositive ?objectphobic ?perfectionism ?predictionofthefuture ?ruminantthoughts ?selfawareness ?suppositions ?catastrophizing ?cognitiveaspect ?cognitivedistortion ?cognitiverestructuring ?cognitivesymptoms ?devaluation ?difficultyofreasoning ?avoidanceofthreateningsignsorsituations ?behavioraspects ?behaviorsymptoms ?contextualaspect ?manifestcomplaint ?emotionalaspects ?emotionalreasoning ?emotionalsymptoms ?sadness ?corebelief ?intermediatebelief ?problemsolving ?numberofsessions ?patienthistory ?processduration ?sessionduration ?therapeuticgoals ?psychopathology ?anxiety ?increasedheartrate ?lossofspatialperception ?musculartension ?nervous ?physiologicalsymptoms ?shortnessofbreath ?sweating ?tremor ?clinicalstrategies ?copingstrategies ?copingwithstress ?desensitization ?evidenceanalysis ?exposuretechniques ?psychoeducation ?recordingdysfunctionalthoughts ?relaxationtechniques. ?self-instruction ?socraticquestioning ?systematicdesensitization ?thoughtstop ?thought-stoppingandself-instruction ?positivesignsofengagementprocess WHERE {
   ?id_case_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> hasco:originalID  ;
     <http://semanticscience.org/resource/isAttributeOf>    ?case_V  ;
     <http://semanticscience.org/resource/hasUnit>    schema:Interger ;
@@ -357,6 +357,11 @@ SELECT DISTINCT ?id_case ?document ?source ?id_user ?user ?id_project ?project ?
     <http://semanticscience.org/resource/isAttributeOf>    ?note_V  ;
     <http://semanticscience.org/resource/hasUnit>    schema:String ;
     <http://semanticscience.org/resource/hasValue> ?thought-stoppingandself-instruction .
+
+  ?positivesignsofengagementprocess_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> refiqda:CognitiveAspect  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?note_V  ;
+    <http://semanticscience.org/resource/hasUnit>    schema:String ;
+    <http://semanticscience.org/resource/hasValue> ?positivesignsofengagementprocess .
 
 
   ?case_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> sio:Human  ;

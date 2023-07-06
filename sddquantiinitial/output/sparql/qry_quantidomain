@@ -17,19 +17,63 @@ prefix refiqda: <http://hadatac.org/ont/refiqda#>
 prefix qualico: <http://hadatac.org/ont/qualico#> 
 prefix schema: <http://www.w3.org/2000/01/schema#> 
 
-SELECT DISTINCT ?id_case ?q1_ansiedade_no_trabalho ?q12_ansiedade_durante_aterrissagem ?initial_score_bdi_scale ?initial_score_bai_scale ?risk_level ?final_score_bdi_scale ?final_score_bai_scale ?risklevel_final WHERE {
+SELECT DISTINCT ?id_case ?q1_anxiety_at_work ?q2_when_i_know_that_going_to_travel ?q3_buy_passage ?q4_join_bags ?q5_driving_to_the_airport ?q6_waiting_in_the_departure_lounge ?q7_call_for_flight ?q8_entrance_to_plane ?q9_airplane_takeoff ?q_10_during_the_flight ?q11_turbulence_during_the_flight ?q12_anxiety_during_landing ?q13_when_leaving_do_plane ?initial_score_bdi_scale ?initial_score_bai_scale ?risk_level WHERE {
   ?id_case_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> hasco:originalID  ;
     <http://semanticscience.org/resource/isAttributeOf>    ?case_V  ;
     <http://semanticscience.org/resource/hasUnit>    schema:Interger ;
     <http://semanticscience.org/resource/hasValue> ?id_case .
 
-  ?q1_ansiedade_no_trabalho_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:AnxietyinWork  ;
+  ?q1_anxiety_at_work_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:AnxietyAtWork  ;
     <http://semanticscience.org/resource/isAttributeOf>    ?beginningquestionnaire_V  ;
-    <http://semanticscience.org/resource/hasValue> ?q1_ansiedade_no_trabalho .
+    <http://semanticscience.org/resource/hasValue> ?q1_anxiety_at_work .
 
-  ?q12_ansiedade_durante_aterrissagem_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:AnxietyDuringLanding  ;
+  ?q2_when_i_know_that_going_to_travel_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:AnxietyWhenKnowGoingToTravel  ;
     <http://semanticscience.org/resource/isAttributeOf>    ?beginningquestionnaire_V  ;
-    <http://semanticscience.org/resource/hasValue> ?q12_ansiedade_durante_aterrissagem .
+    <http://semanticscience.org/resource/hasValue> ?q2_when_i_know_that_going_to_travel .
+
+  ?q3_buy_passage_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:AnxietyBeforeGoingToTravel  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?beginningquestionnaire_V  ;
+    <http://semanticscience.org/resource/hasValue> ?q3_buy_passage .
+
+  ?q4_join_bags_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:AnxietyBeforeGoingToTravel  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?beginningquestionnaire_V  ;
+    <http://semanticscience.org/resource/hasValue> ?q4_join_bags .
+
+  ?q5_driving_to_the_airport_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:AnxietyBeforeGoingToTravel  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?beginningquestionnaire_V  ;
+    <http://semanticscience.org/resource/hasValue> ?q5_driving_to_the_airport .
+
+  ?q6_waiting_in_the_departure_lounge_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:AnxietyBeforeGoingToTravel  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?beginningquestionnaire_V  ;
+    <http://semanticscience.org/resource/hasValue> ?q6_waiting_in_the_departure_lounge .
+
+  ?q7_call_for_flight_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:AnxietyBeforeGoingToTravel  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?beginningquestionnaire_V  ;
+    <http://semanticscience.org/resource/hasValue> ?q7_call_for_flight .
+
+  ?q8_entrance_to_plane_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:AnxietyBeforeGoingToTravel  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?beginningquestionnaire_V  ;
+    <http://semanticscience.org/resource/hasValue> ?q8_entrance_to_plane .
+
+  ?q9_airplane_takeoff_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:AnxietyDuringTravel  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?beginningquestionnaire_V  ;
+    <http://semanticscience.org/resource/hasValue> ?q9_airplane_takeoff .
+
+  ?q_10_during_the_flight_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:AnxietyDuringTravel  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?beginningquestionnaire_V  ;
+    <http://semanticscience.org/resource/hasValue> ?q_10_during_the_flight .
+
+  ?q11_turbulence_during_the_flight_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:AnxietyDuringTravel  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?beginningquestionnaire_V  ;
+    <http://semanticscience.org/resource/hasValue> ?q11_turbulence_during_the_flight .
+
+  ?q12_anxiety_during_landing_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:AnxietyDuringTravel  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?beginningquestionnaire_V  ;
+    <http://semanticscience.org/resource/hasValue> ?q12_anxiety_during_landing .
+
+  ?q13_when_leaving_do_plane_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:AnxietyDuringTravel  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?beginningquestionnaire_V  ;
+    <http://semanticscience.org/resource/hasValue> ?q13_when_leaving_do_plane .
 
   ?initial_score_bdi_scale_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:InitialBDIScore  ;
     <http://semanticscience.org/resource/isAttributeOf>    ?beginningquestionnaire_V  ;
@@ -42,18 +86,6 @@ SELECT DISTINCT ?id_case ?q1_ansiedade_no_trabalho ?q12_ansiedade_durante_aterri
   ?risk_level_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:RiskLevel  ;
     <http://semanticscience.org/resource/isAttributeOf>    ?beginningquestionnaire_V  ;
     <http://semanticscience.org/resource/hasValue> ?risk_level .
-
-  ?final_score_bdi_scale_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:FinalBDIScore  ;
-    <http://semanticscience.org/resource/isAttributeOf>    ?beginningquestionnaire_V  ;
-    <http://semanticscience.org/resource/hasValue> ?final_score_bdi_scale .
-
-  ?final_score_bai_scale_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:FinalBAIScore  ;
-    <http://semanticscience.org/resource/isAttributeOf>    ?beginningquestionnaire_V  ;
-    <http://semanticscience.org/resource/hasValue> ?final_score_bai_scale .
-
-  ?risklevel_final_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:Score  ;
-    <http://semanticscience.org/resource/isAttributeOf>    ?beginningquestionnaire_V  ;
-    <http://semanticscience.org/resource/hasValue> ?risklevel_final .
 
 
   ?case_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> sio:Human  ;
