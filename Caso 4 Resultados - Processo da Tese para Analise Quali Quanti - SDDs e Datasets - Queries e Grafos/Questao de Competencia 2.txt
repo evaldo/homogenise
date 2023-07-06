@@ -1,0 +1,129 @@
+Query 2
+
+prefix prov: <http://www.w3.org/ns/prov#> 
+prefix xsd: <http://www.w3.org/2001/XMLSchema#> 
+prefix uo: <http://purl.obolibrary.org/obo/UO_> 
+prefix sio: <http://semanticscience.org/resource/> 
+prefix stato: <http://purl.obolibrary.org/obo/STATO_> 
+prefix example-kb: <http://example.com/kb/example#> 
+prefix chear: <http://hadatac.org/ont/chear#>  
+prefix hasco: <http://hadatac.org/ont/hasco#> 
+prefix obo: <http://purl.obolibrary.org/obo/> 
+prefix skos: <http://www.w3.org/2008/05/skos#> 
+prefix osm: <http://www.w3.org/2008/05/osm#> 
+prefix oersm: <http://hadatac.org/ont/oersm#> 
+prefix ontriscal: <http://hadatac.org/ont/ontriscal#> 
+prefix qualico: <http://hadatac.org/ont/qualico#> 
+prefix refiqda: <http://hadatac.org/ont/refiqda#> 
+prefix kpionto: <http://hadatac.org/ont/kpionto#>
+
+SELECT distinct ?valuenameproject ?valuecase ?symptomextracted ?numberofappearance ?questionnariename ?valuefearoftheworsthappening ?valuenervous ?valuefeelingofsuffocation ?valuerisklevel 
+ where 
+ {{
+ SELECT ?id_case ?valuecase ?iscomprehendedby ?caseconceptualizationextracted ?hastypeoftreatment ?symptomextracted (count( distinct ?valueesymptom) as ?numberofappearance)  
+  where 
+ { 
+     
+    SELECT ?id_case ?valuecase ?iscomprehendedby ?caseconceptualizationextracted ?hastypeoftreatment ?symptomextracted ?valueesymptom
+        where {
+
+                ?id_case sio:isAttributeOf ?case .
+                ?id_case rdf:type hasco:originalID .
+                ?id_case sio:hasValue ?valuecase . 
+
+                ?case ontriscal:isComprehendedBy ?caseconceptualization .
+
+                ?symptom sio:hasValue ?valueesymptom .  
+                ?symptom sio:isAttributeOf ?caseconceptualization . 
+                ?symptom ?type ?classsymptoms .   
+
+                bind(strbefore(strafter(str(?symptom), "#"), "-") as ?symptomextracted) .
+                bind(uri(strbefore(str(?caseconceptualization), "-" )) as ?caseconceptualizationextracted) .
+                bind(uri("ontriscal:isComprehendedBy") as ?iscomprehendedby) .
+                bind(uri("ontriscal:conceptualizationHasTypeOfTreatment") as ?hastypeoftreatment) .
+                    
+                FILTER(?classsymptoms=ontriscal:Treatment ) .            
+                FILTER(?type=rdf:type) .
+          
+        } order by ?symptom
+        
+ } group by ?id_case ?valuecase  ?iscomprehendedby ?caseconceptualizationextracted ?hastypeoftreatment ?symptomextracted  
+ 
+ } union {
+        ?objectcase rdf:type ?case  .
+        ?id_case sio:isAttributeOf ?objectcase .
+        ?id_case sio:hasValue ?valuecase .
+  
+        ?objectcase rdf:type ?caseproject .
+        ?caseproject refiqda:appliesTo ?project .
+  
+        ?objectproject rdf:type ?project .
+        ?nameproject sio:isAttributeOf ?objectproject .
+        ?nameproject rdf:type refiqda:NameOfProject .
+        ?nameproject sio:hasValue ?valuenameproject .
+  
+        ?case ?patientanswersquestionnaire ?beginningquestionnaire .
+        ?beginningquestionnaire rdfs:label "beginningquestionnaire" .
+
+        ?fearoftheworsthappening sio:hasValue ?valuefearoftheworsthappening .  
+        ?fearoftheworsthappening sio:isAttributeOf ?questionnarie . 
+        ?fearoftheworsthappening rdf:type ontriscal:FearOfTheWorstHappening .
+  
+        ?nervous sio:hasValue ?valuenervous .  
+        ?nervous sio:isAttributeOf ?questionnarie . 
+        ?nervous rdf:type ontriscal:Nervous .
+  
+        ?feelingofsuffocation sio:hasValue ?valuefeelingofsuffocation .  
+        ?feelingofsuffocation sio:isAttributeOf ?questionnarie . 
+        ?feelingofsuffocation rdf:type ontriscal:FeelingOfSuffocation .
+              
+        ?risklevel sio:hasValue ?valuerisklevel .  
+        ?risklevel sio:isAttributeOf ?questionnarie . 
+        ?risklevel rdf:type ontriscal:RiskLevel .
+   
+        ?questionnarie rdfs:label "beginningquestionnaire" .
+   
+   
+        bind(strbefore(strafter(str(?questionnarie), "#"), "-") as ?questionnariename) .       
+
+     
+  } union {
+
+
+        ?objectcase rdf:type ?case  .
+        ?id_case sio:isAttributeOf ?objectcase .
+        ?id_case sio:hasValue ?valuecase .
+  
+        ?objectcase rdf:type ?caseproject .
+        ?caseproject refiqda:appliesTo ?project .
+  
+        ?objectproject rdf:type ?project .
+        ?nameproject sio:isAttributeOf ?objectproject .
+        ?nameproject rdf:type refiqda:NameOfProject .
+        ?nameproject sio:hasValue ?valuenameproject . 
+  
+        ?case ?patientanswersquestionnaire ?finalquestionnaire .
+        ?finalquestionnaire rdfs:label "finalquestionnaire" .
+        
+        ?fearoftheworsthappening sio:hasValue ?valuefearoftheworsthappening .  
+        ?fearoftheworsthappening sio:isAttributeOf ?questionnarie . 
+        ?fearoftheworsthappening rdf:type ontriscal:FearOfTheWorstHappening .
+  
+        ?nervous sio:hasValue ?valuenervous .  
+        ?nervous sio:isAttributeOf ?questionnarie . 
+        ?nervous rdf:type ontriscal:Nervous .
+  
+        ?feelingofsuffocation sio:hasValue ?valuefeelingofsuffocation .  
+        ?feelingofsuffocation sio:isAttributeOf ?questionnarie . 
+        ?feelingofsuffocation rdf:type ontriscal:FeelingOfSuffocation .
+              
+        ?risklevel sio:hasValue ?valuerisklevel .  
+        ?risklevel sio:isAttributeOf ?questionnarie . 
+        ?risklevel rdf:type ontriscal:RiskLevel .
+   
+        ?questionnarie rdfs:label "finalquestionnaire" .
+   
+        bind(strbefore(strafter(str(?questionnarie), "#"), "-") as ?questionnariename) .
+
+     
+  } }
