@@ -1,0 +1,140 @@
+--Questão 1. Quais grupos de questões foram respondidos? 
+prefix owl: <http://www.w3.org/2002/07/owl#> 
+prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
+prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> 
+prefix prov: <http://www.w3.org/ns/prov#> 
+prefix xsd: <http://www.w3.org/2001/XMLSchema#> 
+prefix uo: <http://purl.obolibrary.org/obo/UO> 
+prefix sio: <http://semanticscience.org/resource/> 
+prefix ontriscal:  <http://www.estrdefineatificacaoderisco/onto/ontriscal#> 
+prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
+prefix dc: <http://purl.org/dc/terms/> 
+select distinct ?valordoelementodaestratificacao ?tipodeelementodaestratificacao ?tipodequestaorespondidapor ?id ?paciente where { 
+    ?id rdf:type ?idpaciente .
+    ?id rdfs:subClassOf ontriscal:IdentificadorDeCadastro .
+    ?id sio:isAttributeOf ?paciente .        
+    ?paciente ?pacienteresponde ?conceitodoelementodaestratificacao .
+    ?elementodaestratificacao rdfs:subClassOf ?conceitodoelementodaestratificacao  .
+    ?elementodaestratificacao sio:isAttributeOf ?tipodeelementodaestratificacao .
+    ?tipodeelementodaestratificacao ?tipodequestaorespondidapor ?paciente .
+    ?id sio:hasValue ?valorid .
+    ?elementodaestratificacao ?temvalor ?valordoelementodaestratificacao .
+    FILTER (?conceitodoelementodaestratificacao = ontriscal:Questao) .
+    FILTER (?paciente in (ontriscal:Paciente-104, ontriscal:Paciente-12))   
+} order by ?id ?valordoelementodaestratificacao
+
+
+--Questão 2. Qual o nível de risco por faixa etária de paciente?
+prefix owl: <http://www.w3.org/2002/07/owl#> 
+prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
+prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> 
+prefix prov: <http://www.w3.org/ns/prov#> 
+prefix xsd: <http://www.w3.org/2001/XMLSchema#> 
+prefix uo: <http://purl.obolibrary.org/obo/UO> 
+prefix sio: <http://semanticscience.org/resource/> 
+prefix ontriscal:  <http://www.estrdefineatificacaoderisco/onto/ontriscal#> 
+prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
+prefix dc: <http://purl.org/dc/terms/> 
+select distinct ?paciente ?questao ?questaofaixaetaria ?questaorisco ?valorrisco ?valofaixaetaria where { 
+    ?id rdf:type ontriscal:IDdoPaciente .
+    ?id rdfs:subClassOf ontriscal:IdentificadorDeCadastro .    
+    ?id sio:isAttributeOf ?paciente .    
+    ?questao ontriscal:questaoRespondidaPor ?paciente . 
+    ?questaofaixaetaria sio:isAttributeOf ?questao .
+    ?questaofaixaetaria rdfs:subClassOf ontriscal:FaixaEtaria .
+    ?questaorisco sio:isAttributeOf ?questao .
+    ?questaorisco rdfs:subClassOf ontriscal:NivelDeRisco .
+    ?questaorisco sio:hasValue ?valorrisco .
+    ?questaofaixaetaria sio:hasValue ?valofaixaetaria . 
+    FILTER (?paciente in (ontriscal:Paciente-473, ontriscal:Paciente-434))    
+} 
+
+
+--Questão 3.  Quais fatores que influenciam os níveis de cuidados em saúde mental?
+prefix owl: <http://www.w3.org/2002/07/owl#> 
+prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
+prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> 
+prefix prov: <http://www.w3.org/ns/prov#> 
+prefix xsd: <http://www.w3.org/2001/XMLSchema#> 
+prefix uo: <http://purl.obolibrary.org/obo/UO> 
+prefix sio: <http://semanticscience.org/resource/> 
+prefix ontriscal:  <http://www.estrdefineatificacaoderisco/onto/ontriscal#> 
+prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
+prefix dc: <http://purl.org/dc/terms/> 
+select distinct ?id ?paciente ?tipodequestaorespondidapor ?elementodaestratificacao ?tipodeelementodaestratificacao ?valorquestao where { 
+    ?id rdf:type ontriscal:IDdoPaciente .
+    ?id rdfs:subClassOf ontriscal:IdentificadorDeCadastro .
+    ?id sio:isAttributeOf ?paciente .    
+    ?paciente ?pacienteresponde ?conceitodoelementodaestratificacao .
+    ?elementodaestratificacao rdfs:subClassOf ?conceitodoelementodaestratificacao  .
+    ?elementodaestratificacao sio:isAttributeOf ?tipodeelementodaestratificacao .
+    ?tipodeelementodaestratificacao ?tipodequestaorespondidapor ?paciente .
+    ?id sio:hasValue ?valorid .
+    ?tipodeelementodaestratificacao rdfs:label ?valortipodeelementodaestratificacao .
+    ?elementodaestratificacao sio:hasValue ?valorquestao .
+    FILTER (?paciente in (ontriscal:Paciente-473, ontriscal:Paciente-434))  
+    FILTER (?valortipodeelementodaestratificacao != "questaogenerica")    
+} order by ?id ?elementodaestratificacao
+
+
+
+--Questão 4. Quais pacientes são considerados em vulnerabilidade social? (Which patients are in social vulnerability?)
+prefix owl: <http://www.w3.org/2002/07/owl#> 
+prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
+prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> 
+prefix prov: <http://www.w3.org/ns/prov#> 
+prefix xsd: <http://www.w3.org/2001/XMLSchema#> 
+prefix uo: <http://purl.obolibrary.org/obo/UO> 
+prefix sio: <http://semanticscience.org/resource/> 
+prefix ontriscal:  <http://www.estrdefineatificacaoderisco/onto/ontriscal#> 
+prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
+prefix dc: <http://purl.org/dc/terms/> 
+select distinct ?id ?elementodaestratificacao ?valorrespostaquestao ?tipodeelementodaestratificacao ?questaorespondidapor ?paciente ?temid ?valorid where { 
+    ?id rdf:type ontriscal:IDdoPaciente .
+    ?id rdfs:subClassOf ontriscal:IdentificadorDeCadastro .
+    ?id sio:isAttributeOf ?paciente .    
+    ?paciente ?pacienteresponde ?conceitodoelementodaestratificacao .
+    ?elementodaestratificacao rdfs:subClassOf ?conceitodoelementodaestratificacao  .
+    ?elementodaestratificacao sio:isAttributeOf ?tipodeelementodaestratificacao .
+    ?tipodeelementodaestratificacao ?questaorespondidapor ?paciente .
+    ?tipodeelementodaestratificacao rdfs:label "parametrodevulnerabilidade" .
+    ?id ?temid ?valorid .
+    ?elementodaestratificacao sio:hasValue ?valorrespostaquestao           
+    FILTER (?id in (ontriscal:IDdoPaciente-4, ontriscal:IDdoPaciente-6)) 
+} order by ?id
+
+--Questão 5: Quais parâmetros vão definir o nível em que ocorrerá a assistência em saúde mental? (What parameters will define the level at which mental health care must have?)
+prefix owl: <http://www.w3.org/2002/07/owl#> 
+prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
+prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> 
+prefix prov: <http://www.w3.org/ns/prov#> 
+prefix xsd: <http://www.w3.org/2001/XMLSchema#> 
+prefix uo: <http://purl.obolibrary.org/obo/UO> 
+prefix sio: <http://semanticscience.org/resource/> 
+prefix ontriscal:  <http://www.estrdefineatificacaoderisco/onto/ontriscal#> 
+prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
+prefix dc: <http://purl.org/dc/terms/> 
+select DISTINCT *
+WHERE { ?id rdf:type ontriscal:IDdoPaciente .
+        ?id rdfs:subClassOf ontriscal:IdentificadorDeCadastro .
+        ?id sio:isAttributeOf ?paciente .    
+        ?paramentronorteiatratamento ?definetratamento ?paciente  .   		         
+        ?paramentronorteiatratamento rdf:type ?parametro .
+        ?paramentronorteiatratamento ontriscal:questaoDefine ?fatorqueinfluenciaparatratamento .
+        ?questaonorteiatratamento rdfs:subClassOf ontriscal:Questao .
+        ?questaonorteiatratamento sio:isAttributeOf ?paramentronorteiatratamento .
+        ?tipodofatorqueinfluencianotratamento rdfs:subClassOf ?fatorqueinfluenciaparatratamento .
+        ?tipodofatorqueinfluencianotratamento sio:isAttributeOf ?paciente .
+        ?tipodofatorqueinfluencianotratamento sio:hasValue ?valordotipodofatorqueinfluencianotratamento .  
+        ?questaosobrerisco ontriscal:questaoRespondidaPor ?paciente .         
+        ?questaorisco sio:isAttributeOf ?questaosobrerisco .
+        ?questaorisco rdfs:subClassOf ontriscal:NivelDeRisco .
+        ?questaorisco sio:hasValue ?valorrisco .
+        ?questaosobrefaixaetaria ontriscal:questaoRespondidaPor ?paciente . 
+        ?questaofaixaetaria sio:isAttributeOf ?questaosobrefaixaetaria .
+        ?questaofaixaetaria rdfs:subClassOf ontriscal:FaixaEtaria .
+        ?questaofaixaetaria sio:hasValue ?valofaixaetaria . 
+        FILTER (?paciente in (ontriscal:Paciente-473)) .
+        FILTER (?parametro != ontriscal:Questao) .
+       }
+ORDER BY ?paciente

@@ -1,0 +1,18 @@
+title: riskstratification
+created-at: 2020
+last-update: 2021
+domain:
+  - mental health
+editorial-notes: The ontology was documented based on dataset of risk stratification in mental health using technique of semantic data dictionary.
+types:
+  - core
+language: pt
+purpose: 
+  - conceptual clarification
+context:
+  - research
+main-source: risk-stratification2021
+style:
+  - ontouml
+urls:
+  github: "https://github.com/evaldo/estratificacaoderiscosaudemental/tree/master/templates%20de%20metados%20semanticos/Ontology"

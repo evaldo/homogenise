@@ -1,0 +1,2115 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.semanticweb.org/evald/ontologies/2020/11/riskstratificationinmentalhealth#"
+     xml:base="http://www.semanticweb.org/evald/ontologies/2020/11/riskstratificationinmentalhealth"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+    <owl:Ontology rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#apresenta -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#apresenta">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Paciente"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#GravidadeDeSinalESintoma"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#assiste -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#assiste">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#TerapeutaAD"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Paciente"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#atendidoPor -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#atendidoPor">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Paciente"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#ProfissionalResponsavel"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#atribuidaA -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#atribuidaA">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#PontuacaoFinal"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#FaixaDeRisco"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#avalia -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#avalia">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#ProfissionalResponsavel"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#DadoClinico"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#define -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#define">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#GravidadeDeSinalESintoma"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#NivelDaAssistenciaEmSaude"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#determina -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#determina">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#eRespondidoPor -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#eRespondidoPor">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#VunerabilidadeSocial"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Questao"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#estratificacaoDeRiscoPossui -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#estratificacaoDeRiscoPossui">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#possui"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#EstratificacaoDeRiscoEmSaudeMental"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#ElementoDoQuestionario"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#faixaDeRiscoDetermina -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#faixaDeRiscoDetermina">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#determina"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#FaixaDeRisco"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#NivelDeRisco"/>
+        <owl:propertyDisjointWith rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#sinalESintomaDetermina"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#faixaEtariaPossui -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#faixaEtariaPossui">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#possui"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#FaixaEtaria"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#NivelDeRisco"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#fazParte -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#fazParte">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#questaoDoGrupo"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#InverseFunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Questao"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#GrupoDeQuestao"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#fazUso -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#fazUso">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Paciente"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#SubstanciaPsicoativa"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#informa -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#informa">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#ProfissionalResponsavel"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#DadoSocioDemografico"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#nivelDeRiscoOrienta -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#nivelDeRiscoOrienta">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#NivelDeRisco"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#AcaoTerapeutica"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#ProjetoTerapeuticoSingular"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#pacientePossui -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#pacientePossui">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#possui"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Paciente"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#DadoClinico"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#FaixaEtaria"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#NivelDeRisco"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#PontuacaoFinal"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#ProjetoTerapeuticoSingular"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#parametroDefineNivelEmSaude -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#parametroDefineNivelEmSaude">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#DependenciaAutonomia"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Refratariedade"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#RiscoParaSiEOutros"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Sintomatologia"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#VunerabilidadeSocial"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#NivelDaAssistenciaEmSaude"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#possui -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#possui">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#projetoTerapeuticoSingularEFormadoPor -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#projetoTerapeuticoSingularEFormadoPor">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#ProjetoTerapeuticoSingular"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#AcaoTerapeutica"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#questaoDoGrupo -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#questaoDoGrupo">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#InverseFunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Questao"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#GrupoDeQuestao"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#questaoPossui -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#questaoPossui">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#possui"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Questao"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#OpcaoDeResposta"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#recebe -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#recebe">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#OpcaoDeResposta"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Pontuacao"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#relacionaCom -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#relacionaCom">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#TranstornoMental"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#SinalESintoma"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#responde -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#responde">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Paciente"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#GrupoDeQuestao"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Questao"/>
+        <rdfs:comment>Se o Paciente responde Questão e uma Questão faz parte de um Grupo de Questão, entao o Paciente responde Grupo de Questão, portanto, é uma proriedade transitiva.</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#sinalESintomaDetermina -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#sinalESintomaDetermina">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#determina"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#SinalESintoma"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#GrupoDeQuestao"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#temElementoQuestionario -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#temElementoQuestionario">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#ElementoDoQuestionario"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Paciente"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#ProfissionalResponsavel"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#utiliza -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#utiliza">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Paciente"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#FrequenciaDoUsoDoTipoDeSubstanciaPsicoativa"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#dataAdmissao -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#dataAdmissao">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Paciente"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#diasDeAtendimentoMedico -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#diasDeAtendimentoMedico">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#AcaoTerapeutica"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#frequenciaEmDiasParaAtendimentoMedico -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#frequenciaEmDiasParaAtendimentoMedico">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#AcaoTerapeutica"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#idPaciente -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#idPaciente">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Paciente"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#internacaoNoUltimoAno -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#internacaoNoUltimoAno">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#nomeCompleto -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#nomeCompleto">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Pessoa"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#numeroDiariaAcaoTerapeutica -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#numeroDiariaAcaoTerapeutica">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#AcaoTerapeutica"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#presencaNaAcaoAssistencial -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#presencaNaAcaoAssistencial">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#AcaoTerapeutica"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#quantidadeInterncaoUltimoAno -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#quantidadeInterncaoUltimoAno">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#quantidadeSemanaAcaoAssistencialPorNivelDeRisco -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#quantidadeSemanaAcaoAssistencialPorNivelDeRisco">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#AcaoTerapeutica"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#AcaoTerapeutica -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#AcaoTerapeutica"/>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#AcompanhamentoNeurologicolabirintite -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#AcompanhamentoNeurologicolabirintite">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Comorbidade"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Adolescente -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Adolescente">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#FaixaEtaria"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Adulto -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Adulto">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#FaixaEtaria"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Alcool -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Alcool">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#SubstanciaPsicoativa"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#AlcoolEAlprazolam -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#AlcoolEAlprazolam">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#SubstanciaPsicoativa"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#AlcoolECocaina -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#AlcoolECocaina">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#SubstanciaPsicoativa"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#AlcoolEMaconha -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#AlcoolEMaconha">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#SubstanciaPsicoativa"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#AlcoolEMultiplasDrogas -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#AlcoolEMultiplasDrogas">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#SubstanciaPsicoativa"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Alcoolismo -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Alcoolismo">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Doenca"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Alta -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Alta">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#FrequenciaDoUsoDoTipoDeSubstanciaPsicoativa"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Alucinacao -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Alucinacao">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#GravidadeDeSinalESintoma"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#AlucinacaoAuditiva -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#AlucinacaoAuditiva">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Alucinacao"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#AlucinacaoTatil -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#AlucinacaoTatil">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Alucinacao"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#AlucinacaoVisual -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#AlucinacaoVisual">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Alucinacao"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#AnginaespasmaticaDiabeteFibromialgia -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#AnginaespasmaticaDiabeteFibromialgia">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Comorbidade"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Ansia -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Ansia">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#SinalESintoma"/>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Somatoforme"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Ansiedade -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Ansiedade">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Doenca"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#AssistenciaDeEnfermagem -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#AssistenciaDeEnfermagem">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#AcaoTerapeutica"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#AssistenciaNutricional -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#AssistenciaNutricional">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#AcaoTerapeutica"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#AssistenciaSocial -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#AssistenciaSocial">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#AcaoTerapeutica"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#AtendimentoEmGrupo -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#AtendimentoEmGrupo">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#AcaoTerapeutica"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#AtendimentoEmGrupoEspecifico -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#AtendimentoEmGrupoEspecifico">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#AcaoTerapeutica"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#AtendimentoMedico -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#AtendimentoMedico">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#AcaoTerapeutica"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#AtendimentoPsicologicoIndividual -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#AtendimentoPsicologicoIndividual">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#AcaoTerapeutica"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Autismo -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Autismo">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Doenca"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Baixa -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Baixa">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#FrequenciaDoUsoDoTipoDeSubstanciaPsicoativa"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#CadiopataDiabeteNeuropata -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#CadiopataDiabeteNeuropata">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Comorbidade"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#CancerDeMama -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#CancerDeMama">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Comorbidade"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#CapacidadeCognitivaLimitrofe -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#CapacidadeCognitivaLimitrofe">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Comorbidade"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#CardiopatiaObesidade -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#CardiopatiaObesidade">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Comorbidade"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#CardiopatiaVariosProcedimentosCirurgicosAlergias -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#CardiopatiaVariosProcedimentosCirurgicosAlergias">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Comorbidade"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#CirculacaoLocomocao -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#CirculacaoLocomocao">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Comorbidade"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#CirurgiasNaColuna -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#CirurgiasNaColuna">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Comorbidade"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Cocaina -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Cocaina">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#SubstanciaPsicoativa"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#CocainaCrack -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#CocainaCrack">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#SubstanciaPsicoativa"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#ColaDeSapateiro -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#ColaDeSapateiro">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#DerivadoDePetroleo"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Comorbidade -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Comorbidade"/>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Crack -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Crack">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#SubstanciaPsicoativa"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#CriseConvulsiva -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#CriseConvulsiva">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Comorbidade"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#CrisesAlergicas -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#CrisesAlergicas">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Comorbidade"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#DadoClinico -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#DadoClinico"/>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#DadoSocioDemografico -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#DadoSocioDemografico"/>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#DegeneracaoCerebelar -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#DegeneracaoCerebelar">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Comorbidade"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Delirio -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Delirio">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#GravidadeDeSinalESintoma"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Demencia -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Demencia">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Comorbidade"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#DependenciaAutonomia -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#DependenciaAutonomia">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#SinalESintoma"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Depressao -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Depressao">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Doenca"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#DerivadoDePetroleo -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#DerivadoDePetroleo">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#SubstanciaPsicoativa"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Diabete -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Diabete">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Comorbidade"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#DiabeteHipertensao -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#DiabeteHipertensao">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Comorbidade"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#DiabeteHipertensaoProblemaTireoide -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#DiabeteHipertensaoProblemaTireoide">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Comorbidade"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#DiabeteNeuropatiaDiabetica -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#DiabeteNeuropatiaDiabetica">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Comorbidade"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#DiabeteOsteoporose -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#DiabeteOsteoporose">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Comorbidade"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#DiabetePressaoAlta -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#DiabetePressaoAlta">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Comorbidade"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Doenca -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Doenca"/>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#DoencaColunaArtrodese -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#DoencaColunaArtrodese">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Comorbidade"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#ElementoDoQuestionario -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#ElementoDoQuestionario">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#temElementoQuestionario"/>
+                        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Paciente"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#temElementoQuestionario"/>
+                        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#ProfissionalResponsavel"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#EmBranco -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#EmBranco">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Comorbidade"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Endometriose -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Endometriose">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Comorbidade"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Enfermeiro -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Enfermeiro">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#ProfissionalResponsavel"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Enxaqueca -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Enxaqueca">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Comorbidade"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Epilepsia -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Epilepsia">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Comorbidade"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#EpilepsiaAneurismaTranstornoAlimentar -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#EpilepsiaAneurismaTranstornoAlimentar">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Comorbidade"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#EstratificacaoDeRiscoEmSaudeMental -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#EstratificacaoDeRiscoEmSaudeMental"/>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#F00-F09 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#F00-F09">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#GrupoDeCID"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#F00-F99 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#F00-F99">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#GrupoDeCID"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#F10-F19 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#F10-F19">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#GrupoDeCID"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#F20-F29 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#F20-F29">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#GrupoDeCID"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#F30-F39 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#F30-F39">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#GrupoDeCID"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#F40-F48 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#F40-F48">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#GrupoDeCID"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#F50-F59 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#F50-F59">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#GrupoDeCID"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#F60-F69 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#F60-F69">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#GrupoDeCID"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#F70-F79 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#F70-F79">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#GrupoDeCID"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#F80-F89 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#F80-F89">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#GrupoDeCID"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#F90-F98 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#F90-F98">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#GrupoDeCID"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#F99 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#F99">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#GrupoDeCID"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#FaixaDeRisco -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#FaixaDeRisco">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#NivelDeRisco"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#FaixaEtaria -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#FaixaEtaria">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#DadoSocioDemografico"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Feminino -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Feminino">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#SexoBiologico"/>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Masculino"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Fibromialgia -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Fibromialgia">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Comorbidade"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#FrequenciaDoUsoDoTipoDeSubstanciaPsicoativa -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#FrequenciaDoUsoDoTipoDeSubstanciaPsicoativa">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#DadoClinico"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#GasDeIsqueiro -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#GasDeIsqueiro">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#DerivadoDePetroleo"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Glaucoma -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Glaucoma">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Comorbidade"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#GravidadeDeSinalESintoma -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#GravidadeDeSinalESintoma">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#DadoClinico"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#GrupoDeCID -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#GrupoDeCID">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#DadoClinico"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#GrupoDeQuestao -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#GrupoDeQuestao">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#ElementoDoQuestionario"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#HIV -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#HIV">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Comorbidade"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#HepatiteCirroseHepatica -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#HepatiteCirroseHepatica">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Comorbidade"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Hipertensao -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Hipertensao">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Comorbidade"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#HipertensaoTireoide -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#HipertensaoTireoide">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Comorbidade"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Hipotireoidismo -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Hipotireoidismo">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Comorbidade"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#IdadeAvancadaDificuldadeLocomocao -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#IdadeAvancadaDificuldadeLocomocao">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Comorbidade"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Idoso -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Idoso">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#FaixaEtaria"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#LesaoNeurologicaCausadaPorInalacaoMonoxidoCarbono -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#LesaoNeurologicaCausadaPorInalacaoMonoxidoCarbono">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Comorbidade"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Lupus -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Lupus">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Comorbidade"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Maconha -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Maconha">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#SubstanciaPsicoativa"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Masculino -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Masculino">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#SexoBiologico"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Media -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Media">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#FrequenciaDoUsoDoTipoDeSubstanciaPsicoativa"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#MedicacaoPreAnestesicaInjetavel -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#MedicacaoPreAnestesicaInjetavel">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#SubstanciaPsicoativa"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Medico -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Medico">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#ProfissionalResponsavel"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#MultiplasDrogas -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#MultiplasDrogas">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#SubstanciaPsicoativa"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Nao -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Nao">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#OpcaoDeResposta"/>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Sim"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#NeurologistaOrtopedista -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#NeurologistaOrtopedista">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Comorbidade"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#NivelDaAssistenciaEmSaude -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#NivelDaAssistenciaEmSaude"/>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#NivelDeRisco -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#NivelDeRisco"/>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#NivelDeRiscoBaixo -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#NivelDeRiscoBaixo">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#NivelDeRisco"/>
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#numeroDiariaAcaoTerapeutica"/>
+                        <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">4</owl:minQualifiedCardinality>
+                        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#numeroDiariaAcaoTerapeutica"/>
+                        <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">8</owl:maxQualifiedCardinality>
+                        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#presencaNaAcaoAssistencial"/>
+                        <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">3</owl:minQualifiedCardinality>
+                        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#presencaNaAcaoAssistencial"/>
+                        <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">7</owl:maxQualifiedCardinality>
+                        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#quantidadeSemanaAcaoAssistencialPorNivelDeRisco"/>
+                        <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
+                        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#quantidadeSemanaAcaoAssistencialPorNivelDeRisco"/>
+                        <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">2</owl:maxQualifiedCardinality>
+                        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#diasDeAtendimentoMedico"/>
+                        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">30</owl:qualifiedCardinality>
+                        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#frequenciaEmDiasParaAtendimentoMedico"/>
+                        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#NivelDeRiscoMedio -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#NivelDeRiscoMedio">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#NivelDeRisco"/>
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#numeroDiariaAcaoTerapeutica"/>
+                        <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">8</owl:minQualifiedCardinality>
+                        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#numeroDiariaAcaoTerapeutica"/>
+                        <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">12</owl:maxQualifiedCardinality>
+                        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#presencaNaAcaoAssistencial"/>
+                        <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">6</owl:minQualifiedCardinality>
+                        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#presencaNaAcaoAssistencial"/>
+                        <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">10</owl:maxQualifiedCardinality>
+                        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#quantidadeSemanaAcaoAssistencialPorNivelDeRisco"/>
+                        <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">2</owl:minQualifiedCardinality>
+                        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#quantidadeSemanaAcaoAssistencialPorNivelDeRisco"/>
+                        <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">3</owl:maxQualifiedCardinality>
+                        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#diasDeAtendimentoMedico"/>
+                        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">30</owl:qualifiedCardinality>
+                        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#frequenciaEmDiasParaAtendimentoMedico"/>
+                        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#NiveldeRiscoAlto -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#NiveldeRiscoAlto">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#NivelDeRisco"/>
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#numeroDiariaAcaoTerapeutica"/>
+                        <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">12</owl:minQualifiedCardinality>
+                        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#numeroDiariaAcaoTerapeutica"/>
+                        <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">20</owl:maxQualifiedCardinality>
+                        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#presencaNaAcaoAssistencial"/>
+                        <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">10</owl:minQualifiedCardinality>
+                        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#presencaNaAcaoAssistencial"/>
+                        <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">18</owl:maxQualifiedCardinality>
+                        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#quantidadeSemanaAcaoAssistencialPorNivelDeRisco"/>
+                        <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">3</owl:minQualifiedCardinality>
+                        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#quantidadeSemanaAcaoAssistencialPorNivelDeRisco"/>
+                        <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">5</owl:maxQualifiedCardinality>
+                        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#diasDeAtendimentoMedico"/>
+                        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">15</owl:qualifiedCardinality>
+                        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#frequenciaEmDiasParaAtendimentoMedico"/>
+                        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">2</owl:qualifiedCardinality>
+                        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Obesidade -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Obesidade">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Comorbidade"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#ObesidadeBariatrica -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#ObesidadeBariatrica">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Comorbidade"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#ObesidadeEConsequencias -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#ObesidadeEConsequencias">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Comorbidade"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#ObesidadeProblemasNasArticulacoes -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#ObesidadeProblemasNasArticulacoes">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Comorbidade"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#OficinaDeArtesanato -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#OficinaDeArtesanato">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#OficinaDeConvivencia"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#OficinaDeConvivencia -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#OficinaDeConvivencia">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#AcaoTerapeutica"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#OficinaDeDanca -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#OficinaDeDanca">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#OficinaDeConvivencia"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#OficinaDeMusica -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#OficinaDeMusica">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#OficinaDeConvivencia"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#OficinaDePintura -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#OficinaDePintura">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#OficinaDeConvivencia"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#OpcaoDeResposta -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#OpcaoDeResposta">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#ElementoDoQuestionario"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#OperacaoMatematica -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#OperacaoMatematica"/>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Ortopedico -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Ortopedico">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Comorbidade"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#OrtopedicoDiabete -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#OrtopedicoDiabete">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Comorbidade"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Paciente -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Paciente">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Pessoa"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#PacienteBariatrico -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#PacienteBariatrico">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Comorbidade"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Parkinsonismo -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Parkinsonismo">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Comorbidade"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Pessoa -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Pessoa"/>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Pontuacao -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Pontuacao">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#ElementoDoQuestionario"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#PontuacaoDeRisco -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#PontuacaoDeRisco">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#OperacaoMatematica"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#PontuacaoFinal -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#PontuacaoFinal">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#ElementoDoQuestionario"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#PreDiabete -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#PreDiabete">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Comorbidade"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Primario -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Primario">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#NivelDaAssistenciaEmSaude"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#ProblemaOrtopedico -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#ProblemaOrtopedico">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Comorbidade"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#ProblemaOrtopedicoNaColuna -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#ProblemaOrtopedicoNaColuna">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Comorbidade"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#ProblemasIntestinais -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#ProblemasIntestinais">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Comorbidade"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#ProblemasNaColunaENoJoelho -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#ProblemasNaColunaENoJoelho">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Comorbidade"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#ProfissionalResponsavel -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#ProfissionalResponsavel">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Pessoa"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#ProjetoTerapeuticoSingular -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#ProjetoTerapeuticoSingular"/>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Psicologo -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Psicologo">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#ProfissionalResponsavel"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Questao -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Questao">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#ElementoDoQuestionario"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Refratariedade -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Refratariedade">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#SinalESintoma"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#RetardoLeve -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#RetardoLeve">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Comorbidade"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#RiscoParaSiEOutros -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#RiscoParaSiEOutros">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#SinalESintoma"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Secundario -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Secundario">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#NivelDaAssistenciaEmSaude"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#SexoBiologico -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#SexoBiologico">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#DadoSocioDemografico"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Sim -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Sim">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#OpcaoDeResposta"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#SinalESintoma -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#SinalESintoma"/>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#SindromeDeKorsakoff -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#SindromeDeKorsakoff">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Comorbidade"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Sintomatologia -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Sintomatologia">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#SinalESintoma"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Somatoforme -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Somatoforme">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#SinalESintoma"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#SubstanciaPsicoativa -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#SubstanciaPsicoativa">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#DadoClinico"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Tabaco -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Tabaco">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#SubstanciaPsicoativa"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Tabagismo -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Tabagismo">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Doenca"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#TabagismoCronicoDPOCTrombogeiteComAmputacaoEAtroseVertebral -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#TabagismoCronicoDPOCTrombogeiteComAmputacaoEAtroseVertebral">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Comorbidade"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#TabagismoCronicoERiscoDPOC -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#TabagismoCronicoERiscoDPOC">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Comorbidade"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#TerapeutaAD -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#TerapeutaAD">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#ProfissionalResponsavel"/>
+        <rdfs:comment>O TerapeutaAD em dependência química é um profissional que trabalha da reabilitação de pessoas que fazem uso de alcool e outras drogas.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Terciario -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Terciario">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#NivelDaAssistenciaEmSaude"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Thiner -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Thiner">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#DerivadoDePetroleo"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#TranstornoAlimentar -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#TranstornoAlimentar">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Comorbidade"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#TranstornoDelirante -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#TranstornoDelirante">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Delirio"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#TranstornoMental -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#TranstornoMental">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Doenca"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#TranstornoMentalComum -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#TranstornoMentalComum">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Doenca"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Trombose -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Trombose">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Comorbidade"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#UsoAbusivoDePsicoativosIlicitosAmputacaoMIeArtose. -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#UsoAbusivoDePsicoativosIlicitosAmputacaoMIeArtose.">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Comorbidade"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Vitiligo -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Vitiligo">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Comorbidade"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#VunerabilidadeSocial -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#VunerabilidadeSocial">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#DadoSocioDemografico"/>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#P_10 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#P_10">
+        <rdf:type rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Paciente"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // General axioms
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Alcool"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#AlcoolEAlprazolam"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#AlcoolECocaina"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#AlcoolEMaconha"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#AlcoolEMultiplasDrogas"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Cocaina"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#CocainaCrack"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Crack"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Maconha"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#MedicacaoPreAnestesicaInjetavel"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#MultiplasDrogas"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Tabaco"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Alta"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Baixa"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Media"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#AssistenciaDeEnfermagem"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#AssistenciaNutricional"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#AssistenciaSocial"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#AtendimentoEmGrupo"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#AtendimentoEmGrupoEspecifico"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#AtendimentoPsicologicoIndividual"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#OficinaDeConvivencia"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#DadoClinico"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Doenca"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#ElementoDoQuestionario"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#NivelDaAssistenciaEmSaude"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Pessoa"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#SinalESintoma"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Depressao"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Tabagismo"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#TranstornoMental"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#TranstornoMentalComum"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Enfermeiro"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Medico"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Paciente"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Psicologo"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#F00-F09"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#F00-F99"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#F10-F19"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#F20-F29"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#F30-F39"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#F40-F48"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#F50-F59"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#F60-F69"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#F70-F79"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#F80-F89"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#F90-F98"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#F99"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#NivelDeRiscoBaixo"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#NivelDeRiscoMedio"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#NiveldeRiscoAlto"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#OficinaDeArtesanato"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#OficinaDeDanca"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#OficinaDeMusica"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#OficinaDePintura"/>
+            <rdf:Description rdf:about="http://www.w3.org/2002/07/owl#Thing"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Primario"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Secundario"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Terciario"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointProperties"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#apresenta"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#atendidoPor"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#atribuidaA"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#avalia"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#define"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#determina"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#fazParte"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#fazUso"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#informa"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#possui"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#questaoDoGrupo"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#recebe"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#relacionaCom"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#responde"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#temElementoQuestionario"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#utiliza"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointProperties"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#dataAdmissao"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#diasDeAtendimentoMedico"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#frequenciaEmDiasParaAtendimentoMedico"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#idPaciente"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#internacaoNoUltimoAno"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#nomeCompleto"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#numeroDiariaAcaoTerapeutica"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#presencaNaAcaoAssistencial"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#quantidadeInterncaoUltimoAno"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#quantidadeSemanaAcaoAssistencialPorNivelDeRisco"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointProperties"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#diasDeAtendimentoMedico"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#frequenciaEmDiasParaAtendimentoMedico"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#numeroDiariaAcaoTerapeutica"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#presencaNaAcaoAssistencial"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#quantidadeInterncaoUltimoAno"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#quantidadeSemanaAcaoAssistencialPorNivelDeRisco"/>
+        </owl:members>
+    </rdf:Description>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi -->
+

@@ -1,0 +1,28 @@
+https://franz.com/agraph/support/documentation/current/python/install.html
+https://allegrograph.com/using-microsoft-power-bi-with-allegrograph/
+
+import os
+import matplotlib
+from franz.openrdf.connect import ag_connect
+from franz.openrdf.query.query import QueryLanguage
+import pandas as pd
+with ag_connect('riskstratification', host='localhost', port='10035',
+                user='allegro', password='12345') as conn:
+    print (conn.size())
+query = """
+prefix owl: <http://www.w3.org/2002/07/owl#> 
+prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
+prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> 
+prefix prov: <http://www.w3.org/ns/prov#> 
+prefix xsd: <http://www.w3.org/2001/XMLSchema#> 
+prefix uo: <http://purl.obolibrary.org/obo/UO> 
+prefix sio: <http://semanticscience.org/resource/> 
+prefix oersm:  <http://www.estratificacaoderisco/onto/oersm#> 
+prefix std1:<http://www.estratificacaoderisco/dataset/std1#> 
+prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
+prefix dc: <http://purl.org/dc/terms/> 
+select ?s ?p ?o where { ?s ?p ?o }
+order by ?s"""
+with conn.executeTupleQuery(query) as result:
+   df = result.toPandas()
+df.head()

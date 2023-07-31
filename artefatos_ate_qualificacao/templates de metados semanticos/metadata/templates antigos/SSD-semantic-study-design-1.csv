@@ -1,0 +1,3 @@
+﻿sheet,hasURI,type,hasSOCReference,comment,label,definition,groundingLabel,isMemberOf,hasScope,hasTimeScope,hasSpaceScope,cardinality,role,basetime,source
+,ER_1,hasco:Study,,,,,,,,,,,,,
+#SOC-SUBJECTS,kb:SOC-SUBJECTS,hasco:SubjectGroup,??paciente,paciente, o principal assunto do estudo,Paciente,São pessoas que apresentam sinais e sintomas relacionados a transtornos mentais e que são submetidos à  estratificação de risco ao se apresentarem no Hospital,Paciente,ER_1,sio:Human,,,22,,,
