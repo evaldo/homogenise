@@ -44,12 +44,64 @@
     
 
 
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#calculates -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#calculates">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#CareTeam"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#FinalScore"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#classifies -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#classifies">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#SignAndSymptom"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#QuestionGroup"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#cognitiveModelHas -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#cognitiveModelHas">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#has"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#CognitiveModel"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#ClinicalEvaluation"/>
+    </owl:ObjectProperty>
+    
+
+
     <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#defines -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#defines">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#CaseConceptualization"/>
         <rdfs:domain rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#RiskScore"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#CognitiveModel"/>
         <rdfs:range rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#RiskLevel"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#definesCognitiveModelOf -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#definesCognitiveModelOf">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#CaseConceptualization"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#CognitiveModel"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#demographicSocialDataFormulatedBy -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#demographicSocialDataFormulatedBy">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#SocioDemographicData"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Question"/>
     </owl:ObjectProperty>
     
 
@@ -62,12 +114,42 @@
     
 
 
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#emotionIsAssocietedWith -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#emotionIsAssocietedWith">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#CaseConceptualization"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#EmotionalAspects"/>
+    </owl:ObjectProperty>
+    
+
+
     <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#evaluates -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#evaluates">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
         <rdfs:domain rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#CareTeam"/>
         <rdfs:range rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#ClinicalData"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#executedBy -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#executedBy">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#RiskStratificationInMentalHealth"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#CareTeam"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#formulates -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#formulates">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Psychotherapy"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#CognitiveModel"/>
     </owl:ObjectProperty>
     
 
@@ -121,6 +203,61 @@
     
 
 
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#isCalculateBy -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#isCalculateBy">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#FinalScore"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Score"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#isComprehendedBy -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#isComprehendedBy">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Patient"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#CaseConceptualization"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#isFormulatedBy -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#isFormulatedBy">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Question"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#QuestionnaireElement"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Questionnarie"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#ClinicalData"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#QuestionGroup"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#QuestionnaireElement"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#SignAndSymptom"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#isIidentifiedWith -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#isIidentifiedWith">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Patient"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Comorbidity"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#isTechniqueOf -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#isTechniqueOf">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#CaseConceptualization"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Psychotherapy"/>
+    </owl:ObjectProperty>
+    
+
+
     <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#levelOfRiskGuides -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#levelOfRiskGuides">
@@ -163,6 +300,17 @@
         <rdfs:domain rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#SocialVulnerability"/>
         <rdfs:domain rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Symptomatology"/>
         <rdfs:range rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#HealthCareLevel"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#patientAnswersQuestionnarie -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#patientAnswersQuestionnarie">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Patient"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#BeginningQuestionnarie"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#FinalQuestionnarie"/>
     </owl:ObjectProperty>
     
 
@@ -222,6 +370,17 @@
     
 
 
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#riskLevelGuides -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#riskLevelGuides">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#RiskLevel"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#RiskStratificationInMentalHealth"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#TherapeuticAction"/>
+    </owl:ObjectProperty>
+    
+
+
     <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#riskRangeDetermines -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#riskRangeDetermines">
@@ -255,6 +414,16 @@
     
 
 
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#severityOfSignsAndSymptomGuides -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#severityOfSignsAndSymptomGuides">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#SignAndSymptom"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#HealthCareLevel"/>
+    </owl:ObjectProperty>
+    
+
+
     <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#signAndSymptomDetermines -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#signAndSymptomDetermines">
@@ -274,10 +443,30 @@
     
 
 
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#symptomIsAssociatedWith -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#symptomIsAssociatedWith">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#CaseConceptualization"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#PhysiologicalSymptoms"/>
+    </owl:ObjectProperty>
+    
+
+
     <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#takesCare -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#takesCare">
         <rdfs:domain rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Therapist"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Patient"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#treats -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#treats">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Psychotherapy"/>
         <rdfs:range rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Patient"/>
     </owl:ObjectProperty>
     
@@ -288,8 +477,19 @@
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#uses">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
         <rdfs:domain rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Patient"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#RiskStratificationInMentalHealth"/>
         <rdfs:range rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#FrequencyOfUseOfTheTypeOfPsychoactiveSubstance"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Questionnarie"/>
     </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.w3.org/2002/07/owl#topObjectProperty -->
+
+    <rdf:Description rdf:about="http://www.w3.org/2002/07/owl#topObjectProperty">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#CaseConceptualization"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Patient"/>
+    </rdf:Description>
     
 
 
@@ -634,6 +834,14 @@
     
 
 
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#BeginningQuestionnarie -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#BeginningQuestionnarie">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Questionnarie"/>
+    </owl:Class>
+    
+
+
     <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#BehaviorAspects -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#BehaviorAspects">
@@ -712,6 +920,12 @@
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Person"/>
         <owl:disjointWith rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Patient"/>
     </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#CaseConceptualization -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#CaseConceptualization"/>
     
 
 
@@ -836,6 +1050,12 @@
     <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#CognitiveFunctions">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#CognitiveAspect"/>
     </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#CognitiveModel -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#CognitiveModel"/>
     
 
 
@@ -1298,7 +1518,7 @@
     <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#F00-F09 -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#F00-F09">
-        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#GroupOfICD"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#ICDGroup"/>
     </owl:Class>
     
 
@@ -1306,7 +1526,7 @@
     <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#F00-F99 -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#F00-F99">
-        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#GroupOfICD"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#ICDGroup"/>
     </owl:Class>
     
 
@@ -1314,7 +1534,7 @@
     <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#F10-F19 -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#F10-F19">
-        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#GroupOfICD"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#ICDGroup"/>
     </owl:Class>
     
 
@@ -1322,7 +1542,7 @@
     <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#F20-F29 -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#F20-F29">
-        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#GroupOfICD"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#ICDGroup"/>
     </owl:Class>
     
 
@@ -1330,7 +1550,7 @@
     <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#F30-F39 -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#F30-F39">
-        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#GroupOfICD"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#ICDGroup"/>
     </owl:Class>
     
 
@@ -1338,7 +1558,7 @@
     <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#F40-F48 -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#F40-F48">
-        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#GroupOfICD"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#ICDGroup"/>
     </owl:Class>
     
 
@@ -1346,7 +1566,7 @@
     <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#F50-F59 -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#F50-F59">
-        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#GroupOfICD"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#ICDGroup"/>
     </owl:Class>
     
 
@@ -1354,7 +1574,7 @@
     <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#F60-F69 -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#F60-F69">
-        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#GroupOfICD"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#ICDGroup"/>
     </owl:Class>
     
 
@@ -1362,7 +1582,7 @@
     <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#F70-F79 -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#F70-F79">
-        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#GroupOfICD"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#ICDGroup"/>
     </owl:Class>
     
 
@@ -1370,7 +1590,7 @@
     <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#F80-F89 -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#F80-F89">
-        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#GroupOfICD"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#ICDGroup"/>
     </owl:Class>
     
 
@@ -1378,7 +1598,7 @@
     <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#F90-F98 -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#F90-F98">
-        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#GroupOfICD"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#ICDGroup"/>
     </owl:Class>
     
 
@@ -1386,7 +1606,7 @@
     <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#F99 -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#F99">
-        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#GroupOfICD"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#ICDGroup"/>
     </owl:Class>
     
 
@@ -1464,6 +1684,14 @@
     
 
 
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#FinalQuestionnarie -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#FinalQuestionnarie">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Questionnarie"/>
+    </owl:Class>
+    
+
+
     <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#FinalScore -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#FinalScore">
@@ -1532,14 +1760,6 @@
 
     <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Glaucoma">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Comorbidity"/>
-    </owl:Class>
-    
-
-
-    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#GroupOfICD -->
-
-    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#GroupOfICD">
-        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#ClinicalData"/>
     </owl:Class>
     
 
@@ -1733,6 +1953,14 @@
 
     <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Hypothyroidism">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Comorbidity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#ICDGroup -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#ICDGroup">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#ClinicalData"/>
     </owl:Class>
     
 
@@ -2404,6 +2632,14 @@
     
 
 
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Psychotherapy -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Psychotherapy">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#TherapeuticAction"/>
+    </owl:Class>
+    
+
+
     <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Question -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Question">
@@ -2438,6 +2674,12 @@
             </owl:Class>
         </owl:equivalentClass>
     </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Questionnarie -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#Questionnarie"/>
     
 
 
@@ -3496,7 +3738,7 @@
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
         <owl:members rdf:parseType="Collection">
             <rdf:Description rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#FrequencyOfUseOfTheTypeOfPsychoactiveSubstance"/>
-            <rdf:Description rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#GroupOfICD"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#ICDGroup"/>
             <rdf:Description rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#PsychoactiveSubstance"/>
             <rdf:Description rdf:about="http://www.semanticweb.org/evald/ontologies/2020/11/ontriscal#SignalAndSymptomSeverity"/>
         </owl:members>
