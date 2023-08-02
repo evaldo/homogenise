@@ -1,0 +1,481 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#"
+     xml:base="http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+    <owl:Ontology rdf:about="http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#caseAppliesTo -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#caseAppliesTo">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#Case"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#VariableValue"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#caseBelongsTo -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#caseBelongsTo">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#Case"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#Selection"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#Source"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#codeAppliesTo -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#codeAppliesTo">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#Code"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#Note"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#codeBelongsTo -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#codeBelongsTo">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#Code"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#Case"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#codeContains -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#codeContains">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#Code"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#CodeBook"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#codebookContains -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#codebookContains">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#CodeBook"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#Set"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#codingAppliesTo -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#codingAppliesTo">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#Coding"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#Selection"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#Source"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#contains -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#contains">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#Graph"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#Link"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#Project"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#Vertex"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#from -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#from">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#TranscriptSelection"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#Syncpoint"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#has -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#has">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#Transcript"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#Syncpoint"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#hasChild -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#hasChild">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#Code"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#Code"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#hasMemberCode -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#hasMemberCode">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#Code"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#Set"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#hasMemberNote -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#hasMemberNote">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#Note"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#Set"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#hasMemberSource -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#hasMemberSource">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#Source"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#Set"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#isDescriptionOf -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#isDescriptionOf">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#TextSource"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#Picture"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#isRepresentationOf -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#isRepresentationOf">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#TextSource"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#PDFDocument"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#Source"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#isUsedIn -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#isUsedIn">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#Code"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#Coding"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#noteAppliesTo -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#noteAppliesTo">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#Note"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#Link"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#Selection"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#Source"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#projectAppliesTo -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#projectAppliesTo">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#Project"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#Note"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#projectContains -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#projectContains">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#Project"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#Case"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#CodeBook"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#Note"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#Set"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#Variable"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#source -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#source">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#Edge"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#Vertex"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#target -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#target">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#Edge"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#Vertex"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#to -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#to">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#TranscriptSelection"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#Syncpoint"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#variableValueBelongsTo -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#variableValueBelongsTo">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#Variable"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#VariableValue"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#Audio -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#Audio">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#Source"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#AudioSelection -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#AudioSelection">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#Selection"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#Case -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#Case"/>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#Code -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#Code"/>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#CodeBook -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#CodeBook"/>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#Coding -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#Coding"/>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#Edge -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#Edge"/>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#Graph -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#Graph"/>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#Link -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#Link"/>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#Note -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#Note">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#TextSource"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#PDFDocument -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#PDFDocument">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#Source"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#PDFSelection -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#PDFSelection">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#Selection"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#Picture -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#Picture">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#Source"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#PictureSelection -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#PictureSelection">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#Selection"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#PlainTextSelection -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#PlainTextSelection">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#Selection"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#Project -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#Project"/>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#Selection -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#Selection"/>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#Set -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#Set"/>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#Source -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#Source"/>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#Syncpoint -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#Syncpoint"/>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#TextSource -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#TextSource">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#Source"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#Transcript -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#Transcript">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#TextSource"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#TranscriptSelection -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#TranscriptSelection">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#Selection"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#User -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#User"/>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#Variable -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#Variable"/>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#VariableValue -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#VariableValue"/>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#Vertex -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#Vertex"/>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#Video -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#Video">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#Source"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#VideoSelection -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#VideoSelection">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150#Selection"/>
+    </owl:Class>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi -->
+
