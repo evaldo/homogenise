@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog prefer="public" xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
+    <group id="Folder Repository, directory=, recursive=true, Auto-Update=true, version=2" prefer="public" xml:base="">
+        <uri id="Automatically generated entry, Timestamp=1696620536361" name="http://purl.obolibrary.org/obo/bfo.owl" uri="ontriscal.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1696620536361" name="http://www.semanticweb.org/evald/ontologies/2020/11/riskstratificationinmentalhealth" uri="ontriscal_en.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1696620536361" name="http://www.semanticweb.org/evald/ontologies/2023/7/untitled-ontology-150" uri="refiqda.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1696620536361" name="shadowed:http://purl.obolibrary.org/obo/bfo.owl" uri="Versao%20anterior/ontriscal.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1696620536361" name="shadowed:http://www.semanticweb.org/evald/ontologies/2020/11/riskstratificationinmentalhealth" uri="Versao%20anterior/ontologia_estratificacaoderiscosaudemental.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1696620536361" name="shadowed:http://www.semanticweb.org/evald/ontologies/2020/11/riskstratificationinmentalhealth" uri="Versao%20anterior/ontologia_estratificacaoderiscosaudemental_sem%20data%20properties.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1696620536361" name="shadowed:http://www.semanticweb.org/evald/ontologies/2020/11/riskstratificationinmentalhealth" uri="Versao%20anterior/ontologia_estratificacaoderiscosaudemental_taxonomia_em_ingles.owl"/>
+    </group>
+</catalog>

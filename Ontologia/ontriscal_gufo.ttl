@@ -1,0 +1,390 @@
+@prefix : <http://example.com#>.
+@prefix gufo: <http://purl.org/nemo/gufo#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+<http://example.com> rdf:type owl:Ontology;
+    owl:imports gufo:.
+:RiskStratificationInMentalHealth rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:Relator;
+    rdfs:label "RiskStratificationInMentalHealth"@en.
+:QuestionnaireElement rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:FunctionalComplex;
+    rdfs:label "QuestionnaireElement"@en.
+:Questionnarie rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:FunctionalComplex;
+    rdfs:label "Questionnarie"@en.
+:CareTeam rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
+    rdfs:label "CareTeam"@en.
+:QuestionGroup rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
+    rdfs:label "QuestionGroup"@en.
+:Question rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:FunctionalComplex;
+    rdfs:label "Question"@en.
+:AnswerOption rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
+    rdfs:label "AnswerOption"@en.
+:Score rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
+    rdfs:label "Score"@en.
+:FinalScore rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
+    rdfs:label "FinalScore"@en.
+:Yes rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
+    rdfs:label "Yes"@en.
+:No rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
+    rdfs:label "No"@en.
+:Nurse rdf:type owl:Class, gufo:Role, owl:NamedIndividual;
+    rdfs:label "Nurse"@en.
+:Therapeutic rdf:type owl:Class, gufo:Role, owl:NamedIndividual;
+    rdfs:label "Therapeutic"@en.
+:Doctor rdf:type owl:Class, gufo:Role, owl:NamedIndividual;
+    rdfs:label "Doctor"@en.
+:Psychologist rdf:type owl:Class, gufo:Role, owl:NamedIndividual;
+    rdfs:label "Psychologist"@en.
+:Person rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:FunctionalComplex;
+    rdfs:label "Person"@en.
+:Patient rdf:type owl:Class, gufo:Role, owl:NamedIndividual;
+    rdfs:label "Patient"@en.
+:SignalAndSymptomSeverity rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:label "SignalAndSymptomSeverity"@en.
+:ClinicalData rdf:type owl:Class, gufo:Category, owl:NamedIndividual;
+    rdfs:subClassOf gufo:FunctionalComplex;
+    rdfs:label "ClinicalData"@en.
+:ICDGroup rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:label "ICDGroup"@en.
+:FrequencyOfUseOfTheTypeOfPsychoactiveSubstance rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:label "FrequencyOfUseOfTheTypeOfPsychoactiveSubstance"@en.
+:Medium rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
+    rdfs:label "Medium"@en.
+:High rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
+    rdfs:label "High"@en.
+:Low rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
+    rdfs:label "Low"@en.
+:Hallucination rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
+    rdfs:label "Hallucination"@en.
+:Delirium rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
+    rdfs:label "Delirium"@en.
+:Auditory rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
+    rdfs:label "Auditory"@en.
+:VisualHallucination rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
+    rdfs:label "VisualHallucination"@en.
+:TactileHallucination rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
+    rdfs:label "TactileHallucination"@en.
+:DelusionalDisorder rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
+    rdfs:label "DelusionalDisorder"@en.
+:PsychoactiveSubstance rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:label "PsychoactiveSubstance"@en.
+:Alcohol rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
+    rdfs:label "Alcohol"@en.
+:Cocaine rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
+    rdfs:label "Cocaine"@en.
+:Crack rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
+    rdfs:label "Crack"@en.
+:SocioDemographicData rdf:type owl:Class, gufo:Category, owl:NamedIndividual;
+    rdfs:subClassOf gufo:FunctionalComplex;
+    rdfs:label "SocioDemographicData"@en.
+:AgeGroup rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:label "AgeGroup"@en.
+:SocialVulnerability rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:label "SocialVulnerability"@en.
+:BiologicalSex rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:label "BiologicalSex"@en.
+:Male rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
+    rdfs:label "Male"@en.
+:Female rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
+    rdfs:label "Female"@en.
+:Adolescent rdf:type owl:Class, gufo:Phase, owl:NamedIndividual;
+    rdfs:label "Adolescent"@en.
+:Adult rdf:type owl:Class, gufo:Phase, owl:NamedIndividual;
+    rdfs:label "Adult"@en.
+:Eldery rdf:type owl:Class, gufo:Phase, owl:NamedIndividual;
+    rdfs:label "Eldery"@en.
+:SignAndSymptom rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:IntrinsicMode;
+    rdfs:label "SignAndSymptom"@en.
+:Refractoriness rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
+    rdfs:label "Refractoriness"@en.
+:DependencyAutonomy rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
+    rdfs:label "DependencyAutonomy"@en.
+:RiskForYouAndOthers rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
+    rdfs:label "RiskForYouAndOthers"@en.
+:Symptomatology rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
+    rdfs:label "Symptomatology"@en.
+:Comorbidity rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:IntrinsicMode;
+    rdfs:label "Comorbidity"@en.
+:Diabetes rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
+    rdfs:label "Diabetes"@en.
+:Dementia rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
+    rdfs:label "Dementia"@en.
+:RiskLevel rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:FunctionalComplex;
+    rdfs:label "RiskLevel"@en.
+:RiskRange rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
+    rdfs:label "RiskRange"@en.
+:HighRiskLevel rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
+    rdfs:label "HighRiskLevel"@en.
+:MediumRiskLevel rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
+    rdfs:label "MediumRiskLevel"@en.
+:LowRiskLevel rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
+    rdfs:label "LowRiskLevel"@en.
+:TherapeuticAction rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:FunctionalComplex;
+    rdfs:label "TherapeuticAction"@en.
+:SingularTherapeuticProject rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:FunctionalComplex;
+    rdfs:label "SingularTherapeuticProject"@en.
+:MedicalCare rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
+    rdfs:label "MedicalCare"@en.
+:NutritionalAssistance rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
+    rdfs:label "NutritionalAssistance"@en.
+:NursingAssistance rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
+    rdfs:label "NursingAssistance"@en.
+:SocialAssistance rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
+    rdfs:label "SocialAssistance"@en.
+:GroupService rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
+    rdfs:label "GroupService"@en.
+:IndividualPsychologicalService rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
+    rdfs:label "IndividualPsychologicalService"@en.
+:CoexistenceWorkshop rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
+    rdfs:label "CoexistenceWorkshop"@en.
+:HealthCareLevel rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:IntrinsicMode;
+    rdfs:label "HealthCareLevel"@en.
+:Primary rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
+    rdfs:label "Primary"@en.
+:Secondary rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
+    rdfs:label "Secondary"@en.
+:Tertiary rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
+    rdfs:label "Tertiary"@en.
+:RiskScore rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:Quantity;
+    rdfs:label "RiskScore"@en.
+:CognitiveModel rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:FunctionalComplex;
+    rdfs:label "CognitiveModel"@en.
+:Psychoterapy rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
+    rdfs:label "Psychoterapy"@en.
+:ClinicalEvaluation rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:FunctionalComplex;
+    rdfs:label "ClinicalEvaluation"@en.
+:CaseConceptualization rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:FunctionalComplex;
+    rdfs:label "CaseConceptualization"@en.
+:BehaviorAspects rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
+    rdfs:label "BehaviorAspects"@en.
+:ClinicalStrategies rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
+    rdfs:label "ClinicalStrategies"@en.
+:CognitiveAspect rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
+    rdfs:label "CognitiveAspect"@en.
+:ContextualAspect rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
+    rdfs:label "ContextualAspect"@en.
+:EmotionalAspects rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
+    rdfs:label "EmotionalAspects"@en.
+:PhysiologicalSymptoms rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
+    rdfs:label "PhysiologicalSymptoms"@en.
+:FinalQuestionnarie rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
+    rdfs:label "FinalQuestionnarie"@en.
+:BeginningQuestionnarie rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
+    rdfs:label "BeginningQuestionnarie"@en.
+:QuestionGroup rdfs:subClassOf :QuestionnaireElement.
+:AnswerOption rdfs:subClassOf :QuestionnaireElement.
+:Score rdfs:subClassOf :QuestionnaireElement.
+:FinalScore rdfs:subClassOf :QuestionnaireElement.
+:Yes rdfs:subClassOf :AnswerOption.
+:No rdfs:subClassOf :AnswerOption.
+:Nurse rdfs:subClassOf :CareTeam.
+:Therapeutic rdfs:subClassOf :CareTeam.
+:Doctor rdfs:subClassOf :CareTeam.
+:Psychologist rdfs:subClassOf :CareTeam.
+:Patient rdfs:subClassOf :Person.
+:CareTeam rdfs:subClassOf :Person.
+:ICDGroup rdfs:subClassOf :ClinicalData.
+:FrequencyOfUseOfTheTypeOfPsychoactiveSubstance rdfs:subClassOf :ClinicalData.
+:SignalAndSymptomSeverity rdfs:subClassOf :ClinicalData.
+:Low rdfs:subClassOf :FrequencyOfUseOfTheTypeOfPsychoactiveSubstance.
+:Medium rdfs:subClassOf :FrequencyOfUseOfTheTypeOfPsychoactiveSubstance.
+:High rdfs:subClassOf :FrequencyOfUseOfTheTypeOfPsychoactiveSubstance.
+:Hallucination rdfs:subClassOf :SignalAndSymptomSeverity.
+:Delirium rdfs:subClassOf :SignalAndSymptomSeverity.
+:Auditory rdfs:subClassOf :Hallucination.
+:VisualHallucination rdfs:subClassOf :Hallucination.
+:TactileHallucination rdfs:subClassOf :Hallucination.
+:DelusionalDisorder rdfs:subClassOf :Delirium.
+:Alcohol rdfs:subClassOf :PsychoactiveSubstance.
+:Cocaine rdfs:subClassOf :PsychoactiveSubstance.
+:Crack rdfs:subClassOf :PsychoactiveSubstance.
+:BiologicalSex rdfs:subClassOf :SocioDemographicData.
+:Male rdfs:subClassOf :BiologicalSex.
+:Female rdfs:subClassOf :BiologicalSex.
+:Adolescent rdfs:subClassOf :AgeGroup.
+:Eldery rdfs:subClassOf :AgeGroup.
+:AgeGroup rdfs:subClassOf :SocioDemographicData.
+:SocialVulnerability rdfs:subClassOf :SocioDemographicData.
+:Adult rdfs:subClassOf :AgeGroup.
+:RiskForYouAndOthers rdfs:subClassOf :SignAndSymptom.
+:Refractoriness rdfs:subClassOf :SignAndSymptom.
+:Symptomatology rdfs:subClassOf :SignAndSymptom.
+:DependencyAutonomy rdfs:subClassOf :SignAndSymptom.
+:PsychoactiveSubstance rdfs:subClassOf :ClinicalData.
+:Diabetes rdfs:subClassOf :Comorbidity.
+:Dementia rdfs:subClassOf :Comorbidity.
+:MediumRiskLevel rdfs:subClassOf :RiskLevel.
+:RiskRange rdfs:subClassOf :RiskLevel.
+:LowRiskLevel rdfs:subClassOf :RiskLevel.
+:HighRiskLevel rdfs:subClassOf :RiskLevel.
+:MedicalCare rdfs:subClassOf :TherapeuticAction.
+:NutritionalAssistance rdfs:subClassOf :TherapeuticAction.
+:NursingAssistance rdfs:subClassOf :TherapeuticAction.
+:SocialAssistance rdfs:subClassOf :TherapeuticAction.
+:IndividualPsychologicalService rdfs:subClassOf :TherapeuticAction.
+:GroupService rdfs:subClassOf :TherapeuticAction.
+:CoexistenceWorkshop rdfs:subClassOf :TherapeuticAction.
+:Primary rdfs:subClassOf :HealthCareLevel.
+:Secondary rdfs:subClassOf :HealthCareLevel.
+:Tertiary rdfs:subClassOf :HealthCareLevel.
+:Psychoterapy rdfs:subClassOf :TherapeuticAction.
+:BehaviorAspects rdfs:subClassOf :ClinicalEvaluation.
+:ClinicalStrategies rdfs:subClassOf :ClinicalEvaluation.
+:CognitiveAspect rdfs:subClassOf :ClinicalEvaluation.
+:ContextualAspect rdfs:subClassOf :ClinicalEvaluation.
+:EmotionalAspects rdfs:subClassOf :ClinicalEvaluation.
+:PhysiologicalSymptoms rdfs:subClassOf :ClinicalEvaluation.
+:BeginningQuestionnarie rdfs:subClassOf :Questionnarie.
+:FinalQuestionnarie rdfs:subClassOf :Questionnarie.
+:executedBy rdf:type owl:ObjectProperty;
+    rdfs:domain :RiskStratificationInMentalHealth;
+    rdfs:range :CareTeam;
+    rdfs:label "executedBy"@en.
+:uses rdf:type owl:ObjectProperty;
+    rdfs:domain :RiskStratificationInMentalHealth;
+    rdfs:range :Questionnarie;
+    rdfs:label "uses"@en.
+:isFormulatedBy_3 rdf:type owl:ObjectProperty;
+    rdfs:domain :QuestionnaireElement;
+    rdfs:range :Questionnarie;
+    rdfs:label "isFormulatedBy"@en.
+:isFormulatedBy rdf:type owl:ObjectProperty;
+    rdfs:domain :Question;
+    rdfs:range :QuestionGroup;
+    rdfs:label "isFormulatedBy"@en.
+:questionHas rdf:type owl:ObjectProperty;
+    rdfs:domain :Question;
+    rdfs:range :AnswerOption;
+    rdfs:label "questionHas"@en.
+:answers rdf:type owl:ObjectProperty;
+    rdfs:domain :Question;
+    rdfs:range :Patient;
+    rdfs:label "answers"@en.
+:isFormulatedBy_2 rdf:type owl:ObjectProperty;
+    rdfs:domain :Question;
+    rdfs:range :ClinicalData;
+    rdfs:label "isFormulatedBy"@en.
+:patientHasClinicalData rdf:type owl:ObjectProperty;
+    rdfs:domain :Patient;
+    rdfs:range :ClinicalData.
+:patientHas rdf:type owl:ObjectProperty;
+    rdfs:domain :Patient;
+    rdfs:range :SocioDemographicData;
+    rdfs:label "patientHas"@en.
+:demographicSocialDataFormulatedBy rdf:type owl:ObjectProperty;
+    rdfs:domain :SocioDemographicData;
+    rdfs:range :Question;
+    rdfs:label "demographicSocialDataFormulatedBy"@en.
+:makesUse rdf:type owl:ObjectProperty;
+    rdfs:domain :Patient;
+    rdfs:range :PsychoactiveSubstance;
+    rdfs:label "makesUse"@en.
+:takesCare rdf:type owl:ObjectProperty;
+    rdfs:domain :Patient;
+    rdfs:range :CareTeam;
+    rdfs:label "takesCare"@en.
+:recevies rdf:type owl:ObjectProperty;
+    rdfs:domain :AnswerOption;
+    rdfs:range :Score;
+    rdfs:label "recevies"@en.
+:isFormulatedBy_1 rdf:type owl:ObjectProperty;
+    rdfs:domain :SignAndSymptom;
+    rdfs:range :Question;
+    rdfs:label "isFormulatedBy"@en.
+:classifies rdf:type owl:ObjectProperty;
+    rdfs:domain :QuestionGroup;
+    rdfs:range :SignAndSymptom;
+    rdfs:label "classifies"@en.
+:isIidentifiedWith rdf:type owl:ObjectProperty;
+    rdfs:domain :Patient;
+    rdfs:range :Comorbidity;
+    rdfs:label "isIidentifiedWith"@en.
+:calcultes rdf:type owl:ObjectProperty;
+    rdfs:domain :CareTeam;
+    rdfs:range :FinalScore;
+    rdfs:label "calcultes"@en.
+:patientHas_1 rdf:type owl:ObjectProperty;
+    rdfs:domain :Patient;
+    rdfs:range :FinalScore;
+    rdfs:label "patientHas"@en.
+:riskRangeDetermines rdf:type owl:ObjectProperty;
+    rdfs:domain :FinalScore;
+    rdfs:range :RiskLevel;
+    rdfs:label "riskRangeDetermines"@en.
+:riskLevelGuides rdf:type owl:ObjectProperty;
+    rdfs:domain :RiskLevel;
+    rdfs:range :SingularTherapeuticProject;
+    rdfs:label "riskLevelGuides"@en.
+:riskLevelHasTherapeuticAction rdf:type owl:ObjectProperty;
+    rdfs:domain :RiskLevel;
+    rdfs:range :TherapeuticAction.
+:singularTherapeuticProjectIsFormedBy rdf:type owl:ObjectProperty;
+    rdfs:domain :SingularTherapeuticProject;
+    rdfs:range :TherapeuticAction;
+    rdfs:label "singularTherapeuticProjectIsFormedBy"@en.
+:severityOfSignsAndSymptomGuides rdf:type owl:ObjectProperty;
+    rdfs:domain :SignalAndSymptomSeverity;
+    rdfs:range :HealthCareLevel.
+:isCalculatedBy rdf:type owl:ObjectProperty;
+    rdfs:domain :FinalScore;
+    rdfs:range :RiskScore;
+    rdfs:label "isCalculatedBy"@en.
+:formulates rdf:type owl:ObjectProperty;
+    rdfs:domain :CognitiveModel;
+    rdfs:range :Psychoterapy.
+:cognitiveModelHas rdf:type owl:ObjectProperty;
+    rdfs:domain :CognitiveModel;
+    rdfs:range :ClinicalEvaluation;
+    rdfs:label "cognitiveModelHas"@en.
+:defines rdf:type owl:ObjectProperty;
+    rdfs:domain :CognitiveModel;
+    rdfs:range :CaseConceptualization;
+    rdfs:label "defines"@en.
+:definesCognitiveModelOf rdf:type owl:ObjectProperty;
+    rdfs:domain :CaseConceptualization;
+    rdfs:range :Patient;
+    rdfs:label "definesCognitiveModelOf"@en.
+:isComprehendedBy rdf:type owl:ObjectProperty;
+    rdfs:domain :Patient;
+    rdfs:range :CaseConceptualization;
+    rdfs:label "isComprehendedBy"@en.
+:symptomIsAssociatedWith rdf:type owl:ObjectProperty;
+    rdfs:domain :CaseConceptualization;
+    rdfs:range :PhysiologicalSymptoms;
+    rdfs:label "symptomIsAssociatedWith"@en.
+:emotionIsAssociatedWith rdf:type owl:ObjectProperty;
+    rdfs:domain :CaseConceptualization;
+    rdfs:range :EmotionalAspects;
+    rdfs:label "emotionIsAssociatedWith"@en.
+:treats rdf:type owl:ObjectProperty;
+    rdfs:domain :Psychoterapy;
+    rdfs:range :Patient;
+    rdfs:label "treats"@en.
+:isTechniqueOf rdf:type owl:ObjectProperty;
+    rdfs:domain :CaseConceptualization;
+    rdfs:range :Psychoterapy;
+    rdfs:label "isTechniqueOf"@en.
+:patientAnswersQuestionnaire rdf:type owl:ObjectProperty;
+    rdfs:domain :BeginningQuestionnarie;
+    rdfs:range :Patient;
+    rdfs:label "patientAnswersQuestionnaire"@en.
+:finalQuestionnarieHasPatient rdf:type owl:ObjectProperty;
+    rdfs:domain :FinalQuestionnarie;
+    rdfs:range :Patient.
