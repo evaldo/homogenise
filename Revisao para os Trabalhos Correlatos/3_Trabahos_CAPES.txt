@@ -1,0 +1,45 @@
+1- (ontology and “semantic annotation” and “knowledge graphs” and “qualitative analysis” and “quantitative analysis”)
+2- (ontology and "qualitative coding" and “qualitative analysis” and “semantic web”)
+
+
+@article{BrazhukAndrei2023Asos,
+issn = {2331-8422},
+abstract = {For a long time threat modeling was treated as a manual, complicated process. However modern agile development methodologies and cloud computing technologies require adding automatic threat modeling approaches. This work considers two challenges: creating a set of machine-readable data flow diagrams that represent real cloud based applications; and usage domain specific knowledge for automatic analysis of the security aspects of such applications. The set of 180 semantic diagrams (ontologies and knowledge graphs) is created based on cloud configurations (Docker Compose); the set includes a manual taxonomy that allows to define the design and functional aspects of the web based and data processing applications; the set can be used for various research in the threat modeling field. This work also evaluates how ontologies and knowledge graphs can be used to automatically recognize patterns (mapped to security threats) in diagrams. A pattern represents features of a diagram in form of a request to a knowledge base, what enables its recognition in a semantic representation of a diagram. In an experiment four groups of the patterns are created (web applications, data processing, network, and docker specific), and the diagrams are examined by the patterns. Automatic results, received for the web applications and data processing patterns, are compared with the manual taxonomy in order to study challenges of automatic threat modeling.},
+journal = {arXiv.org},
+publisher = {Cornell University Library, arXiv.org},
+year = {2023},
+title = {A set of semantic data flow diagrams and its security analysis based on ontologies and knowledge graphs},
+copyright = {2023. This work is published under http://creativecommons.org/licenses/by/4.0/ (the “License”). Notwithstanding the ProQuest Terms and Conditions, you may use this content in accordance with the terms of the License.},
+language = {eng},
+address = {Ithaca},
+author = {Brazhuk, Andrei},
+keywords = {Applications programs ; Cloud computing ; Computer security ; Data processing ; Graphs ; Knowledge bases (artificial intelligence) ; Knowledge representation ; Ontology ; Pattern recognition ; Security aspects ; Semantics ; Taxonomy ; Threat models},
+}
+
+@article{BrazhukAndrei2023Asos,
+abstract = {For a long time threat modeling was treated as a manual, complicated process.
+However modern agile development methodologies and cloud computing technologies
+require adding automatic threat modeling approaches. This work considers two
+challenges: creating a set of machine-readable data flow diagrams that
+represent real cloud based applications; and usage domain specific knowledge
+for automatic analysis of the security aspects of such applications. The set of
+180 semantic diagrams (ontologies and knowledge graphs) is created based on
+cloud configurations (Docker Compose); the set includes a manual taxonomy that
+allows to define the design and functional aspects of the web based and data
+processing applications; the set can be used for various research in the threat
+modeling field. This work also evaluates how ontologies and knowledge graphs
+can be used to automatically recognize patterns (mapped to security threats) in
+diagrams. A pattern represents features of a diagram in form of a request to a
+knowledge base, what enables its recognition in a semantic representation of a
+diagram. In an experiment four groups of the patterns are created (web
+applications, data processing, network, and docker specific), and the diagrams
+are examined by the patterns. Automatic results, received for the web
+applications and data processing patterns, are compared with the manual
+taxonomy in order to study challenges of automatic threat modeling.},
+year = {2023},
+title = {A set of semantic data flow diagrams and its security analysis based on ontologies and knowledge graphs},
+copyright = {http://creativecommons.org/licenses/by/4.0},
+language = {eng},
+author = {Brazhuk, Andrei},
+}
+

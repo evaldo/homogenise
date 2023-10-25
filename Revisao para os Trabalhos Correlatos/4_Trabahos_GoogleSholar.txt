@@ -1,0 +1,300 @@
+1- (ontology and “semantic annotation” and “knowledge graphs” and “qualitative analysis” and “quantitative analysis”)
+2- (ontology and "qualitative coding" and “qualitative analysis” and “semantic web”)
+
+A decade of Semantic Web research through the lenses of a mixed methods approach
+S Kirrane, M Sabou, JD Fernández, F Osborne… - Semantic …, 2020 - content.iospress.com
+… Concretely, we build on a qualitative analysis of the main seminal … [2] introduce knowledge
+graphs as novel knowledge … For the quantitative analysis of our work, we employed data-…
+Save Cite Cited by 16 Related articles All 14 versions
+[BOOK] The Semantic Web: 15th International Conference, ESWC 2018, Heraklion, Crete, Greece, June 3–7, 2018, Proceedings
+A Gangemi, R Navigli, ME Vidal, P Hitzler, R Troncy… - 2018 - books.google.com
+… linked data and a reference model for all sorts of knowledge graphs … [10] conducted a
+quantitative analysis for studying the … In detail, we firstly perform semantic annotation [10] in order …
+Save Cite Cited by 11 Related articles All 4 versions
+[PDF] hal.science
+A tri-partite neural document language model for semantic information retrieval
+GH Nguyen, L Tamine, L Soulier, N Souf - European Semantic Web …, 2018 - Springer
+… ], semantic annotation of unstructured or structured data [6], … of knowledge sources (linguistic,
+knowledge graphs,...) can be … quantitative analysis with a comparative qualitative analysis …
+Save Cite Cited by 13 Related articles All 16 versions
+[HTML] sciencedirect.com
+[HTML] User-centered design of a web-based crowdsourcing-integrated semantic text annotation tool for building a mental health knowledge base
+X He, H Zhang, J Bian - Journal of biomedical informatics, 2020 - Elsevier
+… a text phrase to an existing ontology class accurately. For example, … the existing ontologies;
+and the recommended ontology classes are … Constructing knowledge graphs of depression …
+Save Cite Cited by 19 Related articles All 5 versions
+[PDF] mdpi.com
+The architecture of mass customization-social Internet of Things system: Current research profile
+Z Dou, Y Sun, Z Wu, T Wang, S Fan… - … International Journal of …, 2021 - mdpi.com
+… [39] proposed a device-oriented automatic semantic annotation … generating various types of
+knowledge graphs, people can better … Through the qualitative analysis of its complex system …
+Save Cite Cited by 10 Related articles All 7 versions 
+[PDF] hal.science
+Semantic information retrieval on medical texts: Research challenges, survey, and open issues
+L Tamine, L Goeuriot - ACM Computing Surveys (CSUR), 2021 - dl.acm.org
+… resources (eg, ontologies, thesaurus, knowledge graphs) that provide … The result of the
+semantic annotation is an enriched text, … Their finding is based on a quantitative analysis of the …
+Save Cite Cited by 15 Related articles All 10 versions
+[PDF] hal.science
+Semantic frameworks to enhance situation awareness for defence and security applications
+V Dragos - 2021 - hal.science
+… a domain ontology to describe data semantics, and implementing semantic annotation …
+with corresponding elements of the domain ontology along with reasoning mechanisms for data …
+Save Cite Cited by 1 Related articles All 3 versions 
+[PDF] uts.edu.au
+Trends in Digital library research: a knowledge mapping and ontology engineering approach
+SH Nguyen - 2013 - opus.lib.uts.edu.au
+… Knowledge graphs are networks of concepts, and they consist of nodes representing … Many
+researchers have used quantitative analysis techniques to study the trends of research within …
+Save Cite Cited by 4 Related articles All 2 versions 
+[PDF] mdpi.com
+Discovering hidden mental states in open multi-agent systems by leveraging multi-protocol regularities with machine learning
+E Serrano, J Bajo - Sensors, 2020 - mdpi.com
+… , but resolving conflicts between ontologies used by these agents. … be labeled with a
+semantic annotation m ( v ) = q ( X , Y , Z ) . … The typical quantitative analysis, very present in the …
+Save Cite Cited by 5 Related articles All 7 versions 
+[PDF] uva.nl
+[PDF] Entity-centric document understanding
+C Wu - pure.uva.nl
+… construction of ontology for semantic annotation of biomedical … of semantic search and
+knowledge graphs in recent years, … To answer RQ1.4 we perform a quantitative analysis similar …
+Save Cite Related articles 
+
+[PDF] MSc. in Entrepreneurial Engineering EE3, Master's thesis project 3rd of June 2021 Neesha Narayanan (nnaray20@ student. aau. dk)
+N Narayanan - projekter.aau.dk
+… Parallelly, conducting qualitative analysis with use case through collaboration with the
+company – Nohara holdings and quantitative analysis by gathering corporate examples of if and …
+Save Cite Related articles 
+[PDF] uni-giessen.de
+Konzeption, Implementierung und Qualitätsbewertung der Integration semantischer klinischer Daten aus heterogenen Registerdatenbanken in ein zentrales …
+MR Stöhr - 2023 - jlupub.ub.uni-giessen.de
+… and designed for ontology representation and … knowledge-graphs. It is commonly used in
+many fields like content management, content discovery, data integration, semantic annotation …
+Save Cite Related articles 
+[PDF] uio.no
+Exploring Natural Language Inference through Transitive Reasoning
+VA Huseby - 2022 - duo.uio.no
+… compact extractions with semantic annotation. Ad… quantitative analysis, this chapter will
+look closer at the performance of the three settings of the T-NLI system. The qualitative analysis …
+
+An approach to folksonomy-based ontology maintenance for learning environments
+D Gašević, A Zouaq, C Torniai… - IEEE Transactions …, 2011 - ieeexplore.ieee.org
+… semantic web vision relies on ontologies as its main knowledge structure. However, ontologies
+… , which are reported in the results of the qualitative analysis. To determine if there is any …
+Save Cite Cited by 41 Related articles All 14 versions
+[PDF] openreview.net
+Discovering research hypotheses in social science using knowledge graph embeddings
+R de Haan, I Tiddi, W Beek - … Semantic Web: 18th International Conference …, 2021 - Springer
+… The DISK hypothesis ontology [7] was introduced to capture the evolution of research … in
+a hypothesis can be described with the PICO ontology Footnote 3 , describing Patients, the …
+Save Cite Cited by 9 Related articles All 5 versions
+[HTML] springeropen.com
+[HTML] Evaluating QualiCO: an ontology to facilitate qualitative methods sharing to support open science
+J Hocker, T Bipat… - Journal of Internet …, 2021 - jisajournal.springeropen.com
+… Broadly, we believe an ontology for sharing qualitative coding schemas has the potential to
+… In a prior publication [29] we focused only on the qualitative analysis on the interviews using …
+Save Cite Cited by 1 Related articles All 11 versions 
+Visions of time in geospatial ontologies from indigenous peoples: A case study with the Eastern Cree in Northern Quebec
+G Reid, R Sieber, S Blackned - International Journal of …, 2020 - Taylor & Francis
+… We imported texts from transcripts of interviews and field notes into the qualitative analysis
+software, … The last set of nodes in this qualitative analysis corresponds to our results that we …
+Save Cite Cited by 8 Related articles
+[PDF] academia.edu
+[PDF] Developing a computational ontology to understand the
+M Hanchard, P Merrington, B Wessels, K Rogers… - 2020 - academia.edu
+… It constitutes a first stage of qualitative analysis which informs … In our descriptive qualitative
+coding, we started with an initial … WebVOWL is an interactive semantic web-based application …
+Save Cite Related articles 
+[PDF] meipokwan.org
+Geo-narrative: Extending geographic information systems for narrative analysis in qualitative and mixed-method research
+MP Kwan, G Ding - The Professional Geographer, 2008 - Taylor & Francis
+… a 3D geovisualization and qualitative analysis component, called 3D-… Qualitative coding is
+similar to conventional coding in … These studies attempt to bridge the ontological and semantic …
+Save Cite Cited by 490 Related articles All 8 versions
+[PDF] amazonaws.com
+[PDF] Developing a computational ontology to understand the relational aspects of audience formation
+M Hanchard, P Merrington… - Emerald Open …, 2020 - … .s3.eu-west-1.amazonaws.com
+… It constitutes a first stage of qualitative analysis which informs our … Our qualitative coding of
+interviews produced a coding … WebVOWL is an interactive semantic web-based application …
+Save Cite Related articles All 17 versions 
+[PDF] sjsu.edu
+Using Technology Enabled Qualitative Research to Develop Products for the Social Good, An Overview
+MMH Roldan, R Burkhard - Issues in Innovation, 2010 - scholarworks.sjsu.edu
+… ontologies are a key part of developing the semantic web … tagged based on a relevant
+ontology at the point ofcreation, … innovative opportunities for qualitative analysis. For example, the …
+Save Cite Cited by 3 Related articles All 6 versions 
+[PDF] rwth-aachen.de
+[PDF] Formalization, user strategy and interaction design: Users' behaviour with discourse tagging semantics
+B Sereno, S Buckingham Shum, E Motta - 2007 - informatik.rwth-aachen.de
+… fall outside ontology-based Semantic Web approaches which … This paper reports the first
+quantitative and qualitative analysis … , and explained through qualitative coding of the data. …
+Save Cite Cited by 14 Related articles All 14 versions 
+[PDF] sagepub.com
+Full View
+An Ontology of Semiotic Activity and Epistemic Figuration of Heritage, Memory and Identity Practices on Social Network Sites
+K Kirtiklis, R Laužikas, I Kelpšienė, C Dallas - SAGE Open, 2023 - journals.sagepub.com
+… HMI on SNS studies, a qualitative analysis of concepts used in … to use for lexical analysis and
+qualitative coding of both SNS … the web with FOAF: A semantic web case study [Conference …
+Save Cite
+
+[PDF] Textual statistics and information discovery: Using co-occurrences to detect events
+E MacMurray, L Shen - VSST Conference, Toulouse, France, 2010 - lionel.shen.free.fr
+… However, with the advent of the “semantic web”, access to … [is] subject to an ontological
+reality that is fickle and unstable.” … This research therefore, aims at bypassing qualitative coding …
+Save Cite Cited by 4 Related articles All 2 versions 
+[PDF] vcu.edu
+[BOOK] Automatically detecting the resonance of terrorist movement frames on the web
+U Etudo - 2017 - search.proquest.com
+… resultant ontology can be accurately processed from textual data sources. This dissertation
+… ontologies and discovered from websites and online personas of concern. We develop a …
+Save Cite Cited by 6 Related articles All 5 versions
+[PDF] itep.ru
+[PDF] Semantic network analysis
+W van Atteveldt - … for Extracting, Representing, and Querying Media …, 2008 - book.itep.ru
+… ontologies or aggregating on different aspects of the same … tion techniques called the
+Semantic Web to represent the … cially between quantitative and qualitative analysis, and between …
+Save Cite Cited by 29 Related articles All 7 versions 
+[PDF] uniacademia.edu.br
+Uso de processo sistemático fundamentado em modelagem ontológica aplicado à estratificação de risco em ansiedade para análise quali-quanti
+RB Dominato, CMG de Assis… - ANALECTA-Centro …, 2023 - seer.uniacademia.edu.br
+… make quantitative and qualitative analysis difficult to reassess the … a systematic process based
+on ontological modeling applied to … As a result, the systematic process and the ontological …
+Save Cite Related articles 
+[PDF] clemson.edu
+Generating Sex Trafficking Networks From Text Documents
+M Diaz - 2022 - tigerprints.clemson.edu
+… the same difficulties with qualitative coding: Too much text, not … is through qualitative analysis,
+specifically qualitative coding. … They also suggest using a dynamic keyword ontology while …
+Save Cite Related articles 
+A language-based interface for analysis of digital storytelling
+A Gloder, L Ducceschi, M Zancanaro - Proceedings of the International …, 2020 - dl.acm.org
+… -augmented and automatic qualitative coding of data, the … ontologies: Combining syntactic
+analysis and ontology-based lookup through the user interaction. In Extended Semantic Web …
+Save Cite Cited by 1 Related articles
+[HTML] springer.com
+[HTML] Information needs for making clinical recommendations about potential drug-drug interactions: a synthesis of literature review and interviews
+KM Romagnoli, SD Nelson, L Hines, P Empey… - BMC Medical Informatics …, 2017 - Springer
+… ) conducted an open-coding qualitative analysis of the included articles … Using the
+Micropublications ontology and the Open … the codebooks used in qualitative coding are available …
+Save Cite Cited by 32 Related articles All 12 versions
+[PDF] ualberta.ca
+[BOOK] The Shoemaker's Son: A substantive theory of social media use for knowledge sharing in academic libraries
+E Forcier - 2013 - search.proquest.com
+… of knowledge from different epistemological and ontological valences. In Chapter Six (―…
+As the next chapter will discuss, the iterative process of qualitative coding and the use of …
+Save Cite Cited by 9 Related articles All 6 versions
+[PDF] dal.ca
+Shared Decision Making: Managing Non-critical Chronic Illness by Combining Behavioural & Decision Theory with Online Technology
+A Russell - 2015 - dalspace.library.dal.ca
+… An ontology model is used to integrate the core components of the conceptual model for SDM.
+The ontology … We devised mock screens based on the ontology model and decision logic. …
+Save Cite Related articles All 4 versions 
+[HTML] mdpi.com
+[HTML] Data-Driven Futuristic Scenarios: Smart Home Service Experience Foresight Based on Social Media Data
+Y Cheng, S Sul - Systems, 2023 - mdpi.com
+… The parts of the qualitative coding results are presented in … We consider the qualitative
+coding results to be the weak … collects data through a qualitative analysis such as interviews, …
+Save Cite Related articles 
+
+“Who Is the FAIRest of Them All?” Authors, Entities, and Journals Regarding FAIR Data Principles
+L Corujo - Publications, 2022 - mdpi.com
+… ; (2) equal to RDF, linked data, or the semantic web; (3) limited to how humans are able to
+find, … for ontologies: a case study of an open science ontology for qualitative coding schemas …
+Save Cite Related articles All 5 versions 
+[PDF] infodocs.eu
+[PDF] Who Is the FAIRest of Them All?
+L Corujo - Authors, Entities, and Journals Regarding FAIR Data … - microblogging.infodocs.eu
+… ; (2) equal to RDF, linked data, or the semantic web; (3) limited to how humans are able to
+find, … for ontologies: a case study of an open science ontology for qualitative coding schemas …
+Save Cite Related articles 
+[PDF] vu.nl
+[PDF] VU Research Portal
+WH van Atteveldt - research.vu.nl
+… ontologies or aggregating on different aspects of the same … tion techniques called the
+Semantic Web to represent the … cially between quantitative and qualitative analysis, and between …
+Save Cite Related articles 
+[PDF] arxiv.org
+Characterizing the Users, Challenges, and Visualization Needs of Knowledge Graphs in Practice
+H Li, G Appleby, CD Brumar, R Chang… - arXiv preprint arXiv …, 2023 - arxiv.org
+… dating back to the rise of the semantic web [9] first proposed by … We carried out a qualitative
+coding process to analyze our … to generate concept maps or ontologies, formally representing …
+Save Cite Related articles All 2 versions 
+[PDF] metu.edu.tr
+Using Post-Project Reviews for Risk Assessment of Construction Projects
+P Shokouhi - 2022 - open.metu.edu.tr
+… Interviews were transcribed, and qualitative analysis of semi-… The outcomes of the study
+show that ontology-based risk … general information regarding qualitative coding processes. …
+Save Cite Related articles 
+[PDF] unl.pt
+Implementing the International Image Interoperability Framework (IIIF) for accessibility and reuse of cultural heritage resources on the web–Challenges and …
+CPC Pitta - 2023 - run.unl.pt
+… and in Portugal through qualitative analysis of professionals’ responses to a questionnaire.
+… from stricter adherence to Semantic Web standards and ontological models like RDFS and …
+Save Cite 
+[PDF] uchicago.edu
+[PDF] Files of a Feather Flock Together
+W Brackenbury - Master's thesis. University of Chicago, 2019 - newtraell.cs.uchicago.edu
+… and use these to build ontologies. These concepts resemble … Semantic Filesystems Work
+in the semantic web [27] … -text response data primarily through qualitative coding. To surface …
+Save Cite Cited by 1 Related articles 
+[PDF] arxiv.org
+Critical-Reflective Human-AI Collaboration: Exploring Computational Tools for Art Historical Image Retrieval
+K Glinka, C Müller-Birn - arXiv preprint arXiv:2306.12843, 2023 - arxiv.org
+… They point out that the automation of qualitative analysis in its … different stages during a
+qualitative analysis process as one … Such textual and ontological knowledge representations are …
+Save Cite Related articles All 2 versions 
+[PDF] github.io
+An empirical study of model errors and user error discovery and repair strategies in natural language database queries
+Z Ning, Z Zhang, T Sun, Y Tian, T Zhang… - Proceedings of the 28th …, 2023 - dl.acm.org
+… to complement the quantitative benchmark with the qualitative analysis of those NL2SQL
+models. … ATHENA: an ontology-driven system for natural language querying over relational data …
+Save Cite Cited by 4 Related articles All 5 versions
+[PDF] soton.ac.uk
+Emerging a web science lexicon
+E Coskun - 2018 - eprints.soton.ac.uk
+Web Science is an emerging subject which is fundamentally inter-disciplinary. The term Web
+Science was first coined in 2006. Subsequently, a growing number of institutions across the …
+Save Cite Related articles All 2 versions 
+
+User interfaces supporting information visualization novices in visualization construction
+L Grammel - 2012 - dspace.library.uvic.ca
+… ontologies encapsulate single visualization concepts, eg, tree maps. A semantic bridging
+ontology is … Automated visualization of semantic web data is challenging because it is often …
+Save Cite Cited by 3 Related articles All 5 versions 
+[PDF] core.ac.uk
+[PDF] Acquisition and sharing of innovative manufacturing knowledge for preliminary design
+S Mountney - 2009 - core.ac.uk
+This study investigates the identification, acquisition and sharing of innovative manufacturing
+knowledge for the preliminary design of complex mechanical components. Such …
+Save Cite Cited by 5 Related articles All 4 versions 
+[PDF] vuw.ac.nz
+New Zealand Published LIS and ARM Research, 2004-2014: A Subject Analysis
+E Godfrey - 2016 - researcharchive.vuw.ac.nz
+Research problem: While subject analyses of research topics have been conducted on Library
+and Information Science (LIS) and Archives and Records Management (ARM) research …
+Save Cite Cited by 1 Related articles All 3 versions 
+[PDF] core.ac.uk
+[PDF] Social media mental health analysis framework through applied computational approaches
+X Chen - 2020 - core.ac.uk
+… , ensemble learning, deep learning, network and graph theory, ontology and semantic
+web. … Ontology is a branch of philosophy is concerned with theories of realities (Beynon-Davies, …
+Save Cite Cited by 1 Related articles All 5 versions 
+[PDF] mmu.ac.uk
+Student perceptions on skills and learning challenges in the use of educational technology in a low-contact, blended and professional learning context: a grounded …
+P Catherall - 2017 - e-space.mmu.ac.uk
+This research project provides an original contribution to knowledge, comprising a grounded
+and unified theory of improvisational behaviours via Blended Learning and suggests a new …
+Save Cite Cited by 2 Related articles All 3 versions 
+[PDF] uoguelph.ca
+Adapting Open: Exploring the Effective Use of Open Data in the Region of Waterloo
+C Skinner - 2014 - atrium.lib.uoguelph.ca
+… This chapter presents the researcher's ontological and epistemological approach before
+going on to explain the study's mixed methods approach. The study uses a combination of key …
+Save Cite Cited by 1 Related articles All 2 versions 
+[PDF] umich.edu
+[BOOK] Arkose: A Prototype Mechanism and Tool for Collaborative Information Generation and Distillation
+KK Nam - 2010 - search.proquest.com
+The goals of this thesis have been to gain a better understanding of collaborative knowledge
+sharing and distilling and to build a prototype collaborative system that supports flexible …
+Save Cite Related articles All 3 versions
+
