@@ -1,0 +1,7 @@
+Column,Attribute,attributeOf,Entity,Unit,Time,Relation,inRelationTo,Label,Role,Value,wasDerivedFrom,wasGeneratedBy
+Id_case,hasco:originalID,??case,,schema:Interger,,,,,,,,
+final_score_bdi_scale,ontriscal:FinalBDIScore,??finalquestionnaire,,,,,,,,,,
+final_score_bai_scale,ontriscal:FinalBAIScore,??finalquestionnaire,,,,,,,,,,
+risklevel_final,ontriscal:RiskLevel,??finalquestionnaire,,,,,,,,,,
+??case,,,sio:Human,,,ontriscal:patientAnswersQuestionnaire,??beginningquestionnaire,,,,,
+??beginningquestionnaire,,,ontriscal:Questionnarie,,,ontriscal:questionnaireAnsweredBy,??case,,,,,

@@ -1,0 +1,145 @@
+@prefix np: <http://www.nanopub.org/nschema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix uo: <http://purl.obolibrary.org/obo/UO_> .
+@prefix sio: <http://semanticscience.org/resource/> .
+@prefix stato: <http://purl.obolibrary.org/obo/STATO_> .
+@prefix example-kb: <http://example.com/kb/example#> .
+@prefix chear: <http://hadatac.org/ont/chear#> .
+@prefix hasco: <http://hadatac.org/ont/hasco#> .
+@prefix obo: <http://purl.obolibrary.org/obo/> .
+@prefix skos: <http://www.w3.org/2008/05/skos#> .
+@prefix ontriscal: <http://hadatac.org/ont/ontriscal#> .
+@prefix refiqda: <http://hadatac.org/ont/refiqda#> .
+@prefix qualico: <http://hadatac.org/ont/qualico#> .
+@prefix schema: <http://www.w3.org/2000/01/schema#> .
+
+<http://hadatac.org/ont/ontriscal#collection-3859ef302df068590a3dbb01bce8b5e7>    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://purl.org/dc/dcmitype/Dataset> ;
+        <http://purl.org/dc/terms/title>    "An Example Project"^^xsd:string ;
+        <http://purl.org/dc/terms/alternative>    "Example"^^xsd:string ;
+        <http://www.w3.org/2000/01/rdf-schema#comment>    "This is an example knowledge graph fragment created using the SDD approach."^^xsd:string ;
+        <http://purl.org/dc/terms/description>    "Annotated data from an example project was used to demonstrate the SDD functionality"^^xsd:string ;
+        <http://semanticscience.org/resource/hasIdentifier>    
+            [ <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://semanticscience.org/resource/Identifier> ; 
+            <http://semanticscience.org/resource/hasValue>    "ontriscal"^^xsd:string ] ;
+        <http://purl.org/dc/terms/format>    "csv"^^xsd:string .
+
+
+    <http://hadatac.org/ont/ontriscal#collection-3859ef302df068590a3dbb01bce8b5e7>    <http://www.w3.org/ns/prov#generatedAtTime>    "2023-06-20T00:19:13Z"^^xsd:dateTime ;
+        <http://purl.org/dc/terms/created>    "2023-05-22"^^xsd:date ;
+        <http://purl.org/dc/terms/issued>    "2023-05-22"^^xsd:date .
+
+
+    <http://hadatac.org/ont/ontriscal#Id_case>    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    owl:Class ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>    hasco:originalID ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>    
+            [ <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://www.w3.org/2002/07/owl#Restriction> ;
+                <http://www.w3.org/2002/07/owl#allValuesFrom>    <http://hadatac.org/ont/ontriscal#case> ;
+                <http://www.w3.org/2002/07/owl#onProperty>    <http://semanticscience.org/resource/isAttributeOf> ] ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>    
+            [ <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://www.w3.org/2002/07/owl#Restriction> ;
+                <http://www.w3.org/2002/07/owl#hasValue>    schema:Interger ;
+                <http://www.w3.org/2002/07/owl#onProperty>    <http://semanticscience.org/resource/hasUnit> ] .
+
+    <http://hadatac.org/ont/ontriscal#final_score_bdi_scale>    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    owl:Class ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>    ontriscal:FinalBDIScore ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>    
+            [ <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://www.w3.org/2002/07/owl#Restriction> ;
+                <http://www.w3.org/2002/07/owl#allValuesFrom>    <http://hadatac.org/ont/ontriscal#finalquestionnaire> ;
+                <http://www.w3.org/2002/07/owl#onProperty>    <http://semanticscience.org/resource/isAttributeOf> ] .
+
+    <http://hadatac.org/ont/ontriscal#final_score_bai_scale>    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    owl:Class ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>    ontriscal:FinalBAIScore ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>    
+            [ <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://www.w3.org/2002/07/owl#Restriction> ;
+                <http://www.w3.org/2002/07/owl#allValuesFrom>    <http://hadatac.org/ont/ontriscal#finalquestionnaire> ;
+                <http://www.w3.org/2002/07/owl#onProperty>    <http://semanticscience.org/resource/isAttributeOf> ] .
+
+    <http://hadatac.org/ont/ontriscal#risklevel_final>    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    owl:Class ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>    ontriscal:RiskLevel ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>    
+            [ <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://www.w3.org/2002/07/owl#Restriction> ;
+                <http://www.w3.org/2002/07/owl#allValuesFrom>    <http://hadatac.org/ont/ontriscal#finalquestionnaire> ;
+                <http://www.w3.org/2002/07/owl#onProperty>    <http://semanticscience.org/resource/isAttributeOf> ] .
+
+
+    <http://hadatac.org/ont/ontriscal#Id_case>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2023-06-20T00:19:13Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#final_score_bdi_scale>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2023-06-20T00:19:13Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#final_score_bai_scale>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2023-06-20T00:19:13Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#risklevel_final>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2023-06-20T00:19:13Z"^^xsd:dateTime .
+
+
+    <http://hadatac.org/ont/ontriscal#case>    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    owl:Class ;
+        <http://www.w3.org/2000/01/rdf-schema#label>    "case"^^xsd:string ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>    sio:Human ;
+        ontriscal:patientAnswersQuestionnaire <http://hadatac.org/ont/ontriscal#beginningquestionnaire> .
+
+    <http://hadatac.org/ont/ontriscal#beginningquestionnaire>    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    owl:Class ;
+        <http://www.w3.org/2000/01/rdf-schema#label>    "beginningquestionnaire"^^xsd:string ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>    ontriscal:Questionnarie ;
+        ontriscal:questionnaireAnsweredBy <http://hadatac.org/ont/ontriscal#case> .
+
+
+    <http://hadatac.org/ont/ontriscal#case>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2023-06-20T00:19:13Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#beginningquestionnaire>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2023-06-20T00:19:13Z"^^xsd:dateTime .
+
+
+    <http://hadatac.org/ont/ontriscal#Id_case-21e8cc369a8da65887173c3d42de7e9b>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://hadatac.org/ont/ontriscal#Id_case> ;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    hasco:originalID ;
+        <http://semanticscience.org/resource/isAttributeOf>    <http://hadatac.org/ont/ontriscal#case-9b117e2987cab39fc6547b3d3b23902d> ;
+        <http://semanticscience.org/resource/hasUnit>    schema:Interger ;
+        <http://semanticscience.org/resource/hasValue>    "6"^^xsd:integer .
+
+    <http://hadatac.org/ont/ontriscal#final_score_bdi_scale-e3fcb5b4339242388ac18d681292a0ec>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://hadatac.org/ont/ontriscal#final_score_bdi_scale> ;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    ontriscal:FinalBDIScore ;
+        <http://semanticscience.org/resource/isAttributeOf>    <http://hadatac.org/ont/ontriscal#finalquestionnaire-3feb15b507c0e97fea73aabc5ea9b7ac> ;
+        <http://semanticscience.org/resource/hasValue>    "4"^^xsd:integer .
+
+    <http://hadatac.org/ont/ontriscal#final_score_bai_scale-828aa8ae6fd5a44009aa9ed81d55a992>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://hadatac.org/ont/ontriscal#final_score_bai_scale> ;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    ontriscal:FinalBAIScore ;
+        <http://semanticscience.org/resource/isAttributeOf>    <http://hadatac.org/ont/ontriscal#finalquestionnaire-3feb15b507c0e97fea73aabc5ea9b7ac> ;
+        <http://semanticscience.org/resource/hasValue>    "11"^^xsd:integer .
+
+    <http://hadatac.org/ont/ontriscal#risklevel_final-b71654d7977a27f4baf5ec140e4b1564>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://hadatac.org/ont/ontriscal#risklevel_final> ;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    ontriscal:RiskLevel ;
+        <http://semanticscience.org/resource/isAttributeOf>    <http://hadatac.org/ont/ontriscal#finalquestionnaire-3feb15b507c0e97fea73aabc5ea9b7ac> ;
+        <http://semanticscience.org/resource/hasValue>    "Ansiedade Leve"^^xsd:string .
+
+    <http://hadatac.org/ont/ontriscal#case-9b117e2987cab39fc6547b3d3b23902d>    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://hadatac.org/ont/ontriscal#case> ;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    sio:Human ;
+        <http://www.w3.org/2000/01/rdf-schema#label>    "case"^^xsd:string ;
+        ontriscal:patientAnswersQuestionnaire <http://hadatac.org/ont/ontriscal#beginningquestionnaire-9b117e2987cab39fc6547b3d3b23902d> ;
+        ontriscal:patientAnswersQuestionnaire <http://hadatac.org/ont/ontriscal#beginningquestionnaire-9e048bc2d2721c0ad694829a91df913a> .
+
+
+    <http://hadatac.org/ont/ontriscal#Id_case-21e8cc369a8da65887173c3d42de7e9b>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2023-06-20T00:19:13Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#final_score_bdi_scale-e3fcb5b4339242388ac18d681292a0ec>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2023-06-20T00:19:13Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#final_score_bai_scale-828aa8ae6fd5a44009aa9ed81d55a992>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2023-06-20T00:19:13Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#risklevel_final-b71654d7977a27f4baf5ec140e4b1564>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2023-06-20T00:19:13Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#case-9b117e2987cab39fc6547b3d3b23902d>    <http://www.w3.org/ns/prov#generatedAtTime>    "2023-06-20T00:19:13Z"^^xsd:dateTime .
+

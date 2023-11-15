@@ -1,2 +1,5 @@
-Id_case,q1_anxiety_at_work,q2_when_I know_that_going to_travel,q3_buy_passage,q4_join_bags,q5_driving_to_the_airport,q6_waiting_in_the_departure_lounge,q7_call_for_flight,q8_entrance_to_plane,q9_airplane_takeoff,q_10_during_the_flight,q11_turbulence_during_the_flight,q12_anxiety_during_landing,q13_when_leaving_do_plane,initial_score_bdi_scale,initial_score_bai_scale,risk_level
-6,0,25,30,35,50,60,70,80,100,75,100,90,0,16,30,Ansiedade Moderada
+Id_case,initial_questionnarie,DS1,DS2,DS3,G11,G14,G16,G18,Pontuação,Nivelderisco
+1,questionarioInicial,22,Mulher,Solteiro(a),4,3,3,4,3.5,Moderado
+2,questionarioInicial,18,Mulher,Solteiro(a),3,4,0,1,2,Moderado
+3,questionarioInicial,22,Homem,Solteiro(a),0,0,0,0,0,Nenhum
+4,questionarioInicial,36,Homem,Solteiro(a),0,0,3,2,1.25,Baixo

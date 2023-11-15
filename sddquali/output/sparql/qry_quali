@@ -17,7 +17,7 @@ prefix refiqda: <http://hadatac.org/ont/refiqda#>
 prefix qualico: <http://hadatac.org/ont/qualico#> 
 prefix schema: <http://www.w3.org/2000/01/schema#> 
 
-SELECT DISTINCT ?id_case ?document ?source ?id_user ?user ?id_project ?project ?fear ?fearoflosingcontrol ?fearofnegativeevaluationbyothers ?frustration ?generalization ?maximizationofthenegative ?minimizationofthepositive ?objectphobic ?perfectionism ?predictionofthefuture ?ruminantthoughts ?selfawareness ?suppositions ?catastrophizing ?cognitiveaspect ?cognitivedistortion ?cognitiverestructuring ?cognitivesymptoms ?devaluation ?difficultyofreasoning ?avoidanceofthreateningsignsorsituations ?behavioraspects ?behaviorsymptoms ?contextualaspect ?manifestcomplaint ?emotionalaspects ?emotionalreasoning ?emotionalsymptoms ?sadness ?corebelief ?intermediatebelief ?problemsolving ?numberofsessions ?patienthistory ?processduration ?sessionduration ?therapeuticgoals ?psychopathology ?anxiety ?increasedheartrate ?lossofspatialperception ?musculartension ?nervous ?physiologicalsymptoms ?shortnessofbreath ?sweating ?tremor ?clinicalstrategies ?copingstrategies ?copingwithstress ?desensitization ?evidenceanalysis ?exposuretechniques ?psychoeducation ?recordingdysfunctionalthoughts ?relaxationtechniques. ?self-instruction ?socraticquestioning ?systematicdesensitization ?thoughtstop ?thought-stoppingandself-instruction ?positivesignsofengagementprocess WHERE {
+SELECT DISTINCT ?id_case ?document ?source ?id_user ?user ?id_project ?project ?acceleratedthinking ?anxiety ?automaticthinking ?avoidanceofthreateningsignsorsituations ?behavioraspects ?behaviorsymptoms ?bingeeating ?catastrophizing ?clinicaldata ?clinicalevaluation ?clinicalstrategies ?cognitiveaspect ?cognitivedistortion ?cognitivefunctions ?cognitiverestructuring ?contextualaspect ?copingstrategies ?corebelief ?decatastrophizingwithdescendingarrows ?decisionmaking ?devaluation ?diaphragmaticbreathing ?dichotomousthinking ?dizziness ?dodgeandescape ?emotionalaspects ?emotionalsymptoms ?emotionregulation ?evidenceanalysis ?excited ?exposuretechniques ?fear ?frustration ?generalization ?helplessness ?increasedheartrate ?intermediatebelief ?isolation ?maximizationofthenegative ?mindreading ?minimizationofthepositive ?perfectionism ?personalization ?predictionofthefuture ?problemsolving ?psychoeducation ?question ?recordingdysfunctionalthoughts ?rules ?sadness ?selectiveabstraction ?situationalaspects ?sleep ?sleepleness ?socialskillstechniques ?socialvulnerability ?socraticquestioning ?switchingroles ?therapeuticaction ?validation WHERE {
   ?id_case_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> hasco:originalID  ;
     <http://semanticscience.org/resource/isAttributeOf>    ?case_V  ;
     <http://semanticscience.org/resource/hasUnit>    schema:Interger ;
@@ -53,105 +53,20 @@ SELECT DISTINCT ?id_case ?document ?source ?id_user ?user ?id_project ?project ?
     <http://semanticscience.org/resource/hasUnit>    schema:String ;
     <http://semanticscience.org/resource/hasValue> ?project .
 
-  ?fear_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> refiqda:EmotionalAspect  ;
+  ?acceleratedthinking_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> refiqda:CognitiveAspect  ;
     <http://semanticscience.org/resource/isAttributeOf>    ?note_V  ;
     <http://semanticscience.org/resource/hasUnit>    schema:String ;
-    <http://semanticscience.org/resource/hasValue> ?fear .
+    <http://semanticscience.org/resource/hasValue> ?acceleratedthinking .
 
-  ?fearoflosingcontrol_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> refiqda:EmotionalAspect  ;
+  ?anxiety_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> refiqda:EmotionalAspect  ;
     <http://semanticscience.org/resource/isAttributeOf>    ?note_V  ;
     <http://semanticscience.org/resource/hasUnit>    schema:String ;
-    <http://semanticscience.org/resource/hasValue> ?fearoflosingcontrol .
+    <http://semanticscience.org/resource/hasValue> ?anxiety .
 
-  ?fearofnegativeevaluationbyothers_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> refiqda:CognitiveAspect  ;
+  ?automaticthinking_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> refiqda:CognitiveAspect  ;
     <http://semanticscience.org/resource/isAttributeOf>    ?note_V  ;
     <http://semanticscience.org/resource/hasUnit>    schema:String ;
-    <http://semanticscience.org/resource/hasValue> ?fearofnegativeevaluationbyothers .
-
-  ?frustration_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> refiqda:EmotionalAspect  ;
-    <http://semanticscience.org/resource/isAttributeOf>    ?note_V  ;
-    <http://semanticscience.org/resource/hasUnit>    schema:String ;
-    <http://semanticscience.org/resource/hasValue> ?frustration .
-
-  ?generalization_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> refiqda:CognitiveAspect  ;
-    <http://semanticscience.org/resource/isAttributeOf>    ?note_V  ;
-    <http://semanticscience.org/resource/hasUnit>    schema:String ;
-    <http://semanticscience.org/resource/hasValue> ?generalization .
-
-  ?maximizationofthenegative_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> refiqda:Thinking  ;
-    <http://semanticscience.org/resource/isAttributeOf>    ?note_V  ;
-    <http://semanticscience.org/resource/hasUnit>    schema:String ;
-    <http://semanticscience.org/resource/hasValue> ?maximizationofthenegative .
-
-  ?minimizationofthepositive_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> refiqda:Thinking  ;
-    <http://semanticscience.org/resource/isAttributeOf>    ?note_V  ;
-    <http://semanticscience.org/resource/hasUnit>    schema:String ;
-    <http://semanticscience.org/resource/hasValue> ?minimizationofthepositive .
-
-  ?objectphobic_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> refiqda:CognitiveAspect  ;
-    <http://semanticscience.org/resource/isAttributeOf>    ?note_V  ;
-    <http://semanticscience.org/resource/hasUnit>    schema:String ;
-    <http://semanticscience.org/resource/hasValue> ?objectphobic .
-
-  ?perfectionism_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> refiqda:Thinking  ;
-    <http://semanticscience.org/resource/isAttributeOf>    ?note_V  ;
-    <http://semanticscience.org/resource/hasUnit>    schema:String ;
-    <http://semanticscience.org/resource/hasValue> ?perfectionism .
-
-  ?predictionofthefuture_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> refiqda:CognitiveAspect  ;
-    <http://semanticscience.org/resource/isAttributeOf>    ?note_V  ;
-    <http://semanticscience.org/resource/hasUnit>    schema:String ;
-    <http://semanticscience.org/resource/hasValue> ?predictionofthefuture .
-
-  ?ruminantthoughts_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> refiqda:CognitiveAspect  ;
-    <http://semanticscience.org/resource/isAttributeOf>    ?note_V  ;
-    <http://semanticscience.org/resource/hasUnit>    schema:String ;
-    <http://semanticscience.org/resource/hasValue> ?ruminantthoughts .
-
-  ?selfawareness_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> refiqda:CognitiveAspect  ;
-    <http://semanticscience.org/resource/isAttributeOf>    ?note_V  ;
-    <http://semanticscience.org/resource/hasUnit>    schema:String ;
-    <http://semanticscience.org/resource/hasValue> ?selfawareness .
-
-  ?suppositions_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> refiqda:CognitiveAspect  ;
-    <http://semanticscience.org/resource/isAttributeOf>    ?note_V  ;
-    <http://semanticscience.org/resource/hasUnit>    schema:String ;
-    <http://semanticscience.org/resource/hasValue> ?suppositions .
-
-  ?catastrophizing_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> refiqda:CognitiveAspect  ;
-    <http://semanticscience.org/resource/isAttributeOf>    ?note_V  ;
-    <http://semanticscience.org/resource/hasUnit>    schema:String ;
-    <http://semanticscience.org/resource/hasValue> ?catastrophizing .
-
-  ?cognitiveaspect_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> refiqda:CognitiveAspect  ;
-    <http://semanticscience.org/resource/isAttributeOf>    ?note_V  ;
-    <http://semanticscience.org/resource/hasUnit>    schema:String ;
-    <http://semanticscience.org/resource/hasValue> ?cognitiveaspect .
-
-  ?cognitivedistortion_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> refiqda:CognitiveAspect  ;
-    <http://semanticscience.org/resource/isAttributeOf>    ?note_V  ;
-    <http://semanticscience.org/resource/hasUnit>    schema:String ;
-    <http://semanticscience.org/resource/hasValue> ?cognitivedistortion .
-
-  ?cognitiverestructuring_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> refiqda:CognitiveAspect  ;
-    <http://semanticscience.org/resource/isAttributeOf>    ?note_V  ;
-    <http://semanticscience.org/resource/hasUnit>    schema:String ;
-    <http://semanticscience.org/resource/hasValue> ?cognitiverestructuring .
-
-  ?cognitivesymptoms_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> refiqda:CognitiveAspect  ;
-    <http://semanticscience.org/resource/isAttributeOf>    ?note_V  ;
-    <http://semanticscience.org/resource/hasUnit>    schema:String ;
-    <http://semanticscience.org/resource/hasValue> ?cognitivesymptoms .
-
-  ?devaluation_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> refiqda:CognitiveAspect  ;
-    <http://semanticscience.org/resource/isAttributeOf>    ?note_V  ;
-    <http://semanticscience.org/resource/hasUnit>    schema:String ;
-    <http://semanticscience.org/resource/hasValue> ?devaluation .
-
-  ?difficultyofreasoning_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> refiqda:CognitiveAspect  ;
-    <http://semanticscience.org/resource/isAttributeOf>    ?note_V  ;
-    <http://semanticscience.org/resource/hasUnit>    schema:String ;
-    <http://semanticscience.org/resource/hasValue> ?difficultyofreasoning .
+    <http://semanticscience.org/resource/hasValue> ?automaticthinking .
 
   ?avoidanceofthreateningsignsorsituations_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> refiqda:BehaviorAspects  ;
     <http://semanticscience.org/resource/isAttributeOf>    ?note_V  ;
@@ -163,205 +78,280 @@ SELECT DISTINCT ?id_case ?document ?source ?id_user ?user ?id_project ?project ?
     <http://semanticscience.org/resource/hasUnit>    schema:String ;
     <http://semanticscience.org/resource/hasValue> ?behavioraspects .
 
-  ?behaviorsymptoms_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> refiqda:BehaviorAspects  ;
+  ?behaviorsymptoms_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> refiqda:CognitiveAspect  ;
     <http://semanticscience.org/resource/isAttributeOf>    ?note_V  ;
     <http://semanticscience.org/resource/hasUnit>    schema:String ;
     <http://semanticscience.org/resource/hasValue> ?behaviorsymptoms .
 
-  ?contextualaspect_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> refiqda:ContextualAspect  ;
+  ?bingeeating_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> refiqda:CognitiveAspect  ;
     <http://semanticscience.org/resource/isAttributeOf>    ?note_V  ;
     <http://semanticscience.org/resource/hasUnit>    schema:String ;
-    <http://semanticscience.org/resource/hasValue> ?contextualaspect .
+    <http://semanticscience.org/resource/hasValue> ?bingeeating .
 
-  ?manifestcomplaint_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> refiqda:ContextualAspect  ;
+  ?catastrophizing_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> refiqda:CognitiveAspect  ;
     <http://semanticscience.org/resource/isAttributeOf>    ?note_V  ;
     <http://semanticscience.org/resource/hasUnit>    schema:String ;
-    <http://semanticscience.org/resource/hasValue> ?manifestcomplaint .
+    <http://semanticscience.org/resource/hasValue> ?catastrophizing .
 
-  ?emotionalaspects_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> refiqda:EmotionalAspect  ;
+  ?clinicaldata_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> refiqda:ContextualAspect  ;
     <http://semanticscience.org/resource/isAttributeOf>    ?note_V  ;
     <http://semanticscience.org/resource/hasUnit>    schema:String ;
-    <http://semanticscience.org/resource/hasValue> ?emotionalaspects .
+    <http://semanticscience.org/resource/hasValue> ?clinicaldata .
 
-  ?emotionalreasoning_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> refiqda:EmotionalAspect  ;
+  ?clinicalevaluation_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> refiqda:Treatment  ;
     <http://semanticscience.org/resource/isAttributeOf>    ?note_V  ;
     <http://semanticscience.org/resource/hasUnit>    schema:String ;
-    <http://semanticscience.org/resource/hasValue> ?emotionalreasoning .
-
-  ?emotionalsymptoms_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> refiqda:EmotionalAspect  ;
-    <http://semanticscience.org/resource/isAttributeOf>    ?note_V  ;
-    <http://semanticscience.org/resource/hasUnit>    schema:String ;
-    <http://semanticscience.org/resource/hasValue> ?emotionalsymptoms .
-
-  ?sadness_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> refiqda:EmotionalAspect  ;
-    <http://semanticscience.org/resource/isAttributeOf>    ?note_V  ;
-    <http://semanticscience.org/resource/hasUnit>    schema:String ;
-    <http://semanticscience.org/resource/hasValue> ?sadness .
-
-  ?corebelief_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> refiqda:CoreBelief  ;
-    <http://semanticscience.org/resource/isAttributeOf>    ?note_V  ;
-    <http://semanticscience.org/resource/hasUnit>    schema:String ;
-    <http://semanticscience.org/resource/hasValue> ?corebelief .
-
-  ?intermediatebelief_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> refiqda:IntermediateBelief  ;
-    <http://semanticscience.org/resource/isAttributeOf>    ?note_V  ;
-    <http://semanticscience.org/resource/hasUnit>    schema:String ;
-    <http://semanticscience.org/resource/hasValue> ?intermediatebelief .
-
-  ?problemsolving_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> refiqda:CopingStrategies  ;
-    <http://semanticscience.org/resource/isAttributeOf>    ?note_V  ;
-    <http://semanticscience.org/resource/hasUnit>    schema:String ;
-    <http://semanticscience.org/resource/hasValue> ?problemsolving .
-
-  ?numberofsessions_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> refiqda:StructureOfTreatmentProcess  ;
-    <http://semanticscience.org/resource/isAttributeOf>    ?note_V  ;
-    <http://semanticscience.org/resource/hasUnit>    schema:String ;
-    <http://semanticscience.org/resource/hasValue> ?numberofsessions .
-
-  ?patienthistory_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> refiqda:StructureOfTreatmentProcess  ;
-    <http://semanticscience.org/resource/isAttributeOf>    ?note_V  ;
-    <http://semanticscience.org/resource/hasUnit>    schema:String ;
-    <http://semanticscience.org/resource/hasValue> ?patienthistory .
-
-  ?processduration_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> refiqda:StructureOfTreatmentProcess  ;
-    <http://semanticscience.org/resource/isAttributeOf>    ?note_V  ;
-    <http://semanticscience.org/resource/hasUnit>    schema:String ;
-    <http://semanticscience.org/resource/hasValue> ?processduration .
-
-  ?sessionduration_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> refiqda:StructureOfTreatmentProcess  ;
-    <http://semanticscience.org/resource/isAttributeOf>    ?note_V  ;
-    <http://semanticscience.org/resource/hasUnit>    schema:String ;
-    <http://semanticscience.org/resource/hasValue> ?sessionduration .
-
-  ?therapeuticgoals_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> refiqda:StructureOfTreatmentProcess  ;
-    <http://semanticscience.org/resource/isAttributeOf>    ?note_V  ;
-    <http://semanticscience.org/resource/hasUnit>    schema:String ;
-    <http://semanticscience.org/resource/hasValue> ?therapeuticgoals .
-
-  ?psychopathology_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> refiqda:ClinicalHypothesis  ;
-    <http://semanticscience.org/resource/isAttributeOf>    ?note_V  ;
-    <http://semanticscience.org/resource/hasUnit>    schema:String ;
-    <http://semanticscience.org/resource/hasValue> ?psychopathology .
-
-  ?anxiety_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> refiqda:PhysiologicalSymptoms  ;
-    <http://semanticscience.org/resource/isAttributeOf>    ?note_V  ;
-    <http://semanticscience.org/resource/hasUnit>    schema:String ;
-    <http://semanticscience.org/resource/hasValue> ?anxiety .
-
-  ?increasedheartrate_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> refiqda:PhysiologicalSymptoms  ;
-    <http://semanticscience.org/resource/isAttributeOf>    ?note_V  ;
-    <http://semanticscience.org/resource/hasUnit>    schema:String ;
-    <http://semanticscience.org/resource/hasValue> ?increasedheartrate .
-
-  ?lossofspatialperception_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> refiqda:PhysiologicalSymptoms  ;
-    <http://semanticscience.org/resource/isAttributeOf>    ?note_V  ;
-    <http://semanticscience.org/resource/hasUnit>    schema:String ;
-    <http://semanticscience.org/resource/hasValue> ?lossofspatialperception .
-
-  ?musculartension_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> refiqda:PhysiologicalSymptoms  ;
-    <http://semanticscience.org/resource/isAttributeOf>    ?note_V  ;
-    <http://semanticscience.org/resource/hasUnit>    schema:String ;
-    <http://semanticscience.org/resource/hasValue> ?musculartension .
-
-  ?nervous_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> refiqda:PhysiologicalSymptoms  ;
-    <http://semanticscience.org/resource/isAttributeOf>    ?note_V  ;
-    <http://semanticscience.org/resource/hasUnit>    schema:String ;
-    <http://semanticscience.org/resource/hasValue> ?nervous .
-
-  ?physiologicalsymptoms_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> refiqda:PhysiologicalSymptoms  ;
-    <http://semanticscience.org/resource/isAttributeOf>    ?note_V  ;
-    <http://semanticscience.org/resource/hasUnit>    schema:String ;
-    <http://semanticscience.org/resource/hasValue> ?physiologicalsymptoms .
-
-  ?shortnessofbreath_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> refiqda:PhysiologicalSymptoms  ;
-    <http://semanticscience.org/resource/isAttributeOf>    ?note_V  ;
-    <http://semanticscience.org/resource/hasUnit>    schema:String ;
-    <http://semanticscience.org/resource/hasValue> ?shortnessofbreath .
-
-  ?sweating_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> refiqda:PhysiologicalSymptoms  ;
-    <http://semanticscience.org/resource/isAttributeOf>    ?note_V  ;
-    <http://semanticscience.org/resource/hasUnit>    schema:String ;
-    <http://semanticscience.org/resource/hasValue> ?sweating .
-
-  ?tremor_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> refiqda:PhysiologicalSymptoms  ;
-    <http://semanticscience.org/resource/isAttributeOf>    ?note_V  ;
-    <http://semanticscience.org/resource/hasUnit>    schema:String ;
-    <http://semanticscience.org/resource/hasValue> ?tremor .
+    <http://semanticscience.org/resource/hasValue> ?clinicalevaluation .
 
   ?clinicalstrategies_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> refiqda:Treatment  ;
     <http://semanticscience.org/resource/isAttributeOf>    ?note_V  ;
     <http://semanticscience.org/resource/hasUnit>    schema:String ;
     <http://semanticscience.org/resource/hasValue> ?clinicalstrategies .
 
-  ?copingstrategies_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> refiqda:Treatment  ;
+  ?cognitiveaspect_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> refiqda:CognitiveAspect  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?note_V  ;
+    <http://semanticscience.org/resource/hasUnit>    schema:String ;
+    <http://semanticscience.org/resource/hasValue> ?cognitiveaspect .
+
+  ?cognitivedistortion_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> refiqda:CognitiveAspect  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?note_V  ;
+    <http://semanticscience.org/resource/hasUnit>    schema:String ;
+    <http://semanticscience.org/resource/hasValue> ?cognitivedistortion .
+
+  ?cognitivefunctions_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> refiqda:CognitiveAspect  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?note_V  ;
+    <http://semanticscience.org/resource/hasUnit>    schema:String ;
+    <http://semanticscience.org/resource/hasValue> ?cognitivefunctions .
+
+  ?cognitiverestructuring_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> refiqda:CognitiveAspect  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?note_V  ;
+    <http://semanticscience.org/resource/hasUnit>    schema:String ;
+    <http://semanticscience.org/resource/hasValue> ?cognitiverestructuring .
+
+  ?contextualaspect_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> refiqda:ContextualAspect  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?note_V  ;
+    <http://semanticscience.org/resource/hasUnit>    schema:String ;
+    <http://semanticscience.org/resource/hasValue> ?contextualaspect .
+
+  ?copingstrategies_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> refiqda:BehaviorAspects  ;
     <http://semanticscience.org/resource/isAttributeOf>    ?note_V  ;
     <http://semanticscience.org/resource/hasUnit>    schema:String ;
     <http://semanticscience.org/resource/hasValue> ?copingstrategies .
 
-  ?copingwithstress_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> refiqda:Treatment  ;
+  ?corebelief_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> refiqda:CoreBelief  ;
     <http://semanticscience.org/resource/isAttributeOf>    ?note_V  ;
     <http://semanticscience.org/resource/hasUnit>    schema:String ;
-    <http://semanticscience.org/resource/hasValue> ?copingwithstress .
+    <http://semanticscience.org/resource/hasValue> ?corebelief .
 
-  ?desensitization_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> refiqda:Treatment  ;
+  ?decatastrophizingwithdescendingarrows_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> refiqda:Treatment  ;
     <http://semanticscience.org/resource/isAttributeOf>    ?note_V  ;
     <http://semanticscience.org/resource/hasUnit>    schema:String ;
-    <http://semanticscience.org/resource/hasValue> ?desensitization .
+    <http://semanticscience.org/resource/hasValue> ?decatastrophizingwithdescendingarrows .
+
+  ?decisionmaking_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> refiqda:CognitiveAspect  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?note_V  ;
+    <http://semanticscience.org/resource/hasUnit>    schema:String ;
+    <http://semanticscience.org/resource/hasValue> ?decisionmaking .
+
+  ?devaluation_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> refiqda:CoreBelief  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?note_V  ;
+    <http://semanticscience.org/resource/hasUnit>    schema:String ;
+    <http://semanticscience.org/resource/hasValue> ?devaluation .
+
+  ?diaphragmaticbreathing_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> refiqda:Treatment  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?note_V  ;
+    <http://semanticscience.org/resource/hasUnit>    schema:String ;
+    <http://semanticscience.org/resource/hasValue> ?diaphragmaticbreathing .
+
+  ?dichotomousthinking_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> refiqda:Thinking  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?note_V  ;
+    <http://semanticscience.org/resource/hasUnit>    schema:String ;
+    <http://semanticscience.org/resource/hasValue> ?dichotomousthinking .
+
+  ?dizziness_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> refiqda:PhysiologicalSymptoms  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?note_V  ;
+    <http://semanticscience.org/resource/hasUnit>    schema:String ;
+    <http://semanticscience.org/resource/hasValue> ?dizziness .
+
+  ?dodgeandescape_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> refiqda:BehaviorAspects  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?note_V  ;
+    <http://semanticscience.org/resource/hasUnit>    schema:String ;
+    <http://semanticscience.org/resource/hasValue> ?dodgeandescape .
+
+  ?emotionalaspects_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> refiqda:EmotionalAspect  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?note_V  ;
+    <http://semanticscience.org/resource/hasUnit>    schema:String ;
+    <http://semanticscience.org/resource/hasValue> ?emotionalaspects .
+
+  ?emotionalsymptoms_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> refiqda:EmotionalAspect  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?note_V  ;
+    <http://semanticscience.org/resource/hasUnit>    schema:String ;
+    <http://semanticscience.org/resource/hasValue> ?emotionalsymptoms .
+
+  ?emotionregulation_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> refiqda:EmotionalAspect  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?note_V  ;
+    <http://semanticscience.org/resource/hasUnit>    schema:String ;
+    <http://semanticscience.org/resource/hasValue> ?emotionregulation .
 
   ?evidenceanalysis_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> refiqda:Treatment  ;
     <http://semanticscience.org/resource/isAttributeOf>    ?note_V  ;
     <http://semanticscience.org/resource/hasUnit>    schema:String ;
     <http://semanticscience.org/resource/hasValue> ?evidenceanalysis .
 
-  ?exposuretechniques_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> refiqda:Treatment  ;
+  ?excited_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> refiqda:PhysiologicalSymptoms  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?note_V  ;
+    <http://semanticscience.org/resource/hasUnit>    schema:String ;
+    <http://semanticscience.org/resource/hasValue> ?excited .
+
+  ?exposuretechniques_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> refiqda:BehaviorAspects  ;
     <http://semanticscience.org/resource/isAttributeOf>    ?note_V  ;
     <http://semanticscience.org/resource/hasUnit>    schema:String ;
     <http://semanticscience.org/resource/hasValue> ?exposuretechniques .
+
+  ?fear_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> refiqda:EmotionalAspect  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?note_V  ;
+    <http://semanticscience.org/resource/hasUnit>    schema:String ;
+    <http://semanticscience.org/resource/hasValue> ?fear .
+
+  ?frustration_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> refiqda:EmotionalAspect  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?note_V  ;
+    <http://semanticscience.org/resource/hasUnit>    schema:String ;
+    <http://semanticscience.org/resource/hasValue> ?frustration .
+
+  ?generalization_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> refiqda:Thinking  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?note_V  ;
+    <http://semanticscience.org/resource/hasUnit>    schema:String ;
+    <http://semanticscience.org/resource/hasValue> ?generalization .
+
+  ?helplessness_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> refiqda:CoreBelief  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?note_V  ;
+    <http://semanticscience.org/resource/hasUnit>    schema:String ;
+    <http://semanticscience.org/resource/hasValue> ?helplessness .
+
+  ?increasedheartrate_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> refiqda:PhysiologicalSymptoms  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?note_V  ;
+    <http://semanticscience.org/resource/hasUnit>    schema:String ;
+    <http://semanticscience.org/resource/hasValue> ?increasedheartrate .
+
+  ?intermediatebelief_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> refiqda:IntermediateBelief  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?note_V  ;
+    <http://semanticscience.org/resource/hasUnit>    schema:String ;
+    <http://semanticscience.org/resource/hasValue> ?intermediatebelief .
+
+  ?isolation_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> refiqda:BehaviorAspects  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?note_V  ;
+    <http://semanticscience.org/resource/hasUnit>    schema:String ;
+    <http://semanticscience.org/resource/hasValue> ?isolation .
+
+  ?maximizationofthenegative_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> refiqda:CognitiveAspect  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?note_V  ;
+    <http://semanticscience.org/resource/hasUnit>    schema:String ;
+    <http://semanticscience.org/resource/hasValue> ?maximizationofthenegative .
+
+  ?mindreading_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> refiqda:CognitiveAspect  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?note_V  ;
+    <http://semanticscience.org/resource/hasUnit>    schema:String ;
+    <http://semanticscience.org/resource/hasValue> ?mindreading .
+
+  ?minimizationofthepositive_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> refiqda:CognitiveAspect  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?note_V  ;
+    <http://semanticscience.org/resource/hasUnit>    schema:String ;
+    <http://semanticscience.org/resource/hasValue> ?minimizationofthepositive .
+
+  ?perfectionism_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> refiqda:CognitiveAspect  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?note_V  ;
+    <http://semanticscience.org/resource/hasUnit>    schema:String ;
+    <http://semanticscience.org/resource/hasValue> ?perfectionism .
+
+  ?personalization_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> refiqda:CognitiveAspect  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?note_V  ;
+    <http://semanticscience.org/resource/hasUnit>    schema:String ;
+    <http://semanticscience.org/resource/hasValue> ?personalization .
+
+  ?predictionofthefuture_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> refiqda:CognitiveAspect  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?note_V  ;
+    <http://semanticscience.org/resource/hasUnit>    schema:String ;
+    <http://semanticscience.org/resource/hasValue> ?predictionofthefuture .
+
+  ?problemsolving_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> refiqda:CognitiveAspect  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?note_V  ;
+    <http://semanticscience.org/resource/hasUnit>    schema:String ;
+    <http://semanticscience.org/resource/hasValue> ?problemsolving .
 
   ?psychoeducation_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> refiqda:Treatment  ;
     <http://semanticscience.org/resource/isAttributeOf>    ?note_V  ;
     <http://semanticscience.org/resource/hasUnit>    schema:String ;
     <http://semanticscience.org/resource/hasValue> ?psychoeducation .
 
-  ?recordingdysfunctionalthoughts_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> refiqda:Treatment  ;
+  ?question_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> refiqda:CognitiveAspect  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?note_V  ;
+    <http://semanticscience.org/resource/hasUnit>    schema:String ;
+    <http://semanticscience.org/resource/hasValue> ?question .
+
+  ?recordingdysfunctionalthoughts_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> refiqda:CognitiveAspect  ;
     <http://semanticscience.org/resource/isAttributeOf>    ?note_V  ;
     <http://semanticscience.org/resource/hasUnit>    schema:String ;
     <http://semanticscience.org/resource/hasValue> ?recordingdysfunctionalthoughts .
 
-  ?relaxationtechniques._E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> refiqda:Treatment  ;
+  ?rules_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> refiqda:IntermediateBelief  ;
     <http://semanticscience.org/resource/isAttributeOf>    ?note_V  ;
     <http://semanticscience.org/resource/hasUnit>    schema:String ;
-    <http://semanticscience.org/resource/hasValue> ?relaxationtechniques. .
+    <http://semanticscience.org/resource/hasValue> ?rules .
 
-  ?self-instruction_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> refiqda:Treatment  ;
+  ?sadness_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> refiqda:EmotionalAspect  ;
     <http://semanticscience.org/resource/isAttributeOf>    ?note_V  ;
     <http://semanticscience.org/resource/hasUnit>    schema:String ;
-    <http://semanticscience.org/resource/hasValue> ?self-instruction .
+    <http://semanticscience.org/resource/hasValue> ?sadness .
+
+  ?selectiveabstraction_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> refiqda:CognitiveAspect  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?note_V  ;
+    <http://semanticscience.org/resource/hasUnit>    schema:String ;
+    <http://semanticscience.org/resource/hasValue> ?selectiveabstraction .
+
+  ?situationalaspects_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> refiqda:ContextualAspect  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?note_V  ;
+    <http://semanticscience.org/resource/hasUnit>    schema:String ;
+    <http://semanticscience.org/resource/hasValue> ?situationalaspects .
+
+  ?sleep_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> refiqda:BehaviorAspects  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?note_V  ;
+    <http://semanticscience.org/resource/hasUnit>    schema:String ;
+    <http://semanticscience.org/resource/hasValue> ?sleep .
+
+  ?sleepleness_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> refiqda:PhysiologicalSymptoms  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?note_V  ;
+    <http://semanticscience.org/resource/hasUnit>    schema:String ;
+    <http://semanticscience.org/resource/hasValue> ?sleepleness .
+
+  ?socialskillstechniques_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> refiqda:BehaviorAspects  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?note_V  ;
+    <http://semanticscience.org/resource/hasUnit>    schema:String ;
+    <http://semanticscience.org/resource/hasValue> ?socialskillstechniques .
+
+  ?socialvulnerability_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> refiqda:ClinicalData  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?note_V  ;
+    <http://semanticscience.org/resource/hasUnit>    schema:String ;
+    <http://semanticscience.org/resource/hasValue> ?socialvulnerability .
 
   ?socraticquestioning_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> refiqda:Treatment  ;
     <http://semanticscience.org/resource/isAttributeOf>    ?note_V  ;
     <http://semanticscience.org/resource/hasUnit>    schema:String ;
     <http://semanticscience.org/resource/hasValue> ?socraticquestioning .
 
-  ?systematicdesensitization_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> refiqda:Treatment  ;
+  ?switchingroles_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> refiqda:Treatment  ;
     <http://semanticscience.org/resource/isAttributeOf>    ?note_V  ;
     <http://semanticscience.org/resource/hasUnit>    schema:String ;
-    <http://semanticscience.org/resource/hasValue> ?systematicdesensitization .
+    <http://semanticscience.org/resource/hasValue> ?switchingroles .
 
-  ?thoughtstop_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> refiqda:Treatment  ;
+  ?therapeuticaction_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> refiqda:Treatment  ;
     <http://semanticscience.org/resource/isAttributeOf>    ?note_V  ;
     <http://semanticscience.org/resource/hasUnit>    schema:String ;
-    <http://semanticscience.org/resource/hasValue> ?thoughtstop .
+    <http://semanticscience.org/resource/hasValue> ?therapeuticaction .
 
-  ?thought-stoppingandself-instruction_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> refiqda:Treatment  ;
+  ?validation_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> refiqda:Treatment  ;
     <http://semanticscience.org/resource/isAttributeOf>    ?note_V  ;
     <http://semanticscience.org/resource/hasUnit>    schema:String ;
-    <http://semanticscience.org/resource/hasValue> ?thought-stoppingandself-instruction .
-
-  ?positivesignsofengagementprocess_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> refiqda:CognitiveAspect  ;
-    <http://semanticscience.org/resource/isAttributeOf>    ?note_V  ;
-    <http://semanticscience.org/resource/hasUnit>    schema:String ;
-    <http://semanticscience.org/resource/hasValue> ?positivesignsofengagementprocess .
+    <http://semanticscience.org/resource/hasValue> ?validation .
 
 
   ?case_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> sio:Human  ;
