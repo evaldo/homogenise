@@ -1,0 +1,29 @@
+Attribute,Value
+Type,http://purl.org/dc/dcmitype/Dataset
+Title,An Example Project
+Alternative Title,Example
+Comment,This is an example knowledge graph fragment created using the SDD approach.
+Description,Annotated data from an example project was used to demonstrate the SDD functionality
+Date Created,2023-05-22
+Creators,
+Contributors,
+Publisher,
+Date of Issue,2023-05-22
+Link,
+Identifier,ontriscal
+Keywords,
+License,
+Rights,
+Language,
+Version,
+Version Of,
+Previous Version,
+Standards,
+Source,
+File Format,csv
+Documentation,
+Dictionary Mapping,sddquantifinal/input/DM/dm_quantidomain.csv
+Codebook,sddquantifinal/input/CB/codebook_quantidomain.csv
+Code Mapping,sddquantifinal/config/code_mappings.csv
+Timeline,
+Imports,

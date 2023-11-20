@@ -1,0 +1,86 @@
+prefix np: <http://www.nanopub.org/nschema#> 
+prefix owl: <http://www.w3.org/2002/07/owl#> 
+prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
+prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> 
+prefix prov: <http://www.w3.org/ns/prov#> 
+prefix xsd: <http://www.w3.org/2001/XMLSchema#> 
+prefix uo: <http://purl.obolibrary.org/obo/UO_> 
+prefix sio: <http://semanticscience.org/resource/> 
+prefix stato: <http://purl.obolibrary.org/obo/STATO_> 
+prefix example-kb: <http://example.com/kb/example#> 
+prefix chear: <http://hadatac.org/ont/chear#> 
+prefix hasco: <http://hadatac.org/ont/hasco#> 
+prefix obo: <http://purl.obolibrary.org/obo/> 
+prefix skos: <http://www.w3.org/2008/05/skos#> 
+prefix ontriscal: <http://hadatac.org/ont/ontriscal#> 
+prefix refiqda: <http://hadatac.org/ont/refiqda#> 
+prefix qualico: <http://hadatac.org/ont/qualico#> 
+prefix schema: <http://www.w3.org/2000/01/schema#> 
+
+SELECT DISTINCT ?id_case ?initial_questionnarie ?ds1 ?ds2 ?ds3 ?g11 ?g14 ?g16 ?g18 ?pontuacao ?nivelderisco WHERE {
+  ?id_case_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> hasco:originalID  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?finalquestionnaire_V  ;
+    <http://semanticscience.org/resource/hasUnit>    schema:Interger ;
+    <http://semanticscience.org/resource/hasValue> ?id_case .
+
+  ?initial_questionnarie_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:FullName  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?finalquestionnaire_V  ;
+    <http://semanticscience.org/resource/hasUnit>    schema:String ;
+    <http://semanticscience.org/resource/hasValue> ?initial_questionnarie .
+
+  ?ds1_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:Age  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?finalquestionnaire_V  ;
+    <http://semanticscience.org/resource/hasUnit>    schema:Interger ;
+    <http://semanticscience.org/resource/hasValue> ?ds1 .
+
+  ?ds2_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:Gender  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?finalquestionnaire_V  ;
+    <http://semanticscience.org/resource/hasUnit>    schema:Interger ;
+    <http://semanticscience.org/resource/hasValue> ?ds2 .
+
+  ?ds3_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:CivilStatus  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?finalquestionnaire_V  ;
+    <http://semanticscience.org/resource/hasUnit>    schema:Interger ;
+    <http://semanticscience.org/resource/hasValue> ?ds3 .
+
+  ?g11_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:Anxiety  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?finalquestionnaire_V  ;
+    <http://semanticscience.org/resource/hasUnit>    schema:Interger ;
+    <http://semanticscience.org/resource/hasValue> ?g11 .
+
+  ?g14_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:BalanceDisorder  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?finalquestionnaire_V  ;
+    <http://semanticscience.org/resource/hasUnit>    schema:Interger ;
+    <http://semanticscience.org/resource/hasValue> ?g14 .
+
+  ?g16_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:Nervous  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?finalquestionnaire_V  ;
+    <http://semanticscience.org/resource/hasUnit>    schema:Interger ;
+    <http://semanticscience.org/resource/hasValue> ?g16 .
+
+  ?g18_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:InabilityToRelax  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?finalquestionnaire_V  ;
+    <http://semanticscience.org/resource/hasUnit>    schema:Interger ;
+    <http://semanticscience.org/resource/hasValue> ?g18 .
+
+  ?pontuacao_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:Score  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?finalquestionnaire_V  ;
+    <http://semanticscience.org/resource/hasUnit>    schema:Interger ;
+    <http://semanticscience.org/resource/hasValue> ?pontuacao .
+
+  ?nivelderisco_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:RiskLevel  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?finalquestionnaire_V  ;
+    <http://semanticscience.org/resource/hasUnit>    schema:String ;
+    <http://semanticscience.org/resource/hasValue> ?nivelderisco .
+
+
+  ?case_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> sio:Human  ;
+    ontriscal:patientAnswersQuestionnaire ?finalquestionnaire_V .
+
+  ?case_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> sio:Human  ;
+    ontriscal:IdPatient hasco:originalID .
+
+  ?finalquestionnaire_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:Questionnarie  ;
+    ontriscal:questionnaireAnsweredBy ?case_V .
+
+}

@@ -1,0 +1,93 @@
+prefix prov: <http://www.w3.org/ns/prov#> 
+prefix xsd: <http://www.w3.org/2001/XMLSchema#> 
+prefix uo: <http://purl.obolibrary.org/obo/UO_> 
+prefix sio: <http://semanticscience.org/resource/> 
+prefix stato: <http://purl.obolibrary.org/obo/STATO_> 
+prefix example-kb: <http://example.com/kb/example#> 
+prefix chear: <http://hadatac.org/ont/chear#>  
+prefix hasco: <http://hadatac.org/ont/hasco#> 
+prefix obo: <http://purl.obolibrary.org/obo/> 
+prefix skos: <http://www.w3.org/2008/05/skos#> 
+prefix osm: <http://www.w3.org/2008/05/osm#> 
+prefix oersm: <http://hadatac.org/ont/oersm#> 
+prefix ontriscal: <http://hadatac.org/ont/ontriscal#> 
+prefix qualico: <http://hadatac.org/ont/qualico#> 
+prefix refiqda: <http://hadatac.org/ont/refiqda#> 
+prefix kpionto: <http://hadatac.org/ont/kpionto#>
+
+
+SELECT distinct ?caseanswersquestionnarie ?beginningquestionnaire  ?g11 ?value_g11 ?g14 ?value_g14 ?g16 ?value_g16 ?g18 ?value_g18 ?risklevel ?valuerisklevel
+where  
+{
+  
+  ?questionnaire rdf:type ?beginningquestionnaire .
+  ?questionnaire rdfs:label 'beginningquestionnaire' .
+
+  ?caseanswersquestionnarie ontriscal:patientAnswersQuestionnaire ?beginningquestionnaire . 
+  ?typecaseanswersquestionnarie rdf:type ?caseanswersquestionnarie .  
+
+  ?ds1 sio:hasValue 22 .  
+  ?ds1 sio:isAttributeOf ?questionnarie . 
+  ?ds1 rdf:type ontriscal:Age .
+
+  ?ds2 sio:hasValue 'Mulher' .  
+  ?ds2 sio:isAttributeOf ?questionnarie . 
+  ?ds2 rdf:type ontriscal:Gender .
+    
+  ?g11 sio:hasValue ?value_g11 .  
+  ?g11 sio:isAttributeOf ?questionnarie . 
+  ?g11 rdf:type ontriscal:Anxiety . 
+
+  ?g14 sio:hasValue ?value_g14 .  
+  ?g14 sio:isAttributeOf ?questionnarie . 
+  ?g14 rdf:type ontriscal:BalanceDisorder .
+  
+  ?g16 sio:hasValue ?value_g16 .  
+  ?g16 sio:isAttributeOf ?questionnarie . 
+  ?g16 rdf:type ontriscal:Nervous . 
+
+  ?g18 sio:hasValue ?value_g18 .  
+  ?g18 sio:isAttributeOf ?questionnarie . 
+  ?g18 rdf:type ontriscal:InabilityToRelax . 
+  
+  ?risklevel sio:hasValue ?valuerisklevel .  
+  ?risklevel sio:isAttributeOf ?questionnarie . 
+  ?risklevel rdf:type ontriscal:RiskLevel .
+  
+}
+
+
+prefix prov: <http://www.w3.org/ns/prov#> 
+prefix xsd: <http://www.w3.org/2001/XMLSchema#> 
+prefix uo: <http://purl.obolibrary.org/obo/UO_> 
+prefix sio: <http://semanticscience.org/resource/> 
+prefix stato: <http://purl.obolibrary.org/obo/STATO_> 
+prefix example-kb: <http://example.com/kb/example#> 
+prefix chear: <http://hadatac.org/ont/chear#>  
+prefix hasco: <http://hadatac.org/ont/hasco#> 
+prefix obo: <http://purl.obolibrary.org/obo/> 
+prefix skos: <http://www.w3.org/2008/05/skos#> 
+prefix osm: <http://www.w3.org/2008/05/osm#> 
+prefix oersm: <http://hadatac.org/ont/oersm#> 
+prefix ontriscal: <http://hadatac.org/ont/ontriscal#> 
+prefix qualico: <http://hadatac.org/ont/qualico#> 
+prefix refiqda: <http://hadatac.org/ont/refiqda#> 
+prefix kpionto: <http://hadatac.org/ont/kpionto#>
+
+
+SELECT distinct ?id_case ?caseconceptualization ?treatment ?valuetreatment 
+where  
+{
+        ?id_case sio:isAttributeOf ?case .
+        ?id_case rdf:type hasco:originalID .
+        ?id_case sio:hasValue 1 . 
+        
+        ?case ontriscal:isComprehendedBy ?caseconceptualization .
+                
+        ?treatment sio:hasValue ?valuetreatment .  
+        ?treatment sio:isAttributeOf ?caseconceptualization . 
+        ?treatment rdf:type ontriscal:Treatment .
+    		
+  	FILTER (?valuetreatment!='nan') .     
+    
+}
