@@ -19,7 +19,7 @@ prefix schema: <http://www.w3.org/2000/01/schema#>
 
 SELECT DISTINCT ?id_case ?initial_questionnarie ?ds1 ?ds2 ?ds3 ?g11 ?g14 ?g16 ?g18 ?pontuacao ?nivelderisco WHERE {
   ?id_case_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> hasco:originalID  ;
-    <http://semanticscience.org/resource/isAttributeOf>    ?case_V  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?beginningquestionnaire_V  ;
     <http://semanticscience.org/resource/hasUnit>    schema:Interger ;
     <http://semanticscience.org/resource/hasValue> ?id_case .
 
@@ -76,6 +76,9 @@ SELECT DISTINCT ?id_case ?initial_questionnarie ?ds1 ?ds2 ?ds3 ?g11 ?g14 ?g16 ?g
 
   ?case_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> sio:Human  ;
     ontriscal:patientAnswersQuestionnaire ?beginningquestionnaire_V .
+
+  ?case_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> sio:Human  ;
+    ontriscal:IdPatient hasco:originalID .
 
   ?beginningquestionnaire_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:Questionnarie  ;
     ontriscal:questionnaireAnsweredBy ?case_V .

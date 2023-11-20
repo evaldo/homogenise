@@ -1,5 +1,5 @@
 Column,Attribute,attributeOf,Entity,Unit,Time,Relation,inRelationTo,Label,Role,Value,wasDerivedFrom,wasGeneratedBy
-id_case,hasco:originalID,??case,,schema:Interger,,,,,,,,
+id_case,hasco:originalID,??finalquestionnaire,,schema:Interger,,,,,,,,
 initial_questionnarie,ontriscal:FullName,??finalquestionnaire,,schema:String,,,,,,,,
 DS1,ontriscal:Age,??finalquestionnaire,,schema:Interger,,,,,,,,
 DS2,ontriscal:Gender,??finalquestionnaire,,schema:Interger,,,,,,,,
@@ -11,4 +11,5 @@ G18,ontriscal:InabilityToRelax,??finalquestionnaire,,schema:Interger,,,,,,,,
 Pontuacao,ontriscal:Score,??finalquestionnaire,,schema:Interger,,,,,,,,
 Nivelderisco,ontriscal:RiskLevel,??finalquestionnaire,,schema:String,,,,,,,,
 ??case,,,sio:Human,,,ontriscal:patientAnswersQuestionnaire,??finalquestionnaire,,,,,
+??case,,,sio:Human,,,ontriscal:IdPatient,hasco:originalID,,,,,
 ??finalquestionnaire,,,ontriscal:Questionnarie,,,ontriscal:questionnaireAnsweredBy,??case,,,,,
