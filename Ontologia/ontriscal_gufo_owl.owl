@@ -1,0 +1,4231 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://ontriscal"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://ontriscal">
+    <Prefix name="" IRI="http://ontriscal"/>
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="gufo" IRI="http://purl.org/nemo/gufo#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Declaration>
+        <Class IRI="#AbusiveUseOfIllicitPsychoactiveAmputationMIAndOsteoarthritis"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#AcceleratedThinking"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Acceptance"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Adolescent"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Adult"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#AdvancedAgeDifficultyLocomotion"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#AgeGroup"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Aggressiveness"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Agitation"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Agnosia"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Alcohol"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#AlcoholAndAlprazolam"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#AlcoholAndCocaine"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#AlcoholAndMarijuana"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#AlcoholAndMultipleDrugs"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#AllergicCrises"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#AlzheimerDementia"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Amnesias"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Anorexia"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#AnswerOption"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Anxiety"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Attention"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Auditory"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Autism"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#AutomaticThinking"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#AvoidanceOfThreateningSignsOrSituations"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#BackAndKneeProblems"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#BariatricObesity"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#BariatricPatient"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#BeginningQuestionnarie"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#BehaviorAspect"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#BehaviorSymptoms"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#BingeEating"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#BiologicalSex"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Brainstorming"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#BreastCancer"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Bulimia"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Cannabis"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#CardiopathDiabetesNeuropath"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#CareTeam"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#CaseConceptualization"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Catastrophizing"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#CerebellarDegeneration"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ChestPressure"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Chills"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ChokingSensation"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ChronicSmokingAndCOPDRisk"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ChronicSmokingCOPDThrombogeitisWithAmputationAndVertebralOsteoarthritis"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#CirculationLocomotion"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ClinicalData"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ClinicalEvaluation"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ClinicalStrategy"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Cocaine"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#CoexistenceWorkshop"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#CognitiveAspect"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#CognitiveDistortion"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#CognitiveFunctions"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#CognitiveModel"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#CognitiveRestructuring"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#CognitiveSymptoms"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Comorbidity"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#CondensationOfConcepts"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Confrontation"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ContextualAspect"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ConvulsiveCrisis"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#CopingStrategies"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#CopingWithStress"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#CoreBelief"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Crack"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#CrackCocaine"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#CreepedOut"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#DecatastrophizingWithDescendingArrows"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#DecisionMaking"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#DeficientThinking"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Delirium"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#DelusionalDisorder"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Dementia"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#DementiaWithLewyBodies"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#DependencyAutonomy"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Depression"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Desensitization"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Devaluation"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Diabetes"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#DiabetesDiabeticNeuropathy"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#DiabetesHypertensionThyroidProblem"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#DiabetesOsteoporosis"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Diarrhea"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#DichotomousThinking"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#DifficultyOfReasoning"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#DifficultySpeaking"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Disaffection"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Disease_Spine_Arthrodesis"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Disgusted"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#DisintegrationOfConcepts"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Disorder"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Distraction"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Distractions"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Dizziness"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Doctor"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#DodgeAndEscape"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#DryMouth"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#EatingDisorder"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Eldery"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#EmotionalAspect"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#EmotionalReasoning"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#EmotionalSymptoms"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Endometriosis"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Epilepsy"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#EpilepsyAneurysmEatingDisorder"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#EvidenceAnalysis"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Excited"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ExecutiveFunctions"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ExpositionsHierarchization"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ExposureTechniques"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#F00-F09"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#F00-F99"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#F10-F19"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#F20-F29"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#F30-F39"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#F40-F48"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#F50-F59"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#F60-F69"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#F70-F79"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#F80-F89"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#F90-F98"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#F99"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#FaceCards"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Fainting"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Fear"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#FearOfGoingCrazy"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#FearOfLosingControl"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#FearOfNegativeEvaluationByOthers"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#FearOfPhysicalInjuryOrDeath"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Female"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Fibromyalgia"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#FinalQuestionnarie"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#FinalScore"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Flexibility"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Freezing"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#FrequencyOfUseOfTheTypeOfPsychoactiveSubstance"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#FrontotemporalDementia"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Frustrated"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Frustration"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Generalization"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Glaucoma"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#GroupService"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#HIV"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Hallucination"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Happiness"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#HealthCareLevel"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#HeartDiseaseObesity"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#HeartDiseaseVariousSurgicalProceduresAllergies"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#HeatWaves"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Helplessness"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#HepatitisLiverCirrhosis"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#High"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#HighBloodPressureDiabetes"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#HighRiskLevel"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Hyperesthesia"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Hypergeneralization"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Hypermnesia"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Hyperpathy"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Hypersomnia"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Hypertension"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#HypertensionDiabetes"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Hyperventilation"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Hypoesthesia"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Hypothyroidism"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ICDGroup"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Impatient"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Impulsiveness"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#InBlank"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#IncreasedHeartRate"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#IndividualPsychologicalService"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Inhibition"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#InjectablePreAnestheticMedication"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Insanity"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Intestinal_Problems"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Irritable"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Jealousy"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#KorsakoffSyndrome"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Language"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Lettering"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#LighterGas"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#LimitedCognitiveAbility"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#LossOfBalance"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Low"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#LowRiskLevel"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Lupus"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Male"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#MathematicalOperation"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#MaximizationOfTheNegative"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#MedicalCare"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Medium"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#MediumRiskLevel"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Memory"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#MentalDisorder"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Migraine"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#MindReading"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#MinimizationOfThePositive"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#MnemicHallucinations"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#MnemicIllusions"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#MultipleDrugs"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#MuscularTension"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Nausea"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Nervous"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#NeurologicLabirinthitisFollow-up"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#NeurologicalDamageCausedByCarbonMonoxideInhalation"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#No"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#NumbnessInLimbs"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Nurse"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#NursingAssistance"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Nutrition"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#NutritionalAssistance"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Obesity"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ObesityAndConsequences"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ObesityJointProblems"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Organization"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Orthopedic"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#OrthopedicDiabetes"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#OrthopedicNeurologist"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#OrthopedicProblem"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#OrthopedicProblemInTheSpine"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#PaintThinner"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Palpitations"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Paresthesias"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ParkinsonDisease"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Parkinsonism"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Passivity"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#PathologicalLie"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Patient"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#PerceptionsOfUnrealityOrDetachment"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Perfectionism"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Person"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Personalization"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#PetroleumDerivatives"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#PhysiologicalSymptom"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#PizzaTechnique"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Planning"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#PoorConcentration"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#PoorMemory"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#PreDiabetes"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#PredictionOfTheFuture"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Primary"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ProblemSolving"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Prosopagnosy"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#PsychoactiveSubstance"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Psychoeducation"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Psychologist"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Psychoterapy"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Question"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#QuestionGroup"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#QuestionnaireElement"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Questionnarie"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Rage"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#RapidBreathing"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Reactivity"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#RecordingDysfunctionalThoughts"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Refractoriness"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#RelaxationTechniques"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Restlessness"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Rigidity"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#RiskForYouAndOthers"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#RiskLevel"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#RiskRange"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#RiskScore"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#RiskStratificationInMentalHealth"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Sadness"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Score"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Secondary"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#SecuritySearch"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#SelectiveAbstraction"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Self-Instruction"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Senseperception"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ShoeGlue"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ShortnessOfBreath"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#SignAndSymptom"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#SignalAndSymptomSeverity"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#SingularTherapeuticProject"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Sleep"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Sleepleness"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#SlightDelay"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#SlowingOfThought"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#SocialAssistance"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#SocialSkillsTechniques"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#SocialVulnerability"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#SocioDemographicData"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#SocraticQuestioning"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#SpasmodicAnginaDiabetesFibromyalgia"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#SpectatorOrDistantObserver"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#SpineSurgeries"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#StomachPain"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Stoppage"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Submission"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Sweating"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#SwitchingRoles"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Symptomatology"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#SystematicDesensitization"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#TactileHallucination"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#TactileHypoesthesia"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#TerrifyingThoughts"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Tertiary"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Therapeutic"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#TherapeuticAction"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Thought-stoppingAndSelf-instruction"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ThoughtBlockingOrInterjection"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ThoughtStop"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ThreatHypervigilance"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Thrombosis"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ThyroidHypertension"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Tingling"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Tobacco"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Tremor"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#UnconditionalAcceptanceOfCriticism"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#UnfairComparisons"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#UseOfRewards"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#UseOfSubstance"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#VascularDementia"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Victimization"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#VisualHallucination"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Vitiligo"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Weakness"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#WhatIf"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Yes"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="gufo:Category"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="gufo:FunctionalComplex"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="gufo:IntrinsicMode"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="gufo:Kind"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="gufo:Phase"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="gufo:Relator"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="gufo:Role"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="gufo:SubKind"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#answers"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#calcultes"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#classifies"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#cognitiveModelHas"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#defines"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#definesCognitiveModelOf"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#demographicSocialDataFormulatedBy"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#emotionIsAssociatedWith"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#executedBy"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#finalQuestionnarieHasPatient"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#formulates"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasQuestionnarieElement"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#isCalculatedBy"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#isComprehendedBy"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#isFormulatedBy"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#isFormulatedBy_1"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#isFormulatedBy_2"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#isFormulatedBy_3"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#isIidentifiedWith"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#isTechniqueOf"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#makesUse"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#patientAnswersQuestionnaire"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#patientHas"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#patientHasClinicalData"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#patientHas_1"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#questionHas"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#recevies"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#riskLevelGuides"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#riskLevelHasTherapeuticAction"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#riskRangeDetermines"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#severityOfSignsAndSymptomGuides"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#singularTherapeuticProjectIsFormedBy"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#symptomIsAssociatedWith"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#takesCare"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#treats"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#uses"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Adolescent"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Adult"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#AgeGroup"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Alcohol"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#AnswerOption"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Auditory"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#BeginningQuestionnarie"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#BehaviorAspect"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#BiologicalSex"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#CareTeam"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#CaseConceptualization"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#ClinicalData"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#ClinicalEvaluation"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#ClinicalStrategy"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Cocaine"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#CoexistenceWorkshop"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#CognitiveAspect"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#CognitiveModel"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Comorbidity"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#ContextualAspect"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Crack"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Delirium"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#DelusionalDisorder"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Dementia"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#DependencyAutonomy"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Diabetes"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Doctor"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Eldery"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#EmotionalAspect"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Female"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#FinalQuestionnarie"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#FinalScore"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#FrequencyOfUseOfTheTypeOfPsychoactiveSubstance"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#GroupService"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Hallucination"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#HealthCareLevel"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#High"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#HighRiskLevel"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#ICDGroup"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#IndividualPsychologicalService"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Low"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#LowRiskLevel"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Male"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#MedicalCare"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Medium"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#MediumRiskLevel"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#No"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Nurse"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#NursingAssistance"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#NutritionalAssistance"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Patient"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Pensa_em_se_matar_ou_já_realizou_alguma_tentativa_de_suicídio"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Person"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#PhysiologicalSymptom"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Possui_Sensacao_de_Estranheza_com_Relação_a_Si_Ou_o_mundo_a_sua_volta"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Primary"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#PsychoactiveSubstance"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Psychologist"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Psychoterapy"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Question"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#QuestionGroup"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#QuestionnaireElement"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Questionnarie"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Refractoriness"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#RiskForYouAndOthers"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#RiskLevel"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#RiskRange"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#RiskScore"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#RiskStratificationInMentalHealth"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Score"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Se_agrediu_se_cortou_se_arranhou_ou_agrediu_outras_pessoas"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Secondary"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Sente_tristeza_persistente_acompanhada_ou_não_de_choro"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#SignAndSymptom"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#SignalAndSymptomSeverity"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#SingularTherapeuticProject"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#SocialAssistance"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#SocialVulnerability"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#SocioDemographicData"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Symptomatology"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#TactileHallucination"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Tertiary"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Therapeutic"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#TherapeuticAction"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#TranstornosMentaisSeverosPersistentes"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Transtornosmentaiscomuns"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#VisualHallucination"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Yes"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Possui_pensamentos_e_comportamentos_repetitivos_e/ou_realiza_algum_ritual"/>
+    </Declaration>
+    <EquivalentClasses>
+        <Class IRI="#QuestionnaireElement"/>
+        <ObjectIntersectionOf>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasQuestionnarieElement"/>
+                <Class IRI="#CareTeam"/>
+            </ObjectSomeValuesFrom>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasQuestionnarieElement"/>
+                <Class IRI="#Patient"/>
+            </ObjectSomeValuesFrom>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <SubClassOf>
+        <Class IRI="#AbusiveUseOfIllicitPsychoactiveAmputationMIAndOsteoarthritis"/>
+        <Class IRI="#Comorbidity"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#AcceleratedThinking"/>
+        <Class IRI="#ContextualAspect"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Acceptance"/>
+        <Class IRI="#BehaviorAspect"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Adolescent"/>
+        <Class IRI="#AgeGroup"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Adult"/>
+        <Class IRI="#AgeGroup"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#AdvancedAgeDifficultyLocomotion"/>
+        <Class IRI="#Comorbidity"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#AgeGroup"/>
+        <Class IRI="#SocioDemographicData"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Aggressiveness"/>
+        <Class IRI="#BehaviorAspect"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Agitation"/>
+        <Class IRI="#PhysiologicalSymptom"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Agnosia"/>
+        <Class IRI="#ContextualAspect"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Alcohol"/>
+        <Class IRI="#PsychoactiveSubstance"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#AlcoholAndAlprazolam"/>
+        <Class IRI="#PsychoactiveSubstance"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#AlcoholAndCocaine"/>
+        <Class IRI="#PsychoactiveSubstance"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#AlcoholAndMarijuana"/>
+        <Class IRI="#PsychoactiveSubstance"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#AlcoholAndMultipleDrugs"/>
+        <Class IRI="#PsychoactiveSubstance"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#AllergicCrises"/>
+        <Class IRI="#Comorbidity"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#AlzheimerDementia"/>
+        <Class IRI="#ContextualAspect"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Amnesias"/>
+        <Class IRI="#ContextualAspect"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Anorexia"/>
+        <Class IRI="#Nutrition"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#AnswerOption"/>
+        <Class IRI="#QuestionnaireElement"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Anxiety"/>
+        <Class IRI="#EmotionalAspect"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Anxiety"/>
+        <Class IRI="#MentalDisorder"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Attention"/>
+        <Class IRI="#CognitiveFunctions"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Auditory"/>
+        <Class IRI="#Hallucination"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Autism"/>
+        <Class IRI="#Disorder"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#AutomaticThinking"/>
+        <Class IRI="#CognitiveAspect"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#AvoidanceOfThreateningSignsOrSituations"/>
+        <Class IRI="#BehaviorSymptoms"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#BackAndKneeProblems"/>
+        <Class IRI="#Comorbidity"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#BariatricObesity"/>
+        <Class IRI="#Comorbidity"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#BariatricPatient"/>
+        <Class IRI="#Comorbidity"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#BeginningQuestionnarie"/>
+        <Class IRI="#Questionnarie"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#BehaviorAspect"/>
+        <Class IRI="#ClinicalEvaluation"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#BehaviorSymptoms"/>
+        <Class IRI="#BehaviorAspect"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#BingeEating"/>
+        <Class IRI="#Nutrition"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#BiologicalSex"/>
+        <Class IRI="#SocioDemographicData"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Brainstorming"/>
+        <Class IRI="#ClinicalStrategy"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#BreastCancer"/>
+        <Class IRI="#Comorbidity"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Bulimia"/>
+        <Class IRI="#Nutrition"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Cannabis"/>
+        <Class IRI="#PsychoactiveSubstance"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#CardiopathDiabetesNeuropath"/>
+        <Class IRI="#Comorbidity"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#CareTeam"/>
+        <Class IRI="#Person"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#CaseConceptualization"/>
+        <Class abbreviatedIRI="gufo:FunctionalComplex"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Catastrophizing"/>
+        <Class IRI="#CognitiveDistortion"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#CerebellarDegeneration"/>
+        <Class IRI="#Comorbidity"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ChestPressure"/>
+        <Class IRI="#PhysiologicalSymptom"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Chills"/>
+        <Class IRI="#PhysiologicalSymptom"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ChokingSensation"/>
+        <Class IRI="#PhysiologicalSymptom"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ChronicSmokingAndCOPDRisk"/>
+        <Class IRI="#Comorbidity"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ChronicSmokingCOPDThrombogeitisWithAmputationAndVertebralOsteoarthritis"/>
+        <Class IRI="#Comorbidity"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#CirculationLocomotion"/>
+        <Class IRI="#Comorbidity"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ClinicalData"/>
+        <Class abbreviatedIRI="gufo:FunctionalComplex"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ClinicalEvaluation"/>
+        <Class abbreviatedIRI="gufo:FunctionalComplex"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ClinicalStrategy"/>
+        <Class IRI="#ClinicalEvaluation"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Cocaine"/>
+        <Class IRI="#PsychoactiveSubstance"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#CoexistenceWorkshop"/>
+        <Class IRI="#TherapeuticAction"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#CognitiveAspect"/>
+        <Class IRI="#ClinicalEvaluation"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#CognitiveDistortion"/>
+        <Class IRI="#AutomaticThinking"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#CognitiveFunctions"/>
+        <Class IRI="#CognitiveAspect"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#CognitiveModel"/>
+        <Class abbreviatedIRI="gufo:FunctionalComplex"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#CognitiveRestructuring"/>
+        <Class IRI="#ClinicalStrategy"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#CognitiveSymptoms"/>
+        <Class IRI="#CognitiveAspect"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Comorbidity"/>
+        <Class abbreviatedIRI="gufo:IntrinsicMode"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#CondensationOfConcepts"/>
+        <Class IRI="#ContextualAspect"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Confrontation"/>
+        <Class IRI="#BehaviorAspect"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ContextualAspect"/>
+        <Class IRI="#ClinicalEvaluation"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ConvulsiveCrisis"/>
+        <Class IRI="#Comorbidity"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#CopingStrategies"/>
+        <Class IRI="#BehaviorAspect"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#CopingStrategies"/>
+        <Class IRI="#ClinicalStrategy"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#CopingWithStress"/>
+        <Class IRI="#ClinicalStrategy"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#CoreBelief"/>
+        <Class IRI="#CognitiveAspect"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Crack"/>
+        <Class IRI="#PsychoactiveSubstance"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#CrackCocaine"/>
+        <Class IRI="#PsychoactiveSubstance"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#CreepedOut"/>
+        <Class IRI="#EmotionalSymptoms"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#DecatastrophizingWithDescendingArrows"/>
+        <Class IRI="#ClinicalStrategy"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#DecisionMaking"/>
+        <Class IRI="#ExecutiveFunctions"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#DeficientThinking"/>
+        <Class IRI="#ContextualAspect"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Delirium"/>
+        <Class IRI="#SignalAndSymptomSeverity"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#DelusionalDisorder"/>
+        <Class IRI="#Delirium"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Dementia"/>
+        <Class IRI="#Comorbidity"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#DementiaWithLewyBodies"/>
+        <Class IRI="#ContextualAspect"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#DependencyAutonomy"/>
+        <Class IRI="#SignAndSymptom"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Depression"/>
+        <Class IRI="#MentalDisorder"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Desensitization"/>
+        <Class IRI="#ClinicalStrategy"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Devaluation"/>
+        <Class IRI="#CoreBelief"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Diabetes"/>
+        <Class IRI="#Comorbidity"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#DiabetesDiabeticNeuropathy"/>
+        <Class IRI="#Comorbidity"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#DiabetesHypertensionThyroidProblem"/>
+        <Class IRI="#Comorbidity"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#DiabetesOsteoporosis"/>
+        <Class IRI="#Comorbidity"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Diarrhea"/>
+        <Class IRI="#PhysiologicalSymptom"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#DichotomousThinking"/>
+        <Class IRI="#CognitiveDistortion"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#DifficultyOfReasoning"/>
+        <Class IRI="#CognitiveSymptoms"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#DifficultySpeaking"/>
+        <Class IRI="#BehaviorSymptoms"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Disaffection"/>
+        <Class IRI="#CoreBelief"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Disease_Spine_Arthrodesis"/>
+        <Class IRI="#Comorbidity"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Disgusted"/>
+        <Class IRI="#EmotionalAspect"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#DisintegrationOfConcepts"/>
+        <Class IRI="#ContextualAspect"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Disorder"/>
+        <Class abbreviatedIRI="gufo:FunctionalComplex"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Distraction"/>
+        <Class IRI="#ContextualAspect"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Distractions"/>
+        <Class IRI="#ClinicalStrategy"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Dizziness"/>
+        <Class IRI="#PhysiologicalSymptom"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Doctor"/>
+        <Class IRI="#CareTeam"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#DodgeAndEscape"/>
+        <Class IRI="#BehaviorAspect"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#DryMouth"/>
+        <Class IRI="#PhysiologicalSymptom"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#EatingDisorder"/>
+        <Class IRI="#Comorbidity"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Eldery"/>
+        <Class IRI="#AgeGroup"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#EmotionalAspect"/>
+        <Class IRI="#ClinicalEvaluation"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#EmotionalReasoning"/>
+        <Class IRI="#CognitiveDistortion"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#EmotionalSymptoms"/>
+        <Class IRI="#EmotionalAspect"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Endometriosis"/>
+        <Class IRI="#Comorbidity"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Epilepsy"/>
+        <Class IRI="#Comorbidity"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#EpilepsyAneurysmEatingDisorder"/>
+        <Class IRI="#Comorbidity"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#EvidenceAnalysis"/>
+        <Class IRI="#ClinicalStrategy"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Excited"/>
+        <Class IRI="#EmotionalSymptoms"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ExecutiveFunctions"/>
+        <Class IRI="#CognitiveFunctions"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ExpositionsHierarchization"/>
+        <Class IRI="#ClinicalStrategy"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ExposureTechniques"/>
+        <Class IRI="#ClinicalStrategy"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#F00-F09"/>
+        <Class IRI="#ICDGroup"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#F00-F99"/>
+        <Class IRI="#ICDGroup"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#F10-F19"/>
+        <Class IRI="#ICDGroup"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#F20-F29"/>
+        <Class IRI="#ICDGroup"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#F30-F39"/>
+        <Class IRI="#ICDGroup"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#F40-F48"/>
+        <Class IRI="#ICDGroup"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#F50-F59"/>
+        <Class IRI="#ICDGroup"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#F60-F69"/>
+        <Class IRI="#ICDGroup"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#F70-F79"/>
+        <Class IRI="#ICDGroup"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#F80-F89"/>
+        <Class IRI="#ICDGroup"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#F90-F98"/>
+        <Class IRI="#ICDGroup"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#F99"/>
+        <Class IRI="#ICDGroup"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#FaceCards"/>
+        <Class IRI="#ClinicalStrategy"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Fainting"/>
+        <Class IRI="#PhysiologicalSymptom"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Fear"/>
+        <Class IRI="#EmotionalAspect"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#FearOfGoingCrazy"/>
+        <Class IRI="#CognitiveSymptoms"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#FearOfLosingControl"/>
+        <Class IRI="#CognitiveSymptoms"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#FearOfNegativeEvaluationByOthers"/>
+        <Class IRI="#CognitiveSymptoms"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#FearOfPhysicalInjuryOrDeath"/>
+        <Class IRI="#CognitiveSymptoms"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Female"/>
+        <Class IRI="#BiologicalSex"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Fibromyalgia"/>
+        <Class IRI="#Comorbidity"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#FinalQuestionnarie"/>
+        <Class IRI="#Questionnarie"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#FinalScore"/>
+        <Class IRI="#QuestionnaireElement"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Flexibility"/>
+        <Class IRI="#ExecutiveFunctions"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Freezing"/>
+        <Class IRI="#BehaviorSymptoms"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#FrequencyOfUseOfTheTypeOfPsychoactiveSubstance"/>
+        <Class IRI="#ClinicalData"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#FrontotemporalDementia"/>
+        <Class IRI="#ContextualAspect"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Frustrated"/>
+        <Class IRI="#EmotionalSymptoms"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Frustration"/>
+        <Class IRI="#EmotionalAspect"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Generalization"/>
+        <Class IRI="#CognitiveDistortion"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Glaucoma"/>
+        <Class IRI="#Comorbidity"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#GroupService"/>
+        <Class IRI="#TherapeuticAction"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#HIV"/>
+        <Class IRI="#Comorbidity"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Hallucination"/>
+        <Class IRI="#SignalAndSymptomSeverity"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Happiness"/>
+        <Class IRI="#EmotionalAspect"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#HealthCareLevel"/>
+        <Class abbreviatedIRI="gufo:IntrinsicMode"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#HeartDiseaseObesity"/>
+        <Class IRI="#Comorbidity"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#HeartDiseaseVariousSurgicalProceduresAllergies"/>
+        <Class IRI="#Comorbidity"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#HeatWaves"/>
+        <Class IRI="#PhysiologicalSymptom"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Helplessness"/>
+        <Class IRI="#CoreBelief"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#HepatitisLiverCirrhosis"/>
+        <Class IRI="#Comorbidity"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#High"/>
+        <Class IRI="#FrequencyOfUseOfTheTypeOfPsychoactiveSubstance"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#HighBloodPressureDiabetes"/>
+        <Class IRI="#Comorbidity"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#HighRiskLevel"/>
+        <Class IRI="#RiskLevel"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Hyperesthesia"/>
+        <Class IRI="#ContextualAspect"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Hypergeneralization"/>
+        <Class IRI="#CognitiveDistortion"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Hypermnesia"/>
+        <Class IRI="#ContextualAspect"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Hyperpathy"/>
+        <Class IRI="#ContextualAspect"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Hypersomnia"/>
+        <Class IRI="#Sleep"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Hypertension"/>
+        <Class IRI="#Comorbidity"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#HypertensionDiabetes"/>
+        <Class IRI="#Comorbidity"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Hyperventilation"/>
+        <Class IRI="#BehaviorSymptoms"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Hypoesthesia"/>
+        <Class IRI="#ContextualAspect"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Hypothyroidism"/>
+        <Class IRI="#Comorbidity"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ICDGroup"/>
+        <Class IRI="#ClinicalData"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Impatient"/>
+        <Class IRI="#EmotionalSymptoms"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Impulsiveness"/>
+        <Class IRI="#ExecutiveFunctions"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#InBlank"/>
+        <Class IRI="#Comorbidity"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#IncreasedHeartRate"/>
+        <Class IRI="#PhysiologicalSymptom"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#IndividualPsychologicalService"/>
+        <Class IRI="#TherapeuticAction"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Inhibition"/>
+        <Class IRI="#EmotionalAspect"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#InjectablePreAnestheticMedication"/>
+        <Class IRI="#PsychoactiveSubstance"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Insanity"/>
+        <Class IRI="#Comorbidity"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Intestinal_Problems"/>
+        <Class IRI="#Comorbidity"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Irritable"/>
+        <Class IRI="#EmotionalSymptoms"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Jealousy"/>
+        <Class IRI="#EmotionalAspect"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#KorsakoffSyndrome"/>
+        <Class IRI="#Comorbidity"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Language"/>
+        <Class IRI="#CognitiveFunctions"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Lettering"/>
+        <Class IRI="#CognitiveDistortion"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#LighterGas"/>
+        <Class IRI="#PetroleumDerivatives"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#LimitedCognitiveAbility"/>
+        <Class IRI="#Comorbidity"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#LossOfBalance"/>
+        <Class IRI="#PhysiologicalSymptom"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Low"/>
+        <Class IRI="#FrequencyOfUseOfTheTypeOfPsychoactiveSubstance"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#LowRiskLevel"/>
+        <Class IRI="#RiskLevel"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Lupus"/>
+        <Class IRI="#Comorbidity"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Male"/>
+        <Class IRI="#BiologicalSex"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#MathematicalOperation"/>
+        <Class abbreviatedIRI="gufo:FunctionalComplex"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#MaximizationOfTheNegative"/>
+        <Class IRI="#CognitiveDistortion"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#MedicalCare"/>
+        <Class IRI="#TherapeuticAction"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Medium"/>
+        <Class IRI="#FrequencyOfUseOfTheTypeOfPsychoactiveSubstance"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#MediumRiskLevel"/>
+        <Class IRI="#RiskLevel"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Memory"/>
+        <Class IRI="#CognitiveFunctions"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#MentalDisorder"/>
+        <Class IRI="#Disorder"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Migraine"/>
+        <Class IRI="#Comorbidity"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#MindReading"/>
+        <Class IRI="#CognitiveDistortion"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#MinimizationOfThePositive"/>
+        <Class IRI="#CognitiveDistortion"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#MnemicHallucinations"/>
+        <Class IRI="#ContextualAspect"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#MnemicIllusions"/>
+        <Class IRI="#ContextualAspect"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#MultipleDrugs"/>
+        <Class IRI="#PsychoactiveSubstance"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#MuscularTension"/>
+        <Class IRI="#PhysiologicalSymptom"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Nausea"/>
+        <Class IRI="#PhysiologicalSymptom"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Nervous"/>
+        <Class IRI="#EmotionalSymptoms"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#NeurologicLabirinthitisFollow-up"/>
+        <Class IRI="#Comorbidity"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#NeurologicalDamageCausedByCarbonMonoxideInhalation"/>
+        <Class IRI="#Comorbidity"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#No"/>
+        <Class IRI="#AnswerOption"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#NumbnessInLimbs"/>
+        <Class IRI="#PhysiologicalSymptom"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Nurse"/>
+        <Class IRI="#CareTeam"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#NursingAssistance"/>
+        <Class IRI="#TherapeuticAction"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Nutrition"/>
+        <Class IRI="#ContextualAspect"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#NutritionalAssistance"/>
+        <Class IRI="#TherapeuticAction"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Obesity"/>
+        <Class IRI="#Comorbidity"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ObesityAndConsequences"/>
+        <Class IRI="#Comorbidity"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ObesityJointProblems"/>
+        <Class IRI="#Comorbidity"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Organization"/>
+        <Class IRI="#ExecutiveFunctions"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Orthopedic"/>
+        <Class IRI="#Comorbidity"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#OrthopedicDiabetes"/>
+        <Class IRI="#Comorbidity"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#OrthopedicNeurologist"/>
+        <Class IRI="#Comorbidity"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#OrthopedicProblem"/>
+        <Class IRI="#Comorbidity"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#OrthopedicProblemInTheSpine"/>
+        <Class IRI="#Comorbidity"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#PaintThinner"/>
+        <Class IRI="#PetroleumDerivatives"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Palpitations"/>
+        <Class IRI="#PhysiologicalSymptom"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Paresthesias"/>
+        <Class IRI="#ContextualAspect"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ParkinsonDisease"/>
+        <Class IRI="#ContextualAspect"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Parkinsonism"/>
+        <Class IRI="#Comorbidity"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Passivity"/>
+        <Class IRI="#BehaviorAspect"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#PathologicalLie"/>
+        <Class IRI="#ContextualAspect"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Patient"/>
+        <Class IRI="#Person"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#PerceptionsOfUnrealityOrDetachment"/>
+        <Class IRI="#CognitiveSymptoms"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Perfectionism"/>
+        <Class IRI="#CognitiveDistortion"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Person"/>
+        <Class abbreviatedIRI="gufo:FunctionalComplex"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Personalization"/>
+        <Class IRI="#CognitiveDistortion"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#PetroleumDerivatives"/>
+        <Class IRI="#PsychoactiveSubstance"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#PhysiologicalSymptom"/>
+        <Class IRI="#ClinicalEvaluation"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#PizzaTechnique"/>
+        <Class IRI="#ClinicalStrategy"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Planning"/>
+        <Class IRI="#ExecutiveFunctions"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#PoorConcentration"/>
+        <Class IRI="#CognitiveSymptoms"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#PoorMemory"/>
+        <Class IRI="#CognitiveSymptoms"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#PreDiabetes"/>
+        <Class IRI="#Comorbidity"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#PredictionOfTheFuture"/>
+        <Class IRI="#CognitiveDistortion"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Primary"/>
+        <Class IRI="#HealthCareLevel"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ProblemSolving"/>
+        <Class IRI="#ClinicalStrategy"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Prosopagnosy"/>
+        <Class IRI="#ContextualAspect"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#PsychoactiveSubstance"/>
+        <Class IRI="#ClinicalData"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Psychoeducation"/>
+        <Class IRI="#ClinicalStrategy"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Psychologist"/>
+        <Class IRI="#CareTeam"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Psychoterapy"/>
+        <Class IRI="#TherapeuticAction"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Question"/>
+        <Class abbreviatedIRI="gufo:FunctionalComplex"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#QuestionGroup"/>
+        <Class IRI="#QuestionnaireElement"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#QuestionnaireElement"/>
+        <Class abbreviatedIRI="gufo:FunctionalComplex"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Questionnarie"/>
+        <Class abbreviatedIRI="gufo:FunctionalComplex"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Rage"/>
+        <Class IRI="#EmotionalAspect"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#RapidBreathing"/>
+        <Class IRI="#PhysiologicalSymptom"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Reactivity"/>
+        <Class IRI="#EmotionalAspect"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#RecordingDysfunctionalThoughts"/>
+        <Class IRI="#ClinicalStrategy"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Refractoriness"/>
+        <Class IRI="#SignAndSymptom"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#RelaxationTechniques"/>
+        <Class IRI="#ClinicalStrategy"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Restlessness"/>
+        <Class IRI="#BehaviorSymptoms"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Rigidity"/>
+        <Class IRI="#PhysiologicalSymptom"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#RiskForYouAndOthers"/>
+        <Class IRI="#SignAndSymptom"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#RiskLevel"/>
+        <Class abbreviatedIRI="gufo:FunctionalComplex"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#RiskRange"/>
+        <Class IRI="#RiskLevel"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#RiskScore"/>
+        <Class IRI="#MathematicalOperation"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#RiskStratificationInMentalHealth"/>
+        <Class abbreviatedIRI="gufo:Relator"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Sadness"/>
+        <Class IRI="#EmotionalAspect"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Score"/>
+        <Class IRI="#QuestionnaireElement"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Secondary"/>
+        <Class IRI="#HealthCareLevel"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#SecuritySearch"/>
+        <Class IRI="#BehaviorSymptoms"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#SelectiveAbstraction"/>
+        <Class IRI="#CognitiveDistortion"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Self-Instruction"/>
+        <Class IRI="#ClinicalStrategy"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Senseperception"/>
+        <Class IRI="#CognitiveFunctions"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ShoeGlue"/>
+        <Class IRI="#PetroleumDerivatives"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ShortnessOfBreath"/>
+        <Class IRI="#PhysiologicalSymptom"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#SignAndSymptom"/>
+        <Class abbreviatedIRI="gufo:IntrinsicMode"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#SignalAndSymptomSeverity"/>
+        <Class IRI="#ClinicalData"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#SingularTherapeuticProject"/>
+        <Class abbreviatedIRI="gufo:FunctionalComplex"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Sleep"/>
+        <Class IRI="#ContextualAspect"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Sleepleness"/>
+        <Class IRI="#Sleep"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#SlightDelay"/>
+        <Class IRI="#Comorbidity"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#SlowingOfThought"/>
+        <Class IRI="#ContextualAspect"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#SocialAssistance"/>
+        <Class IRI="#TherapeuticAction"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#SocialSkillsTechniques"/>
+        <Class IRI="#ClinicalStrategy"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#SocialVulnerability"/>
+        <Class IRI="#SocioDemographicData"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#SocioDemographicData"/>
+        <Class abbreviatedIRI="gufo:FunctionalComplex"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#SocraticQuestioning"/>
+        <Class IRI="#ClinicalStrategy"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#SpasmodicAnginaDiabetesFibromyalgia"/>
+        <Class IRI="#Comorbidity"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#SpectatorOrDistantObserver"/>
+        <Class IRI="#ClinicalStrategy"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#SpineSurgeries"/>
+        <Class IRI="#Comorbidity"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#StomachPain"/>
+        <Class IRI="#PhysiologicalSymptom"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Stoppage"/>
+        <Class IRI="#BehaviorAspect"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Submission"/>
+        <Class IRI="#BehaviorAspect"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Sweating"/>
+        <Class IRI="#PhysiologicalSymptom"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#SwitchingRoles"/>
+        <Class IRI="#ClinicalStrategy"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Symptomatology"/>
+        <Class IRI="#SignAndSymptom"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#SystematicDesensitization"/>
+        <Class IRI="#ClinicalStrategy"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#TactileHallucination"/>
+        <Class IRI="#Hallucination"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#TactileHypoesthesia"/>
+        <Class IRI="#ContextualAspect"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#TerrifyingThoughts"/>
+        <Class IRI="#CognitiveSymptoms"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Tertiary"/>
+        <Class IRI="#HealthCareLevel"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Therapeutic"/>
+        <Class IRI="#CareTeam"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#TherapeuticAction"/>
+        <Class abbreviatedIRI="gufo:FunctionalComplex"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Thought-stoppingAndSelf-instruction"/>
+        <Class IRI="#ClinicalStrategy"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ThoughtBlockingOrInterjection"/>
+        <Class IRI="#ContextualAspect"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ThoughtStop"/>
+        <Class IRI="#ClinicalStrategy"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ThreatHypervigilance"/>
+        <Class IRI="#CognitiveSymptoms"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Thrombosis"/>
+        <Class IRI="#Comorbidity"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ThyroidHypertension"/>
+        <Class IRI="#Comorbidity"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Tingling"/>
+        <Class IRI="#PhysiologicalSymptom"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Tobacco"/>
+        <Class IRI="#PsychoactiveSubstance"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Tremor"/>
+        <Class IRI="#PhysiologicalSymptom"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#UnconditionalAcceptanceOfCriticism"/>
+        <Class IRI="#CognitiveDistortion"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#UnfairComparisons"/>
+        <Class IRI="#CognitiveDistortion"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#UseOfRewards"/>
+        <Class IRI="#ClinicalStrategy"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#UseOfSubstance"/>
+        <Class IRI="#ContextualAspect"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#VascularDementia"/>
+        <Class IRI="#ContextualAspect"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Victimization"/>
+        <Class IRI="#CognitiveDistortion"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#VisualHallucination"/>
+        <Class IRI="#Hallucination"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Vitiligo"/>
+        <Class IRI="#Comorbidity"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Weakness"/>
+        <Class IRI="#PhysiologicalSymptom"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#WhatIf"/>
+        <Class IRI="#CognitiveDistortion"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Yes"/>
+        <Class IRI="#AnswerOption"/>
+    </SubClassOf>
+    <DisjointClasses>
+        <Class IRI="#AbusiveUseOfIllicitPsychoactiveAmputationMIAndOsteoarthritis"/>
+        <Class IRI="#AdvancedAgeDifficultyLocomotion"/>
+        <Class IRI="#AllergicCrises"/>
+        <Class IRI="#BackAndKneeProblems"/>
+        <Class IRI="#BariatricObesity"/>
+        <Class IRI="#BariatricPatient"/>
+        <Class IRI="#BreastCancer"/>
+        <Class IRI="#CardiopathDiabetesNeuropath"/>
+        <Class IRI="#CerebellarDegeneration"/>
+        <Class IRI="#ChronicSmokingAndCOPDRisk"/>
+        <Class IRI="#ChronicSmokingCOPDThrombogeitisWithAmputationAndVertebralOsteoarthritis"/>
+        <Class IRI="#CirculationLocomotion"/>
+        <Class IRI="#ConvulsiveCrisis"/>
+        <Class IRI="#Dementia"/>
+        <Class IRI="#Diabetes"/>
+        <Class IRI="#DiabetesDiabeticNeuropathy"/>
+        <Class IRI="#DiabetesHypertensionThyroidProblem"/>
+        <Class IRI="#DiabetesOsteoporosis"/>
+        <Class IRI="#Disease_Spine_Arthrodesis"/>
+        <Class IRI="#EatingDisorder"/>
+        <Class IRI="#Endometriosis"/>
+        <Class IRI="#Epilepsy"/>
+        <Class IRI="#EpilepsyAneurysmEatingDisorder"/>
+        <Class IRI="#Fibromyalgia"/>
+        <Class IRI="#Glaucoma"/>
+        <Class IRI="#HIV"/>
+        <Class IRI="#HeartDiseaseObesity"/>
+        <Class IRI="#HeartDiseaseVariousSurgicalProceduresAllergies"/>
+        <Class IRI="#HepatitisLiverCirrhosis"/>
+        <Class IRI="#HighBloodPressureDiabetes"/>
+        <Class IRI="#Hypertension"/>
+        <Class IRI="#HypertensionDiabetes"/>
+        <Class IRI="#Hypothyroidism"/>
+        <Class IRI="#InBlank"/>
+        <Class IRI="#Insanity"/>
+        <Class IRI="#Intestinal_Problems"/>
+        <Class IRI="#KorsakoffSyndrome"/>
+        <Class IRI="#LimitedCognitiveAbility"/>
+        <Class IRI="#Lupus"/>
+        <Class IRI="#Migraine"/>
+        <Class IRI="#NeurologicLabirinthitisFollow-up"/>
+        <Class IRI="#NeurologicalDamageCausedByCarbonMonoxideInhalation"/>
+        <Class IRI="#Obesity"/>
+        <Class IRI="#ObesityAndConsequences"/>
+        <Class IRI="#ObesityJointProblems"/>
+        <Class IRI="#Orthopedic"/>
+        <Class IRI="#OrthopedicDiabetes"/>
+        <Class IRI="#OrthopedicNeurologist"/>
+        <Class IRI="#OrthopedicProblem"/>
+        <Class IRI="#OrthopedicProblemInTheSpine"/>
+        <Class IRI="#Parkinsonism"/>
+        <Class IRI="#PreDiabetes"/>
+        <Class IRI="#SlightDelay"/>
+        <Class IRI="#SpasmodicAnginaDiabetesFibromyalgia"/>
+        <Class IRI="#SpineSurgeries"/>
+        <Class IRI="#Thrombosis"/>
+        <Class IRI="#ThyroidHypertension"/>
+        <Class IRI="#Vitiligo"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#AcceleratedThinking"/>
+        <Class IRI="#Agnosia"/>
+        <Class IRI="#AlzheimerDementia"/>
+        <Class IRI="#Amnesias"/>
+        <Class IRI="#Anorexia"/>
+        <Class IRI="#BingeEating"/>
+        <Class IRI="#Bulimia"/>
+        <Class IRI="#CondensationOfConcepts"/>
+        <Class IRI="#DeficientThinking"/>
+        <Class IRI="#DementiaWithLewyBodies"/>
+        <Class IRI="#DisintegrationOfConcepts"/>
+        <Class IRI="#Distraction"/>
+        <Class IRI="#FrontotemporalDementia"/>
+        <Class IRI="#Hyperesthesia"/>
+        <Class IRI="#Hypermnesia"/>
+        <Class IRI="#Hyperpathy"/>
+        <Class IRI="#Hypersomnia"/>
+        <Class IRI="#Hypoesthesia"/>
+        <Class IRI="#MnemicHallucinations"/>
+        <Class IRI="#MnemicIllusions"/>
+        <Class IRI="#Nutrition"/>
+        <Class IRI="#Paresthesias"/>
+        <Class IRI="#ParkinsonDisease"/>
+        <Class IRI="#PathologicalLie"/>
+        <Class IRI="#Prosopagnosy"/>
+        <Class IRI="#Sleep"/>
+        <Class IRI="#Sleepleness"/>
+        <Class IRI="#SlowingOfThought"/>
+        <Class IRI="#TactileHypoesthesia"/>
+        <Class IRI="#ThoughtBlockingOrInterjection"/>
+        <Class IRI="#UseOfSubstance"/>
+        <Class IRI="#VascularDementia"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#Acceptance"/>
+        <Class IRI="#Aggressiveness"/>
+        <Class IRI="#BehaviorSymptoms"/>
+        <Class IRI="#Confrontation"/>
+        <Class IRI="#CopingStrategies"/>
+        <Class IRI="#DodgeAndEscape"/>
+        <Class IRI="#Passivity"/>
+        <Class IRI="#Stoppage"/>
+        <Class IRI="#Submission"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#Agitation"/>
+        <Class IRI="#ChestPressure"/>
+        <Class IRI="#Chills"/>
+        <Class IRI="#ChokingSensation"/>
+        <Class IRI="#Diarrhea"/>
+        <Class IRI="#Dizziness"/>
+        <Class IRI="#DryMouth"/>
+        <Class IRI="#Fainting"/>
+        <Class IRI="#HeatWaves"/>
+        <Class IRI="#IncreasedHeartRate"/>
+        <Class IRI="#LossOfBalance"/>
+        <Class IRI="#MuscularTension"/>
+        <Class IRI="#Nausea"/>
+        <Class IRI="#NumbnessInLimbs"/>
+        <Class IRI="#Palpitations"/>
+        <Class IRI="#RapidBreathing"/>
+        <Class IRI="#Rigidity"/>
+        <Class IRI="#ShortnessOfBreath"/>
+        <Class IRI="#StomachPain"/>
+        <Class IRI="#Sweating"/>
+        <Class IRI="#Tingling"/>
+        <Class IRI="#Tremor"/>
+        <Class IRI="#Weakness"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#Alcohol"/>
+        <Class IRI="#AlcoholAndAlprazolam"/>
+        <Class IRI="#AlcoholAndCocaine"/>
+        <Class IRI="#AlcoholAndMarijuana"/>
+        <Class IRI="#AlcoholAndMultipleDrugs"/>
+        <Class IRI="#Cannabis"/>
+        <Class IRI="#Cocaine"/>
+        <Class IRI="#Crack"/>
+        <Class IRI="#CrackCocaine"/>
+        <Class IRI="#InjectablePreAnestheticMedication"/>
+        <Class IRI="#MultipleDrugs"/>
+        <Class IRI="#PetroleumDerivatives"/>
+        <Class IRI="#Tobacco"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#Anxiety"/>
+        <Class IRI="#Disgusted"/>
+        <Class IRI="#EmotionalSymptoms"/>
+        <Class IRI="#Fear"/>
+        <Class IRI="#Frustration"/>
+        <Class IRI="#Happiness"/>
+        <Class IRI="#Inhibition"/>
+        <Class IRI="#Jealousy"/>
+        <Class IRI="#Rage"/>
+        <Class IRI="#Reactivity"/>
+        <Class IRI="#Sadness"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#Attention"/>
+        <Class IRI="#ExecutiveFunctions"/>
+        <Class IRI="#Language"/>
+        <Class IRI="#Memory"/>
+        <Class IRI="#Senseperception"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#AutomaticThinking"/>
+        <Class IRI="#CognitiveFunctions"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#AutomaticThinking"/>
+        <Class IRI="#CognitiveFunctions"/>
+        <Class IRI="#CognitiveSymptoms"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#AutomaticThinking"/>
+        <Class IRI="#CognitiveFunctions"/>
+        <Class IRI="#CognitiveSymptoms"/>
+        <Class IRI="#CoreBelief"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#AvoidanceOfThreateningSignsOrSituations"/>
+        <Class IRI="#DifficultySpeaking"/>
+        <Class IRI="#Freezing"/>
+        <Class IRI="#Hyperventilation"/>
+        <Class IRI="#Restlessness"/>
+        <Class IRI="#SecuritySearch"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#Brainstorming"/>
+        <Class IRI="#CognitiveRestructuring"/>
+        <Class IRI="#CopingStrategies"/>
+        <Class IRI="#CopingWithStress"/>
+        <Class IRI="#DecatastrophizingWithDescendingArrows"/>
+        <Class IRI="#Desensitization"/>
+        <Class IRI="#Distractions"/>
+        <Class IRI="#EvidenceAnalysis"/>
+        <Class IRI="#ExpositionsHierarchization"/>
+        <Class IRI="#ExposureTechniques"/>
+        <Class IRI="#FaceCards"/>
+        <Class IRI="#PizzaTechnique"/>
+        <Class IRI="#ProblemSolving"/>
+        <Class IRI="#Psychoeducation"/>
+        <Class IRI="#RecordingDysfunctionalThoughts"/>
+        <Class IRI="#RelaxationTechniques"/>
+        <Class IRI="#Self-Instruction"/>
+        <Class IRI="#SocialSkillsTechniques"/>
+        <Class IRI="#SocraticQuestioning"/>
+        <Class IRI="#SpectatorOrDistantObserver"/>
+        <Class IRI="#SwitchingRoles"/>
+        <Class IRI="#SystematicDesensitization"/>
+        <Class IRI="#Thought-stoppingAndSelf-instruction"/>
+        <Class IRI="#ThoughtStop"/>
+        <Class IRI="#UseOfRewards"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#Catastrophizing"/>
+        <Class IRI="#DichotomousThinking"/>
+        <Class IRI="#EmotionalReasoning"/>
+        <Class IRI="#Generalization"/>
+        <Class IRI="#Hypergeneralization"/>
+        <Class IRI="#Lettering"/>
+        <Class IRI="#MaximizationOfTheNegative"/>
+        <Class IRI="#MindReading"/>
+        <Class IRI="#MinimizationOfThePositive"/>
+        <Class IRI="#Perfectionism"/>
+        <Class IRI="#Personalization"/>
+        <Class IRI="#PredictionOfTheFuture"/>
+        <Class IRI="#SelectiveAbstraction"/>
+        <Class IRI="#UnconditionalAcceptanceOfCriticism"/>
+        <Class IRI="#UnfairComparisons"/>
+        <Class IRI="#Victimization"/>
+        <Class IRI="#WhatIf"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#CreepedOut"/>
+        <Class IRI="#Excited"/>
+        <Class IRI="#Frustrated"/>
+        <Class IRI="#Impatient"/>
+        <Class IRI="#Irritable"/>
+        <Class IRI="#Nervous"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#DecisionMaking"/>
+        <Class IRI="#Flexibility"/>
+        <Class IRI="#Impulsiveness"/>
+        <Class IRI="#Organization"/>
+        <Class IRI="#Planning"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#Devaluation"/>
+        <Class IRI="#Disaffection"/>
+        <Class IRI="#Helplessness"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#DifficultyOfReasoning"/>
+        <Class IRI="#FearOfGoingCrazy"/>
+        <Class IRI="#FearOfLosingControl"/>
+        <Class IRI="#FearOfNegativeEvaluationByOthers"/>
+        <Class IRI="#FearOfPhysicalInjuryOrDeath"/>
+        <Class IRI="#PerceptionsOfUnrealityOrDetachment"/>
+        <Class IRI="#PoorConcentration"/>
+        <Class IRI="#PoorMemory"/>
+        <Class IRI="#TerrifyingThoughts"/>
+        <Class IRI="#ThreatHypervigilance"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#F00-F09"/>
+        <Class IRI="#F00-F99"/>
+        <Class IRI="#F10-F19"/>
+        <Class IRI="#F20-F29"/>
+        <Class IRI="#F30-F39"/>
+        <Class IRI="#F40-F48"/>
+        <Class IRI="#F50-F59"/>
+        <Class IRI="#F60-F69"/>
+        <Class IRI="#F70-F79"/>
+        <Class IRI="#F80-F89"/>
+        <Class IRI="#F90-F98"/>
+        <Class IRI="#F99"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#LighterGas"/>
+        <Class IRI="#PaintThinner"/>
+        <Class IRI="#ShoeGlue"/>
+    </DisjointClasses>
+    <ClassAssertion>
+        <Class abbreviatedIRI="gufo:Phase"/>
+        <NamedIndividual IRI="#Adolescent"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="gufo:Phase"/>
+        <NamedIndividual IRI="#Adult"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="gufo:Kind"/>
+        <NamedIndividual IRI="#AgeGroup"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="gufo:SubKind"/>
+        <NamedIndividual IRI="#Alcohol"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="gufo:SubKind"/>
+        <NamedIndividual IRI="#AnswerOption"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="gufo:SubKind"/>
+        <NamedIndividual IRI="#Auditory"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="gufo:SubKind"/>
+        <NamedIndividual IRI="#BeginningQuestionnarie"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="gufo:SubKind"/>
+        <NamedIndividual IRI="#BehaviorAspect"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="gufo:Kind"/>
+        <NamedIndividual IRI="#BiologicalSex"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="gufo:SubKind"/>
+        <NamedIndividual IRI="#CareTeam"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="gufo:Kind"/>
+        <NamedIndividual IRI="#CaseConceptualization"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="gufo:Category"/>
+        <NamedIndividual IRI="#ClinicalData"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="gufo:Kind"/>
+        <NamedIndividual IRI="#ClinicalEvaluation"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="gufo:SubKind"/>
+        <NamedIndividual IRI="#ClinicalStrategy"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="gufo:SubKind"/>
+        <NamedIndividual IRI="#Cocaine"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="gufo:SubKind"/>
+        <NamedIndividual IRI="#CoexistenceWorkshop"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="gufo:SubKind"/>
+        <NamedIndividual IRI="#CognitiveAspect"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="gufo:Kind"/>
+        <NamedIndividual IRI="#CognitiveModel"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="gufo:Kind"/>
+        <NamedIndividual IRI="#Comorbidity"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="gufo:SubKind"/>
+        <NamedIndividual IRI="#ContextualAspect"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="gufo:SubKind"/>
+        <NamedIndividual IRI="#Crack"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="gufo:SubKind"/>
+        <NamedIndividual IRI="#Delirium"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="gufo:SubKind"/>
+        <NamedIndividual IRI="#DelusionalDisorder"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="gufo:SubKind"/>
+        <NamedIndividual IRI="#Dementia"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="gufo:SubKind"/>
+        <NamedIndividual IRI="#DependencyAutonomy"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="gufo:SubKind"/>
+        <NamedIndividual IRI="#Diabetes"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="gufo:Role"/>
+        <NamedIndividual IRI="#Doctor"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="gufo:Phase"/>
+        <NamedIndividual IRI="#Eldery"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="gufo:SubKind"/>
+        <NamedIndividual IRI="#EmotionalAspect"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="gufo:SubKind"/>
+        <NamedIndividual IRI="#Female"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="gufo:SubKind"/>
+        <NamedIndividual IRI="#FinalQuestionnarie"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="gufo:SubKind"/>
+        <NamedIndividual IRI="#FinalScore"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="gufo:Kind"/>
+        <NamedIndividual IRI="#FrequencyOfUseOfTheTypeOfPsychoactiveSubstance"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="gufo:SubKind"/>
+        <NamedIndividual IRI="#GroupService"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="gufo:SubKind"/>
+        <NamedIndividual IRI="#Hallucination"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="gufo:Kind"/>
+        <NamedIndividual IRI="#HealthCareLevel"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="gufo:SubKind"/>
+        <NamedIndividual IRI="#High"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="gufo:SubKind"/>
+        <NamedIndividual IRI="#HighRiskLevel"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="gufo:Kind"/>
+        <NamedIndividual IRI="#ICDGroup"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="gufo:SubKind"/>
+        <NamedIndividual IRI="#IndividualPsychologicalService"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="gufo:SubKind"/>
+        <NamedIndividual IRI="#Low"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="gufo:SubKind"/>
+        <NamedIndividual IRI="#LowRiskLevel"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="gufo:SubKind"/>
+        <NamedIndividual IRI="#Male"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="gufo:SubKind"/>
+        <NamedIndividual IRI="#MedicalCare"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="gufo:SubKind"/>
+        <NamedIndividual IRI="#Medium"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="gufo:SubKind"/>
+        <NamedIndividual IRI="#MediumRiskLevel"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="gufo:SubKind"/>
+        <NamedIndividual IRI="#No"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="gufo:Role"/>
+        <NamedIndividual IRI="#Nurse"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="gufo:SubKind"/>
+        <NamedIndividual IRI="#NursingAssistance"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="gufo:SubKind"/>
+        <NamedIndividual IRI="#NutritionalAssistance"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="gufo:Role"/>
+        <NamedIndividual IRI="#Patient"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Question"/>
+        <NamedIndividual IRI="#Pensa_em_se_matar_ou_já_realizou_alguma_tentativa_de_suicídio"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="gufo:Kind"/>
+        <NamedIndividual IRI="#Person"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="gufo:SubKind"/>
+        <NamedIndividual IRI="#PhysiologicalSymptom"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Question"/>
+        <NamedIndividual IRI="#Possui_Sensacao_de_Estranheza_com_Relação_a_Si_Ou_o_mundo_a_sua_volta"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="gufo:SubKind"/>
+        <NamedIndividual IRI="#Primary"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="gufo:Kind"/>
+        <NamedIndividual IRI="#PsychoactiveSubstance"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="gufo:Role"/>
+        <NamedIndividual IRI="#Psychologist"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="gufo:SubKind"/>
+        <NamedIndividual IRI="#Psychoterapy"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="gufo:Kind"/>
+        <NamedIndividual IRI="#Question"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="gufo:SubKind"/>
+        <NamedIndividual IRI="#QuestionGroup"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="gufo:Kind"/>
+        <NamedIndividual IRI="#QuestionnaireElement"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="gufo:Kind"/>
+        <NamedIndividual IRI="#Questionnarie"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="gufo:SubKind"/>
+        <NamedIndividual IRI="#Refractoriness"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="gufo:SubKind"/>
+        <NamedIndividual IRI="#RiskForYouAndOthers"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="gufo:Kind"/>
+        <NamedIndividual IRI="#RiskLevel"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="gufo:SubKind"/>
+        <NamedIndividual IRI="#RiskRange"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="gufo:Kind"/>
+        <NamedIndividual IRI="#RiskScore"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="gufo:Kind"/>
+        <NamedIndividual IRI="#RiskStratificationInMentalHealth"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="gufo:SubKind"/>
+        <NamedIndividual IRI="#Score"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Question"/>
+        <NamedIndividual IRI="#Se_agrediu_se_cortou_se_arranhou_ou_agrediu_outras_pessoas"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="gufo:SubKind"/>
+        <NamedIndividual IRI="#Secondary"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Question"/>
+        <NamedIndividual IRI="#Sente_tristeza_persistente_acompanhada_ou_não_de_choro"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="gufo:Kind"/>
+        <NamedIndividual IRI="#SignAndSymptom"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="gufo:Kind"/>
+        <NamedIndividual IRI="#SignalAndSymptomSeverity"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="gufo:Kind"/>
+        <NamedIndividual IRI="#SingularTherapeuticProject"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="gufo:SubKind"/>
+        <NamedIndividual IRI="#SocialAssistance"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="gufo:Kind"/>
+        <NamedIndividual IRI="#SocialVulnerability"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="gufo:Category"/>
+        <NamedIndividual IRI="#SocioDemographicData"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="gufo:SubKind"/>
+        <NamedIndividual IRI="#Symptomatology"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="gufo:SubKind"/>
+        <NamedIndividual IRI="#TactileHallucination"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="gufo:SubKind"/>
+        <NamedIndividual IRI="#Tertiary"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="gufo:Role"/>
+        <NamedIndividual IRI="#Therapeutic"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="gufo:Kind"/>
+        <NamedIndividual IRI="#TherapeuticAction"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#QuestionGroup"/>
+        <NamedIndividual IRI="#TranstornosMentaisSeverosPersistentes"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#QuestionGroup"/>
+        <NamedIndividual IRI="#Transtornosmentaiscomuns"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="gufo:SubKind"/>
+        <NamedIndividual IRI="#VisualHallucination"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="gufo:SubKind"/>
+        <NamedIndividual IRI="#Yes"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Question"/>
+        <NamedIndividual IRI="#Possui_pensamentos_e_comportamentos_repetitivos_e/ou_realiza_algum_ritual"/>
+    </ClassAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#isFormulatedBy_1"/>
+        <NamedIndividual IRI="#Pensa_em_se_matar_ou_já_realizou_alguma_tentativa_de_suicídio"/>
+        <NamedIndividual IRI="#TranstornosMentaisSeverosPersistentes"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#isFormulatedBy"/>
+        <NamedIndividual IRI="#Possui_Sensacao_de_Estranheza_com_Relação_a_Si_Ou_o_mundo_a_sua_volta"/>
+        <NamedIndividual IRI="#Transtornosmentaiscomuns"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#isFormulatedBy"/>
+        <NamedIndividual IRI="#Se_agrediu_se_cortou_se_arranhou_ou_agrediu_outras_pessoas"/>
+        <NamedIndividual IRI="#TranstornosMentaisSeverosPersistentes"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#isFormulatedBy_1"/>
+        <NamedIndividual IRI="#Sente_tristeza_persistente_acompanhada_ou_não_de_choro"/>
+        <NamedIndividual IRI="#Transtornosmentaiscomuns"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#isFormulatedBy_1"/>
+        <NamedIndividual IRI="#Possui_pensamentos_e_comportamentos_repetitivos_e/ou_realiza_algum_ritual"/>
+        <NamedIndividual IRI="#Transtornosmentaiscomuns"/>
+    </ObjectPropertyAssertion>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#hasQuestionnarieElement"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#answers"/>
+        <Class IRI="#Question"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#calcultes"/>
+        <Class IRI="#CareTeam"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#classifies"/>
+        <Class IRI="#QuestionGroup"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#cognitiveModelHas"/>
+        <Class IRI="#CognitiveModel"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#defines"/>
+        <Class IRI="#CognitiveModel"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#definesCognitiveModelOf"/>
+        <Class IRI="#CaseConceptualization"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#demographicSocialDataFormulatedBy"/>
+        <Class IRI="#SocioDemographicData"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#emotionIsAssociatedWith"/>
+        <Class IRI="#CaseConceptualization"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#executedBy"/>
+        <Class IRI="#RiskStratificationInMentalHealth"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#finalQuestionnarieHasPatient"/>
+        <Class IRI="#FinalQuestionnarie"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#formulates"/>
+        <Class IRI="#CognitiveModel"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasQuestionnarieElement"/>
+        <Class IRI="#QuestionnaireElement"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#isCalculatedBy"/>
+        <Class IRI="#FinalScore"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#isComprehendedBy"/>
+        <Class IRI="#Patient"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#isFormulatedBy"/>
+        <Class IRI="#Question"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#isFormulatedBy_1"/>
+        <Class IRI="#SignAndSymptom"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#isFormulatedBy_2"/>
+        <Class IRI="#Question"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#isFormulatedBy_3"/>
+        <Class IRI="#QuestionnaireElement"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#isIidentifiedWith"/>
+        <Class IRI="#Patient"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#isTechniqueOf"/>
+        <Class IRI="#CaseConceptualization"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#makesUse"/>
+        <Class IRI="#Patient"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#patientAnswersQuestionnaire"/>
+        <Class IRI="#BeginningQuestionnarie"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#patientHas"/>
+        <Class IRI="#Patient"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#patientHasClinicalData"/>
+        <Class IRI="#Patient"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#patientHas_1"/>
+        <Class IRI="#Patient"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#questionHas"/>
+        <Class IRI="#Question"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#recevies"/>
+        <Class IRI="#AnswerOption"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#riskLevelGuides"/>
+        <Class IRI="#RiskLevel"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#riskLevelHasTherapeuticAction"/>
+        <Class IRI="#RiskLevel"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#riskRangeDetermines"/>
+        <Class IRI="#FinalScore"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#severityOfSignsAndSymptomGuides"/>
+        <Class IRI="#SignalAndSymptomSeverity"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#singularTherapeuticProjectIsFormedBy"/>
+        <Class IRI="#SingularTherapeuticProject"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#symptomIsAssociatedWith"/>
+        <Class IRI="#CaseConceptualization"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#takesCare"/>
+        <Class IRI="#Patient"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#treats"/>
+        <Class IRI="#Psychoterapy"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#uses"/>
+        <Class IRI="#RiskStratificationInMentalHealth"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#answers"/>
+        <Class IRI="#Patient"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#calcultes"/>
+        <Class IRI="#FinalScore"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#classifies"/>
+        <Class IRI="#SignAndSymptom"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#cognitiveModelHas"/>
+        <Class IRI="#ClinicalEvaluation"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#defines"/>
+        <Class IRI="#CaseConceptualization"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#definesCognitiveModelOf"/>
+        <Class IRI="#Patient"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#demographicSocialDataFormulatedBy"/>
+        <Class IRI="#Question"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#emotionIsAssociatedWith"/>
+        <Class IRI="#EmotionalAspect"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#executedBy"/>
+        <Class IRI="#CareTeam"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#finalQuestionnarieHasPatient"/>
+        <Class IRI="#Patient"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#formulates"/>
+        <Class IRI="#Psychoterapy"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasQuestionnarieElement"/>
+        <Class IRI="#CareTeam"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasQuestionnarieElement"/>
+        <Class IRI="#Patient"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#isCalculatedBy"/>
+        <Class IRI="#RiskScore"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#isComprehendedBy"/>
+        <Class IRI="#CaseConceptualization"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#isFormulatedBy"/>
+        <Class IRI="#QuestionGroup"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#isFormulatedBy_1"/>
+        <Class IRI="#Question"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#isFormulatedBy_2"/>
+        <Class IRI="#ClinicalData"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#isFormulatedBy_3"/>
+        <Class IRI="#Questionnarie"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#isIidentifiedWith"/>
+        <Class IRI="#Comorbidity"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#isTechniqueOf"/>
+        <Class IRI="#Psychoterapy"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#makesUse"/>
+        <Class IRI="#PsychoactiveSubstance"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#patientAnswersQuestionnaire"/>
+        <Class IRI="#Patient"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#patientHas"/>
+        <Class IRI="#SocioDemographicData"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#patientHasClinicalData"/>
+        <Class IRI="#ClinicalData"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#patientHas_1"/>
+        <Class IRI="#FinalScore"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#questionHas"/>
+        <Class IRI="#AnswerOption"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#recevies"/>
+        <Class IRI="#Score"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#riskLevelGuides"/>
+        <Class IRI="#SingularTherapeuticProject"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#riskLevelHasTherapeuticAction"/>
+        <Class IRI="#TherapeuticAction"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#riskRangeDetermines"/>
+        <Class IRI="#RiskLevel"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#severityOfSignsAndSymptomGuides"/>
+        <Class IRI="#HealthCareLevel"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#singularTherapeuticProjectIsFormedBy"/>
+        <Class IRI="#TherapeuticAction"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#symptomIsAssociatedWith"/>
+        <Class IRI="#PhysiologicalSymptom"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#takesCare"/>
+        <Class IRI="#CareTeam"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#treats"/>
+        <Class IRI="#Patient"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#uses"/>
+        <Class IRI="#Questionnarie"/>
+    </ObjectPropertyRange>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Adolescent</IRI>
+        <Literal xml:lang="en">Adolescent</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Adult</IRI>
+        <Literal xml:lang="en">Adult</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#AgeGroup</IRI>
+        <Literal xml:lang="en">AgeGroup</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Alcohol</IRI>
+        <Literal xml:lang="en">Alcohol</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#AnswerOption</IRI>
+        <Literal xml:lang="en">AnswerOption</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Auditory</IRI>
+        <Literal xml:lang="en">Auditory</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#BeginningQuestionnarie</IRI>
+        <Literal xml:lang="en">BeginningQuestionnarie</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#BehaviorAspect</IRI>
+        <Literal xml:lang="en">BehaviorAspect</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#BiologicalSex</IRI>
+        <Literal xml:lang="en">BiologicalSex</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#CareTeam</IRI>
+        <Literal xml:lang="en">CareTeam</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#CaseConceptualization</IRI>
+        <Literal xml:lang="en">CaseConceptualization</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#ClinicalData</IRI>
+        <Literal xml:lang="en">ClinicalData</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#ClinicalEvaluation</IRI>
+        <Literal xml:lang="en">ClinicalEvaluation</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#ClinicalStrategy</IRI>
+        <Literal xml:lang="en">ClinicalStrategy</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Cocaine</IRI>
+        <Literal xml:lang="en">Cocaine</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#CoexistenceWorkshop</IRI>
+        <Literal xml:lang="en">CoexistenceWorkshop</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#CognitiveAspect</IRI>
+        <Literal xml:lang="en">CognitiveAspect</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#CognitiveModel</IRI>
+        <Literal xml:lang="en">CognitiveModel</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Comorbidity</IRI>
+        <Literal xml:lang="en">Comorbidity</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#ContextualAspect</IRI>
+        <Literal xml:lang="en">ContextualAspect</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Crack</IRI>
+        <Literal xml:lang="en">Crack</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Delirium</IRI>
+        <Literal xml:lang="en">Delirium</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#DelusionalDisorder</IRI>
+        <Literal xml:lang="en">DelusionalDisorder</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Dementia</IRI>
+        <Literal xml:lang="en">Dementia</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#DependencyAutonomy</IRI>
+        <Literal xml:lang="en">DependencyAutonomy</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Diabetes</IRI>
+        <Literal xml:lang="en">Diabetes</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Doctor</IRI>
+        <Literal xml:lang="en">Doctor</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Eldery</IRI>
+        <Literal xml:lang="en">Eldery</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#EmotionalAspect</IRI>
+        <Literal xml:lang="en">EmotionalAspect</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Female</IRI>
+        <Literal xml:lang="en">Female</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#FinalQuestionnarie</IRI>
+        <Literal xml:lang="en">FinalQuestionnarie</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#FinalScore</IRI>
+        <Literal xml:lang="en">FinalScore</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#FrequencyOfUseOfTheTypeOfPsychoactiveSubstance</IRI>
+        <Literal xml:lang="en">FrequencyOfUseOfTheTypeOfPsychoactiveSubstance</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#GroupService</IRI>
+        <Literal xml:lang="en">GroupService</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Hallucination</IRI>
+        <Literal xml:lang="en">Hallucination</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#HealthCareLevel</IRI>
+        <Literal xml:lang="en">HealthCareLevel</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#High</IRI>
+        <Literal xml:lang="en">High</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#HighRiskLevel</IRI>
+        <Literal xml:lang="en">HighRiskLevel</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#ICDGroup</IRI>
+        <Literal xml:lang="en">ICDGroup</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#IndividualPsychologicalService</IRI>
+        <Literal xml:lang="en">IndividualPsychologicalService</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Low</IRI>
+        <Literal xml:lang="en">Low</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#LowRiskLevel</IRI>
+        <Literal xml:lang="en">LowRiskLevel</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Male</IRI>
+        <Literal xml:lang="en">Male</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#MedicalCare</IRI>
+        <Literal xml:lang="en">MedicalCare</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Medium</IRI>
+        <Literal xml:lang="en">Medium</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#MediumRiskLevel</IRI>
+        <Literal xml:lang="en">MediumRiskLevel</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#No</IRI>
+        <Literal xml:lang="en">No</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Nurse</IRI>
+        <Literal xml:lang="en">Nurse</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#NursingAssistance</IRI>
+        <Literal xml:lang="en">NursingAssistance</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#NutritionalAssistance</IRI>
+        <Literal xml:lang="en">NutritionalAssistance</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Patient</IRI>
+        <Literal xml:lang="en">Patient</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Person</IRI>
+        <Literal xml:lang="en">Person</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#PhysiologicalSymptom</IRI>
+        <Literal xml:lang="en">PhysiologicalSymptom</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Primary</IRI>
+        <Literal xml:lang="en">Primary</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#PsychoactiveSubstance</IRI>
+        <Literal xml:lang="en">PsychoactiveSubstance</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Psychologist</IRI>
+        <Literal xml:lang="en">Psychologist</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Psychoterapy</IRI>
+        <Literal xml:lang="en">Psychoterapy</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Question</IRI>
+        <Literal xml:lang="en">Question</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#QuestionGroup</IRI>
+        <Literal xml:lang="en">QuestionGroup</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#QuestionnaireElement</IRI>
+        <Literal xml:lang="en">QuestionnaireElement</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Questionnarie</IRI>
+        <Literal xml:lang="en">Questionnarie</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Refractoriness</IRI>
+        <Literal xml:lang="en">Refractoriness</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#RiskForYouAndOthers</IRI>
+        <Literal xml:lang="en">RiskForYouAndOthers</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#RiskLevel</IRI>
+        <Literal xml:lang="en">RiskLevel</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#RiskRange</IRI>
+        <Literal xml:lang="en">RiskRange</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#RiskScore</IRI>
+        <Literal xml:lang="en">RiskScore</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#RiskStratificationInMentalHealth</IRI>
+        <Literal xml:lang="en">RiskStratificationInMentalHealth</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Score</IRI>
+        <Literal xml:lang="en">Score</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Secondary</IRI>
+        <Literal xml:lang="en">Secondary</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#SignAndSymptom</IRI>
+        <Literal xml:lang="en">SignAndSymptom</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#SignalAndSymptomSeverity</IRI>
+        <Literal xml:lang="en">SignalAndSymptomSeverity</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#SingularTherapeuticProject</IRI>
+        <Literal xml:lang="en">SingularTherapeuticProject</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#SocialAssistance</IRI>
+        <Literal xml:lang="en">SocialAssistance</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#SocialVulnerability</IRI>
+        <Literal xml:lang="en">SocialVulnerability</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#SocioDemographicData</IRI>
+        <Literal xml:lang="en">SocioDemographicData</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Symptomatology</IRI>
+        <Literal xml:lang="en">Symptomatology</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#TactileHallucination</IRI>
+        <Literal xml:lang="en">TactileHallucination</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Tertiary</IRI>
+        <Literal xml:lang="en">Tertiary</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Therapeutic</IRI>
+        <Literal xml:lang="en">Therapeutic</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#TherapeuticAction</IRI>
+        <Literal xml:lang="en">TherapeuticAction</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#VisualHallucination</IRI>
+        <Literal xml:lang="en">VisualHallucination</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Yes</IRI>
+        <Literal xml:lang="en">Yes</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#answers</IRI>
+        <Literal xml:lang="en">answers</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#calcultes</IRI>
+        <Literal xml:lang="en">calcultes</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#classifies</IRI>
+        <Literal xml:lang="en">classifies</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#cognitiveModelHas</IRI>
+        <Literal xml:lang="en">cognitiveModelHas</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#defines</IRI>
+        <Literal xml:lang="en">defines</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#definesCognitiveModelOf</IRI>
+        <Literal xml:lang="en">definesCognitiveModelOf</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#demographicSocialDataFormulatedBy</IRI>
+        <Literal xml:lang="en">demographicSocialDataFormulatedBy</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#emotionIsAssociatedWith</IRI>
+        <Literal xml:lang="en">emotionIsAssociatedWith</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#executedBy</IRI>
+        <Literal xml:lang="en">executedBy</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#isCalculatedBy</IRI>
+        <Literal xml:lang="en">isCalculatedBy</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#isComprehendedBy</IRI>
+        <Literal xml:lang="en">isComprehendedBy</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#isFormulatedBy</IRI>
+        <Literal xml:lang="en">isFormulatedBy</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#isFormulatedBy_1</IRI>
+        <Literal xml:lang="en">isFormulatedBy</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#isFormulatedBy_2</IRI>
+        <Literal xml:lang="en">isFormulatedBy</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#isFormulatedBy_3</IRI>
+        <Literal xml:lang="en">isFormulatedBy</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#isIidentifiedWith</IRI>
+        <Literal xml:lang="en">isIidentifiedWith</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#isTechniqueOf</IRI>
+        <Literal xml:lang="en">isTechniqueOf</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#makesUse</IRI>
+        <Literal xml:lang="en">makesUse</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#patientAnswersQuestionnaire</IRI>
+        <Literal xml:lang="en">patientAnswersQuestionnaire</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#patientHas</IRI>
+        <Literal xml:lang="en">patientHas</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#patientHas_1</IRI>
+        <Literal xml:lang="en">patientHas</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#questionHas</IRI>
+        <Literal xml:lang="en">questionHas</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#recevies</IRI>
+        <Literal xml:lang="en">recevies</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#riskLevelGuides</IRI>
+        <Literal xml:lang="en">riskLevelGuides</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#riskRangeDetermines</IRI>
+        <Literal xml:lang="en">riskRangeDetermines</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#singularTherapeuticProjectIsFormedBy</IRI>
+        <Literal xml:lang="en">singularTherapeuticProjectIsFormedBy</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#symptomIsAssociatedWith</IRI>
+        <Literal xml:lang="en">symptomIsAssociatedWith</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#takesCare</IRI>
+        <Literal xml:lang="en">takesCare</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#treats</IRI>
+        <Literal xml:lang="en">treats</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#uses</IRI>
+        <Literal xml:lang="en">uses</Literal>
+    </AnnotationAssertion>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi -->
+

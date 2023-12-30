@@ -1,0 +1,4321 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://ontriscal"
+     xml:base="http://ontriscal"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:gufo="http://purl.org/nemo/gufo#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+    <owl:Ontology rdf:about="http://ontriscal"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://ontriscal#answers -->
+
+    <owl:ObjectProperty rdf:about="http://ontriscal#answers">
+        <rdfs:domain rdf:resource="http://ontriscal#Question"/>
+        <rdfs:range rdf:resource="http://ontriscal#Patient"/>
+        <rdfs:label xml:lang="en">answers</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://ontriscal#calcultes -->
+
+    <owl:ObjectProperty rdf:about="http://ontriscal#calcultes">
+        <rdfs:domain rdf:resource="http://ontriscal#CareTeam"/>
+        <rdfs:range rdf:resource="http://ontriscal#FinalScore"/>
+        <rdfs:label xml:lang="en">calcultes</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://ontriscal#classifies -->
+
+    <owl:ObjectProperty rdf:about="http://ontriscal#classifies">
+        <rdfs:domain rdf:resource="http://ontriscal#QuestionGroup"/>
+        <rdfs:range rdf:resource="http://ontriscal#SignAndSymptom"/>
+        <rdfs:label xml:lang="en">classifies</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://ontriscal#cognitiveModelHas -->
+
+    <owl:ObjectProperty rdf:about="http://ontriscal#cognitiveModelHas">
+        <rdfs:domain rdf:resource="http://ontriscal#CognitiveModel"/>
+        <rdfs:range rdf:resource="http://ontriscal#ClinicalEvaluation"/>
+        <rdfs:label xml:lang="en">cognitiveModelHas</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://ontriscal#defines -->
+
+    <owl:ObjectProperty rdf:about="http://ontriscal#defines">
+        <rdfs:domain rdf:resource="http://ontriscal#CognitiveModel"/>
+        <rdfs:range rdf:resource="http://ontriscal#CaseConceptualization"/>
+        <rdfs:label xml:lang="en">defines</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://ontriscal#definesCognitiveModelOf -->
+
+    <owl:ObjectProperty rdf:about="http://ontriscal#definesCognitiveModelOf">
+        <rdfs:domain rdf:resource="http://ontriscal#CaseConceptualization"/>
+        <rdfs:range rdf:resource="http://ontriscal#Patient"/>
+        <rdfs:label xml:lang="en">definesCognitiveModelOf</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://ontriscal#demographicSocialDataFormulatedBy -->
+
+    <owl:ObjectProperty rdf:about="http://ontriscal#demographicSocialDataFormulatedBy">
+        <rdfs:domain rdf:resource="http://ontriscal#SocioDemographicData"/>
+        <rdfs:range rdf:resource="http://ontriscal#Question"/>
+        <rdfs:label xml:lang="en">demographicSocialDataFormulatedBy</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://ontriscal#emotionIsAssociatedWith -->
+
+    <owl:ObjectProperty rdf:about="http://ontriscal#emotionIsAssociatedWith">
+        <rdfs:domain rdf:resource="http://ontriscal#CaseConceptualization"/>
+        <rdfs:range rdf:resource="http://ontriscal#EmotionalAspect"/>
+        <rdfs:label xml:lang="en">emotionIsAssociatedWith</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://ontriscal#executedBy -->
+
+    <owl:ObjectProperty rdf:about="http://ontriscal#executedBy">
+        <rdfs:domain rdf:resource="http://ontriscal#RiskStratificationInMentalHealth"/>
+        <rdfs:range rdf:resource="http://ontriscal#CareTeam"/>
+        <rdfs:label xml:lang="en">executedBy</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://ontriscal#finalQuestionnarieHasPatient -->
+
+    <owl:ObjectProperty rdf:about="http://ontriscal#finalQuestionnarieHasPatient">
+        <rdfs:domain rdf:resource="http://ontriscal#FinalQuestionnarie"/>
+        <rdfs:range rdf:resource="http://ontriscal#Patient"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://ontriscal#formulates -->
+
+    <owl:ObjectProperty rdf:about="http://ontriscal#formulates">
+        <rdfs:domain rdf:resource="http://ontriscal#CognitiveModel"/>
+        <rdfs:range rdf:resource="http://ontriscal#Psychoterapy"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://ontriscal#hasQuestionnarieElement -->
+
+    <owl:ObjectProperty rdf:about="http://ontriscal#hasQuestionnarieElement">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="http://ontriscal#QuestionnaireElement"/>
+        <rdfs:range rdf:resource="http://ontriscal#CareTeam"/>
+        <rdfs:range rdf:resource="http://ontriscal#Patient"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://ontriscal#isCalculatedBy -->
+
+    <owl:ObjectProperty rdf:about="http://ontriscal#isCalculatedBy">
+        <rdfs:domain rdf:resource="http://ontriscal#FinalScore"/>
+        <rdfs:range rdf:resource="http://ontriscal#RiskScore"/>
+        <rdfs:label xml:lang="en">isCalculatedBy</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://ontriscal#isComprehendedBy -->
+
+    <owl:ObjectProperty rdf:about="http://ontriscal#isComprehendedBy">
+        <rdfs:domain rdf:resource="http://ontriscal#Patient"/>
+        <rdfs:range rdf:resource="http://ontriscal#CaseConceptualization"/>
+        <rdfs:label xml:lang="en">isComprehendedBy</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://ontriscal#isFormulatedBy -->
+
+    <owl:ObjectProperty rdf:about="http://ontriscal#isFormulatedBy">
+        <rdfs:domain rdf:resource="http://ontriscal#Question"/>
+        <rdfs:range rdf:resource="http://ontriscal#QuestionGroup"/>
+        <rdfs:label xml:lang="en">isFormulatedBy</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://ontriscal#isFormulatedBy_1 -->
+
+    <owl:ObjectProperty rdf:about="http://ontriscal#isFormulatedBy_1">
+        <rdfs:domain rdf:resource="http://ontriscal#SignAndSymptom"/>
+        <rdfs:range rdf:resource="http://ontriscal#Question"/>
+        <rdfs:label xml:lang="en">isFormulatedBy</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://ontriscal#isFormulatedBy_2 -->
+
+    <owl:ObjectProperty rdf:about="http://ontriscal#isFormulatedBy_2">
+        <rdfs:domain rdf:resource="http://ontriscal#Question"/>
+        <rdfs:range rdf:resource="http://ontriscal#ClinicalData"/>
+        <rdfs:label xml:lang="en">isFormulatedBy</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://ontriscal#isFormulatedBy_3 -->
+
+    <owl:ObjectProperty rdf:about="http://ontriscal#isFormulatedBy_3">
+        <rdfs:domain rdf:resource="http://ontriscal#QuestionnaireElement"/>
+        <rdfs:range rdf:resource="http://ontriscal#Questionnarie"/>
+        <rdfs:label xml:lang="en">isFormulatedBy</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://ontriscal#isIidentifiedWith -->
+
+    <owl:ObjectProperty rdf:about="http://ontriscal#isIidentifiedWith">
+        <rdfs:domain rdf:resource="http://ontriscal#Patient"/>
+        <rdfs:range rdf:resource="http://ontriscal#Comorbidity"/>
+        <rdfs:label xml:lang="en">isIidentifiedWith</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://ontriscal#isTechniqueOf -->
+
+    <owl:ObjectProperty rdf:about="http://ontriscal#isTechniqueOf">
+        <rdfs:domain rdf:resource="http://ontriscal#CaseConceptualization"/>
+        <rdfs:range rdf:resource="http://ontriscal#Psychoterapy"/>
+        <rdfs:label xml:lang="en">isTechniqueOf</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://ontriscal#makesUse -->
+
+    <owl:ObjectProperty rdf:about="http://ontriscal#makesUse">
+        <rdfs:domain rdf:resource="http://ontriscal#Patient"/>
+        <rdfs:range rdf:resource="http://ontriscal#PsychoactiveSubstance"/>
+        <rdfs:label xml:lang="en">makesUse</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://ontriscal#patientAnswersQuestionnaire -->
+
+    <owl:ObjectProperty rdf:about="http://ontriscal#patientAnswersQuestionnaire">
+        <rdfs:domain rdf:resource="http://ontriscal#BeginningQuestionnarie"/>
+        <rdfs:range rdf:resource="http://ontriscal#Patient"/>
+        <rdfs:label xml:lang="en">patientAnswersQuestionnaire</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://ontriscal#patientHas -->
+
+    <owl:ObjectProperty rdf:about="http://ontriscal#patientHas">
+        <rdfs:domain rdf:resource="http://ontriscal#Patient"/>
+        <rdfs:range rdf:resource="http://ontriscal#SocioDemographicData"/>
+        <rdfs:label xml:lang="en">patientHas</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://ontriscal#patientHasClinicalData -->
+
+    <owl:ObjectProperty rdf:about="http://ontriscal#patientHasClinicalData">
+        <rdfs:domain rdf:resource="http://ontriscal#Patient"/>
+        <rdfs:range rdf:resource="http://ontriscal#ClinicalData"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://ontriscal#patientHas_1 -->
+
+    <owl:ObjectProperty rdf:about="http://ontriscal#patientHas_1">
+        <rdfs:domain rdf:resource="http://ontriscal#Patient"/>
+        <rdfs:range rdf:resource="http://ontriscal#FinalScore"/>
+        <rdfs:label xml:lang="en">patientHas</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://ontriscal#questionHas -->
+
+    <owl:ObjectProperty rdf:about="http://ontriscal#questionHas">
+        <rdfs:domain rdf:resource="http://ontriscal#Question"/>
+        <rdfs:range rdf:resource="http://ontriscal#AnswerOption"/>
+        <rdfs:label xml:lang="en">questionHas</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://ontriscal#recevies -->
+
+    <owl:ObjectProperty rdf:about="http://ontriscal#recevies">
+        <rdfs:domain rdf:resource="http://ontriscal#AnswerOption"/>
+        <rdfs:range rdf:resource="http://ontriscal#Score"/>
+        <rdfs:label xml:lang="en">recevies</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://ontriscal#riskLevelGuides -->
+
+    <owl:ObjectProperty rdf:about="http://ontriscal#riskLevelGuides">
+        <rdfs:domain rdf:resource="http://ontriscal#RiskLevel"/>
+        <rdfs:range rdf:resource="http://ontriscal#SingularTherapeuticProject"/>
+        <rdfs:label xml:lang="en">riskLevelGuides</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://ontriscal#riskLevelHasTherapeuticAction -->
+
+    <owl:ObjectProperty rdf:about="http://ontriscal#riskLevelHasTherapeuticAction">
+        <rdfs:domain rdf:resource="http://ontriscal#RiskLevel"/>
+        <rdfs:range rdf:resource="http://ontriscal#TherapeuticAction"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://ontriscal#riskRangeDetermines -->
+
+    <owl:ObjectProperty rdf:about="http://ontriscal#riskRangeDetermines">
+        <rdfs:domain rdf:resource="http://ontriscal#FinalScore"/>
+        <rdfs:range rdf:resource="http://ontriscal#RiskLevel"/>
+        <rdfs:label xml:lang="en">riskRangeDetermines</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://ontriscal#severityOfSignsAndSymptomGuides -->
+
+    <owl:ObjectProperty rdf:about="http://ontriscal#severityOfSignsAndSymptomGuides">
+        <rdfs:domain rdf:resource="http://ontriscal#SignalAndSymptomSeverity"/>
+        <rdfs:range rdf:resource="http://ontriscal#HealthCareLevel"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://ontriscal#singularTherapeuticProjectIsFormedBy -->
+
+    <owl:ObjectProperty rdf:about="http://ontriscal#singularTherapeuticProjectIsFormedBy">
+        <rdfs:domain rdf:resource="http://ontriscal#SingularTherapeuticProject"/>
+        <rdfs:range rdf:resource="http://ontriscal#TherapeuticAction"/>
+        <rdfs:label xml:lang="en">singularTherapeuticProjectIsFormedBy</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://ontriscal#symptomIsAssociatedWith -->
+
+    <owl:ObjectProperty rdf:about="http://ontriscal#symptomIsAssociatedWith">
+        <rdfs:domain rdf:resource="http://ontriscal#CaseConceptualization"/>
+        <rdfs:range rdf:resource="http://ontriscal#PhysiologicalSymptom"/>
+        <rdfs:label xml:lang="en">symptomIsAssociatedWith</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://ontriscal#takesCare -->
+
+    <owl:ObjectProperty rdf:about="http://ontriscal#takesCare">
+        <rdfs:domain rdf:resource="http://ontriscal#Patient"/>
+        <rdfs:range rdf:resource="http://ontriscal#CareTeam"/>
+        <rdfs:label xml:lang="en">takesCare</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://ontriscal#treats -->
+
+    <owl:ObjectProperty rdf:about="http://ontriscal#treats">
+        <rdfs:domain rdf:resource="http://ontriscal#Psychoterapy"/>
+        <rdfs:range rdf:resource="http://ontriscal#Patient"/>
+        <rdfs:label xml:lang="en">treats</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://ontriscal#uses -->
+
+    <owl:ObjectProperty rdf:about="http://ontriscal#uses">
+        <rdfs:domain rdf:resource="http://ontriscal#RiskStratificationInMentalHealth"/>
+        <rdfs:range rdf:resource="http://ontriscal#Questionnarie"/>
+        <rdfs:label xml:lang="en">uses</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://ontriscal#AbusiveUseOfIllicitPsychoactiveAmputationMIAndOsteoarthritis -->
+
+    <owl:Class rdf:about="http://ontriscal#AbusiveUseOfIllicitPsychoactiveAmputationMIAndOsteoarthritis">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#Comorbidity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#AcceleratedThinking -->
+
+    <owl:Class rdf:about="http://ontriscal#AcceleratedThinking">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#ContextualAspect"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#Acceptance -->
+
+    <owl:Class rdf:about="http://ontriscal#Acceptance">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#BehaviorAspect"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#Adolescent -->
+
+    <owl:Class rdf:about="http://ontriscal#Adolescent">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#AgeGroup"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#Adult -->
+
+    <owl:Class rdf:about="http://ontriscal#Adult">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#AgeGroup"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#AdvancedAgeDifficultyLocomotion -->
+
+    <owl:Class rdf:about="http://ontriscal#AdvancedAgeDifficultyLocomotion">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#Comorbidity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#AgeGroup -->
+
+    <owl:Class rdf:about="http://ontriscal#AgeGroup">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#SocioDemographicData"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#Aggressiveness -->
+
+    <owl:Class rdf:about="http://ontriscal#Aggressiveness">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#BehaviorAspect"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#Agitation -->
+
+    <owl:Class rdf:about="http://ontriscal#Agitation">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#PhysiologicalSymptom"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#Agnosia -->
+
+    <owl:Class rdf:about="http://ontriscal#Agnosia">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#ContextualAspect"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#Alcohol -->
+
+    <owl:Class rdf:about="http://ontriscal#Alcohol">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#PsychoactiveSubstance"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#AlcoholAndAlprazolam -->
+
+    <owl:Class rdf:about="http://ontriscal#AlcoholAndAlprazolam">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#PsychoactiveSubstance"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#AlcoholAndCocaine -->
+
+    <owl:Class rdf:about="http://ontriscal#AlcoholAndCocaine">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#PsychoactiveSubstance"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#AlcoholAndMarijuana -->
+
+    <owl:Class rdf:about="http://ontriscal#AlcoholAndMarijuana">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#PsychoactiveSubstance"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#AlcoholAndMultipleDrugs -->
+
+    <owl:Class rdf:about="http://ontriscal#AlcoholAndMultipleDrugs">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#PsychoactiveSubstance"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#AllergicCrises -->
+
+    <owl:Class rdf:about="http://ontriscal#AllergicCrises">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#Comorbidity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#AlzheimerDementia -->
+
+    <owl:Class rdf:about="http://ontriscal#AlzheimerDementia">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#ContextualAspect"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#Amnesias -->
+
+    <owl:Class rdf:about="http://ontriscal#Amnesias">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#ContextualAspect"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#Anorexia -->
+
+    <owl:Class rdf:about="http://ontriscal#Anorexia">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#Nutrition"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#AnswerOption -->
+
+    <owl:Class rdf:about="http://ontriscal#AnswerOption">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#QuestionnaireElement"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#Anxiety -->
+
+    <owl:Class rdf:about="http://ontriscal#Anxiety">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#EmotionalAspect"/>
+        <rdfs:subClassOf rdf:resource="http://ontriscal#MentalDisorder"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#Attention -->
+
+    <owl:Class rdf:about="http://ontriscal#Attention">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#CognitiveFunctions"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#Auditory -->
+
+    <owl:Class rdf:about="http://ontriscal#Auditory">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#Hallucination"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#Autism -->
+
+    <owl:Class rdf:about="http://ontriscal#Autism">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#Disorder"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#AutomaticThinking -->
+
+    <owl:Class rdf:about="http://ontriscal#AutomaticThinking">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#CognitiveAspect"/>
+        <owl:disjointWith rdf:resource="http://ontriscal#CognitiveFunctions"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#AvoidanceOfThreateningSignsOrSituations -->
+
+    <owl:Class rdf:about="http://ontriscal#AvoidanceOfThreateningSignsOrSituations">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#BehaviorSymptoms"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#BackAndKneeProblems -->
+
+    <owl:Class rdf:about="http://ontriscal#BackAndKneeProblems">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#Comorbidity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#BariatricObesity -->
+
+    <owl:Class rdf:about="http://ontriscal#BariatricObesity">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#Comorbidity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#BariatricPatient -->
+
+    <owl:Class rdf:about="http://ontriscal#BariatricPatient">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#Comorbidity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#BeginningQuestionnarie -->
+
+    <owl:Class rdf:about="http://ontriscal#BeginningQuestionnarie">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#Questionnarie"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#BehaviorAspect -->
+
+    <owl:Class rdf:about="http://ontriscal#BehaviorAspect">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#ClinicalEvaluation"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#BehaviorSymptoms -->
+
+    <owl:Class rdf:about="http://ontriscal#BehaviorSymptoms">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#BehaviorAspect"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#BingeEating -->
+
+    <owl:Class rdf:about="http://ontriscal#BingeEating">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#Nutrition"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#BiologicalSex -->
+
+    <owl:Class rdf:about="http://ontriscal#BiologicalSex">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#SocioDemographicData"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#Brainstorming -->
+
+    <owl:Class rdf:about="http://ontriscal#Brainstorming">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#ClinicalStrategy"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#BreastCancer -->
+
+    <owl:Class rdf:about="http://ontriscal#BreastCancer">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#Comorbidity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#Bulimia -->
+
+    <owl:Class rdf:about="http://ontriscal#Bulimia">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#Nutrition"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#Cannabis -->
+
+    <owl:Class rdf:about="http://ontriscal#Cannabis">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#PsychoactiveSubstance"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#CardiopathDiabetesNeuropath -->
+
+    <owl:Class rdf:about="http://ontriscal#CardiopathDiabetesNeuropath">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#Comorbidity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#CareTeam -->
+
+    <owl:Class rdf:about="http://ontriscal#CareTeam">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#Person"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#CaseConceptualization -->
+
+    <owl:Class rdf:about="http://ontriscal#CaseConceptualization">
+        <rdfs:subClassOf rdf:resource="http://purl.org/nemo/gufo#FunctionalComplex"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#Catastrophizing -->
+
+    <owl:Class rdf:about="http://ontriscal#Catastrophizing">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#CognitiveDistortion"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#CerebellarDegeneration -->
+
+    <owl:Class rdf:about="http://ontriscal#CerebellarDegeneration">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#Comorbidity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#ChestPressure -->
+
+    <owl:Class rdf:about="http://ontriscal#ChestPressure">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#PhysiologicalSymptom"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#Chills -->
+
+    <owl:Class rdf:about="http://ontriscal#Chills">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#PhysiologicalSymptom"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#ChokingSensation -->
+
+    <owl:Class rdf:about="http://ontriscal#ChokingSensation">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#PhysiologicalSymptom"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#ChronicSmokingAndCOPDRisk -->
+
+    <owl:Class rdf:about="http://ontriscal#ChronicSmokingAndCOPDRisk">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#Comorbidity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#ChronicSmokingCOPDThrombogeitisWithAmputationAndVertebralOsteoarthritis -->
+
+    <owl:Class rdf:about="http://ontriscal#ChronicSmokingCOPDThrombogeitisWithAmputationAndVertebralOsteoarthritis">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#Comorbidity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#CirculationLocomotion -->
+
+    <owl:Class rdf:about="http://ontriscal#CirculationLocomotion">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#Comorbidity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#ClinicalData -->
+
+    <owl:Class rdf:about="http://ontriscal#ClinicalData">
+        <rdfs:subClassOf rdf:resource="http://purl.org/nemo/gufo#FunctionalComplex"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#ClinicalEvaluation -->
+
+    <owl:Class rdf:about="http://ontriscal#ClinicalEvaluation">
+        <rdfs:subClassOf rdf:resource="http://purl.org/nemo/gufo#FunctionalComplex"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#ClinicalStrategy -->
+
+    <owl:Class rdf:about="http://ontriscal#ClinicalStrategy">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#ClinicalEvaluation"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#Cocaine -->
+
+    <owl:Class rdf:about="http://ontriscal#Cocaine">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#PsychoactiveSubstance"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#CoexistenceWorkshop -->
+
+    <owl:Class rdf:about="http://ontriscal#CoexistenceWorkshop">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#TherapeuticAction"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#CognitiveAspect -->
+
+    <owl:Class rdf:about="http://ontriscal#CognitiveAspect">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#ClinicalEvaluation"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#CognitiveDistortion -->
+
+    <owl:Class rdf:about="http://ontriscal#CognitiveDistortion">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#AutomaticThinking"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#CognitiveFunctions -->
+
+    <owl:Class rdf:about="http://ontriscal#CognitiveFunctions">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#CognitiveAspect"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#CognitiveModel -->
+
+    <owl:Class rdf:about="http://ontriscal#CognitiveModel">
+        <rdfs:subClassOf rdf:resource="http://purl.org/nemo/gufo#FunctionalComplex"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#CognitiveRestructuring -->
+
+    <owl:Class rdf:about="http://ontriscal#CognitiveRestructuring">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#ClinicalStrategy"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#CognitiveSymptoms -->
+
+    <owl:Class rdf:about="http://ontriscal#CognitiveSymptoms">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#CognitiveAspect"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#Comorbidity -->
+
+    <owl:Class rdf:about="http://ontriscal#Comorbidity">
+        <rdfs:subClassOf rdf:resource="http://purl.org/nemo/gufo#IntrinsicMode"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#CondensationOfConcepts -->
+
+    <owl:Class rdf:about="http://ontriscal#CondensationOfConcepts">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#ContextualAspect"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#Confrontation -->
+
+    <owl:Class rdf:about="http://ontriscal#Confrontation">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#BehaviorAspect"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#ContextualAspect -->
+
+    <owl:Class rdf:about="http://ontriscal#ContextualAspect">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#ClinicalEvaluation"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#ConvulsiveCrisis -->
+
+    <owl:Class rdf:about="http://ontriscal#ConvulsiveCrisis">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#Comorbidity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#CopingStrategies -->
+
+    <owl:Class rdf:about="http://ontriscal#CopingStrategies">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#BehaviorAspect"/>
+        <rdfs:subClassOf rdf:resource="http://ontriscal#ClinicalStrategy"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#CopingWithStress -->
+
+    <owl:Class rdf:about="http://ontriscal#CopingWithStress">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#ClinicalStrategy"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#CoreBelief -->
+
+    <owl:Class rdf:about="http://ontriscal#CoreBelief">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#CognitiveAspect"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#Crack -->
+
+    <owl:Class rdf:about="http://ontriscal#Crack">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#PsychoactiveSubstance"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#CrackCocaine -->
+
+    <owl:Class rdf:about="http://ontriscal#CrackCocaine">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#PsychoactiveSubstance"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#CreepedOut -->
+
+    <owl:Class rdf:about="http://ontriscal#CreepedOut">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#EmotionalSymptoms"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#DecatastrophizingWithDescendingArrows -->
+
+    <owl:Class rdf:about="http://ontriscal#DecatastrophizingWithDescendingArrows">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#ClinicalStrategy"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#DecisionMaking -->
+
+    <owl:Class rdf:about="http://ontriscal#DecisionMaking">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#ExecutiveFunctions"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#DeficientThinking -->
+
+    <owl:Class rdf:about="http://ontriscal#DeficientThinking">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#ContextualAspect"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#Delirium -->
+
+    <owl:Class rdf:about="http://ontriscal#Delirium">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#SignalAndSymptomSeverity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#DelusionalDisorder -->
+
+    <owl:Class rdf:about="http://ontriscal#DelusionalDisorder">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#Delirium"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#Dementia -->
+
+    <owl:Class rdf:about="http://ontriscal#Dementia">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#Comorbidity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#DementiaWithLewyBodies -->
+
+    <owl:Class rdf:about="http://ontriscal#DementiaWithLewyBodies">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#ContextualAspect"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#DependencyAutonomy -->
+
+    <owl:Class rdf:about="http://ontriscal#DependencyAutonomy">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#SignAndSymptom"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#Depression -->
+
+    <owl:Class rdf:about="http://ontriscal#Depression">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#MentalDisorder"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#Desensitization -->
+
+    <owl:Class rdf:about="http://ontriscal#Desensitization">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#ClinicalStrategy"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#Devaluation -->
+
+    <owl:Class rdf:about="http://ontriscal#Devaluation">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#CoreBelief"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#Diabetes -->
+
+    <owl:Class rdf:about="http://ontriscal#Diabetes">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#Comorbidity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#DiabetesDiabeticNeuropathy -->
+
+    <owl:Class rdf:about="http://ontriscal#DiabetesDiabeticNeuropathy">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#Comorbidity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#DiabetesHypertensionThyroidProblem -->
+
+    <owl:Class rdf:about="http://ontriscal#DiabetesHypertensionThyroidProblem">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#Comorbidity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#DiabetesOsteoporosis -->
+
+    <owl:Class rdf:about="http://ontriscal#DiabetesOsteoporosis">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#Comorbidity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#Diarrhea -->
+
+    <owl:Class rdf:about="http://ontriscal#Diarrhea">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#PhysiologicalSymptom"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#DichotomousThinking -->
+
+    <owl:Class rdf:about="http://ontriscal#DichotomousThinking">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#CognitiveDistortion"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#DifficultyOfReasoning -->
+
+    <owl:Class rdf:about="http://ontriscal#DifficultyOfReasoning">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#CognitiveSymptoms"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#DifficultySpeaking -->
+
+    <owl:Class rdf:about="http://ontriscal#DifficultySpeaking">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#BehaviorSymptoms"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#Disaffection -->
+
+    <owl:Class rdf:about="http://ontriscal#Disaffection">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#CoreBelief"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#Disease_Spine_Arthrodesis -->
+
+    <owl:Class rdf:about="http://ontriscal#Disease_Spine_Arthrodesis">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#Comorbidity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#Disgusted -->
+
+    <owl:Class rdf:about="http://ontriscal#Disgusted">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#EmotionalAspect"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#DisintegrationOfConcepts -->
+
+    <owl:Class rdf:about="http://ontriscal#DisintegrationOfConcepts">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#ContextualAspect"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#Disorder -->
+
+    <owl:Class rdf:about="http://ontriscal#Disorder">
+        <rdfs:subClassOf rdf:resource="http://purl.org/nemo/gufo#FunctionalComplex"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#Distraction -->
+
+    <owl:Class rdf:about="http://ontriscal#Distraction">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#ContextualAspect"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#Distractions -->
+
+    <owl:Class rdf:about="http://ontriscal#Distractions">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#ClinicalStrategy"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#Dizziness -->
+
+    <owl:Class rdf:about="http://ontriscal#Dizziness">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#PhysiologicalSymptom"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#Doctor -->
+
+    <owl:Class rdf:about="http://ontriscal#Doctor">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#CareTeam"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#DodgeAndEscape -->
+
+    <owl:Class rdf:about="http://ontriscal#DodgeAndEscape">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#BehaviorAspect"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#DryMouth -->
+
+    <owl:Class rdf:about="http://ontriscal#DryMouth">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#PhysiologicalSymptom"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#EatingDisorder -->
+
+    <owl:Class rdf:about="http://ontriscal#EatingDisorder">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#Comorbidity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#Eldery -->
+
+    <owl:Class rdf:about="http://ontriscal#Eldery">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#AgeGroup"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#EmotionalAspect -->
+
+    <owl:Class rdf:about="http://ontriscal#EmotionalAspect">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#ClinicalEvaluation"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#EmotionalReasoning -->
+
+    <owl:Class rdf:about="http://ontriscal#EmotionalReasoning">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#CognitiveDistortion"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#EmotionalSymptoms -->
+
+    <owl:Class rdf:about="http://ontriscal#EmotionalSymptoms">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#EmotionalAspect"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#Endometriosis -->
+
+    <owl:Class rdf:about="http://ontriscal#Endometriosis">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#Comorbidity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#Epilepsy -->
+
+    <owl:Class rdf:about="http://ontriscal#Epilepsy">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#Comorbidity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#EpilepsyAneurysmEatingDisorder -->
+
+    <owl:Class rdf:about="http://ontriscal#EpilepsyAneurysmEatingDisorder">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#Comorbidity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#EvidenceAnalysis -->
+
+    <owl:Class rdf:about="http://ontriscal#EvidenceAnalysis">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#ClinicalStrategy"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#Excited -->
+
+    <owl:Class rdf:about="http://ontriscal#Excited">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#EmotionalSymptoms"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#ExecutiveFunctions -->
+
+    <owl:Class rdf:about="http://ontriscal#ExecutiveFunctions">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#CognitiveFunctions"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#ExpositionsHierarchization -->
+
+    <owl:Class rdf:about="http://ontriscal#ExpositionsHierarchization">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#ClinicalStrategy"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#ExposureTechniques -->
+
+    <owl:Class rdf:about="http://ontriscal#ExposureTechniques">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#ClinicalStrategy"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#F00-F09 -->
+
+    <owl:Class rdf:about="http://ontriscal#F00-F09">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#ICDGroup"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#F00-F99 -->
+
+    <owl:Class rdf:about="http://ontriscal#F00-F99">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#ICDGroup"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#F10-F19 -->
+
+    <owl:Class rdf:about="http://ontriscal#F10-F19">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#ICDGroup"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#F20-F29 -->
+
+    <owl:Class rdf:about="http://ontriscal#F20-F29">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#ICDGroup"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#F30-F39 -->
+
+    <owl:Class rdf:about="http://ontriscal#F30-F39">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#ICDGroup"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#F40-F48 -->
+
+    <owl:Class rdf:about="http://ontriscal#F40-F48">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#ICDGroup"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#F50-F59 -->
+
+    <owl:Class rdf:about="http://ontriscal#F50-F59">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#ICDGroup"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#F60-F69 -->
+
+    <owl:Class rdf:about="http://ontriscal#F60-F69">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#ICDGroup"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#F70-F79 -->
+
+    <owl:Class rdf:about="http://ontriscal#F70-F79">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#ICDGroup"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#F80-F89 -->
+
+    <owl:Class rdf:about="http://ontriscal#F80-F89">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#ICDGroup"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#F90-F98 -->
+
+    <owl:Class rdf:about="http://ontriscal#F90-F98">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#ICDGroup"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#F99 -->
+
+    <owl:Class rdf:about="http://ontriscal#F99">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#ICDGroup"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#FaceCards -->
+
+    <owl:Class rdf:about="http://ontriscal#FaceCards">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#ClinicalStrategy"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#Fainting -->
+
+    <owl:Class rdf:about="http://ontriscal#Fainting">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#PhysiologicalSymptom"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#Fear -->
+
+    <owl:Class rdf:about="http://ontriscal#Fear">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#EmotionalAspect"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#FearOfGoingCrazy -->
+
+    <owl:Class rdf:about="http://ontriscal#FearOfGoingCrazy">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#CognitiveSymptoms"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#FearOfLosingControl -->
+
+    <owl:Class rdf:about="http://ontriscal#FearOfLosingControl">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#CognitiveSymptoms"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#FearOfNegativeEvaluationByOthers -->
+
+    <owl:Class rdf:about="http://ontriscal#FearOfNegativeEvaluationByOthers">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#CognitiveSymptoms"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#FearOfPhysicalInjuryOrDeath -->
+
+    <owl:Class rdf:about="http://ontriscal#FearOfPhysicalInjuryOrDeath">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#CognitiveSymptoms"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#Female -->
+
+    <owl:Class rdf:about="http://ontriscal#Female">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#BiologicalSex"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#Fibromyalgia -->
+
+    <owl:Class rdf:about="http://ontriscal#Fibromyalgia">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#Comorbidity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#FinalQuestionnarie -->
+
+    <owl:Class rdf:about="http://ontriscal#FinalQuestionnarie">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#Questionnarie"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#FinalScore -->
+
+    <owl:Class rdf:about="http://ontriscal#FinalScore">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#QuestionnaireElement"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#Flexibility -->
+
+    <owl:Class rdf:about="http://ontriscal#Flexibility">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#ExecutiveFunctions"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#Freezing -->
+
+    <owl:Class rdf:about="http://ontriscal#Freezing">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#BehaviorSymptoms"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#FrequencyOfUseOfTheTypeOfPsychoactiveSubstance -->
+
+    <owl:Class rdf:about="http://ontriscal#FrequencyOfUseOfTheTypeOfPsychoactiveSubstance">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#ClinicalData"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#FrontotemporalDementia -->
+
+    <owl:Class rdf:about="http://ontriscal#FrontotemporalDementia">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#ContextualAspect"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#Frustrated -->
+
+    <owl:Class rdf:about="http://ontriscal#Frustrated">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#EmotionalSymptoms"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#Frustration -->
+
+    <owl:Class rdf:about="http://ontriscal#Frustration">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#EmotionalAspect"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#Generalization -->
+
+    <owl:Class rdf:about="http://ontriscal#Generalization">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#CognitiveDistortion"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#Glaucoma -->
+
+    <owl:Class rdf:about="http://ontriscal#Glaucoma">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#Comorbidity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#GroupService -->
+
+    <owl:Class rdf:about="http://ontriscal#GroupService">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#TherapeuticAction"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#HIV -->
+
+    <owl:Class rdf:about="http://ontriscal#HIV">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#Comorbidity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#Hallucination -->
+
+    <owl:Class rdf:about="http://ontriscal#Hallucination">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#SignalAndSymptomSeverity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#Happiness -->
+
+    <owl:Class rdf:about="http://ontriscal#Happiness">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#EmotionalAspect"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#HealthCareLevel -->
+
+    <owl:Class rdf:about="http://ontriscal#HealthCareLevel">
+        <rdfs:subClassOf rdf:resource="http://purl.org/nemo/gufo#IntrinsicMode"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#HeartDiseaseObesity -->
+
+    <owl:Class rdf:about="http://ontriscal#HeartDiseaseObesity">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#Comorbidity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#HeartDiseaseVariousSurgicalProceduresAllergies -->
+
+    <owl:Class rdf:about="http://ontriscal#HeartDiseaseVariousSurgicalProceduresAllergies">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#Comorbidity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#HeatWaves -->
+
+    <owl:Class rdf:about="http://ontriscal#HeatWaves">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#PhysiologicalSymptom"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#Helplessness -->
+
+    <owl:Class rdf:about="http://ontriscal#Helplessness">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#CoreBelief"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#HepatitisLiverCirrhosis -->
+
+    <owl:Class rdf:about="http://ontriscal#HepatitisLiverCirrhosis">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#Comorbidity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#High -->
+
+    <owl:Class rdf:about="http://ontriscal#High">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#FrequencyOfUseOfTheTypeOfPsychoactiveSubstance"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#HighBloodPressureDiabetes -->
+
+    <owl:Class rdf:about="http://ontriscal#HighBloodPressureDiabetes">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#Comorbidity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#HighRiskLevel -->
+
+    <owl:Class rdf:about="http://ontriscal#HighRiskLevel">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#RiskLevel"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#Hyperesthesia -->
+
+    <owl:Class rdf:about="http://ontriscal#Hyperesthesia">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#ContextualAspect"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#Hypergeneralization -->
+
+    <owl:Class rdf:about="http://ontriscal#Hypergeneralization">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#CognitiveDistortion"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#Hypermnesia -->
+
+    <owl:Class rdf:about="http://ontriscal#Hypermnesia">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#ContextualAspect"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#Hyperpathy -->
+
+    <owl:Class rdf:about="http://ontriscal#Hyperpathy">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#ContextualAspect"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#Hypersomnia -->
+
+    <owl:Class rdf:about="http://ontriscal#Hypersomnia">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#Sleep"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#Hypertension -->
+
+    <owl:Class rdf:about="http://ontriscal#Hypertension">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#Comorbidity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#HypertensionDiabetes -->
+
+    <owl:Class rdf:about="http://ontriscal#HypertensionDiabetes">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#Comorbidity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#Hyperventilation -->
+
+    <owl:Class rdf:about="http://ontriscal#Hyperventilation">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#BehaviorSymptoms"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#Hypoesthesia -->
+
+    <owl:Class rdf:about="http://ontriscal#Hypoesthesia">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#ContextualAspect"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#Hypothyroidism -->
+
+    <owl:Class rdf:about="http://ontriscal#Hypothyroidism">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#Comorbidity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#ICDGroup -->
+
+    <owl:Class rdf:about="http://ontriscal#ICDGroup">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#ClinicalData"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#Impatient -->
+
+    <owl:Class rdf:about="http://ontriscal#Impatient">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#EmotionalSymptoms"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#Impulsiveness -->
+
+    <owl:Class rdf:about="http://ontriscal#Impulsiveness">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#ExecutiveFunctions"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#InBlank -->
+
+    <owl:Class rdf:about="http://ontriscal#InBlank">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#Comorbidity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#IncreasedHeartRate -->
+
+    <owl:Class rdf:about="http://ontriscal#IncreasedHeartRate">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#PhysiologicalSymptom"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#IndividualPsychologicalService -->
+
+    <owl:Class rdf:about="http://ontriscal#IndividualPsychologicalService">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#TherapeuticAction"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#Inhibition -->
+
+    <owl:Class rdf:about="http://ontriscal#Inhibition">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#EmotionalAspect"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#InjectablePreAnestheticMedication -->
+
+    <owl:Class rdf:about="http://ontriscal#InjectablePreAnestheticMedication">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#PsychoactiveSubstance"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#Insanity -->
+
+    <owl:Class rdf:about="http://ontriscal#Insanity">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#Comorbidity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#Intestinal_Problems -->
+
+    <owl:Class rdf:about="http://ontriscal#Intestinal_Problems">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#Comorbidity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#Irritable -->
+
+    <owl:Class rdf:about="http://ontriscal#Irritable">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#EmotionalSymptoms"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#Jealousy -->
+
+    <owl:Class rdf:about="http://ontriscal#Jealousy">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#EmotionalAspect"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#KorsakoffSyndrome -->
+
+    <owl:Class rdf:about="http://ontriscal#KorsakoffSyndrome">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#Comorbidity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#Language -->
+
+    <owl:Class rdf:about="http://ontriscal#Language">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#CognitiveFunctions"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#Lettering -->
+
+    <owl:Class rdf:about="http://ontriscal#Lettering">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#CognitiveDistortion"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#LighterGas -->
+
+    <owl:Class rdf:about="http://ontriscal#LighterGas">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#PetroleumDerivatives"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#LimitedCognitiveAbility -->
+
+    <owl:Class rdf:about="http://ontriscal#LimitedCognitiveAbility">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#Comorbidity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#LossOfBalance -->
+
+    <owl:Class rdf:about="http://ontriscal#LossOfBalance">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#PhysiologicalSymptom"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#Low -->
+
+    <owl:Class rdf:about="http://ontriscal#Low">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#FrequencyOfUseOfTheTypeOfPsychoactiveSubstance"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#LowRiskLevel -->
+
+    <owl:Class rdf:about="http://ontriscal#LowRiskLevel">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#RiskLevel"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#Lupus -->
+
+    <owl:Class rdf:about="http://ontriscal#Lupus">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#Comorbidity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#Male -->
+
+    <owl:Class rdf:about="http://ontriscal#Male">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#BiologicalSex"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#MathematicalOperation -->
+
+    <owl:Class rdf:about="http://ontriscal#MathematicalOperation">
+        <rdfs:subClassOf rdf:resource="http://purl.org/nemo/gufo#FunctionalComplex"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#MaximizationOfTheNegative -->
+
+    <owl:Class rdf:about="http://ontriscal#MaximizationOfTheNegative">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#CognitiveDistortion"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#MedicalCare -->
+
+    <owl:Class rdf:about="http://ontriscal#MedicalCare">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#TherapeuticAction"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#Medium -->
+
+    <owl:Class rdf:about="http://ontriscal#Medium">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#FrequencyOfUseOfTheTypeOfPsychoactiveSubstance"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#MediumRiskLevel -->
+
+    <owl:Class rdf:about="http://ontriscal#MediumRiskLevel">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#RiskLevel"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#Memory -->
+
+    <owl:Class rdf:about="http://ontriscal#Memory">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#CognitiveFunctions"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#MentalDisorder -->
+
+    <owl:Class rdf:about="http://ontriscal#MentalDisorder">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#Disorder"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#Migraine -->
+
+    <owl:Class rdf:about="http://ontriscal#Migraine">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#Comorbidity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#MindReading -->
+
+    <owl:Class rdf:about="http://ontriscal#MindReading">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#CognitiveDistortion"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#MinimizationOfThePositive -->
+
+    <owl:Class rdf:about="http://ontriscal#MinimizationOfThePositive">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#CognitiveDistortion"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#MnemicHallucinations -->
+
+    <owl:Class rdf:about="http://ontriscal#MnemicHallucinations">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#ContextualAspect"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#MnemicIllusions -->
+
+    <owl:Class rdf:about="http://ontriscal#MnemicIllusions">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#ContextualAspect"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#MultipleDrugs -->
+
+    <owl:Class rdf:about="http://ontriscal#MultipleDrugs">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#PsychoactiveSubstance"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#MuscularTension -->
+
+    <owl:Class rdf:about="http://ontriscal#MuscularTension">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#PhysiologicalSymptom"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#Nausea -->
+
+    <owl:Class rdf:about="http://ontriscal#Nausea">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#PhysiologicalSymptom"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#Nervous -->
+
+    <owl:Class rdf:about="http://ontriscal#Nervous">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#EmotionalSymptoms"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#NeurologicLabirinthitisFollow-up -->
+
+    <owl:Class rdf:about="http://ontriscal#NeurologicLabirinthitisFollow-up">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#Comorbidity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#NeurologicalDamageCausedByCarbonMonoxideInhalation -->
+
+    <owl:Class rdf:about="http://ontriscal#NeurologicalDamageCausedByCarbonMonoxideInhalation">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#Comorbidity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#No -->
+
+    <owl:Class rdf:about="http://ontriscal#No">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#AnswerOption"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#NumbnessInLimbs -->
+
+    <owl:Class rdf:about="http://ontriscal#NumbnessInLimbs">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#PhysiologicalSymptom"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#Nurse -->
+
+    <owl:Class rdf:about="http://ontriscal#Nurse">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#CareTeam"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#NursingAssistance -->
+
+    <owl:Class rdf:about="http://ontriscal#NursingAssistance">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#TherapeuticAction"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#Nutrition -->
+
+    <owl:Class rdf:about="http://ontriscal#Nutrition">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#ContextualAspect"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#NutritionalAssistance -->
+
+    <owl:Class rdf:about="http://ontriscal#NutritionalAssistance">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#TherapeuticAction"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#Obesity -->
+
+    <owl:Class rdf:about="http://ontriscal#Obesity">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#Comorbidity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#ObesityAndConsequences -->
+
+    <owl:Class rdf:about="http://ontriscal#ObesityAndConsequences">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#Comorbidity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#ObesityJointProblems -->
+
+    <owl:Class rdf:about="http://ontriscal#ObesityJointProblems">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#Comorbidity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#Organization -->
+
+    <owl:Class rdf:about="http://ontriscal#Organization">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#ExecutiveFunctions"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#Orthopedic -->
+
+    <owl:Class rdf:about="http://ontriscal#Orthopedic">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#Comorbidity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#OrthopedicDiabetes -->
+
+    <owl:Class rdf:about="http://ontriscal#OrthopedicDiabetes">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#Comorbidity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#OrthopedicNeurologist -->
+
+    <owl:Class rdf:about="http://ontriscal#OrthopedicNeurologist">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#Comorbidity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#OrthopedicProblem -->
+
+    <owl:Class rdf:about="http://ontriscal#OrthopedicProblem">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#Comorbidity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#OrthopedicProblemInTheSpine -->
+
+    <owl:Class rdf:about="http://ontriscal#OrthopedicProblemInTheSpine">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#Comorbidity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#PaintThinner -->
+
+    <owl:Class rdf:about="http://ontriscal#PaintThinner">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#PetroleumDerivatives"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#Palpitations -->
+
+    <owl:Class rdf:about="http://ontriscal#Palpitations">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#PhysiologicalSymptom"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#Paresthesias -->
+
+    <owl:Class rdf:about="http://ontriscal#Paresthesias">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#ContextualAspect"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#ParkinsonDisease -->
+
+    <owl:Class rdf:about="http://ontriscal#ParkinsonDisease">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#ContextualAspect"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#Parkinsonism -->
+
+    <owl:Class rdf:about="http://ontriscal#Parkinsonism">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#Comorbidity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#Passivity -->
+
+    <owl:Class rdf:about="http://ontriscal#Passivity">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#BehaviorAspect"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#PathologicalLie -->
+
+    <owl:Class rdf:about="http://ontriscal#PathologicalLie">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#ContextualAspect"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#Patient -->
+
+    <owl:Class rdf:about="http://ontriscal#Patient">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#Person"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#PerceptionsOfUnrealityOrDetachment -->
+
+    <owl:Class rdf:about="http://ontriscal#PerceptionsOfUnrealityOrDetachment">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#CognitiveSymptoms"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#Perfectionism -->
+
+    <owl:Class rdf:about="http://ontriscal#Perfectionism">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#CognitiveDistortion"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#Person -->
+
+    <owl:Class rdf:about="http://ontriscal#Person">
+        <rdfs:subClassOf rdf:resource="http://purl.org/nemo/gufo#FunctionalComplex"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#Personalization -->
+
+    <owl:Class rdf:about="http://ontriscal#Personalization">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#CognitiveDistortion"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#PetroleumDerivatives -->
+
+    <owl:Class rdf:about="http://ontriscal#PetroleumDerivatives">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#PsychoactiveSubstance"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#PhysiologicalSymptom -->
+
+    <owl:Class rdf:about="http://ontriscal#PhysiologicalSymptom">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#ClinicalEvaluation"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#PizzaTechnique -->
+
+    <owl:Class rdf:about="http://ontriscal#PizzaTechnique">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#ClinicalStrategy"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#Planning -->
+
+    <owl:Class rdf:about="http://ontriscal#Planning">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#ExecutiveFunctions"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#PoorConcentration -->
+
+    <owl:Class rdf:about="http://ontriscal#PoorConcentration">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#CognitiveSymptoms"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#PoorMemory -->
+
+    <owl:Class rdf:about="http://ontriscal#PoorMemory">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#CognitiveSymptoms"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#PreDiabetes -->
+
+    <owl:Class rdf:about="http://ontriscal#PreDiabetes">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#Comorbidity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#PredictionOfTheFuture -->
+
+    <owl:Class rdf:about="http://ontriscal#PredictionOfTheFuture">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#CognitiveDistortion"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#Primary -->
+
+    <owl:Class rdf:about="http://ontriscal#Primary">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#HealthCareLevel"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#ProblemSolving -->
+
+    <owl:Class rdf:about="http://ontriscal#ProblemSolving">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#ClinicalStrategy"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#Prosopagnosy -->
+
+    <owl:Class rdf:about="http://ontriscal#Prosopagnosy">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#ContextualAspect"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#PsychoactiveSubstance -->
+
+    <owl:Class rdf:about="http://ontriscal#PsychoactiveSubstance">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#ClinicalData"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#Psychoeducation -->
+
+    <owl:Class rdf:about="http://ontriscal#Psychoeducation">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#ClinicalStrategy"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#Psychologist -->
+
+    <owl:Class rdf:about="http://ontriscal#Psychologist">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#CareTeam"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#Psychoterapy -->
+
+    <owl:Class rdf:about="http://ontriscal#Psychoterapy">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#TherapeuticAction"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#Question -->
+
+    <owl:Class rdf:about="http://ontriscal#Question">
+        <rdfs:subClassOf rdf:resource="http://purl.org/nemo/gufo#FunctionalComplex"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#QuestionGroup -->
+
+    <owl:Class rdf:about="http://ontriscal#QuestionGroup">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#QuestionnaireElement"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#QuestionnaireElement -->
+
+    <owl:Class rdf:about="http://ontriscal#QuestionnaireElement">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://ontriscal#hasQuestionnarieElement"/>
+                        <owl:someValuesFrom rdf:resource="http://ontriscal#CareTeam"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://ontriscal#hasQuestionnarieElement"/>
+                        <owl:someValuesFrom rdf:resource="http://ontriscal#Patient"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://purl.org/nemo/gufo#FunctionalComplex"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#Questionnarie -->
+
+    <owl:Class rdf:about="http://ontriscal#Questionnarie">
+        <rdfs:subClassOf rdf:resource="http://purl.org/nemo/gufo#FunctionalComplex"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#Rage -->
+
+    <owl:Class rdf:about="http://ontriscal#Rage">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#EmotionalAspect"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#RapidBreathing -->
+
+    <owl:Class rdf:about="http://ontriscal#RapidBreathing">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#PhysiologicalSymptom"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#Reactivity -->
+
+    <owl:Class rdf:about="http://ontriscal#Reactivity">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#EmotionalAspect"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#RecordingDysfunctionalThoughts -->
+
+    <owl:Class rdf:about="http://ontriscal#RecordingDysfunctionalThoughts">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#ClinicalStrategy"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#Refractoriness -->
+
+    <owl:Class rdf:about="http://ontriscal#Refractoriness">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#SignAndSymptom"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#RelaxationTechniques -->
+
+    <owl:Class rdf:about="http://ontriscal#RelaxationTechniques">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#ClinicalStrategy"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#Restlessness -->
+
+    <owl:Class rdf:about="http://ontriscal#Restlessness">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#BehaviorSymptoms"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#Rigidity -->
+
+    <owl:Class rdf:about="http://ontriscal#Rigidity">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#PhysiologicalSymptom"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#RiskForYouAndOthers -->
+
+    <owl:Class rdf:about="http://ontriscal#RiskForYouAndOthers">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#SignAndSymptom"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#RiskLevel -->
+
+    <owl:Class rdf:about="http://ontriscal#RiskLevel">
+        <rdfs:subClassOf rdf:resource="http://purl.org/nemo/gufo#FunctionalComplex"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#RiskRange -->
+
+    <owl:Class rdf:about="http://ontriscal#RiskRange">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#RiskLevel"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#RiskScore -->
+
+    <owl:Class rdf:about="http://ontriscal#RiskScore">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#MathematicalOperation"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#RiskStratificationInMentalHealth -->
+
+    <owl:Class rdf:about="http://ontriscal#RiskStratificationInMentalHealth">
+        <rdfs:subClassOf rdf:resource="http://purl.org/nemo/gufo#Relator"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#Sadness -->
+
+    <owl:Class rdf:about="http://ontriscal#Sadness">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#EmotionalAspect"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#Score -->
+
+    <owl:Class rdf:about="http://ontriscal#Score">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#QuestionnaireElement"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#Secondary -->
+
+    <owl:Class rdf:about="http://ontriscal#Secondary">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#HealthCareLevel"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#SecuritySearch -->
+
+    <owl:Class rdf:about="http://ontriscal#SecuritySearch">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#BehaviorSymptoms"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#SelectiveAbstraction -->
+
+    <owl:Class rdf:about="http://ontriscal#SelectiveAbstraction">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#CognitiveDistortion"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#Self-Instruction -->
+
+    <owl:Class rdf:about="http://ontriscal#Self-Instruction">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#ClinicalStrategy"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#Senseperception -->
+
+    <owl:Class rdf:about="http://ontriscal#Senseperception">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#CognitiveFunctions"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#ShoeGlue -->
+
+    <owl:Class rdf:about="http://ontriscal#ShoeGlue">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#PetroleumDerivatives"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#ShortnessOfBreath -->
+
+    <owl:Class rdf:about="http://ontriscal#ShortnessOfBreath">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#PhysiologicalSymptom"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#SignAndSymptom -->
+
+    <owl:Class rdf:about="http://ontriscal#SignAndSymptom">
+        <rdfs:subClassOf rdf:resource="http://purl.org/nemo/gufo#IntrinsicMode"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#SignalAndSymptomSeverity -->
+
+    <owl:Class rdf:about="http://ontriscal#SignalAndSymptomSeverity">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#ClinicalData"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#SingularTherapeuticProject -->
+
+    <owl:Class rdf:about="http://ontriscal#SingularTherapeuticProject">
+        <rdfs:subClassOf rdf:resource="http://purl.org/nemo/gufo#FunctionalComplex"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#Sleep -->
+
+    <owl:Class rdf:about="http://ontriscal#Sleep">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#ContextualAspect"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#Sleepleness -->
+
+    <owl:Class rdf:about="http://ontriscal#Sleepleness">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#Sleep"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#SlightDelay -->
+
+    <owl:Class rdf:about="http://ontriscal#SlightDelay">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#Comorbidity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#SlowingOfThought -->
+
+    <owl:Class rdf:about="http://ontriscal#SlowingOfThought">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#ContextualAspect"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#SocialAssistance -->
+
+    <owl:Class rdf:about="http://ontriscal#SocialAssistance">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#TherapeuticAction"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#SocialSkillsTechniques -->
+
+    <owl:Class rdf:about="http://ontriscal#SocialSkillsTechniques">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#ClinicalStrategy"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#SocialVulnerability -->
+
+    <owl:Class rdf:about="http://ontriscal#SocialVulnerability">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#SocioDemographicData"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#SocioDemographicData -->
+
+    <owl:Class rdf:about="http://ontriscal#SocioDemographicData">
+        <rdfs:subClassOf rdf:resource="http://purl.org/nemo/gufo#FunctionalComplex"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#SocraticQuestioning -->
+
+    <owl:Class rdf:about="http://ontriscal#SocraticQuestioning">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#ClinicalStrategy"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#SpasmodicAnginaDiabetesFibromyalgia -->
+
+    <owl:Class rdf:about="http://ontriscal#SpasmodicAnginaDiabetesFibromyalgia">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#Comorbidity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#SpectatorOrDistantObserver -->
+
+    <owl:Class rdf:about="http://ontriscal#SpectatorOrDistantObserver">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#ClinicalStrategy"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#SpineSurgeries -->
+
+    <owl:Class rdf:about="http://ontriscal#SpineSurgeries">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#Comorbidity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#StomachPain -->
+
+    <owl:Class rdf:about="http://ontriscal#StomachPain">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#PhysiologicalSymptom"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#Stoppage -->
+
+    <owl:Class rdf:about="http://ontriscal#Stoppage">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#BehaviorAspect"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#Submission -->
+
+    <owl:Class rdf:about="http://ontriscal#Submission">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#BehaviorAspect"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#Sweating -->
+
+    <owl:Class rdf:about="http://ontriscal#Sweating">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#PhysiologicalSymptom"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#SwitchingRoles -->
+
+    <owl:Class rdf:about="http://ontriscal#SwitchingRoles">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#ClinicalStrategy"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#Symptomatology -->
+
+    <owl:Class rdf:about="http://ontriscal#Symptomatology">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#SignAndSymptom"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#SystematicDesensitization -->
+
+    <owl:Class rdf:about="http://ontriscal#SystematicDesensitization">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#ClinicalStrategy"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#TactileHallucination -->
+
+    <owl:Class rdf:about="http://ontriscal#TactileHallucination">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#Hallucination"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#TactileHypoesthesia -->
+
+    <owl:Class rdf:about="http://ontriscal#TactileHypoesthesia">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#ContextualAspect"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#TerrifyingThoughts -->
+
+    <owl:Class rdf:about="http://ontriscal#TerrifyingThoughts">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#CognitiveSymptoms"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#Tertiary -->
+
+    <owl:Class rdf:about="http://ontriscal#Tertiary">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#HealthCareLevel"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#Therapeutic -->
+
+    <owl:Class rdf:about="http://ontriscal#Therapeutic">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#CareTeam"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#TherapeuticAction -->
+
+    <owl:Class rdf:about="http://ontriscal#TherapeuticAction">
+        <rdfs:subClassOf rdf:resource="http://purl.org/nemo/gufo#FunctionalComplex"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#Thought-stoppingAndSelf-instruction -->
+
+    <owl:Class rdf:about="http://ontriscal#Thought-stoppingAndSelf-instruction">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#ClinicalStrategy"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#ThoughtBlockingOrInterjection -->
+
+    <owl:Class rdf:about="http://ontriscal#ThoughtBlockingOrInterjection">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#ContextualAspect"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#ThoughtStop -->
+
+    <owl:Class rdf:about="http://ontriscal#ThoughtStop">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#ClinicalStrategy"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#ThreatHypervigilance -->
+
+    <owl:Class rdf:about="http://ontriscal#ThreatHypervigilance">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#CognitiveSymptoms"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#Thrombosis -->
+
+    <owl:Class rdf:about="http://ontriscal#Thrombosis">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#Comorbidity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#ThyroidHypertension -->
+
+    <owl:Class rdf:about="http://ontriscal#ThyroidHypertension">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#Comorbidity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#Tingling -->
+
+    <owl:Class rdf:about="http://ontriscal#Tingling">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#PhysiologicalSymptom"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#Tobacco -->
+
+    <owl:Class rdf:about="http://ontriscal#Tobacco">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#PsychoactiveSubstance"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#Tremor -->
+
+    <owl:Class rdf:about="http://ontriscal#Tremor">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#PhysiologicalSymptom"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#UnconditionalAcceptanceOfCriticism -->
+
+    <owl:Class rdf:about="http://ontriscal#UnconditionalAcceptanceOfCriticism">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#CognitiveDistortion"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#UnfairComparisons -->
+
+    <owl:Class rdf:about="http://ontriscal#UnfairComparisons">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#CognitiveDistortion"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#UseOfRewards -->
+
+    <owl:Class rdf:about="http://ontriscal#UseOfRewards">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#ClinicalStrategy"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#UseOfSubstance -->
+
+    <owl:Class rdf:about="http://ontriscal#UseOfSubstance">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#ContextualAspect"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#VascularDementia -->
+
+    <owl:Class rdf:about="http://ontriscal#VascularDementia">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#ContextualAspect"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#Victimization -->
+
+    <owl:Class rdf:about="http://ontriscal#Victimization">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#CognitiveDistortion"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#VisualHallucination -->
+
+    <owl:Class rdf:about="http://ontriscal#VisualHallucination">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#Hallucination"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#Vitiligo -->
+
+    <owl:Class rdf:about="http://ontriscal#Vitiligo">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#Comorbidity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#Weakness -->
+
+    <owl:Class rdf:about="http://ontriscal#Weakness">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#PhysiologicalSymptom"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#WhatIf -->
+
+    <owl:Class rdf:about="http://ontriscal#WhatIf">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#CognitiveDistortion"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontriscal#Yes -->
+
+    <owl:Class rdf:about="http://ontriscal#Yes">
+        <rdfs:subClassOf rdf:resource="http://ontriscal#AnswerOption"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/nemo/gufo#Category -->
+
+    <owl:Class rdf:about="http://purl.org/nemo/gufo#Category"/>
+    
+
+
+    <!-- http://purl.org/nemo/gufo#FunctionalComplex -->
+
+    <owl:Class rdf:about="http://purl.org/nemo/gufo#FunctionalComplex"/>
+    
+
+
+    <!-- http://purl.org/nemo/gufo#IntrinsicMode -->
+
+    <owl:Class rdf:about="http://purl.org/nemo/gufo#IntrinsicMode"/>
+    
+
+
+    <!-- http://purl.org/nemo/gufo#Kind -->
+
+    <owl:Class rdf:about="http://purl.org/nemo/gufo#Kind"/>
+    
+
+
+    <!-- http://purl.org/nemo/gufo#Phase -->
+
+    <owl:Class rdf:about="http://purl.org/nemo/gufo#Phase"/>
+    
+
+
+    <!-- http://purl.org/nemo/gufo#Relator -->
+
+    <owl:Class rdf:about="http://purl.org/nemo/gufo#Relator"/>
+    
+
+
+    <!-- http://purl.org/nemo/gufo#Role -->
+
+    <owl:Class rdf:about="http://purl.org/nemo/gufo#Role"/>
+    
+
+
+    <!-- http://purl.org/nemo/gufo#SubKind -->
+
+    <owl:Class rdf:about="http://purl.org/nemo/gufo#SubKind"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://ontriscal#Adolescent -->
+
+    <owl:NamedIndividual rdf:about="http://ontriscal#Adolescent">
+        <rdf:type rdf:resource="http://purl.org/nemo/gufo#Phase"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ontriscal#Adult -->
+
+    <owl:NamedIndividual rdf:about="http://ontriscal#Adult">
+        <rdf:type rdf:resource="http://purl.org/nemo/gufo#Phase"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ontriscal#AgeGroup -->
+
+    <owl:NamedIndividual rdf:about="http://ontriscal#AgeGroup">
+        <rdf:type rdf:resource="http://purl.org/nemo/gufo#Kind"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ontriscal#Alcohol -->
+
+    <owl:NamedIndividual rdf:about="http://ontriscal#Alcohol">
+        <rdf:type rdf:resource="http://purl.org/nemo/gufo#SubKind"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ontriscal#AnswerOption -->
+
+    <owl:NamedIndividual rdf:about="http://ontriscal#AnswerOption">
+        <rdf:type rdf:resource="http://purl.org/nemo/gufo#SubKind"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ontriscal#Auditory -->
+
+    <owl:NamedIndividual rdf:about="http://ontriscal#Auditory">
+        <rdf:type rdf:resource="http://purl.org/nemo/gufo#SubKind"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ontriscal#BeginningQuestionnarie -->
+
+    <owl:NamedIndividual rdf:about="http://ontriscal#BeginningQuestionnarie">
+        <rdf:type rdf:resource="http://purl.org/nemo/gufo#SubKind"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ontriscal#BehaviorAspect -->
+
+    <owl:NamedIndividual rdf:about="http://ontriscal#BehaviorAspect">
+        <rdf:type rdf:resource="http://purl.org/nemo/gufo#SubKind"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ontriscal#BiologicalSex -->
+
+    <owl:NamedIndividual rdf:about="http://ontriscal#BiologicalSex">
+        <rdf:type rdf:resource="http://purl.org/nemo/gufo#Kind"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ontriscal#CareTeam -->
+
+    <owl:NamedIndividual rdf:about="http://ontriscal#CareTeam">
+        <rdf:type rdf:resource="http://purl.org/nemo/gufo#SubKind"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ontriscal#CaseConceptualization -->
+
+    <owl:NamedIndividual rdf:about="http://ontriscal#CaseConceptualization">
+        <rdf:type rdf:resource="http://purl.org/nemo/gufo#Kind"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ontriscal#ClinicalData -->
+
+    <owl:NamedIndividual rdf:about="http://ontriscal#ClinicalData">
+        <rdf:type rdf:resource="http://purl.org/nemo/gufo#Category"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ontriscal#ClinicalEvaluation -->
+
+    <owl:NamedIndividual rdf:about="http://ontriscal#ClinicalEvaluation">
+        <rdf:type rdf:resource="http://purl.org/nemo/gufo#Kind"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ontriscal#ClinicalStrategy -->
+
+    <owl:NamedIndividual rdf:about="http://ontriscal#ClinicalStrategy">
+        <rdf:type rdf:resource="http://purl.org/nemo/gufo#SubKind"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ontriscal#Cocaine -->
+
+    <owl:NamedIndividual rdf:about="http://ontriscal#Cocaine">
+        <rdf:type rdf:resource="http://purl.org/nemo/gufo#SubKind"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ontriscal#CoexistenceWorkshop -->
+
+    <owl:NamedIndividual rdf:about="http://ontriscal#CoexistenceWorkshop">
+        <rdf:type rdf:resource="http://purl.org/nemo/gufo#SubKind"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ontriscal#CognitiveAspect -->
+
+    <owl:NamedIndividual rdf:about="http://ontriscal#CognitiveAspect">
+        <rdf:type rdf:resource="http://purl.org/nemo/gufo#SubKind"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ontriscal#CognitiveModel -->
+
+    <owl:NamedIndividual rdf:about="http://ontriscal#CognitiveModel">
+        <rdf:type rdf:resource="http://purl.org/nemo/gufo#Kind"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ontriscal#Comorbidity -->
+
+    <owl:NamedIndividual rdf:about="http://ontriscal#Comorbidity">
+        <rdf:type rdf:resource="http://purl.org/nemo/gufo#Kind"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ontriscal#ContextualAspect -->
+
+    <owl:NamedIndividual rdf:about="http://ontriscal#ContextualAspect">
+        <rdf:type rdf:resource="http://purl.org/nemo/gufo#SubKind"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ontriscal#Crack -->
+
+    <owl:NamedIndividual rdf:about="http://ontriscal#Crack">
+        <rdf:type rdf:resource="http://purl.org/nemo/gufo#SubKind"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ontriscal#Delirium -->
+
+    <owl:NamedIndividual rdf:about="http://ontriscal#Delirium">
+        <rdf:type rdf:resource="http://purl.org/nemo/gufo#SubKind"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ontriscal#DelusionalDisorder -->
+
+    <owl:NamedIndividual rdf:about="http://ontriscal#DelusionalDisorder">
+        <rdf:type rdf:resource="http://purl.org/nemo/gufo#SubKind"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ontriscal#Dementia -->
+
+    <owl:NamedIndividual rdf:about="http://ontriscal#Dementia">
+        <rdf:type rdf:resource="http://purl.org/nemo/gufo#SubKind"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ontriscal#DependencyAutonomy -->
+
+    <owl:NamedIndividual rdf:about="http://ontriscal#DependencyAutonomy">
+        <rdf:type rdf:resource="http://purl.org/nemo/gufo#SubKind"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ontriscal#Diabetes -->
+
+    <owl:NamedIndividual rdf:about="http://ontriscal#Diabetes">
+        <rdf:type rdf:resource="http://purl.org/nemo/gufo#SubKind"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ontriscal#Doctor -->
+
+    <owl:NamedIndividual rdf:about="http://ontriscal#Doctor">
+        <rdf:type rdf:resource="http://purl.org/nemo/gufo#Role"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ontriscal#Eldery -->
+
+    <owl:NamedIndividual rdf:about="http://ontriscal#Eldery">
+        <rdf:type rdf:resource="http://purl.org/nemo/gufo#Phase"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ontriscal#EmotionalAspect -->
+
+    <owl:NamedIndividual rdf:about="http://ontriscal#EmotionalAspect">
+        <rdf:type rdf:resource="http://purl.org/nemo/gufo#SubKind"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ontriscal#Female -->
+
+    <owl:NamedIndividual rdf:about="http://ontriscal#Female">
+        <rdf:type rdf:resource="http://purl.org/nemo/gufo#SubKind"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ontriscal#FinalQuestionnarie -->
+
+    <owl:NamedIndividual rdf:about="http://ontriscal#FinalQuestionnarie">
+        <rdf:type rdf:resource="http://purl.org/nemo/gufo#SubKind"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ontriscal#FinalScore -->
+
+    <owl:NamedIndividual rdf:about="http://ontriscal#FinalScore">
+        <rdf:type rdf:resource="http://purl.org/nemo/gufo#SubKind"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ontriscal#FrequencyOfUseOfTheTypeOfPsychoactiveSubstance -->
+
+    <owl:NamedIndividual rdf:about="http://ontriscal#FrequencyOfUseOfTheTypeOfPsychoactiveSubstance">
+        <rdf:type rdf:resource="http://purl.org/nemo/gufo#Kind"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ontriscal#GroupService -->
+
+    <owl:NamedIndividual rdf:about="http://ontriscal#GroupService">
+        <rdf:type rdf:resource="http://purl.org/nemo/gufo#SubKind"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ontriscal#Hallucination -->
+
+    <owl:NamedIndividual rdf:about="http://ontriscal#Hallucination">
+        <rdf:type rdf:resource="http://purl.org/nemo/gufo#SubKind"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ontriscal#HealthCareLevel -->
+
+    <owl:NamedIndividual rdf:about="http://ontriscal#HealthCareLevel">
+        <rdf:type rdf:resource="http://purl.org/nemo/gufo#Kind"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ontriscal#High -->
+
+    <owl:NamedIndividual rdf:about="http://ontriscal#High">
+        <rdf:type rdf:resource="http://purl.org/nemo/gufo#SubKind"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ontriscal#HighRiskLevel -->
+
+    <owl:NamedIndividual rdf:about="http://ontriscal#HighRiskLevel">
+        <rdf:type rdf:resource="http://purl.org/nemo/gufo#SubKind"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ontriscal#ICDGroup -->
+
+    <owl:NamedIndividual rdf:about="http://ontriscal#ICDGroup">
+        <rdf:type rdf:resource="http://purl.org/nemo/gufo#Kind"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ontriscal#IndividualPsychologicalService -->
+
+    <owl:NamedIndividual rdf:about="http://ontriscal#IndividualPsychologicalService">
+        <rdf:type rdf:resource="http://purl.org/nemo/gufo#SubKind"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ontriscal#Low -->
+
+    <owl:NamedIndividual rdf:about="http://ontriscal#Low">
+        <rdf:type rdf:resource="http://purl.org/nemo/gufo#SubKind"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ontriscal#LowRiskLevel -->
+
+    <owl:NamedIndividual rdf:about="http://ontriscal#LowRiskLevel">
+        <rdf:type rdf:resource="http://purl.org/nemo/gufo#SubKind"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ontriscal#Male -->
+
+    <owl:NamedIndividual rdf:about="http://ontriscal#Male">
+        <rdf:type rdf:resource="http://purl.org/nemo/gufo#SubKind"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ontriscal#MedicalCare -->
+
+    <owl:NamedIndividual rdf:about="http://ontriscal#MedicalCare">
+        <rdf:type rdf:resource="http://purl.org/nemo/gufo#SubKind"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ontriscal#Medium -->
+
+    <owl:NamedIndividual rdf:about="http://ontriscal#Medium">
+        <rdf:type rdf:resource="http://purl.org/nemo/gufo#SubKind"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ontriscal#MediumRiskLevel -->
+
+    <owl:NamedIndividual rdf:about="http://ontriscal#MediumRiskLevel">
+        <rdf:type rdf:resource="http://purl.org/nemo/gufo#SubKind"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ontriscal#No -->
+
+    <owl:NamedIndividual rdf:about="http://ontriscal#No">
+        <rdf:type rdf:resource="http://purl.org/nemo/gufo#SubKind"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ontriscal#Nurse -->
+
+    <owl:NamedIndividual rdf:about="http://ontriscal#Nurse">
+        <rdf:type rdf:resource="http://purl.org/nemo/gufo#Role"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ontriscal#NursingAssistance -->
+
+    <owl:NamedIndividual rdf:about="http://ontriscal#NursingAssistance">
+        <rdf:type rdf:resource="http://purl.org/nemo/gufo#SubKind"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ontriscal#NutritionalAssistance -->
+
+    <owl:NamedIndividual rdf:about="http://ontriscal#NutritionalAssistance">
+        <rdf:type rdf:resource="http://purl.org/nemo/gufo#SubKind"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ontriscal#Patient -->
+
+    <owl:NamedIndividual rdf:about="http://ontriscal#Patient">
+        <rdf:type rdf:resource="http://purl.org/nemo/gufo#Role"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ontriscal#Person -->
+
+    <owl:NamedIndividual rdf:about="http://ontriscal#Person">
+        <rdf:type rdf:resource="http://purl.org/nemo/gufo#Kind"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ontriscal#PhysiologicalSymptom -->
+
+    <owl:NamedIndividual rdf:about="http://ontriscal#PhysiologicalSymptom">
+        <rdf:type rdf:resource="http://purl.org/nemo/gufo#SubKind"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ontriscal#Primary -->
+
+    <owl:NamedIndividual rdf:about="http://ontriscal#Primary">
+        <rdf:type rdf:resource="http://purl.org/nemo/gufo#SubKind"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ontriscal#PsychoactiveSubstance -->
+
+    <owl:NamedIndividual rdf:about="http://ontriscal#PsychoactiveSubstance">
+        <rdf:type rdf:resource="http://purl.org/nemo/gufo#Kind"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ontriscal#Psychologist -->
+
+    <owl:NamedIndividual rdf:about="http://ontriscal#Psychologist">
+        <rdf:type rdf:resource="http://purl.org/nemo/gufo#Role"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ontriscal#Psychoterapy -->
+
+    <owl:NamedIndividual rdf:about="http://ontriscal#Psychoterapy">
+        <rdf:type rdf:resource="http://purl.org/nemo/gufo#SubKind"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ontriscal#Question -->
+
+    <owl:NamedIndividual rdf:about="http://ontriscal#Question">
+        <rdf:type rdf:resource="http://purl.org/nemo/gufo#Kind"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ontriscal#QuestionGroup -->
+
+    <owl:NamedIndividual rdf:about="http://ontriscal#QuestionGroup">
+        <rdf:type rdf:resource="http://purl.org/nemo/gufo#SubKind"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ontriscal#QuestionnaireElement -->
+
+    <owl:NamedIndividual rdf:about="http://ontriscal#QuestionnaireElement">
+        <rdf:type rdf:resource="http://purl.org/nemo/gufo#Kind"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ontriscal#Questionnarie -->
+
+    <owl:NamedIndividual rdf:about="http://ontriscal#Questionnarie">
+        <rdf:type rdf:resource="http://purl.org/nemo/gufo#Kind"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ontriscal#Refractoriness -->
+
+    <owl:NamedIndividual rdf:about="http://ontriscal#Refractoriness">
+        <rdf:type rdf:resource="http://purl.org/nemo/gufo#SubKind"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ontriscal#RiskForYouAndOthers -->
+
+    <owl:NamedIndividual rdf:about="http://ontriscal#RiskForYouAndOthers">
+        <rdf:type rdf:resource="http://purl.org/nemo/gufo#SubKind"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ontriscal#RiskLevel -->
+
+    <owl:NamedIndividual rdf:about="http://ontriscal#RiskLevel">
+        <rdf:type rdf:resource="http://purl.org/nemo/gufo#Kind"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ontriscal#RiskRange -->
+
+    <owl:NamedIndividual rdf:about="http://ontriscal#RiskRange">
+        <rdf:type rdf:resource="http://purl.org/nemo/gufo#SubKind"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ontriscal#RiskScore -->
+
+    <owl:NamedIndividual rdf:about="http://ontriscal#RiskScore">
+        <rdf:type rdf:resource="http://purl.org/nemo/gufo#Kind"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ontriscal#RiskStratificationInMentalHealth -->
+
+    <owl:NamedIndividual rdf:about="http://ontriscal#RiskStratificationInMentalHealth">
+        <rdf:type rdf:resource="http://purl.org/nemo/gufo#Kind"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ontriscal#Score -->
+
+    <owl:NamedIndividual rdf:about="http://ontriscal#Score">
+        <rdf:type rdf:resource="http://purl.org/nemo/gufo#SubKind"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ontriscal#Secondary -->
+
+    <owl:NamedIndividual rdf:about="http://ontriscal#Secondary">
+        <rdf:type rdf:resource="http://purl.org/nemo/gufo#SubKind"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ontriscal#SignAndSymptom -->
+
+    <owl:NamedIndividual rdf:about="http://ontriscal#SignAndSymptom">
+        <rdf:type rdf:resource="http://purl.org/nemo/gufo#Kind"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ontriscal#SignalAndSymptomSeverity -->
+
+    <owl:NamedIndividual rdf:about="http://ontriscal#SignalAndSymptomSeverity">
+        <rdf:type rdf:resource="http://purl.org/nemo/gufo#Kind"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ontriscal#SingularTherapeuticProject -->
+
+    <owl:NamedIndividual rdf:about="http://ontriscal#SingularTherapeuticProject">
+        <rdf:type rdf:resource="http://purl.org/nemo/gufo#Kind"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ontriscal#SocialAssistance -->
+
+    <owl:NamedIndividual rdf:about="http://ontriscal#SocialAssistance">
+        <rdf:type rdf:resource="http://purl.org/nemo/gufo#SubKind"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ontriscal#SocialVulnerability -->
+
+    <owl:NamedIndividual rdf:about="http://ontriscal#SocialVulnerability">
+        <rdf:type rdf:resource="http://purl.org/nemo/gufo#Kind"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ontriscal#SocioDemographicData -->
+
+    <owl:NamedIndividual rdf:about="http://ontriscal#SocioDemographicData">
+        <rdf:type rdf:resource="http://purl.org/nemo/gufo#Category"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ontriscal#Symptomatology -->
+
+    <owl:NamedIndividual rdf:about="http://ontriscal#Symptomatology">
+        <rdf:type rdf:resource="http://purl.org/nemo/gufo#SubKind"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ontriscal#TactileHallucination -->
+
+    <owl:NamedIndividual rdf:about="http://ontriscal#TactileHallucination">
+        <rdf:type rdf:resource="http://purl.org/nemo/gufo#SubKind"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ontriscal#Tertiary -->
+
+    <owl:NamedIndividual rdf:about="http://ontriscal#Tertiary">
+        <rdf:type rdf:resource="http://purl.org/nemo/gufo#SubKind"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ontriscal#Therapeutic -->
+
+    <owl:NamedIndividual rdf:about="http://ontriscal#Therapeutic">
+        <rdf:type rdf:resource="http://purl.org/nemo/gufo#Role"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ontriscal#TherapeuticAction -->
+
+    <owl:NamedIndividual rdf:about="http://ontriscal#TherapeuticAction">
+        <rdf:type rdf:resource="http://purl.org/nemo/gufo#Kind"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ontriscal#VisualHallucination -->
+
+    <owl:NamedIndividual rdf:about="http://ontriscal#VisualHallucination">
+        <rdf:type rdf:resource="http://purl.org/nemo/gufo#SubKind"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ontriscal#Yes -->
+
+    <owl:NamedIndividual rdf:about="http://ontriscal#Yes">
+        <rdf:type rdf:resource="http://purl.org/nemo/gufo#SubKind"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotations
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <rdf:Description rdf:about="http://ontriscal#Adolescent">
+        <rdfs:label xml:lang="en">Adolescent</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://ontriscal#Adult">
+        <rdfs:label xml:lang="en">Adult</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://ontriscal#AgeGroup">
+        <rdfs:label xml:lang="en">AgeGroup</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://ontriscal#Alcohol">
+        <rdfs:label xml:lang="en">Alcohol</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://ontriscal#AnswerOption">
+        <rdfs:label xml:lang="en">AnswerOption</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://ontriscal#Auditory">
+        <rdfs:label xml:lang="en">Auditory</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://ontriscal#BeginningQuestionnarie">
+        <rdfs:label xml:lang="en">BeginningQuestionnarie</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://ontriscal#BehaviorAspect">
+        <rdfs:label xml:lang="en">BehaviorAspect</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://ontriscal#BiologicalSex">
+        <rdfs:label xml:lang="en">BiologicalSex</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://ontriscal#CareTeam">
+        <rdfs:label xml:lang="en">CareTeam</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://ontriscal#CaseConceptualization">
+        <rdfs:label xml:lang="en">CaseConceptualization</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://ontriscal#ClinicalData">
+        <rdfs:label xml:lang="en">ClinicalData</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://ontriscal#ClinicalEvaluation">
+        <rdfs:label xml:lang="en">ClinicalEvaluation</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://ontriscal#ClinicalStrategy">
+        <rdfs:label xml:lang="en">ClinicalStrategy</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://ontriscal#Cocaine">
+        <rdfs:label xml:lang="en">Cocaine</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://ontriscal#CoexistenceWorkshop">
+        <rdfs:label xml:lang="en">CoexistenceWorkshop</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://ontriscal#CognitiveAspect">
+        <rdfs:label xml:lang="en">CognitiveAspect</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://ontriscal#CognitiveModel">
+        <rdfs:label xml:lang="en">CognitiveModel</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://ontriscal#Comorbidity">
+        <rdfs:label xml:lang="en">Comorbidity</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://ontriscal#ContextualAspect">
+        <rdfs:label xml:lang="en">ContextualAspect</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://ontriscal#Crack">
+        <rdfs:label xml:lang="en">Crack</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://ontriscal#Delirium">
+        <rdfs:label xml:lang="en">Delirium</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://ontriscal#DelusionalDisorder">
+        <rdfs:label xml:lang="en">DelusionalDisorder</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://ontriscal#Dementia">
+        <rdfs:label xml:lang="en">Dementia</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://ontriscal#DependencyAutonomy">
+        <rdfs:label xml:lang="en">DependencyAutonomy</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://ontriscal#Diabetes">
+        <rdfs:label xml:lang="en">Diabetes</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://ontriscal#Doctor">
+        <rdfs:label xml:lang="en">Doctor</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://ontriscal#Eldery">
+        <rdfs:label xml:lang="en">Eldery</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://ontriscal#EmotionalAspect">
+        <rdfs:label xml:lang="en">EmotionalAspect</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://ontriscal#Female">
+        <rdfs:label xml:lang="en">Female</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://ontriscal#FinalQuestionnarie">
+        <rdfs:label xml:lang="en">FinalQuestionnarie</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://ontriscal#FinalScore">
+        <rdfs:label xml:lang="en">FinalScore</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://ontriscal#FrequencyOfUseOfTheTypeOfPsychoactiveSubstance">
+        <rdfs:label xml:lang="en">FrequencyOfUseOfTheTypeOfPsychoactiveSubstance</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://ontriscal#GroupService">
+        <rdfs:label xml:lang="en">GroupService</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://ontriscal#Hallucination">
+        <rdfs:label xml:lang="en">Hallucination</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://ontriscal#HealthCareLevel">
+        <rdfs:label xml:lang="en">HealthCareLevel</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://ontriscal#High">
+        <rdfs:label xml:lang="en">High</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://ontriscal#HighRiskLevel">
+        <rdfs:label xml:lang="en">HighRiskLevel</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://ontriscal#ICDGroup">
+        <rdfs:label xml:lang="en">ICDGroup</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://ontriscal#IndividualPsychologicalService">
+        <rdfs:label xml:lang="en">IndividualPsychologicalService</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://ontriscal#Low">
+        <rdfs:label xml:lang="en">Low</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://ontriscal#LowRiskLevel">
+        <rdfs:label xml:lang="en">LowRiskLevel</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://ontriscal#Male">
+        <rdfs:label xml:lang="en">Male</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://ontriscal#MedicalCare">
+        <rdfs:label xml:lang="en">MedicalCare</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://ontriscal#Medium">
+        <rdfs:label xml:lang="en">Medium</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://ontriscal#MediumRiskLevel">
+        <rdfs:label xml:lang="en">MediumRiskLevel</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://ontriscal#No">
+        <rdfs:label xml:lang="en">No</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://ontriscal#Nurse">
+        <rdfs:label xml:lang="en">Nurse</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://ontriscal#NursingAssistance">
+        <rdfs:label xml:lang="en">NursingAssistance</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://ontriscal#NutritionalAssistance">
+        <rdfs:label xml:lang="en">NutritionalAssistance</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://ontriscal#Patient">
+        <rdfs:label xml:lang="en">Patient</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://ontriscal#Person">
+        <rdfs:label xml:lang="en">Person</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://ontriscal#PhysiologicalSymptom">
+        <rdfs:label xml:lang="en">PhysiologicalSymptom</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://ontriscal#Primary">
+        <rdfs:label xml:lang="en">Primary</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://ontriscal#PsychoactiveSubstance">
+        <rdfs:label xml:lang="en">PsychoactiveSubstance</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://ontriscal#Psychologist">
+        <rdfs:label xml:lang="en">Psychologist</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://ontriscal#Psychoterapy">
+        <rdfs:label xml:lang="en">Psychoterapy</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://ontriscal#Question">
+        <rdfs:label xml:lang="en">Question</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://ontriscal#QuestionGroup">
+        <rdfs:label xml:lang="en">QuestionGroup</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://ontriscal#QuestionnaireElement">
+        <rdfs:label xml:lang="en">QuestionnaireElement</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://ontriscal#Questionnarie">
+        <rdfs:label xml:lang="en">Questionnarie</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://ontriscal#Refractoriness">
+        <rdfs:label xml:lang="en">Refractoriness</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://ontriscal#RiskForYouAndOthers">
+        <rdfs:label xml:lang="en">RiskForYouAndOthers</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://ontriscal#RiskLevel">
+        <rdfs:label xml:lang="en">RiskLevel</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://ontriscal#RiskRange">
+        <rdfs:label xml:lang="en">RiskRange</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://ontriscal#RiskScore">
+        <rdfs:label xml:lang="en">RiskScore</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://ontriscal#RiskStratificationInMentalHealth">
+        <rdfs:label xml:lang="en">RiskStratificationInMentalHealth</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://ontriscal#Score">
+        <rdfs:label xml:lang="en">Score</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://ontriscal#Secondary">
+        <rdfs:label xml:lang="en">Secondary</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://ontriscal#SignAndSymptom">
+        <rdfs:label xml:lang="en">SignAndSymptom</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://ontriscal#SignalAndSymptomSeverity">
+        <rdfs:label xml:lang="en">SignalAndSymptomSeverity</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://ontriscal#SingularTherapeuticProject">
+        <rdfs:label xml:lang="en">SingularTherapeuticProject</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://ontriscal#SocialAssistance">
+        <rdfs:label xml:lang="en">SocialAssistance</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://ontriscal#SocialVulnerability">
+        <rdfs:label xml:lang="en">SocialVulnerability</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://ontriscal#SocioDemographicData">
+        <rdfs:label xml:lang="en">SocioDemographicData</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://ontriscal#Symptomatology">
+        <rdfs:label xml:lang="en">Symptomatology</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://ontriscal#TactileHallucination">
+        <rdfs:label xml:lang="en">TactileHallucination</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://ontriscal#Tertiary">
+        <rdfs:label xml:lang="en">Tertiary</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://ontriscal#Therapeutic">
+        <rdfs:label xml:lang="en">Therapeutic</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://ontriscal#TherapeuticAction">
+        <rdfs:label xml:lang="en">TherapeuticAction</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://ontriscal#VisualHallucination">
+        <rdfs:label xml:lang="en">VisualHallucination</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://ontriscal#Yes">
+        <rdfs:label xml:lang="en">Yes</rdfs:label>
+    </rdf:Description>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // General axioms
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://ontriscal#AbusiveUseOfIllicitPsychoactiveAmputationMIAndOsteoarthritis"/>
+            <rdf:Description rdf:about="http://ontriscal#AdvancedAgeDifficultyLocomotion"/>
+            <rdf:Description rdf:about="http://ontriscal#AllergicCrises"/>
+            <rdf:Description rdf:about="http://ontriscal#BackAndKneeProblems"/>
+            <rdf:Description rdf:about="http://ontriscal#BariatricObesity"/>
+            <rdf:Description rdf:about="http://ontriscal#BariatricPatient"/>
+            <rdf:Description rdf:about="http://ontriscal#BreastCancer"/>
+            <rdf:Description rdf:about="http://ontriscal#CardiopathDiabetesNeuropath"/>
+            <rdf:Description rdf:about="http://ontriscal#CerebellarDegeneration"/>
+            <rdf:Description rdf:about="http://ontriscal#ChronicSmokingAndCOPDRisk"/>
+            <rdf:Description rdf:about="http://ontriscal#ChronicSmokingCOPDThrombogeitisWithAmputationAndVertebralOsteoarthritis"/>
+            <rdf:Description rdf:about="http://ontriscal#CirculationLocomotion"/>
+            <rdf:Description rdf:about="http://ontriscal#ConvulsiveCrisis"/>
+            <rdf:Description rdf:about="http://ontriscal#Dementia"/>
+            <rdf:Description rdf:about="http://ontriscal#Diabetes"/>
+            <rdf:Description rdf:about="http://ontriscal#DiabetesDiabeticNeuropathy"/>
+            <rdf:Description rdf:about="http://ontriscal#DiabetesHypertensionThyroidProblem"/>
+            <rdf:Description rdf:about="http://ontriscal#DiabetesOsteoporosis"/>
+            <rdf:Description rdf:about="http://ontriscal#Disease_Spine_Arthrodesis"/>
+            <rdf:Description rdf:about="http://ontriscal#EatingDisorder"/>
+            <rdf:Description rdf:about="http://ontriscal#Endometriosis"/>
+            <rdf:Description rdf:about="http://ontriscal#Epilepsy"/>
+            <rdf:Description rdf:about="http://ontriscal#EpilepsyAneurysmEatingDisorder"/>
+            <rdf:Description rdf:about="http://ontriscal#Fibromyalgia"/>
+            <rdf:Description rdf:about="http://ontriscal#Glaucoma"/>
+            <rdf:Description rdf:about="http://ontriscal#HIV"/>
+            <rdf:Description rdf:about="http://ontriscal#HeartDiseaseObesity"/>
+            <rdf:Description rdf:about="http://ontriscal#HeartDiseaseVariousSurgicalProceduresAllergies"/>
+            <rdf:Description rdf:about="http://ontriscal#HepatitisLiverCirrhosis"/>
+            <rdf:Description rdf:about="http://ontriscal#HighBloodPressureDiabetes"/>
+            <rdf:Description rdf:about="http://ontriscal#Hypertension"/>
+            <rdf:Description rdf:about="http://ontriscal#HypertensionDiabetes"/>
+            <rdf:Description rdf:about="http://ontriscal#Hypothyroidism"/>
+            <rdf:Description rdf:about="http://ontriscal#InBlank"/>
+            <rdf:Description rdf:about="http://ontriscal#Insanity"/>
+            <rdf:Description rdf:about="http://ontriscal#Intestinal_Problems"/>
+            <rdf:Description rdf:about="http://ontriscal#KorsakoffSyndrome"/>
+            <rdf:Description rdf:about="http://ontriscal#LimitedCognitiveAbility"/>
+            <rdf:Description rdf:about="http://ontriscal#Lupus"/>
+            <rdf:Description rdf:about="http://ontriscal#Migraine"/>
+            <rdf:Description rdf:about="http://ontriscal#NeurologicLabirinthitisFollow-up"/>
+            <rdf:Description rdf:about="http://ontriscal#NeurologicalDamageCausedByCarbonMonoxideInhalation"/>
+            <rdf:Description rdf:about="http://ontriscal#Obesity"/>
+            <rdf:Description rdf:about="http://ontriscal#ObesityAndConsequences"/>
+            <rdf:Description rdf:about="http://ontriscal#ObesityJointProblems"/>
+            <rdf:Description rdf:about="http://ontriscal#Orthopedic"/>
+            <rdf:Description rdf:about="http://ontriscal#OrthopedicDiabetes"/>
+            <rdf:Description rdf:about="http://ontriscal#OrthopedicNeurologist"/>
+            <rdf:Description rdf:about="http://ontriscal#OrthopedicProblem"/>
+            <rdf:Description rdf:about="http://ontriscal#OrthopedicProblemInTheSpine"/>
+            <rdf:Description rdf:about="http://ontriscal#Parkinsonism"/>
+            <rdf:Description rdf:about="http://ontriscal#PreDiabetes"/>
+            <rdf:Description rdf:about="http://ontriscal#SlightDelay"/>
+            <rdf:Description rdf:about="http://ontriscal#SpasmodicAnginaDiabetesFibromyalgia"/>
+            <rdf:Description rdf:about="http://ontriscal#SpineSurgeries"/>
+            <rdf:Description rdf:about="http://ontriscal#Thrombosis"/>
+            <rdf:Description rdf:about="http://ontriscal#ThyroidHypertension"/>
+            <rdf:Description rdf:about="http://ontriscal#Vitiligo"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://ontriscal#AcceleratedThinking"/>
+            <rdf:Description rdf:about="http://ontriscal#Agnosia"/>
+            <rdf:Description rdf:about="http://ontriscal#AlzheimerDementia"/>
+            <rdf:Description rdf:about="http://ontriscal#Amnesias"/>
+            <rdf:Description rdf:about="http://ontriscal#Anorexia"/>
+            <rdf:Description rdf:about="http://ontriscal#BingeEating"/>
+            <rdf:Description rdf:about="http://ontriscal#Bulimia"/>
+            <rdf:Description rdf:about="http://ontriscal#CondensationOfConcepts"/>
+            <rdf:Description rdf:about="http://ontriscal#DeficientThinking"/>
+            <rdf:Description rdf:about="http://ontriscal#DementiaWithLewyBodies"/>
+            <rdf:Description rdf:about="http://ontriscal#DisintegrationOfConcepts"/>
+            <rdf:Description rdf:about="http://ontriscal#Distraction"/>
+            <rdf:Description rdf:about="http://ontriscal#FrontotemporalDementia"/>
+            <rdf:Description rdf:about="http://ontriscal#Hyperesthesia"/>
+            <rdf:Description rdf:about="http://ontriscal#Hypermnesia"/>
+            <rdf:Description rdf:about="http://ontriscal#Hyperpathy"/>
+            <rdf:Description rdf:about="http://ontriscal#Hypersomnia"/>
+            <rdf:Description rdf:about="http://ontriscal#Hypoesthesia"/>
+            <rdf:Description rdf:about="http://ontriscal#MnemicHallucinations"/>
+            <rdf:Description rdf:about="http://ontriscal#MnemicIllusions"/>
+            <rdf:Description rdf:about="http://ontriscal#Nutrition"/>
+            <rdf:Description rdf:about="http://ontriscal#Paresthesias"/>
+            <rdf:Description rdf:about="http://ontriscal#ParkinsonDisease"/>
+            <rdf:Description rdf:about="http://ontriscal#PathologicalLie"/>
+            <rdf:Description rdf:about="http://ontriscal#Prosopagnosy"/>
+            <rdf:Description rdf:about="http://ontriscal#Sleep"/>
+            <rdf:Description rdf:about="http://ontriscal#Sleepleness"/>
+            <rdf:Description rdf:about="http://ontriscal#SlowingOfThought"/>
+            <rdf:Description rdf:about="http://ontriscal#TactileHypoesthesia"/>
+            <rdf:Description rdf:about="http://ontriscal#ThoughtBlockingOrInterjection"/>
+            <rdf:Description rdf:about="http://ontriscal#UseOfSubstance"/>
+            <rdf:Description rdf:about="http://ontriscal#VascularDementia"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://ontriscal#Acceptance"/>
+            <rdf:Description rdf:about="http://ontriscal#Aggressiveness"/>
+            <rdf:Description rdf:about="http://ontriscal#BehaviorSymptoms"/>
+            <rdf:Description rdf:about="http://ontriscal#Confrontation"/>
+            <rdf:Description rdf:about="http://ontriscal#CopingStrategies"/>
+            <rdf:Description rdf:about="http://ontriscal#DodgeAndEscape"/>
+            <rdf:Description rdf:about="http://ontriscal#Passivity"/>
+            <rdf:Description rdf:about="http://ontriscal#Stoppage"/>
+            <rdf:Description rdf:about="http://ontriscal#Submission"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://ontriscal#Agitation"/>
+            <rdf:Description rdf:about="http://ontriscal#ChestPressure"/>
+            <rdf:Description rdf:about="http://ontriscal#Chills"/>
+            <rdf:Description rdf:about="http://ontriscal#ChokingSensation"/>
+            <rdf:Description rdf:about="http://ontriscal#Diarrhea"/>
+            <rdf:Description rdf:about="http://ontriscal#Dizziness"/>
+            <rdf:Description rdf:about="http://ontriscal#DryMouth"/>
+            <rdf:Description rdf:about="http://ontriscal#Fainting"/>
+            <rdf:Description rdf:about="http://ontriscal#HeatWaves"/>
+            <rdf:Description rdf:about="http://ontriscal#IncreasedHeartRate"/>
+            <rdf:Description rdf:about="http://ontriscal#LossOfBalance"/>
+            <rdf:Description rdf:about="http://ontriscal#MuscularTension"/>
+            <rdf:Description rdf:about="http://ontriscal#Nausea"/>
+            <rdf:Description rdf:about="http://ontriscal#NumbnessInLimbs"/>
+            <rdf:Description rdf:about="http://ontriscal#Palpitations"/>
+            <rdf:Description rdf:about="http://ontriscal#RapidBreathing"/>
+            <rdf:Description rdf:about="http://ontriscal#Rigidity"/>
+            <rdf:Description rdf:about="http://ontriscal#ShortnessOfBreath"/>
+            <rdf:Description rdf:about="http://ontriscal#StomachPain"/>
+            <rdf:Description rdf:about="http://ontriscal#Sweating"/>
+            <rdf:Description rdf:about="http://ontriscal#Tingling"/>
+            <rdf:Description rdf:about="http://ontriscal#Tremor"/>
+            <rdf:Description rdf:about="http://ontriscal#Weakness"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://ontriscal#Alcohol"/>
+            <rdf:Description rdf:about="http://ontriscal#AlcoholAndAlprazolam"/>
+            <rdf:Description rdf:about="http://ontriscal#AlcoholAndCocaine"/>
+            <rdf:Description rdf:about="http://ontriscal#AlcoholAndMarijuana"/>
+            <rdf:Description rdf:about="http://ontriscal#AlcoholAndMultipleDrugs"/>
+            <rdf:Description rdf:about="http://ontriscal#Cannabis"/>
+            <rdf:Description rdf:about="http://ontriscal#Cocaine"/>
+            <rdf:Description rdf:about="http://ontriscal#Crack"/>
+            <rdf:Description rdf:about="http://ontriscal#CrackCocaine"/>
+            <rdf:Description rdf:about="http://ontriscal#InjectablePreAnestheticMedication"/>
+            <rdf:Description rdf:about="http://ontriscal#MultipleDrugs"/>
+            <rdf:Description rdf:about="http://ontriscal#PetroleumDerivatives"/>
+            <rdf:Description rdf:about="http://ontriscal#Tobacco"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://ontriscal#Anxiety"/>
+            <rdf:Description rdf:about="http://ontriscal#Disgusted"/>
+            <rdf:Description rdf:about="http://ontriscal#EmotionalSymptoms"/>
+            <rdf:Description rdf:about="http://ontriscal#Fear"/>
+            <rdf:Description rdf:about="http://ontriscal#Frustration"/>
+            <rdf:Description rdf:about="http://ontriscal#Happiness"/>
+            <rdf:Description rdf:about="http://ontriscal#Inhibition"/>
+            <rdf:Description rdf:about="http://ontriscal#Jealousy"/>
+            <rdf:Description rdf:about="http://ontriscal#Rage"/>
+            <rdf:Description rdf:about="http://ontriscal#Reactivity"/>
+            <rdf:Description rdf:about="http://ontriscal#Sadness"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://ontriscal#Attention"/>
+            <rdf:Description rdf:about="http://ontriscal#ExecutiveFunctions"/>
+            <rdf:Description rdf:about="http://ontriscal#Language"/>
+            <rdf:Description rdf:about="http://ontriscal#Memory"/>
+            <rdf:Description rdf:about="http://ontriscal#Senseperception"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://ontriscal#AutomaticThinking"/>
+            <rdf:Description rdf:about="http://ontriscal#CognitiveFunctions"/>
+            <rdf:Description rdf:about="http://ontriscal#CognitiveSymptoms"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://ontriscal#AutomaticThinking"/>
+            <rdf:Description rdf:about="http://ontriscal#CognitiveFunctions"/>
+            <rdf:Description rdf:about="http://ontriscal#CognitiveSymptoms"/>
+            <rdf:Description rdf:about="http://ontriscal#CoreBelief"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://ontriscal#AvoidanceOfThreateningSignsOrSituations"/>
+            <rdf:Description rdf:about="http://ontriscal#DifficultySpeaking"/>
+            <rdf:Description rdf:about="http://ontriscal#Freezing"/>
+            <rdf:Description rdf:about="http://ontriscal#Hyperventilation"/>
+            <rdf:Description rdf:about="http://ontriscal#Restlessness"/>
+            <rdf:Description rdf:about="http://ontriscal#SecuritySearch"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://ontriscal#Brainstorming"/>
+            <rdf:Description rdf:about="http://ontriscal#CognitiveRestructuring"/>
+            <rdf:Description rdf:about="http://ontriscal#CopingStrategies"/>
+            <rdf:Description rdf:about="http://ontriscal#CopingWithStress"/>
+            <rdf:Description rdf:about="http://ontriscal#DecatastrophizingWithDescendingArrows"/>
+            <rdf:Description rdf:about="http://ontriscal#Desensitization"/>
+            <rdf:Description rdf:about="http://ontriscal#Distractions"/>
+            <rdf:Description rdf:about="http://ontriscal#EvidenceAnalysis"/>
+            <rdf:Description rdf:about="http://ontriscal#ExpositionsHierarchization"/>
+            <rdf:Description rdf:about="http://ontriscal#ExposureTechniques"/>
+            <rdf:Description rdf:about="http://ontriscal#FaceCards"/>
+            <rdf:Description rdf:about="http://ontriscal#PizzaTechnique"/>
+            <rdf:Description rdf:about="http://ontriscal#ProblemSolving"/>
+            <rdf:Description rdf:about="http://ontriscal#Psychoeducation"/>
+            <rdf:Description rdf:about="http://ontriscal#RecordingDysfunctionalThoughts"/>
+            <rdf:Description rdf:about="http://ontriscal#RelaxationTechniques"/>
+            <rdf:Description rdf:about="http://ontriscal#Self-Instruction"/>
+            <rdf:Description rdf:about="http://ontriscal#SocialSkillsTechniques"/>
+            <rdf:Description rdf:about="http://ontriscal#SocraticQuestioning"/>
+            <rdf:Description rdf:about="http://ontriscal#SpectatorOrDistantObserver"/>
+            <rdf:Description rdf:about="http://ontriscal#SwitchingRoles"/>
+            <rdf:Description rdf:about="http://ontriscal#SystematicDesensitization"/>
+            <rdf:Description rdf:about="http://ontriscal#Thought-stoppingAndSelf-instruction"/>
+            <rdf:Description rdf:about="http://ontriscal#ThoughtStop"/>
+            <rdf:Description rdf:about="http://ontriscal#UseOfRewards"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://ontriscal#Catastrophizing"/>
+            <rdf:Description rdf:about="http://ontriscal#DichotomousThinking"/>
+            <rdf:Description rdf:about="http://ontriscal#EmotionalReasoning"/>
+            <rdf:Description rdf:about="http://ontriscal#Generalization"/>
+            <rdf:Description rdf:about="http://ontriscal#Hypergeneralization"/>
+            <rdf:Description rdf:about="http://ontriscal#Lettering"/>
+            <rdf:Description rdf:about="http://ontriscal#MaximizationOfTheNegative"/>
+            <rdf:Description rdf:about="http://ontriscal#MindReading"/>
+            <rdf:Description rdf:about="http://ontriscal#MinimizationOfThePositive"/>
+            <rdf:Description rdf:about="http://ontriscal#Perfectionism"/>
+            <rdf:Description rdf:about="http://ontriscal#Personalization"/>
+            <rdf:Description rdf:about="http://ontriscal#PredictionOfTheFuture"/>
+            <rdf:Description rdf:about="http://ontriscal#SelectiveAbstraction"/>
+            <rdf:Description rdf:about="http://ontriscal#UnconditionalAcceptanceOfCriticism"/>
+            <rdf:Description rdf:about="http://ontriscal#UnfairComparisons"/>
+            <rdf:Description rdf:about="http://ontriscal#Victimization"/>
+            <rdf:Description rdf:about="http://ontriscal#WhatIf"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://ontriscal#CreepedOut"/>
+            <rdf:Description rdf:about="http://ontriscal#Excited"/>
+            <rdf:Description rdf:about="http://ontriscal#Frustrated"/>
+            <rdf:Description rdf:about="http://ontriscal#Impatient"/>
+            <rdf:Description rdf:about="http://ontriscal#Irritable"/>
+            <rdf:Description rdf:about="http://ontriscal#Nervous"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://ontriscal#DecisionMaking"/>
+            <rdf:Description rdf:about="http://ontriscal#Flexibility"/>
+            <rdf:Description rdf:about="http://ontriscal#Impulsiveness"/>
+            <rdf:Description rdf:about="http://ontriscal#Organization"/>
+            <rdf:Description rdf:about="http://ontriscal#Planning"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://ontriscal#Devaluation"/>
+            <rdf:Description rdf:about="http://ontriscal#Disaffection"/>
+            <rdf:Description rdf:about="http://ontriscal#Helplessness"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://ontriscal#DifficultyOfReasoning"/>
+            <rdf:Description rdf:about="http://ontriscal#FearOfGoingCrazy"/>
+            <rdf:Description rdf:about="http://ontriscal#FearOfLosingControl"/>
+            <rdf:Description rdf:about="http://ontriscal#FearOfNegativeEvaluationByOthers"/>
+            <rdf:Description rdf:about="http://ontriscal#FearOfPhysicalInjuryOrDeath"/>
+            <rdf:Description rdf:about="http://ontriscal#PerceptionsOfUnrealityOrDetachment"/>
+            <rdf:Description rdf:about="http://ontriscal#PoorConcentration"/>
+            <rdf:Description rdf:about="http://ontriscal#PoorMemory"/>
+            <rdf:Description rdf:about="http://ontriscal#TerrifyingThoughts"/>
+            <rdf:Description rdf:about="http://ontriscal#ThreatHypervigilance"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://ontriscal#F00-F09"/>
+            <rdf:Description rdf:about="http://ontriscal#F00-F99"/>
+            <rdf:Description rdf:about="http://ontriscal#F10-F19"/>
+            <rdf:Description rdf:about="http://ontriscal#F20-F29"/>
+            <rdf:Description rdf:about="http://ontriscal#F30-F39"/>
+            <rdf:Description rdf:about="http://ontriscal#F40-F48"/>
+            <rdf:Description rdf:about="http://ontriscal#F50-F59"/>
+            <rdf:Description rdf:about="http://ontriscal#F60-F69"/>
+            <rdf:Description rdf:about="http://ontriscal#F70-F79"/>
+            <rdf:Description rdf:about="http://ontriscal#F80-F89"/>
+            <rdf:Description rdf:about="http://ontriscal#F90-F98"/>
+            <rdf:Description rdf:about="http://ontriscal#F99"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://ontriscal#LighterGas"/>
+            <rdf:Description rdf:about="http://ontriscal#PaintThinner"/>
+            <rdf:Description rdf:about="http://ontriscal#ShoeGlue"/>
+        </owl:members>
+    </rdf:Description>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi -->
+
