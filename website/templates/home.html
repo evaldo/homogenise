@@ -1,0 +1,59 @@
+{% extends "base.html" %} {% block title %}Home{% endblock %} 
+{% block content%}
+<h1 align="left">Homegenise</h1>
+</br>
+
+<p align="justify">
+Mixed methods (or quali-quanti analysis) is a research approach that utilizes qualitative and quantitative data and aims to merge them 
+within the same object of study. Integrating quali-quanti data provides opportunities for enhancing analysis and encourages the development 
+of studies employing mixed methods as a research approach. Analyzing quali-quanti data presents various challenges, including 
+formalizing data production in specific research contexts, sharing knowledge about different variables, reusing knowledge from qualitative 
+data, and visualizing the combined data. Homogenise (met<b><i>H</i></b>od for <b><i>O</i></b>ntological <b><i>M</i></b>odeling <b><i>O</i></b>f knowled<b><i>GE</i></b> i<b><i>N</i></b> qual<b><i>i</i></b>-quanti re<b><i>SE</i></b>arch) 
+is a method used for organizing and representing knowledge about quali-quanti data. This software platform has the same name of method. It aims to support Homogenise activities.
+</p>
+</br>
+
+<p align="justify">
+  This version aims support activities that establish a process to improve quali-quanti data analysis following the convergent design. The activities are defined below:
+</p>
+<p align="justify">
+  <ul>
+    <li>In activity one, the domain ontology concepts structure the qualitative analysis coding scheme, forming the code list in a 
+      CAQDAS (Computer Aided Qualitative Data Analysis Software). Experts can export all concepts using ontology editors. CAQDAS tools can import this structure to create a list of codes. 
+      In addition, ontologies structure consensual concepts, formalizing knowledge used a priori and offering support to experts in 
+      deductive coding. Furthermore, new codes may emerge during the coding task (denoting inductive coding) that will 
+      later be added to the ontology structure to enrich it by expanding knowledge to new codings.
+    </li>
+
+    <li>Activity two defines how to export coding by the CAQDAS. Experts select the coded data and pivot them from rows to columns. 
+      This pivoting allows you to organize codes (outcoming from coding) as variables (columns) in the new dataset. 
+      This activity exposes the need to unify qualitative data in a tabular format compatible with data tables originating from 
+      quantitative datasets. Furthermore, this activity follows in line with data preparation as a 
+      task that precedes data analysis to avoid mistakes (or biased analyses).
+    </li>
+    <li>Activity three aims to uniquely identify the object of study in both datasets (qualitative and quantitative) using a variable. 
+      For example, if the object of the study is a patient, the variable is the patient's identifier and must be semantically annotated 
+      by quali-quanti SDDs (Semantic Data Dictionary). This activity identifies the object of study to combine or integrate qualitative-quanti data collections.
+    </li>
+    <li> Activity four approaches the SDD technique to annotate quali-quanti data. Experts support filling out metadata templates to 
+      generate different SDDs for recording qualitative and quantitative data. The annotation by SDD uses domain ontologies 
+      regardless of the type of data annotated. Experts should formulate competency questions to guide interest in developing 
+      mixed methods research and to guide solution design and execution of the SDD technique.
+    </li>
+    <li>Finally, activity five defines the generation of KGs in RDF format by executing the sdd2rdf script, taking metadata and datasets as inputs. 
+      Figure bellow represents all the activities mentioned previously.
+    </li>      
+  </ul>
+</p>
+
+<p align="center">
+  <img src="{{url_for('static', filename='activities_specific_process_homogenise.jpg')}}" alt="Activities proprosed in Homogenise" width="800" height="400"/>
+
+  
+
+</p>
+
+</br>
+
+{% endblock %}
+

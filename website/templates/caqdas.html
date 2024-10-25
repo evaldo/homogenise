@@ -1,0 +1,39 @@
+{% extends "base.html" %} {% block title %}Computer Assisted Qualitative Data Analysis Software – CAQDAS{% endblock %} 
+{% block content%}
+<form method="POST">
+  <h1 align="left">Computer Assisted Qualitative Data Analysis Software – CAQDAS</h1>
+  <h4>(<a href="/caqdasdata?type_operation=A">Add new</a>) </h4>
+  <label for="researchline">Enter CAQDAS to search</label>
+  <input type="text" name="caqdas_search" id="caqdas_search" class="form-control"></input>
+
+   <br />
+
+  <div align="center">
+    <button type="submit" id="search" name="search" class="btn btn-primary">Search</button>
+  </div>
+</form>
+<br />
+<div  class="container">
+  <form action="" method="POST">
+    <table id="caqdas_table" class="table table-striped">
+      <thead>
+        <tr>
+          <th>#CAQDAS Id</th>
+          <th>Name</th>            
+          <th style="text-align: center" colspan="2">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for caqdas_item in output_data %}
+          <tr>
+            <td id="caqdas_line_id" name="caqdas_line_id" style="width: 150px; ; text-align: center">{{ caqdas_item[0] }}</td>
+            <td id="caqdas_line_name" name="caqdas_line_name">{{ caqdas_item[1] }}</td>            
+            <td style="text-align: center"><a href="/caqdasdata?type_operation=D&caqdas_id={{ caqdas_item[0] }}&caqdas_name={{ caqdas_item[1] }}&code_export_type_file={{ caqdas_item[2] }}">Delete</a></td> 
+            <td style="text-align: center"><a href="/caqdasdata?type_operation=U&caqdas_id={{ caqdas_item[0] }}&caqdas_name={{ caqdas_item[1] }}&code_export_type_file={{ caqdas_item[2] }}">Update</a></td>       
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </form>
+</div>
+{% endblock %}

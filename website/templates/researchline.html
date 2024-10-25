@@ -1,0 +1,40 @@
+{% extends "base.html" %} {% block title %}Research Line{% endblock %} 
+{% block content%}
+<form method="POST">
+  <h1 align="left">Research Line</h1>
+  <h4>(<a href="/researchlinedata?type_operation=A">Add new</a>) </h4>
+  <label for="researchline">Enter research line to search</label>
+  <input type="text" name="researchline_search" id="researchline_search" class="form-control"></input>
+
+   <br />
+
+  <div align="center">
+    <button type="submit" id="search" name="search" class="btn btn-primary">Search</button>
+  </div>
+</form>
+<br />
+<div  class="container">
+  <form action="" method="POST">
+    <table id="researchline_table" class="table table-striped">
+      <thead>
+        <tr>
+          <th>#Research Line Id</th>
+          <th>Name</th>            
+          <th style="text-align: center" colspan="2">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for researchline_item in output_data %}
+          <tr>
+            <td id="research_line_id" name="research_line_id" style="width: 150px; ; text-align: center">{{ researchline_item[0] }}</td>
+            <td id="research_line_name" name="research_line_name">{{ researchline_item[1] }}</td>            
+            <td style="text-align: center"><a href="/researchlinedata?type_operation=D&research_line_id={{ researchline_item[0] }}&research_line_name={{ researchline_item[1] }}">Delete</a></td> 
+            <td style="text-align: center"><a href="/researchlinedata?type_operation=U&research_line_id={{ researchline_item[0] }}&research_line_name={{ researchline_item[1] }}">Update</a></td>       
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </form>
+</div>
+{% endblock %}
+
