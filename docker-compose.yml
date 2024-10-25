@@ -1,0 +1,29 @@
+services:
+  db:
+    image: postgres
+    restart: unless-stopped
+    container_name: homogenise_db
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=1234
+      - POSTGRES_DB=homogenise
+    ports:
+      - '5432:5432'
+    volumes:
+      - ./homogenise_db:/var/lib/postgresql/data
+      - ./website/settings/init.sql:/docker-entrypoint-initdb.d/create_database.sql
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U postgres" ]
+      interval: 1s
+      timeout: 5s
+      retries: 10
+
+  web:
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - '5000:5000'
+    build:
+      context: ./
+      dockerfile: ./Dockerfile
