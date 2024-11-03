@@ -18,6 +18,20 @@ services:
       timeout: 5s
       retries: 10
 
+  allegro:
+    image: franzinc/agraph
+    restart: unless-stopped
+    container_name: agraph
+    environment:
+      - AGRAPH_SUPER_USER=admin
+      - AGRAPH_SUPER_PASSWORD=12345
+    ports:
+      - '10000-10035:10000-10035'
+    volumes:
+      - agdata:/agraph/data
+      - agconfig:/agraph/etc
+    shm_size: 1gb
+
   web:
     depends_on:
       db:
@@ -27,3 +41,7 @@ services:
     build:
       context: ./
       dockerfile: ./Dockerfile
+
+volumes:
+  agdata:
+  agconfig:
