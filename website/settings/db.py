@@ -8,6 +8,8 @@ from sqlalchemy.orm import sessionmaker
 from psycopg2.extensions import ISOLATION_LEVEL_AUTOCOMMIT
 from sqlalchemy import create_engine
 from sqlalchemy.engine import URL
+from franz.openrdf.connect import ag_connect
+
 
 def get_OS():
     return platform.system()
@@ -28,6 +30,18 @@ def get_dbconfig():
             raise InvalidOS("Unknow OS")
     
     return config
+
+
+def get_allegro():
+    config = get_dbconfig()
+
+    repo = config.get('allegro', 'repo')
+    host = config.get('allegro', 'host')
+    port = int(config.get('allegro', 'port'))
+    user = config.get('allegro', 'user')
+    password = config.get('allegro', 'password')
+
+    return ag_connect(repo, host=host, port=port, user=user, password=password)
 
 
 def get_engine():

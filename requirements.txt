@@ -10,3 +10,6 @@ psycopg2-binary==2.9.9
 SQLAlchemy==2.0.32
 typing_extensions==4.12.2
 Werkzeug==3.0.4
+setuptools~=65.5.1
+pandas~=2.2.3
+agraph-python~=104.1.0

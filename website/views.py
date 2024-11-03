@@ -4,7 +4,8 @@ import shutil
 import uuid
 from flask import Blueprint, redirect, render_template, request, flash, url_for
 from flask_login import login_required, current_user
-from werkzeug.utils import secure_filename
+from franz.openrdf.rio.rdfformat import RDFFormat
+
 from website.settings import db
 from werkzeug.security import generate_password_hash
 
@@ -81,6 +82,12 @@ def insightsdata():
         else:
             for file_name in file_names:
                 cur.execute("INSERT INTO app.project_file(project_file_id, project_id, file_name, old_name, user_id_log, user_name_log) VALUES (nextval('app.project_file_project_file_id_seq'), " + project_id + ", '" + file_name[0] + "', '" + file_name[1] + "', " + current_user.get_id() + ", '" + current_user.first_name + "')")
+                with db.get_allegro() as conn:
+                    basedir = os.path.abspath(os.path.dirname(__file__))
+                    path = os.path.join(basedir, 'userfiles', file_name[0])
+                    conn.addFile(path, None, format=RDFFormat.TURTLE)
+
+
             flash('Data inserted!', category='success')
             return redirect(url_for('views.insights'))
 
