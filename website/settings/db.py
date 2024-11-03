@@ -32,16 +32,15 @@ def get_dbconfig():
     return config
 
 
-def get_allegro():
+def get_allegro(project_id):
     config = get_dbconfig()
 
-    repo = config.get('allegro', 'repo')
     host = config.get('allegro', 'host')
     port = int(config.get('allegro', 'port'))
     user = config.get('allegro', 'user')
     password = config.get('allegro', 'password')
 
-    return ag_connect(repo, host=host, port=port, user=user, password=password)
+    return ag_connect(str(project_id), host=host, port=port, user=user, password=password)
 
 
 def get_engine():

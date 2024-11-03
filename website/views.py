@@ -76,13 +76,14 @@ def insightsdata():
                 path = os.path.join(basedir, 'userfiles', file_name[0])
                 os.remove(path)
             cur.execute("delete from app.project_file where project_id = " + project_id)
-
+            with db.get_allegro(project_id) as conn:
+                conn.clear()
             flash('Data deleted!', category='success')
             return redirect(url_for('views.insights'))
         else:
             for file_name in file_names:
                 cur.execute("INSERT INTO app.project_file(project_file_id, project_id, file_name, old_name, user_id_log, user_name_log) VALUES (nextval('app.project_file_project_file_id_seq'), " + project_id + ", '" + file_name[0] + "', '" + file_name[1] + "', " + current_user.get_id() + ", '" + current_user.first_name + "')")
-                with db.get_allegro() as conn:
+                with db.get_allegro(project_id) as conn:
                     basedir = os.path.abspath(os.path.dirname(__file__))
                     path = os.path.join(basedir, 'userfiles', file_name[0])
                     conn.addFile(path, None, format=RDFFormat.TURTLE)
