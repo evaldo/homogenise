@@ -63,8 +63,9 @@ class project(Base):
     research_line_id = Column(Integer(), ForeignKey('research_line.research_line_id'))
     project_name = Column(String(200), nullable=False) 
     project_description = Column(String(400), nullable=False) 
-    projects_team = relationship('project_team', backref='project')    
-    codes_export = relationship('code_export', backref='project')    
+    projects_team = relationship('project_team', backref='project')
+    project_files = relationship('project_file', backref='project')
+    codes_export = relationship('code_export', backref='project')
     user_id_log = Column(Integer(), nullable=True)  
     user_name_log = Column(String(150), nullable=True)
 
@@ -106,6 +107,18 @@ class code_export(Base):
     user_id_log = Column(Integer(), nullable=True)  
     user_name_log = Column(String(150), nullable=True)
             
-    
+
+class project_file(Base):
+
+    __tablename__ = 'project_file'
+
+    project_file_id = Column(Integer(), primary_key=True)
+    project_id = Column(Integer(), ForeignKey('project.project_id'))
+    file_name = Column(String(200), nullable=False)
+    old_name = Column(String(200), nullable=False)
+    user_id_log = Column(Integer(), nullable=True)
+    user_name_log = Column(String(150), nullable=True)
+
+
 engine = db.get_engine()
-Base.metadata.create_all(engine)      
+Base.metadata.create_all(engine)
