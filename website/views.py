@@ -5,16 +5,68 @@ import uuid
 from flask import Blueprint, redirect, render_template, request, flash, url_for
 from flask_login import login_required, current_user
 from franz.openrdf.rio.rdfformat import RDFFormat
-
+from wordcloud import WordCloud
+import io
+import base64
 from website.settings import db
 from werkzeug.security import generate_password_hash
 
 views = Blueprint('views', __name__)
 
+
 @views.route('/')
 @login_required
 def home():
     return render_template("home.html", user=current_user)
+
+
+@views.route('/generatestatistics', methods=['GET', 'POST'])
+def generatestatistics():
+    project_id = request.args.get('project_id', '0') if request.method == 'GET' else request.form.get("project_id")
+    cur = db.get_cursor()
+
+    cur.execute("SELECT project_id, project_name FROM app.project order by 2")
+    data_project = cur.fetchall()
+
+    cur.close()
+    chart_list = ['Word cloud', 'Pie chart', 'Bar chart']
+    class_list = []
+    with db.get_allegro(project_id) as conn:
+        with conn.executeTupleQuery("""
+                    SELECT DISTINCT ?subject ?predicate
+                    WHERE { ?subject ?predicate owl:Class }
+                """) as results:
+            for result in results:
+                uri = str(result.getValue('subject'))
+                class_name = uri.split('#')[1].split('>')[0]
+                class_list.append(class_name)
+
+    if request.method == 'POST':
+        selected_chart = request.form.get("chart_type")
+        selected_class = request.form.get("class_list")
+        if project_id == 'null' or selected_chart == 'null' or selected_class == 'null':
+            flash('Fill out all data to execute transaction!', category='error')
+            return redirect(request.url)
+
+        teste = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras augue justo, semper vel dolor id, cursus aliquam sapien. Nam placerat erat sit amet molestie tempor. Pellentesque malesuada turpis neque, et condimentum diam vehicula ac. Fusce pharetra justo at tristique venenatis. Maecenas pharetra mauris id pulvinar ultricies. Mauris aliquam, dolor quis pulvinar dapibus, dui odio tempor orci, ac dignissim erat arcu a diam. Nulla sit amet iaculis justo. Maecenas ac facilisis magna. Nam vel elit semper, ultrices purus tempor, consequat massa. Nunc et pharetra nisi. Suspendisse scelerisque ullamcorper eros eget semper. Aenean nec bibendum lorem, ut tristique justo. Suspendisse sit amet odio augue. Ut et pharetra nisi. Nunc et fermentum magna. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Donec aliquam velit arcu, eget vestibulum purus auctor pellentesque. Etiam dictum porttitor mi, vel semper quam. Curabitur id dignissim risus. Mauris ac risus mollis ligula vulputate tristique. Integer erat risus, semper eu risus nec, cursus viverra mi. Morbi vulputate nec nibh non mollis. Duis molestie dolor id pharetra ullamcorper. Donec eget ipsum ultricies, egestas turpis maximus, pharetra metus. Vivamus mauris leo, ultrices ac aliquam scelerisque, laoreet ornare augue. Fusce semper, nisl at venenatis iaculis, felis tortor gravida lacus, a pretium nibh nibh vitae nisl. Cras nec velit quis ipsum consectetur vulputate eget a est. Vivamus varius interdum ex, non suscipit ipsum sollicitudin id. Proin finibus aliquet quam, at viverra urna accumsan a. Etiam placerat eget orci non tempus. Nam et lectus cursus, bibendum risus quis, volutpat ante. Morbi pellentesque purus nec ante congue, et efficitur tellus varius. Sed tincidunt diam sed fermentum fermentum. Aenean erat tortor, volutpat ut augue ac, fringilla feugiat nibh. Etiam vel ante et orci euismod elementum. Phasellus suscipit, nibh at feugiat aliquam, ante magna lobortis magna, ut vestibulum quam odio id nulla. Sed mollis tortor a nibh gravida fermentum. Aenean sagittis, libero a mollis malesuada, diam tellus pellentesque elit, id pharetra lorem libero vitae leo. In a sapien sagittis, euismod ligula sed, rutrum enim. Praesent ac augue augue. Maecenas consectetur pellentesque malesuada. Nullam et feugiat est. Aenean pretium mattis tellus at interdum. Aenean quis porta turpis, et imperdiet augue. In consequat vitae dui eget vestibulum. Ut imperdiet congue libero. Mauris et orci mattis, congue justo quis, venenatis lacus. Nulla vestibulum neque eu laoreet ornare. Nunc sit amet nisi at ante condimentum gravida ac ut magna. Curabitur pellentesque quis erat sit amet feugiat. Quisque ut faucibus mauris.'
+        cloud = WordCloud().generate(teste)
+        buffer = io.BytesIO()
+        cloud.to_image().save(buffer, 'png')
+        b64 = base64.b64encode(buffer.getvalue()).decode('ascii')
+
+        return render_template("generatestatistics.html", user=current_user
+                               , project_id=int(project_id)
+                               , project_list=data_project
+                               , class_list=class_list
+                               , chart_list=chart_list
+                               , img_uri=b64)
+
+    elif request.method == 'GET':
+        return render_template("generatestatistics.html", user=current_user
+                               , project_id=int(project_id)
+                               , project_list=data_project
+                               , class_list=class_list
+                               , chart_list=chart_list)
 
 
 @views.route('/insights', methods=['GET', 'POST'])
