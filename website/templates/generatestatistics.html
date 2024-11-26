@@ -14,9 +14,13 @@
   </div>
   <div class="form-group">
     <label for="class_list">Select classes:</label>
-    <select id="class_list" name="class_list" class="form-control">
+    <select multiple="multiple" id="class_list" name="class_list" style="width: 100%" class="form-control">
       {% for class in class_list %}
-        <option value="{{ class }}" >{{ class }}</option>
+        {% if (class in selected_classes): %}
+          <option value="{{ class }}" selected >{{ class }}</option>
+        {% else %}
+          <option value="{{ class }}" >{{ class }}</option>
+        {% endif %}
       {% endfor %}
     </select>
   </div>
@@ -39,4 +43,9 @@
   <br />
     
 </form>
+
+<script>
+  $('#class_list').multiSelect();
+  $('.ms-container').css('width', '100%');
+</script>
 {% endblock %}
