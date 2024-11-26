@@ -77,17 +77,17 @@ def generatestatistics():
             b64 = base64.b64encode(buffer.getvalue()).decode('ascii')
         elif selected_chart == 'Knowledge graph':
             csv = """
-                id_case;http://semanticscience.org/resource/isAttributeOf;caseconceptualization;1
-                document;http://semanticscience.org/resource/isAttributeOf;caseconceptualization;Doc_Joao
-                Source;http://semanticscience.org/resource/isAttributeOf;caseconceptualization;Microsoft Word
-                id_user;http://semanticscience.org/resource/isAttributeOf;caseconceptualization;1
-                User;http://semanticscience.org/resource/isAttributeOf;caseconceptualization;Joao Vitor
-                id_project;http://semanticscience.org/resource/isAttributeOf;caseconceptualization;ERSM
-                Project;http://semanticscience.org/resource/isAttributeOf;caseconceptualization;Processo sistemâtico fundamentado em modelagem ontológica para representar o conhecimento em análise quali-quanti.
-                Anxiety;http://semanticscience.org/resource/isAttributeOf;caseconceptualization;gerou extrema ansiedade.
-                AutomaticThinking;http://semanticscience.org/resource/isAttributeOf;caseconceptualization;Tenho que dar certo Não sou capaz
-                AvoidanceOfThreateningSignsOrSituations;http://semanticscience.org/resource/isAttributeOf;caseconceptualization;esquiva
-                BehaviorAspects;http://semanticscience.org/resource/isAttributeOf;caseconceptualization;costuma descontar a ansiedade na comida e muitas vezes é rude com os outros a sua volta
+                id_case;isAttributeOf;caseconceptualization;hasValue;1
+                document;isAttributeOf;caseconceptualization;hasValue;Doc_Joao
+                Source;isAttributeOf;caseconceptualization;hasValue;Microsoft Word
+                id_user;isAttributeOf;caseconceptualization;hasValue;1
+                User;isAttributeOf;caseconceptualization;hasValue;Joao Vitor
+                id_project;isAttributeOf;caseconceptualization;hasValue;ERSM
+                Project;isAttributeOf;caseconceptualization;hasValue;Processo sistemâtico fundamentado em modelagem ontológica para representar o conhecimento em análise quali-quanti.
+                Anxiety;isAttributeOf;caseconceptualization;hasValue;gerou extrema ansiedade.
+                AutomaticThinking;isAttributeOf;caseconceptualization;hasValue;Tenho que dar certo Não sou capaz
+                AvoidanceOfThreateningSignsOrSituations;isAttributeOf;caseconceptualization;hasValue;esquiva
+                BehaviorAspects;isAttributeOf;caseconceptualization;hasValue;costuma descontar a ansiedade na comida e muitas vezes é rude com os outros a sua volta
             """
 
             #head = ['drugA', 'drugB', 'drugC', 'drugD', 'drugA', 'drugC', 'drugD', 'drugE', 'gene1', 'gene2', 'gene3', 'gene4', 'gene50', 'gene2', 'gene3', 'gene4']
@@ -95,19 +95,18 @@ def generatestatistics():
             #tail = ['fever', 'hepatitis', 'bleeding', 'pain', 'gene1', 'gene2', 'gene4', 'gene20', 'obesity', 'heart_attack', 'hepatitis', 'bleeding', 'cancer', 'gene1', 'gene20', 'gene50']
 
             lines = csv.splitlines()
-            head = [line.split(';')[0] for line in lines if line.strip()]
-            relation = [line.split(';')[1] for line in lines if line.strip()]
-            tail = [line.split(';')[2] for line in lines if line.strip()]
+            ss = [line.split(';')[0] for line in lines if line.strip()]
+            p = [line.split(';')[1] for line in lines if line.strip()]
+            so = [line.split(';')[2] for line in lines if line.strip()]
+            pv = [line.split(';')[3] for line in lines if line.strip()]
+            sv = [line.split(';')[4] for line in lines if line.strip()]
 
-            print(head)
-            print(relation)
-            print(tail)
-
-            df = pd.DataFrame({'head': head, 'relation': relation, 'tail': tail})
+            df = pd.DataFrame({'ss': ss, 'p': p, 'so': so, 'pv': pv, 'sv': sv})
 
             graph = nx.Graph()
             for _, row in df.iterrows():
-                graph.add_edge(row['head'], row['tail'], label=row['relation'])
+                graph.add_edge(row['ss'], row['so'], label=row['p'])
+                graph.add_edge(row['ss'], row['sv'], label=row['pv'])
 
             pos = nx.spring_layout(graph, seed=42, k=0.9)
             labels = nx.get_edge_attributes(graph, 'label')
