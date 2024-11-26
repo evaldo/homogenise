@@ -34,7 +34,9 @@
     </select>
   </div>
   <div align="center">
-    <img src='data:image/png;base64,{{ img_uri }}' width="50%" />
+    {% if (img_uri != '0'): %}
+      <img src='data:image/png;base64,{{ img_uri }}' width="85%" />
+    {% endif %}
   </div>
   <br />  
   <div align="center">

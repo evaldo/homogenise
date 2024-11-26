@@ -11,7 +11,11 @@ import base64
 from website.settings import db
 from werkzeug.security import generate_password_hash
 import numpy as np
+import matplotlib
+matplotlib.use('Agg')
 import matplotlib.pyplot as plt
+import networkx as nx
+import pandas as pd
 
 views = Blueprint('views', __name__)
 
@@ -31,7 +35,7 @@ def generatestatistics():
     data_project = cur.fetchall()
 
     cur.close()
-    chart_list = ['Word cloud', 'Pie chart', 'Bar chart']
+    chart_list = ['Word cloud', 'Pie chart', 'Bar chart', 'Knowledge graph']
     class_list = []
     with db.get_allegro(project_id) as conn:
         with conn.executeTupleQuery("""
@@ -53,7 +57,7 @@ def generatestatistics():
         b64 = ''
         if selected_chart == 'Word cloud':
             teste = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras augue justo, semper vel dolor id, cursus aliquam sapien. Nam placerat erat sit amet molestie tempor. Pellentesque malesuada turpis neque, et condimentum diam vehicula ac. Fusce pharetra justo at tristique venenatis. Maecenas pharetra mauris id pulvinar ultricies. Mauris aliquam, dolor quis pulvinar dapibus, dui odio tempor orci, ac dignissim erat arcu a diam. Nulla sit amet iaculis justo. Maecenas ac facilisis magna. Nam vel elit semper, ultrices purus tempor, consequat massa. Nunc et pharetra nisi. Suspendisse scelerisque ullamcorper eros eget semper. Aenean nec bibendum lorem, ut tristique justo. Suspendisse sit amet odio augue. Ut et pharetra nisi. Nunc et fermentum magna. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Donec aliquam velit arcu, eget vestibulum purus auctor pellentesque. Etiam dictum porttitor mi, vel semper quam. Curabitur id dignissim risus. Mauris ac risus mollis ligula vulputate tristique. Integer erat risus, semper eu risus nec, cursus viverra mi. Morbi vulputate nec nibh non mollis. Duis molestie dolor id pharetra ullamcorper. Donec eget ipsum ultricies, egestas turpis maximus, pharetra metus. Vivamus mauris leo, ultrices ac aliquam scelerisque, laoreet ornare augue. Fusce semper, nisl at venenatis iaculis, felis tortor gravida lacus, a pretium nibh nibh vitae nisl. Cras nec velit quis ipsum consectetur vulputate eget a est. Vivamus varius interdum ex, non suscipit ipsum sollicitudin id. Proin finibus aliquet quam, at viverra urna accumsan a. Etiam placerat eget orci non tempus. Nam et lectus cursus, bibendum risus quis, volutpat ante. Morbi pellentesque purus nec ante congue, et efficitur tellus varius. Sed tincidunt diam sed fermentum fermentum. Aenean erat tortor, volutpat ut augue ac, fringilla feugiat nibh. Etiam vel ante et orci euismod elementum. Phasellus suscipit, nibh at feugiat aliquam, ante magna lobortis magna, ut vestibulum quam odio id nulla. Sed mollis tortor a nibh gravida fermentum. Aenean sagittis, libero a mollis malesuada, diam tellus pellentesque elit, id pharetra lorem libero vitae leo. In a sapien sagittis, euismod ligula sed, rutrum enim. Praesent ac augue augue. Maecenas consectetur pellentesque malesuada. Nullam et feugiat est. Aenean pretium mattis tellus at interdum. Aenean quis porta turpis, et imperdiet augue. In consequat vitae dui eget vestibulum. Ut imperdiet congue libero. Mauris et orci mattis, congue justo quis, venenatis lacus. Nulla vestibulum neque eu laoreet ornare. Nunc sit amet nisi at ante condimentum gravida ac ut magna. Curabitur pellentesque quis erat sit amet feugiat. Quisque ut faucibus mauris.'
-            cloud = WordCloud().generate(teste)
+            cloud = WordCloud(width=1280, height=720, background_color='white', collocations=False).generate(teste)
             buffer = io.BytesIO()
             cloud.to_image().save(buffer, 'png')
             b64 = base64.b64encode(buffer.getvalue()).decode('ascii')
@@ -71,6 +75,51 @@ def generatestatistics():
             buffer = io.BytesIO()
             plt.savefig(buffer, format='png')
             b64 = base64.b64encode(buffer.getvalue()).decode('ascii')
+        elif selected_chart == 'Knowledge graph':
+            csv = """
+                id_case;http://semanticscience.org/resource/isAttributeOf;caseconceptualization;1
+                document;http://semanticscience.org/resource/isAttributeOf;caseconceptualization;Doc_Joao
+                Source;http://semanticscience.org/resource/isAttributeOf;caseconceptualization;Microsoft Word
+                id_user;http://semanticscience.org/resource/isAttributeOf;caseconceptualization;1
+                User;http://semanticscience.org/resource/isAttributeOf;caseconceptualization;Joao Vitor
+                id_project;http://semanticscience.org/resource/isAttributeOf;caseconceptualization;ERSM
+                Project;http://semanticscience.org/resource/isAttributeOf;caseconceptualization;Processo sistemâtico fundamentado em modelagem ontológica para representar o conhecimento em análise quali-quanti.
+                Anxiety;http://semanticscience.org/resource/isAttributeOf;caseconceptualization;gerou extrema ansiedade.
+                AutomaticThinking;http://semanticscience.org/resource/isAttributeOf;caseconceptualization;Tenho que dar certo Não sou capaz
+                AvoidanceOfThreateningSignsOrSituations;http://semanticscience.org/resource/isAttributeOf;caseconceptualization;esquiva
+                BehaviorAspects;http://semanticscience.org/resource/isAttributeOf;caseconceptualization;costuma descontar a ansiedade na comida e muitas vezes é rude com os outros a sua volta
+            """
+
+            #head = ['drugA', 'drugB', 'drugC', 'drugD', 'drugA', 'drugC', 'drugD', 'drugE', 'gene1', 'gene2', 'gene3', 'gene4', 'gene50', 'gene2', 'gene3', 'gene4']
+            #relation = ['treats', 'treats', 'treats', 'treats', 'inhibits', 'inhibits', 'inhibits', 'inhibits', 'associated', 'associated', 'associated', 'associated', 'associated', 'interacts', 'interacts', 'interacts']
+            #tail = ['fever', 'hepatitis', 'bleeding', 'pain', 'gene1', 'gene2', 'gene4', 'gene20', 'obesity', 'heart_attack', 'hepatitis', 'bleeding', 'cancer', 'gene1', 'gene20', 'gene50']
+
+            lines = csv.splitlines()
+            head = [line.split(';')[0] for line in lines if line.strip()]
+            relation = [line.split(';')[1] for line in lines if line.strip()]
+            tail = [line.split(';')[2] for line in lines if line.strip()]
+
+            print(head)
+            print(relation)
+            print(tail)
+
+            df = pd.DataFrame({'head': head, 'relation': relation, 'tail': tail})
+
+            graph = nx.Graph()
+            for _, row in df.iterrows():
+                graph.add_edge(row['head'], row['tail'], label=row['relation'])
+
+            pos = nx.spring_layout(graph, seed=42, k=0.9)
+            labels = nx.get_edge_attributes(graph, 'label')
+            plt.figure(figsize=(12, 10))
+            nx.draw(graph, pos, with_labels=True, font_size=10, node_size=700, node_color='lightblue', edge_color='gray', alpha=0.6)
+            nx.draw_networkx_edge_labels(graph, pos, edge_labels=labels, font_size=8, label_pos=0.3, verticalalignment='baseline')
+            plt.title('Knowledge Graph')
+            buffer = io.BytesIO()
+            plt.savefig(buffer, format='png')
+            b64 = base64.b64encode(buffer.getvalue()).decode('ascii')
+
+        plt.clf()
 
         return render_template("generatestatistics.html", user=current_user
                                , project_id=int(project_id)
@@ -85,7 +134,8 @@ def generatestatistics():
                                , project_id=int(project_id)
                                , project_list=data_project
                                , class_list=class_list
-                               , chart_list=chart_list)
+                               , chart_list=chart_list
+                               , img_uri='0')
 
 
 @views.route('/insights', methods=['GET', 'POST'])
