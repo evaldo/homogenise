@@ -122,6 +122,9 @@
         <Class IRI="#BiologicalSex"/>
     </Declaration>
     <Declaration>
+        <Class IRI="#BipolarDisorder"/>
+    </Declaration>
+    <Declaration>
         <Class IRI="#Brainstorming"/>
     </Declaration>
     <Declaration>
@@ -242,6 +245,9 @@
         <Class IRI="#DecisionMaking"/>
     </Declaration>
     <Declaration>
+        <Class IRI="#DecreasedCapacity"/>
+    </Declaration>
+    <Declaration>
         <Class IRI="#DeficientThinking"/>
     </Declaration>
     <Declaration>
@@ -272,6 +278,9 @@
         <Class IRI="#Desensitization"/>
     </Declaration>
     <Declaration>
+        <Class IRI="#Despondency"/>
+    </Declaration>
+    <Declaration>
         <Class IRI="#Devaluation"/>
     </Declaration>
     <Declaration>
@@ -291,6 +300,9 @@
     </Declaration>
     <Declaration>
         <Class IRI="#DichotomousThinking"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#DifferentialDiagnosis"/>
     </Declaration>
     <Declaration>
         <Class IRI="#DifficultyOfReasoning"/>
@@ -629,6 +641,9 @@
         <Class IRI="#LossOfEnergy"/>
     </Declaration>
     <Declaration>
+        <Class IRI="#Lovelessness"/>
+    </Declaration>
+    <Declaration>
         <Class IRI="#Low"/>
     </Declaration>
     <Declaration>
@@ -899,6 +914,9 @@
         <Class IRI="#Sadness"/>
     </Declaration>
     <Declaration>
+        <Class IRI="#SchizoaffectiveDisorder"/>
+    </Declaration>
+    <Declaration>
         <Class IRI="#Score"/>
     </Declaration>
     <Declaration>
@@ -1073,7 +1091,13 @@
         <Class IRI="#Weakness"/>
     </Declaration>
     <Declaration>
+        <Class IRI="#WeightChange"/>
+    </Declaration>
+    <Declaration>
         <Class IRI="#WhatIf"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Worthlessness"/>
     </Declaration>
     <Declaration>
         <Class IRI="#Yes"/>
@@ -1672,6 +1696,10 @@
         <Class IRI="#SocioDemographicData"/>
     </SubClassOf>
     <SubClassOf>
+        <Class IRI="#BipolarDisorder"/>
+        <Class IRI="#Disorder"/>
+    </SubClassOf>
+    <SubClassOf>
         <Class IRI="#Brainstorming"/>
         <Class IRI="#ClinicalStrategy"/>
     </SubClassOf>
@@ -1836,6 +1864,10 @@
         <Class IRI="#ExecutiveFunctions"/>
     </SubClassOf>
     <SubClassOf>
+        <Class IRI="#DecreasedCapacity"/>
+        <Class IRI="#BehaviorAspect"/>
+    </SubClassOf>
+    <SubClassOf>
         <Class IRI="#DeficientThinking"/>
         <Class IRI="#ContextualAspect"/>
     </SubClassOf>
@@ -1876,6 +1908,10 @@
         <Class IRI="#ClinicalStrategy"/>
     </SubClassOf>
     <SubClassOf>
+        <Class IRI="#Despondency"/>
+        <Class IRI="#EmotionalAspect"/>
+    </SubClassOf>
+    <SubClassOf>
         <Class IRI="#Devaluation"/>
         <Class IRI="#CoreBelief"/>
     </SubClassOf>
@@ -1902,6 +1938,10 @@
     <SubClassOf>
         <Class IRI="#DichotomousThinking"/>
         <Class IRI="#CognitiveDistortion"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#DifferentialDiagnosis"/>
+        <Class IRI="#ClinicalEvaluation"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#DifficultyOfReasoning"/>
@@ -2356,6 +2396,10 @@
         <Class IRI="#PhysiologicalSymptom"/>
     </SubClassOf>
     <SubClassOf>
+        <Class IRI="#Lovelessness"/>
+        <Class IRI="#Disorder"/>
+    </SubClassOf>
+    <SubClassOf>
         <Class IRI="#Low"/>
         <Class IRI="#FrequencyOfUseOfTheTypeOfPsychoactiveSubstance"/>
     </SubClassOf>
@@ -2716,6 +2760,10 @@
         <Class IRI="#EmotionalAspect"/>
     </SubClassOf>
     <SubClassOf>
+        <Class IRI="#SchizoaffectiveDisorder"/>
+        <Class IRI="#MentalDisorder"/>
+    </SubClassOf>
+    <SubClassOf>
         <Class IRI="#Score"/>
         <Class IRI="#QuestionnaireElement"/>
     </SubClassOf>
@@ -2948,8 +2996,16 @@
         <Class IRI="#PhysiologicalSymptom"/>
     </SubClassOf>
     <SubClassOf>
+        <Class IRI="#WeightChange"/>
+        <Class IRI="#PhysiologicalReaction"/>
+    </SubClassOf>
+    <SubClassOf>
         <Class IRI="#WhatIf"/>
         <Class IRI="#CognitiveDistortion"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Worthlessness"/>
+        <Class IRI="#Disorder"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#Yes"/>
