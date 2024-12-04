@@ -16,6 +16,7 @@ matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import networkx as nx
 import pandas as pd
+import json
 
 views = Blueprint('views', __name__)
 
@@ -25,6 +26,53 @@ views = Blueprint('views', __name__)
 def home():
     return render_template("home.html", user=current_user)
 
+
+def do_graph(project_id, selected_chart, selected_classes):
+    word_list = []
+    word_count = []
+    graph_sparql = """
+                prefix sio: <http://semanticscience.org/resource/> 
+                SELECT distinct ?ss (count(?ss) as ?count) 
+                WHERE {{ ?s ?p ?o .                           
+                       BIND(strbefore(strafter(str(?s),"#"), "-") as ?ss) .
+                       BIND(strbefore(strafter(str(?o),"#"), "-") as ?so) .
+                       FILTER(?ss in ({})) .
+                       FILTER(?so != '')
+                      }}
+                GROUP BY ?ss
+            """.format(", ".join("'{}'".format(word) for word in selected_classes))
+    with db.get_allegro(project_id) as conn:
+        with conn.executeTupleQuery(graph_sparql) as results:
+            for result in results:
+                name = str(result.getValue('ss')).replace('"', '')
+                count = int(str(result.getValue('count')).split('^')[0].replace('"', ''))
+                word_count.append([name, count])
+                for _ in range(count):
+                    word_list.append(name)
+
+    b64 = ''
+    if selected_chart == 'Word cloud':
+        words = ' '.join(word_list)
+        cloud = WordCloud(width=1280, height=720, background_color='white', collocations=False).generate(words)
+        buffer = io.BytesIO()
+        cloud.to_image().save(buffer, 'png')
+        b64 = base64.b64encode(buffer.getvalue()).decode('ascii')
+    elif selected_chart == 'Pie chart':
+        counts = np.array([sublist[1] for sublist in word_count])
+        labels = [sublist[0] for sublist in word_count]
+        plt.pie(counts, labels=labels)
+        buffer = io.BytesIO()
+        plt.savefig(buffer, format='png')
+        b64 = base64.b64encode(buffer.getvalue()).decode('ascii')
+    elif selected_chart == 'Bar chart':
+        x = np.array([sublist[0] for sublist in word_count])
+        y = np.array([sublist[1] for sublist in word_count])
+        plt.bar(x, y)
+        buffer = io.BytesIO()
+        plt.savefig(buffer, format='png')
+        b64 = base64.b64encode(buffer.getvalue()).decode('ascii')
+
+    return b64
 
 @views.route('/generatestatistics', methods=['GET', 'POST'])
 def generatestatistics():
@@ -55,57 +103,83 @@ def generatestatistics():
             return redirect(request.url)
 
         b64 = ''
-        if selected_chart == 'Word cloud':
-            teste = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras augue justo, semper vel dolor id, cursus aliquam sapien. Nam placerat erat sit amet molestie tempor. Pellentesque malesuada turpis neque, et condimentum diam vehicula ac. Fusce pharetra justo at tristique venenatis. Maecenas pharetra mauris id pulvinar ultricies. Mauris aliquam, dolor quis pulvinar dapibus, dui odio tempor orci, ac dignissim erat arcu a diam. Nulla sit amet iaculis justo. Maecenas ac facilisis magna. Nam vel elit semper, ultrices purus tempor, consequat massa. Nunc et pharetra nisi. Suspendisse scelerisque ullamcorper eros eget semper. Aenean nec bibendum lorem, ut tristique justo. Suspendisse sit amet odio augue. Ut et pharetra nisi. Nunc et fermentum magna. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Donec aliquam velit arcu, eget vestibulum purus auctor pellentesque. Etiam dictum porttitor mi, vel semper quam. Curabitur id dignissim risus. Mauris ac risus mollis ligula vulputate tristique. Integer erat risus, semper eu risus nec, cursus viverra mi. Morbi vulputate nec nibh non mollis. Duis molestie dolor id pharetra ullamcorper. Donec eget ipsum ultricies, egestas turpis maximus, pharetra metus. Vivamus mauris leo, ultrices ac aliquam scelerisque, laoreet ornare augue. Fusce semper, nisl at venenatis iaculis, felis tortor gravida lacus, a pretium nibh nibh vitae nisl. Cras nec velit quis ipsum consectetur vulputate eget a est. Vivamus varius interdum ex, non suscipit ipsum sollicitudin id. Proin finibus aliquet quam, at viverra urna accumsan a. Etiam placerat eget orci non tempus. Nam et lectus cursus, bibendum risus quis, volutpat ante. Morbi pellentesque purus nec ante congue, et efficitur tellus varius. Sed tincidunt diam sed fermentum fermentum. Aenean erat tortor, volutpat ut augue ac, fringilla feugiat nibh. Etiam vel ante et orci euismod elementum. Phasellus suscipit, nibh at feugiat aliquam, ante magna lobortis magna, ut vestibulum quam odio id nulla. Sed mollis tortor a nibh gravida fermentum. Aenean sagittis, libero a mollis malesuada, diam tellus pellentesque elit, id pharetra lorem libero vitae leo. In a sapien sagittis, euismod ligula sed, rutrum enim. Praesent ac augue augue. Maecenas consectetur pellentesque malesuada. Nullam et feugiat est. Aenean pretium mattis tellus at interdum. Aenean quis porta turpis, et imperdiet augue. In consequat vitae dui eget vestibulum. Ut imperdiet congue libero. Mauris et orci mattis, congue justo quis, venenatis lacus. Nulla vestibulum neque eu laoreet ornare. Nunc sit amet nisi at ante condimentum gravida ac ut magna. Curabitur pellentesque quis erat sit amet feugiat. Quisque ut faucibus mauris.'
-            cloud = WordCloud(width=1280, height=720, background_color='white', collocations=False).generate(teste)
-            buffer = io.BytesIO()
-            cloud.to_image().save(buffer, 'png')
-            b64 = base64.b64encode(buffer.getvalue()).decode('ascii')
-        elif selected_chart == 'Pie chart':
-            teste = np.array([35, 25, 25, 15])
-            mylabels = ["Apples", "Bananas", "Cherries", "Dates"]
-            plt.pie(teste, labels=mylabels)
-            buffer = io.BytesIO()
-            plt.savefig(buffer, format='png')
-            b64 = base64.b64encode(buffer.getvalue()).decode('ascii')
-        elif selected_chart == 'Bar chart':
-            x = np.array(["A", "B", "C", "D"])
-            y = np.array([3, 8, 1, 10])
-            plt.bar(x, y)
-            buffer = io.BytesIO()
-            plt.savefig(buffer, format='png')
-            b64 = base64.b64encode(buffer.getvalue()).decode('ascii')
+        if selected_chart in ['Word cloud', 'Pie chart', 'Bar chart']:
+            b64 = do_graph(project_id, selected_chart, selected_classes)
         elif selected_chart == 'Knowledge graph':
-            csv = """
-                id_case;isAttributeOf;caseconceptualization;hasValue;1
-                document;isAttributeOf;caseconceptualization;hasValue;Doc_Joao
-                Source;isAttributeOf;caseconceptualization;hasValue;Microsoft Word
-                id_user;isAttributeOf;caseconceptualization;hasValue;1
-                User;isAttributeOf;caseconceptualization;hasValue;Joao Vitor
-                id_project;isAttributeOf;caseconceptualization;hasValue;ERSM
-                Project;isAttributeOf;caseconceptualization;hasValue;Processo sistemâtico fundamentado em modelagem ontológica para representar o conhecimento em análise quali-quanti.
-                Anxiety;isAttributeOf;caseconceptualization;hasValue;gerou extrema ansiedade.
-                AutomaticThinking;isAttributeOf;caseconceptualization;hasValue;Tenho que dar certo Não sou capaz
-                AvoidanceOfThreateningSignsOrSituations;isAttributeOf;caseconceptualization;hasValue;esquiva
-                BehaviorAspects;isAttributeOf;caseconceptualization;hasValue;costuma descontar a ansiedade na comida e muitas vezes é rude com os outros a sua volta
-            """
+            ss = []
+            ps = []
+            so = []
+            pv = []
+            sv = []
+            sparql = """
+                    prefix sio: <http://semanticscience.org/resource/> 
+                    SELECT distinct ?ss (str(?p) as ?ps) ?so 
+                    WHERE { ?s ?p ?o .                    
+                             ?s sio:hasValue ?sv . 
+                             BIND(strbefore(strafter(str(?s),"#"), "-") as ?ss) .
+                             BIND(strbefore(strafter(str(?o),"#"), "-") as ?so) .
+                             #FILTER(?ss in ('Sadness','TherapeuticAction')) .
+                             FILTER(?so != '')
+                            }
+                    """
+            with db.get_allegro(project_id) as conn:
+                with conn.executeTupleQuery(sparql) as results:
+                    print(len(results))
+                    for result in results:
+                        pass
+                        #ss.append(str(result.getValue('ss')).replace('"', ''))
+                        #ps.append(str(result.getValue('ps')).replace('"', ''))
+                        #so.append(str(result.getValue('so')).replace('"', ''))
+
+            sparql = """
+                    prefix sio: <http://semanticscience.org/resource/> 
+                    SELECT distinct ?ss ('hasValue' as ?pv) ?sv 
+                    WHERE { ?s ?p ?o .                    
+                           ?s sio:hasValue ?sv . 
+                           BIND(strbefore(strafter(str(?s),"#"), "-") as ?ss) .
+                           BIND(strbefore(strafter(str(?o),"#"), "-") as ?so) .
+                           #FILTER(?ss in ('Sadness','TherapeuticAction')) .
+                           FILTER(?sv != ' ')
+                          }
+                        """
+            with db.get_allegro(project_id) as conn:
+                with conn.executeTupleQuery(sparql) as results:
+                    print(len(results))
+                    for result in results:
+                        ss.append(str(result.getValue('ss')).replace('"', ''))
+                        pv.append(str(result.getValue('pv')).replace('"', ''))
+                        sv.append(str(result.getValue('sv')).replace('"', ''))
+
+            #csv = """
+            #    id_case;isAttributeOf;caseconceptualization;hasValue;1
+            #    document;isAttributeOf;caseconceptualization;hasValue;Doc_Joao
+            #    Source;isAttributeOf;caseconceptualization;hasValue;Microsoft Word
+            #    id_user;isAttributeOf;caseconceptualization;hasValue;1
+            #    User;isAttributeOf;caseconceptualization;hasValue;Joao Vitor
+            #    id_project;isAttributeOf;caseconceptualization;hasValue;ERSM
+            #    Project;isAttributeOf;caseconceptualization;hasValue;Processo sistemâtico fundamentado em modelagem ontológica para representar o conhecimento em análise quali-quanti.
+            #    Anxiety;isAttributeOf;caseconceptualization;hasValue;gerou extrema ansiedade.
+            #    AutomaticThinking;isAttributeOf;caseconceptualization;hasValue;Tenho que dar certo Não sou capaz
+            #    AvoidanceOfThreateningSignsOrSituations;isAttributeOf;caseconceptualization;hasValue;esquiva
+            #    BehaviorAspects;isAttributeOf;caseconceptualization;hasValue;costuma descontar a ansiedade na comida e muitas vezes é rude com os outros a sua volta
+            #"""
 
             #head = ['drugA', 'drugB', 'drugC', 'drugD', 'drugA', 'drugC', 'drugD', 'drugE', 'gene1', 'gene2', 'gene3', 'gene4', 'gene50', 'gene2', 'gene3', 'gene4']
             #relation = ['treats', 'treats', 'treats', 'treats', 'inhibits', 'inhibits', 'inhibits', 'inhibits', 'associated', 'associated', 'associated', 'associated', 'associated', 'interacts', 'interacts', 'interacts']
             #tail = ['fever', 'hepatitis', 'bleeding', 'pain', 'gene1', 'gene2', 'gene4', 'gene20', 'obesity', 'heart_attack', 'hepatitis', 'bleeding', 'cancer', 'gene1', 'gene20', 'gene50']
 
-            lines = csv.splitlines()
-            ss = [line.split(';')[0] for line in lines if line.strip()]
-            p = [line.split(';')[1] for line in lines if line.strip()]
-            so = [line.split(';')[2] for line in lines if line.strip()]
-            pv = [line.split(';')[3] for line in lines if line.strip()]
-            sv = [line.split(';')[4] for line in lines if line.strip()]
+            #lines = csv.splitlines()
+            #ss = [line.split(';')[0] for line in lines if line.strip()]
+            #p = [line.split(';')[1] for line in lines if line.strip()]
+            #so = [line.split(';')[2] for line in lines if line.strip()]
+            #pv = [line.split(';')[3] for line in lines if line.strip()]
+            #sv = [line.split(';')[4] for line in lines if line.strip()]
 
-            df = pd.DataFrame({'ss': ss, 'p': p, 'so': so, 'pv': pv, 'sv': sv})
+            df = pd.DataFrame({'ss': ss, 'ps': ps, 'so': so, 'pv': pv, 'sv': sv})
 
             graph = nx.Graph()
             for _, row in df.iterrows():
-                graph.add_edge(row['ss'], row['so'], label=row['p'])
+                graph.add_edge(row['ss'], row['so'], label=row['ps'])
                 graph.add_edge(row['ss'], row['sv'], label=row['pv'])
 
             pos = nx.spring_layout(graph, seed=42, k=0.9)
