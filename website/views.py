@@ -109,77 +109,57 @@ def generatestatistics():
             ss = []
             ps = []
             so = []
-            pv = []
-            sv = []
+
+            ss2 = []
+            pv2 = []
+            sv2 = []
             sparql = """
                     prefix sio: <http://semanticscience.org/resource/> 
                     SELECT distinct ?ss (str(?p) as ?ps) ?so 
-                    WHERE { ?s ?p ?o .                    
+                    WHERE {{ ?s ?p ?o .                    
                              ?s sio:hasValue ?sv . 
                              BIND(strbefore(strafter(str(?s),"#"), "-") as ?ss) .
                              BIND(strbefore(strafter(str(?o),"#"), "-") as ?so) .
-                             #FILTER(?ss in ('Sadness','TherapeuticAction')) .
+                             FILTER(?ss in ({})) .
                              FILTER(?so != '')
-                            }
-                    """
+                            }}
+                    """.format(", ".join("'{}'".format(word) for word in selected_classes))
+
+            print(sparql)
             with db.get_allegro(project_id) as conn:
                 with conn.executeTupleQuery(sparql) as results:
-                    print(len(results))
                     for result in results:
-                        pass
-                        #ss.append(str(result.getValue('ss')).replace('"', ''))
-                        #ps.append(str(result.getValue('ps')).replace('"', ''))
-                        #so.append(str(result.getValue('so')).replace('"', ''))
+                        ss.append(str(result.getValue('ss')).replace('"', ''))
+                        ps.append(str(result.getValue('ps')).replace('"', '').split('/')[-1])
+                        so.append(str(result.getValue('so')).replace('"', ''))
 
             sparql = """
                     prefix sio: <http://semanticscience.org/resource/> 
                     SELECT distinct ?ss ('hasValue' as ?pv) ?sv 
-                    WHERE { ?s ?p ?o .                    
+                    WHERE {{ ?s ?p ?o .                    
                            ?s sio:hasValue ?sv . 
                            BIND(strbefore(strafter(str(?s),"#"), "-") as ?ss) .
                            BIND(strbefore(strafter(str(?o),"#"), "-") as ?so) .
-                           #FILTER(?ss in ('Sadness','TherapeuticAction')) .
+                           FILTER(?ss in ({})) .
                            FILTER(?sv != ' ')
-                          }
-                        """
+                          }}
+                        """.format(", ".join("'{}'".format(word) for word in selected_classes))
             with db.get_allegro(project_id) as conn:
                 with conn.executeTupleQuery(sparql) as results:
                     print(len(results))
                     for result in results:
-                        ss.append(str(result.getValue('ss')).replace('"', ''))
-                        pv.append(str(result.getValue('pv')).replace('"', ''))
-                        sv.append(str(result.getValue('sv')).replace('"', ''))
+                        ss2.append(str(result.getValue('ss')).replace('"', ''))
+                        pv2.append(str(result.getValue('pv')).replace('"', ''))
+                        sv2.append(str(result.getValue('sv')).replace('"', '').split('^')[0])
 
-            #csv = """
-            #    id_case;isAttributeOf;caseconceptualization;hasValue;1
-            #    document;isAttributeOf;caseconceptualization;hasValue;Doc_Joao
-            #    Source;isAttributeOf;caseconceptualization;hasValue;Microsoft Word
-            #    id_user;isAttributeOf;caseconceptualization;hasValue;1
-            #    User;isAttributeOf;caseconceptualization;hasValue;Joao Vitor
-            #    id_project;isAttributeOf;caseconceptualization;hasValue;ERSM
-            #    Project;isAttributeOf;caseconceptualization;hasValue;Processo sistemâtico fundamentado em modelagem ontológica para representar o conhecimento em análise quali-quanti.
-            #    Anxiety;isAttributeOf;caseconceptualization;hasValue;gerou extrema ansiedade.
-            #    AutomaticThinking;isAttributeOf;caseconceptualization;hasValue;Tenho que dar certo Não sou capaz
-            #    AvoidanceOfThreateningSignsOrSituations;isAttributeOf;caseconceptualization;hasValue;esquiva
-            #    BehaviorAspects;isAttributeOf;caseconceptualization;hasValue;costuma descontar a ansiedade na comida e muitas vezes é rude com os outros a sua volta
-            #"""
-
-            #head = ['drugA', 'drugB', 'drugC', 'drugD', 'drugA', 'drugC', 'drugD', 'drugE', 'gene1', 'gene2', 'gene3', 'gene4', 'gene50', 'gene2', 'gene3', 'gene4']
-            #relation = ['treats', 'treats', 'treats', 'treats', 'inhibits', 'inhibits', 'inhibits', 'inhibits', 'associated', 'associated', 'associated', 'associated', 'associated', 'interacts', 'interacts', 'interacts']
-            #tail = ['fever', 'hepatitis', 'bleeding', 'pain', 'gene1', 'gene2', 'gene4', 'gene20', 'obesity', 'heart_attack', 'hepatitis', 'bleeding', 'cancer', 'gene1', 'gene20', 'gene50']
-
-            #lines = csv.splitlines()
-            #ss = [line.split(';')[0] for line in lines if line.strip()]
-            #p = [line.split(';')[1] for line in lines if line.strip()]
-            #so = [line.split(';')[2] for line in lines if line.strip()]
-            #pv = [line.split(';')[3] for line in lines if line.strip()]
-            #sv = [line.split(';')[4] for line in lines if line.strip()]
-
-            df = pd.DataFrame({'ss': ss, 'ps': ps, 'so': so, 'pv': pv, 'sv': sv})
+            df = pd.DataFrame({'ss': ss, 'ps': ps, 'so': so})
+            df2 = pd.DataFrame({'ss': ss2, 'pv': pv2, 'sv': sv2})
 
             graph = nx.Graph()
             for _, row in df.iterrows():
                 graph.add_edge(row['ss'], row['so'], label=row['ps'])
+
+            for _, row in df2.iterrows():
                 graph.add_edge(row['ss'], row['sv'], label=row['pv'])
 
             pos = nx.spring_layout(graph, seed=42, k=0.9)
