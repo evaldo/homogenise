@@ -16,7 +16,6 @@ matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import networkx as nx
 import pandas as pd
-import json
 
 views = Blueprint('views', __name__)
 
