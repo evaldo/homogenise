@@ -1,19 +1,19 @@
-1-) Baixar o projeto sdd2rdf: https://github.com/tetherless-world/SemanticDataDictionary
-Obs.: É possível clonar o repositório ou fazer o download. Para clonar deve ser utilizado o Git. Irei explicar na sexta como utilizar o Git.
+1-) Clonar o projeto Homogenise do branch feature_docker: https://github.com/evaldo/homogenise.git
+Obs.: Para clonar utilize o seguinte comando -> git clone -b feature_docker https://github.com/evaldo/homogenise.git
 
-2-) Link para instalar o Python: https://www.python.org/downloads/
+2-) Caso necessário, instale o Python. Link para instalar o Python: https://www.python.org/downloads/
 
 3-) Após instalação do Python, o pacote "pandas" tem que ser instalado para execução do sdd2rdf:
 a-) Executar o "Prompt de comando"
 b-) Instalar o pacote "pandas" usando o comando: pip install manager
 
-4-) Configurar o caminho para execução do sdd2rdf pelo Python, por exemplo:
+4-) Importante configurar o caminho para execução do sdd2rdf pelo Python, por exemplo:
 path C:\python39;c:\users\evald\appdata\local\programs\python\python37;C:\Users\evald\AppData\Local\Programs\Python\Python37\Lib\site-packages\pandas;C:\Users\evald\AppData\Local\Programs\Python\Python37\Lib\site-packages\numpy
 
-Obs.: Irei explicar melhor na sexta como criar variáveis de ambiente e configurar o path.
+5-) Dentro da pasta <unidade>\<pasta clonada>\homogenise, executar o sdd2rdf. Por exemplo:
+python sdd2rdf.py config_quali.ini
 
-5-) Para executar o sdd2rdf:
-python sdd2rdf.py  config.ini.example
+Obs.: O grafo será gerado como extensão .TTL na pasta indicada na seção [Output] do arquivo .ini usado acima ->  <unidade>\<pasta clonada>\homogenise\sddquali\output\ttl\kg_quali.ttl
 
 6-) Utilizar o programa Grapher para geração do grafo: http://www.ldf.fi/service/rdf-grapher
 
