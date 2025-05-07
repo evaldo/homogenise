@@ -71,8 +71,8 @@ def get_engine():
     exists = cur.fetchone()
     if not exists: 
         set_scriptdb(cur)
-        print('Created Database!')
-
+        print('Created Database!')        
+        print('Created schema!')
         cur.close
 
     engine = create_engine(url)
@@ -92,16 +92,11 @@ def set_scriptdb(cur):
     config = get_dbconfig()
 
     cur.execute(sql.SQL("CREATE DATABASE {}").format(sql.Identifier(config.get('database', 'pgdb'))))
+    cur.execute(sql.SQL("CREATE SCHEMA IF NOT EXISTS app"))
 
-    con = psycopg2.connect(dbname=config.get('database', 'pgdb'), user=config.get('database', 'pguser'), host=config.get('database', 'pghost'), password=config.get('database', 'pgpasswd'))         
-    con.set_isolation_level(ISOLATION_LEVEL_AUTOCOMMIT)
-    curschema = con.cursor()
-
-    curschema.execute(sql.SQL("CREATE SCHEMA IF NOT EXISTS app"))
-    
 def get_cursor():
     config = get_dbconfig()
-    con = psycopg2.connect(dbname=config.get('database', 'pgdb'), user=config.get('database', 'pguser'), host=config.get('database', 'pghost'), password=config.get('database', 'pgpasswd'))         
+    con = psycopg2.connect(dbname=config.get('database', 'pgdb'), port=config.get('database', 'pgport'), user=config.get('database', 'pguser'), host=config.get('database', 'pghost'), password=config.get('database', 'pgpasswd'))         
     con.set_isolation_level(ISOLATION_LEVEL_AUTOCOMMIT)
     return con.cursor()
 
