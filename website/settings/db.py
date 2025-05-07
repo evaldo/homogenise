@@ -8,6 +8,8 @@ from sqlalchemy.orm import sessionmaker
 from psycopg2.extensions import ISOLATION_LEVEL_AUTOCOMMIT
 from sqlalchemy import create_engine
 from sqlalchemy.engine import URL
+from franz.openrdf.connect import ag_connect
+
 
 def get_OS():
     return platform.system()
@@ -29,20 +31,38 @@ def get_dbconfig():
     
     return config
 
-def get_engine():
 
-    config = get_dbconfig()      
+def get_allegro(project_id):
+    config = get_dbconfig()
+
+    host = config.get('allegro', 'host')
+    port = int(config.get('allegro', 'port'))
+    user = config.get('allegro', 'user')
+    password = config.get('allegro', 'password')
+
+    return ag_connect(str(project_id), host=host, port=port, user=user, password=password)
+
+
+def get_engine():
+    config = get_dbconfig()
+
+    user = config.get('database', 'pguser')
+    dbname = config.get('database', 'pgdb')
+    password = config.get('database', 'pgpasswd')
+    host = config.get('database', 'pghost')
+    port = int(config.get('database', 'pgport'))
+
     url = URL.create(
         drivername="postgresql",
-        username=config.get('database', 'pguser'),
-        password=config.get('database', 'pgpasswd'),
-        host=config.get('database', 'pghost'),
-        database=config.get('database', 'pgdb'),
-        port=config.get('database', 'pgport')
+        username=user,
+        password=password,
+        host=host,
+        database=dbname,
+        port=port
     )
-    
-    con = psycopg2.connect(dbname='postgres', port=config.get('database', 'pgport'), user=config.get('database', 'pguser'), host=config.get('database', 'pghost'), password=config.get('database', 'pgpasswd'))     
-    
+
+    con = psycopg2.connect(dbname=dbname, user=user, host=host, password=password)
+
     con.set_isolation_level(ISOLATION_LEVEL_AUTOCOMMIT)
 
     cur = con.cursor()

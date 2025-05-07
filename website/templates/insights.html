@@ -1,0 +1,39 @@
+{% extends "base.html" %} {% block title %}Insights{% endblock %}
+{% block content%}
+<form method="POST">
+  <h1 align="left">Insights</h1>
+    <h4>(<a href="/insightsdata">Add new</a>) </h4>
+    <label for="project_search">Enter project to search</label>
+    <input type="text" name="project_search" id="project_search" class="form-control" value="{{ last_search }}"></input>
+  <br />
+  <div align="center">
+    <button type="submit" class="btn btn-primary">Search</button>
+  </div>
+</form>
+<br />
+<div  class="container">
+  <form action="" method="POST">
+    <table id="project_table" class="table table-striped">
+      <thead>
+        <tr>
+          <th>#Project Id</th>
+          <th>Project Name</th>
+          <th>#Files uploaded</th>
+          <th style="text-align: center" colspan="2">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for item in output_data %}
+          <tr>
+            <td id="project_id" name="project_team_id" style="width: 200px; ; text-align: center">{{ item[0] }}</td>
+            <td id="project_name" name="project_name" style="width: 100px; text-align: center"><b>{{ item[1] }}</b></td>
+            <td id="number_of_files" name="number_of_files" style="width: 100px; text-align: center"><b>{{ item[2] }}</b></td>
+            <td style="text-align: center"><a href="/generatestatistics?project_id={{ item[0] }}">Generate statistics</a></td>
+            <td style="text-align: center"><a href="/insightsdata?type_operation=D&project_id={{ item[0] }}">Delete</a></td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </form>
+</div>
+{% endblock %}

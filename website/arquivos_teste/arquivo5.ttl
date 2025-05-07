@@ -1,0 +1,449 @@
+@prefix np: <http://www.nanopub.org/nschema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix uo: <http://purl.obolibrary.org/obo/UO_> .
+@prefix sio: <http://semanticscience.org/resource/> .
+@prefix stato: <http://purl.obolibrary.org/obo/STATO_> .
+@prefix example-kb: <http://example.com/kb/example#> .
+@prefix chear: <http://hadatac.org/ont/chear#> .
+@prefix hasco: <http://hadatac.org/ont/hasco#> .
+@prefix obo: <http://purl.obolibrary.org/obo/> .
+@prefix skos: <http://www.w3.org/2008/05/skos#> .
+@prefix ontriscal: <http://hadatac.org/ont/ontriscal#> .
+@prefix refiqda: <http://hadatac.org/ont/refiqda#> .
+@prefix qualico: <http://hadatac.org/ont/qualico#> .
+@prefix schema: <http://www.w3.org/2000/01/schema#> .
+
+<http://hadatac.org/ont/ontriscal#collection-3859ef302df068590a3dbb01bce8b5e7>    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://purl.org/dc/dcmitype/Dataset> ;
+        <http://purl.org/dc/terms/title>    "An Example Project"^^xsd:string ;
+        <http://purl.org/dc/terms/alternative>    "Example"^^xsd:string ;
+        <http://www.w3.org/2000/01/rdf-schema#comment>    "This is an example knowledge graph fragment created using the SDD approach."^^xsd:string ;
+        <http://purl.org/dc/terms/description>    "Annotated data from an example project was used to demonstrate the SDD functionality"^^xsd:string ;
+        <http://semanticscience.org/resource/hasIdentifier>    
+            [ <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://semanticscience.org/resource/Identifier> ; 
+            <http://semanticscience.org/resource/hasValue>    "ontriscal"^^xsd:string ] ;
+        <http://purl.org/dc/terms/format>    "csv"^^xsd:string .
+
+
+    <http://hadatac.org/ont/ontriscal#collection-3859ef302df068590a3dbb01bce8b5e7>    <http://www.w3.org/ns/prov#generatedAtTime>    "2023-05-22T18:05:32Z"^^xsd:dateTime ;
+        <http://purl.org/dc/terms/created>    "2023-05-22"^^xsd:date ;
+        <http://purl.org/dc/terms/issued>    "2023-05-22"^^xsd:date .
+
+
+    <http://hadatac.org/ont/ontriscal#id_case>    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    owl:Class ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>    hasco:originalID ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>    
+            [ <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://www.w3.org/2002/07/owl#Restriction> ;
+                <http://www.w3.org/2002/07/owl#allValuesFrom>    <http://hadatac.org/ont/ontriscal#case> ;
+                <http://www.w3.org/2002/07/owl#onProperty>    <http://semanticscience.org/resource/isAttributeOf> ] ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>    
+            [ <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://www.w3.org/2002/07/owl#Restriction> ;
+                <http://www.w3.org/2002/07/owl#hasValue>    schema:Interger ;
+                <http://www.w3.org/2002/07/owl#onProperty>    <http://semanticscience.org/resource/hasUnit> ] .
+
+    <http://hadatac.org/ont/ontriscal#final_questionnarie>    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    owl:Class ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>    ontriscal:FullName ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>    
+            [ <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://www.w3.org/2002/07/owl#Restriction> ;
+                <http://www.w3.org/2002/07/owl#allValuesFrom>    <http://hadatac.org/ont/ontriscal#finalquestionnaire> ;
+                <http://www.w3.org/2002/07/owl#onProperty>    <http://semanticscience.org/resource/isAttributeOf> ] .
+
+    <http://hadatac.org/ont/ontriscal#warm_sensation>    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    owl:Class ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>    ontriscal:WarmSensation ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>    
+            [ <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://www.w3.org/2002/07/owl#Restriction> ;
+                <http://www.w3.org/2002/07/owl#allValuesFrom>    <http://hadatac.org/ont/ontriscal#finalquestionnaire> ;
+                <http://www.w3.org/2002/07/owl#onProperty>    <http://semanticscience.org/resource/isAttributeOf> ] .
+
+    <http://hadatac.org/ont/ontriscal#leg_shaking>    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    owl:Class ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>    ontriscal:LegShaking ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>    
+            [ <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://www.w3.org/2002/07/owl#Restriction> ;
+                <http://www.w3.org/2002/07/owl#allValuesFrom>    <http://hadatac.org/ont/ontriscal#finalquestionnaire> ;
+                <http://www.w3.org/2002/07/owl#onProperty>    <http://semanticscience.org/resource/isAttributeOf> ] .
+
+    <http://hadatac.org/ont/ontriscal#inability_to_relax>    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    owl:Class ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>    ontriscal:InabilityToRelax ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>    
+            [ <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://www.w3.org/2002/07/owl#Restriction> ;
+                <http://www.w3.org/2002/07/owl#allValuesFrom>    <http://hadatac.org/ont/ontriscal#finalquestionnaire> ;
+                <http://www.w3.org/2002/07/owl#onProperty>    <http://semanticscience.org/resource/isAttributeOf> ] .
+
+    <http://hadatac.org/ont/ontriscal#fear_of_the_worst_happening>    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    owl:Class ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>    ontriscal:FearOfTheWorstHappening ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>    
+            [ <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://www.w3.org/2002/07/owl#Restriction> ;
+                <http://www.w3.org/2002/07/owl#allValuesFrom>    <http://hadatac.org/ont/ontriscal#finalquestionnaire> ;
+                <http://www.w3.org/2002/07/owl#onProperty>    <http://semanticscience.org/resource/isAttributeOf> ] .
+
+    <http://hadatac.org/ont/ontriscal#dizziness>    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    owl:Class ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>    ontriscal:Dizziness ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>    
+            [ <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://www.w3.org/2002/07/owl#Restriction> ;
+                <http://www.w3.org/2002/07/owl#allValuesFrom>    <http://hadatac.org/ont/ontriscal#finalquestionnaire> ;
+                <http://www.w3.org/2002/07/owl#onProperty>    <http://semanticscience.org/resource/isAttributeOf> ] .
+
+    <http://hadatac.org/ont/ontriscal#accelerated_heart>    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    owl:Class ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>    ontriscal:AcceleratedHeart ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>    
+            [ <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://www.w3.org/2002/07/owl#Restriction> ;
+                <http://www.w3.org/2002/07/owl#allValuesFrom>    <http://hadatac.org/ont/ontriscal#finalquestionnaire> ;
+                <http://www.w3.org/2002/07/owl#onProperty>    <http://semanticscience.org/resource/isAttributeOf> ] .
+
+    <http://hadatac.org/ont/ontriscal#balance_disorder>    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    owl:Class ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>    ontriscal:BalanceDisorder ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>    
+            [ <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://www.w3.org/2002/07/owl#Restriction> ;
+                <http://www.w3.org/2002/07/owl#allValuesFrom>    <http://hadatac.org/ont/ontriscal#finalquestionnaire> ;
+                <http://www.w3.org/2002/07/owl#onProperty>    <http://semanticscience.org/resource/isAttributeOf> ] .
+
+    <http://hadatac.org/ont/ontriscal#tremor>    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    owl:Class ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>    ontriscal:Tremor ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>    
+            [ <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://www.w3.org/2002/07/owl#Restriction> ;
+                <http://www.w3.org/2002/07/owl#allValuesFrom>    <http://hadatac.org/ont/ontriscal#finalquestionnaire> ;
+                <http://www.w3.org/2002/07/owl#onProperty>    <http://semanticscience.org/resource/isAttributeOf> ] .
+
+    <http://hadatac.org/ont/ontriscal#nervous>    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    owl:Class ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>    ontriscal:Nervous ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>    
+            [ <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://www.w3.org/2002/07/owl#Restriction> ;
+                <http://www.w3.org/2002/07/owl#allValuesFrom>    <http://hadatac.org/ont/ontriscal#finalquestionnaire> ;
+                <http://www.w3.org/2002/07/owl#onProperty>    <http://semanticscience.org/resource/isAttributeOf> ] .
+
+    <http://hadatac.org/ont/ontriscal#feeling_of_suffocation>    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    owl:Class ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>    ontriscal:FeelingOfSuffocation ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>    
+            [ <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://www.w3.org/2002/07/owl#Restriction> ;
+                <http://www.w3.org/2002/07/owl#allValuesFrom>    <http://hadatac.org/ont/ontriscal#finalquestionnaire> ;
+                <http://www.w3.org/2002/07/owl#onProperty>    <http://semanticscience.org/resource/isAttributeOf> ] .
+
+    <http://hadatac.org/ont/ontriscal#hand_tremor>    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    owl:Class ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>    ontriscal:HandTremor ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>    
+            [ <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://www.w3.org/2002/07/owl#Restriction> ;
+                <http://www.w3.org/2002/07/owl#allValuesFrom>    <http://hadatac.org/ont/ontriscal#finalquestionnaire> ;
+                <http://www.w3.org/2002/07/owl#onProperty>    <http://semanticscience.org/resource/isAttributeOf> ] .
+
+    <http://hadatac.org/ont/ontriscal#difficulty_breathing>    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    owl:Class ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>    ontriscal:DifficultyBreathing ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>    
+            [ <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://www.w3.org/2002/07/owl#Restriction> ;
+                <http://www.w3.org/2002/07/owl#allValuesFrom>    <http://hadatac.org/ont/ontriscal#finalquestionnaire> ;
+                <http://www.w3.org/2002/07/owl#onProperty>    <http://semanticscience.org/resource/isAttributeOf> ] .
+
+    <http://hadatac.org/ont/ontriscal#fear_to_die>    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    owl:Class ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>    ontriscal:FearToDie ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>    
+            [ <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://www.w3.org/2002/07/owl#Restriction> ;
+                <http://www.w3.org/2002/07/owl#allValuesFrom>    <http://hadatac.org/ont/ontriscal#finalquestionnaire> ;
+                <http://www.w3.org/2002/07/owl#onProperty>    <http://semanticscience.org/resource/isAttributeOf> ] .
+
+    <http://hadatac.org/ont/ontriscal#get_scared>    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    owl:Class ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>    ontriscal:GetScared ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>    
+            [ <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://www.w3.org/2002/07/owl#Restriction> ;
+                <http://www.w3.org/2002/07/owl#allValuesFrom>    <http://hadatac.org/ont/ontriscal#finalquestionnaire> ;
+                <http://www.w3.org/2002/07/owl#onProperty>    <http://semanticscience.org/resource/isAttributeOf> ] .
+
+    <http://hadatac.org/ont/ontriscal#feeling_faint>    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    owl:Class ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>    ontriscal:FeelingFaint ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>    
+            [ <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://www.w3.org/2002/07/owl#Restriction> ;
+                <http://www.w3.org/2002/07/owl#allValuesFrom>    <http://hadatac.org/ont/ontriscal#finalquestionnaire> ;
+                <http://www.w3.org/2002/07/owl#onProperty>    <http://semanticscience.org/resource/isAttributeOf> ] .
+
+    <http://hadatac.org/ont/ontriscal#flushed_face>    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    owl:Class ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>    ontriscal:FlushedFace ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>    
+            [ <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://www.w3.org/2002/07/owl#Restriction> ;
+                <http://www.w3.org/2002/07/owl#allValuesFrom>    <http://hadatac.org/ont/ontriscal#finalquestionnaire> ;
+                <http://www.w3.org/2002/07/owl#onProperty>    <http://semanticscience.org/resource/isAttributeOf> ] .
+
+    <http://hadatac.org/ont/ontriscal#sweat>    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    owl:Class ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>    ontriscal:Sweat ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>    
+            [ <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://www.w3.org/2002/07/owl#Restriction> ;
+                <http://www.w3.org/2002/07/owl#allValuesFrom>    <http://hadatac.org/ont/ontriscal#finalquestionnaire> ;
+                <http://www.w3.org/2002/07/owl#onProperty>    <http://semanticscience.org/resource/isAttributeOf> ] .
+
+    <http://hadatac.org/ont/ontriscal#final_score_bai_scale>    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    owl:Class ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>    ontriscal:Score ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>    
+            [ <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://www.w3.org/2002/07/owl#Restriction> ;
+                <http://www.w3.org/2002/07/owl#allValuesFrom>    <http://hadatac.org/ont/ontriscal#finalquestionnaire> ;
+                <http://www.w3.org/2002/07/owl#onProperty>    <http://semanticscience.org/resource/isAttributeOf> ] .
+
+    <http://hadatac.org/ont/ontriscal#final_risk_level>    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    owl:Class ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>    ontriscal:RiskLevel ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>    
+            [ <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://www.w3.org/2002/07/owl#Restriction> ;
+                <http://www.w3.org/2002/07/owl#allValuesFrom>    <http://hadatac.org/ont/ontriscal#finalquestionnaire> ;
+                <http://www.w3.org/2002/07/owl#onProperty>    <http://semanticscience.org/resource/isAttributeOf> ] .
+
+
+    <http://hadatac.org/ont/ontriscal#id_case>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2023-05-22T18:05:32Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#final_questionnarie>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2023-05-22T18:05:32Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#warm_sensation>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2023-05-22T18:05:33Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#leg_shaking>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2023-05-22T18:05:33Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#inability_to_relax>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2023-05-22T18:05:33Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#fear_of_the_worst_happening>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2023-05-22T18:05:33Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#dizziness>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2023-05-22T18:05:33Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#accelerated_heart>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2023-05-22T18:05:33Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#balance_disorder>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2023-05-22T18:05:33Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#tremor>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2023-05-22T18:05:33Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#nervous>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2023-05-22T18:05:33Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#feeling_of_suffocation>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2023-05-22T18:05:33Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#hand_tremor>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2023-05-22T18:05:33Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#difficulty_breathing>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2023-05-22T18:05:33Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#fear_to_die>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2023-05-22T18:05:34Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#get_scared>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2023-05-22T18:05:34Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#feeling_faint>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2023-05-22T18:05:34Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#flushed_face>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2023-05-22T18:05:34Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#sweat>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2023-05-22T18:05:34Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#final_score_bai_scale>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2023-05-22T18:05:34Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#final_risk_level>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2023-05-22T18:05:34Z"^^xsd:dateTime .
+
+
+    <http://hadatac.org/ont/ontriscal#case>    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    owl:Class ;
+        <http://www.w3.org/2000/01/rdf-schema#label>    "case"^^xsd:string ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>    sio:Human ;
+        ontriscal:patientAnswersQuestionnaire <http://hadatac.org/ont/ontriscal#finalquestionnaire> .
+
+    <http://hadatac.org/ont/ontriscal#finalquestionnaire>    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    owl:Class ;
+        <http://www.w3.org/2000/01/rdf-schema#label>    "finalquestionnaire"^^xsd:string ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>    ontriscal:Questionnarie ;
+        ontriscal:questionnaireAnsweredBy <http://hadatac.org/ont/ontriscal#case> .
+
+
+    <http://hadatac.org/ont/ontriscal#case>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2023-05-22T18:05:34Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#finalquestionnaire>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2023-05-22T18:05:34Z"^^xsd:dateTime .
+
+
+    <http://hadatac.org/ont/ontriscal#warm_sensation-acecef96ed7f030c4b4e3a850fc5db37>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://hadatac.org/ont/ontriscal#warm_sensation> ;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    ontriscal:WarmSensation ;
+        <http://semanticscience.org/resource/isAttributeOf>    <http://hadatac.org/ont/ontriscal#finalquestionnaire-4d6fb0030f5d87dadff342987c6095a5> ;
+        <http://semanticscience.org/resource/hasValue>    "1"^^xsd:integer .
+
+    <http://hadatac.org/ont/ontriscal#leg_shaking-f586f4c0c0122900af9eaf46e29f67bf>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://hadatac.org/ont/ontriscal#leg_shaking> ;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    ontriscal:LegShaking ;
+        <http://semanticscience.org/resource/isAttributeOf>    <http://hadatac.org/ont/ontriscal#finalquestionnaire-4d6fb0030f5d87dadff342987c6095a5> ;
+        <http://semanticscience.org/resource/hasValue>    "1"^^xsd:integer .
+
+    <http://hadatac.org/ont/ontriscal#inability_to_relax-a77a737e52f3227fd0f7cddda3e043c0>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://hadatac.org/ont/ontriscal#inability_to_relax> ;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    ontriscal:InabilityToRelax ;
+        <http://semanticscience.org/resource/isAttributeOf>    <http://hadatac.org/ont/ontriscal#finalquestionnaire-4d6fb0030f5d87dadff342987c6095a5> ;
+        <http://semanticscience.org/resource/hasValue>    "1"^^xsd:integer .
+
+    <http://hadatac.org/ont/ontriscal#fear_of_the_worst_happening-8ab667b02f00aea750d6d7f7a0ea92d3>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://hadatac.org/ont/ontriscal#fear_of_the_worst_happening> ;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    ontriscal:FearOfTheWorstHappening ;
+        <http://semanticscience.org/resource/isAttributeOf>    <http://hadatac.org/ont/ontriscal#finalquestionnaire-4d6fb0030f5d87dadff342987c6095a5> ;
+        <http://semanticscience.org/resource/hasValue>    "1"^^xsd:integer .
+
+    <http://hadatac.org/ont/ontriscal#dizziness-76c1a5fb333b6f320a8baf3e444faa94>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://hadatac.org/ont/ontriscal#dizziness> ;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    ontriscal:Dizziness ;
+        <http://semanticscience.org/resource/isAttributeOf>    <http://hadatac.org/ont/ontriscal#finalquestionnaire-4d6fb0030f5d87dadff342987c6095a5> ;
+        <http://semanticscience.org/resource/hasValue>    "0"^^xsd:integer .
+
+    <http://hadatac.org/ont/ontriscal#accelerated_heart-97942bb14b4488e138dcfb4dd86400b9>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://hadatac.org/ont/ontriscal#accelerated_heart> ;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    ontriscal:AcceleratedHeart ;
+        <http://semanticscience.org/resource/isAttributeOf>    <http://hadatac.org/ont/ontriscal#finalquestionnaire-4d6fb0030f5d87dadff342987c6095a5> ;
+        <http://semanticscience.org/resource/hasValue>    "1"^^xsd:integer .
+
+    <http://hadatac.org/ont/ontriscal#balance_disorder-1ac54bc223de54e327a1e384cf2249e1>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://hadatac.org/ont/ontriscal#balance_disorder> ;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    ontriscal:BalanceDisorder ;
+        <http://semanticscience.org/resource/isAttributeOf>    <http://hadatac.org/ont/ontriscal#finalquestionnaire-4d6fb0030f5d87dadff342987c6095a5> ;
+        <http://semanticscience.org/resource/hasValue>    "0"^^xsd:integer .
+
+    <http://hadatac.org/ont/ontriscal#tremor-352316f71ef9494451cd83dcff660426>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://hadatac.org/ont/ontriscal#tremor> ;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    ontriscal:Tremor ;
+        <http://semanticscience.org/resource/isAttributeOf>    <http://hadatac.org/ont/ontriscal#finalquestionnaire-4d6fb0030f5d87dadff342987c6095a5> ;
+        <http://semanticscience.org/resource/hasValue>    "1"^^xsd:integer .
+
+    <http://hadatac.org/ont/ontriscal#nervous-a9991b3e13c584f9656aa63de6692090>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://hadatac.org/ont/ontriscal#nervous> ;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    ontriscal:Nervous ;
+        <http://semanticscience.org/resource/isAttributeOf>    <http://hadatac.org/ont/ontriscal#finalquestionnaire-4d6fb0030f5d87dadff342987c6095a5> ;
+        <http://semanticscience.org/resource/hasValue>    "1"^^xsd:integer .
+
+    <http://hadatac.org/ont/ontriscal#feeling_of_suffocation-a22d217e133d2d0f117880e8fc5c7592>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://hadatac.org/ont/ontriscal#feeling_of_suffocation> ;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    ontriscal:FeelingOfSuffocation ;
+        <http://semanticscience.org/resource/isAttributeOf>    <http://hadatac.org/ont/ontriscal#finalquestionnaire-4d6fb0030f5d87dadff342987c6095a5> ;
+        <http://semanticscience.org/resource/hasValue>    "0"^^xsd:integer .
+
+    <http://hadatac.org/ont/ontriscal#hand_tremor-368f60e2570d102f27b5221ac3b12c16>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://hadatac.org/ont/ontriscal#hand_tremor> ;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    ontriscal:HandTremor ;
+        <http://semanticscience.org/resource/isAttributeOf>    <http://hadatac.org/ont/ontriscal#finalquestionnaire-4d6fb0030f5d87dadff342987c6095a5> ;
+        <http://semanticscience.org/resource/hasValue>    "0"^^xsd:integer .
+
+    <http://hadatac.org/ont/ontriscal#difficulty_breathing-ec7674d835f46e8728371a1bb947d24e>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://hadatac.org/ont/ontriscal#difficulty_breathing> ;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    ontriscal:DifficultyBreathing ;
+        <http://semanticscience.org/resource/isAttributeOf>    <http://hadatac.org/ont/ontriscal#finalquestionnaire-4d6fb0030f5d87dadff342987c6095a5> ;
+        <http://semanticscience.org/resource/hasValue>    "0"^^xsd:integer .
+
+    <http://hadatac.org/ont/ontriscal#fear_to_die-b8bf4262d9905a2ced6d408e89f1dcac>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://hadatac.org/ont/ontriscal#fear_to_die> ;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    ontriscal:FearToDie ;
+        <http://semanticscience.org/resource/isAttributeOf>    <http://hadatac.org/ont/ontriscal#finalquestionnaire-4d6fb0030f5d87dadff342987c6095a5> ;
+        <http://semanticscience.org/resource/hasValue>    "0"^^xsd:integer .
+
+    <http://hadatac.org/ont/ontriscal#get_scared-711fbe6384f8c9075bb11bc6919672a6>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://hadatac.org/ont/ontriscal#get_scared> ;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    ontriscal:GetScared ;
+        <http://semanticscience.org/resource/isAttributeOf>    <http://hadatac.org/ont/ontriscal#finalquestionnaire-4d6fb0030f5d87dadff342987c6095a5> ;
+        <http://semanticscience.org/resource/hasValue>    "1"^^xsd:integer .
+
+    <http://hadatac.org/ont/ontriscal#feeling_faint-6aca3e9de6d5f68e0b8c15a1f02cf97f>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://hadatac.org/ont/ontriscal#feeling_faint> ;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    ontriscal:FeelingFaint ;
+        <http://semanticscience.org/resource/isAttributeOf>    <http://hadatac.org/ont/ontriscal#finalquestionnaire-4d6fb0030f5d87dadff342987c6095a5> ;
+        <http://semanticscience.org/resource/hasValue>    "0"^^xsd:integer .
+
+    <http://hadatac.org/ont/ontriscal#flushed_face-c6c584255ab2a585f246c3654232f2a5>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://hadatac.org/ont/ontriscal#flushed_face> ;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    ontriscal:FlushedFace ;
+        <http://semanticscience.org/resource/isAttributeOf>    <http://hadatac.org/ont/ontriscal#finalquestionnaire-4d6fb0030f5d87dadff342987c6095a5> ;
+        <http://semanticscience.org/resource/hasValue>    "0"^^xsd:integer .
+
+    <http://hadatac.org/ont/ontriscal#sweat-0eb640d514a7d6d5a5e4e7c1b4b1e370>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://hadatac.org/ont/ontriscal#sweat> ;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    ontriscal:Sweat ;
+        <http://semanticscience.org/resource/isAttributeOf>    <http://hadatac.org/ont/ontriscal#finalquestionnaire-4d6fb0030f5d87dadff342987c6095a5> ;
+        <http://semanticscience.org/resource/hasValue>    "0"^^xsd:integer .
+
+    <http://hadatac.org/ont/ontriscal#final_score_bai_scale-6316e1ee42dce86fa2164a5c883be471>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://hadatac.org/ont/ontriscal#final_score_bai_scale> ;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    ontriscal:Score ;
+        <http://semanticscience.org/resource/isAttributeOf>    <http://hadatac.org/ont/ontriscal#finalquestionnaire-4d6fb0030f5d87dadff342987c6095a5> ;
+        <http://semanticscience.org/resource/hasValue>    "8"^^xsd:integer .
+
+    <http://hadatac.org/ont/ontriscal#final_risk_level-b71654d7977a27f4baf5ec140e4b1564>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://hadatac.org/ont/ontriscal#final_risk_level> ;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    ontriscal:RiskLevel ;
+        <http://semanticscience.org/resource/isAttributeOf>    <http://hadatac.org/ont/ontriscal#finalquestionnaire-4d6fb0030f5d87dadff342987c6095a5> ;
+        <http://semanticscience.org/resource/hasValue>    "Ansiedade Leve"^^xsd:string .
+
+    <http://hadatac.org/ont/ontriscal#finalquestionnaire-4d6fb0030f5d87dadff342987c6095a5>    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://hadatac.org/ont/ontriscal#finalquestionnaire> ;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    ontriscal:Questionnarie ;
+        <http://www.w3.org/2000/01/rdf-schema#label>    "finalquestionnaire"^^xsd:string ;
+        ontriscal:questionnaireAnsweredBy <http://hadatac.org/ont/ontriscal#case-4d6fb0030f5d87dadff342987c6095a5> ;
+        ontriscal:questionnaireAnsweredBy <http://hadatac.org/ont/ontriscal#case-dff567a15fa71ac1f55f49fb86c664e8> .
+
+
+    <http://hadatac.org/ont/ontriscal#warm_sensation-acecef96ed7f030c4b4e3a850fc5db37>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2023-05-22T18:05:34Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#leg_shaking-f586f4c0c0122900af9eaf46e29f67bf>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2023-05-22T18:05:34Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#inability_to_relax-a77a737e52f3227fd0f7cddda3e043c0>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2023-05-22T18:05:34Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#fear_of_the_worst_happening-8ab667b02f00aea750d6d7f7a0ea92d3>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2023-05-22T18:05:34Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#dizziness-76c1a5fb333b6f320a8baf3e444faa94>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2023-05-22T18:05:34Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#accelerated_heart-97942bb14b4488e138dcfb4dd86400b9>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2023-05-22T18:05:34Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#balance_disorder-1ac54bc223de54e327a1e384cf2249e1>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2023-05-22T18:05:34Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#tremor-352316f71ef9494451cd83dcff660426>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2023-05-22T18:05:34Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#nervous-a9991b3e13c584f9656aa63de6692090>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2023-05-22T18:05:34Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#feeling_of_suffocation-a22d217e133d2d0f117880e8fc5c7592>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2023-05-22T18:05:34Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#hand_tremor-368f60e2570d102f27b5221ac3b12c16>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2023-05-22T18:05:34Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#difficulty_breathing-ec7674d835f46e8728371a1bb947d24e>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2023-05-22T18:05:34Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#fear_to_die-b8bf4262d9905a2ced6d408e89f1dcac>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2023-05-22T18:05:34Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#get_scared-711fbe6384f8c9075bb11bc6919672a6>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2023-05-22T18:05:34Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#feeling_faint-6aca3e9de6d5f68e0b8c15a1f02cf97f>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2023-05-22T18:05:34Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#flushed_face-c6c584255ab2a585f246c3654232f2a5>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2023-05-22T18:05:34Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#sweat-0eb640d514a7d6d5a5e4e7c1b4b1e370>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2023-05-22T18:05:34Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#final_score_bai_scale-6316e1ee42dce86fa2164a5c883be471>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2023-05-22T18:05:35Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#final_risk_level-b71654d7977a27f4baf5ec140e4b1564>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2023-05-22T18:05:35Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#finalquestionnaire-4d6fb0030f5d87dadff342987c6095a5>    <http://www.w3.org/ns/prov#generatedAtTime>    "2023-05-22T18:05:35Z"^^xsd:dateTime .
+

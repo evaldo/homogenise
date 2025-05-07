@@ -22,6 +22,11 @@
       crossorigin="anonymous"
       />
 
+    <link
+      rel="stylesheet"
+      href="{{url_for('static', filename='multi-select.css')}}"
+      />
+
     <title>{% block title %}Home{% endblock %}</title>
   </head>
   <body>
@@ -45,7 +50,8 @@
           <a class="nav-item nav-link" id="projectteam" href="/projectteam">Project Team</a>
           <a class="nav-item nav-link" id="caqdas" href="/caqdas">CAQDAS</a>
           <a class="nav-item nav-link" id="uploadonto" href="/uploadonto">Knowledge Management</a>
-          <a class="nav-item nav-link" id="logout" href="/logout">Logout</a>          
+          <a class="nav-item nav-link" id="insights" href="/insights">Insights</a>
+          <a class="nav-item nav-link" id="logout" href="/logout">Logout</a>
           {% else %}
           <a class="nav-item nav-link" id="login" href="/login">Login</a>
           <a class="nav-item nav-link" id="signUp" href="/sign-up">Sign Up</a>
@@ -72,7 +78,6 @@
     </div>
     {% endif %} {% endfor %} {% endif %} {% endwith %}
 
-    <div class="container">{% block content %} {% endblock %}</div>
     <script
       src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
       integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
@@ -89,9 +94,11 @@
       crossorigin="anonymous"
     ></script>
 
-    <script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>    
+    <script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/dataTables.bootstrap5.js"></script>
+    <script type="text/javascript" charset="utf8" src="{{url_for('static', filename='jquery.multi-select.js')}}"></script>
 
+    <div class="container">{% block content %} {% endblock %}</div>
   </body>
 </html>
