@@ -1,6 +1,7 @@
 services:
   db:
     image: postgres
+    restart: unless-stopped
     container_name: homogenise_db
     environment:
       - PGPORT= 5439
@@ -9,7 +10,7 @@ services:
       - POSTGRES_DB=homogenise
     ports:
       - "5439:5439"
-    volumes:
+    volumes:      
       - ./db/homogenise/pgdata:/var/lib/postgresql
       - ./website/settings/init.sql:/docker-entrypoint-initdb.d/create_database.sql
             

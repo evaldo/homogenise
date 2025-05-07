@@ -18,11 +18,9 @@ def get_dbconfig():
     OS = get_OS()
     config = ConfigParser()  
     match OS:
-        case 'Linux':
-            
+        case 'Linux':            
             config.read(os.path.dirname(os.path.abspath('conf.ini'))+'/website/settings/conf.ini')
-        case 'Windows':
-            
+        case 'Windows':            
             config.read(os.path.dirname(os.path.abspath('conf.ini'))+'\\website\\settings\\conf.ini')
         case "Darwin":
             raise InvalidOS("Mac OS Is not Acceptable")
@@ -46,22 +44,16 @@ def get_allegro(project_id):
 def get_engine():
     config = get_dbconfig()
 
-    user = config.get('database', 'pguser')
-    dbname = config.get('database', 'pgdb')
-    password = config.get('database', 'pgpasswd')
-    host = config.get('database', 'pghost')
-    port = int(config.get('database', 'pgport'))
-
     url = URL.create(
         drivername="postgresql",
-        username=user,
-        password=password,
-        host=host,
-        database=dbname,
-        port=port
+        username=config.get('database', 'pguser'),
+        password=config.get('database', 'pgpasswd'),
+        host=config.get('database', 'pghost'),
+        database=config.get('database', 'pgdb'),
+        port=config.get('database', 'pgport')
     )
 
-    con = psycopg2.connect(dbname=dbname, user=user, host=host, password=password)
+    con = psycopg2.connect(dbname='postgres', port=config.get('database', 'pgport'), user=config.get('database', 'pguser'), host=config.get('database', 'pghost'), password=config.get('database', 'pgpasswd'))     
 
     con.set_isolation_level(ISOLATION_LEVEL_AUTOCOMMIT)
 
