@@ -205,7 +205,20 @@ def insights():
             cur.close()
             return render_template("insights.html", output_data=data, user=current_user, last_search=request.form.get("project_search"))
     else:
-        cur.execute("select project.project_id, project.project_name, count(files) from app.project project join app.project_file files on files.project_id = project.project_id group by project.project_id")
+        cur.execute("""
+            SELECT 
+                project.project_id, 
+                project.project_name, 
+                STRING_AGG(files.old_name, ', ') AS all_old_names
+            FROM 
+                app.project AS project
+            JOIN 
+                app.project_file AS files 
+            ON 
+                files.project_id = project.project_id
+            GROUP BY 
+                project.project_id, project.project_name
+        """)
         data = cur.fetchall()
         cur.close()
         return render_template("insights.html", output_data=data, user=current_user)
