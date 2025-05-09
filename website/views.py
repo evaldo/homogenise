@@ -61,14 +61,14 @@ def do_graph(project_id, selected_chart, selected_classes):
         labels = [sublist[0] for sublist in word_count]
         plt.pie(counts, labels=labels)
         buffer = io.BytesIO()
-        plt.savefig(buffer, format='png')
+        plt.savefig(buffer, format='png', dpi=300)
         b64 = base64.b64encode(buffer.getvalue()).decode('ascii')
     elif selected_chart == 'Bar chart':
         x = np.array([sublist[0] for sublist in word_count])
         y = np.array([sublist[1] for sublist in word_count])
         plt.bar(x, y)
         buffer = io.BytesIO()
-        plt.savefig(buffer, format='png')
+        plt.savefig(buffer, format='png', dpi=300)
         b64 = base64.b64encode(buffer.getvalue()).decode('ascii')
 
     return b64
@@ -238,13 +238,16 @@ def insightsdata():
                 flash('You must select a file.', category='error')
                 return redirect(request.url)
 
+        basedir = os.path.abspath(os.path.dirname(__file__))
+        userfiles_dir = os.path.join(basedir, 'userfiles')
+        os.makedirs(userfiles_dir, exist_ok=True)
+
         files = request.files.getlist('file')
         file_names = []
         for file in files:
             if file.filename != '':
                 file_id = str(uuid.uuid4())
-                basedir = os.path.abspath(os.path.dirname(__file__))
-                path = os.path.join(basedir, 'userfiles', file_id)
+                path = os.path.join(userfiles_dir, file_id)
                 file.save(path)
                 file_names.append([file_id, file.filename])
 
@@ -258,8 +261,7 @@ def insightsdata():
             cur.execute("select file_name from app.project_file where project_id = " + project_id)
             file_names = cur.fetchall()
             for file_name in file_names:
-                basedir = os.path.abspath(os.path.dirname(__file__))
-                path = os.path.join(basedir, 'userfiles', file_name[0])
+                path = os.path.join(userfiles_dir, file_name[0])
                 os.remove(path)
             cur.execute("delete from app.project_file where project_id = " + project_id)
             with db.get_allegro(project_id) as conn:
@@ -271,7 +273,7 @@ def insightsdata():
                 cur.execute("INSERT INTO app.project_file(project_file_id, project_id, file_name, old_name, user_id_log, user_name_log) VALUES (nextval('app.project_file_project_file_id_seq'), " + project_id + ", '" + file_name[0] + "', '" + file_name[1] + "', " + current_user.get_id() + ", '" + current_user.first_name + "')")
                 with db.get_allegro(project_id) as conn:
                     basedir = os.path.abspath(os.path.dirname(__file__))
-                    path = os.path.join(basedir, 'userfiles', file_name[0])
+                    path = os.path.join(userfiles_dir, file_name[0])
                     conn.addFile(path, None, format=RDFFormat.TURTLE)
 
 
