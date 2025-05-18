@@ -23,15 +23,18 @@
   </div>
   <div class="form-group">
     <label for="project_id">Files:</label>
-    {% if (type_operation == 'Add'): %}
+    {% if (type_operation != 'Delete'): %}
         <input type="file" name="file" accept=".ttl" multiple>
-    {% else: %}
+    {% endif %}
       <ul>
           {% for file_name in file_names %}
-          <li>{{ file_name[0] }}</li>
+            {% if (type_operation == 'Edit'): %}
+                <li>{{ file_name[0] }} <a href="/insightsdata?type_operation=E&project_id={{ project_id }}&remove_file={{ file_name[0] }}">[x]</a></li>
+            {% else: %}
+                <li>{{ file_name[0] }}</li>
+            {% endif %}
           {% endfor %}
       </ul>
-    {% endif %}
   </div>
   <br />  
   <div align="center">

@@ -124,7 +124,6 @@ def generatestatistics():
                             }}
                     """.format(", ".join("'{}'".format(word) for word in selected_classes))
 
-            print(sparql)
             with db.get_allegro(project_id) as conn:
                 with conn.executeTupleQuery(sparql) as results:
                     for result in results:
@@ -145,7 +144,6 @@ def generatestatistics():
                         """.format(", ".join("'{}'".format(word) for word in selected_classes))
             with db.get_allegro(project_id) as conn:
                 with conn.executeTupleQuery(sparql) as results:
-                    print(len(results))
                     for result in results:
                         ss2.append(str(result.getValue('ss')).replace('"', ''))
                         pv2.append(str(result.getValue('pv')).replace('"', ''))
@@ -228,7 +226,6 @@ def insights():
 def insightsdata():
     if request.method == 'POST':
         project_id = request.form.get("project_id")
-
         if project_id == 'null':
             flash('Fill out all data to execute transaction!', category='error')
             return redirect(request.url)
@@ -262,32 +259,58 @@ def insightsdata():
             file_names = cur.fetchall()
             for file_name in file_names:
                 path = os.path.join(userfiles_dir, file_name[0])
-                os.remove(path)
+                if os.path.exists(path):
+                    os.remove(path)
             cur.execute("delete from app.project_file where project_id = " + project_id)
             with db.get_allegro(project_id) as conn:
                 conn.clear()
             flash('Data deleted!', category='success')
             return redirect(url_for('views.insights'))
         else:
+            project_id = request.args.get('project_id', '0')
             for file_name in file_names:
                 cur.execute("INSERT INTO app.project_file(project_file_id, project_id, file_name, old_name, user_id_log, user_name_log) VALUES (nextval('app.project_file_project_file_id_seq'), " + project_id + ", '" + file_name[0] + "', '" + file_name[1] + "', " + current_user.get_id() + ", '" + current_user.first_name + "')")
                 with db.get_allegro(project_id) as conn:
-                    basedir = os.path.abspath(os.path.dirname(__file__))
                     path = os.path.join(userfiles_dir, file_name[0])
                     conn.addFile(path, None, format=RDFFormat.TURTLE)
-
 
             flash('Data inserted!', category='success')
             return redirect(url_for('views.insights'))
 
     elif request.method == 'GET':
-        if request.args.get('type_operation', '') == 'D':
+        operation = request.args.get('type_operation', '')
+        if operation == 'D':
             type_operation = 'Delete'
+        elif operation == 'E':
+            type_operation = 'Edit'
         else:
             type_operation = 'Add'
 
         project_id = request.args.get('project_id', '0')
         cur = db.get_cursor()
+
+        file_to_remove = request.args.get('remove_file', '')
+        if len(file_to_remove) > 0:
+            cur.execute("select file_name from app.project_file where project_id = " + project_id + " and old_name = '" + file_to_remove + "'")
+            file_names = cur.fetchall()
+            basedir = os.path.abspath(os.path.dirname(__file__))
+            userfiles_dir = os.path.join(basedir, 'userfiles')
+            for file_name in file_names:
+                path = os.path.join(userfiles_dir, file_name[0])
+                if os.path.exists(path):
+                    os.remove(path)
+            cur.execute("delete from app.project_file where project_id = " + project_id + " and old_name = '" + file_to_remove + "'")
+            with db.get_allegro(project_id) as conn:
+                conn.clear()
+
+            cur.execute('select files.file_name from app.project_file files where files.project_id = ' + project_id)
+            file_names = cur.fetchall()
+            with db.get_allegro(project_id) as conn:
+                for file in file_names:
+                    path = os.path.join(userfiles_dir, file[0])
+                    conn.addFile(path, None, format=RDFFormat.TURTLE)
+
+            flash('File removed!', category='success')
 
         cur.execute('select files.old_name from app.project_file files where files.project_id = ' + project_id)
         file_names = cur.fetchall()
