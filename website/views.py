@@ -267,7 +267,8 @@ def insightsdata():
             flash('Data deleted!', category='success')
             return redirect(url_for('views.insights'))
         else:
-            project_id = request.args.get('project_id', '0')
+            if request.args.get("type_operation") == 'E':
+                project_id = request.args.get('project_id', '0')
             for file_name in file_names:
                 cur.execute("INSERT INTO app.project_file(project_file_id, project_id, file_name, old_name, user_id_log, user_name_log) VALUES (nextval('app.project_file_project_file_id_seq'), " + project_id + ", '" + file_name[0] + "', '" + file_name[1] + "', " + current_user.get_id() + ", '" + current_user.first_name + "')")
                 with db.get_allegro(project_id) as conn:
