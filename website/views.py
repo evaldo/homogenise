@@ -95,81 +95,84 @@ def generatestatistics():
                 class_list.append(class_name)
 
     if request.method == 'POST':
-        selected_chart = request.form.get("chart_type")
-        selected_classes = request.form.getlist("class_list")
-        if project_id == 'null' or selected_chart == 'null' or len(selected_classes) == 0:
-            flash('Fill out all data to execute transaction!', category='error')
-            return redirect(request.url)
+        try:
+            selected_chart = request.form.get("chart_type")
+            selected_classes = request.form.getlist("class_list")
+            if project_id == 'null' or selected_chart == 'null' or len(selected_classes) == 0:
+                flash('Fill out all data to execute transaction!', category='error')
+                return redirect(request.url)
 
-        b64 = ''
-        if selected_chart in ['Word cloud', 'Pie chart', 'Bar chart']:
-            b64 = do_graph(project_id, selected_chart, selected_classes)
-        elif selected_chart == 'Knowledge graph':
-            ss = []
-            ps = []
-            so = []
+            b64 = ''
+            if selected_chart in ['Word cloud', 'Pie chart', 'Bar chart']:
+                b64 = do_graph(project_id, selected_chart, selected_classes)
+            elif selected_chart == 'Knowledge graph':
+                ss = []
+                ps = []
+                so = []
 
-            ss2 = []
-            pv2 = []
-            sv2 = []
-            sparql = """
-                    prefix sio: <http://semanticscience.org/resource/> 
-                    SELECT distinct ?ss (str(?p) as ?ps) ?so 
-                    WHERE {{ ?s ?p ?o .                    
-                             ?s sio:hasValue ?sv . 
-                             BIND(strbefore(strafter(str(?s),"#"), "-") as ?ss) .
-                             BIND(strbefore(strafter(str(?o),"#"), "-") as ?so) .
-                             FILTER(?ss in ({})) .
-                             FILTER(?so != '')
-                            }}
-                    """.format(", ".join("'{}'".format(word) for word in selected_classes))
-
-            with db.get_allegro(project_id) as conn:
-                with conn.executeTupleQuery(sparql) as results:
-                    for result in results:
-                        ss.append(str(result.getValue('ss')).replace('"', ''))
-                        ps.append(str(result.getValue('ps')).replace('"', '').split('/')[-1])
-                        so.append(str(result.getValue('so')).replace('"', ''))
-
-            sparql = """
-                    prefix sio: <http://semanticscience.org/resource/> 
-                    SELECT distinct ?ss ('hasValue' as ?pv) ?sv 
-                    WHERE {{ ?s ?p ?o .                    
-                           ?s sio:hasValue ?sv . 
-                           BIND(strbefore(strafter(str(?s),"#"), "-") as ?ss) .
-                           BIND(strbefore(strafter(str(?o),"#"), "-") as ?so) .
-                           FILTER(?ss in ({})) .
-                           FILTER(?sv != ' ')
-                          }}
+                ss2 = []
+                pv2 = []
+                sv2 = []
+                sparql = """
+                        prefix sio: <http://semanticscience.org/resource/> 
+                        SELECT distinct ?ss (str(?p) as ?ps) ?so 
+                        WHERE {{ ?s ?p ?o .                    
+                                 ?s sio:hasValue ?sv . 
+                                 BIND(strbefore(strafter(str(?s),"#"), "-") as ?ss) .
+                                 BIND(strbefore(strafter(str(?o),"#"), "-") as ?so) .
+                                 FILTER(?ss in ({})) .
+                                 FILTER(?so != '')
+                                }}
                         """.format(", ".join("'{}'".format(word) for word in selected_classes))
-            with db.get_allegro(project_id) as conn:
-                with conn.executeTupleQuery(sparql) as results:
-                    for result in results:
-                        ss2.append(str(result.getValue('ss')).replace('"', ''))
-                        pv2.append(str(result.getValue('pv')).replace('"', ''))
-                        sv2.append(str(result.getValue('sv')).replace('"', '').split('^')[0])
 
-            df = pd.DataFrame({'ss': ss, 'ps': ps, 'so': so})
-            df2 = pd.DataFrame({'ss': ss2, 'pv': pv2, 'sv': sv2})
+                with db.get_allegro(project_id) as conn:
+                    with conn.executeTupleQuery(sparql) as results:
+                        for result in results:
+                            ss.append(str(result.getValue('ss')).replace('"', ''))
+                            ps.append(str(result.getValue('ps')).replace('"', '').split('/')[-1])
+                            so.append(str(result.getValue('so')).replace('"', ''))
 
-            graph = nx.Graph()
-            for _, row in df.iterrows():
-                graph.add_edge(row['ss'], row['so'], label=row['ps'])
+                sparql = """
+                        prefix sio: <http://semanticscience.org/resource/> 
+                        SELECT distinct ?ss ('hasValue' as ?pv) ?sv 
+                        WHERE {{ ?s ?p ?o .                    
+                               ?s sio:hasValue ?sv . 
+                               BIND(strbefore(strafter(str(?s),"#"), "-") as ?ss) .
+                               BIND(strbefore(strafter(str(?o),"#"), "-") as ?so) .
+                               FILTER(?ss in ({})) .
+                               FILTER(?sv != ' ')
+                              }}
+                            """.format(", ".join("'{}'".format(word) for word in selected_classes))
+                with db.get_allegro(project_id) as conn:
+                    with conn.executeTupleQuery(sparql) as results:
+                        for result in results:
+                            ss2.append(str(result.getValue('ss')).replace('"', ''))
+                            pv2.append(str(result.getValue('pv')).replace('"', ''))
+                            sv2.append(str(result.getValue('sv')).replace('"', '').split('^')[0])
 
-            for _, row in df2.iterrows():
-                graph.add_edge(row['ss'], row['sv'], label=row['pv'])
+                df = pd.DataFrame({'ss': ss, 'ps': ps, 'so': so})
+                df2 = pd.DataFrame({'ss': ss2, 'pv': pv2, 'sv': sv2})
 
-            pos = nx.spring_layout(graph, seed=42, k=0.9)
-            labels = nx.get_edge_attributes(graph, 'label')
-            plt.figure(figsize=(12, 10))
-            nx.draw(graph, pos, with_labels=True, font_size=10, node_size=700, node_color='lightblue', edge_color='gray', alpha=0.6)
-            nx.draw_networkx_edge_labels(graph, pos, edge_labels=labels, font_size=8, label_pos=0.3, verticalalignment='baseline')
-            plt.title('Knowledge Graph')
-            buffer = io.BytesIO()
-            plt.savefig(buffer, format='png')
-            b64 = base64.b64encode(buffer.getvalue()).decode('ascii')
+                graph = nx.Graph()
+                for _, row in df.iterrows():
+                    graph.add_edge(row['ss'], row['so'], label=row['ps'])
 
-        plt.clf()
+                for _, row in df2.iterrows():
+                    graph.add_edge(row['ss'], row['sv'], label=row['pv'])
+
+                pos = nx.spring_layout(graph, seed=42, k=0.9)
+                labels = nx.get_edge_attributes(graph, 'label')
+                plt.figure(figsize=(12, 10))
+                nx.draw(graph, pos, with_labels=True, font_size=10, node_size=700, node_color='lightblue', edge_color='gray', alpha=0.6)
+                nx.draw_networkx_edge_labels(graph, pos, edge_labels=labels, font_size=8, label_pos=0.3, verticalalignment='baseline')
+                plt.title('Knowledge Graph')
+                buffer = io.BytesIO()
+                plt.savefig(buffer, format='png')
+                b64 = base64.b64encode(buffer.getvalue()).decode('ascii')
+
+            plt.clf()
+        except Exception as e:
+            flash(str(e), category='error')
 
         return render_template("generatestatistics.html", user=current_user
                                , project_id=int(project_id)
@@ -225,101 +228,106 @@ def insights():
 @views.route('/insightsdata', methods=['GET', 'POST'])
 def insightsdata():
     if request.method == 'POST':
-        project_id = request.form.get("project_id")
-        if project_id == 'null':
-            flash('Fill out all data to execute transaction!', category='error')
-            return redirect(request.url)
+        try:
+            project_id = request.form.get("project_id")
+            if project_id == 'null':
+                flash('Fill out all data to execute transaction!', category='error')
+                return redirect(request.url)
 
-        if request.args.get("type_operation") is None:
-            if 'file' not in request.files:
+            if request.args.get("type_operation") is None:
+                if 'file' not in request.files:
+                    flash('You must select a file.', category='error')
+                    return redirect(request.url)
+
+            basedir = os.path.abspath(os.path.dirname(__file__))
+            userfiles_dir = os.path.join(basedir, 'userfiles')
+            os.makedirs(userfiles_dir, exist_ok=True)
+
+            files = request.files.getlist('file')
+            file_names = []
+            for file in files:
+                if file.filename != '':
+                    file_id = str(uuid.uuid4())
+                    path = os.path.join(userfiles_dir, file_id)
+                    file.save(path)
+                    file_names.append([file_id, file.filename])
+
+            if len(file_names) == 0 and request.args.get("type_operation") is None:
                 flash('You must select a file.', category='error')
                 return redirect(request.url)
 
-        basedir = os.path.abspath(os.path.dirname(__file__))
-        userfiles_dir = os.path.join(basedir, 'userfiles')
-        os.makedirs(userfiles_dir, exist_ok=True)
-
-        files = request.files.getlist('file')
-        file_names = []
-        for file in files:
-            if file.filename != '':
-                file_id = str(uuid.uuid4())
-                path = os.path.join(userfiles_dir, file_id)
-                file.save(path)
-                file_names.append([file_id, file.filename])
-
-        if len(file_names) == 0 and request.args.get("type_operation") is None:
-            flash('You must select a file.', category='error')
-            return redirect(request.url)
-
-        cur = db.get_cursor()
-        if request.args.get("type_operation") == 'D':
-            project_id = request.args.get('project_id', '0')
-            cur.execute("select file_name from app.project_file where project_id = " + project_id)
-            file_names = cur.fetchall()
-            for file_name in file_names:
-                path = os.path.join(userfiles_dir, file_name[0])
-                if os.path.exists(path):
-                    os.remove(path)
-            cur.execute("delete from app.project_file where project_id = " + project_id)
-            with db.get_allegro(project_id) as conn:
-                conn.clear()
-            flash('Data deleted!', category='success')
-            return redirect(url_for('views.insights'))
-        else:
-            if request.args.get("type_operation") == 'E':
+            cur = db.get_cursor()
+            if request.args.get("type_operation") == 'D':
                 project_id = request.args.get('project_id', '0')
-            for file_name in file_names:
-                cur.execute("INSERT INTO app.project_file(project_file_id, project_id, file_name, old_name, user_id_log, user_name_log) VALUES (nextval('app.project_file_project_file_id_seq'), " + project_id + ", '" + file_name[0] + "', '" + file_name[1] + "', " + current_user.get_id() + ", '" + current_user.first_name + "')")
-                with db.get_allegro(project_id) as conn:
+                cur.execute("select file_name from app.project_file where project_id = " + project_id)
+                file_names = cur.fetchall()
+                for file_name in file_names:
                     path = os.path.join(userfiles_dir, file_name[0])
-                    conn.addFile(path, None, format=RDFFormat.TURTLE)
+                    if os.path.exists(path):
+                        os.remove(path)
+                cur.execute("delete from app.project_file where project_id = " + project_id)
+                with db.get_allegro(project_id) as conn:
+                    conn.clear()
+                flash('Data deleted!', category='success')
+            else:
+                if request.args.get("type_operation") == 'E':
+                    project_id = request.args.get('project_id', '0')
+                for file_name in file_names:
+                    cur.execute("INSERT INTO app.project_file(project_file_id, project_id, file_name, old_name, user_id_log, user_name_log) VALUES (nextval('app.project_file_project_file_id_seq'), " + project_id + ", '" + file_name[0] + "', '" + file_name[1] + "', " + current_user.get_id() + ", '" + current_user.first_name + "')")
+                    with db.get_allegro(project_id) as conn:
+                        path = os.path.join(userfiles_dir, file_name[0])
+                        conn.addFile(path, None, format=RDFFormat.TURTLE)
+                flash('Data inserted!', category='success')
+        except Exception as e:
+            flash(str(e), category='error')
 
-            flash('Data inserted!', category='success')
-            return redirect(url_for('views.insights'))
+        return redirect(url_for('views.insights'))
 
     elif request.method == 'GET':
-        operation = request.args.get('type_operation', '')
-        if operation == 'D':
-            type_operation = 'Delete'
-        elif operation == 'E':
-            type_operation = 'Edit'
-        else:
-            type_operation = 'Add'
+        try:
+            operation = request.args.get('type_operation', '')
+            if operation == 'D':
+                type_operation = 'Delete'
+            elif operation == 'E':
+                type_operation = 'Edit'
+            else:
+                type_operation = 'Add'
 
-        project_id = request.args.get('project_id', '0')
-        cur = db.get_cursor()
+            project_id = request.args.get('project_id', '0')
+            cur = db.get_cursor()
 
-        file_to_remove = request.args.get('remove_file', '')
-        if len(file_to_remove) > 0:
-            cur.execute("select file_name from app.project_file where project_id = " + project_id + " and old_name = '" + file_to_remove + "'")
+            file_to_remove = request.args.get('remove_file', '')
+            if len(file_to_remove) > 0:
+                cur.execute("select file_name from app.project_file where project_id = " + project_id + " and old_name = '" + file_to_remove + "'")
+                file_names = cur.fetchall()
+                basedir = os.path.abspath(os.path.dirname(__file__))
+                userfiles_dir = os.path.join(basedir, 'userfiles')
+                for file_name in file_names:
+                    path = os.path.join(userfiles_dir, file_name[0])
+                    if os.path.exists(path):
+                        os.remove(path)
+                cur.execute("delete from app.project_file where project_id = " + project_id + " and old_name = '" + file_to_remove + "'")
+                with db.get_allegro(project_id) as conn:
+                    conn.clear()
+
+                cur.execute('select files.file_name from app.project_file files where files.project_id = ' + project_id)
+                file_names = cur.fetchall()
+                with db.get_allegro(project_id) as conn:
+                    for file in file_names:
+                        path = os.path.join(userfiles_dir, file[0])
+                        conn.addFile(path, None, format=RDFFormat.TURTLE)
+
+                flash('File removed!', category='success')
+
+            cur.execute('select files.old_name from app.project_file files where files.project_id = ' + project_id)
             file_names = cur.fetchall()
-            basedir = os.path.abspath(os.path.dirname(__file__))
-            userfiles_dir = os.path.join(basedir, 'userfiles')
-            for file_name in file_names:
-                path = os.path.join(userfiles_dir, file_name[0])
-                if os.path.exists(path):
-                    os.remove(path)
-            cur.execute("delete from app.project_file where project_id = " + project_id + " and old_name = '" + file_to_remove + "'")
-            with db.get_allegro(project_id) as conn:
-                conn.clear()
 
-            cur.execute('select files.file_name from app.project_file files where files.project_id = ' + project_id)
-            file_names = cur.fetchall()
-            with db.get_allegro(project_id) as conn:
-                for file in file_names:
-                    path = os.path.join(userfiles_dir, file[0])
-                    conn.addFile(path, None, format=RDFFormat.TURTLE)
+            cur.execute("SELECT project_id, project_name FROM app.project order by 2")
+            data_project = cur.fetchall()
 
-            flash('File removed!', category='success')
-
-        cur.execute('select files.old_name from app.project_file files where files.project_id = ' + project_id)
-        file_names = cur.fetchall()
-
-        cur.execute("SELECT project_id, project_name FROM app.project order by 2")
-        data_project = cur.fetchall()
-
-        cur.close()
+            cur.close()
+        except Exception as e:
+            flash(str(e), category='error')
 
         return render_template("insightsdata.html", user=current_user
                                , project_id=int(project_id)
