@@ -16,6 +16,7 @@ matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import networkx as nx
 import pandas as pd
+import chardet
 
 views = Blueprint('views', __name__)
 
@@ -59,7 +60,7 @@ def do_graph(project_id, selected_chart, selected_classes):
     elif selected_chart == 'Pie chart':
         counts = np.array([sublist[1] for sublist in word_count])
         labels = [sublist[0] for sublist in word_count]
-        plt.pie(counts, labels=labels)
+        plt.pie(counts, labels=labels, autopct='%1.1f%%')
         buffer = io.BytesIO()
         plt.savefig(buffer, format='png', dpi=300)
         b64 = base64.b64encode(buffer.getvalue()).decode('ascii')
@@ -93,6 +94,8 @@ def generatestatistics():
                 uri = str(result.getValue('subject'))
                 class_name = uri.split('#')[1].split('>')[0]
                 class_list.append(class_name)
+
+    class_list = sorted(class_list)
 
     if request.method == 'POST':
         try:
@@ -247,10 +250,25 @@ def insightsdata():
             file_names = []
             for file in files:
                 if file.filename != '':
-                    file_id = str(uuid.uuid4())
-                    path = os.path.join(userfiles_dir, file_id)
-                    file.save(path)
-                    file_names.append([file_id, file.filename])
+                    file_bytes = file.read()
+                    result = chardet.detect(file_bytes)
+                    detected_encoding = result['encoding']
+                    if detected_encoding is None:
+                        flash('Could not read the files.', category='error')
+                        return redirect(request.url)
+
+                    try:
+                        decoded_text = file_bytes.decode(detected_encoding)
+                        file_id = str(uuid.uuid4())
+                        path = os.path.join(userfiles_dir, file_id)
+
+                        with open(path, 'w', encoding='utf-8') as f:
+                            f.write(decoded_text)
+
+                        file_names.append([file_id, file.filename])
+                    except:
+                        flash('Erro while saving file.', category='error')
+                        return redirect(request.url)
 
             if len(file_names) == 0 and request.args.get("type_operation") is None:
                 flash('You must select a file.', category='error')
