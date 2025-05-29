@@ -31,20 +31,34 @@ def do_graph(project_id, selected_chart, selected_classes):
     word_list = []
     word_count = []
     graph_sparql = """
-                prefix sio: <http://semanticscience.org/resource/> 
-                SELECT distinct ?ss (count(?ss) as ?count) 
-                WHERE {{ ?s ?p ?o .                           
-                       BIND(strbefore(strafter(str(?s),"#"), "-") as ?ss) .
-                       BIND(strbefore(strafter(str(?o),"#"), "-") as ?so) .
-                       FILTER(?ss in ({})) .
-                       FILTER(?so != '')
-                      }}
-                GROUP BY ?ss
+                PREFIX sio: <http://semanticscience.org/resource/>
+                SELECT DISTINCT ?localS (COUNT(?localS) AS ?count)
+                WHERE {{
+                    ?s ?p ?o .
+                    
+                    BIND(
+                        COALESCE(
+                            strafter(str(?s), "#"),
+                            strafter(str(?s), "/")
+                        ) AS ?localS
+                    ) .
+                    
+                    BIND(
+                        COALESCE(
+                            strafter(str(?o), "#"),
+                            strafter(str(?o), "/")
+                        ) AS ?localO
+                    ) .
+                    
+                    FILTER(?localS IN ({})) .
+                    FILTER(?localO != "")
+                }}
+                GROUP BY ?localS
             """.format(", ".join("'{}'".format(word) for word in selected_classes))
     with db.get_allegro(project_id) as conn:
         with conn.executeTupleQuery(graph_sparql) as results:
             for result in results:
-                name = str(result.getValue('ss')).replace('"', '')
+                name = str(result.getValue('localS')).replace('"', '')
                 count = int(str(result.getValue('count')).split('^')[0].replace('"', ''))
                 word_count.append([name, count])
                 for _ in range(count):
@@ -117,17 +131,30 @@ def generatestatistics():
                 pv2 = []
                 sv2 = []
                 sparql = """
-                        prefix sio: <http://semanticscience.org/resource/> 
-                        SELECT distinct ?ss (str(?p) as ?ps) ?so 
-                        WHERE {{ ?s ?p ?o .                    
-                                 ?s sio:hasValue ?sv . 
-                                 BIND(strbefore(strafter(str(?s),"#"), "-") as ?ss) .
-                                 BIND(strbefore(strafter(str(?o),"#"), "-") as ?so) .
-                                 FILTER(?ss in ({})) .
-                                 FILTER(?so != '')
-                                }}
-                        """.format(", ".join("'{}'".format(word) for word in selected_classes))
+                    PREFIX sio: <http://semanticscience.org/resource/>
+                    SELECT DISTINCT ?ss (STR(?p) AS ?ps) ?so
+                    WHERE {{
+                        ?s ?p ?o .
+                        ?s sio:hasValue ?sv .
 
+                        BIND(
+                            strbefore(
+                                COALESCE(strafter(str(?s), "#"), strafter(str(?s), "/")),
+                                "-"
+                            ) AS ?ss
+                        ) .
+
+                        BIND(
+                            strbefore(
+                                COALESCE(strafter(str(?o), "#"), strafter(str(?o), "/")),
+                                "-"
+                            ) AS ?so
+                        ) .
+
+                        FILTER(?ss IN ({})) .
+                        FILTER(?so != "")
+                    }}
+                """.format(", ".join("'{}'".format(word) for word in selected_classes))
                 with db.get_allegro(project_id) as conn:
                     with conn.executeTupleQuery(sparql) as results:
                         for result in results:
