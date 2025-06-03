@@ -30,31 +30,24 @@ def home():
 def do_graph(project_id, selected_chart, selected_classes):
     word_list = []
     word_count = []
-    graph_sparql = """
-                PREFIX sio: <http://semanticscience.org/resource/>
-                SELECT DISTINCT ?localS (COUNT(?localS) AS ?count)
-                WHERE {{
-                    ?s ?p ?o .
-                    
+    formatted_values = ", ".join(f"'{word}'" for word in selected_classes)
+    graph_sparql = f"""
+                SELECT ?localS ?count
+                WHERE 
+                {{
+                    {{
+                        SELECT ?class (COUNT(?class) AS ?count) {{ ?resource a ?class }} GROUP BY ?class
+                    }} .
                     BIND(
-                        COALESCE(
-                            strafter(str(?s), "#"),
-                            strafter(str(?s), "/")
-                        ) AS ?localS
-                    ) .
-                    
-                    BIND(
-                        COALESCE(
-                            strafter(str(?o), "#"),
-                            strafter(str(?o), "/")
-                        ) AS ?localO
-                    ) .
-                    
-                    FILTER(?localS IN ({})) .
-                    FILTER(?localO != "")
-                }}
-                GROUP BY ?localS
-            """.format(", ".join("'{}'".format(word) for word in selected_classes))
+                      COALESCE(
+                        strafter(str(?class), "#"),
+                        strafter(str(?class), "/")
+                      ) AS ?localS
+                    ) .  
+                    FILTER(?localS != "") .
+                    FILTER(?localS IN ({formatted_values})) .
+                }} ORDER BY ?localS
+            """  
     with db.get_allegro(project_id) as conn:
         with conn.executeTupleQuery(graph_sparql) as results:
             for result in results:
@@ -63,8 +56,7 @@ def do_graph(project_id, selected_chart, selected_classes):
                 word_count.append([name, count])
                 for _ in range(count):
                     word_list.append(name)
-
-    b64 = ''
+    b64 = ''    
     if selected_chart == 'Word cloud':
         words = ' '.join(word_list)
         cloud = WordCloud(width=1280, height=720, background_color='white', collocations=False).generate(words)
@@ -102,7 +94,10 @@ def generatestatistics():
     with db.get_allegro(project_id) as conn:
         with conn.executeTupleQuery("""
                     SELECT DISTINCT ?subject ?predicate
-                    WHERE { ?subject ?predicate owl:Class }
+                       WHERE { 
+                              ?subject ?predicate ?o . 
+                              FILTER(?o IN (owl:Class, owl:ObjectProperty))  
+                     }
                 """) as results:
             for result in results:
                 uri = str(result.getValue('subject'))
@@ -123,72 +118,85 @@ def generatestatistics():
             if selected_chart in ['Word cloud', 'Pie chart', 'Bar chart']:
                 b64 = do_graph(project_id, selected_chart, selected_classes)
             elif selected_chart == 'Knowledge graph':
-                ss = []
-                ps = []
-                so = []
+                individuals = []
+                labels = []
+                types = []
 
-                ss2 = []
-                pv2 = []
-                sv2 = []
+                individuals2 = []
+                annotations2 = []
+                values2 = []
                 sparql = """
-                    PREFIX sio: <http://semanticscience.org/resource/>
-                    SELECT DISTINCT ?ss (STR(?p) AS ?ps) ?so
-                    WHERE {{
-                        ?s ?p ?o .
-                        ?s sio:hasValue ?sv .
+                   PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+                   PREFIX sio: <http://semanticscience.org/resource/> 
+                   SELECT distinct ?individual (str(?p) as ?label) ?type 
+                   WHERE {{ ?s ?p ?o .                    
+                            ?s rdf:type ?o . 
+                            
+                          # Get what is after # in the URI
+                          BIND(strafter(str(?s), "#") as ?sFragment) .
+                
+                          # If it has "-", get what is before it, otherwise get everything
+                          BIND(
+                            IF(CONTAINS(?sFragment, "-"),
+                               strbefore(?sFragment, "-"),
+                               ?sFragment
+                            ) as ?individual
+                          ) .
+                
+                          # Get what is after # in the URI
+                          # If it has "-", get what is before it, otherwise get everything
+                          BIND(strafter(str(?o), "#") as ?oFragment) .
+                          BIND(
+                            IF(CONTAINS(?oFragment, "-"),
+                               strbefore(?oFragment, "-"),
+                               ?oFragment
+                            ) as ?type
+                          ) .
+                            
+                            FILTER(?type in ({})) .
+                           }}
+                   """.format(", ".join("'{}'".format(word) for word in selected_classes))
 
-                        BIND(
-                            strbefore(
-                                COALESCE(strafter(str(?s), "#"), strafter(str(?s), "/")),
-                                "-"
-                            ) AS ?ss
-                        ) .
+                with db.get_allegro(project_id) as conn:
+                    with conn.executeTupleQuery(sparql) as results:
+                        for result in results:
+                            individuals.append(str(result.getValue('individual')).replace('"', ''))
+                            labels.append(str(result.getValue('label')).replace('"', '').split('#')[-1])
+                            types.append(str(result.getValue('type')).replace('"', ''))
 
-                        BIND(
-                            strbefore(
-                                COALESCE(strafter(str(?o), "#"), strafter(str(?o), "/")),
-                                "-"
-                            ) AS ?so
-                        ) .
+                sparql = """
+                PREFIX sio: <http://semanticscience.org/resource/>
+                PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
-                        FILTER(?ss IN ({})) .
-                        FILTER(?so != "")
-                    }}
+                SELECT DISTINCT ?individual ?annotation ?value
+                WHERE {{
+                  ?individual rdf:type ?type .
+                  ?type rdf:type owl:Class .
+                  ?individual ?annotation ?value .
+
+                  FILTER(?annotation NOT IN (rdf:type))
+                  
+                  BIND(strafter(str(?type), "#") AS ?typeFragment)
+                  FILTER(?typeFragment IN ({}))
+                }}
                 """.format(", ".join("'{}'".format(word) for word in selected_classes))
+
                 with db.get_allegro(project_id) as conn:
                     with conn.executeTupleQuery(sparql) as results:
                         for result in results:
-                            ss.append(str(result.getValue('ss')).replace('"', ''))
-                            ps.append(str(result.getValue('ps')).replace('"', '').split('/')[-1])
-                            so.append(str(result.getValue('so')).replace('"', ''))
+                            individuals2.append(str(result.getValue('individual')).replace('"', '').split('>')[0].split('#')[-1])
+                            annotations2.append(str(result.getValue('annotation')).replace('"', '').split('>')[0].split('/')[-1].split('#')[-1])
+                            values2.append(str(result.getValue('value')).replace('"', '').split('>')[0].split('#')[-1])
 
-                sparql = """
-                        prefix sio: <http://semanticscience.org/resource/> 
-                        SELECT distinct ?ss ('hasValue' as ?pv) ?sv 
-                        WHERE {{ ?s ?p ?o .                    
-                               ?s sio:hasValue ?sv . 
-                               BIND(strbefore(strafter(str(?s),"#"), "-") as ?ss) .
-                               BIND(strbefore(strafter(str(?o),"#"), "-") as ?so) .
-                               FILTER(?ss in ({})) .
-                               FILTER(?sv != ' ')
-                              }}
-                            """.format(", ".join("'{}'".format(word) for word in selected_classes))
-                with db.get_allegro(project_id) as conn:
-                    with conn.executeTupleQuery(sparql) as results:
-                        for result in results:
-                            ss2.append(str(result.getValue('ss')).replace('"', ''))
-                            pv2.append(str(result.getValue('pv')).replace('"', ''))
-                            sv2.append(str(result.getValue('sv')).replace('"', '').split('^')[0])
-
-                df = pd.DataFrame({'ss': ss, 'ps': ps, 'so': so})
-                df2 = pd.DataFrame({'ss': ss2, 'pv': pv2, 'sv': sv2})
+                df = pd.DataFrame({'individuals': individuals, 'labels': labels, 'types': types})
+                df2 = pd.DataFrame({'individuals': individuals2, 'annotations': annotations2, 'values': values2})
 
                 graph = nx.Graph()
                 for _, row in df.iterrows():
-                    graph.add_edge(row['ss'], row['so'], label=row['ps'])
+                    graph.add_edge(row['individuals'], row['types'], label=row['labels'])
 
                 for _, row in df2.iterrows():
-                    graph.add_edge(row['ss'], row['sv'], label=row['pv'])
+                    graph.add_edge(row['individuals'], row['values'], label=row['annotations'])
 
                 pos = nx.spring_layout(graph, seed=42, k=0.9)
                 labels = nx.get_edge_attributes(graph, 'label')
