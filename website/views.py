@@ -32,20 +32,13 @@ def do_graph(project_id, selected_chart, selected_classes):
     word_count = []
     formatted_values = ", ".join(f"'{word}'" for word in selected_classes)
     graph_sparql = f"""
-                SELECT ?localS ?count
+                SELECT (REPLACE(STR(?class), "^.*/([^/]*)$", "$1") as ?localS) ?count
                 WHERE 
                 {{
                     {{
                         SELECT ?class (COUNT(?class) AS ?count) {{ ?resource a ?class }} GROUP BY ?class
-                    }} .
-                    BIND(
-                      COALESCE(
-                        strafter(str(?class), "#"),
-                        strafter(str(?class), "/")
-                      ) AS ?localS
-                    ) .  
-                    FILTER(?localS != "") .
-                    FILTER(?localS IN ({formatted_values})) .
+                    }} .                                          
+                    FILTER((REPLACE(STR(?class), "^.*/([^/]*)$", "$1")) IN ({formatted_values}))
                 }} ORDER BY ?localS
             """  
     with db.get_allegro(project_id) as conn:
@@ -93,16 +86,19 @@ def generatestatistics():
     class_list = []
     with db.get_allegro(project_id) as conn:
         with conn.executeTupleQuery("""
-                    SELECT DISTINCT ?subject ?predicate
-                       WHERE { 
-                              ?subject ?predicate ?o . 
-                              FILTER(?o IN (owl:Class, owl:ObjectProperty))  
-                     }
+                    SELECT DISTINCT (REPLACE(STR(?subject), "^.*/([^/]*)$", "$1") as ?s)
+                    WHERE { 
+                          ?subject ?p ?o . 
+                          FILTER (!isBlank(?subject)) .
+                          FILTER (!isBlank(?o)) .
+                          FILTER(?p NOT IN (<http://semanticscience.org/resource/hasUnit>, rdfs:domain, rdfs:range, rdfs:subPropertyOf, rdf:first, rdf:rest, owl:members, <http://www.w3.org/ns/prov#generatedAtTime>, owl:allValuesFrom, <http://semanticscience.org/resource/isAttributeOf>)) .              
+                          FILTER(str(?subject) != "") .
+                    }
                 """) as results:
             for result in results:
-                uri = str(result.getValue('subject'))
-                class_name = uri.split('#')[1].split('>')[0]
-                class_list.append(class_name)
+                uri = str(result.getValue('s')).replace('"', '')
+                #class_name = uri.split('#')[1].split('>')[0]
+                class_list.append(uri)
 
     class_list = sorted(class_list)
 
@@ -125,62 +121,42 @@ def generatestatistics():
                 individuals2 = []
                 annotations2 = []
                 values2 = []
-                sparql = """
-                   PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-                   PREFIX sio: <http://semanticscience.org/resource/> 
-                   SELECT distinct ?individual (str(?p) as ?label) ?type 
-                   WHERE {{ ?s ?p ?o .                    
-                            ?s rdf:type ?o . 
-                            
-                          # Get what is after # in the URI
-                          BIND(strafter(str(?s), "#") as ?sFragment) .
-                
-                          # If it has "-", get what is before it, otherwise get everything
-                          BIND(
-                            IF(CONTAINS(?sFragment, "-"),
-                               strbefore(?sFragment, "-"),
-                               ?sFragment
-                            ) as ?individual
-                          ) .
-                
-                          # Get what is after # in the URI
-                          # If it has "-", get what is before it, otherwise get everything
-                          BIND(strafter(str(?o), "#") as ?oFragment) .
-                          BIND(
-                            IF(CONTAINS(?oFragment, "-"),
-                               strbefore(?oFragment, "-"),
-                               ?oFragment
-                            ) as ?type
-                          ) .
-                            
-                            FILTER(?type in ({})) .
-                           }}
-                   """.format(", ".join("'{}'".format(word) for word in selected_classes))
-
+                formatted_values = ", ".join(f"'{word}'" for word in selected_classes)                
+                sparql = f"""                                        
+                    SELECT distinct (REPLACE(STR(?s), "^.*/([^/]*)$", "$1") as ?individual) (REPLACE(STR(?annotation), "^.*/([^/]*)$", "$1") as ?label) (REPLACE(STR(?o), "^.*/([^/]*)$", "$1") as ?type)
+                    WHERE {{
+                          ?s ?p ?o .
+                          ?o ?objectType ?object .
+                          ?s ?annotation ?value .
+                          FILTER(?annotation NOT IN (<http://semanticscience.org/resource/hasUnit>, rdfs:domain, rdfs:range, rdfs:subPropertyOf, rdf:first, rdf:rest, owl:members, <http://www.w3.org/ns/prov#generatedAtTime>, owl:allValuesFrom, <http://semanticscience.org/resource/isAttributeOf>)) .
+                          FILTER(?value NOT IN (owl:ObjectProperty, owl:Class, owl:NamedIndividual, owl:AllDisjointClasses, owl:Restriction, <http://semanticscience.org/resource/isAttributeOf>)) .    
+                          FILTER (!isBlank(?value)) .
+                          FILTER (!isBlank(?s)) .
+                          FILTER(?value != '') .                          
+                          FILTER((REPLACE(STR(?s), "^.*/([^/]*)$", "$1")) IN ({formatted_values}))
+                        }}	                                  
+                   """
                 with db.get_allegro(project_id) as conn:
                     with conn.executeTupleQuery(sparql) as results:
                         for result in results:
                             individuals.append(str(result.getValue('individual')).replace('"', ''))
                             labels.append(str(result.getValue('label')).replace('"', '').split('#')[-1])
                             types.append(str(result.getValue('type')).replace('"', ''))
-
-                sparql = """
-                PREFIX sio: <http://semanticscience.org/resource/>
-                PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-
-                SELECT DISTINCT ?individual ?annotation ?value
-                WHERE {{
-                  ?individual rdf:type ?type .
-                  ?type rdf:type owl:Class .
-                  ?individual ?annotation ?value .
-
-                  FILTER(?annotation NOT IN (rdf:type))
-                  
-                  BIND(strafter(str(?type), "#") AS ?typeFragment)
-                  FILTER(?typeFragment IN ({}))
-                }}
-                """.format(", ".join("'{}'".format(word) for word in selected_classes))
-
+                formatted_values = ", ".join(f"'{word}'" for word in selected_classes)
+                sparql = f"""                        
+                        SELECT distinct (REPLACE(STR(?s), "^.*/([^/]*)$", "$1") as ?individual) (REPLACE(STR(?pAnnotation), "^.*/([^/]*)$", "$1") as ?annotation) (REPLACE(STR(?oValue), "^.*/([^/]*)$", "$1") as ?value)
+                        WHERE {{
+                              ?s ?p ?o .
+                              ?o ?objectType ?object .
+                              ?s ?pAnnotation ?oValue .
+                              FILTER(?pAnnotation NOT IN (<http://semanticscience.org/resource/hasUnit>, rdfs:domain, rdfs:range, rdfs:subPropertyOf, rdf:first, rdf:rest, owl:members, <http://www.w3.org/ns/prov#generatedAtTime>, owl:allValuesFrom, <http://semanticscience.org/resource/isAttributeOf>)) .
+                              FILTER(?oValue NOT IN (owl:ObjectProperty, owl:Class, owl:NamedIndividual, owl:AllDisjointClasses, owl:Restriction, <http://semanticscience.org/resource/isAttributeOf>)) .    
+                              FILTER (!isBlank(?oValue)) .
+                              FILTER (!isBlank(?s)) .
+                              FILTER(?oValue != '') .                              
+                              FILTER((REPLACE(STR(?s), "^.*/([^/]*)$", "$1")) IN ({formatted_values}))
+                            }}                         
+                        """
                 with db.get_allegro(project_id) as conn:
                     with conn.executeTupleQuery(sparql) as results:
                         for result in results:
@@ -217,7 +193,7 @@ def generatestatistics():
                                , project_list=data_project
                                , class_list=class_list
                                , selected_classes=selected_classes
-                               , chart_list=chart_list
+                               , chart_list=chart_list                               
                                , img_uri=b64)
 
     elif request.method == 'GET':
@@ -225,7 +201,7 @@ def generatestatistics():
                                , project_id=int(project_id)
                                , project_list=data_project
                                , class_list=class_list
-                               , chart_list=chart_list
+                               , chart_list=chart_list                               
                                , img_uri='0')
 
 
