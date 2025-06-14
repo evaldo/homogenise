@@ -5,7 +5,7 @@ import uuid
 from flask import Blueprint, redirect, render_template, request, flash, url_for
 from flask_login import login_required, current_user
 from franz.openrdf.rio.rdfformat import RDFFormat
-from wordcloud import WordCloud
+from wordcloud import WordCloud, STOPWORDS
 import io
 import base64
 from website.settings import db
@@ -49,10 +49,13 @@ def do_graph(project_id, selected_chart, selected_classes):
                 word_count.append([name, count])
                 for _ in range(count):
                     word_list.append(name)
-    b64 = ''    
+    b64 = ''
+    stopwords = set(STOPWORDS)
+    custom_stopwords = ["untitled", "ontology"]
+    stopwords.update(custom_stopwords)
     if selected_chart == 'Word cloud':
-        words = ' '.join(word_list)
-        cloud = WordCloud(width=1280, height=720, background_color='white', collocations=False).generate(words)
+        words = ' '.join(word_list) 
+        cloud = WordCloud(stopwords=stopwords,width=1280, height=720, background_color='white', collocations=False).generate(words)
         buffer = io.BytesIO()
         cloud.to_image().save(buffer, 'png')
         b64 = base64.b64encode(buffer.getvalue()).decode('ascii')
