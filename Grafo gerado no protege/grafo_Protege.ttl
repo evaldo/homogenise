@@ -1,0 +1,424 @@
+@prefix : <http://www.semanticweb.org/professorac/ontologies/2025/3/untitled-ontology-2#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix sio: <http://semanticscience.org/resource/> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.semanticweb.org/professorac/ontologies/2025/3/untitled-ontology-2> .
+
+<http://www.semanticweb.org/professorac/ontologies/2025/3/untitled-ontology-2> rdf:type owl:Ontology .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://semanticscience.org/resource/hasValue
+sio:hasValue rdf:type owl:AnnotationProperty .
+
+
+###  http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled
+<http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.semanticweb.org/professorac/ontologies/2025/3/untitled-ontology-2#apresentaSinalESintoma
+:apresentaSinalESintoma rdf:type owl:ObjectProperty ;
+                        rdfs:domain :Paciente ;
+                        rdfs:range :AspectoEmocional ,
+                                   :EmocaoAtivada .
+
+
+###  http://www.semanticweb.org/professorac/ontologies/2025/3/untitled-ontology-2#diagnosticado
+:diagnosticado rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf owl:topObjectProperty ;
+               rdfs:domain :Paciente ;
+               rdfs:range :Ansiedade .
+
+
+###  http://www.semanticweb.org/professorac/ontologies/2025/3/untitled-ontology-2#fazUso
+:fazUso rdf:type owl:ObjectProperty ;
+        rdfs:domain :Paciente ;
+        rdfs:range :SubstanciaPsicoativa .
+
+
+###  http://www.semanticweb.org/professorac/ontologies/2025/3/untitled-ontology-2#iniciaTratamento
+:iniciaTratamento rdf:type owl:ObjectProperty ;
+                  rdfs:subPropertyOf owl:topObjectProperty .
+
+
+###  http://www.semanticweb.org/professorac/ontologies/2025/3/untitled-ontology-2#orientaTratamento
+:orientaTratamento rdf:type owl:ObjectProperty ;
+                   rdfs:domain :ProfissionalResponsavel ;
+                   rdfs:range :Paciente .
+
+
+###  http://www.semanticweb.org/professorac/ontologies/2025/3/untitled-ontology-2#possui
+:possui rdf:type owl:ObjectProperty ;
+        rdfs:domain :EstratificacaoDeRisco ;
+        rdfs:range :FaixaDeRisco .
+
+
+###  http://www.semanticweb.org/professorac/ontologies/2025/3/untitled-ontology-2#recebe
+:recebe rdf:type owl:ObjectProperty ;
+        rdfs:domain :Paciente ;
+        rdfs:range :FaixaDeRisco .
+
+
+###  http://www.semanticweb.org/professorac/ontologies/2025/3/untitled-ontology-2#submetido
+:submetido rdf:type owl:ObjectProperty ;
+           rdfs:domain :Paciente ;
+           rdfs:range :EstratificacaoDeRisco .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://www.semanticweb.org/professorac/ontologies/2025/3/untitled-ontology-2#apresentaSinalESintomaDeAnsiedade
+:apresentaSinalESintomaDeAnsiedade rdf:type owl:DatatypeProperty .
+
+
+###  http://www.semanticweb.org/professorac/ontologies/2025/3/untitled-ontology-2#fazUsoDeSubstanciaPsicoativa
+:fazUsoDeSubstanciaPsicoativa rdf:type owl:DatatypeProperty .
+
+
+###  http://www.semanticweb.org/professorac/ontologies/2025/3/untitled-ontology-2#possuiEmocaoAtivada
+:possuiEmocaoAtivada rdf:type owl:DatatypeProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.semanticweb.org/professorac/ontologies/2025/3/untitled-ontology-2#Ansiedade
+:Ansiedade rdf:type owl:Class ;
+           rdfs:subClassOf :TranstornoMental .
+
+
+###  http://www.semanticweb.org/professorac/ontologies/2025/3/untitled-ontology-2#AspectoComportamental
+:AspectoComportamental rdf:type owl:Class ;
+                       rdfs:subClassOf :PadraoIdentificado .
+
+
+###  http://www.semanticweb.org/professorac/ontologies/2025/3/untitled-ontology-2#AspectoContextual
+:AspectoContextual rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/professorac/ontologies/2025/3/untitled-ontology-2#AspectoEmocional
+:AspectoEmocional rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/professorac/ontologies/2025/3/untitled-ontology-2#AspectoSituacional
+:AspectoSituacional rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/professorac/ontologies/2025/3/untitled-ontology-2#CrencaCentral
+:CrencaCentral rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/professorac/ontologies/2025/3/untitled-ontology-2#CrencaIntermediaria
+:CrencaIntermediaria rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/professorac/ontologies/2025/3/untitled-ontology-2#Emocao
+:Emocao rdf:type owl:Class ;
+        rdfs:subClassOf :PadraoIdentificado .
+
+
+###  http://www.semanticweb.org/professorac/ontologies/2025/3/untitled-ontology-2#EmocaoAtivada
+:EmocaoAtivada rdf:type owl:Class ;
+               rdfs:subClassOf :AspectoEmocional .
+
+
+###  http://www.semanticweb.org/professorac/ontologies/2025/3/untitled-ontology-2#EstrategiaDeEnfrentamento
+:EstrategiaDeEnfrentamento rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/professorac/ontologies/2025/3/untitled-ontology-2#EstratificacaoDeRisco
+:EstratificacaoDeRisco rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/professorac/ontologies/2025/3/untitled-ontology-2#FaixaDeRisco
+:FaixaDeRisco rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/professorac/ontologies/2025/3/untitled-ontology-2#FrequenciaDeUsodeSubstanciaPsicoativa
+:FrequenciaDeUsodeSubstanciaPsicoativa rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/professorac/ontologies/2025/3/untitled-ontology-2#Fumante
+:Fumante rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/professorac/ontologies/2025/3/untitled-ontology-2#Humano
+:Humano rdf:type owl:Class ;
+        owl:equivalentClass :Pessoa .
+
+
+###  http://www.semanticweb.org/professorac/ontologies/2025/3/untitled-ontology-2#Maconha
+:Maconha rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/professorac/ontologies/2025/3/untitled-ontology-2#ObjetoDeEstudo
+:ObjetoDeEstudo rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/professorac/ontologies/2025/3/untitled-ontology-2#Paciente
+:Paciente rdf:type owl:Class ;
+          rdfs:subClassOf :Pessoa ,
+                          [ owl:intersectionOf ( :ObjetoDeEstudo
+                                                 [ rdf:type owl:Restriction ;
+                                                   owl:onProperty :iniciaTratamento ;
+                                                   owl:someValuesFrom :EstratificacaoDeRisco
+                                                 ]
+                                               ) ;
+                            rdf:type owl:Class
+                          ] .
+
+
+###  http://www.semanticweb.org/professorac/ontologies/2025/3/untitled-ontology-2#PadraoIdentificado
+:PadraoIdentificado rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/professorac/ontologies/2025/3/untitled-ontology-2#Pensamento
+:Pensamento rdf:type owl:Class ;
+            rdfs:subClassOf :PadraoIdentificado .
+
+
+###  http://www.semanticweb.org/professorac/ontologies/2025/3/untitled-ontology-2#Pessoa
+:Pessoa rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/professorac/ontologies/2025/3/untitled-ontology-2#ProfissionalResponsavel
+:ProfissionalResponsavel rdf:type owl:Class ;
+                         rdfs:subClassOf :Pessoa .
+
+
+###  http://www.semanticweb.org/professorac/ontologies/2025/3/untitled-ontology-2#Psicologo
+:Psicologo rdf:type owl:Class ;
+           rdfs:subClassOf :ProfissionalResponsavel .
+
+
+###  http://www.semanticweb.org/professorac/ontologies/2025/3/untitled-ontology-2#RegulacaoDoEstadoEmocional
+:RegulacaoDoEstadoEmocional rdf:type owl:Class ;
+                            rdfs:subClassOf :AspectoEmocional .
+
+
+###  http://www.semanticweb.org/professorac/ontologies/2025/3/untitled-ontology-2#SinalESintoma
+:SinalESintoma rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/professorac/ontologies/2025/3/untitled-ontology-2#SubstanciaPsicoativa
+:SubstanciaPsicoativa rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/professorac/ontologies/2025/3/untitled-ontology-2#Tabaco
+:Tabaco rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/professorac/ontologies/2025/3/untitled-ontology-2#Terapeuta
+:Terapeuta rdf:type owl:Class ;
+           rdfs:subClassOf :ProfissionalResponsavel .
+
+
+###  http://www.semanticweb.org/professorac/ontologies/2025/3/untitled-ontology-2#TerapiaCognitivoComportamental
+:TerapiaCognitivoComportamental rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/professorac/ontologies/2025/3/untitled-ontology-2#TranstornoMental
+:TranstornoMental rdf:type owl:Class .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.semanticweb.org/professorac/ontologies/2025/3/untitled-ontology-2#Alegria
+:Alegria rdf:type owl:NamedIndividual ,
+                  :EmocaoAtivada .
+
+
+###  http://www.semanticweb.org/professorac/ontologies/2025/3/untitled-ontology-2#Ansiedade
+:Ansiedade rdf:type owl:NamedIndividual ,
+                    :Ansiedade .
+
+
+###  http://www.semanticweb.org/professorac/ontologies/2025/3/untitled-ontology-2#AusenciaDePercepcao
+:AusenciaDePercepcao rdf:type owl:NamedIndividual ,
+                              :AspectoComportamental .
+
+
+###  http://www.semanticweb.org/professorac/ontologies/2025/3/untitled-ontology-2#DificuldadeDeAprendizagem
+:DificuldadeDeAprendizagem rdf:type owl:NamedIndividual ,
+                                    :AspectoComportamental .
+
+
+###  http://www.semanticweb.org/professorac/ontologies/2025/3/untitled-ontology-2#DificuldadeDeExpressao
+:DificuldadeDeExpressao rdf:type owl:NamedIndividual ,
+                                 :AspectoComportamental .
+
+
+###  http://www.semanticweb.org/professorac/ontologies/2025/3/untitled-ontology-2#EmocaoAtivada
+:EmocaoAtivada rdf:type owl:NamedIndividual ,
+                        :EmocaoAtivada .
+
+
+###  http://www.semanticweb.org/professorac/ontologies/2025/3/untitled-ontology-2#EstratificacaoDeRisco_01
+:EstratificacaoDeRisco_01 rdf:type owl:NamedIndividual ,
+                                   :EstratificacaoDeRisco .
+
+
+###  http://www.semanticweb.org/professorac/ontologies/2025/3/untitled-ontology-2#Extrovertido
+:Extrovertido rdf:type owl:NamedIndividual ,
+                       :AspectoComportamental .
+
+
+###  http://www.semanticweb.org/professorac/ontologies/2025/3/untitled-ontology-2#FaltaDeMotivacao
+:FaltaDeMotivacao rdf:type owl:NamedIndividual ,
+                           :AspectoComportamental .
+
+
+###  http://www.semanticweb.org/professorac/ontologies/2025/3/untitled-ontology-2#Joao
+:Joao rdf:type owl:NamedIndividual ,
+               :Paciente ;
+      :diagnosticado :Ansiedade ;
+      :fazUso :SubstanciaPsicoativa ;
+      :iniciaTratamento :EstratificacaoDeRisco_01 ;
+      :possui :Alegria ,
+              :EmocaoAtivada ,
+              :Raiva ,
+              :Tristeza ;
+      :apresentaSinalESintomaDeAnsiedade "true"^^xsd:boolean ;
+      :fazUsoDeSubstanciaPsicoativa "true"^^xsd:boolean ;
+      :possuiEmocaoAtivada "Sim"^^xsd:string ;
+      sio:hasValue "João"^^xsd:string .
+
+
+###  http://www.semanticweb.org/professorac/ontologies/2025/3/untitled-ontology-2#Maria
+:Maria rdf:type owl:NamedIndividual ,
+                :Pessoa ,
+                :ProfissionalResponsavel ;
+       :orientaTratamento :Joao ;
+       sio:hasValue "Maria"^^xsd:string .
+
+
+###  http://www.semanticweb.org/professorac/ontologies/2025/3/untitled-ontology-2#NaoInterage
+:NaoInterage rdf:type owl:NamedIndividual ,
+                      :AspectoComportamental .
+
+
+###  http://www.semanticweb.org/professorac/ontologies/2025/3/untitled-ontology-2#Raiva
+:Raiva rdf:type owl:NamedIndividual ,
+                :EmocaoAtivada .
+
+
+###  http://www.semanticweb.org/professorac/ontologies/2025/3/untitled-ontology-2#SubstanciaPsicoativa
+:SubstanciaPsicoativa rdf:type owl:NamedIndividual ,
+                               :SubstanciaPsicoativa .
+
+
+###  http://www.semanticweb.org/professorac/ontologies/2025/3/untitled-ontology-2#TranstornoDeAnsiedadeGeneralizada
+:TranstornoDeAnsiedadeGeneralizada rdf:type owl:NamedIndividual ,
+                                            :TranstornoMental .
+
+
+###  http://www.semanticweb.org/professorac/ontologies/2025/3/untitled-ontology-2#Transtorno_de_Ansiedade
+:Transtorno_de_Ansiedade rdf:type owl:NamedIndividual ,
+                                  :Ansiedade ;
+                         sio:hasValue "Transtorno de Ansiedade Generalizada"^^xsd:string .
+
+
+###  http://www.semanticweb.org/professorac/ontologies/2025/3/untitled-ontology-2#Tristeza
+:Tristeza rdf:type owl:NamedIndividual ,
+                   :EmocaoAtivada .
+
+
+#################################################################
+#    Rules
+#################################################################
+
+:p rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
+
+[ <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> "true"^^xsd:boolean ;
+   rdfs:comment "TAGExemplo"^^xsd:string ;
+   rdfs:label "TAGExemplo2"^^xsd:string ;
+   rdf:type <http://www.w3.org/2003/11/swrl#Imp> ;
+   <http://www.w3.org/2003/11/swrl#body> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#propertyPredicate> :diagnosticado ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> :p ;
+                                                       <http://www.w3.org/2003/11/swrl#argument2> :Ansiedade
+                                                     ] ;
+                                           rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                      rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom> ;
+                                                                  <http://www.w3.org/2003/11/swrl#propertyPredicate> :fazUso ;
+                                                                  <http://www.w3.org/2003/11/swrl#argument1> :p ;
+                                                                  <http://www.w3.org/2003/11/swrl#argument2> :SubstanciaPsicoativa
+                                                                ] ;
+                                                      rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                                 rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom> ;
+                                                                             <http://www.w3.org/2003/11/swrl#propertyPredicate> :possui ;
+                                                                             <http://www.w3.org/2003/11/swrl#argument1> :p ;
+                                                                             <http://www.w3.org/2003/11/swrl#argument2> :EmocaoAtivada
+                                                                           ] ;
+                                                                 rdf:rest rdf:nil
+                                                               ]
+                                                    ]
+                                         ] ;
+   <http://www.w3.org/2003/11/swrl#head> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#propertyPredicate> :diagnosticado ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> :p ;
+                                                       <http://www.w3.org/2003/11/swrl#argument2> :TranstornoDeAnsiedadeGeneralizada
+                                                     ] ;
+                                           rdf:rest rdf:nil
+                                         ]
+ ] .
+
+[ <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> "true"^^xsd:boolean ;
+   rdfs:comment "TAG"^^xsd:string ;
+   rdfs:label "TAG"^^xsd:string ;
+   rdf:type <http://www.w3.org/2003/11/swrl#Imp> ;
+   <http://www.w3.org/2003/11/swrl#body> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#propertyPredicate> :apresentaSinalESintomaDeAnsiedade ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> :p ;
+                                                       <http://www.w3.org/2003/11/swrl#argument2> "true"^^xsd:boolean
+                                                     ] ;
+                                           rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                      rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
+                                                                  <http://www.w3.org/2003/11/swrl#classPredicate> :Paciente ;
+                                                                  <http://www.w3.org/2003/11/swrl#argument1> :p
+                                                                ] ;
+                                                      rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                                 rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom> ;
+                                                                             <http://www.w3.org/2003/11/swrl#propertyPredicate> :fazUsoDeSubstanciaPsicoativa ;
+                                                                             <http://www.w3.org/2003/11/swrl#argument1> :p ;
+                                                                             <http://www.w3.org/2003/11/swrl#argument2> "true"^^xsd:boolean
+                                                                           ] ;
+                                                                 rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                                            rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom> ;
+                                                                                        <http://www.w3.org/2003/11/swrl#propertyPredicate> :possuiEmocaoAtivada ;
+                                                                                        <http://www.w3.org/2003/11/swrl#argument1> :p ;
+                                                                                        <http://www.w3.org/2003/11/swrl#argument2> "Sim"^^xsd:string
+                                                                                      ] ;
+                                                                            rdf:rest rdf:nil
+                                                                          ]
+                                                               ]
+                                                    ]
+                                         ] ;
+   <http://www.w3.org/2003/11/swrl#head> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#propertyPredicate> :diagnosticado ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> :p ;
+                                                       <http://www.w3.org/2003/11/swrl#argument2> :Transtorno_de_Ansiedade
+                                                     ] ;
+                                           rdf:rest rdf:nil
+                                         ]
+ ] .
+
+###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi
