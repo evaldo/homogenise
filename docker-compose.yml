@@ -16,9 +16,9 @@ services:
             
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -d homogenise -U postgres"]
-      interval: 1s
+      interval: 5s
       timeout: 5s
-      retries: 10
+      retries: 40
 
   allegro:
     image: franzinc/agraph
@@ -40,9 +40,16 @@ services:
         condition: service_healthy
     ports:
       - '5000:5000'
+    volumes:
+      - ./website:/app/website
+      - ./:/app
+    environment:
+      - FLASK_APP=main.py
+      - FLASK_RUN_HOST=0.0.0.0
     build:
       context: ./
       dockerfile: ./Dockerfile
+    command: python3 main.py
 
 volumes:
   agdata:

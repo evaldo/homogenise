@@ -2,7 +2,7 @@ import os
 import urllib.request
 import shutil
 import uuid
-from flask import Blueprint, redirect, render_template, request, flash, url_for
+from flask import Blueprint, redirect, render_template, request, flash, url_for, make_response
 from flask_login import login_required, current_user
 from franz.openrdf.rio.rdfformat import RDFFormat
 from wordcloud import WordCloud, STOPWORDS
@@ -16,7 +16,9 @@ matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import networkx as nx
 import pandas as pd
+import csv
 import chardet
+import re
 
 views = Blueprint('views', __name__)
 
@@ -639,6 +641,9 @@ def projectresearch():
         cur.close
 
         return render_template("projectresearch.html", output_data = data, user=current_user)
+    
+def is_valid_project_name(project_name):
+    return bool(re.match(r'^[a-zA-Z0-9_-]+$', project_name))
 
 @views.route('/projectdata', methods= ['GET', 'POST'])
 def projectdata():
@@ -665,17 +670,62 @@ def projectdata():
                     flash('There are project teams using this project!', category='error')
                     return redirect(url_for('views.projectresearch'))
                 else:
+                    try:
+                        project_root = "/app"
+                        project_path = os.path.join(project_root, project_name)
+                        if os.path.exists(project_path):
+                            shutil.rmtree(project_path)
+                            flash(f"Project folder {project_name} deleted successfully!", category='success')
+                        else:
+                            flash(f"Project folder {project_name} not found.", category='warning')
+                    except OSError as ex:
+                        flash(f"Error deleting project folder: {ex}", category='error')
+
                     cur.execute("update app.project set user_id_log = " + current_user.get_id()  + ", user_name_log = '" + current_user.first_name  + "'  where project_id = " + project_id)
                     cur.execute("delete from app.project where project_id = " + project_id)
                     flash('Data deleted!', category='success')
                     return redirect(url_for('views.projectresearch'))
 
             if request.args.get('type_operation', '') == 'A':
+                try:
+                    project_root = "/app"
+                    project_path = os.path.join(project_root, project_name)
+                    os.makedirs(project_path, exist_ok=True)
+                    flash(f"Project folder {project_name} created successfully!", category='success')
+                except OSError as ex:
+                    flash(f"Error creating project folder: {ex}", category='error')
+                    return redirect(url_for('views.projectresearch'))
+
                 cur.execute("insert into app.project (project_id, project_name, project_description, research_line_id, user_id_log, user_name_log) values (nextval('app.project_project_id_seq'), '" + project_name + "', '" + project_description +  "' , " + research_line_id + ", " + current_user.get_id()  + ", '" + current_user.first_name  + "')")
-                flash('Data inserted!', category='success')
+                flash('Data inserted and project path created!', category='success')
                 return redirect(url_for('views.projectresearch'))
 
             if request.args.get('type_operation', '') == 'U':
+                cur.execute("SELECT project_name FROM app.project WHERE project_id = " + project_id)
+                old_project_name = cur.fetchone()[0]
+
+                if old_project_name != project_name:
+                    if not is_valid_project_name(project_name):
+                        flash("New project name contains invalid characters.", category='error')
+                        return redirect(url_for('views.projectresearch'))
+                    
+                    try:
+                        project_root = "/app"
+                        old_project_path = os.path.join(project_root, old_project_name)
+                        new_project_path = os.path.join(project_root, project_name)
+                        if os.path.exists(old_project_path):
+                            if not os.path.exists(new_project_path):
+                                os.rename(old_project_path, new_project_path)
+                                flash(f"Project folder renamed from {old_project_name} to {project_name} successfully!", category='success')
+                            else:
+                                flash(f"A folder with the name {project_name} already exists.", category='error')
+                                return redirect(url_for('views.projectresearch'))
+                        else:
+                            flash(f"Project folder {old_project_name} not found.", category='warning')
+                    except OSError as ex:
+                        flash(f"Error renaming project folder: {ex}", category='error')
+                        return redirect(url_for('views.projectresearch'))
+
                 cur.execute("update app.project set project_name = '" + project_name + "', project_description = '" + project_description + "' , research_line_id = " + research_line_id + ", user_id_log = " + current_user.get_id()  + ", user_name_log = '" + current_user.first_name  + "' where project_id = " + project_id)
                 flash('Data updated!', category='success')
                 return redirect(url_for('views.projectresearch'))
@@ -1050,3 +1100,149 @@ def uploadfileonto():
             flash('Repeat operation and selecting a OWL file!', category='success')
 
         return render_template("uploadonto.html", user=current_user)
+
+UPLOAD_FOLDER = "./uploads"
+
+@views.route('/selectFile', methods=['POST'])
+def selectFile():
+    file = request.files['file']
+    if file:
+        filepath = os.path.join(UPLOAD_FOLDER, file.filename)
+        file.save(filepath)
+        flash('File selected successfully', category='success')
+        return redirect(url_for('views.uploadDictionaryMapping'))
+    flash('No files selected', category='error')
+    return redirect(url_for('views.uploadDictionaryMapping'))
+
+# def selectFile():
+#     file = request.files['file']
+#     if file:
+#         file.save(f"./uploads/{file.filename}")
+#         flash('File selected successfully', category='success')
+#     flash('No files selected', category='error')
+
+@views.route('/infosheet', methods=['POST'])
+def uploadInfosheet():
+    if request.method == 'POST':
+        urlfilecodemapping = request.form.get('urlfilecodemapping')
+        urlfilecodebook = request.form.get('urlfilecodebook')
+        urlfiledictionarymapping = request.form.get('urlfiledictionarymapping')
+        urlfileimports = request.form.get('urlfileimports')
+        urlfiletimeline = request.form.get('urlfiletimeline')
+        urlfileproject = request.form.get('urlfileproject')
+
+        if all([urlfilecodemapping, urlfilecodebook, urlfiledictionarymapping, urlfileimports, urlfiletimeline, urlfileproject]):
+            output = io.StringIO()
+            writer = csv.writer(output)
+            writer.writerow(['Attribute', 'Value'])
+            writer.writerow(['Code Mapping', urlfilecodemapping])
+            writer.writerow(['CodeBook', urlfilecodebook])
+            writer.writerow(['Dictionary Mapping', urlfiledictionarymapping])
+            writer.writerow(['Imports', urlfileimports])
+            writer.writerow(['TimeLine', urlfiletimeline])
+            writer.writerow(['Project', urlfileproject])
+
+            response = make_response(output.getvalue())
+            response.headers["Content-Disposition"] = "attachment; filename=infosheet.csv"
+            response.headers["Content-type"] = "text/csv"
+            return response
+    
+        else:
+            flash('Error in Infosheet form. Please fill in the field correctly!', category='error')
+
+    return render_template("infosheet.html", user=current_user)
+
+@views.route('/dictionaryMapping', methods=['POST'])
+def uploadDictionaryMapping():
+    if request.method == 'POST':
+        urlfileattribute = request.form.get('urlfileattribute')
+        urlfileattributeof = request.form.get('urlfileattributeof')
+        urlfilecolumn = request.form.get('urlfilecolumn')
+        urlfilecomment = request.form.get('urlfilecomment')
+        urlfiledefinition = request.form.get('urlfiledefinition')
+        urlfileentity = request.form.get('urlfileentity')
+        urlfileformat = request.form.get('urlfileformat')
+        urlfileinReleationTo = request.form.get('urlfileinReleationTo')
+        urlfilelabel = request.form.get('urlfilelabel')
+        urlfileproperty = request.form.get('urlfileproperty')
+        urlfilerelation = request.form.get('urlfilerelation')
+        urlfilerole = request.form.get('urlfilerole')
+        urlfiletime = request.form.get('urlfiletime')
+        urlfileunit = request.form.get('urlfileunit')
+        urlfilewasDerivedFrom = request.form.get('urlfilewasDerivedFrom')
+        urlfilewasGeneratedBy = request.form.get('urlfilewasGeneratedBy')
+        urlfileproject = request.form.get('urlfileproject')
+
+        fields = [
+            urlfilecolumn, urlfileattribute, urlfileattributeof, urlfileentity, urlfileunit, urlfileformat,
+            urlfileproperty, urlfiletime, urlfilerelation, urlfileinReleationTo, urlfilelabel, urlfilerole,
+            urlfiledefinition, urlfilecomment, urlfilewasDerivedFrom, urlfilewasGeneratedBy, urlfileproject
+        ]
+
+        if all(fields):
+            file = request.files.get('file')
+            output = io.StringIO()
+            writer = csv.writer(output)
+
+            if file and file.filename:
+                stream = io.StringIO(file.stream.read().decode("UTF-8"), newline=None)
+                reader = csv.reader(stream)
+                existing_rows = list(reader)
+                for row in existing_rows:
+                    writer.writerow(row)
+                writer.writerow(fields)
+                response = make_response(output.getvalue())
+                response.headers["Content-Disposition"] = "attachment; filename=updated_dictionaryMapping.csv"
+                response.headers["Content-type"] = "text/csv"
+                return response
+            else:
+                writer.writerow([
+                    'Column', 'Attribute', 'Attribute Of', 'Entity', 'Unit', 'Format',
+                    'Property', 'Time', 'Relation', 'In Relation To', 'Label', 'Role',
+                    'Definition', 'Comment', 'Was Derived From', 'Was Generated By', 'Project'
+                ])
+                writer.writerow(fields)
+                response = make_response(output.getvalue())
+                response.headers["Content-Disposition"] = "attachment; filename=dictionaryMapping.csv"
+                response.headers["Content-type"] = "text/csv"
+                return response
+            
+        else:
+            flash('Error in Dictionary Mapping form. Please fill in the field correctly!', category='error')
+
+    return render_template("dictionaryMapping.html")
+
+@views.route('/codeBook', methods=['POST'])
+def uploadCodeBook():
+    if request.method == 'POST':
+        urlfileclass = request.form.get('urlfileclass')
+        urlfilecode = request.form.get('urlfilecode')
+        urlfilecolumn = request.form.get('urlfilecolumn')
+        urlfilecomment = request.form.get('urlfilecomment')
+        urlfiledefinition = request.form.get('urlfiledefinition')
+        urlfilelabel = request.form.get('urlfilelabel')
+        urlfileresource = request.form.get('urlfileresource')
+        urlfileproject = request.form.get('urlfileproject')
+
+        fields = [
+            urlfilecolumn, urlfilecode, urlfileclass, urlfilecomment, 
+            urlfiledefinition, urlfilelabel, urlfileresource, urlfileproject
+        ]
+
+        if all(fields):
+            output = io.StringIO()
+            writer = csv.writer(output)
+            writer.writerow([
+                'Column', 'Code', 'Class', 'Comment', 'Definition', 'Label', 'Resource', 'Project'
+            ])
+
+            writer.writerow(fields)
+
+            response = make_response(output.getvalue())
+            response.headers["Content-Disposition"] = "attachment; filename=codebook.csv"
+            response.headers["Content-type"] = "text/csv"
+            return response
+    
+        else:
+            flash('Error in CodeBook form. Please fill in the field correctly!', category='error')
+    return render_template("codeBook.html", user=current_user)

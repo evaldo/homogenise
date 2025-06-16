@@ -1,0 +1,37 @@
+{% extends "base.html" %} {% block title %}Infosheet{% endblock %} {% block content%}
+    <form method="POST">
+      <h3 align="left">Infosheet</h3>
+      <br />
+      <div class="form-group">
+        <label for="codeMapping">Code Mapping:</label>
+        <input type="text" id="urlfilecodemapping" name="urlfilecodemapping" class="form-control" placeholder="Enter a text"/>   
+      </div>
+      <div class="form-group">
+        <label for="codeBook">CodeBook:</label>
+        <input type="text" id="urlfilecodebook" name="urlfilecodebook" class="form-control" placeholder="Enter a text"/>   
+      </div>
+      <div class="form-group">
+        <label for="dictionaryMapping">Dictionary Mapping:</label>
+        <input type="text" id="urlfiledictionarymapping" name="urlfiledictionarymapping" class="form-control" placeholder="Enter a text"/>   
+      </div>
+      <div class="form-group">
+        <label for="imports">Imports:</label>
+        <input type="text" id="urlfileimports" name="urlfileimports" class="form-control" placeholder="Enter a text"/>   
+      </div>
+      <div class="form-group">
+        <label for="timeLine">TimeLine:</label>
+        <input type="text" id="urlfiletimeline" name="urlfiletimeline" class="form-control" placeholder="Enter a text"/>   
+      </div>   
+      <div class="form-group">
+        <label for="project">Project:</label>
+        <input type="text" id="urlfileproject" name="urlfileproject" class="form-control" placeholder="Enter a text"/>   
+      </div>   
+      <br />
+      <div class="d-flex justify-content-center">
+          <button class="btn btn-primary" value="Upload" onClick="uploadInfosheet()">Upload</button>
+      </div>
+      {% if error %}
+      <p class=error><strong>Error:</strong> {{ error }}
+      {% endif %}
+    </form>
+{% endblock %}
