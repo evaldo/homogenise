@@ -691,13 +691,41 @@ def projectdata():
                     project_root = "/app"
                     project_path = os.path.join(project_root, project_name)
                     os.makedirs(project_path, exist_ok=True)
+
+                    project_config_path = os.path.join(project_path, 'config')
+                    os.makedirs(project_config_path, exist_ok=True)
+
+                    project_input_path = os.path.join(project_path, 'input')
+                    os.makedirs(project_input_path, exist_ok=True)
+
+                    codebook_path = os.path.join(project_input_path, 'CB')
+                    os.makedirs(codebook_path, exist_ok=True)
+                    data_path = os.path.join(project_input_path, 'Data')
+                    os.makedirs(data_path, exist_ok=True)
+                    dictionaryMapping_path = os.path.join(project_input_path, 'DM')
+                    os.makedirs(dictionaryMapping_path, exist_ok=True)
+                    timeLine_path = os.path.join(project_input_path, 'TL')
+                    os.makedirs(timeLine_path, exist_ok=True)
+
+                    project_output_path = os.path.join(project_path, 'output')
+                    os.makedirs(project_output_path, exist_ok=True)
+                    
+                    sparql_path = os.path.join(project_output_path, 'sparql')
+                    os.makedirs(sparql_path, exist_ok=True)
+                    swrl_path = os.path.join(project_output_path, 'swrl')
+                    os.makedirs(swrl_path, exist_ok=True)
+                    trig_path = os.path.join(project_output_path, 'trig')
+                    os.makedirs(trig_path, exist_ok=True)
+                    ttl_path = os.path.join(project_output_path, 'ttl')
+                    os.makedirs(ttl_path, exist_ok=True)
+
                     flash(f"Project folder {project_name} created successfully!", category='success')
                 except OSError as ex:
                     flash(f"Error creating project folder: {ex}", category='error')
                     return redirect(url_for('views.projectresearch'))
 
                 cur.execute("insert into app.project (project_id, project_name, project_description, research_line_id, user_id_log, user_name_log) values (nextval('app.project_project_id_seq'), '" + project_name + "', '" + project_description +  "' , " + research_line_id + ", " + current_user.get_id()  + ", '" + current_user.first_name  + "')")
-                flash('Data inserted and project path created!', category='success')
+                flash('Data inserted!', category='success')
                 return redirect(url_for('views.projectresearch'))
 
             if request.args.get('type_operation', '') == 'U':
@@ -1113,13 +1141,6 @@ def selectFile():
         return redirect(url_for('views.uploadDictionaryMapping'))
     flash('No files selected', category='error')
     return redirect(url_for('views.uploadDictionaryMapping'))
-
-# def selectFile():
-#     file = request.files['file']
-#     if file:
-#         file.save(f"./uploads/{file.filename}")
-#         flash('File selected successfully', category='success')
-#     flash('No files selected', category='error')
 
 @views.route('/infosheet', methods=['POST'])
 def uploadInfosheet():
