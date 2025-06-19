@@ -126,61 +126,34 @@ def generatestatistics():
                 values2 = []
                 formatted_values = ", ".join(f"'{word}'" for word in selected_classes)                
                 sparql = f"""                                        
-                    SELECT distinct (REPLACE(STR(?s), "^.*/([^/]*)$", "$1") as ?individual) (REPLACE(STR(?annotation), "^.*/([^/]*)$", "$1") as ?label) (REPLACE(STR(?o), "^.*/([^/]*)$", "$1") as ?type)
+                    SELECT distinct (REPLACE(STR(?s), "^.*/([^/]*)$", "$1") as ?individual) (REPLACE(STR(?p), "^.*/([^/]*)$", "$1") as ?label) (REPLACE(STR(?o), "^.*/([^/]*)$", "$1") as ?type)
                     WHERE {{
-                          ?s ?p ?o .
-                          ?o ?objectType ?object .
-                          ?s ?annotation ?value .
-                          FILTER(?annotation NOT IN (<http://semanticscience.org/resource/hasUnit>, rdfs:domain, rdfs:range, rdfs:subPropertyOf, rdf:first, rdf:rest, owl:members, <http://www.w3.org/ns/prov#generatedAtTime>, owl:allValuesFrom, <http://semanticscience.org/resource/isAttributeOf>)) .
-                          FILTER(?value NOT IN (owl:ObjectProperty, owl:Class, owl:NamedIndividual, owl:AllDisjointClasses, owl:Restriction, <http://semanticscience.org/resource/isAttributeOf>)) .    
-                          FILTER (!isBlank(?value)) .
-                          FILTER (!isBlank(?s)) .
-                          FILTER(?value != '') .                          
-                          FILTER((REPLACE(STR(?s), "^.*/([^/]*)$", "$1")) IN ({formatted_values}))
-                        }}	                                  
+                      ?s ?p ?o .                      
+                      FILTER(?p NOT IN (<http://semanticscience.org/resource/hasUnit>, rdfs:domain, rdfs:range, rdfs:subPropertyOf, rdf:first, rdf:rest, owl:members, <http://www.w3.org/ns/prov#generatedAtTime>, owl:allValuesFrom, <http://semanticscience.org/resource/isAttributeOf>)) .
+                      FILTER(?o NOT IN (owl:ObjectProperty, owl:Class, owl:NamedIndividual, owl:AllDisjointClasses, owl:Restriction, <http://semanticscience.org/resource/isAttributeOf>)) .    
+                      FILTER (!isBlank(?o)) .
+                      FILTER (!isBlank(?s)) .
+                      FILTER(?o != '') .                          
+                      FILTER((REPLACE(STR(?s), "^.*/([^/]*)$", "$1")) IN ({formatted_values}))
+                    }}	                                  
                    """
                 with db.get_allegro(project_id) as conn:
                     with conn.executeTupleQuery(sparql) as results:
                         for result in results:
                             individuals.append(str(result.getValue('individual')).replace('"', ''))
-                            labels.append(str(result.getValue('label')).replace('"', '').split('#')[-1])
+                            labels.append(str(result.getValue('label')).replace('"', ''))
                             types.append(str(result.getValue('type')).replace('"', ''))
-                formatted_values = ", ".join(f"'{word}'" for word in selected_classes)
-                sparql = f"""                        
-                        SELECT distinct (REPLACE(STR(?s), "^.*/([^/]*)$", "$1") as ?individual) (REPLACE(STR(?pAnnotation), "^.*/([^/]*)$", "$1") as ?annotation) (REPLACE(STR(?oValue), "^.*/([^/]*)$", "$1") as ?value)
-                        WHERE {{
-                              ?s ?p ?o .
-                              ?o ?objectType ?object .
-                              ?s ?pAnnotation ?oValue .
-                              FILTER(?pAnnotation NOT IN (<http://semanticscience.org/resource/hasUnit>, rdfs:domain, rdfs:range, rdfs:subPropertyOf, rdf:first, rdf:rest, owl:members, <http://www.w3.org/ns/prov#generatedAtTime>, owl:allValuesFrom, <http://semanticscience.org/resource/isAttributeOf>)) .
-                              FILTER(?oValue NOT IN (owl:ObjectProperty, owl:Class, owl:NamedIndividual, owl:AllDisjointClasses, owl:Restriction, <http://semanticscience.org/resource/isAttributeOf>)) .    
-                              FILTER (!isBlank(?oValue)) .
-                              FILTER (!isBlank(?s)) .
-                              FILTER(?oValue != '') .                              
-                              FILTER((REPLACE(STR(?s), "^.*/([^/]*)$", "$1")) IN ({formatted_values}))
-                            }}                         
-                        """
-                with db.get_allegro(project_id) as conn:
-                    with conn.executeTupleQuery(sparql) as results:
-                        for result in results:
-                            individuals2.append(str(result.getValue('individual')).replace('"', '').split('>')[0].split('#')[-1])
-                            annotations2.append(str(result.getValue('annotation')).replace('"', '').split('>')[0].split('/')[-1].split('#')[-1])
-                            values2.append(str(result.getValue('value')).replace('"', '').split('>')[0].split('#')[-1])
-
+                
                 df = pd.DataFrame({'individuals': individuals, 'labels': labels, 'types': types})
-                df2 = pd.DataFrame({'individuals': individuals2, 'annotations': annotations2, 'values': values2})
-
+                
                 graph = nx.Graph()
                 for _, row in df.iterrows():
                     graph.add_edge(row['individuals'], row['types'], label=row['labels'])
 
-                for _, row in df2.iterrows():
-                    graph.add_edge(row['individuals'], row['values'], label=row['annotations'])
-
                 pos = nx.spring_layout(graph, seed=42, k=0.9)
                 labels = nx.get_edge_attributes(graph, 'label')
                 plt.figure(figsize=(12, 10))
-                nx.draw(graph, pos, with_labels=True, font_size=10, node_size=700, node_color='lightblue', edge_color='gray', alpha=0.6)
+                nx.draw(graph, pos, with_labels=True, font_size=9, node_size=700, node_color='lightblue', edge_color='gray', alpha=0.6)
                 nx.draw_networkx_edge_labels(graph, pos, edge_labels=labels, font_size=8, label_pos=0.3, verticalalignment='baseline')
                 plt.title('Knowledge Graph')
                 buffer = io.BytesIO()
