@@ -121,9 +121,6 @@ def generatestatistics():
                 labels = []
                 types = []
 
-                individuals2 = []
-                annotations2 = []
-                values2 = []
                 formatted_values = ", ".join(f"'{word}'" for word in selected_classes)                
                 sparql = f"""                                        
                     SELECT distinct (REPLACE(STR(?s), "^.*/([^/]*)$", "$1") as ?individual) (REPLACE(STR(?p), "^.*/([^/]*)$", "$1") as ?label) (REPLACE(STR(?o), "^.*/([^/]*)$", "$1") as ?type)
@@ -150,11 +147,11 @@ def generatestatistics():
                 for _, row in df.iterrows():
                     graph.add_edge(row['individuals'], row['types'], label=row['labels'])
 
-                pos = nx.spring_layout(graph, seed=42, k=0.9)
+                pos = nx.spring_layout(graph, k=3/np.sqrt(graph.order()))
                 labels = nx.get_edge_attributes(graph, 'label')
-                plt.figure(figsize=(12, 10))
-                nx.draw(graph, pos, with_labels=True, font_size=9, node_size=700, node_color='lightblue', edge_color='gray', alpha=0.6)
-                nx.draw_networkx_edge_labels(graph, pos, edge_labels=labels, font_size=8, label_pos=0.3, verticalalignment='baseline')
+                plt.figure(figsize=(12, 12))
+                nx.draw(graph, pos, with_labels=True, font_size=9, node_size=1000, node_color='lightblue', edge_color='gray', alpha=1)
+                nx.draw_networkx_edge_labels(graph, pos, edge_labels=labels, font_size=7, label_pos=0.5, verticalalignment='center', clip_on=False)
                 plt.title('Knowledge Graph')
                 buffer = io.BytesIO()
                 plt.savefig(buffer, format='png')
