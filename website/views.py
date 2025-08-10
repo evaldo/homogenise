@@ -2,7 +2,7 @@ import os
 import urllib.request
 import shutil
 import uuid
-from flask import Blueprint, redirect, render_template, request, flash, url_for, make_response
+from flask import Blueprint, redirect, render_template, request, flash, url_for, make_response, jsonify
 from flask_login import login_required, current_user
 from franz.openrdf.rio.rdfformat import RDFFormat
 from wordcloud import WordCloud, STOPWORDS
@@ -1142,36 +1142,60 @@ def selectFile():
     flash('No files selected', category='error')
     return redirect(url_for('views.uploadDictionaryMapping'))
 
-@views.route('/infosheet', methods=['POST'])
+@views.route('/infosheet', methods=['POST', 'GET'])
 def uploadInfosheet():
-    if request.method == 'POST':
-        urlfilecodemapping = request.form.get('urlfilecodemapping')
-        urlfilecodebook = request.form.get('urlfilecodebook')
-        urlfiledictionarymapping = request.form.get('urlfiledictionarymapping')
-        urlfileimports = request.form.get('urlfileimports')
-        urlfiletimeline = request.form.get('urlfiletimeline')
-        urlfileproject = request.form.get('urlfileproject')
+    conn = db.get_cursor()
+    conn.execute("SELECT project_id, project_name FROM app.project ORDER BY project_name")
+    projects_tuples = conn.fetchall()
+    conn.close()
 
-        if all([urlfilecodemapping, urlfilecodebook, urlfiledictionarymapping, urlfileimports, urlfiletimeline, urlfileproject]):
-            output = io.StringIO()
-            writer = csv.writer(output)
-            writer.writerow(['Attribute', 'Value'])
-            writer.writerow(['Code Mapping', urlfilecodemapping])
-            writer.writerow(['CodeBook', urlfilecodebook])
-            writer.writerow(['Dictionary Mapping', urlfiledictionarymapping])
-            writer.writerow(['Imports', urlfileimports])
-            writer.writerow(['TimeLine', urlfiletimeline])
-            writer.writerow(['Project', urlfileproject])
+    projects = []
+    for p_tuple in projects_tuples:
+        projects.append({
+            'project_id': p_tuple[0],
+            'project_name': p_tuple[1]
+        })
 
-            response = make_response(output.getvalue())
-            response.headers["Content-Disposition"] = "attachment; filename=infosheet.csv"
-            response.headers["Content-type"] = "text/csv"
-            return response
+    return render_template("infosheet.html", projects=projects, user=current_user)
+
+@views.route('/loadInfosheet/<project_id>', methods=['GET'])
+def loadInfosheet(project_id):
+    conn = db.get_cursor()
+    conn.execute("SELECT project_name FROM app.project WHERE project_id = %s", (project_id,))
+    project_name = conn.fetchone()[0]
+    conn.close()
+
+    project_path = os.path.join("/app", project_name, "config")
+    csv_file = os.path.join(project_path, "Infosheet.csv")
+
+    if os.path.exists(csv_file):
+        with open(csv_file, 'r', encoding='utf-8') as file:
+            reader = csv.reader(file)
+            data = list(reader)
+        return jsonify(data)
+    else:
+        attributes = ["Code Mapping", "CodeBook", "Dictionary Mapping", "Imports", "TimeLine", "Project"]
+        data = [["Attribute", "Value"]] + [[attr, ""] for attr in attributes]
+        return jsonify(data)
     
-        else:
-            flash('Error in Infosheet form. Please fill in the field correctly!', category='error')
+@views.route('/saveInfosheet/<project_id>', methods=['POST'])
+def saveInfosheet(project_id):
+    conn = db.get_cursor()
+    conn.execute("SELECT project_name FROM app.project WHERE project_id = %s", (project_id,))
+    project_name = conn.fetchone()[0]
+    conn.close()
 
-    return render_template("infosheet.html", user=current_user)
+    project_path = os.path.join("/app", project_name, "config")
+    csv_file = os.path.join(project_path, "Infosheet.csv")
+
+    os.makedirs(project_path, exist_ok=True)
+    data = request.json['data']
+    
+    with open(csv_file, 'w', newline='', encoding='utf-8') as file:
+        writer = csv.writer(file)
+        writer.writerows(data)
+    return jsonify({'status': 'ok'})
+
 
 @views.route('/dictionaryMapping', methods=['POST'])
 def uploadDictionaryMapping():

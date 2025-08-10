@@ -1,5 +1,75 @@
 {% extends "base.html" %} {% block title %}Infosheet{% endblock %} {% block content%}
-    <form method="POST">
+    <h3>Infosheet</h3>
+    <br />
+    <div class="form-group">
+        <label for="project-select">Select Project:</label>
+        <select id="project-select" class="form-control">
+            <option value="">-- Select a Project --</option>
+            {% for project in projects %}
+                <option value="{{ project.project_id }}">{{ project.project_name }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <br />
+    <div id="handsontable-container"></div>
+    <br />
+    <button id="save-button" class="btn btn-primary" disabled>Save changes</button>
+
+    <script src="https://cdn.jsdelivr.net/npm/handsontable/dist/handsontable.full.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/handsontable/dist/handsontable.full.min.css">
+
+    <script>
+        const projectSelect = document.getElementById('project-select');
+        const saveButton = document.getElementById('save-button');
+        let handsOnTable;
+
+        function initializeTable(data) {
+            const container = document.getElementById('handsontable-container');
+            if (handsOnTable) handsOnTable.destroy();
+            handsOnTable = new Handsontable(container, {
+                data: data,
+                colHeaders: true,
+                rowHeaders: false,
+                columns: [
+                    { readOnly: true },
+                    { type: 'text' }
+                ],
+                minSpareRows: 0,
+                licenseKey: 'non-commercial-and-evaluation'
+            });
+            saveButton.disabled = false;
+        }
+
+        projectSelect.addEventListener('change', () => {
+            const projectId = projectSelect.value;
+            if (projectId) {
+                fetch(`/loadInfosheet/${projectId}`)
+                    .then(response => response.json())
+                    .then(data => initializeTable(data))
+                    .catch(error => console.error('Error loading Infosheet:', error));
+            } else {
+                saveButton.disabled = true;
+            }
+        });
+
+        saveButton.addEventListener('click', () => {
+            const projectId = projectSelect.value;
+            if (projectId && handsOnTable) {
+                const data = handsOnTable.getData();
+                fetch(`/saveInfosheet/${projectId}`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ data: data })
+                })
+                .then(response => response.json())
+                .then(result => {
+                    if (result.status === 'ok') alert('Changes saved successfully!');
+                })
+                .catch(error => console.error('Error saving Infosheet:', error));
+            }
+        });
+    </script>
+    <!-- <form method="POST">
       <h3 align="left">Infosheet</h3>
       <br />
       <div class="form-group">
@@ -33,5 +103,5 @@
       {% if error %}
       <p class=error><strong>Error:</strong> {{ error }}
       {% endif %}
-    </form>
+    </form> -->
 {% endblock %}

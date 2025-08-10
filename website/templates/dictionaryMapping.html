@@ -1,5 +1,51 @@
 {% extends "base.html" %} {% block title %}Dictionary Mapping{% endblock %} {% block content%}
-    <h3 align="left">Dictionary Mapping</h3>
+  <h3> Dictionary Mapping</h3>
+  <br />
+  <div class="form-group">
+    <label for="project-select">Select Project:</label>
+    <select id="project-select" class="form-control">
+      <option value="">-- Select a Project --</option>
+      {% for project in projects %}
+          <option value="{{ project.project_id}}">{{ project.project_name }}</option>
+      {% endfor %}
+    </select>
+  </div>
+  <br />
+  <div id="handsontable-container"></div>
+  <br />
+  <button id="save-button" class="btn btn-primary" disabled>Save changes</button>
+
+  <script src="https://cdn.jsdelivr.net/npm/handsontable/dist/handsontable.full.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/handsontable/dist/handsontable.full.min.css">
+
+  <script>
+    const projectSelect = document.getElementById('project-select');
+    const saveButton = document.getElementById('save-button');
+    let handsOnTable;
+
+    function initializeTable(data) {
+      const container = document.getElementById('handsontable-container');
+
+      if (handsOnTable) handsOnTable.destroy();
+    }
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- <h3 align="left">Dictionary Mapping</h3>
     <br />
     <form action="/dictionaryMapping" method="POST" enctype="multipart/form-data" target="_blank">
         <div class="file-upload-wrapper">
@@ -123,5 +169,5 @@
                 <p class="{{ category }}">{{ message }}</p>
             {% endfor %}
         {% endif %}
-    {% endwith %}
+    {% endwith %} -->
 {% endblock %}
