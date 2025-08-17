@@ -23,16 +23,27 @@
         const saveButton = document.getElementById('save-button');
         let handsOnTable;
 
+        function getProjects() {
+            return fetch('/getProjects').then(response => response.json()).then(data => {
+                projectDropDown = data.map(it => it.project_name)
+            })
+        }
+
         function initializeTable(data) {
             const container = document.getElementById('handsontable-container');
             if (handsOnTable) handsOnTable.destroy();
             handsOnTable = new Handsontable(container, {
                 data: data,
-                colHeaders: true,
+                colHeaders: false,
                 rowHeaders: false,
                 columns: [
                     { readOnly: true },
-                    { type: 'text' }
+                    { type: 'text' },
+                    { type: 'text' },
+                    { type: 'text' },
+                    { type: 'text' },
+                    { type: 'text' },
+                    //INSERIR O TIPO DROPDOWN AQUI
                 ],
                 minSpareRows: 0,
                 licenseKey: 'non-commercial-and-evaluation'
