@@ -1142,8 +1142,62 @@ def selectFile():
     flash('No files selected', category='error')
     return redirect(url_for('views.uploadDictionaryMapping'))
 
-@views.route('/infosheet', methods=['POST', 'GET'])
-def uploadInfosheet():
+# @views.route('/infosheet', methods=['POST', 'GET'])
+# def uploadInfosheet():
+#     conn = db.get_cursor()
+#     conn.execute("SELECT project_id, project_name FROM app.project ORDER BY project_name")
+#     projects_tuples = conn.fetchall()
+#     conn.close()
+
+#     projects = []
+#     for p_tuple in projects_tuples:
+#         projects.append({
+#             'project_id': p_tuple[0],
+#             'project_name': p_tuple[1]
+#         })
+
+#     return render_template("infosheet.html", projects=projects, user=current_user)
+
+# @views.route('/loadInfosheet/<project_id>', methods=['GET'])
+# def loadInfosheet(project_id):
+#     conn = db.get_cursor()
+#     conn.execute("SELECT project_name FROM app.project WHERE project_id = %s", (project_id,))
+#     project_name = conn.fetchone()[0]
+#     conn.close()
+
+#     project_path = os.path.join("/app", project_name, "config")
+#     csv_file = os.path.join(project_path, "Infosheet.csv")
+
+#     if os.path.exists(csv_file):
+#         with open(csv_file, 'r', encoding='utf-8') as file:
+#             reader = csv.reader(file)
+#             data = list(reader)
+#         return jsonify(data)
+#     else:
+#         attributes = ["Code Mapping", "CodeBook", "Dictionary Mapping", "Imports", "TimeLine", "Project"]
+#         data = [["Attribute", "Value"]] + [[attr, ""] for attr in attributes]
+#         return jsonify(data)
+    
+# @views.route('/saveInfosheet/<project_id>', methods=['POST'])
+# def saveInfosheet(project_id):
+#     conn = db.get_cursor()
+#     conn.execute("SELECT project_name FROM app.project WHERE project_id = %s", (project_id,))
+#     project_name = conn.fetchone()[0]
+#     conn.close()
+
+#     project_path = os.path.join("/app", project_name, "config")
+#     csv_file = os.path.join(project_path, "Infosheet.csv")
+
+#     os.makedirs(project_path, exist_ok=True)
+#     data = request.json['data']
+    
+#     with open(csv_file, 'w', newline='', encoding='utf-8') as file:
+#         writer = csv.writer(file)
+#         writer.writerows(data)
+#     return jsonify({'status': 'ok'})
+
+@views.route('/projects', methods=['GET'])
+def getProjects():
     conn = db.get_cursor()
     conn.execute("SELECT project_id, project_name FROM app.project ORDER BY project_name")
     projects_tuples = conn.fetchall()
@@ -1155,16 +1209,11 @@ def uploadInfosheet():
             'project_id': p_tuple[0],
             'project_name': p_tuple[1]
         })
+    
+    return jsonify(projects)
 
-    return render_template("infosheet.html", projects=projects, user=current_user)
-
-@views.route('/loadInfosheet/<project_id>', methods=['GET'])
-def loadInfosheet(project_id):
-    conn = db.get_cursor()
-    conn.execute("SELECT project_name FROM app.project WHERE project_id = %s", (project_id,))
-    project_name = conn.fetchone()[0]
-    conn.close()
-
+@views.route('/loadInfosheet/<project_name>', methods=['GET'])
+def loadInfosheetByName(project_name):
     project_path = os.path.join("/app", project_name, "config")
     csv_file = os.path.join(project_path, "Infosheet.csv")
 
@@ -1172,122 +1221,216 @@ def loadInfosheet(project_id):
         with open(csv_file, 'r', encoding='utf-8') as file:
             reader = csv.reader(file)
             data = list(reader)
+
+        if data and data[0][0] == "Attribute" and data[0][1] == "Value":
+            data = data[1:]
+        
         return jsonify(data)
     else:
-        attributes = ["Code Mapping", "CodeBook", "Dictionary Mapping", "Imports", "TimeLine", "Project"]
-        data = [["Attribute", "Value"]] + [[attr, ""] for attr in attributes]
+        return jsonify([])
+    
+@views.route('/saveInfosheet/<project_name>', methods=['POST'])
+def saveInfosheet(project_name):
+    try:
+        project_path = os.path.join("/app", project_name, "config")
+        csv_file = os.path.join(project_path, "Infosheet.csv")
+
+        os.makedirs(project_path, exist_ok=True)
+        data = request.json['data']
+
+        with open(csv_file, 'w', newline='', encoding='utf-8') as file:
+            writer = csv.writer(file)
+            writer.writerow(["Attribute", "Value"])
+            writer.writerows(data)
+
+        flash('File saved successfully', category='success')
+        return jsonify({'status': 'ok'})
+    except Exception as e:
+        flash(f'Error: {str(e)}', category='error')
+        return jsonify({'status': 'error', 'message': str(e)}), 500    
+
+@views.route('/loadDictionaryMapping/<project_name>', methods=['GET'])
+def loadDictionaryMappingByName(project_name):
+    project_path = os.path.join("/app", project_name, "input", "DM")
+    csv_file = os.path.join(project_path, "DictionaryMapping.csv")
+
+    if os.path.exists(csv_file):
+        with open(csv_file, 'r', encoding='utf-8') as file:
+            reader = csv.reader(file)
+            data = list(reader)
+
+        if data and data[0] == [
+            'Column', 'Attribute', 'Attribute Of', 'Entity', 'Unit', 'Format',
+            'Property', 'Time', 'Relation', 'In Relation To', 'Label', 'Role',
+            'Definition', 'Comment', 'Was Derived From', 'Was Generated By'
+        ]:
+            data = data[1:]
+
         return jsonify(data)
+    else:
+        return jsonify([])
     
-@views.route('/saveInfosheet/<project_id>', methods=['POST'])
-def saveInfosheet(project_id):
-    conn = db.get_cursor()
-    conn.execute("SELECT project_name FROM app.project WHERE project_id = %s", (project_id,))
-    project_name = conn.fetchone()[0]
-    conn.close()
+@views.route('/saveDictionaryMapping/<project_name>', methods=['POST'])
+def saveDictionaryMapping(project_name):
+    try:
+        project_path = os.path.join("/app", project_name, "input", "DM")
+        csv_file = os.path.join(project_path, "DictionaryMapping.csv")
 
-    project_path = os.path.join("/app", project_name, "config")
-    csv_file = os.path.join(project_path, "Infosheet.csv")
+        os.makedirs(project_path, exist_ok=True)
+        data = request.json.get('data', [])
 
-    os.makedirs(project_path, exist_ok=True)
-    data = request.json['data']
-    
-    with open(csv_file, 'w', newline='', encoding='utf-8') as file:
-        writer = csv.writer(file)
-        writer.writerows(data)
-    return jsonify({'status': 'ok'})
-
-
-@views.route('/dictionaryMapping', methods=['POST'])
-def uploadDictionaryMapping():
-    if request.method == 'POST':
-        urlfileattribute = request.form.get('urlfileattribute')
-        urlfileattributeof = request.form.get('urlfileattributeof')
-        urlfilecolumn = request.form.get('urlfilecolumn')
-        urlfilecomment = request.form.get('urlfilecomment')
-        urlfiledefinition = request.form.get('urlfiledefinition')
-        urlfileentity = request.form.get('urlfileentity')
-        urlfileformat = request.form.get('urlfileformat')
-        urlfileinReleationTo = request.form.get('urlfileinReleationTo')
-        urlfilelabel = request.form.get('urlfilelabel')
-        urlfileproperty = request.form.get('urlfileproperty')
-        urlfilerelation = request.form.get('urlfilerelation')
-        urlfilerole = request.form.get('urlfilerole')
-        urlfiletime = request.form.get('urlfiletime')
-        urlfileunit = request.form.get('urlfileunit')
-        urlfilewasDerivedFrom = request.form.get('urlfilewasDerivedFrom')
-        urlfilewasGeneratedBy = request.form.get('urlfilewasGeneratedBy')
-        urlfileproject = request.form.get('urlfileproject')
-
-        fields = [
-            urlfilecolumn, urlfileattribute, urlfileattributeof, urlfileentity, urlfileunit, urlfileformat,
-            urlfileproperty, urlfiletime, urlfilerelation, urlfileinReleationTo, urlfilelabel, urlfilerole,
-            urlfiledefinition, urlfilecomment, urlfilewasDerivedFrom, urlfilewasGeneratedBy, urlfileproject
-        ]
-
-        if all(fields):
-            file = request.files.get('file')
-            output = io.StringIO()
-            writer = csv.writer(output)
-
-            if file and file.filename:
-                stream = io.StringIO(file.stream.read().decode("UTF-8"), newline=None)
-                reader = csv.reader(stream)
-                existing_rows = list(reader)
-                for row in existing_rows:
-                    writer.writerow(row)
-                writer.writerow(fields)
-                response = make_response(output.getvalue())
-                response.headers["Content-Disposition"] = "attachment; filename=updated_dictionaryMapping.csv"
-                response.headers["Content-type"] = "text/csv"
-                return response
-            else:
-                writer.writerow([
-                    'Column', 'Attribute', 'Attribute Of', 'Entity', 'Unit', 'Format',
-                    'Property', 'Time', 'Relation', 'In Relation To', 'Label', 'Role',
-                    'Definition', 'Comment', 'Was Derived From', 'Was Generated By', 'Project'
-                ])
-                writer.writerow(fields)
-                response = make_response(output.getvalue())
-                response.headers["Content-Disposition"] = "attachment; filename=dictionaryMapping.csv"
-                response.headers["Content-type"] = "text/csv"
-                return response
-            
-        else:
-            flash('Error in Dictionary Mapping form. Please fill in the field correctly!', category='error')
-
-    return render_template("dictionaryMapping.html")
-
-@views.route('/codeBook', methods=['POST'])
-def uploadCodeBook():
-    if request.method == 'POST':
-        urlfileclass = request.form.get('urlfileclass')
-        urlfilecode = request.form.get('urlfilecode')
-        urlfilecolumn = request.form.get('urlfilecolumn')
-        urlfilecomment = request.form.get('urlfilecomment')
-        urlfiledefinition = request.form.get('urlfiledefinition')
-        urlfilelabel = request.form.get('urlfilelabel')
-        urlfileresource = request.form.get('urlfileresource')
-        urlfileproject = request.form.get('urlfileproject')
-
-        fields = [
-            urlfilecolumn, urlfilecode, urlfileclass, urlfilecomment, 
-            urlfiledefinition, urlfilelabel, urlfileresource, urlfileproject
-        ]
-
-        if all(fields):
-            output = io.StringIO()
-            writer = csv.writer(output)
+        with open(csv_file, 'w', newline='', encoding='utf-8') as file:
+            writer = csv.writer(file)
             writer.writerow([
-                'Column', 'Code', 'Class', 'Comment', 'Definition', 'Label', 'Resource', 'Project'
+                'Column', 'Attribute', 'Attribute Of', 'Entity', 'Unit', 'Format',
+                'Property', 'Time', 'Relation', 'In Relation To', 'Label', 'Role',
+                'Definition', 'Comment', 'Was Derived From', 'Was Generated By'
             ])
+            writer.writerows(data)
 
-            writer.writerow(fields)
+        flash('File saved successfully', category='success')
+        return jsonify({'status': 'ok'})
+    except Exception as e:
+        flash(f'Error: {str(e)}', category='error')
+        return jsonify({'status': 'error', 'message': str(e)}), 500
 
-            response = make_response(output.getvalue())
-            response.headers["Content-Disposition"] = "attachment; filename=codebook.csv"
-            response.headers["Content-type"] = "text/csv"
-            return response
+
+#######################################################################################
+@views.route('/loadCodeBook/<project_name>', methods=['GET'])
+def loadCodeBookByName(project_name):
+    project_path = os.path.join("/app", project_name, "input", "CB")
+    csv_file = os.path.join(project_path, "CodeBook.csv")
+
+    if os.path.exists(csv_file):
+        with open(csv_file, 'r', encoding='utf-8') as file:
+            reader = csv.reader(file)
+            data = list(reader)
+
+        if data and data[0] == [
+            'Column', 'Code', 'Class', 'Comment', 'Definition', 'Label',
+            'Resource'
+        ]:
+            data = data[1:]
+
+        return jsonify(data)
+    else:
+        return jsonify([])
     
-        else:
-            flash('Error in CodeBook form. Please fill in the field correctly!', category='error')
-    return render_template("codeBook.html", user=current_user)
+@views.route('/saveCodeBook/<project_name>', methods=['POST'])
+def saveCodeBook(project_name):
+    try:
+        project_path = os.path.join("/app", project_name, "input", "CB")
+        csv_file = os.path.join(project_path, "CodeBook.csv")
+
+        os.makedirs(project_path, exist_ok=True)
+        data = request.json.get('data', [])
+
+        with open(csv_file, 'w', newline='', encoding='utf-8') as file:
+            writer = csv.writer(file)
+            writer.writerow([
+                'Column', 'Code', 'Class', 'Comment', 'Definition', 'Label',
+                'Resource'
+            ])
+            writer.writerows(data)
+
+        flash('File saved successfully', category='success')
+        return jsonify({'status': 'ok'})
+    except Exception as e:
+        flash(f'Error: {str(e)}', category='error')
+        return jsonify({'status': 'error', 'message': str(e)}), 500
+
+
+# @views.route('/dictionaryMapping', methods=['POST'])
+# def uploadDictionaryMapping():
+#     if request.method == 'POST':
+#         urlfileattribute = request.form.get('urlfileattribute')
+#         urlfileattributeof = request.form.get('urlfileattributeof')
+#         urlfilecolumn = request.form.get('urlfilecolumn')
+#         urlfilecomment = request.form.get('urlfilecomment')
+#         urlfiledefinition = request.form.get('urlfiledefinition')
+#         urlfileentity = request.form.get('urlfileentity')
+#         urlfileformat = request.form.get('urlfileformat')
+#         urlfileinReleationTo = request.form.get('urlfileinReleationTo')
+#         urlfilelabel = request.form.get('urlfilelabel')
+#         urlfileproperty = request.form.get('urlfileproperty')
+#         urlfilerelation = request.form.get('urlfilerelation')
+#         urlfilerole = request.form.get('urlfilerole')
+#         urlfiletime = request.form.get('urlfiletime')
+#         urlfileunit = request.form.get('urlfileunit')
+#         urlfilewasDerivedFrom = request.form.get('urlfilewasDerivedFrom')
+#         urlfilewasGeneratedBy = request.form.get('urlfilewasGeneratedBy')
+#         urlfileproject = request.form.get('urlfileproject')
+
+#         fields = [
+#             urlfilecolumn, urlfileattribute, urlfileattributeof, urlfileentity, urlfileunit, urlfileformat,
+#             urlfileproperty, urlfiletime, urlfilerelation, urlfileinReleationTo, urlfilelabel, urlfilerole,
+#             urlfiledefinition, urlfilecomment, urlfilewasDerivedFrom, urlfilewasGeneratedBy, urlfileproject
+#         ]
+
+#         if all(fields):
+#             file = request.files.get('file')
+#             output = io.StringIO()
+#             writer = csv.writer(output)
+
+#             if file and file.filename:
+#                 stream = io.StringIO(file.stream.read().decode("UTF-8"), newline=None)
+#                 reader = csv.reader(stream)
+#                 existing_rows = list(reader)
+#                 for row in existing_rows:
+#                     writer.writerow(row)
+#                 writer.writerow(fields)
+#                 response = make_response(output.getvalue())
+#                 response.headers["Content-Disposition"] = "attachment; filename=updated_dictionaryMapping.csv"
+#                 response.headers["Content-type"] = "text/csv"
+#                 return response
+#             else:
+#                 writer.writerow([
+#                     'Column', 'Attribute', 'Attribute Of', 'Entity', 'Unit', 'Format',
+#                     'Property', 'Time', 'Relation', 'In Relation To', 'Label', 'Role',
+#                     'Definition', 'Comment', 'Was Derived From', 'Was Generated By', 'Project'
+#                 ])
+#                 writer.writerow(fields)
+#                 response = make_response(output.getvalue())
+#                 response.headers["Content-Disposition"] = "attachment; filename=dictionaryMapping.csv"
+#                 response.headers["Content-type"] = "text/csv"
+#                 return response
+            
+#         else:
+#             flash('Error in Dictionary Mapping form. Please fill in the field correctly!', category='error')
+
+#     return render_template("dictionaryMapping.html")
+
+# @views.route('/codeBook', methods=['POST'])
+# def uploadCodeBook():
+#     if request.method == 'POST':
+#         urlfileclass = request.form.get('urlfileclass')
+#         urlfilecode = request.form.get('urlfilecode')
+#         urlfilecolumn = request.form.get('urlfilecolumn')
+#         urlfilecomment = request.form.get('urlfilecomment')
+#         urlfiledefinition = request.form.get('urlfiledefinition')
+#         urlfilelabel = request.form.get('urlfilelabel')
+#         urlfileresource = request.form.get('urlfileresource')
+#         urlfileproject = request.form.get('urlfileproject')
+
+#         fields = [
+#             urlfilecolumn, urlfilecode, urlfileclass, urlfilecomment, 
+#             urlfiledefinition, urlfilelabel, urlfileresource, urlfileproject
+#         ]
+
+#         if all(fields):
+#             output = io.StringIO()
+#             writer = csv.writer(output)
+#             writer.writerow([
+#                 'Column', 'Code', 'Class', 'Comment', 'Definition', 'Label', 'Resource', 'Project'
+#             ])
+
+#             writer.writerow(fields)
+
+#             response = make_response(output.getvalue())
+#             response.headers["Content-Disposition"] = "attachment; filename=codebook.csv"
+#             response.headers["Content-type"] = "text/csv"
+#             return response
+    
+#         else:
+#             flash('Error in CodeBook form. Please fill in the field correctly!', category='error')
+#     return render_template("codeBook.html", user=current_user)
