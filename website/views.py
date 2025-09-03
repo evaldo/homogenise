@@ -694,6 +694,11 @@ def projectdata():
 
                     project_config_path = os.path.join(project_path, 'config')
                     os.makedirs(project_config_path, exist_ok=True)
+                    config_ini_path = os.path.join(project_config_path, f'config_{project_name}.ini')
+                    with open(config_ini_path, 'w') as f:
+                        f.write("[TESTE]\n")
+                        f.write("TESTE\n")
+                        f.write("TESTE\n")
 
                     project_input_path = os.path.join(project_path, 'input')
                     os.makedirs(project_input_path, exist_ok=True)
