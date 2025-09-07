@@ -2,7 +2,7 @@ import os
 import urllib.request
 import shutil
 import uuid
-from flask import Blueprint, redirect, render_template, request, flash, url_for, jsonify
+from flask import Blueprint, redirect, render_template, request, flash, url_for, jsonify, current_app
 from flask_login import login_required, current_user
 from franz.openrdf.rio.rdfformat import RDFFormat
 from wordcloud import WordCloud, STOPWORDS
@@ -17,6 +17,8 @@ import matplotlib.pyplot as plt
 import networkx as nx
 import pandas as pd
 import chardet
+from website.features.synopsis.synopsis_repository import SynopsisRepository
+from website.features.synopsis.triple_conversion import TripleConversion
 
 views = Blueprint('views', __name__)
 
@@ -25,6 +27,47 @@ views = Blueprint('views', __name__)
 @login_required
 def home():
     return render_template("home.html", user=current_user)
+
+@views.route('/synopsis', methods=['GET', 'POST'])
+@login_required
+def generateText():
+    if request.method == 'GET':
+        cur = db.get_cursor()
+        cur.execute("""
+            SELECT 
+                project.project_id, 
+                project.project_name, 
+                STRING_AGG(files.old_name, ', ') AS all_old_names 
+            FROM 
+                app.project AS project
+            JOIN 
+                app.project_file AS files 
+            ON 
+                files.project_id = project.project_id
+            GROUP BY 
+                project.project_id, project.project_name
+        """) 
+        data = cur.fetchall()
+        cur.close()
+        
+        return render_template("synopsis.html", output_data=data, user=current_user)
+
+    else:        
+        project_id = request.form.get('project_id')
+
+        repo = SynopsisRepository()
+        individuals_by_object_property_results = repo.get_individuals_related_by_object_property(project_id)
+        classes_by_superclass_results = repo.get_classes_related_by_superclasses(project_id)
+        classes_by_domain_and_range_results = repo.get_classes_related_by_object_property_domains_and_ranges(project_id)
+
+        triples = classes_by_superclass_results + classes_by_domain_and_range_results + individuals_by_object_property_results
+        
+        converter = TripleConversion()
+        paragraph = converter.triple_to_paragraph(triples)
+
+        current_app.logger.info(paragraph)
+
+        return render_template("synopsis.html", project_id=project_id, paragraph=paragraph, user=current_user)
 
 
 def do_graph(project_id, selected_chart, selected_classes):
