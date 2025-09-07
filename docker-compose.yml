@@ -10,10 +10,11 @@ services:
       - POSTGRES_DB=homogenise
     ports:
       - "5439:5439"
-    volumes:      
+    volumes:
       - ./db/homogenise/pgdata:/var/lib/postgresql
       - ./website/settings/init.sql:/docker-entrypoint-initdb.d/create_database.sql
-            
+      - homogenise_db:/var/lib/postgresql
+
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -d homogenise -U postgres"]
       interval: 1s
@@ -28,7 +29,7 @@ services:
       - AGRAPH_SUPER_USER=admin
       - AGRAPH_SUPER_PASSWORD=12345
     ports:
-      - '10000-10035:10000-10035'
+      - "10000-10035:10000-10035"
     volumes:
       - agdata:/agraph/data
       - agconfig:/agraph/etc
@@ -38,12 +39,19 @@ services:
     depends_on:
       db:
         condition: service_healthy
+    restart: always
     ports:
-      - '5000:5000'
+      - "5000:5000"
     build:
       context: ./
       dockerfile: ./Dockerfile
+    develop:
+      watch:
+        - path: ./website
+          action: sync
+          target: /app/website
 
 volumes:
+  homogenise_db:
   agdata:
   agconfig:
