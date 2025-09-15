@@ -43,6 +43,20 @@ def logout():
 def uploadonto():        
     return render_template("uploadonto.html", user=current_user)   
 
+@auth.route('/infosheet')
+@login_required
+def infosheet():
+    return render_template("infosheet.html", user=current_user)
+
+@auth.route('/dictionaryMapping')
+@login_required
+def dictionaryMapping():
+    return render_template("dictionaryMapping.html", user=current_user)
+
+@auth.route('/codeBook')
+@login_required
+def codeBook():
+    return render_template("codeBook.html", user=current_user)
 
 @auth.route('/sign-up', methods=['GET', 'POST'])
 def sign_up():

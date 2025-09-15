@@ -1,4 +1,24 @@
 services:
+  neo4j:
+    image: neo4j:5.18.0
+    container_name: neo4j-rag
+    user: "1000:1000"
+    ports:
+      - "7474:7474"
+      - "7687:7687"
+    environment:
+      NEO4J_AUTH: neo4j/sua_senha_segura
+      NEO4J_PLUGINS: '["apoc", "n10s"]'
+      NEO4J_apoc_import_file_enabled: "true"
+      NEO4J_dbms_directories_import: /var/lib/neo4j/import
+    volumes:
+      - neo4j_data:/data
+      - ./import:/var/lib/neo4j/import:z
+    healthcheck:
+      test: [ "CMD-SHELL", "wget -O /dev/null -q http://localhost:7474 || exit 1" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
   db:
     image: postgres
     restart: unless-stopped
@@ -10,15 +30,15 @@ services:
       - POSTGRES_DB=homogenise
     ports:
       - "5439:5439"
-    volumes:      
+    volumes:
       - ./db/homogenise/pgdata:/var/lib/postgresql
       - ./website/settings/init.sql:/docker-entrypoint-initdb.d/create_database.sql
-            
+
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -d homogenise -U postgres"]
-      interval: 1s
+      test: [ "CMD-SHELL", "pg_isready -d homogenise -U postgres" ]
+      interval: 5s
       timeout: 5s
-      retries: 10
+      retries: 40
 
   allegro:
     image: franzinc/agraph
@@ -40,10 +60,18 @@ services:
         condition: service_healthy
     ports:
       - '5000:5000'
+    volumes:
+      - ./website:/app/website
+      - ./:/app
+    environment:
+      - FLASK_APP=main.py
+      - FLASK_RUN_HOST=0.0.0.0
     build:
       context: ./
       dockerfile: ./Dockerfile
+    command: python3 main.py
 
 volumes:
   agdata:
   agconfig:
+  neo4j_data:

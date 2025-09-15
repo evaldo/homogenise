@@ -2,7 +2,7 @@ import os
 import urllib.request
 import shutil
 import uuid
-from flask import Blueprint, redirect, render_template, request, flash, url_for, jsonify
+from flask import Blueprint, redirect, render_template, request, flash, url_for, make_response, jsonify
 from flask_login import login_required, current_user
 from franz.openrdf.rio.rdfformat import RDFFormat
 from wordcloud import WordCloud, STOPWORDS
@@ -16,7 +16,15 @@ matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import networkx as nx
 import pandas as pd
+import csv
 import chardet
+import re
+from langchain_community.graphs import Neo4jGraph
+from langchain.prompts import PromptTemplate
+from langchain_openai import ChatOpenAI, OpenAIEmbeddings
+from langchain.agents import AgentExecutor, create_react_agent
+from langchain.tools import tool
+from langchain import hub
 
 views = Blueprint('views', __name__)
 
@@ -121,37 +129,67 @@ def generatestatistics():
                 labels = []
                 types = []
 
+                individuals2 = []
+                annotations2 = []
+                values2 = []
                 formatted_values = ", ".join(f"'{word}'" for word in selected_classes)                
                 sparql = f"""                                        
-                    SELECT distinct (REPLACE(STR(?s), "^.*/([^/]*)$", "$1") as ?individual) (REPLACE(STR(?p), "^.*/([^/]*)$", "$1") as ?label) (REPLACE(STR(?o), "^.*/([^/]*)$", "$1") as ?type)
+                    SELECT distinct (REPLACE(STR(?s), "^.*/([^/]*)$", "$1") as ?individual) (REPLACE(STR(?annotation), "^.*/([^/]*)$", "$1") as ?label) (REPLACE(STR(?o), "^.*/([^/]*)$", "$1") as ?type)
                     WHERE {{
-                      ?s ?p ?o .                      
-                      FILTER(?p NOT IN (<http://semanticscience.org/resource/hasUnit>, rdfs:domain, rdfs:range, rdfs:subPropertyOf, rdf:first, rdf:rest, owl:members, <http://www.w3.org/ns/prov#generatedAtTime>, owl:allValuesFrom, <http://semanticscience.org/resource/isAttributeOf>)) .
-                      FILTER(?o NOT IN (owl:ObjectProperty, owl:Class, owl:NamedIndividual, owl:AllDisjointClasses, owl:Restriction, <http://semanticscience.org/resource/isAttributeOf>)) .    
-                      FILTER (!isBlank(?o)) .
-                      FILTER (!isBlank(?s)) .
-                      FILTER(?o != '') .                          
-                      FILTER((REPLACE(STR(?s), "^.*/([^/]*)$", "$1")) IN ({formatted_values}))
-                    }}	                                  
+                          ?s ?p ?o .
+                          ?o ?objectType ?object .
+                          ?s ?annotation ?value .
+                          FILTER(?annotation NOT IN (<http://semanticscience.org/resource/hasUnit>, rdfs:domain, rdfs:range, rdfs:subPropertyOf, rdf:first, rdf:rest, owl:members, <http://www.w3.org/ns/prov#generatedAtTime>, owl:allValuesFrom, <http://semanticscience.org/resource/isAttributeOf>)) .
+                          FILTER(?value NOT IN (owl:ObjectProperty, owl:Class, owl:NamedIndividual, owl:AllDisjointClasses, owl:Restriction, <http://semanticscience.org/resource/isAttributeOf>)) .    
+                          FILTER (!isBlank(?value)) .
+                          FILTER (!isBlank(?s)) .
+                          FILTER(?value != '') .                          
+                          FILTER((REPLACE(STR(?s), "^.*/([^/]*)$", "$1")) IN ({formatted_values}))
+                        }}	                                  
                    """
                 with db.get_allegro(project_id) as conn:
                     with conn.executeTupleQuery(sparql) as results:
                         for result in results:
                             individuals.append(str(result.getValue('individual')).replace('"', ''))
-                            labels.append(str(result.getValue('label')).replace('"', ''))
+                            labels.append(str(result.getValue('label')).replace('"', '').split('#')[-1])
                             types.append(str(result.getValue('type')).replace('"', ''))
-                
+                formatted_values = ", ".join(f"'{word}'" for word in selected_classes)
+                sparql = f"""                        
+                        SELECT distinct (REPLACE(STR(?s), "^.*/([^/]*)$", "$1") as ?individual) (REPLACE(STR(?pAnnotation), "^.*/([^/]*)$", "$1") as ?annotation) (REPLACE(STR(?oValue), "^.*/([^/]*)$", "$1") as ?value)
+                        WHERE {{
+                              ?s ?p ?o .
+                              ?o ?objectType ?object .
+                              ?s ?pAnnotation ?oValue .
+                              FILTER(?pAnnotation NOT IN (<http://semanticscience.org/resource/hasUnit>, rdfs:domain, rdfs:range, rdfs:subPropertyOf, rdf:first, rdf:rest, owl:members, <http://www.w3.org/ns/prov#generatedAtTime>, owl:allValuesFrom, <http://semanticscience.org/resource/isAttributeOf>)) .
+                              FILTER(?oValue NOT IN (owl:ObjectProperty, owl:Class, owl:NamedIndividual, owl:AllDisjointClasses, owl:Restriction, <http://semanticscience.org/resource/isAttributeOf>)) .    
+                              FILTER (!isBlank(?oValue)) .
+                              FILTER (!isBlank(?s)) .
+                              FILTER(?oValue != '') .                              
+                              FILTER((REPLACE(STR(?s), "^.*/([^/]*)$", "$1")) IN ({formatted_values}))
+                            }}                         
+                        """
+                with db.get_allegro(project_id) as conn:
+                    with conn.executeTupleQuery(sparql) as results:
+                        for result in results:
+                            individuals2.append(str(result.getValue('individual')).replace('"', '').split('>')[0].split('#')[-1])
+                            annotations2.append(str(result.getValue('annotation')).replace('"', '').split('>')[0].split('/')[-1].split('#')[-1])
+                            values2.append(str(result.getValue('value')).replace('"', '').split('>')[0].split('#')[-1])
+
                 df = pd.DataFrame({'individuals': individuals, 'labels': labels, 'types': types})
-                
+                df2 = pd.DataFrame({'individuals': individuals2, 'annotations': annotations2, 'values': values2})
+
                 graph = nx.Graph()
                 for _, row in df.iterrows():
                     graph.add_edge(row['individuals'], row['types'], label=row['labels'])
 
-                pos = nx.spring_layout(graph, k=3/np.sqrt(graph.order()))
+                for _, row in df2.iterrows():
+                    graph.add_edge(row['individuals'], row['values'], label=row['annotations'])
+
+                pos = nx.spring_layout(graph, seed=42, k=0.9)
                 labels = nx.get_edge_attributes(graph, 'label')
-                plt.figure(figsize=(12, 12))
-                nx.draw(graph, pos, with_labels=True, font_size=9, node_size=1000, node_color='lightblue', edge_color='gray', alpha=1)
-                nx.draw_networkx_edge_labels(graph, pos, edge_labels=labels, font_size=7, label_pos=0.5, verticalalignment='center', clip_on=False)
+                plt.figure(figsize=(12, 10))
+                nx.draw(graph, pos, with_labels=True, font_size=10, node_size=700, node_color='lightblue', edge_color='gray', alpha=0.6)
+                nx.draw_networkx_edge_labels(graph, pos, edge_labels=labels, font_size=8, label_pos=0.3, verticalalignment='baseline')
                 plt.title('Knowledge Graph')
                 buffer = io.BytesIO()
                 plt.savefig(buffer, format='png')
@@ -166,8 +204,7 @@ def generatestatistics():
                                , project_list=data_project
                                , class_list=class_list
                                , selected_classes=selected_classes
-                               , chart_list=chart_list
-                               , chart_type=selected_chart
+                               , chart_list=chart_list                               
                                , img_uri=b64)
 
     elif request.method == 'GET':
@@ -177,37 +214,6 @@ def generatestatistics():
                                , class_list=class_list
                                , chart_list=chart_list                               
                                , img_uri='0')
-
-
-@views.route('/analysis', methods=['GET', 'POST'])
-@login_required
-def analysis():
-    if request.method == 'POST':
-        text = request.form.get('analysis')
-        if len(text) == 0:
-            return jsonify({'message': 'Analysis can not be empty!'})
-
-        project_id = request.form.get('project_id')
-        chart_type = request.form.get('chart_type')
-        selected_classes = request.form.get('selected_classes')
-
-        cur = db.get_cursor()
-        query = 'INSERT INTO app.analysis(project_id, selected_classes, chart_type, analysis, user_id_log, user_name_log) ' \
-                'VALUES (%s, %s, %s, %s, %s, %s)'
-        cur.execute(query, (project_id, selected_classes, chart_type, text, current_user.get_id(), current_user.first_name))
-        cur.close()
-
-        return jsonify({'message': 'Analysis submitted!'})
-    else:
-        project_id = request.args.get('project_id', '')
-        cur = db.get_cursor()
-        query = 'SELECT p.project_name, a.chart_type, a.selected_classes, a.analysis FROM app.analysis a '\
-                'JOIN app.project p ON p.project_id = a.project_id WHERE a.project_id = %s'
-        cur.execute(query, project_id)
-        data = cur.fetchall()
-        print(data)
-        cur.close()
-        return render_template("analysis.html", output_data=data, user=current_user)
 
 
 @views.route('/insights', methods=['GET', 'POST'])
@@ -368,6 +374,189 @@ def insightsdata():
                                , type_operation=type_operation
                                , file_names=file_names
                                , project_list=data_project)
+    
+
+@views.route('/rag', methods=['GET', 'POST'])
+def rag():
+    chave_openai = "COLOCAR CHAVE DA OPEN AI"
+    resposta_rag = ""
+    if request.method == 'POST' and 'file' in request.files:
+        try:
+            # --- 1. Upload do arquivo ---
+            if 'file' not in request.files:
+                flash('Nenhum arquivo selecionado.', category='error')
+                return redirect(request.url)
+
+            file = request.files['file']
+            if file.filename == '':
+                flash('Nenhum arquivo selecionado.', category='error')
+                return redirect(request.url)
+
+            # Diretório de import
+            neo4j_import_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '../import'))
+            os.makedirs(neo4j_import_dir, exist_ok=True)
+
+            file_id = str(uuid.uuid4())
+            file_path = os.path.join(neo4j_import_dir, f"{file_id}.ttl")
+            file.save(file_path)
+            neo4j_internal_path = f"/var/lib/neo4j/import/{file_id}.ttl"
+
+            # --- 2. Conexão com Neo4j ---
+            NEO4J_URI = "bolt://neo4j-rag:7687"
+            NEO4J_USERNAME = "neo4j"
+            NEO4J_PASSWORD = "sua_senha_segura"
+
+            graph = Neo4jGraph(
+                url=NEO4J_URI,
+                username=NEO4J_USERNAME,
+                password=NEO4J_PASSWORD
+            )
+
+            # --- 3. Constraint + init do n10s ---
+            try:
+                graph.query("CREATE CONSTRAINT n10s_unique_uri FOR (r:Resource) REQUIRE r.uri IS UNIQUE")
+            except Exception as e:
+                if "already exists" not in str(e):
+                    raise
+            graph.query("CALL n10s.graphconfig.init()")
+
+            # --- 4. Import RDF ---
+            graph.query(f"CALL n10s.rdf.import.fetch('file://{neo4j_internal_path}', 'Turtle')")
+            os.remove(file_path)
+
+            # --- 5. Criar Embeddings ---
+            # from langchain_openai import OpenAIEmbeddings
+            embeddings = OpenAIEmbeddings(model="text-embedding-3-small", openai_api_key=chave_openai)
+
+            node_text_query = """
+            MATCH (n)
+            WHERE n.ns2__hasValue IS NOT NULL
+            RETURN n.uri AS node_id, n.ns2__hasValue AS text
+            """
+
+            node_texts = graph.query(node_text_query)
+            for node in node_texts:
+                node_id = node["node_id"]
+                text_value = node["text"]
+
+                if isinstance(text_value, list):
+                    final_text = " ".join(str(item) for item in text_value if item)
+                else:
+                    final_text = str(text_value)
+
+                if final_text.strip():
+                    embedding = embeddings.embed_query(final_text)
+                    graph.query("""
+                        MATCH (n {uri: $node_id})
+                        SET n.embedding = $embedding
+                        """, params={"node_id": node_id, "embedding": embedding})
+
+            # --- 6. Criar índice vetorial ---
+            try:
+                graph.query("DROP INDEX rag_index IF EXISTS")
+            except:
+                pass
+
+            graph.query("""
+            CREATE VECTOR INDEX rag_index IF NOT EXISTS
+            FOR (n:Resource) ON (n.embedding)
+            OPTIONS {indexConfig: {
+                `vector.dimensions`: 1536,
+                `vector.similarity_function`: 'cosine'
+            }}
+            """)
+
+            flash('Arquivo importado, embeddings criados e índice vetorial configurado!', category='success')
+
+        except Exception as e:
+            flash(f"Erro no processamento: {str(e)}", category='error')
+
+        return redirect(url_for('views.rag'))
+
+   # ----------------------
+    # GET → Monta o agente e renderiza a página
+    # ----------------------
+    if request.method == 'POST' and 'pergunta' in request.form:
+        pergunta = request.form['pergunta']
+
+        try:
+
+            # Conexão Neo4j
+            NEO4J_URI = "bolt://neo4j-rag:7687"
+            NEO4J_USERNAME = "neo4j"
+            NEO4J_PASSWORD = "sua_senha_segura"
+
+            graph = Neo4jGraph(
+                url=NEO4J_URI,
+                username=NEO4J_USERNAME,
+                password=NEO4J_PASSWORD
+            )
+
+            llm = ChatOpenAI(model="gpt-4o-mini", temperature=0, openai_api_key=chave_openai, max_tokens=12000)
+            embeddings = OpenAIEmbeddings(model="text-embedding-3-small", openai_api_key=chave_openai)
+
+            # ----------------------
+            # Definição das Tools
+            # ----------------------
+            @tool
+            def vector_search_start_node(question: str) -> list[dict]:
+                """Encontra os nós iniciais mais relevantes para uma pergunta usando busca vetorial."""
+                pergunta_embedding = embeddings.embed_query(question)
+                query = """
+                CALL db.index.vector.queryNodes('rag_index', $top_k, $embedding) YIELD node, score
+                RETURN node.uri AS uri, node.ns2__hasValue AS label, score
+                LIMIT $top_k
+                """
+                result = graph.query(query, params={"embedding": pergunta_embedding, "top_k": 20})
+                for item in result:
+                    if isinstance(item['label'], list):
+                        item['label'] = " | ".join(item['label'])
+                return result
+
+            @tool
+            def list_neighbors(node_uri: str) -> list[dict]:
+                """Retorna os vizinhos diretos de um nó específico no grafo, dado sua URI."""
+                query = """
+                MATCH (n {uri: $uri})-[r]-(m)
+                RETURN type(r) AS relationship_type, m.uri AS neighbor_uri, m.ns2__hasValue AS neighbor_label
+                """
+                result = graph.query(query, params={"uri": node_uri})
+                for item in result:
+                    if isinstance(item['neighbor_label'], list):
+                        item['neighbor_label'] = " | ".join(item['neighbor_label'])
+                return result
+
+            @tool
+            def get_node_details(node_uri: str) -> dict:
+                """Obtém todas as propriedades de um nó específico, como sua descrição."""
+                query = "MATCH (n {uri: $uri}) RETURN properties(n) AS details"
+                result = graph.query(query, params={"uri": node_uri})
+                if not result:
+                    return {}
+                details = result[0]['details']
+                cleaned = {}
+                for key, value in details.items():
+                    if isinstance(value, list) and key != 'embedding':
+                        cleaned[key] = ", ".join(map(str, value))
+                    elif key != 'embedding':
+                        cleaned[key] = value
+                return cleaned
+
+            # ----------------------
+            # Criar o Agente
+            # ----------------------
+            tools = [vector_search_start_node, list_neighbors, get_node_details]
+            prompt = hub.pull("hwchase17/react")
+            agent = create_react_agent(llm, tools, prompt)
+            agent_executor = AgentExecutor(agent=agent, tools=tools, verbose=True, handle_parsing_errors=True)
+
+            resposta = agent_executor.invoke({"input": pergunta})
+            resposta_rag = resposta["output"]
+    
+        except Exception as e:
+            flash(f"Erro ao responder pergunta: {str(e)}", category='error')
+        
+    return render_template("rag.html", user=current_user, resposta_rag=resposta_rag)
 
 
 @views.route('/projectteam', methods=['GET', 'POST'])
@@ -393,7 +582,7 @@ def projectteam():
                     "  and upper(project_name) like upper('%" + request.form.get("project_search") + "%')" +
                     " order by prj.project_name asc, ptm.st_user_leader desc, usr.first_name asc")
             data = cur.fetchall()
-            cur.close()
+            cur.close
             return render_template("projectteam.html", output_data = data, user=current_user)
     else:
         cur.execute("select ptm.project_team_id " +
@@ -408,7 +597,7 @@ def projectteam():
                     " order by prj.project_name asc, ptm.st_user_leader desc, usr.first_name asc")
 
         data = cur.fetchall()
-        cur.close()
+        cur.close
         return render_template("projectteam.html", output_data = data, user=current_user)
 
 @views.route('/modifyuser', methods=['GET', 'POST'])
@@ -422,17 +611,17 @@ def modifyuser():
         if len(project_search) < 1:
             cur.execute("select id, first_name, email, user_type_id from app.user order by first_name")
             data = cur.fetchall()
-            cur.close()
+            cur.close
             return render_template("modifyuser.html", output_data = data, user=current_user)
         else:
             cur.execute("select id, first_name, email, user_type_id from app.user  where upper(first_name) like upper('%" + request.form.get('username_search') + "%') order by first_name")
             data = cur.fetchall()
-            cur.close()
+            cur.close
             return render_template("modifyuser.html", output_data = data, user=current_user)
     else:
         cur.execute("select id, first_name, email, user_type_id from app.user order by first_name")
         data = cur.fetchall()
-        cur.close()
+        cur.close
         return render_template("modifyuser.html", output_data = data, user=current_user)
 
 
@@ -445,13 +634,13 @@ def usertype():
             cur=db.get_cursor()
             cur.execute("SELECT * FROM app.user_type  order by user_type_name")
             data = cur.fetchall()
-            cur.close()
+            cur.close
             return render_template("usertype.html", output_data = data, user=current_user)
         else:
             cur=db.get_cursor()
             cur.execute("SELECT * FROM app.user_type where upper(user_type_name) like upper('%" + request.form.get("usertype_search") + "%') order by user_type_name")
             data = cur.fetchall()
-            cur.close()
+            cur.close
             return render_template("usertype.html", output_data = data, user=current_user)
 
     else:
@@ -459,7 +648,7 @@ def usertype():
         cur.execute("SELECT * FROM app.user_type order by user_type_name")
         data = cur.fetchall()
 
-        cur.close()
+        cur.close
 
         return render_template("usertype.html", output_data = data, user=current_user)
 
@@ -472,21 +661,21 @@ def researchline():
             cur=db.get_cursor()
             cur.execute("SELECT * FROM app.research_line  order by research_line_name")
             data = cur.fetchall()
-            cur.close()
+            cur.close
             return render_template("researchline.html", output_data = data, user=current_user)
         else:
             cur=db.get_cursor()
             cur.execute("SELECT * FROM app.research_line where upper(research_line_name) like upper('%" + request.form.get("researchline_search") + "%') order by research_line_name")
             data = cur.fetchall()
-            cur.close()
+            cur.close
             return render_template("researchline.html", output_data = data, user=current_user)
     else:
 
-        cur = db.get_cursor()
+        cur=db.get_cursor()
         cur.execute("SELECT * FROM app.research_line order by research_line_name")
         data = cur.fetchall()
 
-        cur.close()
+        cur.close
 
         return render_template("researchline.html", output_data = data, user=current_user)
 
@@ -511,29 +700,26 @@ def usertypedata():
 
             if int(user_user_type_item[0]) > 0:
                 flash('There are users using this user type!', category='error')
-                cur.close()
                 return redirect(url_for('views.usertype'))
 
             else:
                 cur.execute("update app.user_type set user_id_log = " + current_user.get_id()  + ", user_name_log = '" + current_user.first_name  + "'  where user_type_id = " + user_type_id)
                 cur.execute("delete from app.user_type where user_type_id = " + user_type_id)
-                cur.close()
                 flash('Data deleted!', category='success')
                 return redirect(url_for('views.usertype'))
 
         if request.args.get('type_operation', '') == 'A':
+
             cur.execute("insert into app.user_type (user_type_id, user_type_name, user_id_log, user_name_log) values (nextval('app.user_type_user_type_id_seq'), '" + user_type_name + "', " + current_user.get_id()  + ", '" + current_user.first_name  + "')")
-            cur.close()
             flash('Data inserted!', category='success')
             return redirect(url_for('views.usertype'))
 
         if request.args.get('type_operation', '') == 'U':
             cur.execute("update app.user_type set user_type_name = '" + user_type_name + "', user_id_log = " + current_user.get_id()  + ", user_name_log = '" + current_user.first_name  + "'  where user_type_id = " + user_type_id)
-            cur.close()
             flash('Data updated!', category='success')
             return redirect(url_for('views.usertype'))
 
-        cur.close()
+        cur.close
         return render_template("usertype.html", output_data = data, user=current_user)
 
     if request.method == 'GET':
@@ -548,11 +734,11 @@ def usertypedata():
         else:
             type_operation = 'Add'
 
-        cur = db.get_cursor()
+        cur=db.get_cursor()
         cur.execute("select user_type_id, user_type_name from app.user_type order by user_type_name")
-        data_user_type = cur.fetchall()
+        data_user_type= cur.fetchall()
 
-        cur.close()
+        cur.close
 
         return render_template("usertypedata.html", user=current_user, user_type_id = user_type_id, user_type_name = user_type_name,  usertype_list = data_user_type, type_operation = type_operation)
 
@@ -562,7 +748,7 @@ def researchlinedata():
 
     if request.method == 'POST':
 
-        cur = db.get_cursor()
+        cur=db.get_cursor()
 
         research_line_id = request.form.get("research_line_id")
         research_line_name = request.form.get("research_line_name")
@@ -576,31 +762,27 @@ def researchlinedata():
 
             if int(research_line_project_item[0]) > 0:
                 flash('There are projects using this research line!', category='error')
-                cur.close()
                 return redirect(url_for('views.researchline'))
 
             else:
                 cur.execute("update app.research_line set user_id_log = " + current_user.get_id()  + ", user_name_log = '" + current_user.first_name  + "'  where research_line_id = " + research_line_id)
                 cur.execute("delete from app.research_line where research_line_id = " + research_line_id)
-                cur.close()
                 flash('Data deleted!', category='success')
                 return redirect(url_for('views.researchline'))
 
         if request.args.get('type_operation', '') == 'A':
             cur.execute("insert into app.research_line (research_line_name, user_id_log, user_name_log) values ('" + research_line_name + "', " + current_user.get_id()  + ", '" + current_user.first_name  + "')")
-            cur.close()
             flash('Data inserted!', category='success')
             return redirect(url_for('views.researchline'))
 
         if request.args.get('type_operation', '') == 'U':
             cur.execute("update app.research_line set research_line_name = '" + research_line_name + "', user_id_log = " + current_user.get_id()  + ", user_name_log = '" + current_user.first_name  + "' where research_line_id = " + research_line_id)
-            cur.close()
             flash('Data updated!', category='success')
             return redirect(url_for('views.researchline'))
 
         cur.execute("SELECT * FROM app.research_line order by research_line_name")
         data = cur.fetchall()
-        cur.close()
+        cur.close
         return render_template("researchline.html", output_data = data, user=current_user)
 
     if request.method == 'GET':
@@ -615,11 +797,11 @@ def researchlinedata():
         else:
             type_operation = 'Add'
 
-        cur = db.get_cursor()
+        cur=db.get_cursor()
         cur.execute("select research_line_id, research_line_name from app.research_line order by research_line_name")
-        data_research_line = cur.fetchall()
+        data_research_line= cur.fetchall()
 
-        cur.close()
+        cur.close
 
         return render_template("researchlinedata.html", user=current_user, research_line_id = research_line_id, research_line_name = research_line_name,  researchline_list = data_research_line, type_operation = type_operation)
 
@@ -629,24 +811,28 @@ def projectresearch():
     if request.method == 'POST':
         project_search = request.form.get('project_search') #Gets the note from the HTML
         if len(project_search) < 1:
-            cur = db.get_cursor()
+            cur=db.get_cursor()
             cur.execute("SELECT * FROM app.project order by project_name")
             data = cur.fetchall()
-            cur.close()
+            cur.close
             return render_template("projectresearch.html", output_data = data, user=current_user)
         else:
             cur=db.get_cursor()
             cur.execute("SELECT * FROM app.project where upper(project_name) like upper('%" + request.form.get("project_search") + "%') order by project_name")
             data = cur.fetchall()
-            cur.close()
+            cur.close
             return render_template("projectresearch.html", output_data = data, user=current_user)
     else:
-        cur = db.get_cursor()
+        cur=db.get_cursor()
         cur.execute("SELECT * FROM app.project order by project_name")
         data = cur.fetchall()
-        cur.close()
+
+        cur.close
 
         return render_template("projectresearch.html", output_data = data, user=current_user)
+    
+def is_valid_project_name(project_name):
+    return bool(re.match(r'^[a-zA-Z0-9_-]+$', project_name))
 
 @views.route('/projectdata', methods= ['GET', 'POST'])
 def projectdata():
@@ -671,30 +857,99 @@ def projectdata():
 
                 if int(project_team_item[0]) > 0:
                     flash('There are project teams using this project!', category='error')
-                    cur.close()
                     return redirect(url_for('views.projectresearch'))
                 else:
+                    try:
+                        project_root = "/app"
+                        project_path = os.path.join(project_root, project_name)
+                        if os.path.exists(project_path):
+                            shutil.rmtree(project_path)
+                            flash(f"Project folder {project_name} deleted successfully!", category='success')
+                        else:
+                            flash(f"Project folder {project_name} not found.", category='warning')
+                    except OSError as ex:
+                        flash(f"Error deleting project folder: {ex}", category='error')
+
                     cur.execute("update app.project set user_id_log = " + current_user.get_id()  + ", user_name_log = '" + current_user.first_name  + "'  where project_id = " + project_id)
                     cur.execute("delete from app.project where project_id = " + project_id)
-                    cur.close()
                     flash('Data deleted!', category='success')
                     return redirect(url_for('views.projectresearch'))
 
             if request.args.get('type_operation', '') == 'A':
+                try:
+                    project_root = "/app"
+                    project_path = os.path.join(project_root, project_name)
+                    os.makedirs(project_path, exist_ok=True)
+
+                    project_config_path = os.path.join(project_path, 'config')
+                    os.makedirs(project_config_path, exist_ok=True)
+
+                    project_input_path = os.path.join(project_path, 'input')
+                    os.makedirs(project_input_path, exist_ok=True)
+
+                    codebook_path = os.path.join(project_input_path, 'CB')
+                    os.makedirs(codebook_path, exist_ok=True)
+                    data_path = os.path.join(project_input_path, 'Data')
+                    os.makedirs(data_path, exist_ok=True)
+                    dictionaryMapping_path = os.path.join(project_input_path, 'DM')
+                    os.makedirs(dictionaryMapping_path, exist_ok=True)
+                    timeLine_path = os.path.join(project_input_path, 'TL')
+                    os.makedirs(timeLine_path, exist_ok=True)
+
+                    project_output_path = os.path.join(project_path, 'output')
+                    os.makedirs(project_output_path, exist_ok=True)
+                    
+                    sparql_path = os.path.join(project_output_path, 'sparql')
+                    os.makedirs(sparql_path, exist_ok=True)
+                    swrl_path = os.path.join(project_output_path, 'swrl')
+                    os.makedirs(swrl_path, exist_ok=True)
+                    trig_path = os.path.join(project_output_path, 'trig')
+                    os.makedirs(trig_path, exist_ok=True)
+                    ttl_path = os.path.join(project_output_path, 'ttl')
+                    os.makedirs(ttl_path, exist_ok=True)
+
+                    flash(f"Project folder {project_name} created successfully!", category='success')
+                except OSError as ex:
+                    flash(f"Error creating project folder: {ex}", category='error')
+                    return redirect(url_for('views.projectresearch'))
+
                 cur.execute("insert into app.project (project_id, project_name, project_description, research_line_id, user_id_log, user_name_log) values (nextval('app.project_project_id_seq'), '" + project_name + "', '" + project_description +  "' , " + research_line_id + ", " + current_user.get_id()  + ", '" + current_user.first_name  + "')")
-                cur.close()
                 flash('Data inserted!', category='success')
                 return redirect(url_for('views.projectresearch'))
 
             if request.args.get('type_operation', '') == 'U':
+                cur.execute("SELECT project_name FROM app.project WHERE project_id = " + project_id)
+                old_project_name = cur.fetchone()[0]
+
+                if old_project_name != project_name:
+                    if not is_valid_project_name(project_name):
+                        flash("New project name contains invalid characters.", category='error')
+                        return redirect(url_for('views.projectresearch'))
+                    
+                    try:
+                        project_root = "/app"
+                        old_project_path = os.path.join(project_root, old_project_name)
+                        new_project_path = os.path.join(project_root, project_name)
+                        if os.path.exists(old_project_path):
+                            if not os.path.exists(new_project_path):
+                                os.rename(old_project_path, new_project_path)
+                                flash(f"Project folder renamed from {old_project_name} to {project_name} successfully!", category='success')
+                            else:
+                                flash(f"A folder with the name {project_name} already exists.", category='error')
+                                return redirect(url_for('views.projectresearch'))
+                        else:
+                            flash(f"Project folder {old_project_name} not found.", category='warning')
+                    except OSError as ex:
+                        flash(f"Error renaming project folder: {ex}", category='error')
+                        return redirect(url_for('views.projectresearch'))
+
                 cur.execute("update app.project set project_name = '" + project_name + "', project_description = '" + project_description + "' , research_line_id = " + research_line_id + ", user_id_log = " + current_user.get_id()  + ", user_name_log = '" + current_user.first_name  + "' where project_id = " + project_id)
-                cur.close()
                 flash('Data updated!', category='success')
                 return redirect(url_for('views.projectresearch'))
 
         cur.execute("SELECT * FROM app.project order by project_name")
         data = cur.fetchall()
-        cur.close()
+        cur.close
         return render_template("projectresearch.html", output_data = data, user=current_user)
 
     if request.method == 'GET':
@@ -723,9 +978,9 @@ def projectdata():
             research_line_name = [research_line_name_project_item[0] for research_line_name_project_item in research_line_name_project]
 
         cur.execute("select research_line_id, research_line_name from app.research_line order by research_line_name")
-        data_research_line = cur.fetchall()
+        data_research_line= cur.fetchall()
 
-        cur.close()
+        cur.close
 
         return render_template("projectdata.html", user=current_user, project_id = project_id, project_name = project_name, project_description = project_description, researchline_name = research_line_name[0], researchline_list = data_research_line, type_operation = type_operation)
 
@@ -739,7 +994,7 @@ def modifyuserdata():
         password1 = request.form.get("password1")
         password2 = request.form.get("password2")
 
-        cur = db.get_cursor()
+        cur=db.get_cursor()
 
         if request.args.get('type_operation', '') == 'D':
 
@@ -751,13 +1006,11 @@ def modifyuserdata():
 
             if int(project_team_item[0]) > 0:
                 flash('There are project teams using this user!', category='error')
-                cur.close()
                 return redirect(url_for('views.modifyuser'))
 
             else:
                 cur.execute("update app.user set user_id_log = " + current_user.get_id()  + ", user_name_log = '" + current_user.first_name  + "'  where id = " + user_id)
                 cur.execute("delete from app.user where id = " + user_id)
-                cur.close()
                 flash('Data deleted!', category='success')
                 return redirect(url_for('views.modifyuser'))
 
@@ -765,26 +1018,23 @@ def modifyuserdata():
 
             if password1 != password2:
                 flash('Passwords don\'t match.', category='error')
-                cur.close()
                 return redirect(url_for('views.modifyuser'))
 
             elif len(password1) < 7:
                 flash('Password must be at least 7 characters.', category='error')
-                cur.close()
                 return redirect(url_for('views.modifyuser'))
 
             else:
                 cur.execute("update app.user set first_name = '" + first_name + "', user_type_id = " + user_type_id + ", password = '" + generate_password_hash(
                 password1, method='pbkdf2:sha256') + "', user_id_log = " + current_user.get_id()  + ", user_name_log = '" + current_user.first_name  + "'  where id = " + user_id)
                 flash('Data updated!', category='success')
-                cur.close()
                 return redirect(url_for('views.modifyuser'))
 
-        cur = db.get_cursor()
+        cur=db.get_cursor()
         cur.execute("select id, first_name, email, user_type_id from app.user order by first_name")
         data = cur.fetchall()
 
-        cur.close()
+        cur.close
 
         return render_template("modifyuser.html", output_data = data, user=current_user)
 
@@ -799,7 +1049,7 @@ def modifyuserdata():
             request.args.get('type_operation', '') == 'U'
             type_operation = 'Update'
 
-        cur = db.get_cursor()
+        cur=db.get_cursor()
         user_type_name_user = [0]
 
         cur.execute("select ust.user_type_name " 
@@ -812,9 +1062,9 @@ def modifyuserdata():
             user_type_name_user = [user_type_name_item[0] for user_type_name_item in user_type_name]
 
         cur.execute("select * from app.user_type order by 2")
-        data_user_type = cur.fetchall()
+        data_user_type= cur.fetchall()
 
-        cur.close()
+        cur.close
 
         return render_template("modifyuserdata.html", user=current_user
                                                     , user_id = user_id
@@ -829,7 +1079,7 @@ def projectTeamData():
 
     if request.method == 'POST':
 
-        cur = db.get_cursor()
+        cur=db.get_cursor()
 
         project_team_id = request.form.get("project_team_id")
         project_id = request.form.get("project_id")
@@ -844,36 +1094,32 @@ def projectTeamData():
 
         if project_id == 'null' or user_id == 'null' or st_user_leader == 'null':
             flash('Fill out all data to execute transaction!', category='error')
-            cur.close()
             return redirect(url_for('views.projectteam'))
 
         else:
             if request.args.get("type_operation") == 'D':
                 cur.execute("update app.project_team set user_id_log = " + current_user.get_id()  + ", user_name_log = '" + current_user.first_name  + "'  where project_team_id = " + project_team_id)
                 cur.execute("delete from app.project_team where project_team_id = " + project_team_id)
-                cur.close()
                 flash('Data deleted!', category='success')
                 return redirect(url_for('views.projectteam'))
 
             if request.args.get("type_operation") == 'A':
 
                 if int(project_team_item[0]) > 0:
-                    cur.close()
                     flash('Already there is a project for this user!', category='error')
                     return redirect(url_for('views.projectteam'))
 
                 else:
                     cur.execute("INSERT INTO app.project_team(project_team_id, project_id, user_id, st_user_leader, user_id_log, user_name_log)	VALUES (nextval('app.project_team_project_team_id_seq'), " + project_id + ", " + user_id + ", " + st_user_leader + ", " + current_user.get_id()  + ", '" + current_user.first_name  + "')")
-                    cur.close()
                     flash('Data inserted!', category='success')
                     return redirect(url_for('views.projectteam'))
 
             if request.args.get("type_operation") == 'U':
                 cur.execute("UPDATE app.project_team SET st_user_leader  = " + st_user_leader +  ", user_id_log = " + current_user.get_id()  + ", user_name_log = '" + current_user.first_name  + "' where project_team_id = " + project_team_id)
-                cur.close()
                 flash('Data updated!', category='success')
                 return redirect(url_for('views.projectteam'))
 
+        cur=db.get_cursor()
         cur.execute("select ptm.project_team_id " +
                 "     , prj.project_name " +
                 "     , usr.first_name " +
@@ -886,14 +1132,14 @@ def projectTeamData():
                 " order by prj.project_name asc, ptm.st_user_leader desc, usr.first_name asc")
         data = cur.fetchall()
 
-        cur.close()
+        cur.close
 
         return render_template("projectteam.html", output_data = data, user=current_user)
 
     if request.method == 'GET':
         project_team_id = request.args.get('project_team_id', '')
 
-        cur = db.get_cursor()
+        cur=db.get_cursor()
         cur.execute("SELECT id, first_name FROM app.user order by 2")
         data_user = cur.fetchall()
 
@@ -942,9 +1188,9 @@ def projectTeamData():
                     "     , app.project_team ptm " +
                     "where prj.project_id = ptm.project_id " +
                     "  and usr.id = ptm.user_id ")
-        data_team = cur.fetchall()
+        data_team= cur.fetchall()
 
-        cur.close()
+        cur.close
 
         return render_template("projectteamdata.html", user=current_user
                                                      , project_team_id = project_team_id
@@ -963,7 +1209,7 @@ def projectTeamData():
 @login_required
 def caqdas():
 
-    cur = db.get_cursor()
+    cur=db.get_cursor()
 
     if request.method == 'POST':
         caqdas_search = request.form.get('caqdas_search') #Gets the note from the HTML
@@ -977,7 +1223,7 @@ def caqdas():
                     "where upper(caqdas.caqdas_name) like upper('%" + request.form.get("caqdas_search") + "%')" +
                     " order by caqdas.caqdas_name asc")
             data = cur.fetchall()
-            cur.close()
+            cur.close
             return render_template("caqdas.html", output_data = data, user=current_user)
     else:
         cur.execute("select caqdas.caqdas_id " +
@@ -987,7 +1233,7 @@ def caqdas():
                     " order by caqdas.caqdas_name asc")
 
         data = cur.fetchall()
-        cur.close()
+        cur.close
         return render_template("caqdas.html", output_data = data, user=current_user)
 
 @views.route('/caqdasdata', methods= ['GET', 'POST'])
@@ -995,7 +1241,7 @@ def caqdasdata():
 
     if request.method == 'POST':
 
-        cur = db.get_cursor()
+        cur=db.get_cursor()
 
         caqdas_id = request.form.get("caqdas_id")
         caqdas_name = request.form.get("caqdas_name")
@@ -1010,31 +1256,27 @@ def caqdasdata():
 
             if int(code_export_caqdas_item[0]) > 0:
                 flash('There are codes exported using this CAQDAS!', category='error')
-                cur.close()
                 return redirect(url_for('views.caqdas'))
 
             else:
                 cur.execute("update app.caqdas set user_id_log = " + current_user.get_id()  + ", user_name_log = '" + current_user.first_name  + "'  where caqdas_id = " + caqdas_id)
                 cur.execute("delete from app.caqdas where  caqdas_id = " + caqdas_id)
-                cur.close()
                 flash('Data deleted!', category='success')
                 return redirect(url_for('views.caqdas'))
 
         if request.args.get('type_operation', '') == 'A':
             cur.execute("insert into app.caqdas (caqdas_name, code_export_type_file, user_id_log, user_name_log) values ('" + caqdas_name + "', '" + code_export_type_file + "', " + current_user.get_id()  + ", '" + current_user.first_name  + "')")
-            cur.close()
             flash('Data inserted!', category='success')
             return redirect(url_for('views.caqdas'))
 
         if request.args.get('type_operation', '') == 'U':
             cur.execute("update app.caqdas set caqdas_name = '" + caqdas_name + "', user_id_log = " + current_user.get_id()  + ", user_name_log = '" + current_user.first_name  + "' where caqdas_id = " + caqdas_id)
-            cur.close()
             flash('Data updated!', category='success')
             return redirect(url_for('views.caqdas'))
 
         cur.execute("SELECT * FROM app.caqdas order by caqdas_name")
         data = cur.fetchall()
-        cur.close()
+        cur.close
         return render_template("caqdas.html", output_data = data, user=current_user)
 
     if request.method == 'GET':
@@ -1050,11 +1292,11 @@ def caqdasdata():
         else:
             type_operation = 'Add'
 
-        cur = db.get_cursor()
+        cur=db.get_cursor()
         cur.execute("select caqdas_id, caqdas_name from app.caqdas order by caqdas_name")
         data_caqdas_list = cur.fetchall()
 
-        cur.close()
+        cur.close
 
         return render_template("caqdasdata.html", user=current_user, caqdas_id = caqdas_id, caqdas_name = caqdas_name, code_export_type_file = code_export_type_file,  data_caqdas = data_caqdas_list, type_operation = type_operation)
 
@@ -1063,7 +1305,7 @@ def caqdasdata():
 def uploadfileonto():
     if request.method == 'POST':
         urlfile = request.form.get('urlfile')
-        if urlfile != '':
+        if urlfile !='':
 
             output_file = ".\\website\\onto\\homogenise.owl"
 
@@ -1075,3 +1317,166 @@ def uploadfileonto():
             flash('Repeat operation and selecting a OWL file!', category='success')
 
         return render_template("uploadonto.html", user=current_user)
+
+UPLOAD_FOLDER = "./uploads"
+
+@views.route('/selectFile', methods=['POST'])
+def selectFile():
+    file = request.files['file']
+    if file:
+        filepath = os.path.join(UPLOAD_FOLDER, file.filename)
+        file.save(filepath)
+        flash('File selected successfully', category='success')
+        return redirect(url_for('views.uploadDictionaryMapping'))
+    flash('No files selected', category='error')
+    return redirect(url_for('views.uploadDictionaryMapping'))
+
+@views.route('/infosheet', methods=['POST', 'GET'])
+def uploadInfosheet():
+    conn = db.get_cursor()
+    conn.execute("SELECT project_id, project_name FROM app.project ORDER BY project_name")
+    projects_tuples = conn.fetchall()
+    conn.close()
+
+    projects = []
+    for p_tuple in projects_tuples:
+        projects.append({
+            'project_id': p_tuple[0],
+            'project_name': p_tuple[1]
+        })
+
+    return render_template("infosheet.html", projects=projects, user=current_user)
+
+@views.route('/loadInfosheet/<project_id>', methods=['GET'])
+def loadInfosheet(project_id):
+    conn = db.get_cursor()
+    conn.execute("SELECT project_name FROM app.project WHERE project_id = %s", (project_id,))
+    project_name = conn.fetchone()[0]
+    conn.close()
+
+    project_path = os.path.join("/app", project_name, "config")
+    csv_file = os.path.join(project_path, "Infosheet.csv")
+
+    if os.path.exists(csv_file):
+        with open(csv_file, 'r', encoding='utf-8') as file:
+            reader = csv.reader(file)
+            data = list(reader)
+        return jsonify(data)
+    else:
+        attributes = ["Code Mapping", "CodeBook", "Dictionary Mapping", "Imports", "TimeLine", "Project"]
+        data = [["Attribute", "Value"]] + [[attr, ""] for attr in attributes]
+        return jsonify(data)
+    
+@views.route('/saveInfosheet/<project_id>', methods=['POST'])
+def saveInfosheet(project_id):
+    conn = db.get_cursor()
+    conn.execute("SELECT project_name FROM app.project WHERE project_id = %s", (project_id,))
+    project_name = conn.fetchone()[0]
+    conn.close()
+
+    project_path = os.path.join("/app", project_name, "config")
+    csv_file = os.path.join(project_path, "Infosheet.csv")
+
+    os.makedirs(project_path, exist_ok=True)
+    data = request.json['data']
+    
+    with open(csv_file, 'w', newline='', encoding='utf-8') as file:
+        writer = csv.writer(file)
+        writer.writerows(data)
+    return jsonify({'status': 'ok'})
+
+
+@views.route('/dictionaryMapping', methods=['POST'])
+def uploadDictionaryMapping():
+    if request.method == 'POST':
+        urlfileattribute = request.form.get('urlfileattribute')
+        urlfileattributeof = request.form.get('urlfileattributeof')
+        urlfilecolumn = request.form.get('urlfilecolumn')
+        urlfilecomment = request.form.get('urlfilecomment')
+        urlfiledefinition = request.form.get('urlfiledefinition')
+        urlfileentity = request.form.get('urlfileentity')
+        urlfileformat = request.form.get('urlfileformat')
+        urlfileinReleationTo = request.form.get('urlfileinReleationTo')
+        urlfilelabel = request.form.get('urlfilelabel')
+        urlfileproperty = request.form.get('urlfileproperty')
+        urlfilerelation = request.form.get('urlfilerelation')
+        urlfilerole = request.form.get('urlfilerole')
+        urlfiletime = request.form.get('urlfiletime')
+        urlfileunit = request.form.get('urlfileunit')
+        urlfilewasDerivedFrom = request.form.get('urlfilewasDerivedFrom')
+        urlfilewasGeneratedBy = request.form.get('urlfilewasGeneratedBy')
+        urlfileproject = request.form.get('urlfileproject')
+
+        fields = [
+            urlfilecolumn, urlfileattribute, urlfileattributeof, urlfileentity, urlfileunit, urlfileformat,
+            urlfileproperty, urlfiletime, urlfilerelation, urlfileinReleationTo, urlfilelabel, urlfilerole,
+            urlfiledefinition, urlfilecomment, urlfilewasDerivedFrom, urlfilewasGeneratedBy, urlfileproject
+        ]
+
+        if all(fields):
+            file = request.files.get('file')
+            output = io.StringIO()
+            writer = csv.writer(output)
+
+            if file and file.filename:
+                stream = io.StringIO(file.stream.read().decode("UTF-8"), newline=None)
+                reader = csv.reader(stream)
+                existing_rows = list(reader)
+                for row in existing_rows:
+                    writer.writerow(row)
+                writer.writerow(fields)
+                response = make_response(output.getvalue())
+                response.headers["Content-Disposition"] = "attachment; filename=updated_dictionaryMapping.csv"
+                response.headers["Content-type"] = "text/csv"
+                return response
+            else:
+                writer.writerow([
+                    'Column', 'Attribute', 'Attribute Of', 'Entity', 'Unit', 'Format',
+                    'Property', 'Time', 'Relation', 'In Relation To', 'Label', 'Role',
+                    'Definition', 'Comment', 'Was Derived From', 'Was Generated By', 'Project'
+                ])
+                writer.writerow(fields)
+                response = make_response(output.getvalue())
+                response.headers["Content-Disposition"] = "attachment; filename=dictionaryMapping.csv"
+                response.headers["Content-type"] = "text/csv"
+                return response
+            
+        else:
+            flash('Error in Dictionary Mapping form. Please fill in the field correctly!', category='error')
+
+    return render_template("dictionaryMapping.html")
+
+@views.route('/codeBook', methods=['POST'])
+def uploadCodeBook():
+    if request.method == 'POST':
+        urlfileclass = request.form.get('urlfileclass')
+        urlfilecode = request.form.get('urlfilecode')
+        urlfilecolumn = request.form.get('urlfilecolumn')
+        urlfilecomment = request.form.get('urlfilecomment')
+        urlfiledefinition = request.form.get('urlfiledefinition')
+        urlfilelabel = request.form.get('urlfilelabel')
+        urlfileresource = request.form.get('urlfileresource')
+        urlfileproject = request.form.get('urlfileproject')
+
+        fields = [
+            urlfilecolumn, urlfilecode, urlfileclass, urlfilecomment, 
+            urlfiledefinition, urlfilelabel, urlfileresource, urlfileproject
+        ]
+
+        if all(fields):
+            output = io.StringIO()
+            writer = csv.writer(output)
+            writer.writerow([
+                'Column', 'Code', 'Class', 'Comment', 'Definition', 'Label', 'Resource', 'Project'
+            ])
+
+            writer.writerow(fields)
+
+            response = make_response(output.getvalue())
+            response.headers["Content-Disposition"] = "attachment; filename=codebook.csv"
+            response.headers["Content-type"] = "text/csv"
+            return response
+    
+        else:
+            flash('Error in CodeBook form. Please fill in the field correctly!', category='error')
+    return render_template("codeBook.html", user=current_user)
