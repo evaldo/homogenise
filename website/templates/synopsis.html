@@ -2,7 +2,6 @@
 {% block content%}
 <form method="POST">
   <h1 align="left">Synopsis</h1>
-  <!-- <h4>(<a href="/insightsdata">Add new</a>) </h4> -->
   <label for="project_search">Enter project to search</label>
   <input type="text" name="project_search" id="project_search" class="form-control" value="{{ last_search }}"></input>
   <br />
@@ -13,7 +12,7 @@
 <br />
 <div class="container">
   <div class="card">
-    {{paragraph}}
+    <p>{{paragraph}}</p>
   </div>
 
   <form action="" method="POST">

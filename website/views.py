@@ -51,7 +51,6 @@ def generateText():
         cur.close()
         
         return render_template("synopsis.html", output_data=data, user=current_user)
-
     else:        
         project_id = request.form.get('project_id')
 
@@ -60,12 +59,10 @@ def generateText():
         classes_by_superclass_results = repo.get_classes_related_by_superclasses(project_id)
         classes_by_domain_and_range_results = repo.get_classes_related_by_object_property_domains_and_ranges(project_id)
 
-        triples = classes_by_superclass_results + classes_by_domain_and_range_results + individuals_by_object_property_results
-        
-        converter = TripleConversion()
-        paragraph = converter.triple_to_paragraph(triples)
+        triples = classes_by_superclass_results +  classes_by_domain_and_range_results + individuals_by_object_property_results
 
-        current_app.logger.info(paragraph)
+        converter = TripleConversion()
+        paragraph = converter.triple_to_paragraph(triples).replace("subClassOf", "is")
 
         return render_template("synopsis.html", project_id=project_id, paragraph=paragraph, user=current_user)
 
