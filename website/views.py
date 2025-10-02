@@ -720,11 +720,13 @@ def projectdata():
                     ttl_path = os.path.join(project_output_path, 'ttl')
                     os.makedirs(ttl_path, exist_ok=True)
 
+                    fillPrefixes(project_name)
+
                     config_ini_path = os.path.join(project_config_path, f'config_{project_name}.ini')
                     with open(config_ini_path, 'w') as f:
                         f.write("[Prefixes]\n")
                         f.write("# Specify a file with the prefixes for existing ontologies used in your translation\n")
-                        f.write(f'prefixes = {project_name}/config/prefixes.csv\n')
+                        f.write(f'prefixes = {project_name}/config/Prefixes.csv\n')
                         f.write("# Specify the base uri to be associated with all triples minted by the script\n")
                         f.write("base_uri = oersm\n\n")
                         f.write("[Source Files]\n")
@@ -1303,3 +1305,40 @@ def saveCodeBook(project_name):
     except Exception as e:
         flash(f'Error: {str(e)}', category='error')
         return jsonify({'status': 'error', 'message': str(e)}), 500
+    
+def fillPrefixes(project_name):
+    try:
+        project_path = os.path.join("/app", project_name, "config")
+        csv_file = os.path.join(project_path, "Prefixes.csv")
+
+        os.makedirs(project_path, exist_ok=True)
+
+        with open(csv_file, 'w', newline='', encoding='utf-8') as file:
+            writer = csv.writer(file)
+            writer.writerow(['prefix', 'url'])
+            writer.writerows([
+                ['np', 'http://www.nanopub.org/nschema#'],
+                ['owl', 'http://www.w3.org/2002/07/owl#'], 
+                ['rdf', 'http://www.w3.org/1999/02/22-rdf-syntax-ns#'],
+                ['rdfs', 'http://www.w3.org/2000/01/rdf-schema#'],
+                ['prov', 'http://www.w3.org/ns/prov#'],
+                ['xsd', 'http://www.w3.org/2001/XMLSchema#'],
+                ['uo', 'http://purl.obolibrary.org/obo/UO_'],
+                ['sio', 'http://semanticscience.org/resource/'],
+                ['stato', 'http://purl.obolibrary.org/obo/STATO_'],
+                ['example-kb', 'http://example.com/kb/example#'],
+                ['chear', 'http://hadatac.org/ont/chear#'],
+                ['hasco', 'http://hadatac.org/ont/hasco#'],
+                ['obo', 'http://purl.obolibrary.org/obo/'],
+                ['skos', 'http://www.w3.org/2008/05/skos#'],
+                ['ontriscal', 'http://hadatac.org/ont/ontriscal#'],
+                ['refiqda', 'http://hadatac.org/ont/refiqda#'],
+                ['qualico', 'http://hadatac.org/ont/qualico#'],
+                ['schema', 'http://www.w3.org/2000/01/schema#']
+            ])
+
+        flash('File saved successfully', category='success')
+        return True
+    except Exception as e:
+        flash(f'Error: {str(e)}', category='error')
+        return False

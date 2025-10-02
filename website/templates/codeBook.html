@@ -19,7 +19,6 @@
 
         fetch('/projects').then(resp => resp.json())
         .then(data => {
-            console.log("Lista de proj:", data)
             projectDropDown = data.map(it => it.project_name);
             initializeTable(getEmptyData());
         }).catch(e => console.log("erro:", e));
