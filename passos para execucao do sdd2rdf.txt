@@ -1,7 +1,7 @@
-1-) Baixar o projeto sdd2rdf: https://github.com/tetherless-world/SemanticDataDictionary
-Obs.: É possível clonar o repositório ou fazer o download. Para clonar deve ser utilizado o Git. Irei explicar na sexta como utilizar o Git.
+1-) Clonar o projeto Homogenise do branch feature_docker: https://github.com/evaldo/homogenise.git
+Obs.: Para clonar utilize o seguinte comando -> git clone -b feature_docker https://github.com/evaldo/homogenise.git
 
-2-) Link para instalar o Python: https://www.python.org/downloads/
+2-) Caso necessário, instale o Python. Link para instalar o Python: https://www.python.org/downloads/
 
 3-) Após instalação do Python, o pacote "pandas" tem que ser instalado para execução do sdd2rdf:
 a-) Executar o "Prompt de comando"
@@ -10,11 +10,110 @@ b-) Instalar o pacote "pandas" usando o comando: pip install manager
 4-) Configurar o caminho para execução do sdd2rdf pelo Python, por exemplo:
 path C:\python39;C:\python39\lib;C:\python39\Scripts;c:\users\evald\appdata\local\programs\python\python37;C:\Users\evald\AppData\Local\Programs\Python\Python37\Lib\site-packages\pandas;C:\Users\evald\AppData\Local\Programs\Python\Python37\Lib\site-packages\numpy
 
-Obs.: Irei explicar melhor na sexta como criar variáveis de ambiente e configurar o path.
+5-) Dentro da pasta <unidade>\<pasta clonada>\homogenise, executar o sdd2rdf. Por exemplo:
+python sdd2rdf.py config_quali.ini
 
-5-) Para executar o sdd2rdf:
-python sdd2rdf.py  config.ini.example
+Obs.: O grafo será gerado como extensão .TTL na pasta indicada na seção [Output] do arquivo .ini usado acima ->  <unidade>\<pasta clonada>\homogenise\sddquali\output\ttl\kg_quali.ttl
 
-6-) Utilizar o programa Grapher para geração do grafo: http://www.ldf.fi/service/rdf-grapher
+6-) Caso necessário visualizar o grafo de conhecimento, utilizar o programa Grapher para geração do grafo: http://www.ldf.fi/service/rdf-grapher
+Obs.: Dependendo do tamanho do grafo, o programa Grapher irá demorar na exibição. Caso queiram apresentar o grafo, utilize o fragmento de grafo abaixo, copie e cole no Grapher.
 
-7-) Converter para Turtle: https://issemantic.net/rdf-converter
+@prefix owl: <http://www.w3.org/2002/07/owl#> . 
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> . 
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> . 
+@prefix prov: <http://www.w3.org/ns/prov#> . 
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> . 
+@prefix uo: <http://purl.obolibrary.org/obo/UO> . 
+@prefix sio: <http://semanticscience.org/resource/> . 
+@prefix ontriscal:  <http://www.estrdefineatificacaoderisco/onto/ontriscal#> . 
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> . 
+@prefix dc: <http://purl.org/dc/terms/> .
+
+ontriscal:Grupo1_1_Sensacao_de_morte_iminente__panico_e-ou_medo_intenso a owl:Class ;
+            rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom ontriscal:questao ;
+            owl:onProperty sio:isAttributeOf ],
+            ontriscal:Questao .
+ontriscal:ID_do_Paciente a ontriscal:ID_do_Paciente,
+	ontriscal:IdentificadorDeCadastro ;
+	sio:hasUnit sio:Interger ;
+	sio:hasValue 4 ;
+	sio:isAttributeOf ontriscal:paciente .
+ontriscal:Nome_do_Paciente a ontriscal:NomeCompleto,
+ontriscal:Nome_do_Paciente ;
+	sio:hasValue "A_25"^^xsd:string ;
+	sio:isAttributeOf ontriscal:paciente .
+ontriscal:RISCO a ontriscal:NivelDeRisco,
+	ontriscal:RISCO ;	
+	sio:isAttributeOf ontriscal:paciente .
+ontriscal:TOTAL a ontriscal:PontuacaoFinal,
+	ontriscal:TOTAL ;
+             sio:hasUnit sio:Interger ;
+             sio:hasValue "BAIXO"^^xsd:string ;
+             sio:isAttributeOf ontriscal:elementoquestionario .
+ontriscal:nivelderisco a owl:Class ;
+            rdfs:label "nivelderisco"^^xsd:string ;
+            ontriscal:nivelDeRiscoOrienta ontriscal:ProjetoTerapeuticoSingular ;
+rdfs:subClassOf ontriscal:NivelDeRisco .
+  ontriscal:nivelderiscoalto a owl:Class ;
+    rdfs:label "nivelderiscoalto"^^xsd:string ;
+ontriscal:nivelDeRiscoOrienta ontriscal:AtendimentoMedico ;
+	rdfs:subClassOf ontriscal:NivelDeRiscoAlto .
+ontriscal:nivelderiscomedio a owl:Class ;
+              rdfs:label "nivelderiscomedio"^^xsd:string ;
+	ontriscal:nivelDeRiscoOrienta
+              ontriscal:AtendimentoMedico ;
+	rdfs:subClassOf ontriscal:NivelDeRiscoMedio .
+ontriscal:paciente a ontriscal:Paciente,
+	ontriscal:paciente ;
+rdfs:label "paciente"^^xsd:string ;		
+ontriscal:responde ontriscal:Questao ; 
+ontriscal:fazParte ontriscal:GrupoDeQuestao ;
+ontriscal:questao ontriscal:Questao ,
+	ontriscal:questao ;
+	rdfs:label "questao"^^xsd:string ;
+	ontriscal:questaoPossui ontriscal:OpcaoDeResposta ;
+ontriscal:paciente ontriscal:Paciente,
+	ontriscal:paciente ;
+	rdfs:label "paciente"^^xsd:string ;
+	ontriscal:pacientePossui ontriscal:PontuacaoFinal .
+ontriscal:pontos_grupo1_1 a ontriscal:Pontuacao,
+	ontriscal:pontos_grupo1_1 ;
+	sio:hasUnit sio:Interger ;
+	sio:hasValue 30 ;
+	sio:isAttributeOf ontriscal:questao .
+ontriscal:projetoterapeuticosingular a owl:Class ;
+rdfs:label "projetoterapeuticosingular"^^xsd:string ;
+ontriscal:projetoTerapeuticoSingularEFormadoPor ontriscal:AcaoTerapeutica ;
+rdfs:subClassOf ontriscal:ProjetoTerapeuticoSingular .
+ontriscal:questao a ontriscal:Questao,
+ontriscal:questao ;
+rdfs:label "questao"^^xsd:string .
+ontriscal:questao a ontriscal:Questao,
+	ontriscal:questao ;
+	rdfs:label "questao"^^xsd:string ;
+	ontriscal:questaoPossui ontriscal:Pontuacao .
+ontriscal:elementoquestionario a owl:Class ;
+rdfs:label  "elementoquestionario"^^xsd:string ;
+ontriscal:temElementoQuestionario ontriscal:Paciente ;
+rdfs:subClassOf ontriscal:ElementoQuestionario .
+ontriscal:paciente a ontriscal:Paciente,
+ 	ontriscal:paciente ;
+	rdfs:label "paciente"^^xsd:string ;
+	ontriscal:pacientePossui
+ontriscal:NivelDeRisco .
+ontriscal:questao a owl:Class ;
+	rdfs:label "questao"^^xsd:string ;
+	ontriscal:fazParte ontriscal:GrupoDeQuestao ;
+ontriscal:questaoPossui ontriscal:OpcaoDeResposta,
+	ontriscal:Pontuacao ;
+	rdfs:subClassOf ontriscal:Questao .
+ontriscal:paciente a owl:Class ;
+	rdfs:label "paciente"^^xsd:string ;
+	ontriscal:pacientePossui ontriscal:NivelDeRisco,
+    	ontriscal:PontuacaoFinal ;
+	ontriscal:responde ontriscal:Questao ;
+	rdfs:subClassOf ontriscal:Paciente .
+
+
+7-) Caso necessário durante o projeto, é possível converter formatos Turtle: https://issemantic.net/rdf-converter

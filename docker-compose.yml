@@ -1,0 +1,49 @@
+services:
+  db:
+    image: postgres
+    restart: unless-stopped
+    container_name: homogenise_db
+    environment:
+      - PGPORT= 5439
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=1234
+      - POSTGRES_DB=homogenise
+    ports:
+      - "5439:5439"
+    volumes:      
+      - ./db/homogenise/pgdata:/var/lib/postgresql
+      - ./website/settings/init.sql:/docker-entrypoint-initdb.d/create_database.sql
+            
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -d homogenise -U postgres"]
+      interval: 1s
+      timeout: 5s
+      retries: 10
+
+  allegro:
+    image: franzinc/agraph
+    restart: unless-stopped
+    container_name: agraph
+    environment:
+      - AGRAPH_SUPER_USER=admin
+      - AGRAPH_SUPER_PASSWORD=12345
+    ports:
+      - '10000-10035:10000-10035'
+    volumes:
+      - agdata:/agraph/data
+      - agconfig:/agraph/etc
+    shm_size: 1gb
+
+  web:
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - '5000:5000'
+    build:
+      context: ./
+      dockerfile: ./Dockerfile
+
+volumes:
+  agdata:
+  agconfig:

@@ -1,0 +1,26 @@
+{% extends "base.html" %} {% block title %}CAQDAS - {{ type_operation }}{% endblock %} 
+{% block content%}
+<form method="POST"> 
+
+  <input type="text" name="caqdas_id" id="caqdas_id" class="form-control" value="{{caqdas_id}}" style="display:none"></input>
+  <input type="text" name="type_operation" id="type_operation" class="form-control" value="{{type_operation}}" style="display:none"></input>
+
+  <h1 align="left">CAQDAS - {{ type_operation }}</h1>  
+  <input type="text" id="caqdas_id" name="caqdas_id" class="form-control" value=" {{ caqdas_id }} " style="display:none"/>
+  <div class="form-group">
+    <label for="caqdas_name">CAQDAS name:</label>
+    <input type="text" id="caqdas_name" name="caqdas_name" class="form-control" value="{{ caqdas_name }}"/>
+  </div>  
+  <br />  
+  <div class="form-group">
+    <label for="code_export_type_file">Type of file to export code:</label>
+    <input type="text" id="code_export_type_file" name="code_export_type_file" class="form-control" value="{{ code_export_type_file }}"/>
+  </div>  
+  <br /> 
+  <div align="center">
+    <button type="submit" class="btn btn-primary">Confirm</button>
+  </div>
+  <br />
+    
+</form>
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends "base.html" %} {% block title %}User{% endblock %} 
+{% block content%}
+<form method="POST">
+  <h1 align="left">User</h1>  
+  <label for="modifyuser">Enter user to search</label>
+  <input type="text" name="username_search" id="username_search" class="form-control"></input>
+
+   <br />
+
+  <div align="center">
+    <button type="submit" class="btn btn-primary">Search</button>
+  </div>
+</form>
+<br />
+<div  class="container">
+  <form action="" method="POST">
+    <table id="researchline_table" class="table table-striped">
+      <thead>
+        <tr>
+          <th>#User Id</th>
+          <th>Name</th>            
+          <th>Email</th>
+          <th style="text-align: center" colspan="2">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for user_item in output_data %}
+          <tr>
+            <td id="user_id" name="user_id" style="width: 100px; ; text-align: center">{{ user_item[0] }}</td>
+            <td id="first_name" name="first_name">{{ user_item[1] }}</td>            
+            <td id="email" name="email">{{ user_item[2] }}</td>  
+            <td style="text-align: center"><a href="/modifyuserdata?type_operation=D&user_id={{ user_item[0] }}&first_name={{ user_item[1]}}&email={{ user_item[2] }}">Delete</a></td> 
+            <td style="text-align: center"><a href="/modifyuserdata?type_operation=U&user_id={{ user_item[0] }}&first_name={{ user_item[1]}}&email={{ user_item[2] }}">Update</a></td>       
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </form>
+</div>
+{% endblock %}
+

@@ -1,0 +1,15 @@
+{% extends "base.html" %} {% block title %}Upload Ontology{% endblock %} {% block content
+    %}
+    <form method="POST">
+      <h3 align="left">Upload Ontology</h3>
+      <br />
+      <div class="form-group">
+        <label for="ontofile">Ontology file (OWL format):</label>
+        <input type="text" id="urlfile" name="urlfile" class="form-control" placeholder="Enter OWL file URL"/>   
+      </div>      
+      <br />
+      <button class="btn btn-primary" value="Upload" onClick="uploadfileonto()">Upload</button>
+    </form>
+    {% endblock %}
+    
+    

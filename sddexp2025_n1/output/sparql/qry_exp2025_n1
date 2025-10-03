@@ -1,0 +1,178 @@
+prefix np: <http://www.nanopub.org/nschema#> 
+prefix owl: <http://www.w3.org/2002/07/owl#> 
+prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
+prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> 
+prefix prov: <http://www.w3.org/ns/prov#> 
+prefix xsd: <http://www.w3.org/2001/XMLSchema#> 
+prefix uo: <http://purl.obolibrary.org/obo/UO_> 
+prefix sio: <http://semanticscience.org/resource/> 
+prefix stato: <http://purl.obolibrary.org/obo/STATO_> 
+prefix example-kb: <http://example.com/kb/example#> 
+prefix chear: <http://hadatac.org/ont/chear#> 
+prefix hasco: <http://hadatac.org/ont/hasco#> 
+prefix obo: <http://purl.obolibrary.org/obo/> 
+prefix skos: <http://www.w3.org/2008/05/skos#> 
+prefix ontriscal: <http://hadatac.org/ont/ontriscal#> 
+prefix refiqda: <http://hadatac.org/ont/refiqda#> 
+prefix qualico: <http://hadatac.org/ont/qualico#> 
+prefix schema: <http://www.w3.org/2000/01/schema#> 
+
+SELECT DISTINCT ?idcase ?age ?gender ?sexuality ?socialclass ?territory_and_housing ?education ?job_occupation ?culture ?religion ?accesstorights ?race ?cognitivedisfunction ?corebelief ?anxietyinformation ?belief ?compensatorystrategies ?emotion ?behaviour ?automaticthinking ?situation ?meaningoftheat ?feeling ?focusontheproblem WHERE {
+  ?idcase_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> hasco:originalID  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?case_V  ;
+    <http://semanticscience.org/resource/hasUnit>    schema:Interger ;
+    <http://semanticscience.org/resource/hasValue> ?idcase .
+
+  ?age_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:Age  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?socialdemographicdata_V  ;
+    <http://semanticscience.org/resource/hasUnit>    schema:String ;
+    <http://semanticscience.org/resource/hasValue> ?age .
+
+  ?gender_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:Gender  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?socialdemographicdata_V  ;
+    <http://semanticscience.org/resource/hasUnit>    schema:String ;
+    <http://semanticscience.org/resource/hasValue> ?gender .
+
+  ?sexuality_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:SexualOrientation  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?socialdemographicdata_V  ;
+    <http://semanticscience.org/resource/hasUnit>    schema:String ;
+    <http://semanticscience.org/resource/hasValue> ?sexuality .
+
+  ?socialclass_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:SocialClass  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?socialdemographicdata_V  ;
+    <http://semanticscience.org/resource/hasUnit>    schema:String ;
+    <http://semanticscience.org/resource/hasValue> ?socialclass .
+
+  ?territory_and_housing_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:GeographicArea  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?socialdemographicdata_V  ;
+    <http://semanticscience.org/resource/hasUnit>    schema:String ;
+    <http://semanticscience.org/resource/hasValue> ?territory_and_housing .
+
+  ?education_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:EducationDegree  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?socialdemographicdata_V  ;
+    <http://semanticscience.org/resource/hasUnit>    schema:String ;
+    <http://semanticscience.org/resource/hasValue> ?education .
+
+  ?job_occupation_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:Occupation  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?socialdemographicdata_V  ;
+    <http://semanticscience.org/resource/hasUnit>    schema:String ;
+    <http://semanticscience.org/resource/hasValue> ?job_occupation .
+
+  ?culture_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:Culture  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?socialdemographicdata_V  ;
+    <http://semanticscience.org/resource/hasUnit>    schema:String ;
+    <http://semanticscience.org/resource/hasValue> ?culture .
+
+  ?religion_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:Religion  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?socialdemographicdata_V  ;
+    <http://semanticscience.org/resource/hasUnit>    schema:String ;
+    <http://semanticscience.org/resource/hasValue> ?religion .
+
+  ?accesstorights_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:HumanRigth  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?socialdemographicdata_V  ;
+    <http://semanticscience.org/resource/hasUnit>    schema:String ;
+    <http://semanticscience.org/resource/hasValue> ?accesstorights .
+
+  ?race_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:Race  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?socialdemographicdata_V  ;
+    <http://semanticscience.org/resource/hasUnit>    schema:String ;
+    <http://semanticscience.org/resource/hasValue> ?race .
+
+  ?cognitivedisfunction_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:CognitiveAspect  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?cognitivedisfunction_V  ;
+    <http://semanticscience.org/resource/hasUnit>    schema:String ;
+    <http://semanticscience.org/resource/hasValue> ?cognitivedisfunction .
+
+  ?corebelief_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:CoreBelief  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?corebelief_V  ;
+    <http://semanticscience.org/resource/hasUnit>    schema:String ;
+    <http://semanticscience.org/resource/hasValue> ?corebelief .
+
+  ?anxietyinformation_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:Anxiety  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?anxiety_V  ;
+    <http://semanticscience.org/resource/hasUnit>    schema:String ;
+    <http://semanticscience.org/resource/hasValue> ?anxietyinformation .
+
+  ?belief_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:Belief  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?belief_V  ;
+    <http://semanticscience.org/resource/hasUnit>    schema:String ;
+    <http://semanticscience.org/resource/hasValue> ?belief .
+
+  ?compensatorystrategies_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:CopingStrategies  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?compensatorystrategies_V  ;
+    <http://semanticscience.org/resource/hasUnit>    schema:String ;
+    <http://semanticscience.org/resource/hasValue> ?compensatorystrategies .
+
+  ?emotion_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:Emotion  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?emotion_V  ;
+    <http://semanticscience.org/resource/hasUnit>    schema:String ;
+    <http://semanticscience.org/resource/hasValue> ?emotion .
+
+  ?behaviour_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:BehaviorAspects  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?behaviour_V  ;
+    <http://semanticscience.org/resource/hasUnit>    schema:String ;
+    <http://semanticscience.org/resource/hasValue> ?behaviour .
+
+  ?automaticthinking_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:AutomaticThinking  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?automaticathinking_V  ;
+    <http://semanticscience.org/resource/hasUnit>    schema:String ;
+    <http://semanticscience.org/resource/hasValue> ?automaticthinking .
+
+  ?situation_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:Situation  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?situation_V  ;
+    <http://semanticscience.org/resource/hasUnit>    schema:String ;
+    <http://semanticscience.org/resource/hasValue> ?situation .
+
+  ?meaningoftheat_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:Perfectionism  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?meaningoftheat_V  ;
+    <http://semanticscience.org/resource/hasUnit>    schema:String ;
+    <http://semanticscience.org/resource/hasValue> ?meaningoftheat .
+
+  ?feeling_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:Feeling  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?feeling_V  ;
+    <http://semanticscience.org/resource/hasUnit>    schema:String ;
+    <http://semanticscience.org/resource/hasValue> ?feeling .
+
+  ?focusontheproblem_E <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:HyperFocus  ;
+    <http://semanticscience.org/resource/isAttributeOf>    ?focusontheproblem_V  ;
+    <http://semanticscience.org/resource/hasUnit>    schema:String ;
+    <http://semanticscience.org/resource/hasValue> ?focusontheproblem .
+
+
+  ?case_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> sio:Human  ;
+    ontriscal:isComprehendedBy ontriscal:CaseConceptualization .
+
+  ?socialdemographicdata_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:SocioDemographicData  ;
+    ontriscal:describes ?case_V .
+
+  ?cognitivedisfunction_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:CognitiveAspect  ;
+    ontriscal:generates ontriscal:Thinking .
+
+  ?cognitivedisfunction_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:CognitiveAspect  ;
+    ontriscal:isInterpretedBy ontriscal:CaseConceptualization .
+
+  ?automaticathinking_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:AutomaticThinking  ;
+    ontriscal:isInterpretedBy ontriscal:CaseConceptualization .
+
+  ?corebelief_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:CoreBelief  ;
+    ontriscal:isInterpretedBy ontriscal:CaseConceptualization .
+
+  ?behaviour_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:BehaviorAspects  ;
+    ontriscal:isInterpretedBy ontriscal:CaseConceptualization .
+
+  ?emotion_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:Emotion  ;
+    ontriscal:isInterpretedBy ontriscal:CaseConceptualization .
+
+  ?situation_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:Situation  ;
+    ontriscal:generates ?automaticthinking_V .
+
+  ?automaticthinking_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:AutomaticThinking  ;
+    ontriscal:generates ?emotion_V .
+
+  ?emotion_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:Emotion  ;
+    ontriscal:generates ?feeling_V .
+
+  ?feeling_V <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ontriscal:Feeling  ;
+    ontriscal:generates ?behaviour_V .
+
+}

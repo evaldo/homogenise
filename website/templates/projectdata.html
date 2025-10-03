@@ -1,0 +1,42 @@
+{% extends "base.html" %} {% block title %}Project - {{ type_operation }}{% endblock %} 
+{% block content%}
+<form method="POST"> 
+  <input type="text" name="project_id" id="project_id" class="form-control" value="{{project_id}}" style="display:none"></input>
+  <input type="text" name="type_operation" id="type_operation" class="form-control" value="{{type_operation}}" style="display:none"></input>
+  <h1 align="left">Project - {{ type_operation }}</h1>  
+  <input type="text" id="project_id" id="project_id" class="form-control" value=" {{ project_id }} " style="display:none"/>
+  <div class="form-group">
+    <label for="project_name">Project Name:</label>
+    <input type="text" id="project_name" name="project_name" class="form-control" value="{{ project_name }}"/>
+  </div>
+  <div class="form-group">
+    <label for="project_description">Project Description:</label>
+    <input type="text" id="project_description" name="project_description" class="form-control"  value="{{ project_description }}"/>  
+  </div>
+  <div class="form-group">
+    <label for="research_line_id">Research Line: </label>
+    <select  id="research_line_id" name="research_line_id" class="form-control">  
+      {% if type_operation == 'Add' %}        
+        <option value="null">Select a research line</option>
+        {% for researchline_item in researchline_list %}                
+          <option value="{{ researchline_item[0] }}" >{{ researchline_item[1] }}</option>
+        {% endfor %}          
+      {% else %}      
+        {% for researchline_item in researchline_list %}        
+          {% if researchline_item[1] == researchline_name %}        
+            <option value="{{ researchline_item[0] }}" selected>{{ researchline_item[1] }}</option>
+          {% else %}    
+            <option value="{{ researchline_item[0] }}" >{{ researchline_item[1] }}</option>
+          {% endif %}                                                                          
+        {% endfor %}           
+      {% endif %}      
+    </select>
+  </div>
+  <br />  
+  <div align="center">
+    <button type="submit" class="btn btn-primary">Confirm</button>
+  </div>
+  <br />
+    
+</form>
+{% endblock %}
