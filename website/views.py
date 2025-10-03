@@ -378,7 +378,7 @@ def insightsdata():
 
 @views.route('/rag', methods=['GET', 'POST'])
 def rag():
-    chave_openai = "COLOCAR CHAVE DA OPEN AI"
+    chave_openai = ""
     resposta_rag = ""
     if request.method == 'POST' and 'file' in request.files:
         try:
@@ -492,7 +492,7 @@ def rag():
                 password=NEO4J_PASSWORD
             )
 
-            llm = ChatOpenAI(model="gpt-4o-mini", temperature=0, openai_api_key=chave_openai, max_tokens=12000)
+            llm = ChatOpenAI(model="gpt-4.1-mini", temperature=0, openai_api_key=chave_openai, max_tokens=32768)
             embeddings = OpenAIEmbeddings(model="text-embedding-3-small", openai_api_key=chave_openai)
 
             # ----------------------
@@ -545,9 +545,38 @@ def rag():
             # ----------------------
             # Criar o Agente
             # ----------------------
+            custom_prompt = """
+            You are an expert in querying an ontology stored in a Neo4j graph.
+            Your role is to answer user questions using the graph as a knowledge source, exploring nodes and relationships.
+
+            You have access to the following tools:
+
+            1. vector_search_start_node
+            - Use this tool to find the most relevant starting nodes for the user's question using vector search.
+
+            2. list_neighbors
+            - Use this tool to expand related concepts of a specific node.
+            - Use when you need to explore nodes connected to the current node.
+
+            3. get_node_details
+            - Use this tool to get all detailed properties of a specific node, such as descriptions or attributes.
+            - Use when the user asks for more details about a concept.
+
+            Important rules:
+            - Whenever the user asks an initial question, always start by using `vector_search_start_node`.
+            - If you need to explore related concepts, use `list_neighbors`.
+            - If the user asks for more information about a specific node, use `get_node_details`.
+            - Combine the results from the tools with your reasoning to provide a clear answer in English.
+            - Respond in a didactic and structured way, avoiding just listing raw data. Explain what was found and how it relates to the question.
+
+            Response format:
+            - Explain your reasoning in natural language.
+            - Mention the concepts found in the graph.
+            - Only use tools when necessary; if you already have enough information, answer directly.
+            """
             tools = [vector_search_start_node, list_neighbors, get_node_details]
             prompt = hub.pull("hwchase17/react")
-            agent = create_react_agent(llm, tools, prompt)
+            agent = create_react_agent(llm, tools, prompt=prompt + custom_prompt)
             agent_executor = AgentExecutor(agent=agent, tools=tools, verbose=True, handle_parsing_errors=True)
 
             resposta = agent_executor.invoke({"input": pergunta})
