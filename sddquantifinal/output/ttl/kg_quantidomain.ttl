@@ -1,0 +1,616 @@
+@prefix np: <http://www.nanopub.org/nschema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix uo: <http://purl.obolibrary.org/obo/UO_> .
+@prefix sio: <http://semanticscience.org/resource/> .
+@prefix stato: <http://purl.obolibrary.org/obo/STATO_> .
+@prefix example-kb: <http://example.com/kb/example#> .
+@prefix chear: <http://hadatac.org/ont/chear#> .
+@prefix hasco: <http://hadatac.org/ont/hasco#> .
+@prefix obo: <http://purl.obolibrary.org/obo/> .
+@prefix skos: <http://www.w3.org/2008/05/skos#> .
+@prefix ontriscal: <http://hadatac.org/ont/ontriscal#> .
+@prefix refiqda: <http://hadatac.org/ont/refiqda#> .
+@prefix qualico: <http://hadatac.org/ont/qualico#> .
+@prefix schema: <http://www.w3.org/2000/01/schema#> .
+
+<http://hadatac.org/ont/ontriscal#collection-3859ef302df068590a3dbb01bce8b5e7>    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://purl.org/dc/dcmitype/Dataset> ;
+        <http://purl.org/dc/terms/title>    "An Example Project"^^xsd:string ;
+        <http://purl.org/dc/terms/alternative>    "Example"^^xsd:string ;
+        <http://www.w3.org/2000/01/rdf-schema#comment>    "This is an example knowledge graph fragment created using the SDD approach."^^xsd:string ;
+        <http://purl.org/dc/terms/description>    "Annotated data from an example project was used to demonstrate the SDD functionality"^^xsd:string ;
+        <http://semanticscience.org/resource/hasIdentifier>    
+            [ <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://semanticscience.org/resource/Identifier> ; 
+            <http://semanticscience.org/resource/hasValue>    "ontriscal"^^xsd:string ] ;
+        <http://purl.org/dc/terms/format>    "csv"^^xsd:string .
+
+
+    <http://hadatac.org/ont/ontriscal#collection-3859ef302df068590a3dbb01bce8b5e7>    <http://www.w3.org/ns/prov#generatedAtTime>    "2025-09-19T14:07:09Z"^^xsd:dateTime ;
+        <http://purl.org/dc/terms/created>    "2023-05-22"^^xsd:date ;
+        <http://purl.org/dc/terms/issued>    "2023-05-22"^^xsd:date .
+
+
+    <http://hadatac.org/ont/ontriscal#id_case>    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    owl:Class ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>    hasco:originalID ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>    
+            [ <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://www.w3.org/2002/07/owl#Restriction> ;
+                <http://www.w3.org/2002/07/owl#allValuesFrom>    <http://hadatac.org/ont/ontriscal#finalquestionnaire> ;
+                <http://www.w3.org/2002/07/owl#onProperty>    <http://semanticscience.org/resource/isAttributeOf> ] ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>    
+            [ <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://www.w3.org/2002/07/owl#Restriction> ;
+                <http://www.w3.org/2002/07/owl#hasValue>    schema:Interger ;
+                <http://www.w3.org/2002/07/owl#onProperty>    <http://semanticscience.org/resource/hasUnit> ] .
+
+    <http://hadatac.org/ont/ontriscal#initial_questionnarie>    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    owl:Class ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>    ontriscal:FullName ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>    
+            [ <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://www.w3.org/2002/07/owl#Restriction> ;
+                <http://www.w3.org/2002/07/owl#allValuesFrom>    <http://hadatac.org/ont/ontriscal#finalquestionnaire> ;
+                <http://www.w3.org/2002/07/owl#onProperty>    <http://semanticscience.org/resource/isAttributeOf> ] ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>    
+            [ <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://www.w3.org/2002/07/owl#Restriction> ;
+                <http://www.w3.org/2002/07/owl#hasValue>    schema:String ;
+                <http://www.w3.org/2002/07/owl#onProperty>    <http://semanticscience.org/resource/hasUnit> ] .
+
+    <http://hadatac.org/ont/ontriscal#DS1>    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    owl:Class ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>    ontriscal:Age ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>    
+            [ <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://www.w3.org/2002/07/owl#Restriction> ;
+                <http://www.w3.org/2002/07/owl#allValuesFrom>    <http://hadatac.org/ont/ontriscal#finalquestionnaire> ;
+                <http://www.w3.org/2002/07/owl#onProperty>    <http://semanticscience.org/resource/isAttributeOf> ] ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>    
+            [ <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://www.w3.org/2002/07/owl#Restriction> ;
+                <http://www.w3.org/2002/07/owl#hasValue>    schema:Interger ;
+                <http://www.w3.org/2002/07/owl#onProperty>    <http://semanticscience.org/resource/hasUnit> ] .
+
+    <http://hadatac.org/ont/ontriscal#DS2>    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    owl:Class ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>    ontriscal:Gender ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>    
+            [ <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://www.w3.org/2002/07/owl#Restriction> ;
+                <http://www.w3.org/2002/07/owl#allValuesFrom>    <http://hadatac.org/ont/ontriscal#finalquestionnaire> ;
+                <http://www.w3.org/2002/07/owl#onProperty>    <http://semanticscience.org/resource/isAttributeOf> ] ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>    
+            [ <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://www.w3.org/2002/07/owl#Restriction> ;
+                <http://www.w3.org/2002/07/owl#hasValue>    schema:Interger ;
+                <http://www.w3.org/2002/07/owl#onProperty>    <http://semanticscience.org/resource/hasUnit> ] .
+
+    <http://hadatac.org/ont/ontriscal#DS3>    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    owl:Class ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>    ontriscal:CivilStatus ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>    
+            [ <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://www.w3.org/2002/07/owl#Restriction> ;
+                <http://www.w3.org/2002/07/owl#allValuesFrom>    <http://hadatac.org/ont/ontriscal#finalquestionnaire> ;
+                <http://www.w3.org/2002/07/owl#onProperty>    <http://semanticscience.org/resource/isAttributeOf> ] ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>    
+            [ <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://www.w3.org/2002/07/owl#Restriction> ;
+                <http://www.w3.org/2002/07/owl#hasValue>    schema:Interger ;
+                <http://www.w3.org/2002/07/owl#onProperty>    <http://semanticscience.org/resource/hasUnit> ] .
+
+    <http://hadatac.org/ont/ontriscal#G11>    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    owl:Class ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>    ontriscal:Anxiety ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>    
+            [ <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://www.w3.org/2002/07/owl#Restriction> ;
+                <http://www.w3.org/2002/07/owl#allValuesFrom>    <http://hadatac.org/ont/ontriscal#finalquestionnaire> ;
+                <http://www.w3.org/2002/07/owl#onProperty>    <http://semanticscience.org/resource/isAttributeOf> ] ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>    
+            [ <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://www.w3.org/2002/07/owl#Restriction> ;
+                <http://www.w3.org/2002/07/owl#hasValue>    schema:Interger ;
+                <http://www.w3.org/2002/07/owl#onProperty>    <http://semanticscience.org/resource/hasUnit> ] .
+
+    <http://hadatac.org/ont/ontriscal#G14>    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    owl:Class ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>    ontriscal:BalanceDisorder ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>    
+            [ <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://www.w3.org/2002/07/owl#Restriction> ;
+                <http://www.w3.org/2002/07/owl#allValuesFrom>    <http://hadatac.org/ont/ontriscal#finalquestionnaire> ;
+                <http://www.w3.org/2002/07/owl#onProperty>    <http://semanticscience.org/resource/isAttributeOf> ] ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>    
+            [ <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://www.w3.org/2002/07/owl#Restriction> ;
+                <http://www.w3.org/2002/07/owl#hasValue>    schema:Interger ;
+                <http://www.w3.org/2002/07/owl#onProperty>    <http://semanticscience.org/resource/hasUnit> ] .
+
+    <http://hadatac.org/ont/ontriscal#G16>    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    owl:Class ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>    ontriscal:Nervous ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>    
+            [ <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://www.w3.org/2002/07/owl#Restriction> ;
+                <http://www.w3.org/2002/07/owl#allValuesFrom>    <http://hadatac.org/ont/ontriscal#finalquestionnaire> ;
+                <http://www.w3.org/2002/07/owl#onProperty>    <http://semanticscience.org/resource/isAttributeOf> ] ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>    
+            [ <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://www.w3.org/2002/07/owl#Restriction> ;
+                <http://www.w3.org/2002/07/owl#hasValue>    schema:Interger ;
+                <http://www.w3.org/2002/07/owl#onProperty>    <http://semanticscience.org/resource/hasUnit> ] .
+
+    <http://hadatac.org/ont/ontriscal#G18>    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    owl:Class ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>    ontriscal:InabilityToRelax ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>    
+            [ <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://www.w3.org/2002/07/owl#Restriction> ;
+                <http://www.w3.org/2002/07/owl#allValuesFrom>    <http://hadatac.org/ont/ontriscal#finalquestionnaire> ;
+                <http://www.w3.org/2002/07/owl#onProperty>    <http://semanticscience.org/resource/isAttributeOf> ] ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>    
+            [ <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://www.w3.org/2002/07/owl#Restriction> ;
+                <http://www.w3.org/2002/07/owl#hasValue>    schema:Interger ;
+                <http://www.w3.org/2002/07/owl#onProperty>    <http://semanticscience.org/resource/hasUnit> ] .
+
+    <http://hadatac.org/ont/ontriscal#Pontuacao>    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    owl:Class ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>    ontriscal:Score ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>    
+            [ <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://www.w3.org/2002/07/owl#Restriction> ;
+                <http://www.w3.org/2002/07/owl#allValuesFrom>    <http://hadatac.org/ont/ontriscal#finalquestionnaire> ;
+                <http://www.w3.org/2002/07/owl#onProperty>    <http://semanticscience.org/resource/isAttributeOf> ] ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>    
+            [ <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://www.w3.org/2002/07/owl#Restriction> ;
+                <http://www.w3.org/2002/07/owl#hasValue>    schema:Interger ;
+                <http://www.w3.org/2002/07/owl#onProperty>    <http://semanticscience.org/resource/hasUnit> ] .
+
+    <http://hadatac.org/ont/ontriscal#Nivelderisco>    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    owl:Class ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>    ontriscal:RiskLevel ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>    
+            [ <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://www.w3.org/2002/07/owl#Restriction> ;
+                <http://www.w3.org/2002/07/owl#allValuesFrom>    <http://hadatac.org/ont/ontriscal#finalquestionnaire> ;
+                <http://www.w3.org/2002/07/owl#onProperty>    <http://semanticscience.org/resource/isAttributeOf> ] ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>    
+            [ <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://www.w3.org/2002/07/owl#Restriction> ;
+                <http://www.w3.org/2002/07/owl#hasValue>    schema:String ;
+                <http://www.w3.org/2002/07/owl#onProperty>    <http://semanticscience.org/resource/hasUnit> ] .
+
+
+    <http://hadatac.org/ont/ontriscal#id_case>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2025-09-19T14:07:09Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#initial_questionnarie>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2025-09-19T14:07:09Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#DS1>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2025-09-19T14:07:09Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#DS2>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2025-09-19T14:07:09Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#DS3>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2025-09-19T14:07:09Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#G11>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2025-09-19T14:07:09Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#G14>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2025-09-19T14:07:09Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#G16>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2025-09-19T14:07:09Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#G18>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2025-09-19T14:07:09Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#Pontuacao>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2025-09-19T14:07:09Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#Nivelderisco>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2025-09-19T14:07:09Z"^^xsd:dateTime .
+
+
+    <http://hadatac.org/ont/ontriscal#case>    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    owl:Class ;
+        <http://www.w3.org/2000/01/rdf-schema#label>    "case"^^xsd:string ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>    sio:Human ;
+        ontriscal:patientAnswersQuestionnaire <http://hadatac.org/ont/ontriscal#finalquestionnaire> .
+
+    <http://hadatac.org/ont/ontriscal#case>    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    owl:Class ;
+        <http://www.w3.org/2000/01/rdf-schema#label>    "case"^^xsd:string ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>    sio:Human ;
+        ontriscal:IdPatient "hasco:originalID"^^xsd:string .
+
+    <http://hadatac.org/ont/ontriscal#finalquestionnaire>    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    owl:Class ;
+        <http://www.w3.org/2000/01/rdf-schema#label>    "finalquestionnaire"^^xsd:string ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>    ontriscal:Questionnarie ;
+        ontriscal:questionnaireAnsweredBy <http://hadatac.org/ont/ontriscal#case> .
+
+
+    <http://hadatac.org/ont/ontriscal#case>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2025-09-19T14:07:09Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#case>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2025-09-19T14:07:09Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#finalquestionnaire>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2025-09-19T14:07:09Z"^^xsd:dateTime .
+
+
+    <http://hadatac.org/ont/ontriscal#initial_questionnarie-0b160c794dee8ce448a8e18613dd402a>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://hadatac.org/ont/ontriscal#initial_questionnarie> ;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    ontriscal:FullName ;
+        <http://semanticscience.org/resource/isAttributeOf>    <http://hadatac.org/ont/ontriscal#finalquestionnaire-76b43e4a1c79797e58daa90ce7cfc28f> ;
+        <http://semanticscience.org/resource/hasUnit>    schema:String ;
+        <http://semanticscience.org/resource/hasValue>    "questionariofinal"^^xsd:string .
+
+    <http://hadatac.org/ont/ontriscal#DS1-9c6bd2f05a58b1d94a14073336245409>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://hadatac.org/ont/ontriscal#DS1> ;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    ontriscal:Age ;
+        <http://semanticscience.org/resource/isAttributeOf>    <http://hadatac.org/ont/ontriscal#finalquestionnaire-76b43e4a1c79797e58daa90ce7cfc28f> ;
+        <http://semanticscience.org/resource/hasUnit>    schema:Interger ;
+        <http://semanticscience.org/resource/hasValue>    "22"^^xsd:integer .
+
+    <http://hadatac.org/ont/ontriscal#DS2-72dd7c0ebb7881e101e24bd5c0f4f7f4>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://hadatac.org/ont/ontriscal#DS2> ;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    ontriscal:Gender ;
+        <http://semanticscience.org/resource/isAttributeOf>    <http://hadatac.org/ont/ontriscal#finalquestionnaire-76b43e4a1c79797e58daa90ce7cfc28f> ;
+        <http://semanticscience.org/resource/hasUnit>    schema:Interger ;
+        <http://semanticscience.org/resource/hasValue>    "Mulher"^^xsd:string .
+
+    <http://hadatac.org/ont/ontriscal#DS3-ed9efbb77d452422a7723c442df7d87f>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://hadatac.org/ont/ontriscal#DS3> ;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    ontriscal:CivilStatus ;
+        <http://semanticscience.org/resource/isAttributeOf>    <http://hadatac.org/ont/ontriscal#finalquestionnaire-76b43e4a1c79797e58daa90ce7cfc28f> ;
+        <http://semanticscience.org/resource/hasUnit>    schema:Interger ;
+        <http://semanticscience.org/resource/hasValue>    "Solteiro(a)"^^xsd:string .
+
+    <http://hadatac.org/ont/ontriscal#G11-ddf7aba99558ffc7ce06a056cc03d0fc>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://hadatac.org/ont/ontriscal#G11> ;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    ontriscal:Anxiety ;
+        <http://semanticscience.org/resource/isAttributeOf>    <http://hadatac.org/ont/ontriscal#finalquestionnaire-76b43e4a1c79797e58daa90ce7cfc28f> ;
+        <http://semanticscience.org/resource/hasUnit>    schema:Interger ;
+        <http://semanticscience.org/resource/hasValue>    "3"^^xsd:integer .
+
+    <http://hadatac.org/ont/ontriscal#G14-f8866edfc6fad48b5db81b6fedf40a0a>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://hadatac.org/ont/ontriscal#G14> ;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    ontriscal:BalanceDisorder ;
+        <http://semanticscience.org/resource/isAttributeOf>    <http://hadatac.org/ont/ontriscal#finalquestionnaire-76b43e4a1c79797e58daa90ce7cfc28f> ;
+        <http://semanticscience.org/resource/hasUnit>    schema:Interger ;
+        <http://semanticscience.org/resource/hasValue>    "3"^^xsd:integer .
+
+    <http://hadatac.org/ont/ontriscal#G16-c3a6c3dd6136188b450eadfdd2469ecf>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://hadatac.org/ont/ontriscal#G16> ;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    ontriscal:Nervous ;
+        <http://semanticscience.org/resource/isAttributeOf>    <http://hadatac.org/ont/ontriscal#finalquestionnaire-76b43e4a1c79797e58daa90ce7cfc28f> ;
+        <http://semanticscience.org/resource/hasUnit>    schema:Interger ;
+        <http://semanticscience.org/resource/hasValue>    "4"^^xsd:integer .
+
+    <http://hadatac.org/ont/ontriscal#G18-5b1792e444c8bacdcbd709e86a265f5b>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://hadatac.org/ont/ontriscal#G18> ;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    ontriscal:InabilityToRelax ;
+        <http://semanticscience.org/resource/isAttributeOf>    <http://hadatac.org/ont/ontriscal#finalquestionnaire-76b43e4a1c79797e58daa90ce7cfc28f> ;
+        <http://semanticscience.org/resource/hasUnit>    schema:Interger ;
+        <http://semanticscience.org/resource/hasValue>    "3"^^xsd:integer .
+
+    <http://hadatac.org/ont/ontriscal#Nivelderisco-8ed180b237a7b9d07e8f46f2b41dae3e>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://hadatac.org/ont/ontriscal#Nivelderisco> ;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    ontriscal:RiskLevel ;
+        <http://semanticscience.org/resource/isAttributeOf>    <http://hadatac.org/ont/ontriscal#finalquestionnaire-76b43e4a1c79797e58daa90ce7cfc28f> ;
+        <http://semanticscience.org/resource/hasUnit>    schema:String ;
+        <http://semanticscience.org/resource/hasValue>    "Moderado"^^xsd:string .
+
+    <http://hadatac.org/ont/ontriscal#finalquestionnaire-76b43e4a1c79797e58daa90ce7cfc28f>    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://hadatac.org/ont/ontriscal#finalquestionnaire> ;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    ontriscal:Questionnarie ;
+        <http://www.w3.org/2000/01/rdf-schema#label>    "finalquestionnaire"^^xsd:string ;
+        ontriscal:questionnaireAnsweredBy <http://hadatac.org/ont/ontriscal#case-76b43e4a1c79797e58daa90ce7cfc28f> ;
+        ontriscal:questionnaireAnsweredBy <http://hadatac.org/ont/ontriscal#case-b564e9f10cac1404bbdda3aa268bb0aa> .
+
+
+    <http://hadatac.org/ont/ontriscal#initial_questionnarie-0b160c794dee8ce448a8e18613dd402a>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2025-09-19T14:07:09Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#DS1-9c6bd2f05a58b1d94a14073336245409>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2025-09-19T14:07:09Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#DS2-72dd7c0ebb7881e101e24bd5c0f4f7f4>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2025-09-19T14:07:09Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#DS3-ed9efbb77d452422a7723c442df7d87f>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2025-09-19T14:07:09Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#G11-ddf7aba99558ffc7ce06a056cc03d0fc>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2025-09-19T14:07:09Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#G14-f8866edfc6fad48b5db81b6fedf40a0a>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2025-09-19T14:07:09Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#G16-c3a6c3dd6136188b450eadfdd2469ecf>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2025-09-19T14:07:09Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#G18-5b1792e444c8bacdcbd709e86a265f5b>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2025-09-19T14:07:09Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#Nivelderisco-8ed180b237a7b9d07e8f46f2b41dae3e>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2025-09-19T14:07:09Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#finalquestionnaire-76b43e4a1c79797e58daa90ce7cfc28f>    <http://www.w3.org/ns/prov#generatedAtTime>    "2025-09-19T14:07:09Z"^^xsd:dateTime .
+
+
+    <http://hadatac.org/ont/ontriscal#initial_questionnarie-0b160c794dee8ce448a8e18613dd402a>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://hadatac.org/ont/ontriscal#initial_questionnarie> ;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    ontriscal:FullName ;
+        <http://semanticscience.org/resource/isAttributeOf>    <http://hadatac.org/ont/ontriscal#finalquestionnaire-34ebac15c4d1d7c70235c7b625417558> ;
+        <http://semanticscience.org/resource/hasUnit>    schema:String ;
+        <http://semanticscience.org/resource/hasValue>    "questionariofinal"^^xsd:string .
+
+    <http://hadatac.org/ont/ontriscal#DS1-d5cc20450a05cd292c44b85a3c2d191e>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://hadatac.org/ont/ontriscal#DS1> ;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    ontriscal:Age ;
+        <http://semanticscience.org/resource/isAttributeOf>    <http://hadatac.org/ont/ontriscal#finalquestionnaire-34ebac15c4d1d7c70235c7b625417558> ;
+        <http://semanticscience.org/resource/hasUnit>    schema:Interger ;
+        <http://semanticscience.org/resource/hasValue>    "18"^^xsd:integer .
+
+    <http://hadatac.org/ont/ontriscal#DS2-72dd7c0ebb7881e101e24bd5c0f4f7f4>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://hadatac.org/ont/ontriscal#DS2> ;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    ontriscal:Gender ;
+        <http://semanticscience.org/resource/isAttributeOf>    <http://hadatac.org/ont/ontriscal#finalquestionnaire-34ebac15c4d1d7c70235c7b625417558> ;
+        <http://semanticscience.org/resource/hasUnit>    schema:Interger ;
+        <http://semanticscience.org/resource/hasValue>    "Mulher"^^xsd:string .
+
+    <http://hadatac.org/ont/ontriscal#DS3-ed9efbb77d452422a7723c442df7d87f>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://hadatac.org/ont/ontriscal#DS3> ;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    ontriscal:CivilStatus ;
+        <http://semanticscience.org/resource/isAttributeOf>    <http://hadatac.org/ont/ontriscal#finalquestionnaire-34ebac15c4d1d7c70235c7b625417558> ;
+        <http://semanticscience.org/resource/hasUnit>    schema:Interger ;
+        <http://semanticscience.org/resource/hasValue>    "Solteiro(a)"^^xsd:string .
+
+    <http://hadatac.org/ont/ontriscal#G11-ddf7aba99558ffc7ce06a056cc03d0fc>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://hadatac.org/ont/ontriscal#G11> ;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    ontriscal:Anxiety ;
+        <http://semanticscience.org/resource/isAttributeOf>    <http://hadatac.org/ont/ontriscal#finalquestionnaire-34ebac15c4d1d7c70235c7b625417558> ;
+        <http://semanticscience.org/resource/hasUnit>    schema:Interger ;
+        <http://semanticscience.org/resource/hasValue>    "3"^^xsd:integer .
+
+    <http://hadatac.org/ont/ontriscal#G14-a40a62be3900ccb9ce79437c1965a5ce>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://hadatac.org/ont/ontriscal#G14> ;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    ontriscal:BalanceDisorder ;
+        <http://semanticscience.org/resource/isAttributeOf>    <http://hadatac.org/ont/ontriscal#finalquestionnaire-34ebac15c4d1d7c70235c7b625417558> ;
+        <http://semanticscience.org/resource/hasUnit>    schema:Interger ;
+        <http://semanticscience.org/resource/hasValue>    "2"^^xsd:integer .
+
+    <http://hadatac.org/ont/ontriscal#G16-d5587a04cc081c26f4090fe4f54d1f88>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://hadatac.org/ont/ontriscal#G16> ;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    ontriscal:Nervous ;
+        <http://semanticscience.org/resource/isAttributeOf>    <http://hadatac.org/ont/ontriscal#finalquestionnaire-34ebac15c4d1d7c70235c7b625417558> ;
+        <http://semanticscience.org/resource/hasUnit>    schema:Interger ;
+        <http://semanticscience.org/resource/hasValue>    "3"^^xsd:integer .
+
+    <http://hadatac.org/ont/ontriscal#G18-5b1792e444c8bacdcbd709e86a265f5b>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://hadatac.org/ont/ontriscal#G18> ;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    ontriscal:InabilityToRelax ;
+        <http://semanticscience.org/resource/isAttributeOf>    <http://hadatac.org/ont/ontriscal#finalquestionnaire-34ebac15c4d1d7c70235c7b625417558> ;
+        <http://semanticscience.org/resource/hasUnit>    schema:Interger ;
+        <http://semanticscience.org/resource/hasValue>    "3"^^xsd:integer .
+
+    <http://hadatac.org/ont/ontriscal#Nivelderisco-8ed180b237a7b9d07e8f46f2b41dae3e>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://hadatac.org/ont/ontriscal#Nivelderisco> ;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    ontriscal:RiskLevel ;
+        <http://semanticscience.org/resource/isAttributeOf>    <http://hadatac.org/ont/ontriscal#finalquestionnaire-34ebac15c4d1d7c70235c7b625417558> ;
+        <http://semanticscience.org/resource/hasUnit>    schema:String ;
+        <http://semanticscience.org/resource/hasValue>    "Moderado"^^xsd:string .
+
+    <http://hadatac.org/ont/ontriscal#finalquestionnaire-34ebac15c4d1d7c70235c7b625417558>    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://hadatac.org/ont/ontriscal#finalquestionnaire> ;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    ontriscal:Questionnarie ;
+        <http://www.w3.org/2000/01/rdf-schema#label>    "finalquestionnaire"^^xsd:string ;
+        ontriscal:questionnaireAnsweredBy <http://hadatac.org/ont/ontriscal#case-34ebac15c4d1d7c70235c7b625417558> ;
+        ontriscal:questionnaireAnsweredBy <http://hadatac.org/ont/ontriscal#case-2752d78dcec2fa50a28efd64592a3ad3> .
+
+
+    <http://hadatac.org/ont/ontriscal#initial_questionnarie-0b160c794dee8ce448a8e18613dd402a>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2025-09-19T14:07:09Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#DS1-d5cc20450a05cd292c44b85a3c2d191e>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2025-09-19T14:07:09Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#DS2-72dd7c0ebb7881e101e24bd5c0f4f7f4>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2025-09-19T14:07:09Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#DS3-ed9efbb77d452422a7723c442df7d87f>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2025-09-19T14:07:09Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#G11-ddf7aba99558ffc7ce06a056cc03d0fc>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2025-09-19T14:07:09Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#G14-a40a62be3900ccb9ce79437c1965a5ce>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2025-09-19T14:07:09Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#G16-d5587a04cc081c26f4090fe4f54d1f88>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2025-09-19T14:07:09Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#G18-5b1792e444c8bacdcbd709e86a265f5b>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2025-09-19T14:07:09Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#Nivelderisco-8ed180b237a7b9d07e8f46f2b41dae3e>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2025-09-19T14:07:09Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#finalquestionnaire-34ebac15c4d1d7c70235c7b625417558>    <http://www.w3.org/ns/prov#generatedAtTime>    "2025-09-19T14:07:09Z"^^xsd:dateTime .
+
+
+    <http://hadatac.org/ont/ontriscal#initial_questionnarie-0b160c794dee8ce448a8e18613dd402a>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://hadatac.org/ont/ontriscal#initial_questionnarie> ;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    ontriscal:FullName ;
+        <http://semanticscience.org/resource/isAttributeOf>    <http://hadatac.org/ont/ontriscal#finalquestionnaire-4fb88e22790f5215c8886073d1023822> ;
+        <http://semanticscience.org/resource/hasUnit>    schema:String ;
+        <http://semanticscience.org/resource/hasValue>    "questionariofinal"^^xsd:string .
+
+    <http://hadatac.org/ont/ontriscal#DS1-9c6bd2f05a58b1d94a14073336245409>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://hadatac.org/ont/ontriscal#DS1> ;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    ontriscal:Age ;
+        <http://semanticscience.org/resource/isAttributeOf>    <http://hadatac.org/ont/ontriscal#finalquestionnaire-4fb88e22790f5215c8886073d1023822> ;
+        <http://semanticscience.org/resource/hasUnit>    schema:Interger ;
+        <http://semanticscience.org/resource/hasValue>    "22"^^xsd:integer .
+
+    <http://hadatac.org/ont/ontriscal#DS2-55d0af94e14ddf095d48048fa2c3551d>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://hadatac.org/ont/ontriscal#DS2> ;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    ontriscal:Gender ;
+        <http://semanticscience.org/resource/isAttributeOf>    <http://hadatac.org/ont/ontriscal#finalquestionnaire-4fb88e22790f5215c8886073d1023822> ;
+        <http://semanticscience.org/resource/hasUnit>    schema:Interger ;
+        <http://semanticscience.org/resource/hasValue>    "Homem"^^xsd:string .
+
+    <http://hadatac.org/ont/ontriscal#DS3-ed9efbb77d452422a7723c442df7d87f>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://hadatac.org/ont/ontriscal#DS3> ;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    ontriscal:CivilStatus ;
+        <http://semanticscience.org/resource/isAttributeOf>    <http://hadatac.org/ont/ontriscal#finalquestionnaire-4fb88e22790f5215c8886073d1023822> ;
+        <http://semanticscience.org/resource/hasUnit>    schema:Interger ;
+        <http://semanticscience.org/resource/hasValue>    "Solteiro(a)"^^xsd:string .
+
+    <http://hadatac.org/ont/ontriscal#G11-939b612efd0f3570722a2f85ef707a92>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://hadatac.org/ont/ontriscal#G11> ;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    ontriscal:Anxiety ;
+        <http://semanticscience.org/resource/isAttributeOf>    <http://hadatac.org/ont/ontriscal#finalquestionnaire-4fb88e22790f5215c8886073d1023822> ;
+        <http://semanticscience.org/resource/hasUnit>    schema:Interger ;
+        <http://semanticscience.org/resource/hasValue>    "0"^^xsd:integer .
+
+    <http://hadatac.org/ont/ontriscal#G14-1957cbfacf27e0420b657da7929860ac>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://hadatac.org/ont/ontriscal#G14> ;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    ontriscal:BalanceDisorder ;
+        <http://semanticscience.org/resource/isAttributeOf>    <http://hadatac.org/ont/ontriscal#finalquestionnaire-4fb88e22790f5215c8886073d1023822> ;
+        <http://semanticscience.org/resource/hasUnit>    schema:Interger ;
+        <http://semanticscience.org/resource/hasValue>    "0"^^xsd:integer .
+
+    <http://hadatac.org/ont/ontriscal#G16-1124a6e78bfdbee58b4c3f070d8ef431>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://hadatac.org/ont/ontriscal#G16> ;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    ontriscal:Nervous ;
+        <http://semanticscience.org/resource/isAttributeOf>    <http://hadatac.org/ont/ontriscal#finalquestionnaire-4fb88e22790f5215c8886073d1023822> ;
+        <http://semanticscience.org/resource/hasUnit>    schema:Interger ;
+        <http://semanticscience.org/resource/hasValue>    "0"^^xsd:integer .
+
+    <http://hadatac.org/ont/ontriscal#G18-7ab089fbb70c0ee1ae20b811cd0db066>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://hadatac.org/ont/ontriscal#G18> ;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    ontriscal:InabilityToRelax ;
+        <http://semanticscience.org/resource/isAttributeOf>    <http://hadatac.org/ont/ontriscal#finalquestionnaire-4fb88e22790f5215c8886073d1023822> ;
+        <http://semanticscience.org/resource/hasUnit>    schema:Interger ;
+        <http://semanticscience.org/resource/hasValue>    "0"^^xsd:integer .
+
+    <http://hadatac.org/ont/ontriscal#Nivelderisco-e49f704aec6f567303de1ac9d8d07613>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://hadatac.org/ont/ontriscal#Nivelderisco> ;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    ontriscal:RiskLevel ;
+        <http://semanticscience.org/resource/isAttributeOf>    <http://hadatac.org/ont/ontriscal#finalquestionnaire-4fb88e22790f5215c8886073d1023822> ;
+        <http://semanticscience.org/resource/hasUnit>    schema:String ;
+        <http://semanticscience.org/resource/hasValue>    "Nenhum"^^xsd:string .
+
+    <http://hadatac.org/ont/ontriscal#finalquestionnaire-4fb88e22790f5215c8886073d1023822>    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://hadatac.org/ont/ontriscal#finalquestionnaire> ;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    ontriscal:Questionnarie ;
+        <http://www.w3.org/2000/01/rdf-schema#label>    "finalquestionnaire"^^xsd:string ;
+        ontriscal:questionnaireAnsweredBy <http://hadatac.org/ont/ontriscal#case-4fb88e22790f5215c8886073d1023822> ;
+        ontriscal:questionnaireAnsweredBy <http://hadatac.org/ont/ontriscal#case-7549a740c3669467f4d8ee28e6fb0d3a> .
+
+
+    <http://hadatac.org/ont/ontriscal#initial_questionnarie-0b160c794dee8ce448a8e18613dd402a>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2025-09-19T14:07:09Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#DS1-9c6bd2f05a58b1d94a14073336245409>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2025-09-19T14:07:09Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#DS2-55d0af94e14ddf095d48048fa2c3551d>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2025-09-19T14:07:09Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#DS3-ed9efbb77d452422a7723c442df7d87f>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2025-09-19T14:07:09Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#G11-939b612efd0f3570722a2f85ef707a92>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2025-09-19T14:07:09Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#G14-1957cbfacf27e0420b657da7929860ac>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2025-09-19T14:07:09Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#G16-1124a6e78bfdbee58b4c3f070d8ef431>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2025-09-19T14:07:09Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#G18-7ab089fbb70c0ee1ae20b811cd0db066>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2025-09-19T14:07:09Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#Nivelderisco-e49f704aec6f567303de1ac9d8d07613>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2025-09-19T14:07:09Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#finalquestionnaire-4fb88e22790f5215c8886073d1023822>    <http://www.w3.org/ns/prov#generatedAtTime>    "2025-09-19T14:07:09Z"^^xsd:dateTime .
+
+
+    <http://hadatac.org/ont/ontriscal#initial_questionnarie-0b160c794dee8ce448a8e18613dd402a>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://hadatac.org/ont/ontriscal#initial_questionnarie> ;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    ontriscal:FullName ;
+        <http://semanticscience.org/resource/isAttributeOf>    <http://hadatac.org/ont/ontriscal#finalquestionnaire-0a3b9e11844f399ee185e921610023cc> ;
+        <http://semanticscience.org/resource/hasUnit>    schema:String ;
+        <http://semanticscience.org/resource/hasValue>    "questionariofinal"^^xsd:string .
+
+    <http://hadatac.org/ont/ontriscal#DS1-6e7449c4402ad735e3df4f5689544659>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://hadatac.org/ont/ontriscal#DS1> ;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    ontriscal:Age ;
+        <http://semanticscience.org/resource/isAttributeOf>    <http://hadatac.org/ont/ontriscal#finalquestionnaire-0a3b9e11844f399ee185e921610023cc> ;
+        <http://semanticscience.org/resource/hasUnit>    schema:Interger ;
+        <http://semanticscience.org/resource/hasValue>    "37"^^xsd:integer .
+
+    <http://hadatac.org/ont/ontriscal#DS2-55d0af94e14ddf095d48048fa2c3551d>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://hadatac.org/ont/ontriscal#DS2> ;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    ontriscal:Gender ;
+        <http://semanticscience.org/resource/isAttributeOf>    <http://hadatac.org/ont/ontriscal#finalquestionnaire-0a3b9e11844f399ee185e921610023cc> ;
+        <http://semanticscience.org/resource/hasUnit>    schema:Interger ;
+        <http://semanticscience.org/resource/hasValue>    "Homem"^^xsd:string .
+
+    <http://hadatac.org/ont/ontriscal#DS3-ed9efbb77d452422a7723c442df7d87f>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://hadatac.org/ont/ontriscal#DS3> ;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    ontriscal:CivilStatus ;
+        <http://semanticscience.org/resource/isAttributeOf>    <http://hadatac.org/ont/ontriscal#finalquestionnaire-0a3b9e11844f399ee185e921610023cc> ;
+        <http://semanticscience.org/resource/hasUnit>    schema:Interger ;
+        <http://semanticscience.org/resource/hasValue>    "Solteiro(a)"^^xsd:string .
+
+    <http://hadatac.org/ont/ontriscal#G11-ddf7aba99558ffc7ce06a056cc03d0fc>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://hadatac.org/ont/ontriscal#G11> ;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    ontriscal:Anxiety ;
+        <http://semanticscience.org/resource/isAttributeOf>    <http://hadatac.org/ont/ontriscal#finalquestionnaire-0a3b9e11844f399ee185e921610023cc> ;
+        <http://semanticscience.org/resource/hasUnit>    schema:Interger ;
+        <http://semanticscience.org/resource/hasValue>    "3"^^xsd:integer .
+
+    <http://hadatac.org/ont/ontriscal#G14-a40a62be3900ccb9ce79437c1965a5ce>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://hadatac.org/ont/ontriscal#G14> ;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    ontriscal:BalanceDisorder ;
+        <http://semanticscience.org/resource/isAttributeOf>    <http://hadatac.org/ont/ontriscal#finalquestionnaire-0a3b9e11844f399ee185e921610023cc> ;
+        <http://semanticscience.org/resource/hasUnit>    schema:Interger ;
+        <http://semanticscience.org/resource/hasValue>    "2"^^xsd:integer .
+
+    <http://hadatac.org/ont/ontriscal#G16-d5587a04cc081c26f4090fe4f54d1f88>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://hadatac.org/ont/ontriscal#G16> ;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    ontriscal:Nervous ;
+        <http://semanticscience.org/resource/isAttributeOf>    <http://hadatac.org/ont/ontriscal#finalquestionnaire-0a3b9e11844f399ee185e921610023cc> ;
+        <http://semanticscience.org/resource/hasUnit>    schema:Interger ;
+        <http://semanticscience.org/resource/hasValue>    "3"^^xsd:integer .
+
+    <http://hadatac.org/ont/ontriscal#G18-5b1792e444c8bacdcbd709e86a265f5b>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://hadatac.org/ont/ontriscal#G18> ;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    ontriscal:InabilityToRelax ;
+        <http://semanticscience.org/resource/isAttributeOf>    <http://hadatac.org/ont/ontriscal#finalquestionnaire-0a3b9e11844f399ee185e921610023cc> ;
+        <http://semanticscience.org/resource/hasUnit>    schema:Interger ;
+        <http://semanticscience.org/resource/hasValue>    "3"^^xsd:integer .
+
+    <http://hadatac.org/ont/ontriscal#Nivelderisco-8ed180b237a7b9d07e8f46f2b41dae3e>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://hadatac.org/ont/ontriscal#Nivelderisco> ;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    ontriscal:RiskLevel ;
+        <http://semanticscience.org/resource/isAttributeOf>    <http://hadatac.org/ont/ontriscal#finalquestionnaire-0a3b9e11844f399ee185e921610023cc> ;
+        <http://semanticscience.org/resource/hasUnit>    schema:String ;
+        <http://semanticscience.org/resource/hasValue>    "Moderado"^^xsd:string .
+
+    <http://hadatac.org/ont/ontriscal#finalquestionnaire-0a3b9e11844f399ee185e921610023cc>    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    <http://hadatac.org/ont/ontriscal#finalquestionnaire> ;
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    ontriscal:Questionnarie ;
+        <http://www.w3.org/2000/01/rdf-schema#label>    "finalquestionnaire"^^xsd:string ;
+        ontriscal:questionnaireAnsweredBy <http://hadatac.org/ont/ontriscal#case-0a3b9e11844f399ee185e921610023cc> ;
+        ontriscal:questionnaireAnsweredBy <http://hadatac.org/ont/ontriscal#case-ebd01af50f85ed5055e2e438ef9532b6> .
+
+
+    <http://hadatac.org/ont/ontriscal#initial_questionnarie-0b160c794dee8ce448a8e18613dd402a>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2025-09-19T14:07:09Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#DS1-6e7449c4402ad735e3df4f5689544659>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2025-09-19T14:07:09Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#DS2-55d0af94e14ddf095d48048fa2c3551d>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2025-09-19T14:07:09Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#DS3-ed9efbb77d452422a7723c442df7d87f>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2025-09-19T14:07:09Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#G11-ddf7aba99558ffc7ce06a056cc03d0fc>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2025-09-19T14:07:09Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#G14-a40a62be3900ccb9ce79437c1965a5ce>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2025-09-19T14:07:09Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#G16-d5587a04cc081c26f4090fe4f54d1f88>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2025-09-19T14:07:09Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#G18-5b1792e444c8bacdcbd709e86a265f5b>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2025-09-19T14:07:09Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#Nivelderisco-8ed180b237a7b9d07e8f46f2b41dae3e>
+        <http://www.w3.org/ns/prov#generatedAtTime>    "2025-09-19T14:07:09Z"^^xsd:dateTime .
+
+    <http://hadatac.org/ont/ontriscal#finalquestionnaire-0a3b9e11844f399ee185e921610023cc>    <http://www.w3.org/ns/prov#generatedAtTime>    "2025-09-19T14:07:09Z"^^xsd:dateTime .
+
