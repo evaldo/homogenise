@@ -1,0 +1,40 @@
+{% extends "base.html" %} {% block title %}User Type{% endblock %} 
+{% block content%}
+<form method="POST">
+  <h1 align="left">User Type</h1>
+  <h4>(<a href="/usertypedata?type_operation=A">Add new</a>) </h4>
+  <label for="usertype">Enter user type to search</label>
+  <input type="text" name="usertype_search" id="usertype_search" class="form-control"></input>
+
+   <br />
+
+  <div align="center">
+    <button type="submit" class="btn btn-primary">Search</button>
+  </div>
+</form>
+<br />
+<div  class="container">
+  <form action="" method="POST">
+    <table id="usertype_table" class="table table-striped">
+      <thead>
+        <tr>
+          <th>#User Type Id</th>
+          <th>Name</th>            
+          <th style="text-align: center" colspan="2">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for usertype_item in output_data %}
+          <tr>
+            <td id="user_type_id" name="user_type_id" style="width: 150px; ; text-align: center">{{ usertype_item[0] }}</td>
+            <td id="user_type_name" name="user_type_name">{{ usertype_item[1] }}</td>            
+            <td style="text-align: center"><a href="/usertypedata?type_operation=D&user_type_id={{ usertype_item[0] }}&user_type_name={{ usertype_item[1] }}">Delete</a></td> 
+            <td style="text-align: center"><a href="/usertypedata?type_operation=U&user_type_id={{ usertype_item[0] }}&user_type_name={{ usertype_item[1] }}">Update</a></td>       
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </form>
+</div>
+{% endblock %}
+

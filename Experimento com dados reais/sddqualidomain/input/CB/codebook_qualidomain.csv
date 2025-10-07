@@ -1,0 +1,11 @@
+Column,Code,Class
+ContextualAspect,ContextualAspect,ontriscal:ContextualAspect
+BehaviorAspects,BehaviorAspects,ontriscal:BehaviorAspects
+CoreBelief,CoreBelief,ontriscal:CoreBelief
+AuthomaticThinking,AuthomaticThinking,ontriscal:AutomaticThinking
+Emotion,Emotion,ontriscal:Emotion
+Assumption,Assumption,ontriscal:Assumption
+CompensatoryStrategy,CompensatoryStrategy,ontriscal:CompensatoryStrategy
+SymptomOfAnxiety,SymptomOfAnxiety,ontriscal:AnxietySymptom
+FinalAssessement,FinalAssessement,ontriscal:PsychiatricEvaluation
+TechiniqueOfIntervention,TechiniqueOfIntervention,ontriscal:ClinicalStrategy

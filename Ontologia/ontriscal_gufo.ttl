@@ -1,0 +1,3277 @@
+@prefix : <http://ontriscal#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix gufo: <http://purl.org/nemo/gufo#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://ontriscal> .
+
+<http://ontriscal> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://ontriscal#answers
+:answers rdf:type owl:ObjectProperty ;
+         rdfs:domain :Question ;
+         rdfs:range :Patient ;
+         rdfs:label "answers"@en .
+
+
+###  http://ontriscal#calcultes
+:calcultes rdf:type owl:ObjectProperty ;
+           rdfs:domain :CareTeam ;
+           rdfs:range :FinalScore ;
+           rdfs:label "calcultes"@en .
+
+
+###  http://ontriscal#classifies
+:classifies rdf:type owl:ObjectProperty ;
+            rdfs:domain :QuestionGroup ;
+            rdfs:range :SignAndSymptom ;
+            rdfs:label "classifies"@en .
+
+
+###  http://ontriscal#cognitiveModelHas
+:cognitiveModelHas rdf:type owl:ObjectProperty ;
+                   rdfs:domain :CognitiveModel ;
+                   rdfs:range :ClinicalEvaluation ;
+                   rdfs:label "cognitiveModelHas"@en .
+
+
+###  http://ontriscal#defines
+:defines rdf:type owl:ObjectProperty ;
+         rdfs:domain :CognitiveModel ;
+         rdfs:range :CaseConceptualization ;
+         rdfs:label "defines"@en .
+
+
+###  http://ontriscal#definesCognitiveModelOf
+:definesCognitiveModelOf rdf:type owl:ObjectProperty ;
+                         rdfs:domain :CaseConceptualization ;
+                         rdfs:range :Patient ;
+                         rdfs:label "definesCognitiveModelOf"@en .
+
+
+###  http://ontriscal#demographicSocialDataFormulatedBy
+:demographicSocialDataFormulatedBy rdf:type owl:ObjectProperty ;
+                                   rdfs:domain :SocioDemographicData ;
+                                   rdfs:range :Question ;
+                                   rdfs:label "demographicSocialDataFormulatedBy"@en .
+
+
+###  http://ontriscal#emotionIsAssociatedWith
+:emotionIsAssociatedWith rdf:type owl:ObjectProperty ;
+                         rdfs:domain :CaseConceptualization ;
+                         rdfs:range :EmotionalAspect ;
+                         rdfs:label "emotionIsAssociatedWith"@en .
+
+
+###  http://ontriscal#executedBy
+:executedBy rdf:type owl:ObjectProperty ;
+            rdfs:domain :RiskStratificationInMentalHealth ;
+            rdfs:range :CareTeam ;
+            rdfs:label "executedBy"@en .
+
+
+###  http://ontriscal#finalQuestionnarieHasPatient
+:finalQuestionnarieHasPatient rdf:type owl:ObjectProperty ;
+                              rdfs:domain :FinalQuestionnarie ;
+                              rdfs:range :Patient .
+
+
+###  http://ontriscal#formulates
+:formulates rdf:type owl:ObjectProperty ;
+            rdfs:domain :CognitiveModel ;
+            rdfs:range :Psychoterapy .
+
+
+###  http://ontriscal#hasQuestionnarieElement
+:hasQuestionnarieElement rdf:type owl:ObjectProperty ;
+                         rdfs:subPropertyOf owl:topObjectProperty ;
+                         rdfs:domain :QuestionnaireElement ;
+                         rdfs:range :CareTeam ,
+                                    :Patient .
+
+
+###  http://ontriscal#isCalculatedBy
+:isCalculatedBy rdf:type owl:ObjectProperty ;
+                rdfs:domain :FinalScore ;
+                rdfs:range :RiskScore ;
+                rdfs:label "isCalculatedBy"@en .
+
+
+###  http://ontriscal#isComprehendedBy
+:isComprehendedBy rdf:type owl:ObjectProperty ;
+                  rdfs:domain :Patient ;
+                  rdfs:range :CaseConceptualization ;
+                  rdfs:label "isComprehendedBy"@en .
+
+
+###  http://ontriscal#isFormulatedBy
+:isFormulatedBy rdf:type owl:ObjectProperty ;
+                rdfs:domain :Question ;
+                rdfs:range :QuestionGroup ;
+                rdfs:label "isFormulatedBy"@en .
+
+
+###  http://ontriscal#isFormulatedBy_1
+:isFormulatedBy_1 rdf:type owl:ObjectProperty ;
+                  rdfs:domain :SignAndSymptom ;
+                  rdfs:range :Question ;
+                  rdfs:label "isFormulatedBy"@en .
+
+
+###  http://ontriscal#isFormulatedBy_2
+:isFormulatedBy_2 rdf:type owl:ObjectProperty ;
+                  rdfs:domain :Question ;
+                  rdfs:range :ClinicalData ;
+                  rdfs:label "isFormulatedBy"@en .
+
+
+###  http://ontriscal#isFormulatedBy_3
+:isFormulatedBy_3 rdf:type owl:ObjectProperty ;
+                  rdfs:domain :QuestionnaireElement ;
+                  rdfs:range :Questionnarie ;
+                  rdfs:label "isFormulatedBy"@en .
+
+
+###  http://ontriscal#isIdentifiedWith
+:isIdentifiedWith rdf:type owl:ObjectProperty ;
+                  rdfs:domain :Patient ;
+                  rdfs:range :Comorbidity ,
+                             :Disorder .
+
+
+###  http://ontriscal#isTechniqueOf
+:isTechniqueOf rdf:type owl:ObjectProperty ;
+               rdfs:domain :CaseConceptualization ;
+               rdfs:range :Psychoterapy ;
+               rdfs:label "isTechniqueOf"@en .
+
+
+###  http://ontriscal#makesUse
+:makesUse rdf:type owl:ObjectProperty ;
+          rdfs:domain :Patient ;
+          rdfs:range :PsychoactiveSubstance ;
+          rdfs:label "makesUse"@en .
+
+
+###  http://ontriscal#patientAnswersQuestionnaire
+:patientAnswersQuestionnaire rdf:type owl:ObjectProperty ;
+                             rdfs:domain :BeginningQuestionnarie ;
+                             rdfs:range :Patient ;
+                             rdfs:label "patientAnswersQuestionnaire"@en .
+
+
+###  http://ontriscal#patientHas
+:patientHas rdf:type owl:ObjectProperty ;
+            rdfs:domain :Patient ;
+            rdfs:range :FinalScore ,
+                       :SocioDemographicData ;
+            rdfs:label "patientHas"@en .
+
+
+###  http://ontriscal#patientHasClinicalData
+:patientHasClinicalData rdf:type owl:ObjectProperty ;
+                        rdfs:domain :Patient ;
+                        rdfs:range :ClinicalData .
+
+
+###  http://ontriscal#questionHas
+:questionHas rdf:type owl:ObjectProperty ;
+             rdfs:domain :Question ;
+             rdfs:range :AnswerOption ;
+             rdfs:label "questionHas"@en .
+
+
+###  http://ontriscal#recevies
+:recevies rdf:type owl:ObjectProperty ;
+          rdfs:domain :AnswerOption ;
+          rdfs:range :Score ;
+          rdfs:label "recevies"@en .
+
+
+###  http://ontriscal#riskLevelGuides
+:riskLevelGuides rdf:type owl:ObjectProperty ;
+                 rdfs:domain :RiskLevel ;
+                 rdfs:range :SingularTherapeuticProject ;
+                 rdfs:label "riskLevelGuides"@en .
+
+
+###  http://ontriscal#riskLevelHasTherapeuticAction
+:riskLevelHasTherapeuticAction rdf:type owl:ObjectProperty ;
+                               rdfs:domain :RiskLevel ;
+                               rdfs:range :TherapeuticAction .
+
+
+###  http://ontriscal#riskRangeDetermines
+:riskRangeDetermines rdf:type owl:ObjectProperty ;
+                     rdfs:domain :FinalScore ;
+                     rdfs:range :RiskLevel ;
+                     rdfs:label "riskRangeDetermines"@en .
+
+
+###  http://ontriscal#severityOfSignsAndSymptomGuides
+:severityOfSignsAndSymptomGuides rdf:type owl:ObjectProperty ;
+                                 rdfs:domain :SignalAndSymptomSeverity ;
+                                 rdfs:range :HealthCareLevel .
+
+
+###  http://ontriscal#singularTherapeuticProjectIsFormedBy
+:singularTherapeuticProjectIsFormedBy rdf:type owl:ObjectProperty ;
+                                      rdfs:domain :SingularTherapeuticProject ;
+                                      rdfs:range :TherapeuticAction ;
+                                      rdfs:label "singularTherapeuticProjectIsFormedBy"@en .
+
+
+###  http://ontriscal#symptomIsAssociatedWith
+:symptomIsAssociatedWith rdf:type owl:ObjectProperty ;
+                         rdfs:domain :CaseConceptualization ;
+                         rdfs:range :PhysiologicalSymptom ;
+                         rdfs:label "symptomIsAssociatedWith"@en .
+
+
+###  http://ontriscal#takesCare
+:takesCare rdf:type owl:ObjectProperty ;
+           rdfs:domain :Patient ;
+           rdfs:range :CareTeam ;
+           rdfs:label "takesCare"@en .
+
+
+###  http://ontriscal#treats
+:treats rdf:type owl:ObjectProperty ;
+        rdfs:domain :Psychoterapy ;
+        rdfs:range :Patient ;
+        rdfs:label "treats"@en .
+
+
+###  http://ontriscal#uses
+:uses rdf:type owl:ObjectProperty ;
+      rdfs:domain :RiskStratificationInMentalHealth ;
+      rdfs:range :Questionnarie ;
+      rdfs:label "uses"@en .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://ontriscal#description
+:description rdf:type owl:DatatypeProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://ontriscal#AbusiveUseOfIllicitPsychoactiveAmputationMIAndOsteoarthritis
+:AbusiveUseOfIllicitPsychoactiveAmputationMIAndOsteoarthritis rdf:type owl:Class ;
+                                                              rdfs:subClassOf :Comorbidity .
+
+
+###  http://ontriscal#AcceleratedThinking
+:AcceleratedThinking rdf:type owl:Class ;
+                     rdfs:subClassOf :ContextualAspect .
+
+
+###  http://ontriscal#Acceptance
+:Acceptance rdf:type owl:Class ;
+            rdfs:subClassOf :BehaviorAspect .
+
+
+###  http://ontriscal#Adolescent
+:Adolescent rdf:type owl:Class ;
+            rdfs:subClassOf :AgeGroup .
+
+
+###  http://ontriscal#Adult
+:Adult rdf:type owl:Class ;
+       rdfs:subClassOf :AgeGroup .
+
+
+###  http://ontriscal#AdvancedAgeDifficultyLocomotion
+:AdvancedAgeDifficultyLocomotion rdf:type owl:Class ;
+                                 rdfs:subClassOf :Comorbidity .
+
+
+###  http://ontriscal#AgeGroup
+:AgeGroup rdf:type owl:Class ;
+          rdfs:subClassOf :SocioDemographicData .
+
+
+###  http://ontriscal#Aggressiveness
+:Aggressiveness rdf:type owl:Class ;
+                rdfs:subClassOf :BehaviorAspect .
+
+
+###  http://ontriscal#Agitation
+:Agitation rdf:type owl:Class ;
+           rdfs:subClassOf :PhysiologicalSymptom .
+
+
+###  http://ontriscal#Agnosia
+:Agnosia rdf:type owl:Class ;
+         rdfs:subClassOf :ContextualAspect .
+
+
+###  http://ontriscal#Alcohol
+:Alcohol rdf:type owl:Class ;
+         rdfs:subClassOf :PsychoactiveSubstance .
+
+
+###  http://ontriscal#AlcoholAndAlprazolam
+:AlcoholAndAlprazolam rdf:type owl:Class ;
+                      rdfs:subClassOf :PsychoactiveSubstance .
+
+
+###  http://ontriscal#AlcoholAndCocaine
+:AlcoholAndCocaine rdf:type owl:Class ;
+                   rdfs:subClassOf :PsychoactiveSubstance .
+
+
+###  http://ontriscal#AlcoholAndMarijuana
+:AlcoholAndMarijuana rdf:type owl:Class ;
+                     rdfs:subClassOf :PsychoactiveSubstance .
+
+
+###  http://ontriscal#AlcoholAndMultipleDrugs
+:AlcoholAndMultipleDrugs rdf:type owl:Class ;
+                         rdfs:subClassOf :PsychoactiveSubstance .
+
+
+###  http://ontriscal#AllergicCrises
+:AllergicCrises rdf:type owl:Class ;
+                rdfs:subClassOf :Comorbidity .
+
+
+###  http://ontriscal#AlzheimerDementia
+:AlzheimerDementia rdf:type owl:Class ;
+                   rdfs:subClassOf :ContextualAspect .
+
+
+###  http://ontriscal#Amnesias
+:Amnesias rdf:type owl:Class ;
+          rdfs:subClassOf :ContextualAspect .
+
+
+###  http://ontriscal#Anhedonia
+:Anhedonia rdf:type owl:Class ;
+           rdfs:subClassOf :BehaviorAspect ;
+           rdfs:comment "Anhedonia is the inability to experience joy or pleasure. You may feel numb or less interested in things that you once enjoyed. It’s a common symptom of many mental health conditions like depression." .
+
+
+###  http://ontriscal#Anorexia
+:Anorexia rdf:type owl:Class ;
+          rdfs:subClassOf :Nutrition .
+
+
+###  http://ontriscal#AnswerOption
+:AnswerOption rdf:type owl:Class ;
+              rdfs:subClassOf :QuestionnaireElement .
+
+
+###  http://ontriscal#Anxiety
+:Anxiety rdf:type owl:Class ;
+         rdfs:subClassOf :EmotionalAspect ,
+                         :MentalDisorder .
+
+
+###  http://ontriscal#Attention
+:Attention rdf:type owl:Class ;
+           rdfs:subClassOf :CognitiveFunctions .
+
+
+###  http://ontriscal#Auditory
+:Auditory rdf:type owl:Class ;
+          rdfs:subClassOf :Hallucination .
+
+
+###  http://ontriscal#Autism
+:Autism rdf:type owl:Class ;
+        rdfs:subClassOf :Disorder .
+
+
+###  http://ontriscal#AutomaticThinking
+:AutomaticThinking rdf:type owl:Class ;
+                   rdfs:subClassOf :CognitiveAspect ;
+                   owl:disjointWith :CognitiveFunctions .
+
+
+###  http://ontriscal#Avoidance
+:Avoidance rdf:type owl:Class ;
+           rdfs:subClassOf :BehaviorAspect .
+
+
+###  http://ontriscal#AvoidanceOfThreateningSignsOrSituations
+:AvoidanceOfThreateningSignsOrSituations rdf:type owl:Class ;
+                                         rdfs:subClassOf :BehaviorSymptoms .
+
+
+###  http://ontriscal#BackAndKneeProblems
+:BackAndKneeProblems rdf:type owl:Class ;
+                     rdfs:subClassOf :Comorbidity .
+
+
+###  http://ontriscal#BariatricObesity
+:BariatricObesity rdf:type owl:Class ;
+                  rdfs:subClassOf :Comorbidity .
+
+
+###  http://ontriscal#BariatricPatient
+:BariatricPatient rdf:type owl:Class ;
+                  rdfs:subClassOf :Comorbidity .
+
+
+###  http://ontriscal#BeginningQuestionnarie
+:BeginningQuestionnarie rdf:type owl:Class ;
+                        rdfs:subClassOf :Questionnarie .
+
+
+###  http://ontriscal#BehaviorAspect
+:BehaviorAspect rdf:type owl:Class ;
+                rdfs:subClassOf :ClinicalEvaluation .
+
+
+###  http://ontriscal#BehaviorSymptoms
+:BehaviorSymptoms rdf:type owl:Class ;
+                  rdfs:subClassOf :BehaviorAspect .
+
+
+###  http://ontriscal#BingeEating
+:BingeEating rdf:type owl:Class ;
+             rdfs:subClassOf :Nutrition .
+
+
+###  http://ontriscal#BiologicalSex
+:BiologicalSex rdf:type owl:Class ;
+               rdfs:subClassOf :SocioDemographicData .
+
+
+###  http://ontriscal#Brainstorming
+:Brainstorming rdf:type owl:Class ;
+               rdfs:subClassOf :ClinicalStrategy .
+
+
+###  http://ontriscal#BreastCancer
+:BreastCancer rdf:type owl:Class ;
+              rdfs:subClassOf :Comorbidity .
+
+
+###  http://ontriscal#Bulimia
+:Bulimia rdf:type owl:Class ;
+         rdfs:subClassOf :Nutrition .
+
+
+###  http://ontriscal#Cannabis
+:Cannabis rdf:type owl:Class ;
+          rdfs:subClassOf :PsychoactiveSubstance .
+
+
+###  http://ontriscal#CardiopathDiabetesNeuropath
+:CardiopathDiabetesNeuropath rdf:type owl:Class ;
+                             rdfs:subClassOf :Comorbidity .
+
+
+###  http://ontriscal#CareTeam
+:CareTeam rdf:type owl:Class ;
+          rdfs:subClassOf :Person .
+
+
+###  http://ontriscal#CaseConceptualization
+:CaseConceptualization rdf:type owl:Class ;
+                       rdfs:subClassOf gufo:FunctionalComplex .
+
+
+###  http://ontriscal#Catastrophizing
+:Catastrophizing rdf:type owl:Class ;
+                 rdfs:subClassOf :CognitiveDistortion .
+
+
+###  http://ontriscal#CerebellarDegeneration
+:CerebellarDegeneration rdf:type owl:Class ;
+                        rdfs:subClassOf :Comorbidity .
+
+
+###  http://ontriscal#ChestPressure
+:ChestPressure rdf:type owl:Class ;
+               rdfs:subClassOf :PhysiologicalSymptom .
+
+
+###  http://ontriscal#Chills
+:Chills rdf:type owl:Class ;
+        rdfs:subClassOf :PhysiologicalSymptom .
+
+
+###  http://ontriscal#ChokingSensation
+:ChokingSensation rdf:type owl:Class ;
+                  rdfs:subClassOf :PhysiologicalSymptom .
+
+
+###  http://ontriscal#ChronicSmokingAndCOPDRisk
+:ChronicSmokingAndCOPDRisk rdf:type owl:Class ;
+                           rdfs:subClassOf :Comorbidity .
+
+
+###  http://ontriscal#ChronicSmokingCOPDThrombogeitisWithAmputationAndVertebralOsteoarthritis
+:ChronicSmokingCOPDThrombogeitisWithAmputationAndVertebralOsteoarthritis rdf:type owl:Class ;
+                                                                         rdfs:subClassOf :Comorbidity .
+
+
+###  http://ontriscal#CirculationLocomotion
+:CirculationLocomotion rdf:type owl:Class ;
+                       rdfs:subClassOf :Comorbidity .
+
+
+###  http://ontriscal#ClinicalData
+:ClinicalData rdf:type owl:Class ;
+              rdfs:subClassOf gufo:FunctionalComplex .
+
+
+###  http://ontriscal#ClinicalEvaluation
+:ClinicalEvaluation rdf:type owl:Class ;
+                    rdfs:subClassOf gufo:FunctionalComplex .
+
+
+###  http://ontriscal#ClinicalStrategy
+:ClinicalStrategy rdf:type owl:Class ;
+                  rdfs:subClassOf :ClinicalEvaluation .
+
+
+###  http://ontriscal#Cocaine
+:Cocaine rdf:type owl:Class ;
+         rdfs:subClassOf :PsychoactiveSubstance .
+
+
+###  http://ontriscal#CoexistenceWorkshop
+:CoexistenceWorkshop rdf:type owl:Class ;
+                     rdfs:subClassOf :TherapeuticAction .
+
+
+###  http://ontriscal#CognitiveAspect
+:CognitiveAspect rdf:type owl:Class ;
+                 rdfs:subClassOf :ClinicalEvaluation .
+
+
+###  http://ontriscal#CognitiveDistortion
+:CognitiveDistortion rdf:type owl:Class ;
+                     rdfs:subClassOf :AutomaticThinking .
+
+
+###  http://ontriscal#CognitiveFunctions
+:CognitiveFunctions rdf:type owl:Class ;
+                    rdfs:subClassOf :CognitiveAspect .
+
+
+###  http://ontriscal#CognitiveModel
+:CognitiveModel rdf:type owl:Class ;
+                rdfs:subClassOf gufo:FunctionalComplex .
+
+
+###  http://ontriscal#CognitiveRestructuring
+:CognitiveRestructuring rdf:type owl:Class ;
+                        rdfs:subClassOf :ClinicalStrategy .
+
+
+###  http://ontriscal#CognitiveSymptoms
+:CognitiveSymptoms rdf:type owl:Class ;
+                   rdfs:subClassOf :CognitiveAspect .
+
+
+###  http://ontriscal#Comorbidity
+:Comorbidity rdf:type owl:Class ;
+             rdfs:subClassOf gufo:IntrinsicMode .
+
+
+###  http://ontriscal#CompletedSuicide
+:CompletedSuicide rdf:type owl:Class ;
+                  rdfs:subClassOf :SuicidalIdeation .
+
+
+###  http://ontriscal#CondensationOfConcepts
+:CondensationOfConcepts rdf:type owl:Class ;
+                        rdfs:subClassOf :ContextualAspect .
+
+
+###  http://ontriscal#Confrontation
+:Confrontation rdf:type owl:Class ;
+               rdfs:subClassOf :BehaviorAspect .
+
+
+###  http://ontriscal#ContextualAspect
+:ContextualAspect rdf:type owl:Class ;
+                  rdfs:subClassOf :ClinicalEvaluation .
+
+
+###  http://ontriscal#ConvulsiveCrisis
+:ConvulsiveCrisis rdf:type owl:Class ;
+                  rdfs:subClassOf :Comorbidity .
+
+
+###  http://ontriscal#CopingStrategies
+:CopingStrategies rdf:type owl:Class ;
+                  rdfs:subClassOf :BehaviorAspect ,
+                                  :ClinicalStrategy .
+
+
+###  http://ontriscal#CopingWithStress
+:CopingWithStress rdf:type owl:Class ;
+                  rdfs:subClassOf :ClinicalStrategy .
+
+
+###  http://ontriscal#CoreBelief
+:CoreBelief rdf:type owl:Class ;
+            rdfs:subClassOf :CognitiveAspect .
+
+
+###  http://ontriscal#Crack
+:Crack rdf:type owl:Class ;
+       rdfs:subClassOf :PsychoactiveSubstance .
+
+
+###  http://ontriscal#CrackCocaine
+:CrackCocaine rdf:type owl:Class ;
+              rdfs:subClassOf :PsychoactiveSubstance .
+
+
+###  http://ontriscal#CreepedOut
+:CreepedOut rdf:type owl:Class ;
+            rdfs:subClassOf :EmotionalSymptoms .
+
+
+###  http://ontriscal#DecatastrophizingWithDescendingArrows
+:DecatastrophizingWithDescendingArrows rdf:type owl:Class ;
+                                       rdfs:subClassOf :ClinicalStrategy .
+
+
+###  http://ontriscal#DecisionMaking
+:DecisionMaking rdf:type owl:Class ;
+                rdfs:subClassOf :ExecutiveFunctions .
+
+
+###  http://ontriscal#DeficientThinking
+:DeficientThinking rdf:type owl:Class ;
+                   rdfs:subClassOf :ContextualAspect .
+
+
+###  http://ontriscal#DeliberateThought
+:DeliberateThought rdf:type owl:Class ;
+                   rdfs:subClassOf :CognitiveAspect .
+
+
+###  http://ontriscal#Delirium
+:Delirium rdf:type owl:Class ;
+          rdfs:subClassOf :SignalAndSymptomSeverity .
+
+
+###  http://ontriscal#DelusionalDisorder
+:DelusionalDisorder rdf:type owl:Class ;
+                    rdfs:subClassOf :Delirium .
+
+
+###  http://ontriscal#Dementia
+:Dementia rdf:type owl:Class ;
+          rdfs:subClassOf :Comorbidity .
+
+
+###  http://ontriscal#DementiaWithLewyBodies
+:DementiaWithLewyBodies rdf:type owl:Class ;
+                        rdfs:subClassOf :ContextualAspect .
+
+
+###  http://ontriscal#DependencyAutonomy
+:DependencyAutonomy rdf:type owl:Class ;
+                    rdfs:subClassOf :SignAndSymptom .
+
+
+###  http://ontriscal#DepressedMood
+:DepressedMood rdf:type owl:Class ;
+               rdfs:subClassOf :EmotionalAspect .
+
+
+###  http://ontriscal#Depression
+:Depression rdf:type owl:Class ;
+            rdfs:subClassOf :MentalDisorder .
+
+
+###  http://ontriscal#Desensitization
+:Desensitization rdf:type owl:Class ;
+                 rdfs:subClassOf :ClinicalStrategy .
+
+
+###  http://ontriscal#Devaluation
+:Devaluation rdf:type owl:Class ;
+             rdfs:subClassOf :CoreBelief .
+
+
+###  http://ontriscal#Diabetes
+:Diabetes rdf:type owl:Class ;
+          rdfs:subClassOf :Comorbidity .
+
+
+###  http://ontriscal#DiabetesDiabeticNeuropathy
+:DiabetesDiabeticNeuropathy rdf:type owl:Class ;
+                            rdfs:subClassOf :Comorbidity .
+
+
+###  http://ontriscal#DiabetesHypertensionThyroidProblem
+:DiabetesHypertensionThyroidProblem rdf:type owl:Class ;
+                                    rdfs:subClassOf :Comorbidity .
+
+
+###  http://ontriscal#DiabetesOsteoporosis
+:DiabetesOsteoporosis rdf:type owl:Class ;
+                      rdfs:subClassOf :Comorbidity .
+
+
+###  http://ontriscal#Diarrhea
+:Diarrhea rdf:type owl:Class ;
+          rdfs:subClassOf :PhysiologicalSymptom .
+
+
+###  http://ontriscal#DichotomousThinking
+:DichotomousThinking rdf:type owl:Class ;
+                     rdfs:subClassOf :CognitiveDistortion .
+
+
+###  http://ontriscal#DifficultyOfReasoning
+:DifficultyOfReasoning rdf:type owl:Class ;
+                       rdfs:subClassOf :CognitiveSymptoms .
+
+
+###  http://ontriscal#DifficultySpeaking
+:DifficultySpeaking rdf:type owl:Class ;
+                    rdfs:subClassOf :BehaviorSymptoms .
+
+
+###  http://ontriscal#DiminishedAbilityThink
+:DiminishedAbilityThink rdf:type owl:Class ;
+                        rdfs:subClassOf :CognitiveFunctions .
+
+
+###  http://ontriscal#Disaffection
+:Disaffection rdf:type owl:Class ;
+              rdfs:subClassOf :CoreBelief .
+
+
+###  http://ontriscal#Discouragement
+:Discouragement rdf:type owl:Class ;
+                rdfs:subClassOf :EmotionalAspect .
+
+
+###  http://ontriscal#Disease_Spine_Arthrodesis
+:Disease_Spine_Arthrodesis rdf:type owl:Class ;
+                           rdfs:subClassOf :Comorbidity .
+
+
+###  http://ontriscal#Disgusted
+:Disgusted rdf:type owl:Class ;
+           rdfs:subClassOf :EmotionalAspect .
+
+
+###  http://ontriscal#DisintegrationOfConcepts
+:DisintegrationOfConcepts rdf:type owl:Class ;
+                          rdfs:subClassOf :ContextualAspect .
+
+
+###  http://ontriscal#Disorder
+:Disorder rdf:type owl:Class ;
+          rdfs:subClassOf gufo:FunctionalComplex .
+
+
+###  http://ontriscal#Distraction
+:Distraction rdf:type owl:Class ;
+             rdfs:subClassOf :ContextualAspect .
+
+
+###  http://ontriscal#Distractions
+:Distractions rdf:type owl:Class ;
+              rdfs:subClassOf :ClinicalStrategy .
+
+
+###  http://ontriscal#Dizziness
+:Dizziness rdf:type owl:Class ;
+           rdfs:subClassOf :PhysiologicalSymptom .
+
+
+###  http://ontriscal#Doctor
+:Doctor rdf:type owl:Class ;
+        rdfs:subClassOf :CareTeam .
+
+
+###  http://ontriscal#DodgeAndEscape
+:DodgeAndEscape rdf:type owl:Class ;
+                rdfs:subClassOf :BehaviorAspect .
+
+
+###  http://ontriscal#DryMouth
+:DryMouth rdf:type owl:Class ;
+          rdfs:subClassOf :PhysiologicalSymptom .
+
+
+###  http://ontriscal#EatingDisorder
+:EatingDisorder rdf:type owl:Class ;
+                rdfs:subClassOf :Comorbidity .
+
+
+###  http://ontriscal#Eldery
+:Eldery rdf:type owl:Class ;
+        rdfs:subClassOf :AgeGroup .
+
+
+###  http://ontriscal#EmotionalAspect
+:EmotionalAspect rdf:type owl:Class ;
+                 rdfs:subClassOf :ClinicalEvaluation .
+
+
+###  http://ontriscal#EmotionalReasoning
+:EmotionalReasoning rdf:type owl:Class ;
+                    rdfs:subClassOf :CognitiveDistortion .
+
+
+###  http://ontriscal#EmotionalSymptoms
+:EmotionalSymptoms rdf:type owl:Class ;
+                   rdfs:subClassOf :EmotionalAspect .
+
+
+###  http://ontriscal#Emptiness
+:Emptiness rdf:type owl:Class ;
+           rdfs:subClassOf :EmotionalAspect .
+
+
+###  http://ontriscal#Endometriosis
+:Endometriosis rdf:type owl:Class ;
+               rdfs:subClassOf :Comorbidity .
+
+
+###  http://ontriscal#Epilepsy
+:Epilepsy rdf:type owl:Class ;
+          rdfs:subClassOf :Comorbidity .
+
+
+###  http://ontriscal#EpilepsyAneurysmEatingDisorder
+:EpilepsyAneurysmEatingDisorder rdf:type owl:Class ;
+                                rdfs:subClassOf :Comorbidity .
+
+
+###  http://ontriscal#EvidenceAnalysis
+:EvidenceAnalysis rdf:type owl:Class ;
+                  rdfs:subClassOf :ClinicalStrategy .
+
+
+###  http://ontriscal#Excited
+:Excited rdf:type owl:Class ;
+         rdfs:subClassOf :EmotionalSymptoms .
+
+
+###  http://ontriscal#ExecutiveFunctions
+:ExecutiveFunctions rdf:type owl:Class ;
+                    rdfs:subClassOf :CognitiveFunctions .
+
+
+###  http://ontriscal#ExpositionsHierarchization
+:ExpositionsHierarchization rdf:type owl:Class ;
+                            rdfs:subClassOf :ClinicalStrategy .
+
+
+###  http://ontriscal#ExposureTechniques
+:ExposureTechniques rdf:type owl:Class ;
+                    rdfs:subClassOf :ClinicalStrategy .
+
+
+###  http://ontriscal#F00-F09
+:F00-F09 rdf:type owl:Class ;
+         rdfs:subClassOf :ICDGroup .
+
+
+###  http://ontriscal#F00-F99
+:F00-F99 rdf:type owl:Class ;
+         rdfs:subClassOf :ICDGroup .
+
+
+###  http://ontriscal#F10-F19
+:F10-F19 rdf:type owl:Class ;
+         rdfs:subClassOf :ICDGroup .
+
+
+###  http://ontriscal#F20-F29
+:F20-F29 rdf:type owl:Class ;
+         rdfs:subClassOf :ICDGroup .
+
+
+###  http://ontriscal#F30-F39
+:F30-F39 rdf:type owl:Class ;
+         rdfs:subClassOf :ICDGroup .
+
+
+###  http://ontriscal#F40-F48
+:F40-F48 rdf:type owl:Class ;
+         rdfs:subClassOf :ICDGroup .
+
+
+###  http://ontriscal#F50-F59
+:F50-F59 rdf:type owl:Class ;
+         rdfs:subClassOf :ICDGroup .
+
+
+###  http://ontriscal#F60-F69
+:F60-F69 rdf:type owl:Class ;
+         rdfs:subClassOf :ICDGroup .
+
+
+###  http://ontriscal#F70-F79
+:F70-F79 rdf:type owl:Class ;
+         rdfs:subClassOf :ICDGroup .
+
+
+###  http://ontriscal#F80-F89
+:F80-F89 rdf:type owl:Class ;
+         rdfs:subClassOf :ICDGroup .
+
+
+###  http://ontriscal#F90-F98
+:F90-F98 rdf:type owl:Class ;
+         rdfs:subClassOf :ICDGroup .
+
+
+###  http://ontriscal#F99
+:F99 rdf:type owl:Class ;
+     rdfs:subClassOf :ICDGroup .
+
+
+###  http://ontriscal#FaceCards
+:FaceCards rdf:type owl:Class ;
+           rdfs:subClassOf :ClinicalStrategy .
+
+
+###  http://ontriscal#Fainting
+:Fainting rdf:type owl:Class ;
+          rdfs:subClassOf :PhysiologicalSymptom .
+
+
+###  http://ontriscal#Fatigue
+:Fatigue rdf:type owl:Class ;
+         rdfs:subClassOf :PhysiologicalSymptom .
+
+
+###  http://ontriscal#Fear
+:Fear rdf:type owl:Class ;
+      rdfs:subClassOf :EmotionalAspect .
+
+
+###  http://ontriscal#FearOfGoingCrazy
+:FearOfGoingCrazy rdf:type owl:Class ;
+                  rdfs:subClassOf :CognitiveSymptoms .
+
+
+###  http://ontriscal#FearOfLosingControl
+:FearOfLosingControl rdf:type owl:Class ;
+                     rdfs:subClassOf :CognitiveSymptoms .
+
+
+###  http://ontriscal#FearOfNegativeEvaluationByOthers
+:FearOfNegativeEvaluationByOthers rdf:type owl:Class ;
+                                  rdfs:subClassOf :CognitiveSymptoms .
+
+
+###  http://ontriscal#FearOfPhysicalInjuryOrDeath
+:FearOfPhysicalInjuryOrDeath rdf:type owl:Class ;
+                             rdfs:subClassOf :CognitiveSymptoms .
+
+
+###  http://ontriscal#FeelingOfNervousness
+:FeelingOfNervousness rdf:type owl:Class ;
+                      rdfs:subClassOf :PhysiologicalReaction .
+
+
+###  http://ontriscal#FeelingsOfWorthlessness
+:FeelingsOfWorthlessness rdf:type owl:Class ;
+                         rdfs:subClassOf :EmotionalAspect .
+
+
+###  http://ontriscal#Female
+:Female rdf:type owl:Class ;
+        rdfs:subClassOf :BiologicalSex .
+
+
+###  http://ontriscal#Fibromyalgia
+:Fibromyalgia rdf:type owl:Class ;
+              rdfs:subClassOf :Comorbidity .
+
+
+###  http://ontriscal#FinalQuestionnarie
+:FinalQuestionnarie rdf:type owl:Class ;
+                    rdfs:subClassOf :Questionnarie .
+
+
+###  http://ontriscal#FinalScore
+:FinalScore rdf:type owl:Class ;
+            rdfs:subClassOf :QuestionnaireElement .
+
+
+###  http://ontriscal#Flexibility
+:Flexibility rdf:type owl:Class ;
+             rdfs:subClassOf :ExecutiveFunctions .
+
+
+###  http://ontriscal#Freezing
+:Freezing rdf:type owl:Class ;
+          rdfs:subClassOf :BehaviorSymptoms .
+
+
+###  http://ontriscal#FrequencyOfUseOfTheTypeOfPsychoactiveSubstance
+:FrequencyOfUseOfTheTypeOfPsychoactiveSubstance rdf:type owl:Class ;
+                                                rdfs:subClassOf :ClinicalData .
+
+
+###  http://ontriscal#FrontotemporalDementia
+:FrontotemporalDementia rdf:type owl:Class ;
+                        rdfs:subClassOf :ContextualAspect .
+
+
+###  http://ontriscal#Frustrated
+:Frustrated rdf:type owl:Class ;
+            rdfs:subClassOf :EmotionalSymptoms .
+
+
+###  http://ontriscal#Frustration
+:Frustration rdf:type owl:Class ;
+             rdfs:subClassOf :EmotionalAspect .
+
+
+###  http://ontriscal#Generalization
+:Generalization rdf:type owl:Class ;
+                rdfs:subClassOf :CognitiveDistortion .
+
+
+###  http://ontriscal#Glaucoma
+:Glaucoma rdf:type owl:Class ;
+          rdfs:subClassOf :Comorbidity .
+
+
+###  http://ontriscal#GravitySpecifier
+:GravitySpecifier rdf:type owl:Class ;
+                  rdfs:subClassOf gufo:FunctionalComplex .
+
+
+###  http://ontriscal#GroupService
+:GroupService rdf:type owl:Class ;
+              rdfs:subClassOf :TherapeuticAction .
+
+
+###  http://ontriscal#HIV
+:HIV rdf:type owl:Class ;
+     rdfs:subClassOf :Comorbidity .
+
+
+###  http://ontriscal#Hallucination
+:Hallucination rdf:type owl:Class ;
+               rdfs:subClassOf :SignalAndSymptomSeverity .
+
+
+###  http://ontriscal#Happiness
+:Happiness rdf:type owl:Class ;
+           rdfs:subClassOf :EmotionalAspect .
+
+
+###  http://ontriscal#HealthCareLevel
+:HealthCareLevel rdf:type owl:Class ;
+                 rdfs:subClassOf gufo:IntrinsicMode .
+
+
+###  http://ontriscal#HeartDiseaseObesity
+:HeartDiseaseObesity rdf:type owl:Class ;
+                     rdfs:subClassOf :Comorbidity .
+
+
+###  http://ontriscal#HeartDiseaseVariousSurgicalProceduresAllergies
+:HeartDiseaseVariousSurgicalProceduresAllergies rdf:type owl:Class ;
+                                                rdfs:subClassOf :Comorbidity .
+
+
+###  http://ontriscal#HeatWaves
+:HeatWaves rdf:type owl:Class ;
+           rdfs:subClassOf :PhysiologicalSymptom .
+
+
+###  http://ontriscal#Helplessness
+:Helplessness rdf:type owl:Class ;
+              rdfs:subClassOf :CoreBelief .
+
+
+###  http://ontriscal#HepatitisLiverCirrhosis
+:HepatitisLiverCirrhosis rdf:type owl:Class ;
+                         rdfs:subClassOf :Comorbidity .
+
+
+###  http://ontriscal#High
+:High rdf:type owl:Class ;
+      rdfs:subClassOf :FrequencyOfUseOfTheTypeOfPsychoactiveSubstance .
+
+
+###  http://ontriscal#HighBloodPressureDiabetes
+:HighBloodPressureDiabetes rdf:type owl:Class ;
+                           rdfs:subClassOf :Comorbidity .
+
+
+###  http://ontriscal#HighRiskLevel
+:HighRiskLevel rdf:type owl:Class ;
+               rdfs:subClassOf :RiskLevel .
+
+
+###  http://ontriscal#Hopelessness
+:Hopelessness rdf:type owl:Class ;
+              rdfs:subClassOf :EmotionalAspect .
+
+
+###  http://ontriscal#Hyperesthesia
+:Hyperesthesia rdf:type owl:Class ;
+               rdfs:subClassOf :ContextualAspect .
+
+
+###  http://ontriscal#Hypergeneralization
+:Hypergeneralization rdf:type owl:Class ;
+                     rdfs:subClassOf :CognitiveDistortion .
+
+
+###  http://ontriscal#Hypermnesia
+:Hypermnesia rdf:type owl:Class ;
+             rdfs:subClassOf :ContextualAspect .
+
+
+###  http://ontriscal#Hyperpathy
+:Hyperpathy rdf:type owl:Class ;
+            rdfs:subClassOf :ContextualAspect .
+
+
+###  http://ontriscal#Hypersomnia
+:Hypersomnia rdf:type owl:Class ;
+             rdfs:subClassOf :PhysiologicalReaction ,
+                             :Sleep .
+
+
+###  http://ontriscal#Hypertension
+:Hypertension rdf:type owl:Class ;
+              rdfs:subClassOf :Comorbidity .
+
+
+###  http://ontriscal#HypertensionDiabetes
+:HypertensionDiabetes rdf:type owl:Class ;
+                      rdfs:subClassOf :Comorbidity .
+
+
+###  http://ontriscal#Hyperventilation
+:Hyperventilation rdf:type owl:Class ;
+                  rdfs:subClassOf :BehaviorSymptoms .
+
+
+###  http://ontriscal#Hypoesthesia
+:Hypoesthesia rdf:type owl:Class ;
+              rdfs:subClassOf :ContextualAspect .
+
+
+###  http://ontriscal#Hypothyroidism
+:Hypothyroidism rdf:type owl:Class ;
+                rdfs:subClassOf :Comorbidity .
+
+
+###  http://ontriscal#ICDGroup
+:ICDGroup rdf:type owl:Class ;
+          rdfs:subClassOf :ClinicalData .
+
+
+###  http://ontriscal#Impatient
+:Impatient rdf:type owl:Class ;
+           rdfs:subClassOf :EmotionalSymptoms .
+
+
+###  http://ontriscal#Impulsiveness
+:Impulsiveness rdf:type owl:Class ;
+               rdfs:subClassOf :ExecutiveFunctions .
+
+
+###  http://ontriscal#InBlank
+:InBlank rdf:type owl:Class ;
+         rdfs:subClassOf :Comorbidity .
+
+
+###  http://ontriscal#InadequateSelfCare
+:InadequateSelfCare rdf:type owl:Class ;
+                    rdfs:subClassOf :BehaviorAspect .
+
+
+###  http://ontriscal#InappropriateGuilt
+:InappropriateGuilt rdf:type owl:Class ;
+                    rdfs:subClassOf :EmotionalAspect .
+
+
+###  http://ontriscal#IncreasedHeartRate
+:IncreasedHeartRate rdf:type owl:Class ;
+                    rdfs:subClassOf :PhysiologicalSymptom .
+
+
+###  http://ontriscal#IndividualPsychologicalService
+:IndividualPsychologicalService rdf:type owl:Class ;
+                                rdfs:subClassOf :TherapeuticAction .
+
+
+###  http://ontriscal#Inhibition
+:Inhibition rdf:type owl:Class ;
+            rdfs:subClassOf :EmotionalAspect .
+
+
+###  http://ontriscal#InjectablePreAnestheticMedication
+:InjectablePreAnestheticMedication rdf:type owl:Class ;
+                                   rdfs:subClassOf :PsychoactiveSubstance .
+
+
+###  http://ontriscal#Insanity
+:Insanity rdf:type owl:Class ;
+          rdfs:subClassOf :Comorbidity .
+
+
+###  http://ontriscal#Insomnia
+:Insomnia rdf:type owl:Class ;
+          rdfs:subClassOf :PhysiologicalReaction .
+
+
+###  http://ontriscal#Intestinal_Problems
+:Intestinal_Problems rdf:type owl:Class ;
+                     rdfs:subClassOf :Comorbidity .
+
+
+###  http://ontriscal#Irritable
+:Irritable rdf:type owl:Class ;
+           rdfs:subClassOf :EmotionalSymptoms .
+
+
+###  http://ontriscal#Irritation
+:Irritation rdf:type owl:Class ;
+            rdfs:subClassOf :EmotionalAspect .
+
+
+###  http://ontriscal#Isolation
+:Isolation rdf:type owl:Class ;
+           rdfs:subClassOf :BehaviorAspect .
+
+
+###  http://ontriscal#Jealousy
+:Jealousy rdf:type owl:Class ;
+          rdfs:subClassOf :EmotionalAspect .
+
+
+###  http://ontriscal#KorsakoffSyndrome
+:KorsakoffSyndrome rdf:type owl:Class ;
+                   rdfs:subClassOf :Comorbidity .
+
+
+###  http://ontriscal#Language
+:Language rdf:type owl:Class ;
+          rdfs:subClassOf :CognitiveFunctions .
+
+
+###  http://ontriscal#Lettering
+:Lettering rdf:type owl:Class ;
+           rdfs:subClassOf :CognitiveDistortion .
+
+
+###  http://ontriscal#LighterGas
+:LighterGas rdf:type owl:Class ;
+            rdfs:subClassOf :PetroleumDerivatives .
+
+
+###  http://ontriscal#LimitedCognitiveAbility
+:LimitedCognitiveAbility rdf:type owl:Class ;
+                         rdfs:subClassOf :Comorbidity .
+
+
+###  http://ontriscal#LossOfBalance
+:LossOfBalance rdf:type owl:Class ;
+               rdfs:subClassOf :PhysiologicalSymptom .
+
+
+###  http://ontriscal#LossOfEnergy
+:LossOfEnergy rdf:type owl:Class ;
+              rdfs:subClassOf :PhysiologicalSymptom .
+
+
+###  http://ontriscal#Low
+:Low rdf:type owl:Class ;
+     rdfs:subClassOf :FrequencyOfUseOfTheTypeOfPsychoactiveSubstance .
+
+
+###  http://ontriscal#LowNeurotransmitters
+:LowNeurotransmitters rdf:type owl:Class ;
+                      rdfs:subClassOf :PhysiologicalSymptom .
+
+
+###  http://ontriscal#LowRiskLevel
+:LowRiskLevel rdf:type owl:Class ;
+              rdfs:subClassOf :RiskLevel .
+
+
+###  http://ontriscal#Lupus
+:Lupus rdf:type owl:Class ;
+       rdfs:subClassOf :Comorbidity .
+
+
+###  http://ontriscal#MajorDepressiveDisorder
+:MajorDepressiveDisorder rdf:type owl:Class ;
+                         rdfs:subClassOf :Depression .
+
+
+###  http://ontriscal#Male
+:Male rdf:type owl:Class ;
+      rdfs:subClassOf :BiologicalSex .
+
+
+###  http://ontriscal#MathematicalOperation
+:MathematicalOperation rdf:type owl:Class ;
+                       rdfs:subClassOf gufo:FunctionalComplex .
+
+
+###  http://ontriscal#MaximizationOfTheNegative
+:MaximizationOfTheNegative rdf:type owl:Class ;
+                           rdfs:subClassOf :CognitiveDistortion .
+
+
+###  http://ontriscal#MedicalCare
+:MedicalCare rdf:type owl:Class ;
+             rdfs:subClassOf :TherapeuticAction .
+
+
+###  http://ontriscal#Medium
+:Medium rdf:type owl:Class ;
+        rdfs:subClassOf :FrequencyOfUseOfTheTypeOfPsychoactiveSubstance .
+
+
+###  http://ontriscal#MediumRiskLevel
+:MediumRiskLevel rdf:type owl:Class ;
+                 rdfs:subClassOf :RiskLevel .
+
+
+###  http://ontriscal#Memory
+:Memory rdf:type owl:Class ;
+        rdfs:subClassOf :CognitiveFunctions .
+
+
+###  http://ontriscal#MentalDisorder
+:MentalDisorder rdf:type owl:Class ;
+                rdfs:subClassOf :Disorder .
+
+
+###  http://ontriscal#Migraine
+:Migraine rdf:type owl:Class ;
+          rdfs:subClassOf :Comorbidity .
+
+
+###  http://ontriscal#Mild
+:Mild rdf:type owl:Class ;
+      rdfs:subClassOf :GravitySpecifier .
+
+
+###  http://ontriscal#MindReading
+:MindReading rdf:type owl:Class ;
+             rdfs:subClassOf :CognitiveDistortion .
+
+
+###  http://ontriscal#MinimizationOfThePositive
+:MinimizationOfThePositive rdf:type owl:Class ;
+                           rdfs:subClassOf :CognitiveDistortion .
+
+
+###  http://ontriscal#MnemicHallucinations
+:MnemicHallucinations rdf:type owl:Class ;
+                      rdfs:subClassOf :ContextualAspect .
+
+
+###  http://ontriscal#MnemicIllusions
+:MnemicIllusions rdf:type owl:Class ;
+                 rdfs:subClassOf :ContextualAspect .
+
+
+###  http://ontriscal#Moderate
+:Moderate rdf:type owl:Class ;
+          rdfs:subClassOf :GravitySpecifier .
+
+
+###  http://ontriscal#MultipleDrugs
+:MultipleDrugs rdf:type owl:Class ;
+               rdfs:subClassOf :PsychoactiveSubstance .
+
+
+###  http://ontriscal#MuscularTension
+:MuscularTension rdf:type owl:Class ;
+                 rdfs:subClassOf :PhysiologicalSymptom .
+
+
+###  http://ontriscal#Nausea
+:Nausea rdf:type owl:Class ;
+        rdfs:subClassOf :PhysiologicalSymptom .
+
+
+###  http://ontriscal#Nervous
+:Nervous rdf:type owl:Class ;
+         rdfs:subClassOf :EmotionalSymptoms .
+
+
+###  http://ontriscal#NeurologicLabirinthitisFollow-up
+:NeurologicLabirinthitisFollow-up rdf:type owl:Class ;
+                                  rdfs:subClassOf :Comorbidity .
+
+
+###  http://ontriscal#NeurologicalDamageCausedByCarbonMonoxideInhalation
+:NeurologicalDamageCausedByCarbonMonoxideInhalation rdf:type owl:Class ;
+                                                    rdfs:subClassOf :Comorbidity .
+
+
+###  http://ontriscal#No
+:No rdf:type owl:Class ;
+    rdfs:subClassOf :AnswerOption .
+
+
+###  http://ontriscal#NumbnessInLimbs
+:NumbnessInLimbs rdf:type owl:Class ;
+                 rdfs:subClassOf :PhysiologicalSymptom .
+
+
+###  http://ontriscal#Nurse
+:Nurse rdf:type owl:Class ;
+       rdfs:subClassOf :CareTeam .
+
+
+###  http://ontriscal#NursingAssistance
+:NursingAssistance rdf:type owl:Class ;
+                   rdfs:subClassOf :TherapeuticAction .
+
+
+###  http://ontriscal#Nutrition
+:Nutrition rdf:type owl:Class ;
+           rdfs:subClassOf :ContextualAspect .
+
+
+###  http://ontriscal#NutritionalAssistance
+:NutritionalAssistance rdf:type owl:Class ;
+                       rdfs:subClassOf :TherapeuticAction .
+
+
+###  http://ontriscal#Obesity
+:Obesity rdf:type owl:Class ;
+         rdfs:subClassOf :Comorbidity .
+
+
+###  http://ontriscal#ObesityAndConsequences
+:ObesityAndConsequences rdf:type owl:Class ;
+                        rdfs:subClassOf :Comorbidity .
+
+
+###  http://ontriscal#ObesityJointProblems
+:ObesityJointProblems rdf:type owl:Class ;
+                      rdfs:subClassOf :Comorbidity .
+
+
+###  http://ontriscal#Organization
+:Organization rdf:type owl:Class ;
+              rdfs:subClassOf :ExecutiveFunctions .
+
+
+###  http://ontriscal#Orthopedic
+:Orthopedic rdf:type owl:Class ;
+            rdfs:subClassOf :Comorbidity .
+
+
+###  http://ontriscal#OrthopedicDiabetes
+:OrthopedicDiabetes rdf:type owl:Class ;
+                    rdfs:subClassOf :Comorbidity .
+
+
+###  http://ontriscal#OrthopedicNeurologist
+:OrthopedicNeurologist rdf:type owl:Class ;
+                       rdfs:subClassOf :Comorbidity .
+
+
+###  http://ontriscal#OrthopedicProblem
+:OrthopedicProblem rdf:type owl:Class ;
+                   rdfs:subClassOf :Comorbidity .
+
+
+###  http://ontriscal#OrthopedicProblemInTheSpine
+:OrthopedicProblemInTheSpine rdf:type owl:Class ;
+                             rdfs:subClassOf :Comorbidity .
+
+
+###  http://ontriscal#PaintThinner
+:PaintThinner rdf:type owl:Class ;
+              rdfs:subClassOf :PetroleumDerivatives .
+
+
+###  http://ontriscal#Palpitations
+:Palpitations rdf:type owl:Class ;
+              rdfs:subClassOf :PhysiologicalSymptom .
+
+
+###  http://ontriscal#Paresthesias
+:Paresthesias rdf:type owl:Class ;
+              rdfs:subClassOf :ContextualAspect .
+
+
+###  http://ontriscal#ParkinsonDisease
+:ParkinsonDisease rdf:type owl:Class ;
+                  rdfs:subClassOf :ContextualAspect .
+
+
+###  http://ontriscal#Parkinsonism
+:Parkinsonism rdf:type owl:Class ;
+              rdfs:subClassOf :Comorbidity .
+
+
+###  http://ontriscal#Passivity
+:Passivity rdf:type owl:Class ;
+           rdfs:subClassOf :BehaviorAspect .
+
+
+###  http://ontriscal#PathologicalLie
+:PathologicalLie rdf:type owl:Class ;
+                 rdfs:subClassOf :ContextualAspect .
+
+
+###  http://ontriscal#Patient
+:Patient rdf:type owl:Class ;
+         rdfs:subClassOf :Person .
+
+
+###  http://ontriscal#PerceptionsOfUnrealityOrDetachment
+:PerceptionsOfUnrealityOrDetachment rdf:type owl:Class ;
+                                    rdfs:subClassOf :CognitiveSymptoms .
+
+
+###  http://ontriscal#Perfectionism
+:Perfectionism rdf:type owl:Class ;
+               rdfs:subClassOf :CognitiveDistortion .
+
+
+###  http://ontriscal#Person
+:Person rdf:type owl:Class ;
+        rdfs:subClassOf gufo:FunctionalComplex .
+
+
+###  http://ontriscal#Personalization
+:Personalization rdf:type owl:Class ;
+                 rdfs:subClassOf :CognitiveDistortion .
+
+
+###  http://ontriscal#PetroleumDerivatives
+:PetroleumDerivatives rdf:type owl:Class ;
+                      rdfs:subClassOf :PsychoactiveSubstance .
+
+
+###  http://ontriscal#PhysiologicalReaction
+:PhysiologicalReaction rdf:type owl:Class ;
+                       rdfs:subClassOf :ClinicalEvaluation .
+
+
+###  http://ontriscal#PhysiologicalSymptom
+:PhysiologicalSymptom rdf:type owl:Class ;
+                      rdfs:subClassOf :ClinicalEvaluation .
+
+
+###  http://ontriscal#PizzaTechnique
+:PizzaTechnique rdf:type owl:Class ;
+                rdfs:subClassOf :ClinicalStrategy .
+
+
+###  http://ontriscal#Planning
+:Planning rdf:type owl:Class ;
+          rdfs:subClassOf :ExecutiveFunctions .
+
+
+###  http://ontriscal#PoorConcentration
+:PoorConcentration rdf:type owl:Class ;
+                   rdfs:subClassOf :CognitiveSymptoms .
+
+
+###  http://ontriscal#PoorMemory
+:PoorMemory rdf:type owl:Class ;
+            rdfs:subClassOf :CognitiveSymptoms .
+
+
+###  http://ontriscal#PreDiabetes
+:PreDiabetes rdf:type owl:Class ;
+             rdfs:subClassOf :Comorbidity .
+
+
+###  http://ontriscal#PredictionOfTheFuture
+:PredictionOfTheFuture rdf:type owl:Class ;
+                       rdfs:subClassOf :CognitiveDistortion .
+
+
+###  http://ontriscal#Primary
+:Primary rdf:type owl:Class ;
+         rdfs:subClassOf :HealthCareLevel .
+
+
+###  http://ontriscal#ProblemSolving
+:ProblemSolving rdf:type owl:Class ;
+                rdfs:subClassOf :ClinicalStrategy .
+
+
+###  http://ontriscal#Prosopagnosy
+:Prosopagnosy rdf:type owl:Class ;
+              rdfs:subClassOf :ContextualAspect .
+
+
+###  http://ontriscal#PsychoactiveSubstance
+:PsychoactiveSubstance rdf:type owl:Class ;
+                       rdfs:subClassOf :ClinicalData .
+
+
+###  http://ontriscal#Psychoeducation
+:Psychoeducation rdf:type owl:Class ;
+                 rdfs:subClassOf :ClinicalStrategy .
+
+
+###  http://ontriscal#Psychologist
+:Psychologist rdf:type owl:Class ;
+              rdfs:subClassOf :CareTeam .
+
+
+###  http://ontriscal#PsychomotorRetardation
+:PsychomotorRetardation rdf:type owl:Class ;
+                        rdfs:subClassOf :SignAndSymptom .
+
+
+###  http://ontriscal#Psychoterapy
+:Psychoterapy rdf:type owl:Class ;
+              rdfs:subClassOf :TherapeuticAction .
+
+
+###  http://ontriscal#Question
+:Question rdf:type owl:Class ;
+          rdfs:subClassOf gufo:FunctionalComplex .
+
+
+###  http://ontriscal#QuestionGroup
+:QuestionGroup rdf:type owl:Class ;
+               rdfs:subClassOf :QuestionnaireElement .
+
+
+###  http://ontriscal#QuestionnaireElement
+:QuestionnaireElement rdf:type owl:Class ;
+                      owl:equivalentClass [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                                   owl:onProperty :hasQuestionnarieElement ;
+                                                                   owl:someValuesFrom :CareTeam
+                                                                 ]
+                                                                 [ rdf:type owl:Restriction ;
+                                                                   owl:onProperty :hasQuestionnarieElement ;
+                                                                   owl:someValuesFrom :Patient
+                                                                 ]
+                                                               ) ;
+                                            rdf:type owl:Class
+                                          ] ;
+                      rdfs:subClassOf gufo:FunctionalComplex .
+
+
+###  http://ontriscal#Questionnarie
+:Questionnarie rdf:type owl:Class ;
+               rdfs:subClassOf gufo:FunctionalComplex .
+
+
+###  http://ontriscal#Rage
+:Rage rdf:type owl:Class ;
+      rdfs:subClassOf :EmotionalAspect .
+
+
+###  http://ontriscal#RapidBreathing
+:RapidBreathing rdf:type owl:Class ;
+                rdfs:subClassOf :PhysiologicalSymptom .
+
+
+###  http://ontriscal#Reactivity
+:Reactivity rdf:type owl:Class ;
+            rdfs:subClassOf :EmotionalAspect .
+
+
+###  http://ontriscal#RecordingDysfunctionalThoughts
+:RecordingDysfunctionalThoughts rdf:type owl:Class ;
+                                rdfs:subClassOf :ClinicalStrategy .
+
+
+###  http://ontriscal#RecurrentEpisode
+:RecurrentEpisode rdf:type owl:Class ;
+                  rdfs:subClassOf :GravitySpecifier .
+
+
+###  http://ontriscal#RecurringThoughtsOfDeath
+:RecurringThoughtsOfDeath rdf:type owl:Class ;
+                          rdfs:subClassOf :DeliberateThought .
+
+
+###  http://ontriscal#Refractoriness
+:Refractoriness rdf:type owl:Class ;
+                rdfs:subClassOf :SignAndSymptom .
+
+
+###  http://ontriscal#RelaxationTechniques
+:RelaxationTechniques rdf:type owl:Class ;
+                      rdfs:subClassOf :ClinicalStrategy .
+
+
+###  http://ontriscal#Restlessness
+:Restlessness rdf:type owl:Class ;
+              rdfs:subClassOf :BehaviorSymptoms .
+
+
+###  http://ontriscal#Rigidity
+:Rigidity rdf:type owl:Class ;
+          rdfs:subClassOf :PhysiologicalSymptom .
+
+
+###  http://ontriscal#RiskForYouAndOthers
+:RiskForYouAndOthers rdf:type owl:Class ;
+                     rdfs:subClassOf :SignAndSymptom .
+
+
+###  http://ontriscal#RiskLevel
+:RiskLevel rdf:type owl:Class ;
+           rdfs:subClassOf gufo:FunctionalComplex .
+
+
+###  http://ontriscal#RiskRange
+:RiskRange rdf:type owl:Class ;
+           rdfs:subClassOf :RiskLevel .
+
+
+###  http://ontriscal#RiskScore
+:RiskScore rdf:type owl:Class ;
+           rdfs:subClassOf :MathematicalOperation .
+
+
+###  http://ontriscal#RiskStratificationInMentalHealth
+:RiskStratificationInMentalHealth rdf:type owl:Class ;
+                                  rdfs:subClassOf gufo:Relator .
+
+
+###  http://ontriscal#Sadness
+:Sadness rdf:type owl:Class ;
+         rdfs:subClassOf :EmotionalAspect .
+
+
+###  http://ontriscal#Score
+:Score rdf:type owl:Class ;
+       rdfs:subClassOf :QuestionnaireElement .
+
+
+###  http://ontriscal#Secondary
+:Secondary rdf:type owl:Class ;
+           rdfs:subClassOf :HealthCareLevel .
+
+
+###  http://ontriscal#SecuritySearch
+:SecuritySearch rdf:type owl:Class ;
+                rdfs:subClassOf :BehaviorSymptoms .
+
+
+###  http://ontriscal#SelectiveAbstraction
+:SelectiveAbstraction rdf:type owl:Class ;
+                      rdfs:subClassOf :CognitiveDistortion .
+
+
+###  http://ontriscal#Self-Instruction
+:Self-Instruction rdf:type owl:Class ;
+                  rdfs:subClassOf :ClinicalStrategy .
+
+
+###  http://ontriscal#Senseperception
+:Senseperception rdf:type owl:Class ;
+                 rdfs:subClassOf :CognitiveFunctions .
+
+
+###  http://ontriscal#Severe
+:Severe rdf:type owl:Class ;
+        rdfs:subClassOf :GravitySpecifier .
+
+
+###  http://ontriscal#ShoeGlue
+:ShoeGlue rdf:type owl:Class ;
+          rdfs:subClassOf :PetroleumDerivatives .
+
+
+###  http://ontriscal#ShortnessOfBreath
+:ShortnessOfBreath rdf:type owl:Class ;
+                   rdfs:subClassOf :PhysiologicalSymptom .
+
+
+###  http://ontriscal#SignAndSymptom
+:SignAndSymptom rdf:type owl:Class ;
+                rdfs:subClassOf gufo:IntrinsicMode .
+
+
+###  http://ontriscal#SignalAndSymptomSeverity
+:SignalAndSymptomSeverity rdf:type owl:Class ;
+                          rdfs:subClassOf :ClinicalData .
+
+
+###  http://ontriscal#SingleEpsiode
+:SingleEpsiode rdf:type owl:Class ;
+               rdfs:subClassOf :GravitySpecifier .
+
+
+###  http://ontriscal#SingularTherapeuticProject
+:SingularTherapeuticProject rdf:type owl:Class ;
+                            rdfs:subClassOf gufo:FunctionalComplex .
+
+
+###  http://ontriscal#Sleep
+:Sleep rdf:type owl:Class ;
+       rdfs:subClassOf :ContextualAspect .
+
+
+###  http://ontriscal#Sleepleness
+:Sleepleness rdf:type owl:Class ;
+             rdfs:subClassOf :Sleep .
+
+
+###  http://ontriscal#SlightDelay
+:SlightDelay rdf:type owl:Class ;
+             rdfs:subClassOf :Comorbidity .
+
+
+###  http://ontriscal#SlowingOfThought
+:SlowingOfThought rdf:type owl:Class ;
+                  rdfs:subClassOf :ContextualAspect .
+
+
+###  http://ontriscal#SocialAssistance
+:SocialAssistance rdf:type owl:Class ;
+                  rdfs:subClassOf :TherapeuticAction .
+
+
+###  http://ontriscal#SocialSkillsTechniques
+:SocialSkillsTechniques rdf:type owl:Class ;
+                        rdfs:subClassOf :ClinicalStrategy .
+
+
+###  http://ontriscal#SocialVulnerability
+:SocialVulnerability rdf:type owl:Class ;
+                     rdfs:subClassOf :SocioDemographicData .
+
+
+###  http://ontriscal#SocioDemographicData
+:SocioDemographicData rdf:type owl:Class ;
+                      rdfs:subClassOf gufo:FunctionalComplex .
+
+
+###  http://ontriscal#SocraticQuestioning
+:SocraticQuestioning rdf:type owl:Class ;
+                     rdfs:subClassOf :ClinicalStrategy .
+
+
+###  http://ontriscal#SpasmodicAnginaDiabetesFibromyalgia
+:SpasmodicAnginaDiabetesFibromyalgia rdf:type owl:Class ;
+                                     rdfs:subClassOf :Comorbidity .
+
+
+###  http://ontriscal#SpectatorOrDistantObserver
+:SpectatorOrDistantObserver rdf:type owl:Class ;
+                            rdfs:subClassOf :ClinicalStrategy .
+
+
+###  http://ontriscal#SpineSurgeries
+:SpineSurgeries rdf:type owl:Class ;
+                rdfs:subClassOf :Comorbidity .
+
+
+###  http://ontriscal#StomachPain
+:StomachPain rdf:type owl:Class ;
+             rdfs:subClassOf :PhysiologicalSymptom .
+
+
+###  http://ontriscal#Stoppage
+:Stoppage rdf:type owl:Class ;
+          rdfs:subClassOf :BehaviorAspect .
+
+
+###  http://ontriscal#Submission
+:Submission rdf:type owl:Class ;
+            rdfs:subClassOf :BehaviorAspect .
+
+
+###  http://ontriscal#SuicidalIdeation
+:SuicidalIdeation rdf:type owl:Class ;
+                  rdfs:subClassOf :DeliberateThought .
+
+
+###  http://ontriscal#SuicideAttempt
+:SuicideAttempt rdf:type owl:Class ;
+                rdfs:subClassOf :SuicidalIdeation .
+
+
+###  http://ontriscal#Sweating
+:Sweating rdf:type owl:Class ;
+          rdfs:subClassOf :PhysiologicalSymptom .
+
+
+###  http://ontriscal#SwitchingRoles
+:SwitchingRoles rdf:type owl:Class ;
+                rdfs:subClassOf :ClinicalStrategy .
+
+
+###  http://ontriscal#Symptomatology
+:Symptomatology rdf:type owl:Class ;
+                rdfs:subClassOf :SignAndSymptom .
+
+
+###  http://ontriscal#SystematicDesensitization
+:SystematicDesensitization rdf:type owl:Class ;
+                           rdfs:subClassOf :ClinicalStrategy .
+
+
+###  http://ontriscal#TactileHallucination
+:TactileHallucination rdf:type owl:Class ;
+                      rdfs:subClassOf :Hallucination .
+
+
+###  http://ontriscal#TactileHypoesthesia
+:TactileHypoesthesia rdf:type owl:Class ;
+                     rdfs:subClassOf :ContextualAspect .
+
+
+###  http://ontriscal#TerrifyingThoughts
+:TerrifyingThoughts rdf:type owl:Class ;
+                    rdfs:subClassOf :CognitiveSymptoms .
+
+
+###  http://ontriscal#Tertiary
+:Tertiary rdf:type owl:Class ;
+          rdfs:subClassOf :HealthCareLevel .
+
+
+###  http://ontriscal#Therapeutic
+:Therapeutic rdf:type owl:Class ;
+             rdfs:subClassOf :CareTeam .
+
+
+###  http://ontriscal#TherapeuticAction
+:TherapeuticAction rdf:type owl:Class ;
+                   rdfs:subClassOf gufo:FunctionalComplex .
+
+
+###  http://ontriscal#Thought-stoppingAndSelf-instruction
+:Thought-stoppingAndSelf-instruction rdf:type owl:Class ;
+                                     rdfs:subClassOf :ClinicalStrategy .
+
+
+###  http://ontriscal#ThoughtBlockingOrInterjection
+:ThoughtBlockingOrInterjection rdf:type owl:Class ;
+                               rdfs:subClassOf :ContextualAspect .
+
+
+###  http://ontriscal#ThoughtStop
+:ThoughtStop rdf:type owl:Class ;
+             rdfs:subClassOf :ClinicalStrategy .
+
+
+###  http://ontriscal#ThreatHypervigilance
+:ThreatHypervigilance rdf:type owl:Class ;
+                      rdfs:subClassOf :CognitiveSymptoms .
+
+
+###  http://ontriscal#Thrombosis
+:Thrombosis rdf:type owl:Class ;
+            rdfs:subClassOf :Comorbidity .
+
+
+###  http://ontriscal#ThyroidHypertension
+:ThyroidHypertension rdf:type owl:Class ;
+                     rdfs:subClassOf :Comorbidity .
+
+
+###  http://ontriscal#Tingling
+:Tingling rdf:type owl:Class ;
+          rdfs:subClassOf :PhysiologicalSymptom .
+
+
+###  http://ontriscal#Tobacco
+:Tobacco rdf:type owl:Class ;
+         rdfs:subClassOf :PsychoactiveSubstance .
+
+
+###  http://ontriscal#Tremor
+:Tremor rdf:type owl:Class ;
+        rdfs:subClassOf :PhysiologicalSymptom .
+
+
+###  http://ontriscal#UnconditionalAcceptanceOfCriticism
+:UnconditionalAcceptanceOfCriticism rdf:type owl:Class ;
+                                    rdfs:subClassOf :CognitiveDistortion .
+
+
+###  http://ontriscal#UnfairComparisons
+:UnfairComparisons rdf:type owl:Class ;
+                   rdfs:subClassOf :CognitiveDistortion .
+
+
+###  http://ontriscal#UseOfRewards
+:UseOfRewards rdf:type owl:Class ;
+              rdfs:subClassOf :ClinicalStrategy .
+
+
+###  http://ontriscal#UseOfSubstance
+:UseOfSubstance rdf:type owl:Class ;
+                rdfs:subClassOf :ContextualAspect .
+
+
+###  http://ontriscal#VascularDementia
+:VascularDementia rdf:type owl:Class ;
+                  rdfs:subClassOf :ContextualAspect .
+
+
+###  http://ontriscal#Victimization
+:Victimization rdf:type owl:Class ;
+               rdfs:subClassOf :CognitiveDistortion .
+
+
+###  http://ontriscal#VisualHallucination
+:VisualHallucination rdf:type owl:Class ;
+                     rdfs:subClassOf :Hallucination .
+
+
+###  http://ontriscal#Vitiligo
+:Vitiligo rdf:type owl:Class ;
+          rdfs:subClassOf :Comorbidity .
+
+
+###  http://ontriscal#Weakness
+:Weakness rdf:type owl:Class ;
+          rdfs:subClassOf :PhysiologicalSymptom .
+
+
+###  http://ontriscal#WhatIf
+:WhatIf rdf:type owl:Class ;
+        rdfs:subClassOf :CognitiveDistortion .
+
+
+###  http://ontriscal#Yes
+:Yes rdf:type owl:Class ;
+     rdfs:subClassOf :AnswerOption .
+
+
+###  http://purl.org/nemo/gufo#Category
+gufo:Category rdf:type owl:Class .
+
+
+###  http://purl.org/nemo/gufo#FunctionalComplex
+gufo:FunctionalComplex rdf:type owl:Class .
+
+
+###  http://purl.org/nemo/gufo#IntrinsicMode
+gufo:IntrinsicMode rdf:type owl:Class .
+
+
+###  http://purl.org/nemo/gufo#Kind
+gufo:Kind rdf:type owl:Class .
+
+
+###  http://purl.org/nemo/gufo#Phase
+gufo:Phase rdf:type owl:Class .
+
+
+###  http://purl.org/nemo/gufo#Relator
+gufo:Relator rdf:type owl:Class .
+
+
+###  http://purl.org/nemo/gufo#Role
+gufo:Role rdf:type owl:Class .
+
+
+###  http://purl.org/nemo/gufo#SubKind
+gufo:SubKind rdf:type owl:Class .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://ontriscal#Adolescent
+:Adolescent rdf:type owl:NamedIndividual ,
+                     gufo:Phase .
+
+
+###  http://ontriscal#Adult
+:Adult rdf:type owl:NamedIndividual ,
+                gufo:Phase .
+
+
+###  http://ontriscal#AgeGroup
+:AgeGroup rdf:type owl:NamedIndividual ,
+                   gufo:Kind .
+
+
+###  http://ontriscal#Alcohol
+:Alcohol rdf:type owl:NamedIndividual ,
+                  gufo:SubKind .
+
+
+###  http://ontriscal#AnswerOption
+:AnswerOption rdf:type owl:NamedIndividual ,
+                       gufo:SubKind .
+
+
+###  http://ontriscal#Auditory
+:Auditory rdf:type owl:NamedIndividual ,
+                   gufo:SubKind .
+
+
+###  http://ontriscal#Avoidance
+:Avoidance rdf:type owl:NamedIndividual ,
+                    :Avoidance .
+
+
+###  http://ontriscal#BeginningQuestionnarie
+:BeginningQuestionnarie rdf:type owl:NamedIndividual ,
+                                 gufo:SubKind .
+
+
+###  http://ontriscal#BehaviorAspect
+:BehaviorAspect rdf:type owl:NamedIndividual ,
+                         gufo:SubKind .
+
+
+###  http://ontriscal#BiologicalSex
+:BiologicalSex rdf:type owl:NamedIndividual ,
+                        gufo:Kind .
+
+
+###  http://ontriscal#CareTeam
+:CareTeam rdf:type owl:NamedIndividual ,
+                   gufo:SubKind .
+
+
+###  http://ontriscal#CaseConceptualization
+:CaseConceptualization rdf:type owl:NamedIndividual ,
+                                gufo:Kind .
+
+
+###  http://ontriscal#ClinicalData
+:ClinicalData rdf:type owl:NamedIndividual ,
+                       gufo:Category .
+
+
+###  http://ontriscal#ClinicalEvaluation
+:ClinicalEvaluation rdf:type owl:NamedIndividual ,
+                             gufo:Kind .
+
+
+###  http://ontriscal#ClinicalStrategy
+:ClinicalStrategy rdf:type owl:NamedIndividual ,
+                           gufo:SubKind .
+
+
+###  http://ontriscal#Cocaine
+:Cocaine rdf:type owl:NamedIndividual ,
+                  gufo:SubKind .
+
+
+###  http://ontriscal#CoexistenceWorkshop
+:CoexistenceWorkshop rdf:type owl:NamedIndividual ,
+                              gufo:SubKind .
+
+
+###  http://ontriscal#CognitiveAspect
+:CognitiveAspect rdf:type owl:NamedIndividual ,
+                          gufo:SubKind .
+
+
+###  http://ontriscal#CognitiveModel
+:CognitiveModel rdf:type owl:NamedIndividual ,
+                         gufo:Kind .
+
+
+###  http://ontriscal#Comorbidity
+:Comorbidity rdf:type owl:NamedIndividual ,
+                      gufo:Kind .
+
+
+###  http://ontriscal#ContextualAspect
+:ContextualAspect rdf:type owl:NamedIndividual ,
+                           gufo:SubKind .
+
+
+###  http://ontriscal#Crack
+:Crack rdf:type owl:NamedIndividual ,
+                gufo:SubKind .
+
+
+###  http://ontriscal#Delirium
+:Delirium rdf:type owl:NamedIndividual ,
+                   gufo:SubKind .
+
+
+###  http://ontriscal#DelusionalDisorder
+:DelusionalDisorder rdf:type owl:NamedIndividual ,
+                             gufo:SubKind .
+
+
+###  http://ontriscal#Dementia
+:Dementia rdf:type owl:NamedIndividual ,
+                   gufo:SubKind .
+
+
+###  http://ontriscal#DependencyAutonomy
+:DependencyAutonomy rdf:type owl:NamedIndividual ,
+                             gufo:SubKind .
+
+
+###  http://ontriscal#Diabetes
+:Diabetes rdf:type owl:NamedIndividual ,
+                   gufo:SubKind .
+
+
+###  http://ontriscal#DifficultyConcentrating
+:DifficultyConcentrating rdf:type owl:NamedIndividual ,
+                                  :PoorConcentration ;
+                         :description "" .
+
+
+###  http://ontriscal#DifficultyFallingAsleep
+:DifficultyFallingAsleep rdf:type owl:NamedIndividual ,
+                                  :Insomnia .
+
+
+###  http://ontriscal#DisturbedSleepPattern
+:DisturbedSleepPattern rdf:type owl:NamedIndividual ,
+                                :PhysiologicalReaction .
+
+
+###  http://ontriscal#Doctor
+:Doctor rdf:type owl:NamedIndividual ,
+                 gufo:Role .
+
+
+###  http://ontriscal#Eldery
+:Eldery rdf:type owl:NamedIndividual ,
+                 gufo:Phase .
+
+
+###  http://ontriscal#EmotionalAspect
+:EmotionalAspect rdf:type owl:NamedIndividual ,
+                          gufo:SubKind .
+
+
+###  http://ontriscal#ExcessiveAnxiety
+:ExcessiveAnxiety rdf:type owl:NamedIndividual ,
+                           :Anxiety ;
+                  :description "" .
+
+
+###  http://ontriscal#FeelIsolated
+:FeelIsolated rdf:type owl:NamedIndividual ,
+                       :Isolation .
+
+
+###  http://ontriscal#Female
+:Female rdf:type owl:NamedIndividual ,
+                 gufo:SubKind .
+
+
+###  http://ontriscal#FinalQuestionnarie
+:FinalQuestionnarie rdf:type owl:NamedIndividual ,
+                             gufo:SubKind .
+
+
+###  http://ontriscal#FinalScore
+:FinalScore rdf:type owl:NamedIndividual ,
+                     gufo:SubKind .
+
+
+###  http://ontriscal#FrequencyOfUseOfTheTypeOfPsychoactiveSubstance
+:FrequencyOfUseOfTheTypeOfPsychoactiveSubstance rdf:type owl:NamedIndividual ,
+                                                         gufo:Kind .
+
+
+###  http://ontriscal#GroupService
+:GroupService rdf:type owl:NamedIndividual ,
+                       gufo:SubKind .
+
+
+###  http://ontriscal#Hallucination
+:Hallucination rdf:type owl:NamedIndividual ,
+                        gufo:SubKind .
+
+
+###  http://ontriscal#HealthCareLevel
+:HealthCareLevel rdf:type owl:NamedIndividual ,
+                          gufo:Kind .
+
+
+###  http://ontriscal#High
+:High rdf:type owl:NamedIndividual ,
+               gufo:SubKind .
+
+
+###  http://ontriscal#HighRiskLevel
+:HighRiskLevel rdf:type owl:NamedIndividual ,
+                        gufo:SubKind .
+
+
+###  http://ontriscal#ICDGroup
+:ICDGroup rdf:type owl:NamedIndividual ,
+                   gufo:Kind .
+
+
+###  http://ontriscal#IndividualPsychologicalService
+:IndividualPsychologicalService rdf:type owl:NamedIndividual ,
+                                         gufo:SubKind .
+
+
+###  http://ontriscal#Laura
+:Laura rdf:type owl:NamedIndividual ,
+                :Patient ;
+       :isIdentifiedWith :Avoidance ,
+                         :DifficultyConcentrating ,
+                         :DifficultyFallingAsleep ,
+                         :DisturbedSleepPattern ,
+                         :ExcessiveAnxiety ,
+                         :FeelIsolated ,
+                         :MuscleTension ,
+                         :RacingHeart ,
+                         :SweatyPalms ,
+                         :Unhappy ;
+       :description "Avoidance: She avoids social commitments and activities that could be enjoyable, fearing that this will compromise her time dedicated to studying." ,
+                    "Difficulty Concentration: She reports being distracted in class and facing \"blanks\" during assessments, which may be related to her anxiety" ,
+                    "Excessive Anxiety She demonstrates constant concern about his studies and academic performance, in addition to feeling anxious when presenting himself in seminars" .
+
+
+###  http://ontriscal#Low
+:Low rdf:type owl:NamedIndividual ,
+              gufo:SubKind .
+
+
+###  http://ontriscal#LowRiskLevel
+:LowRiskLevel rdf:type owl:NamedIndividual ,
+                       gufo:SubKind .
+
+
+###  http://ontriscal#Male
+:Male rdf:type owl:NamedIndividual ,
+               gufo:SubKind .
+
+
+###  http://ontriscal#MedicalCare
+:MedicalCare rdf:type owl:NamedIndividual ,
+                      gufo:SubKind .
+
+
+###  http://ontriscal#Medium
+:Medium rdf:type owl:NamedIndividual ,
+                 gufo:SubKind .
+
+
+###  http://ontriscal#MediumRiskLevel
+:MediumRiskLevel rdf:type owl:NamedIndividual ,
+                          gufo:SubKind .
+
+
+###  http://ontriscal#MuscleTension
+:MuscleTension rdf:type owl:NamedIndividual ,
+                        :MuscularTension .
+
+
+###  http://ontriscal#No
+:No rdf:type owl:NamedIndividual ,
+             gufo:SubKind .
+
+
+###  http://ontriscal#Nurse
+:Nurse rdf:type owl:NamedIndividual ,
+                gufo:Role .
+
+
+###  http://ontriscal#NursingAssistance
+:NursingAssistance rdf:type owl:NamedIndividual ,
+                            gufo:SubKind .
+
+
+###  http://ontriscal#NutritionalAssistance
+:NutritionalAssistance rdf:type owl:NamedIndividual ,
+                                gufo:SubKind .
+
+
+###  http://ontriscal#Patient
+:Patient rdf:type owl:NamedIndividual ,
+                  gufo:Role .
+
+
+###  http://ontriscal#Pensa_em_se_matar_ou_já_realizou_alguma_tentativa_de_suicídio
+:Pensa_em_se_matar_ou_já_realizou_alguma_tentativa_de_suicídio rdf:type owl:NamedIndividual ,
+                                                                        :Question ;
+                                                               :isFormulatedBy_1 :TranstornosMentaisSeverosPersistentes .
+
+
+###  http://ontriscal#Person
+:Person rdf:type owl:NamedIndividual ,
+                 gufo:Kind .
+
+
+###  http://ontriscal#PhysiologicalSymptom
+:PhysiologicalSymptom rdf:type owl:NamedIndividual ,
+                               gufo:SubKind .
+
+
+###  http://ontriscal#Possui_Sensacao_de_Estranheza_com_Relação_a_Si_Ou_o_mundo_a_sua_volta
+:Possui_Sensacao_de_Estranheza_com_Relação_a_Si_Ou_o_mundo_a_sua_volta rdf:type owl:NamedIndividual ,
+                                                                                :Question ;
+                                                                       :isFormulatedBy :Transtornosmentaiscomuns .
+
+
+###  http://ontriscal#Primary
+:Primary rdf:type owl:NamedIndividual ,
+                  gufo:SubKind .
+
+
+###  http://ontriscal#PsychoactiveSubstance
+:PsychoactiveSubstance rdf:type owl:NamedIndividual ,
+                                gufo:Kind .
+
+
+###  http://ontriscal#Psychologist
+:Psychologist rdf:type owl:NamedIndividual ,
+                       gufo:Role .
+
+
+###  http://ontriscal#Psychoterapy
+:Psychoterapy rdf:type owl:NamedIndividual ,
+                       gufo:SubKind .
+
+
+###  http://ontriscal#Question
+:Question rdf:type owl:NamedIndividual ,
+                   gufo:Kind .
+
+
+###  http://ontriscal#QuestionGroup
+:QuestionGroup rdf:type owl:NamedIndividual ,
+                        gufo:SubKind .
+
+
+###  http://ontriscal#QuestionnaireElement
+:QuestionnaireElement rdf:type owl:NamedIndividual ,
+                               gufo:Kind .
+
+
+###  http://ontriscal#Questionnarie
+:Questionnarie rdf:type owl:NamedIndividual ,
+                        gufo:Kind .
+
+
+###  http://ontriscal#RacingHeart
+:RacingHeart rdf:type owl:NamedIndividual ,
+                      :IncreasedHeartRate ,
+                      :RapidBreathing .
+
+
+###  http://ontriscal#Refractoriness
+:Refractoriness rdf:type owl:NamedIndividual ,
+                         gufo:SubKind .
+
+
+###  http://ontriscal#RiskForYouAndOthers
+:RiskForYouAndOthers rdf:type owl:NamedIndividual ,
+                              gufo:SubKind .
+
+
+###  http://ontriscal#RiskLevel
+:RiskLevel rdf:type owl:NamedIndividual ,
+                    gufo:Kind .
+
+
+###  http://ontriscal#RiskRange
+:RiskRange rdf:type owl:NamedIndividual ,
+                    gufo:SubKind .
+
+
+###  http://ontriscal#RiskScore
+:RiskScore rdf:type owl:NamedIndividual ,
+                    gufo:Kind .
+
+
+###  http://ontriscal#RiskStratificationInMentalHealth
+:RiskStratificationInMentalHealth rdf:type owl:NamedIndividual ,
+                                           gufo:Kind .
+
+
+###  http://ontriscal#Score
+:Score rdf:type owl:NamedIndividual ,
+                gufo:SubKind .
+
+
+###  http://ontriscal#Se_agrediu_se_cortou_se_arranhou_ou_agrediu_outras_pessoas
+:Se_agrediu_se_cortou_se_arranhou_ou_agrediu_outras_pessoas rdf:type owl:NamedIndividual ,
+                                                                     :Question ;
+                                                            :isFormulatedBy :TranstornosMentaisSeverosPersistentes .
+
+
+###  http://ontriscal#Secondary
+:Secondary rdf:type owl:NamedIndividual ,
+                    gufo:SubKind .
+
+
+###  http://ontriscal#Sente_tristeza_persistente_acompanhada_ou_não_de_choro
+:Sente_tristeza_persistente_acompanhada_ou_não_de_choro rdf:type owl:NamedIndividual ,
+                                                                 :Question ;
+                                                        :isFormulatedBy_1 :Transtornosmentaiscomuns .
+
+
+###  http://ontriscal#SignAndSymptom
+:SignAndSymptom rdf:type owl:NamedIndividual ,
+                         gufo:Kind .
+
+
+###  http://ontriscal#SignalAndSymptomSeverity
+:SignalAndSymptomSeverity rdf:type owl:NamedIndividual ,
+                                   gufo:Kind .
+
+
+###  http://ontriscal#SingularTherapeuticProject
+:SingularTherapeuticProject rdf:type owl:NamedIndividual ,
+                                     gufo:Kind .
+
+
+###  http://ontriscal#SocialAssistance
+:SocialAssistance rdf:type owl:NamedIndividual ,
+                           gufo:SubKind .
+
+
+###  http://ontriscal#SocialVulnerability
+:SocialVulnerability rdf:type owl:NamedIndividual ,
+                              gufo:Kind .
+
+
+###  http://ontriscal#SocioDemographicData
+:SocioDemographicData rdf:type owl:NamedIndividual ,
+                               gufo:Category .
+
+
+###  http://ontriscal#SweatyPalms
+:SweatyPalms rdf:type owl:NamedIndividual ,
+                      :Sweating .
+
+
+###  http://ontriscal#Symptomatology
+:Symptomatology rdf:type owl:NamedIndividual ,
+                         gufo:SubKind .
+
+
+###  http://ontriscal#TactileHallucination
+:TactileHallucination rdf:type owl:NamedIndividual ,
+                               gufo:SubKind .
+
+
+###  http://ontriscal#Tertiary
+:Tertiary rdf:type owl:NamedIndividual ,
+                   gufo:SubKind .
+
+
+###  http://ontriscal#Therapeutic
+:Therapeutic rdf:type owl:NamedIndividual ,
+                      gufo:Role .
+
+
+###  http://ontriscal#TherapeuticAction
+:TherapeuticAction rdf:type owl:NamedIndividual ,
+                            gufo:Kind .
+
+
+###  http://ontriscal#TranstornosMentaisSeverosPersistentes
+:TranstornosMentaisSeverosPersistentes rdf:type owl:NamedIndividual ,
+                                                :QuestionGroup .
+
+
+###  http://ontriscal#Transtornosmentaiscomuns
+:Transtornosmentaiscomuns rdf:type owl:NamedIndividual ,
+                                   :QuestionGroup .
+
+
+###  http://ontriscal#Unhappy
+:Unhappy rdf:type owl:NamedIndividual ,
+                  :Happiness .
+
+
+###  http://ontriscal#VisualHallucination
+:VisualHallucination rdf:type owl:NamedIndividual ,
+                              gufo:SubKind .
+
+
+###  http://ontriscal#Yes
+:Yes rdf:type owl:NamedIndividual ,
+              gufo:SubKind .
+
+
+###  http://ontriscal#Possui_pensamentos_e_comportamentos_repetitivos_e/ou_realiza_algum_ritual
+<http://ontriscal#Possui_pensamentos_e_comportamentos_repetitivos_e/ou_realiza_algum_ritual> rdf:type owl:NamedIndividual ,
+                                                                                                      :Question ;
+                                                                                             :isFormulatedBy_1 :Transtornosmentaiscomuns .
+
+
+#################################################################
+#    Annotations
+#################################################################
+
+:Adolescent rdfs:label "Adolescent"@en .
+
+
+:Adult rdfs:label "Adult"@en .
+
+
+:AgeGroup rdfs:label "AgeGroup"@en .
+
+
+:Alcohol rdfs:label "Alcohol"@en .
+
+
+:AnswerOption rdfs:label "AnswerOption"@en .
+
+
+:Auditory rdfs:label "Auditory"@en .
+
+
+:BeginningQuestionnarie rdfs:label "BeginningQuestionnarie"@en .
+
+
+:BehaviorAspect rdfs:label "BehaviorAspect"@en .
+
+
+:BiologicalSex rdfs:label "BiologicalSex"@en .
+
+
+:CareTeam rdfs:label "CareTeam"@en .
+
+
+:CaseConceptualization rdfs:label "CaseConceptualization"@en .
+
+
+:ClinicalData rdfs:label "ClinicalData"@en .
+
+
+:ClinicalEvaluation rdfs:label "ClinicalEvaluation"@en .
+
+
+:ClinicalStrategy rdfs:label "ClinicalStrategy"@en .
+
+
+:Cocaine rdfs:label "Cocaine"@en .
+
+
+:CoexistenceWorkshop rdfs:label "CoexistenceWorkshop"@en .
+
+
+:CognitiveAspect rdfs:label "CognitiveAspect"@en .
+
+
+:CognitiveModel rdfs:label "CognitiveModel"@en .
+
+
+:Comorbidity rdfs:label "Comorbidity"@en .
+
+
+:ContextualAspect rdfs:label "ContextualAspect"@en .
+
+
+:Crack rdfs:label "Crack"@en .
+
+
+:Delirium rdfs:label "Delirium"@en .
+
+
+:DelusionalDisorder rdfs:label "DelusionalDisorder"@en .
+
+
+:Dementia rdfs:label "Dementia"@en .
+
+
+:DependencyAutonomy rdfs:label "DependencyAutonomy"@en .
+
+
+:Diabetes rdfs:label "Diabetes"@en .
+
+
+:Doctor rdfs:label "Doctor"@en .
+
+
+:Eldery rdfs:label "Eldery"@en .
+
+
+:EmotionalAspect rdfs:label "EmotionalAspect"@en .
+
+
+:Female rdfs:label "Female"@en .
+
+
+:FinalQuestionnarie rdfs:label "FinalQuestionnarie"@en .
+
+
+:FinalScore rdfs:label "FinalScore"@en .
+
+
+:FrequencyOfUseOfTheTypeOfPsychoactiveSubstance rdfs:label "FrequencyOfUseOfTheTypeOfPsychoactiveSubstance"@en .
+
+
+:GroupService rdfs:label "GroupService"@en .
+
+
+:Hallucination rdfs:label "Hallucination"@en .
+
+
+:HealthCareLevel rdfs:label "HealthCareLevel"@en .
+
+
+:High rdfs:label "High"@en .
+
+
+:HighRiskLevel rdfs:label "HighRiskLevel"@en .
+
+
+:ICDGroup rdfs:label "ICDGroup"@en .
+
+
+:IndividualPsychologicalService rdfs:label "IndividualPsychologicalService"@en .
+
+
+:Low rdfs:label "Low"@en .
+
+
+:LowRiskLevel rdfs:label "LowRiskLevel"@en .
+
+
+:Male rdfs:label "Male"@en .
+
+
+:MedicalCare rdfs:label "MedicalCare"@en .
+
+
+:Medium rdfs:label "Medium"@en .
+
+
+:MediumRiskLevel rdfs:label "MediumRiskLevel"@en .
+
+
+:No rdfs:label "No"@en .
+
+
+:Nurse rdfs:label "Nurse"@en .
+
+
+:NursingAssistance rdfs:label "NursingAssistance"@en .
+
+
+:NutritionalAssistance rdfs:label "NutritionalAssistance"@en .
+
+
+:Patient rdfs:label "Patient"@en .
+
+
+:Person rdfs:label "Person"@en .
+
+
+:PhysiologicalSymptom rdfs:label "PhysiologicalSymptom"@en .
+
+
+:Primary rdfs:label "Primary"@en .
+
+
+:PsychoactiveSubstance rdfs:label "PsychoactiveSubstance"@en .
+
+
+:Psychologist rdfs:label "Psychologist"@en .
+
+
+:Psychoterapy rdfs:label "Psychoterapy"@en .
+
+
+:Question rdfs:label "Question"@en .
+
+
+:QuestionGroup rdfs:label "QuestionGroup"@en .
+
+
+:QuestionnaireElement rdfs:label "QuestionnaireElement"@en .
+
+
+:Questionnarie rdfs:label "Questionnarie"@en .
+
+
+:Refractoriness rdfs:label "Refractoriness"@en .
+
+
+:RiskForYouAndOthers rdfs:label "RiskForYouAndOthers"@en .
+
+
+:RiskLevel rdfs:label "RiskLevel"@en .
+
+
+:RiskRange rdfs:label "RiskRange"@en .
+
+
+:RiskScore rdfs:label "RiskScore"@en .
+
+
+:RiskStratificationInMentalHealth rdfs:label "RiskStratificationInMentalHealth"@en .
+
+
+:Score rdfs:label "Score"@en .
+
+
+:Secondary rdfs:label "Secondary"@en .
+
+
+:SignAndSymptom rdfs:label "SignAndSymptom"@en .
+
+
+:SignalAndSymptomSeverity rdfs:label "SignalAndSymptomSeverity"@en .
+
+
+:SingularTherapeuticProject rdfs:label "SingularTherapeuticProject"@en .
+
+
+:SocialAssistance rdfs:label "SocialAssistance"@en .
+
+
+:SocialVulnerability rdfs:label "SocialVulnerability"@en .
+
+
+:SocioDemographicData rdfs:label "SocioDemographicData"@en .
+
+
+:Symptomatology rdfs:label "Symptomatology"@en .
+
+
+:TactileHallucination rdfs:label "TactileHallucination"@en .
+
+
+:Tertiary rdfs:label "Tertiary"@en .
+
+
+:Therapeutic rdfs:label "Therapeutic"@en .
+
+
+:TherapeuticAction rdfs:label "TherapeuticAction"@en .
+
+
+:VisualHallucination rdfs:label "VisualHallucination"@en .
+
+
+:Yes rdfs:label "Yes"@en .
+
+
+#################################################################
+#    General axioms
+#################################################################
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :AbusiveUseOfIllicitPsychoactiveAmputationMIAndOsteoarthritis
+                :AdvancedAgeDifficultyLocomotion
+                :AllergicCrises
+                :BackAndKneeProblems
+                :BariatricObesity
+                :BariatricPatient
+                :BreastCancer
+                :CardiopathDiabetesNeuropath
+                :CerebellarDegeneration
+                :ChronicSmokingAndCOPDRisk
+                :ChronicSmokingCOPDThrombogeitisWithAmputationAndVertebralOsteoarthritis
+                :CirculationLocomotion
+                :ConvulsiveCrisis
+                :Dementia
+                :Diabetes
+                :DiabetesDiabeticNeuropathy
+                :DiabetesHypertensionThyroidProblem
+                :DiabetesOsteoporosis
+                :Disease_Spine_Arthrodesis
+                :EatingDisorder
+                :Endometriosis
+                :Epilepsy
+                :EpilepsyAneurysmEatingDisorder
+                :Fibromyalgia
+                :Glaucoma
+                :HIV
+                :HeartDiseaseObesity
+                :HeartDiseaseVariousSurgicalProceduresAllergies
+                :HepatitisLiverCirrhosis
+                :HighBloodPressureDiabetes
+                :Hypertension
+                :HypertensionDiabetes
+                :Hypothyroidism
+                :InBlank
+                :Insanity
+                :Intestinal_Problems
+                :KorsakoffSyndrome
+                :LimitedCognitiveAbility
+                :Lupus
+                :Migraine
+                :NeurologicLabirinthitisFollow-up
+                :NeurologicalDamageCausedByCarbonMonoxideInhalation
+                :Obesity
+                :ObesityAndConsequences
+                :ObesityJointProblems
+                :Orthopedic
+                :OrthopedicDiabetes
+                :OrthopedicNeurologist
+                :OrthopedicProblem
+                :OrthopedicProblemInTheSpine
+                :Parkinsonism
+                :PreDiabetes
+                :SlightDelay
+                :SpasmodicAnginaDiabetesFibromyalgia
+                :SpineSurgeries
+                :Thrombosis
+                :ThyroidHypertension
+                :Vitiligo
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :AcceleratedThinking
+                :Agnosia
+                :AlzheimerDementia
+                :Amnesias
+                :Anorexia
+                :BingeEating
+                :Bulimia
+                :CondensationOfConcepts
+                :DeficientThinking
+                :DementiaWithLewyBodies
+                :DisintegrationOfConcepts
+                :Distraction
+                :FrontotemporalDementia
+                :Hyperesthesia
+                :Hypermnesia
+                :Hyperpathy
+                :Hypersomnia
+                :Hypoesthesia
+                :MnemicHallucinations
+                :MnemicIllusions
+                :Nutrition
+                :Paresthesias
+                :ParkinsonDisease
+                :PathologicalLie
+                :Prosopagnosy
+                :Sleep
+                :Sleepleness
+                :SlowingOfThought
+                :TactileHypoesthesia
+                :ThoughtBlockingOrInterjection
+                :UseOfSubstance
+                :VascularDementia
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :Acceptance
+                :Aggressiveness
+                :Anhedonia
+                :Avoidance
+                :BehaviorSymptoms
+                :Confrontation
+                :CopingStrategies
+                :DodgeAndEscape
+                :InadequateSelfCare
+                :Isolation
+                :Passivity
+                :Stoppage
+                :Submission
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :Acceptance
+                :Aggressiveness
+                :BehaviorSymptoms
+                :Confrontation
+                :CopingStrategies
+                :DodgeAndEscape
+                :Passivity
+                :Stoppage
+                :Submission
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :Agitation
+                :ChestPressure
+                :Chills
+                :ChokingSensation
+                :Diarrhea
+                :Dizziness
+                :DryMouth
+                :Fainting
+                :Fatigue
+                :HeatWaves
+                :IncreasedHeartRate
+                :LossOfBalance
+                :MuscularTension
+                :Nausea
+                :NumbnessInLimbs
+                :Palpitations
+                :RapidBreathing
+                :Rigidity
+                :ShortnessOfBreath
+                :StomachPain
+                :Sweating
+                :Tingling
+                :Tremor
+                :Weakness
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :Agitation
+                :ChestPressure
+                :Chills
+                :ChokingSensation
+                :Diarrhea
+                :Dizziness
+                :DryMouth
+                :Fainting
+                :HeatWaves
+                :IncreasedHeartRate
+                :LossOfBalance
+                :MuscularTension
+                :Nausea
+                :NumbnessInLimbs
+                :Palpitations
+                :RapidBreathing
+                :Rigidity
+                :ShortnessOfBreath
+                :StomachPain
+                :Sweating
+                :Tingling
+                :Tremor
+                :Weakness
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :Alcohol
+                :AlcoholAndAlprazolam
+                :AlcoholAndCocaine
+                :AlcoholAndMarijuana
+                :AlcoholAndMultipleDrugs
+                :Cannabis
+                :Cocaine
+                :Crack
+                :CrackCocaine
+                :InjectablePreAnestheticMedication
+                :MultipleDrugs
+                :PetroleumDerivatives
+                :Tobacco
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :Anxiety
+                :DepressedMood
+                :Discouragement
+                :Disgusted
+                :EmotionalSymptoms
+                :Emptiness
+                :Fear
+                :FeelingsOfWorthlessness
+                :Frustration
+                :Happiness
+                :Hopelessness
+                :InappropriateGuilt
+                :Inhibition
+                :Irritation
+                :Jealousy
+                :Rage
+                :Reactivity
+                :Sadness
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :Anxiety
+                :Disgusted
+                :EmotionalSymptoms
+                :Fear
+                :Frustration
+                :Happiness
+                :Inhibition
+                :Jealousy
+                :Rage
+                :Reactivity
+                :Sadness
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :Attention
+                :ExecutiveFunctions
+                :Language
+                :Memory
+                :Senseperception
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :AutomaticThinking
+                :CognitiveFunctions
+                :CognitiveSymptoms
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :AutomaticThinking
+                :CognitiveFunctions
+                :CognitiveSymptoms
+                :CoreBelief
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :AvoidanceOfThreateningSignsOrSituations
+                :DifficultySpeaking
+                :Freezing
+                :Hyperventilation
+                :Restlessness
+                :SecuritySearch
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :Brainstorming
+                :CognitiveRestructuring
+                :CopingStrategies
+                :CopingWithStress
+                :DecatastrophizingWithDescendingArrows
+                :Desensitization
+                :Distractions
+                :EvidenceAnalysis
+                :ExpositionsHierarchization
+                :ExposureTechniques
+                :FaceCards
+                :PizzaTechnique
+                :ProblemSolving
+                :Psychoeducation
+                :RecordingDysfunctionalThoughts
+                :RelaxationTechniques
+                :Self-Instruction
+                :SocialSkillsTechniques
+                :SocraticQuestioning
+                :SpectatorOrDistantObserver
+                :SwitchingRoles
+                :SystematicDesensitization
+                :Thought-stoppingAndSelf-instruction
+                :ThoughtStop
+                :UseOfRewards
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :Catastrophizing
+                :DichotomousThinking
+                :EmotionalReasoning
+                :Generalization
+                :Hypergeneralization
+                :Lettering
+                :MaximizationOfTheNegative
+                :MindReading
+                :MinimizationOfThePositive
+                :Perfectionism
+                :Personalization
+                :PredictionOfTheFuture
+                :SelectiveAbstraction
+                :UnconditionalAcceptanceOfCriticism
+                :UnfairComparisons
+                :Victimization
+                :WhatIf
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :CreepedOut
+                :Excited
+                :Frustrated
+                :Impatient
+                :Irritable
+                :Nervous
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :DecisionMaking
+                :Flexibility
+                :Impulsiveness
+                :Organization
+                :Planning
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :Devaluation
+                :Disaffection
+                :Helplessness
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :DifficultyOfReasoning
+                :FearOfGoingCrazy
+                :FearOfLosingControl
+                :FearOfNegativeEvaluationByOthers
+                :FearOfPhysicalInjuryOrDeath
+                :PerceptionsOfUnrealityOrDetachment
+                :PoorConcentration
+                :PoorMemory
+                :TerrifyingThoughts
+                :ThreatHypervigilance
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :F00-F09
+                :F00-F99
+                :F10-F19
+                :F20-F29
+                :F30-F39
+                :F40-F48
+                :F50-F59
+                :F60-F69
+                :F70-F79
+                :F80-F89
+                :F90-F98
+                :F99
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :LighterGas
+                :PaintThinner
+                :ShoeGlue
+              )
+] .
+
+
+###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi

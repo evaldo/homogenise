@@ -1,0 +1,77 @@
+prefix prov: <http://www.w3.org/ns/prov#> 
+prefix xsd: <http://www.w3.org/2001/XMLSchema#> 
+prefix uo: <http://purl.obolibrary.org/obo/UO_> 
+prefix sio: <http://semanticscience.org/resource/> 
+prefix stato: <http://purl.obolibrary.org/obo/STATO_> 
+prefix example-kb: <http://example.com/kb/example#> 
+prefix chear: <http://hadatac.org/ont/chear#>  
+prefix hasco: <http://hadatac.org/ont/hasco#> 
+prefix obo: <http://purl.obolibrary.org/obo/> 
+prefix skos: <http://www.w3.org/2008/05/skos#> 
+prefix osm: <http://www.w3.org/2008/05/osm#> 
+prefix oersm: <http://hadatac.org/ont/oersm#> 
+prefix ontriscal: <http://hadatac.org/ont/ontriscal#> 
+prefix qualico: <http://hadatac.org/ont/qualico#> 
+prefix refiqda: <http://hadatac.org/ont/refiqda#> 
+prefix kpionto: <http://hadatac.org/ont/kpionto#>
+
+
+SELECT distinct ?id_case ?valuecase ?caseconceptualization ?cognitiveaspect ?valuecognitive
+where { 
+        {
+
+            ?id_case sio:isAttributeOf ?case .
+            ?id_case rdf:type hasco:originalID .
+            ?id_case sio:hasValue ?valuecase . 
+
+            ?case ontriscal:isComprehendedBy ?caseconceptualization .
+
+            ?cognitiveaspect sio:hasValue ?valuecognitive .  
+            ?cognitiveaspect sio:isAttributeOf ?caseconceptualization . 
+            ?cognitiveaspect rdf:type ontriscal:Thinking .
+
+            FILTER (?valuecognitive="autocobrança elevada" || ?valuecognitive="pensamentos muito rígidos acerca dos resultados que queria, onde se estes não saíssem como o esperado, eram considerados sem valor.") .
+
+  	} union {
+          
+            ?id_case sio:isAttributeOf ?case .
+            ?id_case rdf:type hasco:originalID .
+            ?id_case sio:hasValue ?valuecase . 
+
+            ?case ontriscal:isComprehendedBy ?caseconceptualization .
+
+            ?cognitiveaspect sio:hasValue ?valuecognitive .  
+            ?cognitiveaspect sio:isAttributeOf ?caseconceptualization . 
+            ?cognitiveaspect rdf:type ontriscal:EmotionalAspects .
+           
+
+    } union {
+          
+            ?id_case sio:isAttributeOf ?case .
+            ?id_case rdf:type hasco:originalID .
+            ?id_case sio:hasValue ?valuecase . 
+
+            ?case ontriscal:isComprehendedBy ?caseconceptualization .
+
+            ?cognitiveaspect sio:hasValue ?valuecognitive .  
+            ?cognitiveaspect sio:isAttributeOf ?caseconceptualization . 
+            ?cognitiveaspect rdf:type ontriscal:CoreBelief .
+           
+
+    } union {
+          
+            ?id_case sio:isAttributeOf ?case .
+            ?id_case rdf:type hasco:originalID .
+            ?id_case sio:hasValue ?valuecase . 
+
+            ?case ontriscal:isComprehendedBy ?caseconceptualization .
+
+            ?cognitiveaspect sio:hasValue ?valuecognitive .  
+            ?cognitiveaspect sio:isAttributeOf ?caseconceptualization . 
+            ?cognitiveaspect rdf:type ontriscal:IntermediateBelief .
+            
+            FILTER(?valuecognitive != 'nan') .
+
+    } 
+  
+  }

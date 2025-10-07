@@ -1,0 +1,20 @@
+1-) Baixar o projeto sdd2rdf: https://github.com/tetherless-world/SemanticDataDictionary
+Obs.: É possível clonar o repositório ou fazer o download. Para clonar deve ser utilizado o Git. Irei explicar na sexta como utilizar o Git.
+
+2-) Link para instalar o Python: https://www.python.org/downloads/
+
+3-) Após instalação do Python, o pacote "pandas" tem que ser instalado para execução do sdd2rdf:
+a-) Executar o "Prompt de comando"
+b-) Instalar o pacote "pandas" usando o comando: pip install manager
+
+4-) Configurar o caminho para execução do sdd2rdf pelo Python, por exemplo:
+path C:\python39;c:\users\evald\appdata\local\programs\python\python37;C:\Users\evald\AppData\Local\Programs\Python\Python37\Lib\site-packages\pandas;C:\Users\evald\AppData\Local\Programs\Python\Python37\Lib\site-packages\numpy
+
+Obs.: Irei explicar melhor na sexta como criar variáveis de ambiente e configurar o path.
+
+5-) Para executar o sdd2rdf:
+python sdd2rdf.py  config.ini.example
+
+6-) Utilizar o programa Grapher para geração do grafo: http://www.ldf.fi/service/rdf-grapher
+
+7-) Converter para Turtle: https://issemantic.net/rdf-converter

@@ -1,0 +1,62 @@
+Query 8
+
+prefix prov: <http://www.w3.org/ns/prov#> 
+prefix xsd: <http://www.w3.org/2001/XMLSchema#> 
+prefix uo: <http://purl.obolibrary.org/obo/UO_> 
+prefix sio: <http://semanticscience.org/resource/> 
+prefix stato: <http://purl.obolibrary.org/obo/STATO_> 
+prefix example-kb: <http://example.com/kb/example#> 
+prefix chear: <http://hadatac.org/ont/chear#>  
+prefix hasco: <http://hadatac.org/ont/hasco#> 
+prefix obo: <http://purl.obolibrary.org/obo/> 
+prefix skos: <http://www.w3.org/2008/05/skos#> 
+prefix osm: <http://www.w3.org/2008/05/osm#> 
+prefix oersm: <http://hadatac.org/ont/oersm#> 
+prefix ontriscal: <http://hadatac.org/ont/ontriscal#> 
+prefix qualico: <http://hadatac.org/ont/qualico#> 
+prefix refiqda: <http://hadatac.org/ont/refiqda#> 
+prefix kpionto: <http://hadatac.org/ont/kpionto#>
+
+select ?id_case ?valuecase ?classsymptoms ?symptomextracted  ?numberofappearance ?total (round((?numberofappearance/?total*100)) as ?percentofnumberofappearance)
+where {
+SELECT ?id_case ?valuecase ?classsymptoms ?symptomextracted (count(distinct ?valueesymptom) as ?numberofappearance) ?total 
+  where { 
+        SELECT ?id_case ?valuecase ?classsymptoms ?symptom ?symptomextracted ?valueesymptom ?total
+        where {
+
+                ?id_case sio:isAttributeOf ?case .
+                ?id_case rdf:type hasco:originalID .
+                ?id_case sio:hasValue ?valuecase . 
+
+                ?case ontriscal:isComprehendedBy ?caseconceptualization .
+
+                ?symptom sio:hasValue ?valueesymptom .  
+                ?symptom sio:isAttributeOf ?caseconceptualization . 
+                ?symptom rdf:type ?classsymptoms .   
+
+                bind(strbefore(strafter(str(?symptom), "#"), "-") as ?symptomextracted) .
+          
+                {select (count(distinct ?valueesymptom)-1 as ?total)
+                        where {
+                       			?id_case sio:isAttributeOf ?case .            
+                                ?id_case rdf:type hasco:originalID .
+                				?id_case sio:hasValue ?valuecase . 
+
+                				?case ontriscal:isComprehendedBy ?caseconceptualization .
+
+                				?symptom sio:hasValue ?valueesymptom .  
+                				?symptom sio:isAttributeOf ?caseconceptualization . 
+                				?symptom rdf:type ontriscal:PhysiologicalSymptoms . 
+                          
+                                 
+                				
+                }} .
+          
+                FILTER(?symptomextracted != 'PhysiologicalSymptoms') .
+                FILTER(?classsymptoms = ontriscal:PhysiologicalSymptoms)
+
+        } order by ?symptom
+        
+  } group by ?id_case ?valuecase ?classsymptoms ?symptomextracted ?total       
+}
+

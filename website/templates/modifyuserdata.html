@@ -1,0 +1,60 @@
+{% extends "base.html" %} {% block title %}User - {{ type_operation }}{% endblock %} 
+{% block content%}
+<form method="POST"> 
+
+  <input type="text" name="user_id" id="user_id" class="form-control" value="{{user_id}}" style="display:none"></input>
+  <input type="text" name="type_operation" id="type_operation" class="form-control" value="{{type_operation}}" style="display:none"></input>
+
+  <h1 align="left">User - {{ type_operation }}</h1>  
+
+  <div class="form-group">
+    <label for="user_name">First Name:</label>
+    <input type="text" id="first_name" name="first_name" class="form-control" value="{{ first_name }}"/>
+  </div>  
+  <div class="form-group">
+    <label for="password1">New Password</label>
+    <input
+      type="password"
+      class="form-control"
+      id="password1"
+      name="password1"
+      placeholder="Enter password"
+    />
+  </div>
+  <div class="form-group">
+    <label for="password2">Password (Confirm)</label>
+    <input
+      type="password"
+      class="form-control"
+      id="password2"
+      name="password2"
+      placeholder="Confirm password"
+    />
+  </div>
+  <div class="form-group">
+    <label for="user_type_id">User type: </label>
+    <select  id="user_type_id" name="user_type_id" class="form-control">  
+      {% if type_operation == 'Add' %}        
+        <option value="null">Select a user type</option>
+        {% for usertype_item in usertype_list %}                
+          <option value="{{ usertype_item[0] }}" >{{ usertype_item[1] }}</option>
+        {% endfor %}          
+      {% else %}      
+        {% for usertype_item in usertype_list %}     
+          {% if usertype_item[1] == user_type_name %}        
+            <option value="{{ usertype_item[0] }}" selected>{{ usertype_item[1] }}</option>
+          {% else %}    
+            <option value="{{ usertype_item[0] }}" >{{ usertype_item[1] }}</option>
+          {% endif %}                                                                          
+        {% endfor %}           
+      {% endif %}      
+    </select>
+  </div>
+  <br />  
+  <div align="center">
+    <button type="submit" class="btn btn-primary">Confirm</button>
+  </div>
+  <br />
+    
+</form>
+{% endblock %}

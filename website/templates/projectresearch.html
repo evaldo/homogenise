@@ -1,0 +1,42 @@
+{% extends "base.html" %} {% block title %}Research Project{% endblock %} 
+{% block content%}
+<form method="POST">  
+  <h1 align="left">Research Project </h1>
+  <h4>(<a href="/projectdata?type_operation=A">Add new</a>) </h4>
+  <label for="project">Enter project to search</label>
+  <input type="text" name="project_search" id="project_search" class="form-control"></input>
+
+   <br />
+
+  <div align="center">
+    <button type="submit" class="btn btn-primary">Search</button>
+  </div>
+</form>
+<br />
+<div  class="container">
+  <form action="" method="POST">
+    <table id="project_table" class="table table-striped">
+      <thead>
+        <tr>
+          <th>#Project Id</th>
+          <th>Name</th>
+          <th>Description</th>          
+          <th style="text-align: center" colspan="2">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for project_item in output_data %}
+          <tr>
+            <td id="project_id" name="project_id" style="width: 100px; ; text-align: center">{{ project_item[0] }}</td>
+            <td id="project_name" name="project_name">{{ project_item[2] }}</td>
+            <td id="project_description" name="project_description" style="width: 600px;">{{ project_item[3] }}</td>
+            <td style="text-align: center"><a href="/projectdata?type_operation=D&project_id={{ project_item[0] }}&project_name={{ project_item[2] }}&project_description={{ project_item[3] }}">Delete</a></td> 
+            <td style="text-align: center"><a href="/projectdata?type_operation=U&project_id={{ project_item[0] }}&project_name={{ project_item[2] }}&project_description={{ project_item[3] }}">Update</a></td>       
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </form>
+</div>
+{% endblock %}
+

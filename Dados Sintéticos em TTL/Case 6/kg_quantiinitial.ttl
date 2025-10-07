@@ -1,0 +1,120 @@
+prefix prov: <http://www.w3.org/ns/prov#> 
+prefix xsd: <http://www.w3.org/2001/XMLSchema#> 
+prefix uo: <http://purl.obolibrary.org/obo/UO_> 
+prefix sio: <http://semanticscience.org/resource/> 
+prefix stato: <http://purl.obolibrary.org/obo/STATO_> 
+prefix example-kb: <http://example.com/kb/example#> 
+prefix chear: <http://hadatac.org/ont/chear#>  
+prefix hasco: <http://hadatac.org/ont/hasco#> 
+prefix obo: <http://purl.obolibrary.org/obo/> 
+prefix skos: <http://www.w3.org/2008/05/skos#> 
+prefix osm: <http://www.w3.org/2008/05/osm#> 
+prefix oersm: <http://hadatac.org/ont/oersm#> 
+prefix ontriscal: <http://hadatac.org/ont/ontriscal#> 
+prefix qualico: <http://hadatac.org/ont/qualico#> 
+prefix refiqda: <http://hadatac.org/ont/refiqda#> 
+prefix kpionto: <http://hadatac.org/ont/kpionto#>
+
+
+SELECT distinct ?id_case  
+                ?nameproject  
+				?questionnarie 
+				?anxietyatwork 
+				?valueanxietyatwork 
+				?anxietybeforegoingtotravel 
+				?valueanxietybeforegoingtotravel 
+				?anxietyduringtravel 
+				?valueaanxietyduringtravel
+				?initialbdiscore
+				?valueinitialbdiscore
+where {
+       {       
+        ?objectcase rdf:type ?case  .
+        ?id_case sio:isAttributeOf ?objectcase .
+        ?id_case sio:hasValue ?valuecase .
+  
+        ?objectcase rdf:type ?caseproject .
+        ?caseproject refiqda:appliesTo ?project .
+  
+        ?objectproject rdf:type ?project .
+        ?nameproject sio:isAttributeOf ?objectproject .
+        ?nameproject rdf:type refiqda:NameOfProject .
+        ?nameproject sio:hasValue ?valuenameproject .
+  
+        ?case ?patientanswersquestionnaire ?beginningquestionnaire .
+        ?beginningquestionnaire rdfs:label "beginningquestionnaire" .
+
+        ?anxietyatwork sio:hasValue ?valueanxietyatwork .  
+        ?anxietyatwork sio:isAttributeOf ?questionnarie . 
+        ?anxietyatwork rdf:type ontriscal:AnxietyAtWork .
+         
+     
+  } union {
+         
+         
+        ?objectcase rdf:type ?case  .
+        ?id_case sio:isAttributeOf ?objectcase .
+        ?id_case sio:hasValue ?valuecase .
+  
+        ?objectcase rdf:type ?caseproject .
+        ?caseproject refiqda:appliesTo ?project .
+  
+        ?objectproject rdf:type ?project .
+        ?nameproject sio:isAttributeOf ?objectproject .
+        ?nameproject rdf:type refiqda:NameOfProject .
+        ?nameproject sio:hasValue ?valuenameproject .
+  
+        ?case ?patientanswersquestionnaire ?beginningquestionnaire .
+        ?beginningquestionnaire rdfs:label "beginningquestionnaire" .
+         
+        ?anxietybeforegoingtotravel sio:hasValue ?valueanxietybeforegoingtotravel .  
+        ?anxietybeforegoingtotravel sio:isAttributeOf ?questionnarie . 
+        ?anxietybeforegoingtotravel rdf:type ontriscal:AnxietyBeforeGoingToTravel .                
+         
+ } union {
+         
+         
+        ?objectcase rdf:type ?case  .
+        ?id_case sio:isAttributeOf ?objectcase .
+        ?id_case sio:hasValue ?valuecase .
+  
+        ?objectcase rdf:type ?caseproject .
+        ?caseproject refiqda:appliesTo ?project .
+  
+        ?objectproject rdf:type ?project .
+        ?nameproject sio:isAttributeOf ?objectproject .
+        ?nameproject rdf:type refiqda:NameOfProject .
+        ?nameproject sio:hasValue ?valuenameproject .
+  
+        ?case ?patientanswersquestionnaire ?beginningquestionnaire .
+        ?beginningquestionnaire rdfs:label "beginningquestionnaire" .
+         
+        ?anxietyduringtravel sio:hasValue ?valueaanxietyduringtravel .  
+        ?anxietyduringtravel sio:isAttributeOf ?questionnarie . 
+        ?anxietyduringtravel rdf:type ontriscal:AnxietyDuringTravel .
+         
+ } union {
+         
+         
+        ?objectcase rdf:type ?case  .
+        ?id_case sio:isAttributeOf ?objectcase .
+        ?id_case sio:hasValue ?valuecase .
+  
+        ?objectcase rdf:type ?caseproject .
+        ?caseproject refiqda:appliesTo ?project .
+  
+        ?objectproject rdf:type ?project .
+        ?nameproject sio:isAttributeOf ?objectproject .
+        ?nameproject rdf:type refiqda:NameOfProject .
+        ?nameproject sio:hasValue ?valuenameproject .
+  
+        ?case ?patientanswersquestionnaire ?beginningquestionnaire .
+        ?beginningquestionnaire rdfs:label "beginningquestionnaire" .
+         
+        ?initialbdiscore sio:hasValue ?valueinitialbdiscore .  
+        ?initialbdiscore sio:isAttributeOf ?questionnarie . 
+        ?initialbdiscore rdf:type ontriscal:InitialBDIScore .
+         
+ }
+
+}

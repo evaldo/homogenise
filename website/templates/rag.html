@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+{% block title %}RAG{% endblock %}
+
+{% block content %}
+<h1 align="left">RAG - Graph QA</h1>
+
+<!-- =============================
+     1️⃣ Formulário de Upload do Grafo
+============================= -->
+<form method="POST" enctype="multipart/form-data" onsubmit="showUploadSpinner()">
+    <div class="form-group">
+        <label for="file">Escolha um arquivo TTL:</label>
+        <input type="file" name="file" id="file" accept=".ttl" class="form-control" onchange="showLoadButton()">
+    </div>
+    <br />
+    <div id="loadButtonContainer" style="display: none;" align="center">
+        <button type="submit" id="uploadButton" class="btn btn-primary">
+            Importar Grafo e Criar Embeddings
+        </button>
+        <div id="uploadSpinner" class="spinner-border text-primary mt-3" style="display:none;" role="status">
+            <span class="visually-hidden">Carregando...</span>
+        </div>
+        <p id="uploadMsg" style="display:none; margin-top:10px;">
+            Importando grafo e criando embeddings... Isso pode levar alguns minutos ⏳
+        </p>
+    </div>
+</form>
+
+<hr />
+
+<!-- =============================
+     2️⃣ Formulário de Perguntas
+============================= -->
+<form method="POST" onsubmit="showQuestionSpinner()">
+    <div class="form-group">
+        <label for="pergunta">Faça uma pergunta sobre o grafo:</label>
+        <input type="text" name="pergunta" id="pergunta" class="form-control" placeholder="Digite sua pergunta aqui..." required>
+    </div>
+    <br />
+    <div align="center">
+        <button type="submit" id="questionButton" class="btn btn-success">Enviar Pergunta</button>
+        <div id="questionSpinner" class="spinner-border text-success mt-3" style="display:none;" role="status">
+            <span class="visually-hidden">Processando...</span>
+        </div>
+        <p id="questionMsg" style="display:none; margin-top:10px;">
+            Consultando o grafo e gerando resposta... aguarde 🤖
+        </p>
+    </div>
+</form>
+
+<!-- =============================
+     3️⃣ Mostrar resposta do RAG
+============================= -->
+{% if resposta_rag %}
+<div class="card mt-4">
+    <div class="card-header">
+        Resposta do Grafo
+    </div>
+    <div class="card-body">
+        <p>{{ resposta_rag }}</p>
+    </div>
+</div>
+{% endif %}
+
+<!-- =============================
+     JS para loading states
+============================= -->
+<script>
+function showLoadButton() {
+    const fileInput = document.getElementById('file');
+    const loadButtonContainer = document.getElementById('loadButtonContainer');
+    loadButtonContainer.style.display = fileInput.files.length > 0 ? 'block' : 'none';
+}
+
+function showUploadSpinner() {
+    document.getElementById("uploadButton").disabled = true;
+    document.getElementById("uploadSpinner").style.display = "inline-block";
+    document.getElementById("uploadMsg").style.display = "block";
+}
+
+function showQuestionSpinner() {
+    document.getElementById("questionButton").disabled = true;
+    document.getElementById("questionSpinner").style.display = "inline-block";
+    document.getElementById("questionMsg").style.display = "block";
+}
+</script>
+
+{% endblock %}

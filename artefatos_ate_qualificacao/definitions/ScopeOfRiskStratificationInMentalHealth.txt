@@ -1,0 +1,291 @@
+Modelagem Conceitual da Estratificação de Riscos em Saúde Mental
+
+A estratificação de riscos no Hospital Vila Verde Saúde Mental é estruturada a partir da definição de um questionário contendo questões organizadas em grupos. Os grupos de questões são determinados por sintomas relacionados aos transtornos mentais. O profissional responsável (médicos, psicólogos e enfermeiros) pela estratificação de riscos informa os seguintes dados do paciente (dados sociodemográficos): Identificação do Paciente no Sistema de PEP, Data de Admissão/Internação, Nome Completo do Paciente, Sexo e Idade. O profissional responsável inicia a estratificação de riscos identificando a gravidade dos sinais e sintomas apresentados e as condições atuais de vida do paciente (aspectos psicossociais) com base nos seguintes dados (dados clínicos): o grupo de CID, se fuma (SIM ou NÃO), se utiliza substância psicoativa (SIM ou NÃO), tipo de substância psicoativa utilizada, frequência do uso da substância psicoativa (BAIXA, MÉDIA ou ALTA), se o paciente foi internado no último ano e quantas vezes foi internado no último ano.  O paciente é entrevistado a partir das questões organizadas da forma descrita, sendo a resposta limitada em duas opções: SIM ou NÃO. Para cada resposta SIM uma pontuação é atribuída, caso contrário a pontuação é 0. Após todas as questões respondidas ocorre um somatório das pontuações gerando a pontuação final. A pontuação final é atribuída a uma faixa de risco que determina o nível de risco do paciente em BAIXO, MÉDIO ou ALTO. A mensuração da presença e gravidade dos parâmetros dos sinais e sintomas tem a finalidade de auxiliar no planejamento da assistência em saúde. A estratificação de riscos da população alvo se dá considerando a presença da gravidade dos sinais e sintomas apresentados, não sendo necessário firmar o diagnóstico inicial.
+
+Determinar Escopo:
+? Domínio: Estratificação de riscos em saúde mental
+? Nome da Ontologia: Estratificação de riscos em saúde mental
+? Escopo: Esta ontologia tem a finalidade de modelar conceitos do domínio definido neste escopo e permitir a recuperação de informações sobre: grupos de questões respondidas, riscos da população alvo a partir da gravidade dos sinais e sintomas apresentados, nível da assistência em saúde, nível de risco por faixa etária de pacientes, pacientes em vulnerabilidade social, níveis (primário, secundário e terciário) de cuidados em saúde mental e linhas de cuidados em saúde mental. Com base nesta ontologia, espera-se responder às seguintes perguntas:
+
+1. Quais questões foram respondidas por grupo? 
+2. Qual o nível de risco por faixa etária de paciente?
+3. Quais linhas de cuidados em saúde mental estão relacionadas aos pacientes?
+4. Quais pacientes podem ser considerados em vulnerabilidade social?
+5. Quais parâmetros vão definir o nível em que ocorrerá a assistência em saúde mental? (Parâmetros: grau de dependência, autonomia, sintomatologia, risco para si e outros, vulnerabilidades, refratariedade)
+6. A gravidade dos sinais e sintomas estratificados permitem planejar a estratificação de riscos?
+7. Dadas as condições psicossociais e de saúde de um determinado paciente, quais seriam os tratamentos (daqueles disponíveis) mais adequados para o paciente? 
+
+Enumerar Termos:
+
+1. A estratificação de riscos no Hospital Vila Verde Saúde Mental
+2. é estruturada a partir de um questionário contendo 
+3. questões organizadas em grupos de questões. 
+4. Os grupos de questões são classificados por sintomas de transtornos mentais. 
+5. O profissional responsável (médico, enfermeira, psicólogo) pela estratificação de riscos informa:
+6. Identificação do Paciente
+7. Data de Admissão, Data de Internação
+8. Nome Completo do Paciente, Sexo e Idade. 
+9. O profissional responsável identifica a gravidade dos sinais e sintomas apresentados 
+10. e as condições atuais de vida do paciente (aspectos psicossociais) com os dados: 
+11. se usa tabaco
+12. o grupo de CID, 
+13. utiliza substância psicoativa, 
+14. tipo de substância psicoativa utilizada,
+15. Frequência (BAIXA, MEDIA ou ALTA) utilizada da substância psicoativa,
+16. se o paciente foi internado no último ano e 
+17. quantas vezes foi internado no último ano.  
+18. O paciente é entrevistado a partir das questões organizadas da forma descrita,
+19. sendo a resposta é limitada em duas opções: SIM ou NÃO. 
+20. Para cada resposta SIM uma pontuação é atribuída, caso contrário (NÃO) a pontuação é 0. 
+21. Após todas as questões respondidas ocorre um somatório das pontuações gerando a pontuação final. 
+22. A pontuação final é atribuída a uma faixa de risco 
+23. A Faixa de Risco determina o nível de risco do paciente em BAIXO, MÉDIO ou ALTO. 
+24. A estratificação de riscos tem a finalidade de auxiliar na escolha dos parâmetros que vão definir o nível em que ocorrerá a assistência em saúde. 
+
+? Dado Pessoal
+? Gravidade de sinal e sintoma
+? Dado de Internação
+? Tipo de Substância Psicoativa
+? Frequência do Tipo de Substância Psicoativa
+? Tabaco
+? Histórico de Internação
+? Questão
+? Grupo de questões 
+? Transtorno mental
+? Sinal e Sintoma
+? Paciente
+? Opção de resposta
+? Pontuação
+? Pontuação final
+? Faixa de Risco
+? Nível de Risco
+? Assistência em Saúde Mental
+? Gravidade do sinal e sintoma
+------
+? estrutura/estruturar
+? faz parte de
+? relacionar com/relaciona com
+? determinar/determina
+? responder/responde
+? possuir/possui
+? receber/recebe
+? ser determinada/é determinada
+? ser atribuída/é atribuída
+? ser definido/é definido
+? definir/definido
+? considerar/considerado
+? utilizar/utiliza
+
+
+1. O paciente possui dados pessoais
+2. O profissional responsável informa os dados sociodemográficos.
+3. O paciente apresenta gravidade de sinais e sintomas.
+4. O paciente possui dados de internação
+5. O paciente utiliza algum tipo de substância psicoativa.
+6. O paciente utiliza com frequência a substância psicoativa.
+7. O paciente faz uso de tabaco.
+8. O paciente possui histórico de internação.
+9. O profissional de saúde informa os dados clínicos.
+10. Questões fazem parte de um grupo de questões. 
+11. Transtornos mentais se relacionam com sinais e sintomas.
+12. Sinais e sintomas determinam os grupos de questões. 
+13. O paciente responde questões.
+14. Uma questão possui duas opções de respostas: “SIM” ou “NÃO”.
+15. A opção de resposta “SIM” recebe uma pontuação. 
+16. A pontuação final é determinada por somatório das pontuações respondidas com “SIM”. 
+17. O profissional de saúde calcula a pontuação final.
+18. O paciente recebe a pontuação final.
+19. A profissional de saúde atribui uma faixa de risco à pontuação final.
+20. A faixa de risco determina o nível de risco 
+21. O nível de risco é definido em BAIXO, MÉDIO ou ALTO. 
+22. O planejamento da assistência em saúde considera dados sociodemográficos e dados clínicos, a presença e a gravidade dos sinais e sintomas apresentados.
+
+Definir Classes:
+? Saúde Mental  (SaudeMental) 
+? Nível de cuidado em saúde mental
+? Nível Primário 
+? Nível Secundário
+? Nível Terciário
+? Dado Clínico
+? Dado Sociodemográfico
+? Dado Pessoal
+? Profissional Responsável
+? Médico
+? Psicólogo
+? Enfermeiro
+? Gravidade de Sinal e Sintoma
+? Dado de Internação
+? Tipo de Substância Psicoativa
+? Frequência do Tipo de Substância Psicoativa
+? Tabagismo
+? Tabaco
+? Grupo de CID
+? Histórico de Internação
+? Questão
+? Grupo de questão 
+? Transtorno mental
+? Sinal e Sintoma
+? Paciente
+? Opção de resposta
+? Pontuação
+? Pontuação final
+? Faixa de Risco
+? Nível de Risco
+? Assistência em Saúde Mental
+
+Definir propriedades:
+DomínioPropriedadeRangePacientepossuiDado PessoalProfissional ResponsávelinformaDado SociodemográficoProfissional ResponsávelavaliaDado ClínicoGravidade de Sinal e SintomadefineNível da assistência em saúdePacienteapresentaGravidade de Sinal e SintomaPacientepossuiDado de InternaçãoPacientefaz uso deTipo de Substância PsicoativaPacienteutiliza frequencia tipo substancia psicoativaFrequência do Tipo de Substância PsicoativaPacientefaz uso deTabacoQuestãofaz parte deGrupo de questõesTranstorno mentalrelaciona comSinal e SintomaQuantidade de Internações no anorelaciona comInternação no último anoSinal e SintomadeterminaGrupo de questõesPacienterespondeQuestãoQuestãopossuiOpção de RespostaOpção de RespostarecebePontuaçãoPacientepossuiPontuação FinalPontuação Finalé atribuída aFaixa de RiscoFaixa de RiscodeterminaNível de Risco
+
+Definir Restrições:
+Identificador de Cadastroé umDado PessoalNome Completoé umDado PessoalSexoé umDado SociodemográficoIdadeé umDado SociodemográficoMasculinoé umSexoFemininoé umSexoData de Admissãoé umDado de InternaçãoQuestãoé umElemento do QuestionárioGrupo de Questãoé umElemento do QuestionárioPontuaçãoé umElemento do QuestionárioPontuação Finalé umElemento do QuestionárioDado Sociodemográficoé umElemento do QuestionárioDado de Internaçãoé umElemento do QuestionárioOpção de Respostaé umElemento do QuestionárioOperação Matemáticaé um Elemento do QuestionárioNível de Riscoé umElemento do QuestionárioProfissional Responsávelé umElemento do QuestionárioSIMé umaOpção de RespostaNÃOé umaOpção de RespostaMédicoé umProfissional Responsável Psicólogoé umProfissional Responsável Enfermeiroé umProfissional Responsável Tabagismoé umaDoençaClassificação de Doençaé umDado ClínicoGrupo de CIDé umaClassificação de DoençaSubstância Químicaé umDado ClínicoTipo de Substância Psicoativaé umaSubstância QuímicaHistórico de Internaçãoé umDado ClínicoInternação no último anoé umHistórico de InternaçãoF00-F09é umGrupo de CIDF10-F19é umGrupo de CIDF20-F29é umGrupo de CIDF30-F39é umGrupo de CIDF40-F49é umGrupo de CIDF50-F59é umGrupo de CIDF60-F69é umGrupo de CIDF70-F79é umGrupo de CIDF99é umGrupo de CIDAlcool/Multiplas drogasé umTipo de Substância PsicoativaMaconhaé umTipo de Substância PsicoativaTabacoé umTipo de Substância PsicoativaCracké umTipo de Substância PsicoativaCocainaé umTipo de Substância PsicoativaAlcoolé umTipo de Substância PsicoativaAlcool/cocainaé umTipo de Substância PsicoativaMultiplas drogasé umTipo de Substância PsicoativaCocaina/cracké umTipo de Substância PsicoativaMedicação pré anestésica injetávelé umTipo de Substância PsicoativaAlcool/alprazolamé umTipo de Substância PsicoativaAlcool/maconhaé umTipo de Substância PsicoativaFrequência do Tipo de Substância Psicoativaé umDado ClínicoBAIXAé umaFrequência de Uso da Substância PsicoativaMEDIAé umaFrequência de Uso da Substância PsicoativaALTAé umaFrequência de Uso da Substância PsicoativaTranstorno Mental é umaDoençaTranstorno Mental Comumé umTranstorno MentalGravidade de Sinal e Sintomaé umDado ClínicoNível Primárioé umNível da assistência em saúdeNível Secundárioé umNível da assistência em saúdeNível Terciárioé umNível da assistência em saúdeDepressãoé umaDoençaAnsiaé umSinal e SintomaSomatoformeé umSinal e SintomaBAIXOé umNível de RiscoMÉDIOé umNível de RiscoALTOé umNível de RiscoSomaé umaOperação Matemática
+Criar Instâncias:
+SujeitoPredicadoObjeto2302é umPaciente2302é umIdentificador de CadastroJoão da Silvaé umNome CompletoMasculinoé umSexo30é umaIdade01/12/2020é umaData de Admissão2302apresentaF40-F482302utiliza tipo substancia psicoactivaMaconha2302utiliza tipo substancia psicoactivaTabaco2302utiliza tipo substancia psicoactivaCrack2302utiliza frequencia tipo substancia psicoativaMEDIA2éQuantidade de Internações no anoDepressãodeterminaGrupo 1- Transtornos mentais comunsAnsiadeterminaGrupo 1- Transtornos mentais comunsSomatoformedeterminaGrupo 1- Transtornos mentais comunsSensação de morte iminente, pânico e/ou medo intenso faz parte deGrupo 1- Transtornos mentais comuns2302respondeSensação de morte iminente, pânico e/ou medo intenso Sensação de morte iminente, pânico e/ou medo intenso recebeSIMSIMrecebe55é umaSoma2302recebe5Somaé umSomatório5é atribuída a5 - 105 - 10determinaBaixo
+CANVAS:
+CategoriasTipo de Objetos (kind) e Subtipos (subkind) FasesPapéisElementos do Questionário
+
+Dado Sociodemográfico
+
+Dado Pessoal
+
+Dado de Internação
+
+Doença
+
+Classificação de Doença
+
+Substância Química
+
+Frequência do Tipo de Substância Psicoativa
+
+Operação Matemática
+
+Nível de Risco
+
+Gravidade de Sinal e Sintoma
+
+Sinal e Sintoma
+
+Histórico de Internação
+
+Profissional Responsável
+
+Tipo de Substância Psicoativa
+
+Nível da assistência em saúde
+
+Pessoa
+Paciente
+
+Elemento do Questionário
+Questão
+Grupo de Questão
+Pontuação
+Pontuação Final
+Dado Sociodemográfico
+Sexo
+Masculino
+Feminino
+Idade
+Dado Pessoal
+Identificador de Cadastro
+Nome Completo
+Dado de Internacao
+Data de Admissao
+Opção de Resposta
+SIM
+NÃO
+Operação Matemática
+Soma
+Nível de Risco
+BAIXO
+MEDIO
+ALTO
+Profissional Responsável
+Médico
+Psicólogo
+Enfermeiro
+
+Doença
+Depressão
+Tabagismo
+Transtorno Mental
+Transtorno Mental Comum
+
+Dado Clínico
+Histórico de Internação
+Internação no último ano
+Gravidade de Sinal e Sintoma
+Classificação de Doença
+Grupo de CID
+F00-F99.Transtornos Mentais e do Comportamento
+F00-F09.Transtornos mentais orgânicos, inclusive os sintomáticos
+F10-F19.Transtornos mentais e comportamentais devidos ao uso de substância psicoativa
+F20-F29.Esquizofrenia, transtornos esquizotípicos e transtornos delirantes
+F30-F39.Transtornos do humor [afetivos]
+F40-F48.Transtornos neuróticos, transtornos relacionados com o estresse e transtornos somatoformes
+F50-F59.Síndromes comportamentais associadas a disfunções fisiológicas e a fatores físicos
+F60-F69.Distorções da personalidade e do comportamento adulto
+F70-F79.Retardo mental
+F80-F89.Transtornos do desenvolvimento psicológico
+F90-F98.Transtornos do comportamento e transtornos emocionais que aparecem habitualmente durante a infância ou a adolescência
+F99.Transtorno mental não especificado
+Substância Química
+Tipo de Substância Psicoativa
+Alcool/Multiplas drogas
+Maconha
+Tabaco
+Crack
+Cocaina
+Alcool
+Alcool/cocaina
+Multiplas drogas
+Cocaina/crack
+Medicacao pre anestesica injetavel
+Alcool/alprazolam
+Alcool/maconha
+Frequência do Uso do Tipo de Substância Psicoativa
+BAIXA
+MEDIA
+ALTA
+
+Nível da assistência em saúde
+Nível Primário
+Nível Secundário
+Nível Terciário
+
+Sinal e Sintoma
+Ansia
+SomatoformePessoa Viva
+Pessoa Falecida
+
+Pessoa Adolescente
+Pessoa Adulta
+Pessoa IdosaPaciente (Pessoa Adolescente. Pessoa Viva, Transtorno Mental Comum)
+
+Paciente (Pessoa Adolescente. Pessoa Viva, Depressão)
+
+Paciente (Pessoa Adolescente. Pessoa Viva, Tabagismo)
+
+Paciente (Pessoa Adulta. Pessoa Viva, Transtorno Mental Comum)
+
+Paciente (Pessoa Adulta. Pessoa Viva, Depressão)
+
+Paciente (Pessoa Adulta. Pessoa Viva, Tabagismo)
+
+Paciente (Pessoa Idosa. Pessoa Viva, Transtorno Mental Comum)
+
+Paciente (Pessoa Idosa. Pessoa Viva, Depressão)
+
+Paciente (Pessoa Idosa. Pessoa Viva, Tabagismo)Tipos e Subtipos de Relacionamentos? estrutura
+? faz parte de
+? relaciona com
+? determina
+? responde
+? possui
+? recebe
+? ser determinada
+? ser atribuída
+? ser definido
+? definido
+? considerado
+? utiliza
