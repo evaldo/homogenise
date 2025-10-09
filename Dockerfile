@@ -14,4 +14,6 @@ COPY ./website /app/website
 
 COPY --chown=app:app . /app
 
+RUN mkdir -p /app/import && chmod 777 /app/import
+
 CMD python3 main.py
