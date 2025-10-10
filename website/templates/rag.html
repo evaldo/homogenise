@@ -5,65 +5,65 @@
 <h1 align="left">RAG - Graph QA</h1>
 
 <!-- =============================
-     1️⃣ Formulário de Upload do Grafo
+    1️⃣ Graph Upload Form
 ============================= -->
 <form method="POST" enctype="multipart/form-data" onsubmit="showUploadSpinner()">
     <div class="form-group">
-        <label for="file">Escolha um arquivo TTL:</label>
-        <input type="file" name="file" id="file" accept=".ttl" class="form-control" onchange="showLoadButton()">
+       <label for="file">Choose a TTL file:</label>
+       <input type="file" name="file" id="file" accept=".ttl" class="form-control" onchange="showLoadButton()">
     </div>
     <br />
     <div id="loadButtonContainer" style="display: none;" align="center">
-        <button type="submit" id="uploadButton" class="btn btn-primary">
-            Importar Grafo e Criar Embeddings
-        </button>
-        <div id="uploadSpinner" class="spinner-border text-primary mt-3" style="display:none;" role="status">
-            <span class="visually-hidden">Carregando...</span>
-        </div>
-        <p id="uploadMsg" style="display:none; margin-top:10px;">
-            Importando grafo e criando embeddings... Isso pode levar alguns minutos ⏳
-        </p>
+       <button type="submit" id="uploadButton" class="btn btn-primary">
+          Import Graph and Create Embeddings
+       </button>
+       <div id="uploadSpinner" class="spinner-border text-primary mt-3" style="display:none;" role="status">
+          <span class="visually-hidden">Loading...</span>
+       </div>
+       <p id="uploadMsg" style="display:none; margin-top:10px;">
+          Importing graph and creating embeddings... This may take a few minutes ⏳
+       </p>
     </div>
 </form>
 
 <hr />
 
 <!-- =============================
-     2️⃣ Formulário de Perguntas
+    2️⃣ Question Form
 ============================= -->
 <form method="POST" onsubmit="showQuestionSpinner()">
     <div class="form-group">
-        <label for="pergunta">Faça uma pergunta sobre o grafo:</label>
-        <input type="text" name="pergunta" id="pergunta" class="form-control" placeholder="Digite sua pergunta aqui..." required>
+       <label for="pergunta">Ask a question about the graph:</label>
+       <input type="text" name="pergunta" id="pergunta" class="form-control" placeholder="Type your question here..." required>
     </div>
     <br />
     <div align="center">
-        <button type="submit" id="questionButton" class="btn btn-success">Enviar Pergunta</button>
-        <div id="questionSpinner" class="spinner-border text-success mt-3" style="display:none;" role="status">
-            <span class="visually-hidden">Processando...</span>
-        </div>
-        <p id="questionMsg" style="display:none; margin-top:10px;">
-            Consultando o grafo e gerando resposta... aguarde 🤖
-        </p>
+       <button type="submit" id="questionButton" class="btn btn-success">Send Question</button>
+       <div id="questionSpinner" class="spinner-border text-success mt-3" style="display:none;" role="status">
+          <span class="visually-hidden">Processing...</span>
+       </div>
+       <p id="questionMsg" style="display:none; margin-top:10px;">
+          Querying the graph and generating answer... please wait 🤖
+       </p>
     </div>
 </form>
 
 <!-- =============================
-     3️⃣ Mostrar resposta do RAG
+    3️⃣ Show RAG Answer
 ============================= -->
 {% if resposta_rag %}
 <div class="card mt-4">
     <div class="card-header">
-        Resposta do Grafo
+       Graph Answer
     </div>
     <div class="card-body">
-        <p>{{ resposta_rag }}</p>
+       <p>{{ resposta_rag }}</p>
     </div>
 </div>
 {% endif %}
 
 <!-- =============================
-     JS para loading states
+    JS for loading states
 ============================= -->
 <script>
 function showLoadButton() {
