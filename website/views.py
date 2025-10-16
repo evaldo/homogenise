@@ -1342,3 +1342,14 @@ def fillPrefixes(project_name):
     except Exception as e:
         flash(f'Error: {str(e)}', category='error')
         return False
+    
+@views.route('/infosheetDefaultOptions')
+def infosheetDefaultOptions():
+    defaultsOptions = {
+        "Code Mapping": "config/CodeMappings.csv",
+        "CodeBook": "input/CB/CodeBook.csv",
+        "Dictionary Mapping": "input/DM/DictionaryMapping.csv",
+        "Imports": "",
+        "TimeLine": "input/TL/TimeLine.csv"
+    }
+    return jsonify(defaultsOptions)

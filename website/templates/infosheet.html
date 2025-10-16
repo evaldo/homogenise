@@ -12,16 +12,23 @@
 
     <script>
         let projectDropDown = [];
+        let attributePaths = {};
         const saveButton = document.getElementById('save-button');
         const defaultAttributes = ["Code Mapping", "CodeBook", "Dictionary Mapping", "Imports", "TimeLine", "Project"];
         let handsOnTable;
         let currentProject;
 
-        fetch('/projects').then(resp => resp.json()).then(data => {
-            console.log("Lista de proj:", data)
-            projectDropDown = data.map(it => it.project_name);
+        Promise.all([
+            fetch('/projects').then(resp => resp.json()),
+            fetch('/infosheetDefaultOptions').then(resp => resp.json())
+        ])
+        .then(([projectsData, defaultsData]) => {
+            projectDropDown = projectsData.map(it => it.project_name);
+            attributePaths = defaultsData;
+
             initializeTable(getEmptyData());
-        }).catch(e => console.log("erro:", e));
+        })
+        .catch(e => console.error("Erro ao carregar dados iniciais:", e));
 
         function getEmptyData(projectName = "") {
             return defaultAttributes.map(it => {
@@ -34,7 +41,6 @@
 
         async function initializeTable(data) {
             const container = document.getElementById('handsontable-container');
-            console.log("HOT com dados:", data)
             if (handsOnTable) handsOnTable.destroy();
 
             handsOnTable = new Handsontable(container, {
@@ -76,12 +82,25 @@
 
         function loadProject(project) {
             fetch(`/loadInfosheet/${encodeURIComponent(project)}`)
-            .then(resp => resp.json()).then(data => {
-                if (data.length > 0){
+            .then(resp => resp.json())
+            .then(data => {
+                if (data.length > 0) {
                     initializeTable(data);
-                    console.log("Load infosheet:", data);
                 } else {
-                    initializeTable(getEmptyData(project));
+                    const defaultDataOption = defaultAttributes.map(it => {
+                        if (it === "Project") {
+                            return [it, project];
+                        } else {
+                            const relativePath = attributePaths[it];
+                            
+                            if (relativePath && relativePath.trim() !== "") {
+                                return [it, `${project}/${relativePath}`];
+                            } else {
+                                return [it, ""];
+                            }
+                        }
+                    });
+                    initializeTable(defaultDataOption);
                 }
             }).catch(e => console.error('Error loading Infosheet:', e))
         }
@@ -102,8 +121,6 @@
                 if (result.status === 'ok') alert("Changes saved successfully!");
             }).catch(e => console.error('Error saving Infosheet:', e));
         });
-
-        console.log(csvData);
     </script>
 
     <style>
