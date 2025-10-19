@@ -655,6 +655,7 @@ def projectdata():
         project_name = request.form.get("project_name")
         project_description = request.form.get("project_description")
         research_line_id = request.form.get("research_line_id")
+        project_base_uri = request.form.get("project_base_uri")
 
         if research_line_id == 'null':
             flash('Fill out all data to execute transaction!', category='error')
@@ -728,7 +729,7 @@ def projectdata():
                         f.write("# Specify a file with the prefixes for existing ontologies used in your translation\n")
                         f.write(f'prefixes = {project_name}/config/Prefixes.csv\n')
                         f.write("# Specify the base uri to be associated with all triples minted by the script\n")
-                        f.write("base_uri = oersm\n\n")
+                        f.write(f'base_uri = {project_base_uri}\n\n')
                         f.write("[Source Files]\n")
                         f.write(f'dictionary = {project_name}/input/DM/DictionaryMapping.csv\n')
                         f.write(f'codebook = {project_name}/input/CB/CodeBook.csv\n')
