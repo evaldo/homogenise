@@ -696,7 +696,19 @@ def projectdata():
                     project_config_path = os.path.join(project_path, 'config')
                     os.makedirs(project_config_path, exist_ok=True)
 
+                    codeMappings_path = os.path.join(project_config_path, "CodeMappings.csv")
 
+                    with open(codeMappings_path, 'w', newline='', encoding='utf-8') as f:
+                        writer = csv.writer(f)
+                        writer.writerow(['code', 'uri', 'label']) 
+
+                    properties_path = os.path.join(project_config_path, "Properties.csv")
+
+                    with open(properties_path, 'w', newline='', encoding='utf-8') as f:
+                        writer = csv.writer(f)
+                        writer.writerow(['Column', 'Property']) 
+
+                    
                     project_input_path = os.path.join(project_path, 'input')
                     os.makedirs(project_input_path, exist_ok=True)
 
@@ -704,20 +716,42 @@ def projectdata():
                     os.makedirs(codebook_path, exist_ok=True)
                     data_path = os.path.join(project_input_path, 'Data')
                     os.makedirs(data_path, exist_ok=True)
+
+                    emrMentalHealthData_path = os.path.join(data_path, "emrMentalHealthData.csv")
+                    open(emrMentalHealthData_path, 'w').close()
+
                     dictionaryMapping_path = os.path.join(project_input_path, 'DM')
                     os.makedirs(dictionaryMapping_path, exist_ok=True)
                     timeLine_path = os.path.join(project_input_path, 'TL')
+
                     os.makedirs(timeLine_path, exist_ok=True)
+                    timeLine_file = os.path.join(timeLine_path, "TimeLine.csv")
+
+                    with open(timeLine_file, 'w', newline='', encoding='utf-8') as f:
+                        writer = csv.writer(f)
+                        writer.writerow(['Name', 'Label', 'Type', 'Start', 'End', 'Unit', 'inRelationTo']) 
 
                     project_output_path = os.path.join(project_path, 'output')
                     os.makedirs(project_output_path, exist_ok=True)
                     
                     sparql_path = os.path.join(project_output_path, 'sparql')
                     os.makedirs(sparql_path, exist_ok=True)
+
+                    queryfile_path = os.path.join(sparql_path, f'{project_name}Query')
+                    open(queryfile_path, 'w').close()
+
                     swrl_path = os.path.join(project_output_path, 'swrl')
                     os.makedirs(swrl_path, exist_ok=True)
+
+                    swrlfile_path = os.path.join(swrl_path, f'{project_name}SWRL')
+                    open(swrlfile_path, 'w').close()
+
                     trig_path = os.path.join(project_output_path, 'trig')
                     os.makedirs(trig_path, exist_ok=True)
+
+                    outfile_path = os.path.join(trig_path, f'{project_name}-kg.trig')
+                    open(outfile_path, 'w').close()
+                    
                     ttl_path = os.path.join(project_output_path, 'ttl')
                     os.makedirs(ttl_path, exist_ok=True)
 
