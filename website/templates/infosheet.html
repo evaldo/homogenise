@@ -106,20 +106,25 @@
         }
 
         saveButton.addEventListener('click', () => {
-            if (!currentProject) {
-                alert("Choose a project in the 'Project' row before saving!");
+            const dataInserted = handsOnTable.getData();
+
+            if (!currentProject){
+                window.location.href = '/infosheet?error=' + encodeURIComponent("Choose a project in the 'Project' row before saving!");
                 return;
             }
-            
-            const dataInserted = handsOnTable.getData();
 
             fetch(`/saveInfosheet/${encodeURIComponent(currentProject)}`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ data:dataInserted })
-            }).then(resp => resp.json()).then(result => {
-                if (result.status === 'ok') alert("Changes saved successfully!");
-            }).catch(e => console.error('Error saving Infosheet:', e));
+            }).then(resp => resp.json())
+            .then(result => {
+                if (result.status === 'ok') {
+                    window.location.href = '/infosheet?success=' + encodeURIComponent(result.message);
+                } else {
+                    window.location.href = '/infosheet?error=' + encodeURIComponent(result.message);
+                }
+            }).catch(e => window.location.href = '/infosheet?error=' + encodeURIComponent("Unexpected error while saving."));
         });
     </script>
 

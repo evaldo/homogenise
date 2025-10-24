@@ -87,7 +87,7 @@
           const projectChosen = dataInserted[0][1];
 
           if (!projectChosen){
-            alert("Choose a project in the 'Project' row before saving!");
+            window.location.href = '/codebook?error=' + encodeURIComponent("Choose a project in the 'Project' row before saving!");
             return;
           }
 
@@ -97,10 +97,12 @@
             body: JSON.stringify({ data:dataInserted })
           }).then(resp => resp.json())
           .then(result => {
-            if (result,status === 'ok') {
-              alert("Changes saved successfully!");
+            if (result.status === 'ok') {
+              window.location.href = '/codebook?success=' + encodeURIComponent(result.message);
+            } else {
+              window.location.href = '/codebook?error=' + encodeURIComponent(result.message);
             }
-          }).catch(e => console.error('Error saving CodeBook:', e));
+          }).catch(e => window.location.href = '/codebook?error=' + encodeURIComponent("Unexpected error while saving."));
         })
     </script>
 

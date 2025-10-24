@@ -1182,6 +1182,18 @@ def getProjects():
     
     return jsonify(projects)
 
+@views.route('/infosheet')
+def infosheet():
+    success_message = request.args.get('success')
+    if success_message:
+        flash(success_message, 'success')
+
+    error_message = request.args.get('error')
+    if error_message:
+        flash(error_message, 'error')
+        
+    return render_template('infosheet.html', user=current_user)
+
 @views.route('/loadInfosheet/<project_name>', methods=['GET'])
 def loadInfosheetByName(project_name):
     project_path = os.path.join("/app", project_name, "config")
@@ -1212,12 +1224,25 @@ def saveInfosheet(project_name):
             writer = csv.writer(file)
             writer.writerow(["Attribute", "Value"])
             writer.writerows(data)
-
-        flash('File saved successfully', category='success')
-        return jsonify({'status': 'ok'})
+        
+        message = 'File saved successfully'
+        return jsonify({'status': 'ok', 'message': message})
     except Exception as e:
-        flash(f'Error: {str(e)}', category='error')
-        return jsonify({'status': 'error', 'message': str(e)}), 500    
+        message = f'Error: {str(e)}'
+        flash(message, category='error')
+        return jsonify({'status': 'error', 'message': message}), 500
+    
+@views.route('/dictionarymapping')
+def dictionarymapping():
+    success_message = request.args.get('success')
+    if success_message:
+        flash(success_message, 'success')
+
+    error_message = request.args.get('error')
+    if error_message:
+        flash(error_message, 'error')
+        
+    return render_template('dictionaryMapping.html', user=current_user)
 
 @views.route('/loadDictionaryMapping/<project_name>', methods=['GET'])
 def loadDictionaryMappingByName(project_name):
@@ -1258,11 +1283,12 @@ def saveDictionaryMapping(project_name):
             ])
             writer.writerows(data)
 
-        flash('File saved successfully', category='success')
-        return jsonify({'status': 'ok'})
+        message = 'File saved successfully'
+        return jsonify({'status': 'ok', 'message': message})
     except Exception as e:
-        flash(f'Error: {str(e)}', category='error')
-        return jsonify({'status': 'error', 'message': str(e)}), 500
+        message = f'Error: {str(e)}'
+        flash(message, category='error')
+        return jsonify({'status': 'error', 'message': message}), 500
 
 @views.route('/loadCodeBook/<project_name>', methods=['GET'])
 def loadCodeBookByName(project_name):
@@ -1284,6 +1310,18 @@ def loadCodeBookByName(project_name):
     else:
         return jsonify([])
     
+@views.route('/codebook')
+def codebook():
+    success_message = request.args.get('success')
+    if success_message:
+        flash(success_message, 'success')
+
+    error_message = request.args.get('error')
+    if error_message:
+        flash(error_message, 'error')
+
+    return render_template('codeBook.html', user=current_user)
+    
 @views.route('/saveCodeBook/<project_name>', methods=['POST'])
 def saveCodeBook(project_name):
     try:
@@ -1301,11 +1339,12 @@ def saveCodeBook(project_name):
             ])
             writer.writerows(data)
 
-        flash('File saved successfully', category='success')
-        return jsonify({'status': 'ok'})
+        message = 'File saved successfully'
+        return jsonify({'status': 'ok', 'message': message})
     except Exception as e:
-        flash(f'Error: {str(e)}', category='error')
-        return jsonify({'status': 'error', 'message': str(e)}), 500
+        message = f'Error: {str(e)}'
+        flash(message, category='error')
+        return jsonify({'status': 'error', 'message': message}), 500
     
 def fillPrefixes(project_name):
     try:

@@ -91,7 +91,7 @@
             const projectChosen = dataInserted[0][3]; 
 
             if (!projectChosen) {
-                alert("Choose a project in the 'Project' row before saving!");
+                window.location.href = '/dictionarymapping?error=' + encodeURIComponent("Choose a project in the 'Project' row before saving!");
                 return;
             }
 
@@ -102,9 +102,11 @@
             }).then(resp => resp.json())
             .then(result => {
                 if (result.status === 'ok'){
-                    alert("Changes saved successfully!");
+                    window.location.href = '/dictionarymapping?success=' + encodeURIComponent(result.message);
+                } else {
+                    window.location.href = '/dictionarymapping?error=' + encodeURIComponent(result.message);
                 }
-            }).catch(e => console.error('Error saving Dictionary Mapping:', e));
+            }).catch(e => window.location.href = '/dictionarymapping?error=' + encodeURIComponent("Unexpected error while saving."));
         });
         console.log(csvData);
     </script>
