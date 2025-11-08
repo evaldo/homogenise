@@ -329,8 +329,8 @@ def insightsdata():
                             f.write(decoded_text)
 
                         file_names.append([file_id, file.filename])
-                    except:
-                        flash('Erro while saving file.', category='error')
+                    except Exception as e:
+                        flash('Error while saving file: ' + str(e), category='error')
                         return redirect(request.url)
 
             if len(file_names) == 0 and request.args.get("type_operation") is None:
@@ -418,174 +418,232 @@ def insightsdata():
 
 @views.route('/rag', methods=['GET', 'POST'])
 def rag():
-    chave_openai = ""
-    resposta_rag = ""
-    if request.method == 'POST' and 'file' in request.files:
-        try:
-            # --- 1. Upload do arquivo ---
-            if 'file' not in request.files:
-                flash('Nenhum arquivo selecionado.', category='error')
-                return redirect(request.url)
+    """Show list of projects and action 'Ask Graph' for each project.
 
-            file = request.files['file']
-            if file.filename == '':
-                flash('Nenhum arquivo selecionado.', category='error')
-                return redirect(request.url)
+    Clicking Ask Graph should open the loader page where the user provides the OpenAI
+    token and can load the project's TTL into Neo4j and then ask questions.
+    """
+    cur = db.get_cursor()
+    # reuse the same query used elsewhere to list projects and their file names
+    cur.execute("""
+            SELECT 
+                project.project_id, 
+                project.project_name, 
+                STRING_AGG(files.old_name, ', ') AS all_old_names 
+            FROM 
+                app.project AS project
+            JOIN 
+                app.project_file AS files 
+            ON 
+                files.project_id = project.project_id
+            GROUP BY 
+                project.project_id, project.project_name
+        """)
+    data = cur.fetchall()
+    cur.close()
 
-            # Diretório de import
-            neo4j_import_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '../import'))
-            os.makedirs(neo4j_import_dir, exist_ok=True)
+    return render_template('rag_projects.html', output_data=data, user=current_user)
 
-            file_id = str(uuid.uuid4())
-            file_path = os.path.join(neo4j_import_dir, f"{file_id}.ttl")
-            file.save(file_path)
-            neo4j_internal_path = f"/var/lib/neo4j/import/{file_id}.ttl"
 
-            # --- 2. Conexão com Neo4j ---
-            NEO4J_URI = "bolt://neo4j-rag:7687"
-            NEO4J_USERNAME = "neo4j"
-            NEO4J_PASSWORD = "sua_senha_segura"
+@views.route('/rag/load', methods=['GET', 'POST'])
+@login_required
+def rag_load():
+    """Page to accept OpenAI token, load the project's TTL into Neo4j and allow QA.
 
-            graph = Neo4jGraph(
-                url=NEO4J_URI,
-                username=NEO4J_USERNAME,
-                password=NEO4J_PASSWORD
-            )
-
-            # --- 3. Constraint + init do n10s ---
-            try:
-                graph.query("CREATE CONSTRAINT n10s_unique_uri FOR (r:Resource) REQUIRE r.uri IS UNIQUE")
-            except Exception as e:
-                if "already exists" not in str(e):
-                    raise
-            graph.query("CALL n10s.graphconfig.init()")
-
-            # --- 4. Import RDF ---
-            graph.query(f"CALL n10s.rdf.import.fetch('file://{neo4j_internal_path}', 'Turtle')")
-            os.remove(file_path)
-
-            # --- 5. Criar Embeddings ---
-            # from langchain_openai import OpenAIEmbeddings
-            embeddings = OpenAIEmbeddings(model="text-embedding-3-small", openai_api_key=chave_openai)
-
-            node_text_query = """
-            MATCH (n)
-            WHERE n.ns2__hasValue IS NOT NULL
-            RETURN n.uri AS node_id, n.ns2__hasValue AS text
-            """
-
-            node_texts = graph.query(node_text_query)
-            for node in node_texts:
-                node_id = node["node_id"]
-                text_value = node["text"]
-
-                if isinstance(text_value, list):
-                    final_text = " ".join(str(item) for item in text_value if item)
-                else:
-                    final_text = str(text_value)
-
-                if final_text.strip():
-                    embedding = embeddings.embed_query(final_text)
-                    graph.query("""
-                        MATCH (n {uri: $node_id})
-                        SET n.embedding = $embedding
-                        """, params={"node_id": node_id, "embedding": embedding})
-
-            # --- 6. Criar índice vetorial ---
-            try:
-                graph.query("DROP INDEX rag_index IF EXISTS")
-            except:
-                pass
-
-            graph.query("""
-            CREATE VECTOR INDEX rag_index IF NOT EXISTS
-            FOR (n:Resource) ON (n.embedding)
-            OPTIONS {indexConfig: {
-                `vector.dimensions`: 1536,
-                `vector.similarity_function`: 'cosine'
-            }}
-            """)
-
-            flash('Arquivo importado, embeddings criados e índice vetorial configurado!', category='success')
-
-        except Exception as e:
-            flash(f"Erro no processamento: {str(e)}", category='error')
-
+    - GET: show token input and Load button for selected project
+    - POST with action=load_graph: load TTL into Neo4j (clear DB and index first), create embeddings and vector index
+    - POST with action=ask: run the QA agent against the graph using provided token
+    """
+    project_id = request.args.get('project_id') if request.method == 'GET' else request.form.get('project_id')
+    if not project_id:
+        flash('Project id not provided.', category='error')
         return redirect(url_for('views.rag'))
 
-   # ----------------------
-    # GET → Monta o agente e renderiza a página
-    # ----------------------
-    if request.method == 'POST' and 'pergunta' in request.form:
-        pergunta = request.form['pergunta']
+    resposta_rag = ''
+    graph_loaded = False
+    token_prefill = ''
 
-        try:
+    if request.method == 'POST':
+        action = request.form.get('action')
+        token = request.form.get('openai_token', '').strip()
 
-            # Conexão Neo4j
-            NEO4J_URI = "bolt://neo4j-rag:7687"
-            NEO4J_USERNAME = "neo4j"
-            NEO4J_PASSWORD = "sua_senha_segura"
+        # Resolve project's ttl file path from DB
+        cur = db.get_cursor()
+        cur.execute('select file_name from app.project_file where project_id = %s limit 1', (project_id,))
+        row = cur.fetchone()
+        cur.close()
+        if not row:
+            flash('No file registered for this project.', category='error')
+            return redirect(url_for('views.rag'))
 
-            graph = Neo4jGraph(
-                url=NEO4J_URI,
-                username=NEO4J_USERNAME,
-                password=NEO4J_PASSWORD
-            )
+        # path where files are stored inside the website package
+        basedir = os.path.abspath(os.path.dirname(__file__))
+        userfiles_dir = os.path.join(basedir, 'userfiles')
+        file_name_on_disk = row[0]
+        src_path = os.path.join(userfiles_dir, file_name_on_disk)
+        if not os.path.exists(src_path):
+            flash('Project file not found on disk: ' + src_path, category='error')
+            return redirect(url_for('views.rag'))
 
-            llm = ChatOpenAI(model="gpt-4.1-mini", temperature=0, openai_api_key=chave_openai, max_tokens=32768)
-            embeddings = OpenAIEmbeddings(model="text-embedding-3-small", openai_api_key=chave_openai)
+        if action == 'load_graph':
+            if not token:
+                flash('OpenAI token is required to create embeddings.', category='error')
+                return redirect(url_for('views.rag_load', project_id=project_id))
 
-            # ----------------------
-            # Definição das Tools
-            # ----------------------
-            @tool
-            def vector_search_start_node(question: str) -> list[dict]:
-                """Encontra os nós iniciais mais relevantes para uma pergunta usando busca vetorial."""
-                pergunta_embedding = embeddings.embed_query(question)
-                query = """
-                CALL db.index.vector.queryNodes('rag_index', $top_k, $embedding) YIELD node, score
-                RETURN node.uri AS uri, node.ns2__hasValue AS label, score
-                LIMIT $top_k
+            try:
+                # prepare import file inside import/ and point Neo4j to /var/lib/neo4j/import
+                neo4j_import_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '../import'))
+                os.makedirs(neo4j_import_dir, exist_ok=True)
+                file_id = str(uuid.uuid4())
+                dest_filename = f"{file_id}.ttl"
+                dest_path = os.path.join(neo4j_import_dir, dest_filename)
+                shutil.copy(src_path, dest_path)
+                neo4j_internal_path = f"/var/lib/neo4j/import/{dest_filename}"
+
+                # connect to neo4j
+                NEO4J_URI = "bolt://neo4j-rag:7687"
+                NEO4J_USERNAME = "neo4j"
+                NEO4J_PASSWORD = "sua_senha_segura"
+
+                graph = Neo4jGraph(url=NEO4J_URI, username=NEO4J_USERNAME, password=NEO4J_PASSWORD)
+
+                # clear graph and index if exist
+                try:
+                    graph.query("DROP INDEX rag_index IF EXISTS")
+                except Exception:
+                    pass
+                try:
+                    graph.query("MATCH (n) DETACH DELETE n")
+                except Exception:
+                    # continue even if delete fails
+                    pass
+
+                # init n10s and import
+                try:
+                    graph.query("CREATE CONSTRAINT n10s_unique_uri FOR (r:Resource) REQUIRE r.uri IS UNIQUE")
+                except Exception as e:
+                    if "already exists" not in str(e):
+                        raise
+                graph.query("CALL n10s.graphconfig.init()")
+                graph.query(f"CALL n10s.rdf.import.fetch('file://{neo4j_internal_path}', 'Turtle')")
+
+                # create embeddings for nodes
+                embeddings = OpenAIEmbeddings(model="text-embedding-3-small", openai_api_key=token)
+                node_text_query = """
+                MATCH (n)
+                WHERE n.ns2__hasValue IS NOT NULL
+                RETURN n.uri AS node_id, n.ns2__hasValue AS text
                 """
-                result = graph.query(query, params={"embedding": pergunta_embedding, "top_k": 20})
-                for item in result:
-                    if isinstance(item['label'], list):
-                        item['label'] = " | ".join(item['label'])
-                return result
+                node_texts = graph.query(node_text_query)
+                for node in node_texts:
+                    node_id = node.get('node_id')
+                    text_value = node.get('text')
+                    if isinstance(text_value, list):
+                        final_text = " ".join(str(item) for item in text_value if item)
+                    else:
+                        final_text = str(text_value)
+                    if final_text.strip():
+                        embedding = embeddings.embed_query(final_text)
+                        graph.query("MATCH (n {uri: $node_id}) SET n.embedding = $embedding",
+                                    params={"node_id": node_id, "embedding": embedding})
 
-            @tool
-            def list_neighbors(node_uri: str) -> list[dict]:
-                """Retorna os vizinhos diretos de um nó específico no grafo, dado sua URI."""
-                query = """
-                MATCH (n {uri: $uri})-[r]-(m)
-                RETURN type(r) AS relationship_type, m.uri AS neighbor_uri, m.ns2__hasValue AS neighbor_label
-                """
-                result = graph.query(query, params={"uri": node_uri})
-                for item in result:
-                    if isinstance(item['neighbor_label'], list):
-                        item['neighbor_label'] = " | ".join(item['neighbor_label'])
-                return result
+                # create vector index
+                graph.query("""
+                CREATE VECTOR INDEX rag_index IF NOT EXISTS
+                FOR (n:Resource) ON (n.embedding)
+                OPTIONS {indexConfig: {
+                    `vector.dimensions`: 1536,
+                    `vector.similarity_function`: 'cosine'
+                }}
+                """)
 
-            @tool
-            def get_node_details(node_uri: str) -> dict:
-                """Obtém todas as propriedades de um nó específico, como sua descrição."""
-                query = "MATCH (n {uri: $uri}) RETURN properties(n) AS details"
-                result = graph.query(query, params={"uri": node_uri})
-                if not result:
-                    return {}
-                details = result[0]['details']
-                cleaned = {}
-                for key, value in details.items():
-                    if isinstance(value, list) and key != 'embedding':
-                        cleaned[key] = ", ".join(map(str, value))
-                    elif key != 'embedding':
-                        cleaned[key] = value
-                return cleaned
+                graph_loaded = True
+                token_prefill = token
+                flash('Graph loaded into Neo4j, embeddings created and vector index configured!', category='success')
 
-            # ----------------------
-            # Criar o Agente
-            # ----------------------
-            custom_prompt = """
+            except Exception as e:
+                flash('Error loading graph: ' + str(e), category='error')
+                # cleanup copied file
+                try:
+                    if os.path.exists(dest_path):
+                        os.remove(dest_path)
+                except Exception:
+                    pass
+
+        elif action == 'ask':
+            # ask question using provided token
+            pergunta = request.form.get('pergunta', '')
+            if not token:
+                flash('OpenAI token is required to ask questions.', category='error')
+                return redirect(url_for('views.rag_load', project_id=project_id))
+
+            try:
+                NEO4J_URI = "bolt://neo4j-rag:7687"
+                NEO4J_USERNAME = "neo4j"
+                NEO4J_PASSWORD = "sua_senha_segura"
+
+                graph = Neo4jGraph(url=NEO4J_URI, username=NEO4J_USERNAME, password=NEO4J_PASSWORD)
+
+                llm = ChatOpenAI(model="gpt-4.1-mini", temperature=0, openai_api_key=token, max_tokens=32768)
+                embeddings = OpenAIEmbeddings(model="text-embedding-3-small", openai_api_key=token)
+
+                # tools
+                @tool
+                def vector_search_start_node(question: str) -> list[dict]:
+                    """Finds the most relevant starting nodes for a question using vector search.
+
+                    Returns a list of dicts with keys: uri, label, score.
+                    """
+                    pergunta_embedding = embeddings.embed_query(question)
+                    query = """
+                    CALL db.index.vector.queryNodes('rag_index', $top_k, $embedding) YIELD node, score
+                    RETURN node.uri AS uri, node.ns2__hasValue AS label, score
+                    LIMIT $top_k
+                    """
+                    result = graph.query(query, params={"embedding": pergunta_embedding, "top_k": 20})
+                    for item in result:
+                        if isinstance(item.get('label'), list):
+                            item['label'] = " | ".join(item['label'])
+                    return result
+
+                @tool
+                def list_neighbors(node_uri: str) -> list[dict]:
+                    """Return direct neighbor nodes and relationship types for a given node URI.
+
+                    Returns list of dicts with keys: relationship_type, neighbor_uri, neighbor_label.
+                    """
+                    query = """
+                    MATCH (n {uri: $uri})-[r]-(m)
+                    RETURN type(r) AS relationship_type, m.uri AS neighbor_uri, m.ns2__hasValue AS neighbor_label
+                    """
+                    result = graph.query(query, params={"uri": node_uri})
+                    for item in result:
+                        if isinstance(item.get('neighbor_label'), list):
+                            item['neighbor_label'] = " | ".join(item['neighbor_label'])
+                    return result
+
+                @tool
+                def get_node_details(node_uri: str) -> dict:
+                    """Return all non-embedding properties for the node identified by URI.
+
+                    Returns a dict of property->value (lists joined into strings), excluding 'embedding'.
+                    """
+                    query = "MATCH (n {uri: $uri}) RETURN properties(n) AS details"
+                    result = graph.query(query, params={"uri": node_uri})
+                    if not result:
+                        return {}
+                    details = result[0].get('details', {})
+                    cleaned = {}
+                    for key, value in details.items():
+                        if isinstance(value, list) and key != 'embedding':
+                            cleaned[key] = ", ".join(map(str, value))
+                        elif key != 'embedding':
+                            cleaned[key] = value
+                    return cleaned
+
+                tools = [vector_search_start_node, list_neighbors, get_node_details]
+                prompt = hub.pull("hwchase17/react")
+                custom_prompt = """
             You are an expert in querying an ontology stored in a Neo4j graph.
             Your role is to answer user questions using the graph as a knowledge source, exploring nodes and relationships.
 
@@ -614,18 +672,20 @@ def rag():
             - Mention the concepts found in the graph.
             - Only use tools when necessary; if you already have enough information, answer directly.
             """
-            tools = [vector_search_start_node, list_neighbors, get_node_details]
-            prompt = hub.pull("hwchase17/react")
-            agent = create_react_agent(llm, tools, prompt=prompt + custom_prompt)
-            agent_executor = AgentExecutor(agent=agent, tools=tools, verbose=True, handle_parsing_errors=True)
+                agent = create_react_agent(llm, tools, prompt=prompt + custom_prompt)
+                agent_executor = AgentExecutor(agent=agent, tools=tools, verbose=True, handle_parsing_errors=True)
 
-            resposta = agent_executor.invoke({"input": pergunta})
-            resposta_rag = resposta["output"]
-    
-        except Exception as e:
-            flash(f"Erro ao responder pergunta: {str(e)}", category='error')
-        
-    return render_template("rag.html", user=current_user, resposta_rag=resposta_rag)
+                resposta = agent_executor.invoke({"input": pergunta})
+                resposta_rag = resposta.get('output', '')
+                token_prefill = token
+                # keep the ask form visible after asking so user can ask more questions
+                graph_loaded = True
+
+            except Exception as e:
+                flash('Error answering question: ' + str(e), category='error')
+
+    # GET or after POST; show form. Keep token only in page's form fields (not saved in DB)
+    return render_template('rag_load.html', user=current_user, project_id=project_id, resposta_rag=resposta_rag, graph_loaded=graph_loaded, openai_token_prefill=token_prefill)
 
 
 @views.route('/projectteam', methods=['GET', 'POST'])

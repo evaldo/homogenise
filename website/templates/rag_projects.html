@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block title %}RAG - Projects{% endblock %}
+{% block content %}
+<h1 align="left">RAG - Choose Project</h1>
+<form method="POST">
+  <label for="project_search">Enter project to search</label>
+  <input type="text" name="project_search" id="project_search" class="form-control" value="{{ last_search }}"></input>
+  <br />
+  <div align="center">
+    <button type="submit" class="btn btn-primary">Search</button>
+  </div>
+</form>
+<br />
+<div class="container">
+  <table id="project_table" class="table table-striped">
+    <thead>
+      <tr>
+        <th>#Project Id</th>
+        <th>Name</th>
+        <th>Files</th>
+        <th style="text-align: center">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for project_item in output_data %}
+      <tr>
+        <td style="width: 100px; text-align: center">{{ project_item[0] }}</td>
+        <td>{{ project_item[1] }}</td>
+        <td style="width: 600px;">{{ project_item[2] }}</td>
+        <td style="text-align: center">
+          <a class="btn btn-primary" href="{{ url_for('views.rag_load') }}?project_id={{ project_item[0] }}">Ask Graph</a>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}
