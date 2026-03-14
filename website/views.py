@@ -14,8 +14,7 @@ import numpy as np
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
-import networkx as nx
-import pandas as pd
+
 import chardet
 from website.features.synopsis.synopsis_repository import SynopsisRepository
 from website.features.synopsis.triple_conversion import TripleConversion
