@@ -91,4 +91,9 @@
     });
   });
 </script>
+
+{% if isKnowledgeGraphSelected %}
+    <script src="{{url_for('static',filename="libs/d3.v7.js")}}"> </script>
+    <script type="module" src="{{url_for('static',filename="script.js")}}"></script>
+{% endif %}
 {% endblock %}

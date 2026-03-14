@@ -118,6 +118,9 @@ def do_graph(project_id, selected_chart, selected_classes):
 
 @views.route('/generatestatistics', methods=['GET', 'POST'])
 def generatestatistics():
+
+    isKnowledgeGraphSelected = False
+
     project_id = request.args.get('project_id', '0') if request.method == 'GET' else request.form.get("project_id")
     cur = db.get_cursor()
 
@@ -160,7 +163,7 @@ def generatestatistics():
                 individuals = []
                 labels = []
                 types = []
-
+                isKnowledgeGraphSelected = True
                 formatted_values = ", ".join(f"'{word}'" for word in selected_classes)                
                 sparql = f"""                                        
                     SELECT distinct (REPLACE(STR(?s), "^.*/([^/]*)$", "$1") as ?individual) (REPLACE(STR(?p), "^.*/([^/]*)$", "$1") as ?label) (REPLACE(STR(?o), "^.*/([^/]*)$", "$1") as ?type)
@@ -208,7 +211,9 @@ def generatestatistics():
                                , selected_classes=selected_classes
                                , chart_list=chart_list
                                , chart_type=selected_chart
-                               , img_uri=b64)
+                               , img_uri=b64
+                               , isKnowledgeGraphSelected=isKnowledgeGraphSelected
+                               )
 
     elif request.method == 'GET':
         return render_template("generatestatistics.html", user=current_user
