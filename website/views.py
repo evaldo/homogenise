@@ -119,8 +119,8 @@ def do_graph(project_id, selected_chart, selected_classes):
 @views.route('/generatestatistics', methods=['GET', 'POST'])
 def generatestatistics():
 
-    isKnowledgeGraphSelected = False
-
+    is_knowledge_graph_selected = False
+    graph_data = None
     project_id = request.args.get('project_id', '0') if request.method == 'GET' else request.form.get("project_id")
     cur = db.get_cursor()
 
@@ -160,47 +160,50 @@ def generatestatistics():
             if selected_chart in ['Word cloud', 'Pie chart', 'Bar chart']:
                 b64 = do_graph(project_id, selected_chart, selected_classes)
             elif selected_chart == 'Knowledge graph':
-                individuals = []
-                labels = []
-                types = []
-                isKnowledgeGraphSelected = True
+                nodes_dict = {}
+                edges = []
+                is_knowledge_graph_selected = True
                 formatted_values = ", ".join(f"'{word}'" for word in selected_classes)                
                 sparql = f"""                                        
-                    SELECT distinct (REPLACE(STR(?s), "^.*/([^/]*)$", "$1") as ?individual) (REPLACE(STR(?p), "^.*/([^/]*)$", "$1") as ?label) (REPLACE(STR(?o), "^.*/([^/]*)$", "$1") as ?type)
-                    WHERE {{
-                      ?s ?p ?o .                      
-                      FILTER(?p NOT IN (<http://semanticscience.org/resource/hasUnit>, rdfs:domain, rdfs:range, rdfs:subPropertyOf, rdf:first, rdf:rest, owl:members, <http://www.w3.org/ns/prov#generatedAtTime>, owl:allValuesFrom, <http://semanticscience.org/resource/isAttributeOf>)) .
-                      FILTER(?o NOT IN (owl:ObjectProperty, owl:Class, owl:NamedIndividual, owl:AllDisjointClasses, owl:Restriction, <http://semanticscience.org/resource/isAttributeOf>)) .    
-                      FILTER (!isBlank(?o)) .
-                      FILTER (!isBlank(?s)) .
-                      FILTER(?o != '') .                          
-                      FILTER((REPLACE(STR(?s), "^.*/([^/]*)$", "$1")) IN ({formatted_values}))
-                    }}	                                  
+                    SELECT distinct
+    (STR(?s) as ?s_uri)
+    (REPLACE(STR(?s), "^.*/([^/]*)$", "$1") as ?s_name)
+    (REPLACE(STR(?p), "^.*/([^/]*)$", "$1") as ?label)
+    (STR(?o) as ?o_uri)
+    (REPLACE(STR(?o), "^.*/([^/]*)$", "$1") as ?o_name)
+    (REPLACE(STR(?s_type), "^.*[/#]([^/#]*)$", "$1") as ?s_type_name)
+    (REPLACE(STR(?o_type), "^.*[/#]([^/#]*)$", "$1") as ?o_type_name)
+WHERE {{
+  ?s ?p ?o .
+  OPTIONAL {{ ?s rdf:type ?s_type }}
+  OPTIONAL {{ ?o rdf:type ?o_type }}
+  FILTER(?p NOT IN (<http://semanticscience.org/resource/hasUnit>, rdfs:domain, rdfs:range, rdfs:subPropertyOf, rdf:first, rdf:rest, owl:members, <http://www.w3.org/ns/prov#generatedAtTime>, owl:allValuesFrom, <http://semanticscience.org/resource/isAttributeOf>)) .
+  FILTER(?o NOT IN (owl:ObjectProperty, owl:Class, owl:NamedIndividual, owl:AllDisjointClasses, owl:Restriction, <http://semanticscience.org/resource/isAttributeOf>)) .
+  FILTER (!isBlank(?o)) . FILTER (!isBlank(?s)) . FILTER(?o != '') .
+  FILTER((REPLACE(STR(?s), "^.*/([^/]*)$", "$1")) IN ({formatted_values}))
+}}                              
                    """
                 with db.get_allegro(project_id) as conn:
                     with conn.executeTupleQuery(sparql) as results:
                         for result in results:
-                            individuals.append(str(result.getValue('individual')).replace('"', ''))
-                            labels.append(str(result.getValue('label')).replace('"', ''))
-                            types.append(str(result.getValue('type')).replace('"', ''))
-                
-                df = pd.DataFrame({'individuals': individuals, 'labels': labels, 'types': types})
-                
-                graph = nx.Graph()
-                for _, row in df.iterrows():
-                    graph.add_edge(row['individuals'], row['types'], label=row['labels'])
+                            s_uri = str(result.getValue('s_uri')).replace('"', '')
+                            s_name = str(result.getValue('s_name')).replace('"', '')
+                            s_type = str(result.getValue('s_type_name')).replace('"', '')
+                            label = str(result.getValue('label')).replace('"', '')
+                            o_uri = str(result.getValue('o_uri')).replace('"', '')
+                            o_name = str(result.getValue('o_name')).replace('"', '')
+                            o_type = str(result.getValue('o_type_name')).replace('"', '')
 
-                pos = nx.spring_layout(graph, k=3/np.sqrt(graph.order()))
-                labels = nx.get_edge_attributes(graph, 'label')
-                plt.figure(figsize=(12, 12))
-                nx.draw(graph, pos, with_labels=True, font_size=9, node_size=1000, node_color='lightblue', edge_color='gray', alpha=1)
-                nx.draw_networkx_edge_labels(graph, pos, edge_labels=labels, font_size=7, label_pos=0.5, verticalalignment='center', clip_on=False)
-                plt.title('Knowledge Graph')
-                buffer = io.BytesIO()
-                plt.savefig(buffer, format='png')
-                b64 = base64.b64encode(buffer.getvalue()).decode('ascii')
+                            nodes_dict[s_uri] = {"id": s_uri, "name": s_name, "type": s_type}
+                            nodes_dict[o_uri] = {"id": o_uri, "name": o_name, "type": o_type}
+                            edges.append({"source": s_uri, "target": o_uri, "label": label})
 
-            plt.clf()
+                graph_data = {"data":{
+                    "nodes": list(nodes_dict.values()),
+                    "edges": edges
+                }}
+                
+
         except Exception as e:
             flash(str(e), category='error')
 
@@ -211,8 +214,9 @@ def generatestatistics():
                                , selected_classes=selected_classes
                                , chart_list=chart_list
                                , chart_type=selected_chart
-                               , img_uri=b64
-                               , isKnowledgeGraphSelected=isKnowledgeGraphSelected
+                               , img_uri=b64 if not is_knowledge_graph_selected else None
+                               , is_knowledge_graph_selected=is_knowledge_graph_selected
+                               , graph_data=graph_data if is_knowledge_graph_selected else None
                                )
 
     elif request.method == 'GET':

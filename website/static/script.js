@@ -5,20 +5,14 @@
 console.log("✅ script.js foi carregado com sucesso!");
 console.log("📊 D3 disponível?", typeof d3 !== 'undefined');
 async function loadGraph() {
-    try {
-        const response = await fetch("http://localhost:7569/api/graph");
-        const data = await response.json();
-        console.log(data);
-        return data;
-    } catch (error) {
-        console.error('Erro ao carregar grafo:', error);
-    }
+    console.log(window.GRAPH_DATA)
+    return window.GRAPH_DATA
 }
 
 
 // Canvas dimensions
-const width = 2560
-const height = 1440
+const width = 1600
+const height = 1200
 
 // Load graph data from API
 var graph = await loadGraph()
