@@ -1,0 +1,79 @@
+{% extends "base.html" %} {% block title %}Generate{% endblock %} {% block content%}
+    <div class="page-container">
+      <h3>Generate</h3>
+      <br />
+    </div>
+    <div class="form-group">
+        <label for="project_name">Project name:</label> 
+        <select id="projeto" name="projeto" class="form-control">
+            <option value="">Select a project...</option>
+        </select>
+        <br>
+        <button id="btn" class="btn btn-primary" onclick="rodarComando()" disabled>Executar script</button>
+    </div>
+    <script>
+        async function carregarProjetos() {
+            const select = document.getElementById('projeto');
+            const btn = document.getElementById('btn');
+
+            try {
+                const res = await fetch('/projects');
+                const projetos = await res.json();
+
+                select.innerHTML = '<option value="">Select a project...</option>';
+
+                projetos.forEach(p => {
+                    const option = document.createElement('option');
+                    option.value = p.project_id;
+                    option.textContent = p.project_name;
+                    select.appendChild(option);
+                });
+
+                btn.disabled = false;
+
+            } catch (err) {
+                select.innerHTML = '<option value="">Erro ao carregar projetos</option>';
+                console.error('Erro ao buscar projetos:', err);
+            }
+        }
+
+        function rodarComando() {
+            const select = document.getElementById('projeto');
+            const btn = document.getElementById('btn');
+
+            if (!select.value) {
+                window.location.href = '/generate?error=' + 
+                    encodeURIComponent("Select a project before executing the script.");
+                return;
+            }
+
+            const projectId = select.value;
+            const projectName = select.options[select.selectedIndex].text;
+
+            btn.disabled = true;
+            select.disabled = true;
+            btn.textContent = '⏳ Executando...';
+
+            const source = new EventSource(`/rodar-comando?project_id=${projectId}`);
+
+            source.onmessage = (event) => {
+
+                if (event.data === '[FIM]') {
+                    source.close();
+                    window.location.href = '/generate?success=' + 
+                        encodeURIComponent(`Script successfully executed for project ${projectName}.`);
+                    return;
+                }
+            };
+
+            source.onerror = () => {
+                source.close();
+                window.location.href = '/generate?error=' + 
+                    encodeURIComponent("Connection lost while executing the script.");
+            };
+        }
+
+        // Inicia carregando os projetos
+        carregarProjetos();
+    </script>
+{% endblock %}

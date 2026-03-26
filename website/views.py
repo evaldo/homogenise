@@ -2,7 +2,7 @@ import os
 import urllib.request
 import shutil
 import uuid
-from flask import Blueprint, redirect, render_template, request, flash, url_for, make_response, jsonify
+from flask import Blueprint, redirect, render_template, request, flash, url_for, make_response, jsonify, Response
 from flask_login import login_required, current_user
 from franz.openrdf.rio.rdfformat import RDFFormat
 from wordcloud import WordCloud, STOPWORDS
@@ -19,6 +19,9 @@ import pandas as pd
 import csv
 import chardet
 import re
+import shutil
+import subprocess
+from website.models import project
 
 views = Blueprint('views', __name__)
 
@@ -696,18 +699,13 @@ def projectdata():
                     project_config_path = os.path.join(project_path, 'config')
                     os.makedirs(project_config_path, exist_ok=True)
 
+                    templateCodeMappings_path = "/app/CodeMappings.csv"
                     codeMappings_path = os.path.join(project_config_path, "CodeMappings.csv")
+                    shutil.copy2(templateCodeMappings_path, codeMappings_path)
 
-                    with open(codeMappings_path, 'w', newline='', encoding='utf-8') as f:
-                        writer = csv.writer(f)
-                        writer.writerow(['code', 'uri', 'label']) 
-
+                    templateProperties_path = "/app/Properties.csv"
                     properties_path = os.path.join(project_config_path, "Properties.csv")
-
-                    with open(properties_path, 'w', newline='', encoding='utf-8') as f:
-                        writer = csv.writer(f)
-                        writer.writerow(['Column', 'Property']) 
-
+                    shutil.copy2(templateProperties_path, properties_path)
                     
                     project_input_path = os.path.join(project_path, 'input')
                     os.makedirs(project_input_path, exist_ok=True)
@@ -748,12 +746,13 @@ def projectdata():
 
                     trig_path = os.path.join(project_output_path, 'trig')
                     os.makedirs(trig_path, exist_ok=True)
-
-                    outfile_path = os.path.join(trig_path, f'{project_name}-kg.trig')
-                    open(outfile_path, 'w').close()
                     
                     ttl_path = os.path.join(project_output_path, 'ttl')
                     os.makedirs(ttl_path, exist_ok=True)
+
+                    outfile_path = os.path.join(trig_path, f'kg_{project_name}.ttl')
+                    open(outfile_path, 'w').close()
+                    
 
                     fillPrefixes(project_name)
 
@@ -761,9 +760,10 @@ def projectdata():
                     with open(config_ini_path, 'w') as f:
                         f.write("[Prefixes]\n")
                         f.write("# Specify a file with the prefixes for existing ontologies used in your translation\n")
-                        f.write(f'prefixes = {project_name}/config/Prefixes.csv\n')
+                        f.write(f'prefixes = {project_name}/config/prefixes.csv\n')
                         f.write("# Specify the base uri to be associated with all triples minted by the script\n")
-                        f.write(f'base_uri = {project_base_uri}\n\n')
+                        f.write(f'base_uri = {project_base_uri}\n')
+                        f.write("nanopublication=disabled\n\n")
                         f.write("[Source Files]\n")
                         f.write(f'dictionary = {project_name}/input/DM/DictionaryMapping.csv\n')
                         f.write(f'codebook = {project_name}/input/CB/CodeBook.csv\n')
@@ -773,9 +773,9 @@ def projectdata():
                         f.write(f'infosheet = {project_name}/config/Infosheet.csv\n')
                         f.write(f'properties = {project_name}/config/Properties.csv\n\n')
                         f.write("[Output Files]\n")
-                        f.write(f'out_file = {project_name}/output/trig/{project_name}-kg.trig\n')
-                        f.write(f'query_file = {project_name}/output/sparql/{project_name}Query\n')
-                        f.write(f'swrl_file = {project_name}/output/swrl/{project_name}SWRL\n')
+                        f.write(f'out_file = {project_name}/output/trig/kg_{project_name}.ttl\n')
+                        f.write(f'query_file = {project_name}/output/sparql/qry_{project_name}\n')
+                        f.write(f'swrl_file = {project_name}/output/swrl/swrl_{project_name}\n')
 
                     flash(f"Project folder {project_name} created successfully!", category='success')
                 except OSError as ex:
@@ -1355,6 +1355,19 @@ def codebook():
         flash(error_message, 'error')
 
     return render_template('codeBook.html', user=current_user)
+
+@views.route('/generate')
+def generate():
+    success_message = request.args.get('success')
+    if success_message:
+        flash(success_message, 'success')
+
+    error_message = request.args.get('error')
+    if error_message:
+        flash(error_message, 'error')
+
+    return render_template('generate.html', user=current_user)
+
     
 @views.route('/saveCodeBook/<project_name>', methods=['POST'])
 def saveCodeBook(project_name):
@@ -1383,7 +1396,7 @@ def saveCodeBook(project_name):
 def fillPrefixes(project_name):
     try:
         project_path = os.path.join("/app", project_name, "config")
-        csv_file = os.path.join(project_path, "Prefixes.csv")
+        csv_file = os.path.join(project_path, "prefixes.csv")
 
         os.makedirs(project_path, exist_ok=True)
 
@@ -1427,3 +1440,59 @@ def infosheetDefaultOptions():
         "TimeLine": "input/TL/TimeLine.csv"
     }
     return jsonify(defaultsOptions)
+
+@views.route('/rodar-comando')
+def rodar_comando():
+    project_id = request.args.get('project_id')
+
+    conn = db.get_cursor()
+    conn.execute(
+        "SELECT project_name FROM app.project WHERE project_id = %s",
+        (project_id,)
+    )
+    result = conn.fetchone()
+    conn.close()
+
+    if not result:
+        return "Projeto não encontrado", 404
+
+    project_name = result[0]
+
+    def gerar_saida():
+        try:
+            import subprocess
+
+            ini_path = f"{project_name}/config/config_{project_name}.ini"
+
+            comando = [
+                "python",
+                "sdd2rdf.py",
+                ini_path
+            ]
+
+            processo = subprocess.Popen(
+                comando,
+                cwd="/app",
+                stdout=subprocess.PIPE,
+                stderr=subprocess.STDOUT,
+                text=True
+            )
+
+            for linha in processo.stdout:
+                yield f"data: {linha.strip()}\n\n"
+
+            processo.wait()
+            yield "data: [FIM]\n\n"
+
+        except Exception as e:
+            yield f"data: Erro: {str(e)}\n\n"
+            yield "data: [FIM]\n\n"
+
+    return Response(
+        gerar_saida(),
+        mimetype='text/event-stream',
+        headers={
+            "Cache-Control": "no-cache",
+            "X-Accel-Buffering": "no"
+        }
+    )

@@ -2,6 +2,15 @@
     <div class="page-container">
         <h3>Dictionary Mapping</h3>
         <br />
+
+        <div id="project-selector">
+            <label for="project-dropdown"><strong>Project:</strong></label>
+            <select id="project-dropdown">
+                <option value="">-- Select a project --</option>
+            </select>
+        </div>
+
+        <br />
         <div id="handsontable-container"></div>
         <br />
         <button id="save-button" class="btn btn-primary" disabled>Save changes</button>
@@ -11,8 +20,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/handsontable/dist/handsontable.full.min.css">
 
     <script>
-        let projectDropDown = [];
         const saveButton = document.getElementById('save-button');
+        const projectDropdown = document.getElementById('project-dropdown');
         let handsOnTable;
 
         const colHeaders = ["Column", "Attribute", "Attribute Of", "Entity", "Unit", "Format",
@@ -21,22 +30,30 @@
 
         fetch('/projects').then(resp => resp.json())
         .then(data => {
-            console.log("Lista de proj:", data)
-            projectDropDown = data.map(it => it.project_name);
+            data.forEach(it => {
+                const option = document.createElement('option');
+                option.value = it.project_name;
+                option.textContent = it.project_name;
+                projectDropdown.appendChild(option);
+            });
             initializeTable(getEmptyData());
         }).catch(e => console.log("erro:", e));
 
-        function getEmptyData(projectName = "") {
-          let firstRow = Array(colHeaders.length).fill("");
-          firstRow[0] = "Project";
-          firstRow[3] = projectName;
+        projectDropdown.addEventListener('change', function() {
+            const selectedProject = this.value;
+            if (selectedProject) {
+                loadProject(selectedProject);
+            } else {
+                initializeTable(getEmptyData());
+            }
+        });
 
-          return [firstRow];
+        function getEmptyData() {
+            return [Array(colHeaders.length).fill("")];
         }
 
         async function initializeTable(data) {
             const container = document.getElementById('handsontable-container');
-            console.log("HOT com dados:", data)
             if (handsOnTable) handsOnTable.destroy();
 
             handsOnTable = new Handsontable(container, {
@@ -44,29 +61,6 @@
                 colHeaders: colHeaders,
                 rowHeaders: true,
                 columns: colHeaders.map(() => ({ type: 'text' })),
-                cells: function(row, col){
-                  const cellsProperties = {};
-
-                  if (row === 0 && col === 0){
-                    cellsProperties.readOnly = true;
-                  }
-
-                  if (row === 0 && col === 3){
-                    cellsProperties.type = 'dropdown';
-                    cellsProperties.source = projectDropDown;
-                  }
-
-                  return cellsProperties;
-                },
-                afterChange: function(changes, source) {
-                    if (source === 'edit' || source === 'Autofill.fill') {
-                        changes.forEach(([row, prop, oldVal, newProjectSelected]) => {
-                            if (row === 0 && prop === 3 && newProjectSelected) {
-                                loadProject(newProjectSelected);
-                            }
-                        });
-                    }
-                },
                 minSpareRows: 1,
                 licenseKey: 'non-commercial-and-evaluation'
             });
@@ -77,38 +71,37 @@
             fetch(`/loadDictionaryMapping/${encodeURIComponent(project)}`)
             .then(resp => resp.json())
             .then(data => {
-                if (data.length > 0){
+                if (data.length > 0) {
                     initializeTable(data);
-                    console.log("Load DM:", data);
                 } else {
-                    initializeTable(getEmptyData(project));
+                    initializeTable(getEmptyData());
                 }
-            }).catch(e => console.error('Error loading Dictionary Mapping:', e))
+            }).catch(e => console.error('Error loading Dictionary Mapping:', e));
         }
 
-        saveButton.addEventListener('click', () => {            
-            const dataInserted = handsOnTable.getData();
-            const projectChosen = dataInserted[0][3]; 
+        saveButton.addEventListener('click', () => {
+            const projectChosen = projectDropdown.value;
 
             if (!projectChosen) {
-                window.location.href = '/dictionarymapping?error=' + encodeURIComponent("Choose a project in the 'Project' row before saving!");
+                window.location.href = '/dictionarymapping?error=' + encodeURIComponent("Choose a project before saving!");
                 return;
             }
+
+            const dataInserted = handsOnTable.getData();
 
             fetch(`/saveDictionaryMapping/${encodeURIComponent(projectChosen)}`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ data:dataInserted })
+                body: JSON.stringify({ data: dataInserted })
             }).then(resp => resp.json())
             .then(result => {
-                if (result.status === 'ok'){
+                if (result.status === 'ok') {
                     window.location.href = '/dictionarymapping?success=' + encodeURIComponent(result.message);
                 } else {
                     window.location.href = '/dictionarymapping?error=' + encodeURIComponent(result.message);
                 }
             }).catch(e => window.location.href = '/dictionarymapping?error=' + encodeURIComponent("Unexpected error while saving."));
         });
-        console.log(csvData);
     </script>
 
     <style>
@@ -118,6 +111,20 @@
             align-items: center;
             justify-content: center;
             text-align: center;
+        }
+
+        #project-selector {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        #project-dropdown {
+            padding: 5px 10px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            font-size: 14px;
+            min-width: 200px;
         }
 
         #handsontable-container {

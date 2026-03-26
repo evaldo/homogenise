@@ -58,6 +58,11 @@ def dictionaryMapping():
 def codeBook():
     return render_template("codeBook.html", user=current_user)
 
+@auth.route('/generate')
+@login_required
+def generate():
+    return render_template("generate.html", user=current_user)
+
 @auth.route('/sign-up', methods=['GET', 'POST'])
 def sign_up():
     if request.method == 'POST':
