@@ -7,8 +7,8 @@
         <button id="save-button" class="btn btn-primary" disabled>Save changes</button>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/handsontable/dist/handsontable.full.min.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/handsontable/dist/handsontable.full.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/handsontable@14.6.0/dist/handsontable.full.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/handsontable@14.6.0/dist/handsontable.full.min.css">
 
     <script>
         let projectDropDown = [];
@@ -62,6 +62,7 @@
                     return dropDownCellProperties;
                 },
                 minSpareRows: 0,
+                themeName: 'ht-theme-main',
                 licenseKey: 'non-commercial-and-evaluation'
             });
             saveButton.disabled = false;

@@ -11,7 +11,22 @@
         <br>
         <button id="btn" class="btn btn-primary" onclick="rodarComando()" disabled>Executar script</button>
     </div>
+
+    <div id="alertContainer" class="mt-3"></div>
+
     <script>
+        function showAlert(message, type) {
+            const container = document.getElementById('alertContainer');
+            container.innerHTML = `
+                <div class="alert alert-${type} alter-dismissable fade show" role="alert">
+                    ${message}
+                    <button type="button" class="close" data-dismiss="alert">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            `;
+        }
+
         async function carregarProjetos() {
             const select = document.getElementById('projeto');
             const btn = document.getElementById('btn');
@@ -42,8 +57,7 @@
             const btn = document.getElementById('btn');
 
             if (!select.value) {
-                window.location.href = '/generate?error=' + 
-                    encodeURIComponent("Select a project before executing the script.");
+                showAlert("Select a project before executing the script.", "danger");
                 return;
             }
 
@@ -53,27 +67,30 @@
             btn.disabled = true;
             select.disabled = true;
             btn.textContent = '⏳ Executando...';
+            document.getElementById('alertContainer').innerHTML = '';
 
             const source = new EventSource(`/rodar-comando?project_id=${projectId}`);
 
             source.onmessage = (event) => {
-
                 if (event.data === '[FIM]') {
                     source.close();
-                    window.location.href = '/generate?success=' + 
-                        encodeURIComponent(`Script successfully executed for project ${projectName}.`);
+                    btn.disabled = false;
+                    select.disabled = false;
+                    btn.textContent = 'Executar script';
+                    showAlert(`Script executado com sucesso para o projeto ${projectName}.`, "success");
                     return;
                 }
             };
 
             source.onerror = () => {
                 source.close();
-                window.location.href = '/generate?error=' + 
-                    encodeURIComponent("Connection lost while executing the script.");
+                btn.disabled = false;
+                select.disabled = false;
+                btn.textContent = 'Executar script';
+                showAlert("Script não foi executado corretamente.", "danger");
             };
         }
 
-        // Inicia carregando os projetos
         carregarProjetos();
     </script>
 {% endblock %}

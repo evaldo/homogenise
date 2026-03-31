@@ -8,5 +8,8 @@ RUN pip install -r requirements.txt
 
 COPY ./main.py /app
 COPY ./website /app/website
+COPY ./CodeMappings.csv /app/CodeMappings.csv
+COPY ./Properties.csv /app/Properties.csv
 
+#CMD python3 -m debugpy --listen 0.0.0.0:5678 --wait-for-client main.py
 CMD python3 main.py

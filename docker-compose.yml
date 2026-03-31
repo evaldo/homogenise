@@ -9,7 +9,7 @@ services:
       - POSTGRES_PASSWORD=1234
       - POSTGRES_DB=homogenise
     ports:
-      - "5439:5439"
+      - "5440:5439"
     volumes:      
       - ./db/homogenise/pgdata:/var/lib/postgresql
       - ./website/settings/init.sql:/docker-entrypoint-initdb.d/create_database.sql
@@ -28,7 +28,7 @@ services:
       - AGRAPH_SUPER_USER=admin
       - AGRAPH_SUPER_PASSWORD=12345
     ports:
-      - '10000-10035:10000-10035'
+      - "11000-11035:10000-10035"
     volumes:
       - agdata:/agraph/data
       - agconfig:/agraph/etc
@@ -40,6 +40,7 @@ services:
         condition: service_healthy
     ports:
       - '5000:5000'
+      - '5678:5678'
     volumes:
       - ./website:/app/website
       - ./:/app
@@ -50,7 +51,7 @@ services:
       context: ./
       dockerfile: ./Dockerfile
     command: python3 main.py
-
+    # command: python3 -m debugpy --listen 0.0.0.0:5678 --wait-for-client main.py
 volumes:
   agdata:
   agconfig:
