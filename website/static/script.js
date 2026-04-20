@@ -4,7 +4,7 @@
  */
 console.log("✅ script.js foi carregado com sucesso!");
 console.log("📊 D3 disponível?", typeof d3 !== 'undefined');
-async function loadGraph() {
+function loadGraph() {
     console.log(window.GRAPH_DATA)
     return window.GRAPH_DATA
 }
@@ -15,7 +15,7 @@ const width = 1600
 const height = 1200
 
 // Load graph data from API
-var graph = await loadGraph()
+var graph = loadGraph()
 
 // Transform nodes: add random initial positions
 const nodes = graph.data.nodes.map(d => ({
@@ -32,48 +32,21 @@ const edges = graph.data.edges.map(d => ({...d}))
 console.log("nodes:", nodes)
 console.log("edges:", edges)
 
-// ========== DEBUG - Procurando nó problemático ==========
-console.log("\n🔍 DEBUG - Procurando nó problemático");
-const problemId = '4:b1077f90-fe40-4c7e-8e8f-7fb1b02d1fa7:9';
-const foundNode = nodes.find(n => n.id === problemId);
 
-if (foundNode) {
-    console.log("✅ Nó problemático ENCONTRADO:", foundNode);
-} else {
-    console.log("🔴 Nó problemático NÃO ENCONTRADO!");
-    console.log("🔍 Primeiros 5 IDs dos nodes:");
-    nodes.slice(0, 5).forEach(n => console.log(`   - ${n.id}`));
-}
-
-// Procurar edges que usam esse ID
-const edgesWithProblem = edges.filter(e =>
-    e.source === problemId || e.target === problemId
-);
-console.log("🔗 Edges com ID problemático:", edgesWithProblem.length);
-edgesWithProblem.forEach(e => {
-    console.log(`   Source: ${e.source}`);
-    console.log(`   Target: ${e.target}`);
-});
-
-// Verificar se TODOS os edges têm nós correspondentes
 const nodeIds = new Set(nodes.map(n => n.id));
 const orphanEdges = edges.filter(e =>
     !nodeIds.has(e.source) || !nodeIds.has(e.target)
 );
 
 if (orphanEdges.length > 0) {
-    console.log(`\n🔴 FRONTEND: Encontrados ${orphanEdges.length} edges órfãos!`);
+
     orphanEdges.slice(0, 3).forEach(e => {
         console.log(`   Source: ${e.source} (existe: ${nodeIds.has(e.source)})`);
         console.log(`   Target: ${e.target} (existe: ${nodeIds.has(e.target)})`);
     });
-} else {
-    console.log("\n✅ FRONTEND: Todos os edges têm nós correspondentes!");
 }
-console.log("===================\n");
-// ========== FIM DO DEBUG ==========
 
-// Initialize SVG canvas and disable text selection
+
 const svg = d3.select("#graph")
     .style("user-select", "none")
     .style("-webkit-user-select", "none")
