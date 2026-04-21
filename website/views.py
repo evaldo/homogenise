@@ -1123,3 +1123,73 @@ def uploadfileonto():
             flash('Repeat operation and selecting a OWL file!', category='success')
 
         return render_template("uploadonto.html", user=current_user)
+
+
+@views.route('/aletheia', methods=['GET'])
+@login_required
+def aletheia():
+    project_id = request.args.get('project_id', type=int)
+
+    cur = db.get_cursor()
+    cur.execute("SELECT project_id, project_name FROM app.project ORDER BY project_name")
+    projects = cur.fetchall()
+    cur.close()
+
+    project_name = next((p[1] for p in projects if p[0] == project_id), None)
+
+    return render_template("aletheia.html", user=current_user,
+                           project_id=project_id,
+                           project_name=project_name,
+                           projects=projects)
+
+
+@views.route('/api/graph', methods=['GET'])
+@login_required
+def api_graph():
+    project_id = request.args.get('project_id', type=int)
+    if not project_id:
+        return jsonify({"ok": False, "error": "project_id is required"}), 400
+
+    nodes_dict = {}
+    edges = []
+
+    sparql = """
+        SELECT distinct
+            (STR(?s) as ?s_uri)
+            (REPLACE(STR(?s), "^.*/([^/]*)$", "$1") as ?s_name)
+            (REPLACE(STR(?p), "^.*/([^/]*)$", "$1") as ?label)
+            (STR(?o) as ?o_uri)
+            (REPLACE(STR(?o), "^.*/([^/]*)$", "$1") as ?o_name)
+            (REPLACE(STR(?s_type), "^.*[/#]([^/#]*)$", "$1") as ?s_type_name)
+            (REPLACE(STR(?o_type), "^.*[/#]([^/#]*)$", "$1") as ?o_type_name)
+        WHERE {
+            ?s rdf:type ?s_type .
+            ?o rdf:type ?o_type .
+            ?s ?p ?o .
+            FILTER(?s_type IN (owl:Class)) .
+            FILTER(?o_type IN (owl:Class)) .
+            FILTER(?p NOT IN (rdf:type, <http://semanticscience.org/resource/hasUnit>, rdfs:domain, rdfs:range, rdfs:subPropertyOf, rdf:first, rdf:rest, owl:members, <http://www.w3.org/ns/prov#generatedAtTime>, owl:allValuesFrom, <http://semanticscience.org/resource/isAttributeOf>)) .
+            FILTER (!isBlank(?o)) . FILTER (!isBlank(?s)) .
+        }
+    """
+
+    try:
+        with db.get_allegro(project_id) as conn:
+            with conn.executeTupleQuery(sparql) as results:
+                for result in results:
+                    s_uri  = str(result.getValue('s_uri')).replace('"', '')
+                    s_name = str(result.getValue('s_name')).replace('"', '')
+                    s_type = str(result.getValue('s_type_name')).replace('"', '')
+                    label  = str(result.getValue('label')).replace('"', '')
+                    o_uri  = str(result.getValue('o_uri')).replace('"', '')
+                    o_name = str(result.getValue('o_name')).replace('"', '')
+                    o_type = str(result.getValue('o_type_name')).replace('"', '')
+
+                    nodes_dict[s_uri] = {"id": s_uri, "name": s_name, "type": s_type}
+                    nodes_dict[o_uri] = {"id": o_uri, "name": o_name, "type": o_type}
+                    edges.append({"source": s_uri, "target": o_uri, "label": label})
+
+        return jsonify({"ok": True, "data": {"nodes": list(nodes_dict.values()), "edges": edges}})
+
+    except Exception as e:
+        return jsonify({"ok": False, "error": str(e)}), 500
