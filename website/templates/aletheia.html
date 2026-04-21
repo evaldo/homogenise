@@ -42,22 +42,44 @@
 <!-- Injeta project_id para o JS -->
 <script>window.PROJECT_ID = {{ project_id or 'null' }};</script>
 
-<!-- Sem projeto: mostra seletor -->
-{% if not project_id %}
-<div class="card border-secondary bg-dark text-light rounded-0 mb-3">
-    <div class="card-body bg-dark">
-        <form method="GET" action="/aletheia" class="form-inline">
-            <label class="mr-2 text-light" for="project_select">Selecione um projeto:</label>
-            <select id="project_select" name="project_id" class="form-control form-control-sm bg-dark text-light border-secondary mr-2">
-                <option value="">-- selecione --</option>
-                {% for p in projects %}
-                    <option value="{{ p[0] }}">{{ p[1] }}</option>
-                {% endfor %}
-            </select>
-            <button type="submit" class="btn btn-sm btn-primary">Abrir</button>
-        </form>
+<!-- Modal de seleção de projeto -->
+<div class="modal fade" id="projectModal" tabindex="-1" role="dialog"
+     data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content bg-dark text-light border-secondary">
+            <div class="modal-header border-secondary">
+                <h5 class="modal-title">Aletheia</h5>
+                {% if project_id %}
+                <button type="button" class="close text-light" data-dismiss="modal">
+                    <span>&times;</span>
+                </button>
+                {% endif %}
+            </div>
+            <div class="modal-body">
+                <form method="GET" action="/aletheia" id="project-form">
+                    <div class="form-group">
+                        <label for="project_select" class="text-secondary small">Selecione um projeto para visualizar</label>
+                        <select id="project_select" name="project_id"
+                                class="form-control bg-dark text-light border-secondary mt-1">
+                            <option value="">-- selecione --</option>
+                            {% for p in projects %}
+                                <option value="{{ p[0] }}" {% if p[0] == project_id %}selected{% endif %}>
+                                    {{ p[1] }}
+                                </option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="modal-footer border-secondary px-0 pb-0">
+                        <button type="submit" class="btn btn-primary w-100">Abrir</button>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
 </div>
+
+{% if not project_id %}
+<script>$('#projectModal').modal('show');</script>
 {% endif %}
 
 <!-- Generate panel -->
@@ -73,7 +95,11 @@
         {% if project_name %}
             <span class="text-info small mr-3">{{ project_name }}</span>
         {% endif %}
-        <span class="text-secondary small">Generate OWL Concepts With AI</span>
+        <span class="text-secondary small mr-auto">Generate OWL Concepts With AI</span>
+        <button type="button" class="btn btn-sm btn-outline-secondary ml-2"
+                onclick="event.stopPropagation(); $('#projectModal').modal('show');">
+            Trocar projeto
+        </button>
     </div>
     <div class="collapse" id="generate-panel-body">
         <div class="card-body bg-dark">
