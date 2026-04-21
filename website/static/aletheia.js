@@ -872,7 +872,7 @@ function updateTree() {
             const preview = previewMap.get(d.data.id);
             if (preview === "remove") return "#f85149";
             if (preview === "add")    return "#3fb950";
-            return d.data.id === selectedId ? "orange" : (d.children ? null : "#999");
+            return d.data.id === selectedId ? "orange" : (d.children ? "#e6edf3" : "#999");
         });
 
     treeNode.selectAll("text.label")
@@ -886,7 +886,7 @@ function updateTree() {
             const preview = previewMap.get(d.data.id);
             if (preview === "remove") return "#f85149";
             if (preview === "add")    return "#3fb950";
-            return null;
+            return d.data.id === selectedId ? "orange" : "#e6edf3";
         })
         .text(d => d.data.name)
         .on("click", (event, d) => {
