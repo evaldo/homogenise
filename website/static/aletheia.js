@@ -2,12 +2,27 @@
  * Fetches graph data from the Flask backend API
  * @returns {Object} Graph data containing nodes and edges
  */
+function _localName(uri) {
+    if (!uri) return uri;
+    const hash = uri.lastIndexOf('#');
+    if (hash !== -1) return uri.slice(hash + 1);
+    const slash = uri.lastIndexOf('/');
+    if (slash !== -1) return uri.slice(slash + 1);
+    return uri;
+}
+
 async function loadGraph() {
     if (!window.PROJECT_ID) return { data: { nodes: [], edges: [] } };
     try {
         const response = await fetch(`/api/graph?project_id=${window.PROJECT_ID}`);
         const data = await response.json();
         if (!data.ok) throw new Error(data.error);
+
+        data.data.nodes = data.data.nodes.map(n => ({ ...n, name: _localName(n.name) }));
+        data.data.edges = data.data.edges
+            .filter(e => e.source !== e.target)
+            .map(e => ({ ...e, label: _localName(e.label) }));
+
         return data;
     } catch (error) {
         console.error('Erro ao carregar grafo:', error);
@@ -124,10 +139,35 @@ const textG       = zoomG.append("g").attr("text-anchor", "middle").attr("domina
 // Referências vivas para as seleções D3
 let link, linkLabel, linkLabelBg, node, text;
 
+// Set de chaves "srcId--tgtId" cujo reverso também existe (edges bidirecionais)
+let biEdgeSet = new Set();
+
+function _biOffset(d, magnitude) {
+    const s = d.source?.id ?? d.source;
+    const t = d.target?.id ?? d.target;
+    if (!biEdgeSet.has(`${s}--${t}`)) return { px: 0, py: 0 };
+    // Perpendicular sempre calculada do nó com menor ID pro maior — garante direção consistente
+    const [from, to] = s < t ? [d.source, d.target] : [d.target, d.source];
+    const dx = (to.x ?? 0) - (from.x ?? 0);
+    const dy = (to.y ?? 0) - (from.y ?? 0);
+    const len = Math.sqrt(dx * dx + dy * dy) || 1;
+    const sign = s < t ? 1 : -1;
+    return { px: (-dy / len) * magnitude * sign, py: (dx / len) * magnitude * sign };
+}
+
 /**
  * Re-renderiza links, nós e textos a partir dos arrays `edges` e `nodes`.
  */
 function redrawGraph() {
+    // Detecta edges bidirecionais (A→B e B→A ambos existem)
+    const _edgeKeys = new Set(edges.map(e => `${e.source?.id ?? e.source}--${e.target?.id ?? e.target}`));
+    biEdgeSet = new Set();
+    for (const e of edges) {
+        const s = e.source?.id ?? e.source;
+        const t = e.target?.id ?? e.target;
+        if (_edgeKeys.has(`${t}--${s}`)) biEdgeSet.add(`${s}--${t}`);
+    }
+
     // --- Links ---
     link = linkG.selectAll("line")
         .data(edges, d => {
@@ -589,18 +629,18 @@ const simulation = d3.forceSimulation(nodes)
 
 function ticked() {
     link
-        .attr("x1", d => d.source.x)
-        .attr("y1", d => d.source.y)
-        .attr("x2", d => d.target.x)
-        .attr("y2", d => d.target.y);
+        .attr("x1", d => d.source.x + _biOffset(d, 6).px)
+        .attr("y1", d => d.source.y + _biOffset(d, 6).py)
+        .attr("x2", d => d.target.x + _biOffset(d, 6).px)
+        .attr("y2", d => d.target.y + _biOffset(d, 6).py);
 
     // Posiciona labels das arestas com rotação alinhada à linha
     linkLabel
         .attr("transform", d => {
-            const mx = (d.source.x + d.target.x) / 2;
-            const my = (d.source.y + d.target.y) / 2;
+            const off = _biOffset(d, 18);
+            const mx = (d.source.x + d.target.x) / 2 + off.px;
+            const my = (d.source.y + d.target.y) / 2 + off.py;
             let angle = Math.atan2(d.target.y - d.source.y, d.target.x - d.source.x) * 180 / Math.PI;
-            // Evita texto de cabeça pra baixo
             if (angle > 90) angle -= 180;
             if (angle < -90) angle += 180;
             return `translate(${mx},${my}) rotate(${angle})`;
@@ -618,8 +658,9 @@ function ticked() {
 
         if (textEl) {
             const bbox = textEl.getBBox();
-            const mx = (d.source.x + d.target.x) / 2;
-            const my = (d.source.y + d.target.y) / 2;
+            const off = _biOffset(d, 18);
+            const mx = (d.source.x + d.target.x) / 2 + off.px;
+            const my = (d.source.y + d.target.y) / 2 + off.py;
             let angle = Math.atan2(d.target.y - d.source.y, d.target.x - d.source.x) * 180 / Math.PI;
             if (angle > 90) angle -= 180;
             if (angle < -90) angle += 180;
@@ -909,6 +950,16 @@ function highlightTree(id) {
 // SUGESTÕES DA IA
 // ============================================================
 
+function showSuggestMessage(msg, isError = false) {
+    const toolbar = document.getElementById('preview-toolbar');
+    const list    = document.getElementById('preview-action-list');
+    if (!toolbar || !list) return;
+    const color = isError ? '#f85149' : '#8b949e';
+    list.innerHTML = `<li style="color:${color}; padding: 4px 0;">${msg}</li>`;
+    toolbar.classList.remove('d-none');
+    toolbar.classList.add('d-flex');
+}
+
 async function getSuggestions() {
     const btn = document.getElementById('suggest-btn');
     if (btn) {
@@ -917,25 +968,41 @@ async function getSuggestions() {
     }
 
     try {
+        const liveNodes = nodes.filter(n => !n.__preview || n.__preview !== 'remove');
+        const liveEdges = edges.filter(e => !e.__preview || e.__preview !== 'remove');
+
+        const payload = {
+            nodes: liveNodes.map(n => ({ id: n.id, name: n.name, type: n.type })),
+            edges: liveEdges.map(e => ({
+                source: e.source?.id ?? e.source,
+                target: e.target?.id ?? e.target,
+                label:  e.label
+            }))
+        };
+
         const response = await fetch("/api/suggest", {
             method:  "POST",
             headers: { "Content-Type": "application/json" },
-            body:    JSON.stringify(graph.data)
+            body:    JSON.stringify(payload)
         });
         const data = await response.json();
 
         if (!data.ok) {
-            console.error("Erro nas sugestões:", data);
+            showSuggestMessage("Erro: " + (data.error ?? "resposta inválida do servidor"), true);
             return;
         }
 
+        if (data.warnings?.length) console.warn("[suggest] warnings:", data.warnings);
+
         if (!data.actions?.length) {
-            console.log("Nenhuma sugestão retornada.");
+            showSuggestMessage("O modelo não encontrou sugestões para este grafo.");
             return;
         }
 
         console.log("Sugestões recebidas:", data.actions);
         previewActions(data.actions);
+    } catch (err) {
+        showSuggestMessage("Erro de rede: " + err.message, true);
     } finally {
         if (btn) {
             btn.disabled = false;
