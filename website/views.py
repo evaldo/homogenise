@@ -1,8 +1,15 @@
 import os
+import re
+import types
+import tempfile
 import urllib.request
 import shutil
 import uuid
-from flask import Blueprint, redirect, render_template, request, flash, url_for, jsonify, current_app
+import json
+import time
+import requests as http_requests
+from flask import Blueprint, redirect, render_template, request, flash, url_for, jsonify, current_app, Response
+from owlready2 import get_ontology, Thing, ObjectProperty
 from flask_login import login_required, current_user
 from franz.openrdf.rio.rdfformat import RDFFormat
 from wordcloud import WordCloud, STOPWORDS
@@ -330,8 +337,8 @@ def insightsdata():
                             f.write(decoded_text)
 
                         file_names.append([file_id, file.filename])
-                    except:
-                        flash('Erro while saving file.', category='error')
+                    except Exception as e:
+                        flash(f'Erro while saving file: {e}', category='error')
                         return redirect(request.url)
 
             if len(file_names) == 0 and request.args.get("type_operation") is None:
@@ -1192,4 +1199,413 @@ def api_graph():
         return jsonify({"ok": True, "data": {"nodes": list(nodes_dict.values()), "edges": edges}})
 
     except Exception as e:
+        return jsonify({"ok": False, "error": str(e)}), 500
+
+
+def _sanitize_owl_name(name: str) -> str:
+    sanitized = re.sub(r'[^\w]', '_', name)
+    if sanitized and sanitized[0].isdigit():
+        sanitized = '_' + sanitized
+    sanitized = re.sub(r'_+', '_', sanitized).rstrip('_')
+    return sanitized or 'UnnamedClass'
+
+
+def _sanitize_filename(name: str) -> str:
+    return re.sub(r'[^\w\-.]', '_', name) or 'ontology'
+
+
+@views.route('/api/export/owl', methods=['POST'])
+@login_required
+def export_owl():
+    data     = request.json
+    nodes    = data.get('nodes', [])
+    edges    = data.get('edges', [])
+    iri      = data.get('iri',  'http://homogenise.example.org/ontology#')
+    ont_name = data.get('name', 'ontology')
+
+    onto = get_ontology(iri)
+
+    with onto:
+        classes = {}
+        for node in nodes:
+            cls = types.new_class(_sanitize_owl_name(node['name']), (Thing,))
+            classes[node['id']] = cls
+
+        properties = {}
+        for edge in edges:
+            label = edge.get('label', '')
+            if label and label != 'subClassOf' and label not in properties:
+                properties[label] = types.new_class(_sanitize_owl_name(label), (ObjectProperty,))
+
+        for edge in edges:
+            src_id = edge['source']['id'] if isinstance(edge['source'], dict) else edge['source']
+            tgt_id = edge['target']['id'] if isinstance(edge['target'], dict) else edge['target']
+            label  = edge.get('label', '')
+
+            src = classes.get(src_id)
+            tgt = classes.get(tgt_id)
+            if not src or not tgt:
+                continue
+
+            if label == 'subClassOf':
+                if tgt not in src.is_a:
+                    src.is_a.append(tgt)
+            elif label in properties:
+                restriction = properties[label].some(tgt)
+                if restriction not in src.is_a:
+                    src.is_a.append(restriction)
+
+    tmp_path = None
+    try:
+        with tempfile.NamedTemporaryFile(mode='wb', suffix='.owl', delete=False) as f:
+            tmp_path = f.name
+        onto.save(file=tmp_path, format="rdfxml")
+        with open(tmp_path, 'rb') as f:
+            owl_content = f.read()
+    finally:
+        if tmp_path and os.path.exists(tmp_path):
+            os.unlink(tmp_path)
+
+    return Response(
+        owl_content,
+        mimetype='application/rdf+xml',
+        headers={'Content-Disposition': f'attachment; filename="{_sanitize_filename(ont_name)}.owl"'}
+    )
+
+
+# ── Ollama helpers ────────────────────────────────────────────────────────
+
+_OLLAMA_HOST = os.environ.get('OLLAMA_HOST', 'http://localhost:11434')
+
+
+def _to_pascal(name: str) -> str:
+    replacements = {
+        'á':'a','à':'a','ã':'a','â':'a','ä':'a',
+        'é':'e','ê':'e','ë':'e',
+        'í':'i','î':'i','ï':'i',
+        'ó':'o','ô':'o','õ':'o','ö':'o',
+        'ú':'u','û':'u','ü':'u',
+        'ç':'c','ñ':'n',
+        'Á':'A','À':'A','Ã':'A','Â':'A',
+        'É':'E','Ê':'E',
+        'Í':'I','Î':'I',
+        'Ó':'O','Ô':'O','Õ':'O',
+        'Ú':'U','Û':'U',
+        'Ç':'C','Ñ':'N',
+    }
+    for k, v in replacements.items():
+        name = name.replace(k, v)
+    if name.isupper():
+        name = name.capitalize()
+    return name
+
+
+def _process_suggestion(suggestions):
+    actions = []
+    for s in suggestions:
+        action = {"type": s["action"], "payload": {}, "reason": s.get("reason", "")}
+        if s["action"] in ("removeEdge", "createEdge"):
+            action["payload"] = {"source": s["source"], "target": s["target"], "label": s.get("label", "")}
+        elif s["action"] in ("createNode", "removeNode"):
+            action["payload"] = {"id": s.get("id") or s.get("name"), "label": s.get("label") or s.get("name", "")}
+        actions.append(action)
+    return actions
+
+
+# ── /api/suggest ──────────────────────────────────────────────────────────
+
+@views.route('/api/suggest', methods=['POST'])
+@login_required
+def api_suggest():
+    graph_data = request.get_json()
+    if not graph_data:
+        return jsonify({"ok": False, "error": "JSON ausente no corpo"}), 400
+
+    nodes = graph_data.get("nodes", [])
+    edges = graph_data.get("edges", [])
+
+    node_types = [{"name": n["name"], "type": n["type"]} for n in nodes]
+    id_to_name = {n["id"]: n["name"] for n in nodes}
+    edge_tuples = [
+        {"source_name": id_to_name.get(e["source"], e["source"]),
+         "target_name": id_to_name.get(e["target"], e["target"]),
+         "label": e["label"]}
+        for e in edges
+    ]
+
+    schema = {
+        "type": "object",
+        "properties": {
+            "operations": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "properties": {
+                        "op": {"type": "string", "enum": ["add_node", "remove_node", "add_edge", "remove_edge"]},
+                        "node": {
+                            "type": "object",
+                            "properties": {
+                                "name": {"type": "string"},
+                                "type": {"type": "string", "enum": ["Class", "ObjectProperty"]}
+                            },
+                            "required": ["name"],
+                            "additionalProperties": False
+                        },
+                        "edge": {
+                            "type": "object",
+                            "properties": {
+                                "source_name": {"type": "string"},
+                                "target_name": {"type": "string"},
+                                "label": {"type": "string", "enum": ["subClassOf", "domain", "range"]}
+                            },
+                            "required": ["source_name", "target_name", "label"],
+                            "additionalProperties": False
+                        },
+                        "reason": {"type": "string"}
+                    },
+                    "required": ["op", "reason"],
+                    "additionalProperties": False
+                }
+            },
+            "warnings": {"type": "array", "items": {"type": "string"}}
+        },
+        "required": ["operations", "warnings"],
+        "additionalProperties": False
+    }
+
+    messages = [
+        {
+            "role": "system",
+            "content": "Você é um especialista em ontologias OWL.\nResponda APENAS com JSON válido. Não escreva markdown. Não escreva nada fora do JSON.\nEscreva todos os campos \"reason\" em português."
+        },
+        {
+            "role": "user",
+            "content": f"""Analise este grafo OWL e proponha um patch mínimo, útil e coerente.
+
+NÓS ATUAIS:
+{json.dumps(node_types, ensure_ascii=False, indent=2)}
+
+ARESTAS ATUAIS:
+{json.dumps(edge_tuples, ensure_ascii=False, indent=2)}
+
+Responda EXATAMENTE neste formato, sem exceções:
+{{
+  "operations": [
+    {{"op": "add_node", "node": {{"name": "NomeDaClasse", "type": "Class"}}, "reason": "motivo breve"}},
+    {{"op": "remove_node", "node": {{"name": "NomeDoNo"}}, "reason": "motivo breve"}},
+    {{"op": "add_edge", "edge": {{"source_name": "NoOrigem", "target_name": "NoDestino", "label": "subClassOf"}}, "reason": "motivo breve"}},
+    {{"op": "remove_edge", "edge": {{"source_name": "NoOrigem", "target_name": "NoDestino", "label": "range"}}, "reason": "motivo breve"}}
+  ],
+  "warnings": []
+}}
+
+REGRAS:
+- add_node/remove_node: SEMPRE inclua "node" com ao menos "name"
+- add_edge/remove_edge: SEMPRE inclua "edge" com source_name, target_name e label
+- label só pode ser: subClassOf, domain, range
+- Use os nomes dos nós exatamente como aparecem acima
+- Prefira poucas mudanças boas a muitas mudanças fracas
+- NUNCA invente nomes de nós"""
+        }
+    ]
+
+    try:
+        start = time.time()
+        resp = http_requests.post(
+            f"{_OLLAMA_HOST}/api/chat",
+            json={"model": "granite3.3:8b", "messages": messages, "stream": False, "format": schema, "options": {"temperature": 0.5}},
+            timeout=450
+        )
+        resp.raise_for_status()
+        elapsed = time.time() - start
+        print(f"[suggest] modelo respondeu em {elapsed:.1f}s")
+
+        parsed = json.loads(resp.json()["message"]["content"].strip())
+
+        op_map = {"add_node": "createNode", "remove_node": "removeNode", "add_edge": "createEdge", "remove_edge": "removeEdge"}
+        suggestions = []
+        warnings = list(parsed.get("warnings", []))
+        existing_names = {n["name"] for n in nodes}
+
+        for op in parsed.get("operations", []):
+            action = op_map.get(op.get("op"))
+            if not action:
+                warnings.append(f"op desconhecida ignorada: {op.get('op')}")
+                continue
+            reason = op.get("reason", "")
+
+            if op["op"] == "add_node":
+                node = op.get("node")
+                if not node or not node.get("name"):
+                    warnings.append(f"add_node sem campo 'node' ignorado: {reason}")
+                    continue
+                if node["name"] in existing_names:
+                    warnings.append(f"add_node ignorado, nó já existe: {node['name']}")
+                else:
+                    suggestions.append({"action": action, "id": str(uuid.uuid4()), "name": node["name"], "type": node.get("type", "Class"), "reason": reason})
+                    existing_names.add(node["name"])
+                edge = op.get("edge")
+                if edge and all(k in edge for k in ("source_name", "target_name", "label")):
+                    suggestions.append({"action": "createEdge", "id": str(uuid.uuid4()), "source": edge["source_name"], "target": edge["target_name"], "label": edge["label"], "reason": f"(aresta de add_node) {reason}"})
+
+            elif op["op"] == "remove_node":
+                node = op.get("node")
+                if not node or not node.get("name"):
+                    warnings.append(f"remove_node sem campo 'node' ignorado: {reason}")
+                    continue
+                suggestions.append({"action": action, "name": node["name"], "reason": reason})
+
+            elif op["op"] == "add_edge":
+                edge = op.get("edge")
+                if not edge or not all(k in edge for k in ("source_name", "target_name", "label")):
+                    warnings.append(f"add_edge incompleto ignorado: {reason}")
+                    continue
+                if edge["source_name"] not in existing_names:
+                    warnings.append(f"add_edge ignorado, origem não existe: {edge['source_name']}")
+                    continue
+                if edge["target_name"] not in existing_names:
+                    warnings.append(f"add_edge ignorado, destino não existe: {edge['target_name']}")
+                    continue
+                suggestions.append({"action": action, "id": str(uuid.uuid4()), "source": edge["source_name"], "target": edge["target_name"], "label": edge["label"], "reason": reason})
+
+            elif op["op"] == "remove_edge":
+                edge = op.get("edge")
+                if not edge or not all(k in edge for k in ("source_name", "target_name", "label")):
+                    warnings.append(f"remove_edge incompleto ignorado: {reason}")
+                    continue
+                existing_edges = {(id_to_name.get(e["source"], e["source"]), id_to_name.get(e["target"], e["target"]), e["label"]) for e in edges}
+                if (edge["source_name"], edge["target_name"], edge["label"]) not in existing_edges:
+                    warnings.append(f"remove_edge ignorado, aresta não existe: {edge['source_name']} → {edge['target_name']}")
+                    continue
+                suggestions.append({"action": action, "source": edge["source_name"], "target": edge["target_name"], "label": edge["label"], "reason": reason})
+
+        return jsonify({"ok": True, "actions": _process_suggestion(suggestions), "warnings": warnings})
+
+    except Exception as e:
+        import traceback
+        traceback.print_exc()
+        return jsonify({"ok": False, "error": str(e)}), 500
+
+
+# ── /api/generate ─────────────────────────────────────────────────────────
+
+@views.route('/api/generate', methods=['POST'])
+@login_required
+def api_generate():
+    body = request.get_json()
+    if not body:
+        return jsonify({"ok": False, "error": "JSON ausente"}), 400
+
+    prompt = body.get("prompt", "").strip()
+    if not prompt:
+        return jsonify({"ok": False, "error": "prompt vazio"}), 400
+
+    existing_nodes = body.get("existing_nodes", [])
+    existing_names_list = [n["name"] for n in existing_nodes]
+
+    EXTRACT_SCHEMA = {
+        "type": "object",
+        "properties": {
+            "nodes_to_create": {"type": "array", "items": {"type": "string"}},
+            "connections": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "properties": {
+                        "source": {"type": "string"},
+                        "target": {"type": "string"},
+                        "label": {"type": ["string", "null"]}
+                    },
+                    "required": ["source", "target", "label"]
+                }
+            }
+        },
+        "required": ["nodes_to_create", "connections"]
+    }
+
+    messages = [
+        {"role": "system", "content": "Extraia informações de comandos sobre grafos. Responda APENAS com JSON válido, sem markdown."},
+        {
+            "role": "user",
+            "content": f"""Analise este comando e extraia as informações:
+
+"{prompt}"
+
+Nós que já existem no grafo (não inclua estes em nodes_to_create):
+{json.dumps(existing_names_list, ensure_ascii=False)}
+
+Responda com JSON:
+{{
+  "nodes_to_create": ["lista de classes NOVAS a criar"],
+  "connections": [
+    {{"source": "classe origem", "target": "classe destino", "label": "nome da relação SE especificado, senão null"}}
+  ]
+}}
+
+REGRAS:
+- nodes_to_create: apenas classes que NÃO estão na lista de existentes
+- label: extraia o nome EXATO se o usuário especificar ("com label X", "usando X", "via X")
+- label: null se não especificado
+
+EXEMPLOS:
+Comando: "gere Cocaina e conecte a SubstanciaPsicoativa usando o label eUma" (SubstanciaPsicoativa já existe)
+{{"nodes_to_create": ["Cocaina"], "connections": [{{"source": "Cocaina", "target": "SubstanciaPsicoativa", "label": "eUma"}}]}}
+
+Comando: "Cachorro é tipo de Animal"
+{{"nodes_to_create": ["Cachorro", "Animal"], "connections": [{{"source": "Cachorro", "target": "Animal", "label": null}}]}}
+
+Agora extraia do comando dado. Responda APENAS com JSON."""
+        }
+    ]
+
+    try:
+        start = time.time()
+        resp = http_requests.post(
+            f"{_OLLAMA_HOST}/api/chat",
+            json={"model": "granite3.3:8b", "messages": messages, "stream": False, "format": EXTRACT_SCHEMA, "options": {"temperature": 0.3}},
+            timeout=450
+        )
+        resp.raise_for_status()
+        elapsed = time.time() - start
+        print(f"[generate] modelo respondeu em {elapsed:.1f}s")
+
+        extracted = json.loads(resp.json()["message"]["content"].strip())
+        print(f"[generate] extração: {json.dumps(extracted, ensure_ascii=False)}")
+
+        existing_name_set = {n["name"].lower() for n in existing_nodes}
+        name_to_id = {n["name"].lower(): n["name"] for n in existing_nodes}
+        nodes = []
+        warnings = []
+
+        for node_name in extracted.get("nodes_to_create", []):
+            node_name = _to_pascal(node_name)
+            key = node_name.lower()
+            if key in existing_name_set:
+                original = next((ex["name"] for ex in existing_nodes if ex["name"].lower() == key), node_name)
+                name_to_id[key] = original
+                continue
+            nid = str(uuid.uuid4())
+            name_to_id[key] = nid
+            nodes.append({"id": nid, "name": node_name, "type": "Class"})
+
+        edges = []
+        for conn in extracted.get("connections", []):
+            source = _to_pascal(conn.get("source", ""))
+            target = _to_pascal(conn.get("target", ""))
+            label  = conn.get("label") or "subClassOf"
+            src_id = name_to_id.get(source.lower())
+            tgt_id = name_to_id.get(target.lower())
+            if not src_id:
+                warnings.append(f"aresta ignorada: nó origem '{source}' não existe")
+                continue
+            if not tgt_id:
+                warnings.append(f"aresta ignorada: nó destino '{target}' não existe")
+                continue
+            edges.append({"source": src_id, "target": tgt_id, "label": label})
+
+        return jsonify({"ok": True, "data": {"nodes": nodes, "edges": edges}, "warnings": warnings})
+
+    except Exception as e:
+        import traceback
+        traceback.print_exc()
         return jsonify({"ok": False, "error": str(e)}), 500

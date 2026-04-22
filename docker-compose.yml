@@ -4,7 +4,7 @@ services:
     restart: unless-stopped
     container_name: homogenise_db
     environment:
-      - PGPORT= 5439
+      - PGPORT=5439
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=1234
       - POSTGRES_DB=homogenise
@@ -14,7 +14,6 @@ services:
       - ./db/homogenise/pgdata:/var/lib/postgresql
       - ./website/settings/init.sql:/docker-entrypoint-initdb.d/create_database.sql
       - homogenise_db:/var/lib/postgresql
-
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -d homogenise -U postgres"]
       interval: 1s
@@ -35,9 +34,45 @@ services:
       - agconfig:/agraph/etc
     shm_size: 1gb
 
+  ollama:
+    image: ollama/ollama:latest
+    restart: unless-stopped
+    container_name: homogenise_ollama
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama_models:/root/.ollama
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+    healthcheck:
+      test: ["CMD", "ollama", "list"]
+      interval: 5s
+      timeout: 10s
+      retries: 10
+
+  ollama-pull:
+    image: ollama/ollama:latest
+    depends_on:
+      ollama:
+        condition: service_healthy
+    volumes:
+      - ollama_models:/root/.ollama
+    environment:
+      - OLLAMA_HOST=http://ollama:11434
+    entrypoint: ["/bin/sh", "-c"]
+    command: ["ollama pull granite3.3:8b"]
+    restart: "no"
+
   web:
     depends_on:
       db:
+        condition: service_healthy
+      ollama:
         condition: service_healthy
     restart: always
     ports:
@@ -45,6 +80,8 @@ services:
     build:
       context: ./
       dockerfile: ./Dockerfile
+    environment:
+      - OLLAMA_HOST=http://ollama:11434
     develop:
       watch:
         - path: ./website
@@ -55,3 +92,4 @@ volumes:
   homogenise_db:
   agdata:
   agconfig:
+  ollama_models:
