@@ -1,0 +1,31 @@
+# Dados do Postgres (causam permission denied no build)
+db/
+
+# Volumes/dados de runtime
+website/userfiles/
+import/
+
+# Ambientes virtuais Python
+.venv/
+.homogenisevenv/
+venv/
+__pycache__/
+*.pyc
+*.pyo
+
+# Configs de IDE
+.idea/
+.vscode/
+
+# Git
+.git/
+.gitignore
+
+# Docker
+docker-compose.yml
+Dockerfile
+.dockerignore
+
+# OS
+.DS_Store
+Thumbs.db
