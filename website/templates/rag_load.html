@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block title %}RAG - Load Graph{% endblock %}
+{% block content %}
+<h1>RAG - Load Graph for Project {{ project_id }}</h1>
+
+<form method="POST">
+  <input type="hidden" name="project_id" value="{{ project_id }}" />
+  <div class="mb-3">
+    <label for="openai_token" class="form-label">OpenAI Token (will not be saved)</label>
+    <input type="password" class="form-control" id="openai_token" name="openai_token" value="" placeholder="sk-..." required />
+  </div>
+  <div class="mb-3" style="text-align: center">
+    <button type="submit" name="action" value="load_graph" class="btn btn-primary">Load Graph in Neo4J</button>
+  </div>
+</form>
+
+{% if graph_loaded %}
+<hr />
+<h3>Ask the graph</h3>
+<form method="POST">
+  <input type="hidden" name="project_id" value="{{ project_id }}" />
+  <!-- keep token in the form so backend can use it for the agent during this page session -->
+  <div class="mb-3">
+    <label for="openai_token_ask" class="form-label">OpenAI Token</label>
+    <input type="password" class="form-control" id="openai_token_ask" name="openai_token" placeholder="sk-..." value="{{ openai_token_prefill }}" required />
+  </div>
+  <div class="mb-3">
+    <label for="pergunta" class="form-label">Question about the graph</label>
+    <input type="text" class="form-control" id="pergunta" name="pergunta" placeholder="Type your question here" required />
+  </div>
+  <div style="text-align: center">
+    <button type="submit" name="action" value="ask" class="btn btn-success">Send Question</button>
+  </div>
+</form>
+{% endif %}
+
+{% if resposta_rag %}
+<div class="card mt-4">
+  <div class="card-header">Graph Answer</div>
+  <div class="card-body"><p>{{ resposta_rag }}</p></div>
+</div>
+{% endif %}
+
+{% endblock %}
