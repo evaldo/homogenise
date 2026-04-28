@@ -1,0 +1,28 @@
+Attribute,Value
+Type,http://purl.org/dc/dcmitype/Dataset
+Title,Homogenise Project
+Alternative Title,Homogenise Project
+Comment,This example allows to generate knowledge graphs from semantic annotation od psychotherapy data.
+Date Created,2025-09-19
+Creators,
+Contributors,
+Publisher,
+Date of Issue,2025-09-19
+Link,
+Identifier,ontriscal
+Keywords,
+License,
+Rights,
+Language,
+Version,
+Version Of,
+Previous Version,
+Standards,
+Source,
+File Format,csv
+Documentation,
+Dictionary Mapping,sddexp2025_n1/input/DM/dmexp2025_n1.csv
+Codebook,sddexp2025_n1/input/CB/codebookexp2025_n1.csv
+Code Mapping,sddexp2025_n1/config/code_mappings.csv
+Timeline,
+Imports,

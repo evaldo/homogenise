@@ -120,5 +120,18 @@ class project_file(Base):
     user_name_log = Column(String(150), nullable=True)
 
 
+class analysis(Base):
+
+    __tablename__ = 'analysis'
+
+    analysis_id = Column(Integer(), primary_key=True)
+    project_id = Column(Integer(), ForeignKey('project.project_id'))
+    selected_classes = Column(Text, nullable=False)
+    chart_type = Column(String(20), nullable=False)
+    analysis = Column(Text, nullable=False)
+    user_id_log = Column(Integer(), nullable=True)
+    user_name_log = Column(String(150), nullable=True)
+
+
 engine = db.get_engine()
 Base.metadata.create_all(engine)

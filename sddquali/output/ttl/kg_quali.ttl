@@ -28,11 +28,9 @@
             <http://semanticscience.org/resource/hasValue>    "ontriscal"^^xsd:string ] ;
         <http://purl.org/dc/terms/format>    "csv"^^xsd:string .
 
-
     <http://hadatac.org/ont/ontriscal#collection-9db485be29a96cbfd8040945d727a771>    <http://www.w3.org/ns/prov#generatedAtTime>    "2023-11-15T03:11:58Z"^^xsd:dateTime ;
         <http://purl.org/dc/terms/created>    "2023-11-15"^^xsd:date ;
         <http://purl.org/dc/terms/issued>    "2023-11-15"^^xsd:date .
-
 
     <http://hadatac.org/ont/ontriscal#id_case>    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>    owl:Class ;
         <http://www.w3.org/2000/01/rdf-schema#subClassOf>    hasco:originalID ;
@@ -779,4 +777,3 @@
     <http://hadatac.org/ont/ontriscal#project-0fce534f7fea066aa050b9d077c2225a>    <http://www.w3.org/ns/prov#generatedAtTime>    "2023-11-15T03:18:00Z"^^xsd:dateTime .
 
     <http://hadatac.org/ont/ontriscal#note-5a7ac8d837885c3bcf0a211169ff5742>    <http://www.w3.org/ns/prov#generatedAtTime>    "2023-11-15T03:18:01Z"^^xsd:dateTime .
-

@@ -31,6 +31,44 @@ views = Blueprint('views', __name__)
 def home():
     return render_template("home.html", user=current_user)
 
+@views.route('/synopsis', methods=['GET', 'POST'])
+@login_required
+def generateText():
+    if request.method == 'GET':
+        cur = db.get_cursor()
+        cur.execute("""
+            SELECT 
+                project.project_id, 
+                project.project_name, 
+                STRING_AGG(files.old_name, ', ') AS all_old_names 
+            FROM 
+                app.project AS project
+            JOIN 
+                app.project_file AS files 
+            ON 
+                files.project_id = project.project_id
+            GROUP BY 
+                project.project_id, project.project_name
+        """) 
+        data = cur.fetchall()
+        cur.close()
+        
+        return render_template("synopsis.html", output_data=data, user=current_user)
+    else:        
+        project_id = request.form.get('project_id')
+
+        repo = SynopsisRepository()
+        individuals_by_object_property_results = repo.get_individuals_related_by_object_property(project_id)
+        classes_by_superclass_results = repo.get_classes_related_by_superclasses(project_id)
+        classes_by_domain_and_range_results = repo.get_classes_related_by_object_property_domains_and_ranges(project_id)
+
+        triples = classes_by_superclass_results +  classes_by_domain_and_range_results + individuals_by_object_property_results
+
+        converter = TripleConversion()
+        paragraph = converter.triple_to_paragraph(triples).replace("subClassOf", "is")
+
+        return render_template("synopsis.html", project_id=project_id, paragraph=paragraph, user=current_user)
+
 
 def do_graph(project_id, selected_chart, selected_classes):
     word_list = []
@@ -126,67 +164,37 @@ def generatestatistics():
                 labels = []
                 types = []
 
-                individuals2 = []
-                annotations2 = []
-                values2 = []
                 formatted_values = ", ".join(f"'{word}'" for word in selected_classes)                
                 sparql = f"""                                        
-                    SELECT distinct (REPLACE(STR(?s), "^.*/([^/]*)$", "$1") as ?individual) (REPLACE(STR(?annotation), "^.*/([^/]*)$", "$1") as ?label) (REPLACE(STR(?o), "^.*/([^/]*)$", "$1") as ?type)
+                    SELECT distinct (REPLACE(STR(?s), "^.*/([^/]*)$", "$1") as ?individual) (REPLACE(STR(?p), "^.*/([^/]*)$", "$1") as ?label) (REPLACE(STR(?o), "^.*/([^/]*)$", "$1") as ?type)
                     WHERE {{
-                          ?s ?p ?o .
-                          ?o ?objectType ?object .
-                          ?s ?annotation ?value .
-                          FILTER(?annotation NOT IN (<http://semanticscience.org/resource/hasUnit>, rdfs:domain, rdfs:range, rdfs:subPropertyOf, rdf:first, rdf:rest, owl:members, <http://www.w3.org/ns/prov#generatedAtTime>, owl:allValuesFrom, <http://semanticscience.org/resource/isAttributeOf>)) .
-                          FILTER(?value NOT IN (owl:ObjectProperty, owl:Class, owl:NamedIndividual, owl:AllDisjointClasses, owl:Restriction, <http://semanticscience.org/resource/isAttributeOf>)) .    
-                          FILTER (!isBlank(?value)) .
-                          FILTER (!isBlank(?s)) .
-                          FILTER(?value != '') .                          
-                          FILTER((REPLACE(STR(?s), "^.*/([^/]*)$", "$1")) IN ({formatted_values}))
-                        }}	                                  
+                      ?s ?p ?o .                      
+                      FILTER(?p NOT IN (<http://semanticscience.org/resource/hasUnit>, rdfs:domain, rdfs:range, rdfs:subPropertyOf, rdf:first, rdf:rest, owl:members, <http://www.w3.org/ns/prov#generatedAtTime>, owl:allValuesFrom, <http://semanticscience.org/resource/isAttributeOf>)) .
+                      FILTER(?o NOT IN (owl:ObjectProperty, owl:Class, owl:NamedIndividual, owl:AllDisjointClasses, owl:Restriction, <http://semanticscience.org/resource/isAttributeOf>)) .    
+                      FILTER (!isBlank(?o)) .
+                      FILTER (!isBlank(?s)) .
+                      FILTER(?o != '') .                          
+                      FILTER((REPLACE(STR(?s), "^.*/([^/]*)$", "$1")) IN ({formatted_values}))
+                    }}	                                  
                    """
                 with db.get_allegro(project_id) as conn:
                     with conn.executeTupleQuery(sparql) as results:
                         for result in results:
                             individuals.append(str(result.getValue('individual')).replace('"', ''))
-                            labels.append(str(result.getValue('label')).replace('"', '').split('#')[-1])
+                            labels.append(str(result.getValue('label')).replace('"', ''))
                             types.append(str(result.getValue('type')).replace('"', ''))
-                formatted_values = ", ".join(f"'{word}'" for word in selected_classes)
-                sparql = f"""                        
-                        SELECT distinct (REPLACE(STR(?s), "^.*/([^/]*)$", "$1") as ?individual) (REPLACE(STR(?pAnnotation), "^.*/([^/]*)$", "$1") as ?annotation) (REPLACE(STR(?oValue), "^.*/([^/]*)$", "$1") as ?value)
-                        WHERE {{
-                              ?s ?p ?o .
-                              ?o ?objectType ?object .
-                              ?s ?pAnnotation ?oValue .
-                              FILTER(?pAnnotation NOT IN (<http://semanticscience.org/resource/hasUnit>, rdfs:domain, rdfs:range, rdfs:subPropertyOf, rdf:first, rdf:rest, owl:members, <http://www.w3.org/ns/prov#generatedAtTime>, owl:allValuesFrom, <http://semanticscience.org/resource/isAttributeOf>)) .
-                              FILTER(?oValue NOT IN (owl:ObjectProperty, owl:Class, owl:NamedIndividual, owl:AllDisjointClasses, owl:Restriction, <http://semanticscience.org/resource/isAttributeOf>)) .    
-                              FILTER (!isBlank(?oValue)) .
-                              FILTER (!isBlank(?s)) .
-                              FILTER(?oValue != '') .                              
-                              FILTER((REPLACE(STR(?s), "^.*/([^/]*)$", "$1")) IN ({formatted_values}))
-                            }}                         
-                        """
-                with db.get_allegro(project_id) as conn:
-                    with conn.executeTupleQuery(sparql) as results:
-                        for result in results:
-                            individuals2.append(str(result.getValue('individual')).replace('"', '').split('>')[0].split('#')[-1])
-                            annotations2.append(str(result.getValue('annotation')).replace('"', '').split('>')[0].split('/')[-1].split('#')[-1])
-                            values2.append(str(result.getValue('value')).replace('"', '').split('>')[0].split('#')[-1])
-
+                
                 df = pd.DataFrame({'individuals': individuals, 'labels': labels, 'types': types})
-                df2 = pd.DataFrame({'individuals': individuals2, 'annotations': annotations2, 'values': values2})
-
+                
                 graph = nx.Graph()
                 for _, row in df.iterrows():
                     graph.add_edge(row['individuals'], row['types'], label=row['labels'])
 
-                for _, row in df2.iterrows():
-                    graph.add_edge(row['individuals'], row['values'], label=row['annotations'])
-
-                pos = nx.spring_layout(graph, seed=42, k=0.9)
+                pos = nx.spring_layout(graph, k=3/np.sqrt(graph.order()))
                 labels = nx.get_edge_attributes(graph, 'label')
-                plt.figure(figsize=(12, 10))
-                nx.draw(graph, pos, with_labels=True, font_size=10, node_size=700, node_color='lightblue', edge_color='gray', alpha=0.6)
-                nx.draw_networkx_edge_labels(graph, pos, edge_labels=labels, font_size=8, label_pos=0.3, verticalalignment='baseline')
+                plt.figure(figsize=(12, 12))
+                nx.draw(graph, pos, with_labels=True, font_size=9, node_size=1000, node_color='lightblue', edge_color='gray', alpha=1)
+                nx.draw_networkx_edge_labels(graph, pos, edge_labels=labels, font_size=7, label_pos=0.5, verticalalignment='center', clip_on=False)
                 plt.title('Knowledge Graph')
                 buffer = io.BytesIO()
                 plt.savefig(buffer, format='png')
@@ -201,7 +209,8 @@ def generatestatistics():
                                , project_list=data_project
                                , class_list=class_list
                                , selected_classes=selected_classes
-                               , chart_list=chart_list                               
+                               , chart_list=chart_list
+                               , chart_type=selected_chart
                                , img_uri=b64)
 
     elif request.method == 'GET':
@@ -211,6 +220,37 @@ def generatestatistics():
                                , class_list=class_list
                                , chart_list=chart_list                               
                                , img_uri='0')
+
+
+@views.route('/analysis', methods=['GET', 'POST'])
+@login_required
+def analysis():
+    if request.method == 'POST':
+        text = request.form.get('analysis')
+        if len(text) == 0:
+            return jsonify({'message': 'Analysis can not be empty!'})
+
+        project_id = request.form.get('project_id')
+        chart_type = request.form.get('chart_type')
+        selected_classes = request.form.get('selected_classes')
+
+        cur = db.get_cursor()
+        query = 'INSERT INTO app.analysis(project_id, selected_classes, chart_type, analysis, user_id_log, user_name_log) ' \
+                'VALUES (%s, %s, %s, %s, %s, %s)'
+        cur.execute(query, (project_id, selected_classes, chart_type, text, current_user.get_id(), current_user.first_name))
+        cur.close()
+
+        return jsonify({'message': 'Analysis submitted!'})
+    else:
+        project_id = request.args.get('project_id', '')
+        cur = db.get_cursor()
+        query = 'SELECT p.project_name, a.chart_type, a.selected_classes, a.analysis FROM app.analysis a '\
+                'JOIN app.project p ON p.project_id = a.project_id WHERE a.project_id = %s'
+        cur.execute(query, project_id)
+        data = cur.fetchall()
+        print(data)
+        cur.close()
+        return render_template("analysis.html", output_data=data, user=current_user)
 
 
 @views.route('/insights', methods=['GET', 'POST'])
@@ -396,7 +436,7 @@ def projectteam():
                     "  and upper(project_name) like upper('%" + request.form.get("project_search") + "%')" +
                     " order by prj.project_name asc, ptm.st_user_leader desc, usr.first_name asc")
             data = cur.fetchall()
-            cur.close
+            cur.close()
             return render_template("projectteam.html", output_data = data, user=current_user)
     else:
         cur.execute("select ptm.project_team_id " +
@@ -411,7 +451,7 @@ def projectteam():
                     " order by prj.project_name asc, ptm.st_user_leader desc, usr.first_name asc")
 
         data = cur.fetchall()
-        cur.close
+        cur.close()
         return render_template("projectteam.html", output_data = data, user=current_user)
 
 @views.route('/modifyuser', methods=['GET', 'POST'])
@@ -425,17 +465,17 @@ def modifyuser():
         if len(project_search) < 1:
             cur.execute("select id, first_name, email, user_type_id from app.user order by first_name")
             data = cur.fetchall()
-            cur.close
+            cur.close()
             return render_template("modifyuser.html", output_data = data, user=current_user)
         else:
             cur.execute("select id, first_name, email, user_type_id from app.user  where upper(first_name) like upper('%" + request.form.get('username_search') + "%') order by first_name")
             data = cur.fetchall()
-            cur.close
+            cur.close()
             return render_template("modifyuser.html", output_data = data, user=current_user)
     else:
         cur.execute("select id, first_name, email, user_type_id from app.user order by first_name")
         data = cur.fetchall()
-        cur.close
+        cur.close()
         return render_template("modifyuser.html", output_data = data, user=current_user)
 
 
@@ -448,13 +488,13 @@ def usertype():
             cur=db.get_cursor()
             cur.execute("SELECT * FROM app.user_type  order by user_type_name")
             data = cur.fetchall()
-            cur.close
+            cur.close()
             return render_template("usertype.html", output_data = data, user=current_user)
         else:
             cur=db.get_cursor()
             cur.execute("SELECT * FROM app.user_type where upper(user_type_name) like upper('%" + request.form.get("usertype_search") + "%') order by user_type_name")
             data = cur.fetchall()
-            cur.close
+            cur.close()
             return render_template("usertype.html", output_data = data, user=current_user)
 
     else:
@@ -462,7 +502,7 @@ def usertype():
         cur.execute("SELECT * FROM app.user_type order by user_type_name")
         data = cur.fetchall()
 
-        cur.close
+        cur.close()
 
         return render_template("usertype.html", output_data = data, user=current_user)
 
@@ -475,21 +515,21 @@ def researchline():
             cur=db.get_cursor()
             cur.execute("SELECT * FROM app.research_line  order by research_line_name")
             data = cur.fetchall()
-            cur.close
+            cur.close()
             return render_template("researchline.html", output_data = data, user=current_user)
         else:
             cur=db.get_cursor()
             cur.execute("SELECT * FROM app.research_line where upper(research_line_name) like upper('%" + request.form.get("researchline_search") + "%') order by research_line_name")
             data = cur.fetchall()
-            cur.close
+            cur.close()
             return render_template("researchline.html", output_data = data, user=current_user)
     else:
 
-        cur=db.get_cursor()
+        cur = db.get_cursor()
         cur.execute("SELECT * FROM app.research_line order by research_line_name")
         data = cur.fetchall()
 
-        cur.close
+        cur.close()
 
         return render_template("researchline.html", output_data = data, user=current_user)
 
@@ -514,26 +554,29 @@ def usertypedata():
 
             if int(user_user_type_item[0]) > 0:
                 flash('There are users using this user type!', category='error')
+                cur.close()
                 return redirect(url_for('views.usertype'))
 
             else:
                 cur.execute("update app.user_type set user_id_log = " + current_user.get_id()  + ", user_name_log = '" + current_user.first_name  + "'  where user_type_id = " + user_type_id)
                 cur.execute("delete from app.user_type where user_type_id = " + user_type_id)
+                cur.close()
                 flash('Data deleted!', category='success')
                 return redirect(url_for('views.usertype'))
 
         if request.args.get('type_operation', '') == 'A':
-
             cur.execute("insert into app.user_type (user_type_id, user_type_name, user_id_log, user_name_log) values (nextval('app.user_type_user_type_id_seq'), '" + user_type_name + "', " + current_user.get_id()  + ", '" + current_user.first_name  + "')")
+            cur.close()
             flash('Data inserted!', category='success')
             return redirect(url_for('views.usertype'))
 
         if request.args.get('type_operation', '') == 'U':
             cur.execute("update app.user_type set user_type_name = '" + user_type_name + "', user_id_log = " + current_user.get_id()  + ", user_name_log = '" + current_user.first_name  + "'  where user_type_id = " + user_type_id)
+            cur.close()
             flash('Data updated!', category='success')
             return redirect(url_for('views.usertype'))
 
-        cur.close
+        cur.close()
         return render_template("usertype.html", output_data = data, user=current_user)
 
     if request.method == 'GET':
@@ -548,11 +591,11 @@ def usertypedata():
         else:
             type_operation = 'Add'
 
-        cur=db.get_cursor()
+        cur = db.get_cursor()
         cur.execute("select user_type_id, user_type_name from app.user_type order by user_type_name")
-        data_user_type= cur.fetchall()
+        data_user_type = cur.fetchall()
 
-        cur.close
+        cur.close()
 
         return render_template("usertypedata.html", user=current_user, user_type_id = user_type_id, user_type_name = user_type_name,  usertype_list = data_user_type, type_operation = type_operation)
 
@@ -562,7 +605,7 @@ def researchlinedata():
 
     if request.method == 'POST':
 
-        cur=db.get_cursor()
+        cur = db.get_cursor()
 
         research_line_id = request.form.get("research_line_id")
         research_line_name = request.form.get("research_line_name")
@@ -576,27 +619,31 @@ def researchlinedata():
 
             if int(research_line_project_item[0]) > 0:
                 flash('There are projects using this research line!', category='error')
+                cur.close()
                 return redirect(url_for('views.researchline'))
 
             else:
                 cur.execute("update app.research_line set user_id_log = " + current_user.get_id()  + ", user_name_log = '" + current_user.first_name  + "'  where research_line_id = " + research_line_id)
                 cur.execute("delete from app.research_line where research_line_id = " + research_line_id)
+                cur.close()
                 flash('Data deleted!', category='success')
                 return redirect(url_for('views.researchline'))
 
         if request.args.get('type_operation', '') == 'A':
             cur.execute("insert into app.research_line (research_line_name, user_id_log, user_name_log) values ('" + research_line_name + "', " + current_user.get_id()  + ", '" + current_user.first_name  + "')")
+            cur.close()
             flash('Data inserted!', category='success')
             return redirect(url_for('views.researchline'))
 
         if request.args.get('type_operation', '') == 'U':
             cur.execute("update app.research_line set research_line_name = '" + research_line_name + "', user_id_log = " + current_user.get_id()  + ", user_name_log = '" + current_user.first_name  + "' where research_line_id = " + research_line_id)
+            cur.close()
             flash('Data updated!', category='success')
             return redirect(url_for('views.researchline'))
 
         cur.execute("SELECT * FROM app.research_line order by research_line_name")
         data = cur.fetchall()
-        cur.close
+        cur.close()
         return render_template("researchline.html", output_data = data, user=current_user)
 
     if request.method == 'GET':
@@ -611,11 +658,11 @@ def researchlinedata():
         else:
             type_operation = 'Add'
 
-        cur=db.get_cursor()
+        cur = db.get_cursor()
         cur.execute("select research_line_id, research_line_name from app.research_line order by research_line_name")
-        data_research_line= cur.fetchall()
+        data_research_line = cur.fetchall()
 
-        cur.close
+        cur.close()
 
         return render_template("researchlinedata.html", user=current_user, research_line_id = research_line_id, research_line_name = research_line_name,  researchline_list = data_research_line, type_operation = type_operation)
 
@@ -625,23 +672,22 @@ def projectresearch():
     if request.method == 'POST':
         project_search = request.form.get('project_search') #Gets the note from the HTML
         if len(project_search) < 1:
-            cur=db.get_cursor()
+            cur = db.get_cursor()
             cur.execute("SELECT * FROM app.project order by project_name")
             data = cur.fetchall()
-            cur.close
+            cur.close()
             return render_template("projectresearch.html", output_data = data, user=current_user)
         else:
             cur=db.get_cursor()
             cur.execute("SELECT * FROM app.project where upper(project_name) like upper('%" + request.form.get("project_search") + "%') order by project_name")
             data = cur.fetchall()
-            cur.close
+            cur.close()
             return render_template("projectresearch.html", output_data = data, user=current_user)
     else:
-        cur=db.get_cursor()
+        cur = db.get_cursor()
         cur.execute("SELECT * FROM app.project order by project_name")
         data = cur.fetchall()
-
-        cur.close
+        cur.close()
 
         return render_template("projectresearch.html", output_data = data, user=current_user)
     
@@ -672,6 +718,7 @@ def projectdata():
 
                 if int(project_team_item[0]) > 0:
                     flash('There are project teams using this project!', category='error')
+                    cur.close()
                     return redirect(url_for('views.projectresearch'))
                 else:
                     try:
@@ -687,6 +734,7 @@ def projectdata():
 
                     cur.execute("update app.project set user_id_log = " + current_user.get_id()  + ", user_name_log = '" + current_user.first_name  + "'  where project_id = " + project_id)
                     cur.execute("delete from app.project where project_id = " + project_id)
+                    cur.close()
                     flash('Data deleted!', category='success')
                     return redirect(url_for('views.projectresearch'))
 
@@ -783,6 +831,7 @@ def projectdata():
                     return redirect(url_for('views.projectresearch'))
 
                 cur.execute("insert into app.project (project_id, project_name, project_description, research_line_id, user_id_log, user_name_log) values (nextval('app.project_project_id_seq'), '" + project_name + "', '" + project_description +  "' , " + research_line_id + ", " + current_user.get_id()  + ", '" + current_user.first_name  + "')")
+                cur.close()
                 flash('Data inserted!', category='success')
                 return redirect(url_for('views.projectresearch'))
 
@@ -813,12 +862,13 @@ def projectdata():
                         return redirect(url_for('views.projectresearch'))
 
                 cur.execute("update app.project set project_name = '" + project_name + "', project_description = '" + project_description + "' , research_line_id = " + research_line_id + ", user_id_log = " + current_user.get_id()  + ", user_name_log = '" + current_user.first_name  + "' where project_id = " + project_id)
+                cur.close()
                 flash('Data updated!', category='success')
                 return redirect(url_for('views.projectresearch'))
 
         cur.execute("SELECT * FROM app.project order by project_name")
         data = cur.fetchall()
-        cur.close
+        cur.close()
         return render_template("projectresearch.html", output_data = data, user=current_user)
 
     if request.method == 'GET':
@@ -847,9 +897,9 @@ def projectdata():
             research_line_name = [research_line_name_project_item[0] for research_line_name_project_item in research_line_name_project]
 
         cur.execute("select research_line_id, research_line_name from app.research_line order by research_line_name")
-        data_research_line= cur.fetchall()
+        data_research_line = cur.fetchall()
 
-        cur.close
+        cur.close()
 
         return render_template("projectdata.html", user=current_user, project_id = project_id, project_name = project_name, project_description = project_description, researchline_name = research_line_name[0], researchline_list = data_research_line, type_operation = type_operation)
 
@@ -863,7 +913,7 @@ def modifyuserdata():
         password1 = request.form.get("password1")
         password2 = request.form.get("password2")
 
-        cur=db.get_cursor()
+        cur = db.get_cursor()
 
         if request.args.get('type_operation', '') == 'D':
 
@@ -875,11 +925,13 @@ def modifyuserdata():
 
             if int(project_team_item[0]) > 0:
                 flash('There are project teams using this user!', category='error')
+                cur.close()
                 return redirect(url_for('views.modifyuser'))
 
             else:
                 cur.execute("update app.user set user_id_log = " + current_user.get_id()  + ", user_name_log = '" + current_user.first_name  + "'  where id = " + user_id)
                 cur.execute("delete from app.user where id = " + user_id)
+                cur.close()
                 flash('Data deleted!', category='success')
                 return redirect(url_for('views.modifyuser'))
 
@@ -887,23 +939,26 @@ def modifyuserdata():
 
             if password1 != password2:
                 flash('Passwords don\'t match.', category='error')
+                cur.close()
                 return redirect(url_for('views.modifyuser'))
 
             elif len(password1) < 7:
                 flash('Password must be at least 7 characters.', category='error')
+                cur.close()
                 return redirect(url_for('views.modifyuser'))
 
             else:
                 cur.execute("update app.user set first_name = '" + first_name + "', user_type_id = " + user_type_id + ", password = '" + generate_password_hash(
                 password1, method='pbkdf2:sha256') + "', user_id_log = " + current_user.get_id()  + ", user_name_log = '" + current_user.first_name  + "'  where id = " + user_id)
                 flash('Data updated!', category='success')
+                cur.close()
                 return redirect(url_for('views.modifyuser'))
 
-        cur=db.get_cursor()
+        cur = db.get_cursor()
         cur.execute("select id, first_name, email, user_type_id from app.user order by first_name")
         data = cur.fetchall()
 
-        cur.close
+        cur.close()
 
         return render_template("modifyuser.html", output_data = data, user=current_user)
 
@@ -918,7 +973,7 @@ def modifyuserdata():
             request.args.get('type_operation', '') == 'U'
             type_operation = 'Update'
 
-        cur=db.get_cursor()
+        cur = db.get_cursor()
         user_type_name_user = [0]
 
         cur.execute("select ust.user_type_name " 
@@ -931,9 +986,9 @@ def modifyuserdata():
             user_type_name_user = [user_type_name_item[0] for user_type_name_item in user_type_name]
 
         cur.execute("select * from app.user_type order by 2")
-        data_user_type= cur.fetchall()
+        data_user_type = cur.fetchall()
 
-        cur.close
+        cur.close()
 
         return render_template("modifyuserdata.html", user=current_user
                                                     , user_id = user_id
@@ -948,7 +1003,7 @@ def projectTeamData():
 
     if request.method == 'POST':
 
-        cur=db.get_cursor()
+        cur = db.get_cursor()
 
         project_team_id = request.form.get("project_team_id")
         project_id = request.form.get("project_id")
@@ -963,32 +1018,36 @@ def projectTeamData():
 
         if project_id == 'null' or user_id == 'null' or st_user_leader == 'null':
             flash('Fill out all data to execute transaction!', category='error')
+            cur.close()
             return redirect(url_for('views.projectteam'))
 
         else:
             if request.args.get("type_operation") == 'D':
                 cur.execute("update app.project_team set user_id_log = " + current_user.get_id()  + ", user_name_log = '" + current_user.first_name  + "'  where project_team_id = " + project_team_id)
                 cur.execute("delete from app.project_team where project_team_id = " + project_team_id)
+                cur.close()
                 flash('Data deleted!', category='success')
                 return redirect(url_for('views.projectteam'))
 
             if request.args.get("type_operation") == 'A':
 
                 if int(project_team_item[0]) > 0:
+                    cur.close()
                     flash('Already there is a project for this user!', category='error')
                     return redirect(url_for('views.projectteam'))
 
                 else:
                     cur.execute("INSERT INTO app.project_team(project_team_id, project_id, user_id, st_user_leader, user_id_log, user_name_log)	VALUES (nextval('app.project_team_project_team_id_seq'), " + project_id + ", " + user_id + ", " + st_user_leader + ", " + current_user.get_id()  + ", '" + current_user.first_name  + "')")
+                    cur.close()
                     flash('Data inserted!', category='success')
                     return redirect(url_for('views.projectteam'))
 
             if request.args.get("type_operation") == 'U':
                 cur.execute("UPDATE app.project_team SET st_user_leader  = " + st_user_leader +  ", user_id_log = " + current_user.get_id()  + ", user_name_log = '" + current_user.first_name  + "' where project_team_id = " + project_team_id)
+                cur.close()
                 flash('Data updated!', category='success')
                 return redirect(url_for('views.projectteam'))
 
-        cur=db.get_cursor()
         cur.execute("select ptm.project_team_id " +
                 "     , prj.project_name " +
                 "     , usr.first_name " +
@@ -1001,14 +1060,14 @@ def projectTeamData():
                 " order by prj.project_name asc, ptm.st_user_leader desc, usr.first_name asc")
         data = cur.fetchall()
 
-        cur.close
+        cur.close()
 
         return render_template("projectteam.html", output_data = data, user=current_user)
 
     if request.method == 'GET':
         project_team_id = request.args.get('project_team_id', '')
 
-        cur=db.get_cursor()
+        cur = db.get_cursor()
         cur.execute("SELECT id, first_name FROM app.user order by 2")
         data_user = cur.fetchall()
 
@@ -1057,9 +1116,9 @@ def projectTeamData():
                     "     , app.project_team ptm " +
                     "where prj.project_id = ptm.project_id " +
                     "  and usr.id = ptm.user_id ")
-        data_team= cur.fetchall()
+        data_team = cur.fetchall()
 
-        cur.close
+        cur.close()
 
         return render_template("projectteamdata.html", user=current_user
                                                      , project_team_id = project_team_id
@@ -1078,7 +1137,7 @@ def projectTeamData():
 @login_required
 def caqdas():
 
-    cur=db.get_cursor()
+    cur = db.get_cursor()
 
     if request.method == 'POST':
         caqdas_search = request.form.get('caqdas_search') #Gets the note from the HTML
@@ -1092,7 +1151,7 @@ def caqdas():
                     "where upper(caqdas.caqdas_name) like upper('%" + request.form.get("caqdas_search") + "%')" +
                     " order by caqdas.caqdas_name asc")
             data = cur.fetchall()
-            cur.close
+            cur.close()
             return render_template("caqdas.html", output_data = data, user=current_user)
     else:
         cur.execute("select caqdas.caqdas_id " +
@@ -1102,7 +1161,7 @@ def caqdas():
                     " order by caqdas.caqdas_name asc")
 
         data = cur.fetchall()
-        cur.close
+        cur.close()
         return render_template("caqdas.html", output_data = data, user=current_user)
 
 @views.route('/caqdasdata', methods= ['GET', 'POST'])
@@ -1110,7 +1169,7 @@ def caqdasdata():
 
     if request.method == 'POST':
 
-        cur=db.get_cursor()
+        cur = db.get_cursor()
 
         caqdas_id = request.form.get("caqdas_id")
         caqdas_name = request.form.get("caqdas_name")
@@ -1125,27 +1184,31 @@ def caqdasdata():
 
             if int(code_export_caqdas_item[0]) > 0:
                 flash('There are codes exported using this CAQDAS!', category='error')
+                cur.close()
                 return redirect(url_for('views.caqdas'))
 
             else:
                 cur.execute("update app.caqdas set user_id_log = " + current_user.get_id()  + ", user_name_log = '" + current_user.first_name  + "'  where caqdas_id = " + caqdas_id)
                 cur.execute("delete from app.caqdas where  caqdas_id = " + caqdas_id)
+                cur.close()
                 flash('Data deleted!', category='success')
                 return redirect(url_for('views.caqdas'))
 
         if request.args.get('type_operation', '') == 'A':
             cur.execute("insert into app.caqdas (caqdas_name, code_export_type_file, user_id_log, user_name_log) values ('" + caqdas_name + "', '" + code_export_type_file + "', " + current_user.get_id()  + ", '" + current_user.first_name  + "')")
+            cur.close()
             flash('Data inserted!', category='success')
             return redirect(url_for('views.caqdas'))
 
         if request.args.get('type_operation', '') == 'U':
             cur.execute("update app.caqdas set caqdas_name = '" + caqdas_name + "', user_id_log = " + current_user.get_id()  + ", user_name_log = '" + current_user.first_name  + "' where caqdas_id = " + caqdas_id)
+            cur.close()
             flash('Data updated!', category='success')
             return redirect(url_for('views.caqdas'))
 
         cur.execute("SELECT * FROM app.caqdas order by caqdas_name")
         data = cur.fetchall()
-        cur.close
+        cur.close()
         return render_template("caqdas.html", output_data = data, user=current_user)
 
     if request.method == 'GET':
@@ -1161,11 +1224,11 @@ def caqdasdata():
         else:
             type_operation = 'Add'
 
-        cur=db.get_cursor()
+        cur = db.get_cursor()
         cur.execute("select caqdas_id, caqdas_name from app.caqdas order by caqdas_name")
         data_caqdas_list = cur.fetchall()
 
-        cur.close
+        cur.close()
 
         return render_template("caqdasdata.html", user=current_user, caqdas_id = caqdas_id, caqdas_name = caqdas_name, code_export_type_file = code_export_type_file,  data_caqdas = data_caqdas_list, type_operation = type_operation)
 
@@ -1174,7 +1237,7 @@ def caqdasdata():
 def uploadfileonto():
     if request.method == 'POST':
         urlfile = request.form.get('urlfile')
-        if urlfile !='':
+        if urlfile != '':
 
             output_file = ".\\website\\onto\\homogenise.owl"
 

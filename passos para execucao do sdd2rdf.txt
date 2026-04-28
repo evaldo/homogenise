@@ -7,8 +7,8 @@ Obs.: Para clonar utilize o seguinte comando -> git clone -b feature_docker http
 a-) Executar o "Prompt de comando"
 b-) Instalar o pacote "pandas" usando o comando: pip install manager
 
-4-) Importante configurar o caminho para execução do sdd2rdf pelo Python, por exemplo:
-path C:\python39;c:\users\evald\appdata\local\programs\python\python37;C:\Users\evald\AppData\Local\Programs\Python\Python37\Lib\site-packages\pandas;C:\Users\evald\AppData\Local\Programs\Python\Python37\Lib\site-packages\numpy
+4-) Configurar o caminho para execução do sdd2rdf pelo Python, por exemplo:
+path C:\python39;C:\python39\lib;C:\python39\Scripts;c:\users\evald\appdata\local\programs\python\python37;C:\Users\evald\AppData\Local\Programs\Python\Python37\Lib\site-packages\pandas;C:\Users\evald\AppData\Local\Programs\Python\Python37\Lib\site-packages\numpy
 
 5-) Dentro da pasta <unidade>\<pasta clonada>\homogenise, executar o sdd2rdf. Por exemplo:
 python sdd2rdf.py config_quali.ini

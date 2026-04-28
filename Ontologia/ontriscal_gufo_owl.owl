@@ -68,6 +68,9 @@
         <Class IRI="#Amnesias"/>
     </Declaration>
     <Declaration>
+        <Class IRI="#Anhedonia"/>
+    </Declaration>
+    <Declaration>
         <Class IRI="#Anorexia"/>
     </Declaration>
     <Declaration>
@@ -87,6 +90,9 @@
     </Declaration>
     <Declaration>
         <Class IRI="#AutomaticThinking"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Avoidance"/>
     </Declaration>
     <Declaration>
         <Class IRI="#AvoidanceOfThreateningSignsOrSituations"/>
@@ -114,6 +120,9 @@
     </Declaration>
     <Declaration>
         <Class IRI="#BiologicalSex"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#BipolarDisorder"/>
     </Declaration>
     <Declaration>
         <Class IRI="#Brainstorming"/>
@@ -197,6 +206,9 @@
         <Class IRI="#Comorbidity"/>
     </Declaration>
     <Declaration>
+        <Class IRI="#CompletedSuicide"/>
+    </Declaration>
+    <Declaration>
         <Class IRI="#CondensationOfConcepts"/>
     </Declaration>
     <Declaration>
@@ -233,7 +245,13 @@
         <Class IRI="#DecisionMaking"/>
     </Declaration>
     <Declaration>
+        <Class IRI="#DecreasedCapacity"/>
+    </Declaration>
+    <Declaration>
         <Class IRI="#DeficientThinking"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#DeliberateThought"/>
     </Declaration>
     <Declaration>
         <Class IRI="#Delirium"/>
@@ -251,10 +269,16 @@
         <Class IRI="#DependencyAutonomy"/>
     </Declaration>
     <Declaration>
+        <Class IRI="#DepressedMood"/>
+    </Declaration>
+    <Declaration>
         <Class IRI="#Depression"/>
     </Declaration>
     <Declaration>
         <Class IRI="#Desensitization"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Despondency"/>
     </Declaration>
     <Declaration>
         <Class IRI="#Devaluation"/>
@@ -278,13 +302,22 @@
         <Class IRI="#DichotomousThinking"/>
     </Declaration>
     <Declaration>
+        <Class IRI="#DifferentialDiagnosis"/>
+    </Declaration>
+    <Declaration>
         <Class IRI="#DifficultyOfReasoning"/>
     </Declaration>
     <Declaration>
         <Class IRI="#DifficultySpeaking"/>
     </Declaration>
     <Declaration>
+        <Class IRI="#DiminishedAbilityThink"/>
+    </Declaration>
+    <Declaration>
         <Class IRI="#Disaffection"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Discouragement"/>
     </Declaration>
     <Declaration>
         <Class IRI="#Disease_Spine_Arthrodesis"/>
@@ -330,6 +363,9 @@
     </Declaration>
     <Declaration>
         <Class IRI="#EmotionalSymptoms"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Emptiness"/>
     </Declaration>
     <Declaration>
         <Class IRI="#Endometriosis"/>
@@ -398,6 +434,9 @@
         <Class IRI="#Fainting"/>
     </Declaration>
     <Declaration>
+        <Class IRI="#Fatigue"/>
+    </Declaration>
+    <Declaration>
         <Class IRI="#Fear"/>
     </Declaration>
     <Declaration>
@@ -411,6 +450,12 @@
     </Declaration>
     <Declaration>
         <Class IRI="#FearOfPhysicalInjuryOrDeath"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#FeelingOfNervousness"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#FeelingsOfWorthlessness"/>
     </Declaration>
     <Declaration>
         <Class IRI="#Female"/>
@@ -447,6 +492,9 @@
     </Declaration>
     <Declaration>
         <Class IRI="#Glaucoma"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#GravitySpecifier"/>
     </Declaration>
     <Declaration>
         <Class IRI="#GroupService"/>
@@ -486,6 +534,9 @@
     </Declaration>
     <Declaration>
         <Class IRI="#HighRiskLevel"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Hopelessness"/>
     </Declaration>
     <Declaration>
         <Class IRI="#Hyperesthesia"/>
@@ -530,6 +581,12 @@
         <Class IRI="#InBlank"/>
     </Declaration>
     <Declaration>
+        <Class IRI="#InadequateSelfCare"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#InappropriateGuilt"/>
+    </Declaration>
+    <Declaration>
         <Class IRI="#IncreasedHeartRate"/>
     </Declaration>
     <Declaration>
@@ -545,10 +602,19 @@
         <Class IRI="#Insanity"/>
     </Declaration>
     <Declaration>
+        <Class IRI="#Insomnia"/>
+    </Declaration>
+    <Declaration>
         <Class IRI="#Intestinal_Problems"/>
     </Declaration>
     <Declaration>
         <Class IRI="#Irritable"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Irritation"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Isolation"/>
     </Declaration>
     <Declaration>
         <Class IRI="#Jealousy"/>
@@ -572,13 +638,25 @@
         <Class IRI="#LossOfBalance"/>
     </Declaration>
     <Declaration>
+        <Class IRI="#LossOfEnergy"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Lovelessness"/>
+    </Declaration>
+    <Declaration>
         <Class IRI="#Low"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#LowNeurotransmitters"/>
     </Declaration>
     <Declaration>
         <Class IRI="#LowRiskLevel"/>
     </Declaration>
     <Declaration>
         <Class IRI="#Lupus"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#MajorDepressiveDisorder"/>
     </Declaration>
     <Declaration>
         <Class IRI="#Male"/>
@@ -608,6 +686,9 @@
         <Class IRI="#Migraine"/>
     </Declaration>
     <Declaration>
+        <Class IRI="#Mild"/>
+    </Declaration>
+    <Declaration>
         <Class IRI="#MindReading"/>
     </Declaration>
     <Declaration>
@@ -618,6 +699,9 @@
     </Declaration>
     <Declaration>
         <Class IRI="#MnemicIllusions"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Moderate"/>
     </Declaration>
     <Declaration>
         <Class IRI="#MultipleDrugs"/>
@@ -722,6 +806,9 @@
         <Class IRI="#PetroleumDerivatives"/>
     </Declaration>
     <Declaration>
+        <Class IRI="#PhysiologicalReaction"/>
+    </Declaration>
+    <Declaration>
         <Class IRI="#PhysiologicalSymptom"/>
     </Declaration>
     <Declaration>
@@ -761,6 +848,9 @@
         <Class IRI="#Psychologist"/>
     </Declaration>
     <Declaration>
+        <Class IRI="#PsychomotorRetardation"/>
+    </Declaration>
+    <Declaration>
         <Class IRI="#Psychoterapy"/>
     </Declaration>
     <Declaration>
@@ -786,6 +876,12 @@
     </Declaration>
     <Declaration>
         <Class IRI="#RecordingDysfunctionalThoughts"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#RecurrentEpisode"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#RecurringThoughtsOfDeath"/>
     </Declaration>
     <Declaration>
         <Class IRI="#Refractoriness"/>
@@ -818,6 +914,9 @@
         <Class IRI="#Sadness"/>
     </Declaration>
     <Declaration>
+        <Class IRI="#SchizoaffectiveDisorder"/>
+    </Declaration>
+    <Declaration>
         <Class IRI="#Score"/>
     </Declaration>
     <Declaration>
@@ -836,6 +935,9 @@
         <Class IRI="#Senseperception"/>
     </Declaration>
     <Declaration>
+        <Class IRI="#Severe"/>
+    </Declaration>
+    <Declaration>
         <Class IRI="#ShoeGlue"/>
     </Declaration>
     <Declaration>
@@ -846,6 +948,9 @@
     </Declaration>
     <Declaration>
         <Class IRI="#SignalAndSymptomSeverity"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#SingleEpsiode"/>
     </Declaration>
     <Declaration>
         <Class IRI="#SingularTherapeuticProject"/>
@@ -894,6 +999,12 @@
     </Declaration>
     <Declaration>
         <Class IRI="#Submission"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#SuicidalIdeation"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#SuicideAttempt"/>
     </Declaration>
     <Declaration>
         <Class IRI="#Sweating"/>
@@ -980,7 +1091,13 @@
         <Class IRI="#Weakness"/>
     </Declaration>
     <Declaration>
+        <Class IRI="#WeightChange"/>
+    </Declaration>
+    <Declaration>
         <Class IRI="#WhatIf"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Worthlessness"/>
     </Declaration>
     <Declaration>
         <Class IRI="#Yes"/>
@@ -1064,7 +1181,7 @@
         <ObjectProperty IRI="#isFormulatedBy_3"/>
     </Declaration>
     <Declaration>
-        <ObjectProperty IRI="#isIidentifiedWith"/>
+        <ObjectProperty IRI="#isIdentifiedWith"/>
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="#isTechniqueOf"/>
@@ -1080,9 +1197,6 @@
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="#patientHasClinicalData"/>
-    </Declaration>
-    <Declaration>
-        <ObjectProperty IRI="#patientHas_1"/>
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="#questionHas"/>
@@ -1118,6 +1232,9 @@
         <ObjectProperty IRI="#uses"/>
     </Declaration>
     <Declaration>
+        <DataProperty IRI="#description"/>
+    </Declaration>
+    <Declaration>
         <NamedIndividual IRI="#Adolescent"/>
     </Declaration>
     <Declaration>
@@ -1134,6 +1251,9 @@
     </Declaration>
     <Declaration>
         <NamedIndividual IRI="#Auditory"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Avoidance"/>
     </Declaration>
     <Declaration>
         <NamedIndividual IRI="#BeginningQuestionnarie"/>
@@ -1196,6 +1316,15 @@
         <NamedIndividual IRI="#Diabetes"/>
     </Declaration>
     <Declaration>
+        <NamedIndividual IRI="#DifficultyConcentrating"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#DifficultyFallingAsleep"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#DisturbedSleepPattern"/>
+    </Declaration>
+    <Declaration>
         <NamedIndividual IRI="#Doctor"/>
     </Declaration>
     <Declaration>
@@ -1203,6 +1332,12 @@
     </Declaration>
     <Declaration>
         <NamedIndividual IRI="#EmotionalAspect"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#ExcessiveAnxiety"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#FeelIsolated"/>
     </Declaration>
     <Declaration>
         <NamedIndividual IRI="#Female"/>
@@ -1238,6 +1373,9 @@
         <NamedIndividual IRI="#IndividualPsychologicalService"/>
     </Declaration>
     <Declaration>
+        <NamedIndividual IRI="#Laura"/>
+    </Declaration>
+    <Declaration>
         <NamedIndividual IRI="#Low"/>
     </Declaration>
     <Declaration>
@@ -1254,6 +1392,9 @@
     </Declaration>
     <Declaration>
         <NamedIndividual IRI="#MediumRiskLevel"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#MuscleTension"/>
     </Declaration>
     <Declaration>
         <NamedIndividual IRI="#No"/>
@@ -1307,6 +1448,9 @@
         <NamedIndividual IRI="#Questionnarie"/>
     </Declaration>
     <Declaration>
+        <NamedIndividual IRI="#RacingHeart"/>
+    </Declaration>
+    <Declaration>
         <NamedIndividual IRI="#Refractoriness"/>
     </Declaration>
     <Declaration>
@@ -1355,6 +1499,9 @@
         <NamedIndividual IRI="#SocioDemographicData"/>
     </Declaration>
     <Declaration>
+        <NamedIndividual IRI="#SweatyPalms"/>
+    </Declaration>
+    <Declaration>
         <NamedIndividual IRI="#Symptomatology"/>
     </Declaration>
     <Declaration>
@@ -1374,6 +1521,9 @@
     </Declaration>
     <Declaration>
         <NamedIndividual IRI="#Transtornosmentaiscomuns"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Unhappy"/>
     </Declaration>
     <Declaration>
         <NamedIndividual IRI="#VisualHallucination"/>
@@ -1470,6 +1620,10 @@
         <Class IRI="#ContextualAspect"/>
     </SubClassOf>
     <SubClassOf>
+        <Class IRI="#Anhedonia"/>
+        <Class IRI="#BehaviorAspect"/>
+    </SubClassOf>
+    <SubClassOf>
         <Class IRI="#Anorexia"/>
         <Class IRI="#Nutrition"/>
     </SubClassOf>
@@ -1500,6 +1654,10 @@
     <SubClassOf>
         <Class IRI="#AutomaticThinking"/>
         <Class IRI="#CognitiveAspect"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Avoidance"/>
+        <Class IRI="#BehaviorAspect"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#AvoidanceOfThreateningSignsOrSituations"/>
@@ -1536,6 +1694,10 @@
     <SubClassOf>
         <Class IRI="#BiologicalSex"/>
         <Class IRI="#SocioDemographicData"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#BipolarDisorder"/>
+        <Class IRI="#Disorder"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#Brainstorming"/>
@@ -1646,6 +1808,10 @@
         <Class abbreviatedIRI="gufo:IntrinsicMode"/>
     </SubClassOf>
     <SubClassOf>
+        <Class IRI="#CompletedSuicide"/>
+        <Class IRI="#SuicidalIdeation"/>
+    </SubClassOf>
+    <SubClassOf>
         <Class IRI="#CondensationOfConcepts"/>
         <Class IRI="#ContextualAspect"/>
     </SubClassOf>
@@ -1698,8 +1864,16 @@
         <Class IRI="#ExecutiveFunctions"/>
     </SubClassOf>
     <SubClassOf>
+        <Class IRI="#DecreasedCapacity"/>
+        <Class IRI="#BehaviorAspect"/>
+    </SubClassOf>
+    <SubClassOf>
         <Class IRI="#DeficientThinking"/>
         <Class IRI="#ContextualAspect"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#DeliberateThought"/>
+        <Class IRI="#CognitiveAspect"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#Delirium"/>
@@ -1722,12 +1896,20 @@
         <Class IRI="#SignAndSymptom"/>
     </SubClassOf>
     <SubClassOf>
+        <Class IRI="#DepressedMood"/>
+        <Class IRI="#EmotionalAspect"/>
+    </SubClassOf>
+    <SubClassOf>
         <Class IRI="#Depression"/>
         <Class IRI="#MentalDisorder"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#Desensitization"/>
         <Class IRI="#ClinicalStrategy"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Despondency"/>
+        <Class IRI="#EmotionalAspect"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#Devaluation"/>
@@ -1758,6 +1940,10 @@
         <Class IRI="#CognitiveDistortion"/>
     </SubClassOf>
     <SubClassOf>
+        <Class IRI="#DifferentialDiagnosis"/>
+        <Class IRI="#ClinicalEvaluation"/>
+    </SubClassOf>
+    <SubClassOf>
         <Class IRI="#DifficultyOfReasoning"/>
         <Class IRI="#CognitiveSymptoms"/>
     </SubClassOf>
@@ -1766,8 +1952,16 @@
         <Class IRI="#BehaviorSymptoms"/>
     </SubClassOf>
     <SubClassOf>
+        <Class IRI="#DiminishedAbilityThink"/>
+        <Class IRI="#CognitiveFunctions"/>
+    </SubClassOf>
+    <SubClassOf>
         <Class IRI="#Disaffection"/>
         <Class IRI="#CoreBelief"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Discouragement"/>
+        <Class IRI="#EmotionalAspect"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#Disease_Spine_Arthrodesis"/>
@@ -1827,6 +2021,10 @@
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#EmotionalSymptoms"/>
+        <Class IRI="#EmotionalAspect"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Emptiness"/>
         <Class IRI="#EmotionalAspect"/>
     </SubClassOf>
     <SubClassOf>
@@ -1918,6 +2116,10 @@
         <Class IRI="#PhysiologicalSymptom"/>
     </SubClassOf>
     <SubClassOf>
+        <Class IRI="#Fatigue"/>
+        <Class IRI="#PhysiologicalSymptom"/>
+    </SubClassOf>
+    <SubClassOf>
         <Class IRI="#Fear"/>
         <Class IRI="#EmotionalAspect"/>
     </SubClassOf>
@@ -1936,6 +2138,14 @@
     <SubClassOf>
         <Class IRI="#FearOfPhysicalInjuryOrDeath"/>
         <Class IRI="#CognitiveSymptoms"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#FeelingOfNervousness"/>
+        <Class IRI="#PhysiologicalReaction"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#FeelingsOfWorthlessness"/>
+        <Class IRI="#EmotionalAspect"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#Female"/>
@@ -1984,6 +2194,10 @@
     <SubClassOf>
         <Class IRI="#Glaucoma"/>
         <Class IRI="#Comorbidity"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#GravitySpecifier"/>
+        <Class abbreviatedIRI="gufo:FunctionalComplex"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#GroupService"/>
@@ -2038,6 +2252,10 @@
         <Class IRI="#RiskLevel"/>
     </SubClassOf>
     <SubClassOf>
+        <Class IRI="#Hopelessness"/>
+        <Class IRI="#EmotionalAspect"/>
+    </SubClassOf>
+    <SubClassOf>
         <Class IRI="#Hyperesthesia"/>
         <Class IRI="#ContextualAspect"/>
     </SubClassOf>
@@ -2052,6 +2270,10 @@
     <SubClassOf>
         <Class IRI="#Hyperpathy"/>
         <Class IRI="#ContextualAspect"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Hypersomnia"/>
+        <Class IRI="#PhysiologicalReaction"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#Hypersomnia"/>
@@ -2094,6 +2316,14 @@
         <Class IRI="#Comorbidity"/>
     </SubClassOf>
     <SubClassOf>
+        <Class IRI="#InadequateSelfCare"/>
+        <Class IRI="#BehaviorAspect"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#InappropriateGuilt"/>
+        <Class IRI="#EmotionalAspect"/>
+    </SubClassOf>
+    <SubClassOf>
         <Class IRI="#IncreasedHeartRate"/>
         <Class IRI="#PhysiologicalSymptom"/>
     </SubClassOf>
@@ -2114,12 +2344,24 @@
         <Class IRI="#Comorbidity"/>
     </SubClassOf>
     <SubClassOf>
+        <Class IRI="#Insomnia"/>
+        <Class IRI="#PhysiologicalReaction"/>
+    </SubClassOf>
+    <SubClassOf>
         <Class IRI="#Intestinal_Problems"/>
         <Class IRI="#Comorbidity"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#Irritable"/>
         <Class IRI="#EmotionalSymptoms"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Irritation"/>
+        <Class IRI="#EmotionalAspect"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Isolation"/>
+        <Class IRI="#BehaviorAspect"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#Jealousy"/>
@@ -2150,8 +2392,20 @@
         <Class IRI="#PhysiologicalSymptom"/>
     </SubClassOf>
     <SubClassOf>
+        <Class IRI="#LossOfEnergy"/>
+        <Class IRI="#PhysiologicalSymptom"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Lovelessness"/>
+        <Class IRI="#Disorder"/>
+    </SubClassOf>
+    <SubClassOf>
         <Class IRI="#Low"/>
         <Class IRI="#FrequencyOfUseOfTheTypeOfPsychoactiveSubstance"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#LowNeurotransmitters"/>
+        <Class IRI="#PhysiologicalSymptom"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#LowRiskLevel"/>
@@ -2160,6 +2414,10 @@
     <SubClassOf>
         <Class IRI="#Lupus"/>
         <Class IRI="#Comorbidity"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#MajorDepressiveDisorder"/>
+        <Class IRI="#Depression"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#Male"/>
@@ -2198,6 +2456,10 @@
         <Class IRI="#Comorbidity"/>
     </SubClassOf>
     <SubClassOf>
+        <Class IRI="#Mild"/>
+        <Class IRI="#GravitySpecifier"/>
+    </SubClassOf>
+    <SubClassOf>
         <Class IRI="#MindReading"/>
         <Class IRI="#CognitiveDistortion"/>
     </SubClassOf>
@@ -2212,6 +2474,10 @@
     <SubClassOf>
         <Class IRI="#MnemicIllusions"/>
         <Class IRI="#ContextualAspect"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Moderate"/>
+        <Class IRI="#GravitySpecifier"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#MultipleDrugs"/>
@@ -2350,6 +2616,10 @@
         <Class IRI="#PsychoactiveSubstance"/>
     </SubClassOf>
     <SubClassOf>
+        <Class IRI="#PhysiologicalReaction"/>
+        <Class IRI="#ClinicalEvaluation"/>
+    </SubClassOf>
+    <SubClassOf>
         <Class IRI="#PhysiologicalSymptom"/>
         <Class IRI="#ClinicalEvaluation"/>
     </SubClassOf>
@@ -2402,6 +2672,10 @@
         <Class IRI="#CareTeam"/>
     </SubClassOf>
     <SubClassOf>
+        <Class IRI="#PsychomotorRetardation"/>
+        <Class IRI="#SignAndSymptom"/>
+    </SubClassOf>
+    <SubClassOf>
         <Class IRI="#Psychoterapy"/>
         <Class IRI="#TherapeuticAction"/>
     </SubClassOf>
@@ -2436,6 +2710,14 @@
     <SubClassOf>
         <Class IRI="#RecordingDysfunctionalThoughts"/>
         <Class IRI="#ClinicalStrategy"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#RecurrentEpisode"/>
+        <Class IRI="#GravitySpecifier"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#RecurringThoughtsOfDeath"/>
+        <Class IRI="#DeliberateThought"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#Refractoriness"/>
@@ -2478,6 +2760,10 @@
         <Class IRI="#EmotionalAspect"/>
     </SubClassOf>
     <SubClassOf>
+        <Class IRI="#SchizoaffectiveDisorder"/>
+        <Class IRI="#MentalDisorder"/>
+    </SubClassOf>
+    <SubClassOf>
         <Class IRI="#Score"/>
         <Class IRI="#QuestionnaireElement"/>
     </SubClassOf>
@@ -2502,6 +2788,10 @@
         <Class IRI="#CognitiveFunctions"/>
     </SubClassOf>
     <SubClassOf>
+        <Class IRI="#Severe"/>
+        <Class IRI="#GravitySpecifier"/>
+    </SubClassOf>
+    <SubClassOf>
         <Class IRI="#ShoeGlue"/>
         <Class IRI="#PetroleumDerivatives"/>
     </SubClassOf>
@@ -2516,6 +2806,10 @@
     <SubClassOf>
         <Class IRI="#SignalAndSymptomSeverity"/>
         <Class IRI="#ClinicalData"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#SingleEpsiode"/>
+        <Class IRI="#GravitySpecifier"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#SingularTherapeuticProject"/>
@@ -2580,6 +2874,14 @@
     <SubClassOf>
         <Class IRI="#Submission"/>
         <Class IRI="#BehaviorAspect"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#SuicidalIdeation"/>
+        <Class IRI="#DeliberateThought"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#SuicideAttempt"/>
+        <Class IRI="#SuicidalIdeation"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#Sweating"/>
@@ -2694,8 +2996,16 @@
         <Class IRI="#PhysiologicalSymptom"/>
     </SubClassOf>
     <SubClassOf>
+        <Class IRI="#WeightChange"/>
+        <Class IRI="#PhysiologicalReaction"/>
+    </SubClassOf>
+    <SubClassOf>
         <Class IRI="#WhatIf"/>
         <Class IRI="#CognitiveDistortion"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Worthlessness"/>
+        <Class IRI="#Disorder"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#Yes"/>
@@ -2798,6 +3108,21 @@
     <DisjointClasses>
         <Class IRI="#Acceptance"/>
         <Class IRI="#Aggressiveness"/>
+        <Class IRI="#Anhedonia"/>
+        <Class IRI="#Avoidance"/>
+        <Class IRI="#BehaviorSymptoms"/>
+        <Class IRI="#Confrontation"/>
+        <Class IRI="#CopingStrategies"/>
+        <Class IRI="#DodgeAndEscape"/>
+        <Class IRI="#InadequateSelfCare"/>
+        <Class IRI="#Isolation"/>
+        <Class IRI="#Passivity"/>
+        <Class IRI="#Stoppage"/>
+        <Class IRI="#Submission"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#Acceptance"/>
+        <Class IRI="#Aggressiveness"/>
         <Class IRI="#BehaviorSymptoms"/>
         <Class IRI="#Confrontation"/>
         <Class IRI="#CopingStrategies"/>
@@ -2805,6 +3130,32 @@
         <Class IRI="#Passivity"/>
         <Class IRI="#Stoppage"/>
         <Class IRI="#Submission"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#Agitation"/>
+        <Class IRI="#ChestPressure"/>
+        <Class IRI="#Chills"/>
+        <Class IRI="#ChokingSensation"/>
+        <Class IRI="#Diarrhea"/>
+        <Class IRI="#Dizziness"/>
+        <Class IRI="#DryMouth"/>
+        <Class IRI="#Fainting"/>
+        <Class IRI="#Fatigue"/>
+        <Class IRI="#HeatWaves"/>
+        <Class IRI="#IncreasedHeartRate"/>
+        <Class IRI="#LossOfBalance"/>
+        <Class IRI="#MuscularTension"/>
+        <Class IRI="#Nausea"/>
+        <Class IRI="#NumbnessInLimbs"/>
+        <Class IRI="#Palpitations"/>
+        <Class IRI="#RapidBreathing"/>
+        <Class IRI="#Rigidity"/>
+        <Class IRI="#ShortnessOfBreath"/>
+        <Class IRI="#StomachPain"/>
+        <Class IRI="#Sweating"/>
+        <Class IRI="#Tingling"/>
+        <Class IRI="#Tremor"/>
+        <Class IRI="#Weakness"/>
     </DisjointClasses>
     <DisjointClasses>
         <Class IRI="#Agitation"/>
@@ -2845,6 +3196,26 @@
         <Class IRI="#MultipleDrugs"/>
         <Class IRI="#PetroleumDerivatives"/>
         <Class IRI="#Tobacco"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#Anxiety"/>
+        <Class IRI="#DepressedMood"/>
+        <Class IRI="#Discouragement"/>
+        <Class IRI="#Disgusted"/>
+        <Class IRI="#EmotionalSymptoms"/>
+        <Class IRI="#Emptiness"/>
+        <Class IRI="#Fear"/>
+        <Class IRI="#FeelingsOfWorthlessness"/>
+        <Class IRI="#Frustration"/>
+        <Class IRI="#Happiness"/>
+        <Class IRI="#Hopelessness"/>
+        <Class IRI="#InappropriateGuilt"/>
+        <Class IRI="#Inhibition"/>
+        <Class IRI="#Irritation"/>
+        <Class IRI="#Jealousy"/>
+        <Class IRI="#Rage"/>
+        <Class IRI="#Reactivity"/>
+        <Class IRI="#Sadness"/>
     </DisjointClasses>
     <DisjointClasses>
         <Class IRI="#Anxiety"/>
@@ -3011,6 +3382,10 @@
         <NamedIndividual IRI="#Auditory"/>
     </ClassAssertion>
     <ClassAssertion>
+        <Class IRI="#Avoidance"/>
+        <NamedIndividual IRI="#Avoidance"/>
+    </ClassAssertion>
+    <ClassAssertion>
         <Class abbreviatedIRI="gufo:SubKind"/>
         <NamedIndividual IRI="#BeginningQuestionnarie"/>
     </ClassAssertion>
@@ -3091,6 +3466,18 @@
         <NamedIndividual IRI="#Diabetes"/>
     </ClassAssertion>
     <ClassAssertion>
+        <Class IRI="#PoorConcentration"/>
+        <NamedIndividual IRI="#DifficultyConcentrating"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Insomnia"/>
+        <NamedIndividual IRI="#DifficultyFallingAsleep"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#PhysiologicalReaction"/>
+        <NamedIndividual IRI="#DisturbedSleepPattern"/>
+    </ClassAssertion>
+    <ClassAssertion>
         <Class abbreviatedIRI="gufo:Role"/>
         <NamedIndividual IRI="#Doctor"/>
     </ClassAssertion>
@@ -3101,6 +3488,14 @@
     <ClassAssertion>
         <Class abbreviatedIRI="gufo:SubKind"/>
         <NamedIndividual IRI="#EmotionalAspect"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Anxiety"/>
+        <NamedIndividual IRI="#ExcessiveAnxiety"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Isolation"/>
+        <NamedIndividual IRI="#FeelIsolated"/>
     </ClassAssertion>
     <ClassAssertion>
         <Class abbreviatedIRI="gufo:SubKind"/>
@@ -3147,6 +3542,10 @@
         <NamedIndividual IRI="#IndividualPsychologicalService"/>
     </ClassAssertion>
     <ClassAssertion>
+        <Class IRI="#Patient"/>
+        <NamedIndividual IRI="#Laura"/>
+    </ClassAssertion>
+    <ClassAssertion>
         <Class abbreviatedIRI="gufo:SubKind"/>
         <NamedIndividual IRI="#Low"/>
     </ClassAssertion>
@@ -3169,6 +3568,10 @@
     <ClassAssertion>
         <Class abbreviatedIRI="gufo:SubKind"/>
         <NamedIndividual IRI="#MediumRiskLevel"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#MuscularTension"/>
+        <NamedIndividual IRI="#MuscleTension"/>
     </ClassAssertion>
     <ClassAssertion>
         <Class abbreviatedIRI="gufo:SubKind"/>
@@ -3239,6 +3642,14 @@
         <NamedIndividual IRI="#Questionnarie"/>
     </ClassAssertion>
     <ClassAssertion>
+        <Class IRI="#IncreasedHeartRate"/>
+        <NamedIndividual IRI="#RacingHeart"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#RapidBreathing"/>
+        <NamedIndividual IRI="#RacingHeart"/>
+    </ClassAssertion>
+    <ClassAssertion>
         <Class abbreviatedIRI="gufo:SubKind"/>
         <NamedIndividual IRI="#Refractoriness"/>
     </ClassAssertion>
@@ -3303,6 +3714,10 @@
         <NamedIndividual IRI="#SocioDemographicData"/>
     </ClassAssertion>
     <ClassAssertion>
+        <Class IRI="#Sweating"/>
+        <NamedIndividual IRI="#SweatyPalms"/>
+    </ClassAssertion>
+    <ClassAssertion>
         <Class abbreviatedIRI="gufo:SubKind"/>
         <NamedIndividual IRI="#Symptomatology"/>
     </ClassAssertion>
@@ -3331,6 +3746,10 @@
         <NamedIndividual IRI="#Transtornosmentaiscomuns"/>
     </ClassAssertion>
     <ClassAssertion>
+        <Class IRI="#Happiness"/>
+        <NamedIndividual IRI="#Unhappy"/>
+    </ClassAssertion>
+    <ClassAssertion>
         <Class abbreviatedIRI="gufo:SubKind"/>
         <NamedIndividual IRI="#VisualHallucination"/>
     </ClassAssertion>
@@ -3342,6 +3761,56 @@
         <Class IRI="#Question"/>
         <NamedIndividual IRI="#Possui_pensamentos_e_comportamentos_repetitivos_e/ou_realiza_algum_ritual"/>
     </ClassAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#isIdentifiedWith"/>
+        <NamedIndividual IRI="#Laura"/>
+        <NamedIndividual IRI="#Avoidance"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#isIdentifiedWith"/>
+        <NamedIndividual IRI="#Laura"/>
+        <NamedIndividual IRI="#DifficultyConcentrating"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#isIdentifiedWith"/>
+        <NamedIndividual IRI="#Laura"/>
+        <NamedIndividual IRI="#DifficultyFallingAsleep"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#isIdentifiedWith"/>
+        <NamedIndividual IRI="#Laura"/>
+        <NamedIndividual IRI="#DisturbedSleepPattern"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#isIdentifiedWith"/>
+        <NamedIndividual IRI="#Laura"/>
+        <NamedIndividual IRI="#ExcessiveAnxiety"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#isIdentifiedWith"/>
+        <NamedIndividual IRI="#Laura"/>
+        <NamedIndividual IRI="#FeelIsolated"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#isIdentifiedWith"/>
+        <NamedIndividual IRI="#Laura"/>
+        <NamedIndividual IRI="#MuscleTension"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#isIdentifiedWith"/>
+        <NamedIndividual IRI="#Laura"/>
+        <NamedIndividual IRI="#RacingHeart"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#isIdentifiedWith"/>
+        <NamedIndividual IRI="#Laura"/>
+        <NamedIndividual IRI="#SweatyPalms"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#isIdentifiedWith"/>
+        <NamedIndividual IRI="#Laura"/>
+        <NamedIndividual IRI="#Unhappy"/>
+    </ObjectPropertyAssertion>
     <ObjectPropertyAssertion>
         <ObjectProperty IRI="#isFormulatedBy_1"/>
         <NamedIndividual IRI="#Pensa_em_se_matar_ou_já_realizou_alguma_tentativa_de_suicídio"/>
@@ -3367,6 +3836,31 @@
         <NamedIndividual IRI="#Possui_pensamentos_e_comportamentos_repetitivos_e/ou_realiza_algum_ritual"/>
         <NamedIndividual IRI="#Transtornosmentaiscomuns"/>
     </ObjectPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#description"/>
+        <NamedIndividual IRI="#DifficultyConcentrating"/>
+        <Literal></Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#description"/>
+        <NamedIndividual IRI="#ExcessiveAnxiety"/>
+        <Literal></Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#description"/>
+        <NamedIndividual IRI="#Laura"/>
+        <Literal>Avoidance: She avoids social commitments and activities that could be enjoyable, fearing that this will compromise her time dedicated to studying.</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#description"/>
+        <NamedIndividual IRI="#Laura"/>
+        <Literal>Difficulty Concentration: She reports being distracted in class and facing &quot;blanks&quot; during assessments, which may be related to her anxiety</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#description"/>
+        <NamedIndividual IRI="#Laura"/>
+        <Literal>Excessive Anxiety She demonstrates constant concern about his studies and academic performance, in addition to feeling anxious when presenting himself in seminars</Literal>
+    </DataPropertyAssertion>
     <SubObjectPropertyOf>
         <ObjectProperty IRI="#hasQuestionnarieElement"/>
         <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
@@ -3444,7 +3938,7 @@
         <Class IRI="#QuestionnaireElement"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
-        <ObjectProperty IRI="#isIidentifiedWith"/>
+        <ObjectProperty IRI="#isIdentifiedWith"/>
         <Class IRI="#Patient"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
@@ -3465,10 +3959,6 @@
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
         <ObjectProperty IRI="#patientHasClinicalData"/>
-        <Class IRI="#Patient"/>
-    </ObjectPropertyDomain>
-    <ObjectPropertyDomain>
-        <ObjectProperty IRI="#patientHas_1"/>
         <Class IRI="#Patient"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
@@ -3592,8 +4082,12 @@
         <Class IRI="#Questionnarie"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
-        <ObjectProperty IRI="#isIidentifiedWith"/>
+        <ObjectProperty IRI="#isIdentifiedWith"/>
         <Class IRI="#Comorbidity"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#isIdentifiedWith"/>
+        <Class IRI="#Disorder"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
         <ObjectProperty IRI="#isTechniqueOf"/>
@@ -3609,15 +4103,15 @@
     </ObjectPropertyRange>
     <ObjectPropertyRange>
         <ObjectProperty IRI="#patientHas"/>
+        <Class IRI="#FinalScore"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#patientHas"/>
         <Class IRI="#SocioDemographicData"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
         <ObjectProperty IRI="#patientHasClinicalData"/>
         <Class IRI="#ClinicalData"/>
-    </ObjectPropertyRange>
-    <ObjectPropertyRange>
-        <ObjectProperty IRI="#patientHas_1"/>
-        <Class IRI="#FinalScore"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
         <ObjectProperty IRI="#questionHas"/>
@@ -3682,6 +4176,11 @@
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>#Alcohol</IRI>
         <Literal xml:lang="en">Alcohol</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Anhedonia</IRI>
+        <Literal>Anhedonia is the inability to experience joy or pleasure. You may feel numb or less interested in things that you once enjoyed. It’s a common symptom of many mental health conditions like depression.</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
@@ -4150,11 +4649,6 @@
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
-        <IRI>#isIidentifiedWith</IRI>
-        <Literal xml:lang="en">isIidentifiedWith</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>#isTechniqueOf</IRI>
         <Literal xml:lang="en">isTechniqueOf</Literal>
     </AnnotationAssertion>
@@ -4171,11 +4665,6 @@
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>#patientHas</IRI>
-        <Literal xml:lang="en">patientHas</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
-        <IRI>#patientHas_1</IRI>
         <Literal xml:lang="en">patientHas</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>

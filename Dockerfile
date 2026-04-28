@@ -1,5 +1,8 @@
 FROM python:3.11.3-slim
 
+RUN useradd -ms /bin/sh -u 1001 app
+USER app
+
 WORKDIR /app
 
 RUN pip install --upgrade pip
