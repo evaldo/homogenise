@@ -62,7 +62,11 @@
     </div>
   </div>
   <div align="center">
+      {%if is_knowledge_graph_selected %}
+          <svg id="graph" width="1600" height="1200"></svg>
+      {% else %}
       <img src='data:image/png;base64,{{ img_uri }}' width="85%" />
+      {% endif %}
   </div>
 {% endif %}
 
@@ -91,4 +95,14 @@
     });
   });
 </script>
+
+{% if is_knowledge_graph_selected %}
+  <script>
+    window.GRAPH_DATA = {{ graph_data | tojson }};
+  </script>
+    <script src="{{url_for('static',filename="libs/d3.v7.js")}}"> </script>
+    <script type="module" src="{{url_for('static',filename="script.js")}}"></script>
+
+
+{% endif %}
 {% endblock %}

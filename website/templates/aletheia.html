@@ -1,0 +1,248 @@
+{% extends "base.html" %} {% block title %}Aletheia{% endblock %}
+{% block content %}
+
+<style>
+    #aletheia-panel {
+        position: relative;
+        left: 50%;
+        margin-left: -50vw;
+        margin-right: -50vw;
+        width: 100vw;
+    }
+
+    #main-area {
+        position: relative;
+        left: 50%;
+        margin-left: -50vw;
+        width: 100vw;
+        height: calc(100vh - 56px - 41px); /* navbar + panel header colapsado */
+        display: flex;
+        overflow: hidden;
+    }
+
+    #graph-container { flex: 0 0 75%; height: 100%; overflow: hidden; }
+
+    #tree-container {
+        font-family: 'Gill Sans', 'Helvetica Neue', Helvetica, sans-serif;
+        font-size: 20px;
+        flex: 1;
+        overflow-y: auto;
+        border-left: 1px solid #ccc;
+        height: 100%;
+    }
+
+    #zoom-controls {
+        position: fixed;
+        bottom: 70px;
+        left: 20px;
+        z-index: 999;
+    }
+</style>
+
+<!-- Injeta project_id para o JS -->
+<script>window.PROJECT_ID = {{ project_id or 'null' }};</script>
+
+<!-- Modal de seleção de projeto -->
+<div class="modal fade" id="projectModal" tabindex="-1" role="dialog"
+     data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content bg-dark text-light border-secondary">
+            <div class="modal-header border-secondary">
+                <h5 class="modal-title">Aletheia</h5>
+                {% if project_id %}
+                <button type="button" class="close text-light" data-dismiss="modal">
+                    <span>&times;</span>
+                </button>
+                {% endif %}
+            </div>
+            <div class="modal-body">
+                <form method="GET" action="/aletheia" id="project-form">
+                    <div class="form-group">
+                        <label for="project_select" class="text-secondary small">Selecione um projeto para visualizar</label>
+                        <select id="project_select" name="project_id"
+                                class="form-control bg-dark text-light border-secondary mt-1">
+                            <option value="">-- selecione --</option>
+                            {% for p in projects %}
+                                <option value="{{ p[0] }}" {% if p[0] == project_id %}selected{% endif %}>
+                                    {{ p[1] }}
+                                </option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="modal-footer border-secondary px-0 pb-0">
+                        <button type="submit" class="btn btn-primary w-100">Abrir</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% if not project_id %}
+<script>$('#projectModal').modal('show');</script>
+{% endif %}
+
+<!-- Generate panel -->
+<div id="aletheia-panel" class="card border-secondary bg-dark text-light rounded-0">
+    <div class="card-header d-flex align-items-center bg-dark border-secondary px-3 py-2"
+         style="cursor: pointer;"
+         data-toggle="collapse"
+         data-target="#generate-panel-body"
+         aria-expanded="false"
+         aria-controls="generate-panel-body">
+        <strong class="mr-2">Aletheia</strong>
+        <span id="generate-panel-arrow" class="mr-3">▶</span>
+        {% if project_name %}
+            <span class="text-info small mr-3">{{ project_name }}</span>
+        {% endif %}
+        <span class="text-secondary small mr-auto">Generate OWL Concepts With AI</span>
+        <button type="button" class="btn btn-sm btn-outline-secondary ml-2"
+                onclick="event.stopPropagation(); $('#projectModal').modal('show');">
+            Switch Project
+        </button>
+    </div>
+    <div class="collapse" id="generate-panel-body">
+        <div class="card-body bg-dark">
+            <div class="input-group">
+                <input id="generate-input"
+                       type="text"
+                       class="form-control bg-dark text-light border-secondary"
+                       placeholder='Ex: "generate X connected to Y"'
+                       autocomplete="off" />
+                <div class="input-group-append">
+                    <button id="generate-btn" class="btn btn-primary" onclick="runGenerate()">Generate</button>
+                </div>
+            </div>
+            <div id="generate-warnings" class="mt-2 text-warning small" style="display: none;"></div>
+        </div>
+    </div>
+</div>
+
+<!-- Graph + tree area -->
+<div id="main-area">
+    <div id="graph-container">
+        <svg id="graph" width="100%" height="100%"></svg>
+    </div>
+    <div id="tree-container" class="card bg-dark text-light border-secondary rounded-0">
+        <div class="card-header bg-dark border-secondary py-1 px-2 small text-secondary">
+            Class Hierarchy
+        </div>
+        <div class="card-body p-1 overflow-auto">
+            <svg id="tree"></svg>
+        </div>
+    </div>
+</div>
+
+<!-- Preview toolbar (fixed, hidden by default) -->
+<div id="preview-toolbar" class="card bg-dark border-secondary d-none flex-column position-fixed"
+     style="bottom: 20px; left: 50%; transform: translateX(-50%); z-index: 999;
+            min-width: 320px; max-width: 500px; box-shadow: 0 8px 24px rgba(0,0,0,0.5);">
+    <div class="card-body p-3">
+        <ul id="preview-action-list" class="list-unstyled mb-3 small"
+            style="font-family: monospace; max-height: 200px; overflow-y: auto;"></ul>
+        <div class="d-flex justify-content-end gap-2">
+            <button onclick="discardPreview()" class="btn btn-sm btn-outline-danger">❌ Discard</button>
+            <button onclick="commitActions()" class="btn btn-sm btn-success">✅ Apply</button>
+        </div>
+    </div>
+</div>
+
+<!-- Fixed action buttons -->
+<button onclick="exportOWL()" class="btn btn-outline-success position-fixed"
+        style="bottom: 20px; left: 20px; z-index: 999;">
+    💾 Export OWL
+</button>
+
+<button id="suggest-btn" onclick="getSuggestions()" class="btn btn-primary position-fixed d-flex flex-column align-items-center"
+        style="bottom: 20px; right: 20px; z-index: 999;">
+    <img src="{{url_for('static',filename='imgs/ollama.svg')}}" alt="" width="32" height="32" style="filter: invert(1);">
+    Get Suggestions By AI
+</button>
+
+<!-- Zoom controls -->
+<div id="zoom-controls" class="btn-group-vertical">
+    <button onclick="zoomIn()"    class="btn btn-sm btn-outline-secondary">+</button>
+    <button onclick="zoomOut()"   class="btn btn-sm btn-outline-secondary">−</button>
+    <button onclick="zoomReset()" class="btn btn-sm btn-outline-secondary">⌂</button>
+    <button onclick="zoomFit()"   class="btn btn-sm btn-outline-secondary">⊡</button>
+</div>
+
+<script src="{{url_for('static',filename='libs/d3.v7.js')}}"></script>
+<script type="module" src="{{url_for('static',filename='aletheia.js')}}"></script>
+
+<script>
+    // Sync arrow with Bootstrap collapse state
+    document.querySelector('[data-target="#generate-panel-body"]').addEventListener('click', function () {
+        const arrow = document.getElementById('generate-panel-arrow');
+        const isOpen = document.getElementById('generate-panel-body').classList.contains('show');
+        arrow.textContent = isOpen ? '▶' : '▼';
+    });
+
+    window.runGenerate = async function () {
+        const input  = document.getElementById('generate-input');
+        const btn    = document.getElementById('generate-btn');
+        const prompt = input.value.trim();
+        if (!prompt) return;
+
+        btn.disabled    = true;
+        btn.textContent = '⏳ Generating...';
+
+        try {
+            const res = await fetch("/api/generate", {
+                method:  "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    prompt,
+                    existing_nodes: window._evaldoNodes?.map(n => ({ name: n.name, type: n.type })) ?? [],
+                    existing_edges: window._evaldoEdges?.map(e => ({
+                        source_name: window._evaldoNodes?.find(n => n.id === (e.source?.id ?? e.source))?.name ?? e.source,
+                        target_name: window._evaldoNodes?.find(n => n.id === (e.target?.id ?? e.target))?.name ?? e.target,
+                        label: e.label
+                    })) ?? []
+                })
+            });
+            const data = await res.json();
+            if (!data.ok) { alert("Error: " + data.error); return; }
+
+            const wdiv = document.getElementById('generate-warnings');
+            if (data.warnings?.length) {
+                wdiv.style.display = 'block';
+                wdiv.textContent   = '⚠ ' + data.warnings.join(' | ');
+            } else {
+                wdiv.style.display = 'none';
+            }
+
+            const actions  = [];
+            const idToName = new Map(data.data.nodes.map(n => [n.id, n.name]));
+
+            data.data.nodes.forEach(n => actions.push({
+                type:    "createNode",
+                payload: { id: n.id, label: n.name },
+                reason:  "generated by panel"
+            }));
+
+            data.data.edges.forEach(e => {
+                const src = idToName.get(e.source) ?? e.source;
+                const tgt = idToName.get(e.target) ?? e.target;
+                actions.push({
+                    type:    "createEdge",
+                    payload: { source: src, target: tgt, label: e.label },
+                    reason:  "generated by panel"
+                });
+            });
+
+            window.previewActions(actions);
+            $('#generate-panel-body').collapse('hide');
+
+        } finally {
+            btn.disabled    = false;
+            btn.textContent = '🧠 Generate';
+        }
+    };
+
+    document.getElementById('generate-input').addEventListener('keydown', e => {
+        if (e.key === 'Enter') window.runGenerate();
+    });
+</script>
+
+{% endblock %}

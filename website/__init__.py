@@ -3,7 +3,7 @@ from flask_login import LoginManager
 from website.settings import db
 
 def create_app():
-    app = Flask(__name__)   
+    app = Flask(__name__, static_folder='static', static_url_path='/static')
 
     engine = db.get_engine()
 
