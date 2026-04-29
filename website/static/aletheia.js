@@ -964,7 +964,7 @@ async function getSuggestions() {
     const btn = document.getElementById('suggest-btn');
     if (btn) {
         btn.disabled = true;
-        btn.innerHTML = '⏳ Gerando...';
+        btn.innerHTML = '⏳ Generating...';
     }
 
     try {
@@ -1021,7 +1021,7 @@ async function exportOWL() {
 
     if (btn) {
         btn.disabled = true;
-        btn.innerHTML = '⏳ Exportando...';
+        btn.innerHTML = '⏳ Exporting...';
     }
 
     try {
