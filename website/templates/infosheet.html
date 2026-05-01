@@ -1,0 +1,146 @@
+{% extends "base.html" %} {% block title %}Infosheet{% endblock %} {% block content%}
+    <div class="page-container">
+        <h3>Infosheet</h3>
+        <br />
+        <div id="handsontable-container"></div>
+        <br />
+        <button id="save-button" class="btn btn-primary" disabled>Save changes</button>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/handsontable@14.6.0/dist/handsontable.full.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/handsontable@14.6.0/dist/handsontable.full.min.css">
+
+    <script>
+        let projectDropDown = [];
+        let attributePaths = {};
+        const saveButton = document.getElementById('save-button');
+        const defaultAttributes = ["Code Mapping", "CodeBook", "Dictionary Mapping", "Imports", "TimeLine", "Project"];
+        let handsOnTable;
+        let currentProject;
+
+        Promise.all([
+            fetch('/projects').then(resp => resp.json()),
+            fetch('/infosheetDefaultOptions').then(resp => resp.json())
+        ])
+        .then(([projectsData, defaultsData]) => {
+            projectDropDown = projectsData.map(it => it.project_name);
+            attributePaths = defaultsData;
+
+            initializeTable(getEmptyData());
+        })
+        .catch(e => console.error("Erro ao carregar dados iniciais:", e));
+
+        function getEmptyData(projectName = "") {
+            return defaultAttributes.map(it => {
+                if (it === "Project"){
+                    return [it, projectName];
+                }
+                return [it, ""];
+            });
+        }
+
+        async function initializeTable(data) {
+            const container = document.getElementById('handsontable-container');
+            if (handsOnTable) handsOnTable.destroy();
+
+            handsOnTable = new Handsontable(container, {
+                data: data,
+                colHeaders: ["Attribute", "Value"],
+                rowHeaders: true,
+                columns: [
+                    { readOnly: true },
+                    { type: 'text' },
+                ],
+                cells: function(row, col){
+                    const dropDownCellProperties = {};
+
+                    if (data[row][0] === "Project" && col === 1){
+                        dropDownCellProperties.type = 'dropdown';
+                        dropDownCellProperties.source = projectDropDown;
+                    }
+
+                    return dropDownCellProperties;
+                },
+                minSpareRows: 0,
+                themeName: 'ht-theme-main',
+                licenseKey: 'non-commercial-and-evaluation'
+            });
+            saveButton.disabled = false;
+
+            handsOnTable.addHook("afterChange", function(changes, source){
+                if (source === "edit" && changes){
+                    changes.forEach(([row, prop, oldValue, newProjectSelected]) => {
+                        const attr = handsOnTable.getDataAtCell(row, 0);
+
+                        if (attr === "Project" && newProjectSelected && newProjectSelected != oldValue){
+                            currentProject = newProjectSelected;
+                            loadProject(currentProject);
+                        }
+                    })
+                }
+            });
+        }
+
+        function loadProject(project) {
+            fetch(`/loadInfosheet/${encodeURIComponent(project)}`)
+            .then(resp => resp.json())
+            .then(data => {
+                if (data.length > 0) {
+                    initializeTable(data);
+                } else {
+                    const defaultDataOption = defaultAttributes.map(it => {
+                        if (it === "Project") {
+                            return [it, project];
+                        } else {
+                            const relativePath = attributePaths[it];
+
+                            if (relativePath && relativePath.trim() !== "") {
+                                return [it, `${project}/${relativePath}`];
+                            } else {
+                                return [it, ""];
+                            }
+                        }
+                    });
+                    initializeTable(defaultDataOption);
+                }
+            }).catch(e => console.error('Error loading Infosheet:', e))
+        }
+
+        saveButton.addEventListener('click', () => {
+            const dataInserted = handsOnTable.getData();
+
+            if (!currentProject){
+                window.location.href = '/infosheet?error=' + encodeURIComponent("Choose a project in the 'Project' row before saving!");
+                return;
+            }
+
+            fetch(`/saveInfosheet/${encodeURIComponent(currentProject)}`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ data:dataInserted })
+            }).then(resp => resp.json())
+            .then(result => {
+                if (result.status === 'ok') {
+                    window.location.href = '/infosheet?success=' + encodeURIComponent(result.message);
+                } else {
+                    window.location.href = '/infosheet?error=' + encodeURIComponent(result.message);
+                }
+            }).catch(e => window.location.href = '/infosheet?error=' + encodeURIComponent("Unexpected error while saving."));
+        });
+    </script>
+
+    <style>
+        .page-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        #handsontable-container {
+            margin: 0 auto;
+            width: 20%;
+        }
+    </style>
+{% endblock %} 

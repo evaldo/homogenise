@@ -18,7 +18,7 @@ services:
       test: [ "CMD-SHELL", "wget -O /dev/null -q http://localhost:7474 || exit 1" ]
       interval: 10s
       timeout: 5s
-      retries: 5
+      retries: 40
   db:
     image: postgres
     restart: unless-stopped
@@ -29,7 +29,7 @@ services:
       - POSTGRES_PASSWORD=1234
       - POSTGRES_DB=homogenise
     ports:
-      - "5439:5439"
+      - "5440:5439"
     volumes:
       - ./db/homogenise/pgdata:/var/lib/postgresql
       - ./website/settings/init.sql:/docker-entrypoint-initdb.d/create_database.sql
@@ -48,7 +48,7 @@ services:
       - AGRAPH_SUPER_USER=admin
       - AGRAPH_SUPER_PASSWORD=12345
     ports:
-      - '10000-10035:10000-10035'
+      - "11000-11035:10000-10035"
     volumes:
       - agdata:/agraph/data
       - agconfig:/agraph/etc

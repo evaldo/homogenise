@@ -11,6 +11,8 @@ RUN pip install -r requirements.txt
 
 COPY ./main.py /app
 COPY ./website /app/website
+COPY ./CodeMappings.csv /app/CodeMappings.csv
+COPY ./Properties.csv /app/Properties.csv
 
 COPY --chown=app:app . /app
 

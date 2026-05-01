@@ -2,7 +2,7 @@ import os
 import urllib.request
 import shutil
 import uuid
-from flask import Blueprint, redirect, render_template, request, flash, url_for, jsonify, current_app
+from flask import Blueprint, redirect, render_template, request, flash, url_for, jsonify, current_app, make_response, jsonify, Response
 from flask_login import login_required, current_user
 from franz.openrdf.rio.rdfformat import RDFFormat
 from wordcloud import WordCloud, STOPWORDS
@@ -16,8 +16,12 @@ matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import networkx as nx
 import pandas as pd
+import csv
 import chardet
 import re
+import shutil
+import subprocess
+from website.models import project
 from langchain_community.graphs import Neo4jGraph
 from langchain.prompts import PromptTemplate
 from langchain_openai import ChatOpenAI, OpenAIEmbeddings
@@ -965,6 +969,9 @@ def projectresearch():
         cur.close()
 
         return render_template("projectresearch.html", output_data = data, user=current_user)
+    
+def is_valid_project_name(project_name):
+    return bool(re.match(r'^[a-zA-Z0-9_-]+$', project_name))
 
 @views.route('/projectdata', methods= ['GET', 'POST'])
 def projectdata():
@@ -976,6 +983,7 @@ def projectdata():
         project_name = request.form.get("project_name")
         project_description = request.form.get("project_description")
         research_line_id = request.form.get("research_line_id")
+        project_base_uri = request.form.get("project_base_uri")
 
         if research_line_id == 'null':
             flash('Fill out all data to execute transaction!', category='error')
@@ -992,6 +1000,17 @@ def projectdata():
                     cur.close()
                     return redirect(url_for('views.projectresearch'))
                 else:
+                    try:
+                        project_root = "/app"
+                        project_path = os.path.join(project_root, project_name)
+                        if os.path.exists(project_path):
+                            shutil.rmtree(project_path)
+                            flash(f"Project folder {project_name} deleted successfully!", category='success')
+                        else:
+                            flash(f"Project folder {project_name} not found.", category='warning')
+                    except OSError as ex:
+                        flash(f"Error deleting project folder: {ex}", category='error')
+
                     cur.execute("update app.project set user_id_log = " + current_user.get_id()  + ", user_name_log = '" + current_user.first_name  + "'  where project_id = " + project_id)
                     cur.execute("delete from app.project where project_id = " + project_id)
                     cur.close()
@@ -999,12 +1018,131 @@ def projectdata():
                     return redirect(url_for('views.projectresearch'))
 
             if request.args.get('type_operation', '') == 'A':
+                try:
+                    project_root = "/app"
+                    project_path = os.path.join(project_root, project_name)
+                    os.makedirs(project_path, exist_ok=True)
+
+
+                    project_config_path = os.path.join(project_path, 'config')
+                    os.makedirs(project_config_path, exist_ok=True)
+
+                    templateCodeMappings_path = "/app/CodeMappings.csv"
+                    codeMappings_path = os.path.join(project_config_path, "CodeMappings.csv")
+                    shutil.copy2(templateCodeMappings_path, codeMappings_path)
+
+                    templateProperties_path = "/app/Properties.csv"
+                    properties_path = os.path.join(project_config_path, "Properties.csv")
+                    shutil.copy2(templateProperties_path, properties_path)
+
+                    project_input_path = os.path.join(project_path, 'input')
+                    os.makedirs(project_input_path, exist_ok=True)
+
+                    codebook_path = os.path.join(project_input_path, 'CB')
+                    os.makedirs(codebook_path, exist_ok=True)
+
+                    data_path = os.path.join(project_input_path, 'Data')
+                    os.makedirs(data_path, exist_ok=True)
+
+                    emrMentalHealthData_path = os.path.join(data_path, "emrMentalHealthData.csv")
+                    open(emrMentalHealthData_path, 'w').close()
+
+                    dictionaryMapping_path = os.path.join(project_input_path, 'DM')
+                    os.makedirs(dictionaryMapping_path, exist_ok=True)
+
+                    timeLine_path = os.path.join(project_input_path, 'TL')
+                    os.makedirs(timeLine_path, exist_ok=True)
+                    timeLine_file = os.path.join(timeLine_path, "TimeLine.csv")
+                    with open(timeLine_file, 'w', newline='', encoding='utf-8') as f:
+                        writer = csv.writer(f)
+                        writer.writerow(['Name', 'Label', 'Type', 'Start', 'End', 'Unit', 'inRelationTo']) 
+
+                    project_output_path = os.path.join(project_path, 'output')
+                    os.makedirs(project_output_path, exist_ok=True)
+                    
+                    sparql_path = os.path.join(project_output_path, 'sparql')
+                    os.makedirs(sparql_path, exist_ok=True)
+
+                    queryfile_path = os.path.join(sparql_path, f'{project_name}Query')
+                    open(queryfile_path, 'w').close()
+
+                    swrl_path = os.path.join(project_output_path, 'swrl')
+                    os.makedirs(swrl_path, exist_ok=True)
+                    swrlfile_path = os.path.join(swrl_path, f'{project_name}SWRL')
+                    open(swrlfile_path, 'w').close()
+
+                    trig_path = os.path.join(project_output_path, 'trig')
+                    os.makedirs(trig_path, exist_ok=True)
+
+                    ttl_path = os.path.join(project_output_path, 'ttl')
+                    os.makedirs(ttl_path, exist_ok=True)
+
+                    outfile_path = os.path.join(trig_path, f'kg_{project_name}.ttl')
+                    open(outfile_path, 'w').close()
+
+                    fillPrefixes(project_name)
+
+                    config_ini_path = os.path.join(project_config_path, f'config_{project_name}.ini')
+                    with open(config_ini_path, 'w') as f:
+                        f.write("[Prefixes]\n")
+                        f.write("# Specify a file with the prefixes for existing ontologies used in your translation\n")
+                        f.write(f'prefixes = {project_name}/config/prefixes.csv\n')
+                        f.write("# Specify the base uri to be associated with all triples minted by the script\n")
+                        f.write(f'base_uri = {project_base_uri}\n')
+                        f.write("nanopublication=disabled\n\n")
+                        f.write("[Source Files]\n")
+                        f.write(f'dictionary = {project_name}/input/DM/DictionaryMapping.csv\n')
+                        f.write(f'codebook = {project_name}/input/CB/CodeBook.csv\n')
+                        f.write(f'timeline = {project_name}/input/TL/TimeLine.csv\n')
+                        f.write(f'data_file = {project_name}/input/Data/emrMentalHealthData.csv\n')
+                        f.write(f'code_mappings = {project_name}/config/CodeMappings.csv\n')
+                        f.write(f'infosheet = {project_name}/config/Infosheet.csv\n')
+                        f.write(f'properties = {project_name}/config/Properties.csv\n\n')
+                        f.write("[Output Files]\n")
+                        f.write(f'out_file = {project_name}/output/trig/kg_{project_name}.ttl\n')
+                        f.write(f'query_file = {project_name}/output/sparql/qry_{project_name}\n')
+                        f.write(f'swrl_file = {project_name}/output/swrl/swrl_{project_name}\n')
+
+                    flash(f"Project folder {project_name} created successfully!", category='success')
+                except OSError as ex:
+                    flash(f"Error creating project folder: {ex}", category='error')
+                    return redirect(url_for('views.projectresearch'))
+                
                 cur.execute("insert into app.project (project_id, project_name, project_description, research_line_id, user_id_log, user_name_log) values (nextval('app.project_project_id_seq'), '" + project_name + "', '" + project_description +  "' , " + research_line_id + ", " + current_user.get_id()  + ", '" + current_user.first_name  + "')")
                 cur.close()
-                flash('Data inserted!', category='success')
+                flash('Data inserted and project path created!', category='success')
                 return redirect(url_for('views.projectresearch'))
 
             if request.args.get('type_operation', '') == 'U':
+                cur.execute("SELECT project_name FROM app.project WHERE project_id = " + project_id)
+                old_project_name = cur.fetchone()[0]
+
+                if old_project_name != project_name:
+                    if not is_valid_project_name(project_name):
+                        flash("New project name contains invalid characters.", category='error')
+                        return redirect(url_for('views.projectresearch'))
+                    
+                    try:
+                        project_root = "/app"
+                        old_project_path = os.path.join(project_root, old_project_name)
+                        new_project_path = os.path.join(project_root, project_name)
+
+                        if os.path.exists(old_project_path):
+                            if not os.path.exists(new_project_path):
+                                os.rename(old_project_path, new_project_path)
+                                flash(f"Project folder renamed from {old_project_name} to {project_name} successfully!", category='success')
+
+                            else:
+                                flash(f"A folder with the name {project_name} already exists.", category='error')
+                                return redirect(url_for('views.projectresearch'))
+                            
+                        else:
+                            flash(f"Project folder {old_project_name} not found.", category='warning')
+
+                    except OSError as ex:
+                        flash(f"Error renaming project folder: {ex}", category='error')
+                        return redirect(url_for('views.projectresearch'))
+                    
                 cur.execute("update app.project set project_name = '" + project_name + "', project_description = '" + project_description + "' , research_line_id = " + research_line_id + ", user_id_log = " + current_user.get_id()  + ", user_name_log = '" + current_user.first_name  + "' where project_id = " + project_id)
                 cur.close()
                 flash('Data updated!', category='success')
@@ -1393,3 +1531,312 @@ def uploadfileonto():
             flash('Repeat operation and selecting a OWL file!', category='success')
 
         return render_template("uploadonto.html", user=current_user)
+    
+UPLOAD_FOLDER = "./uploads"
+
+@views.route('/selectFile', methods=['POST'])
+def selectFile():
+    file = request.files['file']
+    if file:
+        filepath = os.path.join(UPLOAD_FOLDER, file.filename)
+        file.save(filepath)
+        flash('File selected successfully', category='success')
+        return redirect(url_for('views.uploadDictionaryMapping'))
+    flash('No files selected', category='error')
+    return redirect(url_for('views.uploadDictionaryMapping'))
+
+@views.route('/projects', methods=['GET'])
+def getProjects():
+    conn = db.get_cursor()
+    conn.execute("SELECT project_id, project_name FROM app.project ORDER BY project_name")
+    projects_tuples = conn.fetchall()
+    conn.close()
+
+    projects = []
+    for p_tuple in projects_tuples:
+        projects.append({
+            'project_id': p_tuple[0],
+            'project_name': p_tuple[1]
+        })
+    
+    return jsonify(projects)
+
+@views.route('/infosheet')
+def infosheet():
+    success_message = request.args.get('success')
+    if success_message:
+        flash(success_message, 'success')
+
+    error_message = request.args.get('error')
+    if error_message:
+        flash(error_message, 'error')
+        
+    return render_template('infosheet.html', user=current_user)
+
+@views.route('/loadInfosheet/<project_name>', methods=['GET'])
+def loadInfosheetByName(project_name):
+    project_path = os.path.join("/app", project_name, "config")
+    csv_file = os.path.join(project_path, "Infosheet.csv")
+
+    if os.path.exists(csv_file):
+        with open(csv_file, 'r', encoding='utf-8') as file:
+            reader = csv.reader(file)
+            data = list(reader)
+
+        if data and data[0][0] == "Attribute" and data[0][1] == "Value":
+            data = data[1:]
+        
+        return jsonify(data)
+    else:
+        return jsonify([])
+
+@views.route('/saveInfosheet/<project_name>', methods=['POST'])
+def saveInfosheet(project_name):
+    try:
+        project_path = os.path.join("/app", project_name, "config")
+        csv_file = os.path.join(project_path, "Infosheet.csv")
+
+        os.makedirs(project_path, exist_ok=True)
+        data = request.json['data']
+
+        with open(csv_file, 'w', newline='', encoding='utf-8') as file:
+            writer = csv.writer(file)
+            writer.writerow(["Attribute", "Value"])
+            writer.writerows(data)
+        
+        message = 'File saved successfully'
+        return jsonify({'status': 'ok', 'message': message})
+    except Exception as e:
+        message = f'Error: {str(e)}'
+        flash(message, category='error')
+        return jsonify({'status': 'error', 'message': message}), 500
+    
+@views.route('/dictionarymapping')
+def dictionarymapping():
+    success_message = request.args.get('success')
+    if success_message:
+        flash(success_message, 'success')
+
+    error_message = request.args.get('error')
+    if error_message:
+        flash(error_message, 'error')
+        
+    return render_template('dictionaryMapping.html', user=current_user)
+
+@views.route('/loadDictionaryMapping/<project_name>', methods=['GET'])
+def loadDictionaryMappingByName(project_name):
+    project_path = os.path.join("/app", project_name, "input", "DM")
+    csv_file = os.path.join(project_path, "DictionaryMapping.csv")
+
+    if os.path.exists(csv_file):
+        with open(csv_file, 'r', encoding='utf-8') as file:
+            reader = csv.reader(file)
+            data = list(reader)
+
+        if data and data[0] == [
+            'Column', 'Attribute', 'Attribute Of', 'Entity', 'Unit', 'Format',
+            'Property', 'Time', 'Relation', 'In Relation To', 'Label', 'Role',
+            'Definition', 'Comment', 'Was Derived From', 'Was Generated By'
+        ]:
+            data = data[1:]
+
+        return jsonify(data)
+    else:
+        return jsonify([])
+    
+@views.route('/saveDictionaryMapping/<project_name>', methods=['POST'])
+def saveDictionaryMapping(project_name):
+    try:
+        project_path = os.path.join("/app", project_name, "input", "DM")
+        csv_file = os.path.join(project_path, "DictionaryMapping.csv")
+
+        os.makedirs(project_path, exist_ok=True)
+        data = request.json.get('data', [])
+
+        with open(csv_file, 'w', newline='', encoding='utf-8') as file:
+            writer = csv.writer(file)
+            writer.writerow([
+                'Column', 'Attribute', 'Attribute Of', 'Entity', 'Unit', 'Format',
+                'Property', 'Time', 'Relation', 'In Relation To', 'Label', 'Role',
+                'Definition', 'Comment', 'Was Derived From', 'Was Generated By'
+            ])
+            writer.writerows(data)
+
+        message = 'File saved successfully'
+        return jsonify({'status': 'ok', 'message': message})
+    except Exception as e:
+        message = f'Error: {str(e)}'
+        flash(message, category='error')
+        return jsonify({'status': 'error', 'message': message}), 500
+
+@views.route('/loadCodeBook/<project_name>', methods=['GET'])
+def loadCodeBookByName(project_name):
+    project_path = os.path.join("/app", project_name, "input", "CB")
+    csv_file = os.path.join(project_path, "CodeBook.csv")
+
+    if os.path.exists(csv_file):
+        with open(csv_file, 'r', encoding='utf-8') as file:
+            reader = csv.reader(file)
+            data = list(reader)
+
+        if data and data[0] == [
+            'Column', 'Code', 'Class', 'Comment', 'Definition', 'Label',
+            'Resource'
+        ]:
+            data = data[1:]
+
+        return jsonify(data)
+    else:
+        return jsonify([])
+
+@views.route('/codebook')
+def codebook():
+    success_message = request.args.get('success')
+    if success_message:
+        flash(success_message, 'success')
+
+    error_message = request.args.get('error')
+    if error_message:
+        flash(error_message, 'error')
+
+    return render_template('codeBook.html', user=current_user)
+
+@views.route('/generate')
+def generate():
+    success_message = request.args.get('success')
+    if success_message:
+        flash(success_message, 'success')
+
+    error_message = request.args.get('error')
+    if error_message:
+        flash(error_message, 'error')
+
+    return render_template('generate.html', user=current_user)
+
+@views.route('/saveCodeBook/<project_name>', methods=['POST'])
+def saveCodeBook(project_name):
+    try:
+        project_path = os.path.join("/app", project_name, "input", "CB")
+        csv_file = os.path.join(project_path, "CodeBook.csv")
+
+        os.makedirs(project_path, exist_ok=True)
+        data = request.json.get('data', [])
+
+        with open(csv_file, 'w', newline='', encoding='utf-8') as file:
+            writer = csv.writer(file)
+            writer.writerow([
+                'Column', 'Code', 'Class', 'Comment', 'Definition', 'Label',
+                'Resource'
+            ])
+            writer.writerows(data)
+
+        message = 'File saved successfully'
+        return jsonify({'status': 'ok', 'message': message})
+    except Exception as e:
+        message = f'Error: {str(e)}'
+        flash(message, category='error')
+        return jsonify({'status': 'error', 'message': message}), 500
+    
+def fillPrefixes(project_name):
+    try:
+        project_path = os.path.join("/app", project_name, "config")
+        csv_file = os.path.join(project_path, "prefixes.csv")
+
+        os.makedirs(project_path, exist_ok=True)
+
+        with open(csv_file, 'w', newline='', encoding='utf-8') as file:
+            writer = csv.writer(file)
+            writer.writerow(['prefix', 'url'])
+            writer.writerows([
+                ['np', 'http://www.nanopub.org/nschema#'],
+                ['owl', 'http://www.w3.org/2002/07/owl#'], 
+                ['rdf', 'http://www.w3.org/1999/02/22-rdf-syntax-ns#'],
+                ['rdfs', 'http://www.w3.org/2000/01/rdf-schema#'],
+                ['prov', 'http://www.w3.org/ns/prov#'],
+                ['xsd', 'http://www.w3.org/2001/XMLSchema#'],
+                ['uo', 'http://purl.obolibrary.org/obo/UO_'],
+                ['sio', 'http://semanticscience.org/resource/'],
+                ['stato', 'http://purl.obolibrary.org/obo/STATO_'],
+                ['example-kb', 'http://example.com/kb/example#'],
+                ['chear', 'http://hadatac.org/ont/chear#'],
+                ['hasco', 'http://hadatac.org/ont/hasco#'],
+                ['obo', 'http://purl.obolibrary.org/obo/'],
+                ['skos', 'http://www.w3.org/2008/05/skos#'],
+                ['ontriscal', 'http://hadatac.org/ont/ontriscal#'],
+                ['refiqda', 'http://hadatac.org/ont/refiqda#'],
+                ['qualico', 'http://hadatac.org/ont/qualico#'],
+                ['schema', 'http://www.w3.org/2000/01/schema#']
+            ])
+
+        flash('File saved successfully', category='success')
+        return True
+    except Exception as e:
+        flash(f'Error: {str(e)}', category='error')
+        return False
+    
+@views.route('/infosheetDefaultOptions')
+def infosheetDefaultOptions():
+    defaultsOptions = {
+        "Code Mapping": "config/CodeMappings.csv",
+        "CodeBook": "input/CB/CodeBook.csv",
+        "Dictionary Mapping": "input/DM/DictionaryMapping.csv",
+        "Imports": "",
+        "TimeLine": "input/TL/TimeLine.csv"
+    }
+    return jsonify(defaultsOptions)
+
+@views.route('/rodar-comando')
+def rodar_comando():
+    project_id = request.args.get('project_id')
+
+    conn = db.get_cursor()
+    conn.execute(
+        "SELECT project_name FROM app.project WHERE project_id = %s",
+        (project_id,)
+    )
+    result = conn.fetchone()
+    conn.close()
+
+    if not result:
+        return "Projeto não encontrado", 404
+
+    project_name = result[0]
+
+    def gerar_saida():
+        try:
+            import subprocess
+
+            ini_path = f"{project_name}/config/config_{project_name}.ini"
+
+            comando = [
+                "python",
+                "sdd2rdf.py",
+                ini_path
+            ]
+
+            processo = subprocess.Popen(
+                comando,
+                cwd="/app",
+                stdout=subprocess.PIPE,
+                stderr=subprocess.STDOUT,
+                text=True
+            )
+
+            for linha in processo.stdout:
+                yield f"data: {linha.strip()}\n\n"
+
+            processo.wait()
+            yield "data: [FIM]\n\n"
+
+        except Exception as e:
+            yield f"data: Erro: {str(e)}\n\n"
+            yield "data: [FIM]\n\n"
+
+    return Response(
+        gerar_saida(),
+        mimetype='text/event-stream',
+        headers={
+            "Cache-Control": "no-cache",
+            "X-Accel-Buffering": "no"
+        }
+    )

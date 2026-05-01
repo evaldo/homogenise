@@ -15,6 +15,58 @@
   <link rel="stylesheet" href="{{url_for('static', filename='multi-select.css')}}" />
 
   <title>{% block title %}Home{% endblock %}</title>
+  <style>
+    .dropdown:hover .dropdown-menu{
+      display: block;
+    }
+
+    .dropdown-submenu {
+      position: relative;
+    }
+
+    .dropdown-submenu .dropdown-menu {
+      top: 0;
+      left: 100%;
+      margin-top: -5px;
+      display: none;
+      position: absolute;
+    }
+
+    .dropdown-submenu:hover .dropdown-menu {
+      display: block;
+    }
+
+    .file-upload-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+
+    .file-upload-wrapper label {
+        font-size: 1.25rem;
+        font-weight: 600;
+        text-align: center;
+        margin-bottom: 10px;
+    }
+
+    .file-input {
+        color: white;
+        background-color: #007bff;
+        border: none;
+        padding: 10px;
+        border-radius: 5px;
+        cursor: pointer;
+        width: fit-content;
+    }
+
+    .file-name {
+        margin-top: 10px;
+        font-size: 1.2rem;
+        font-weight: 500;
+        color: #333;
+    }
+  </style>
 </head>
 
 <body>
@@ -40,8 +92,17 @@
             <a class="dropdown-item" href="/caqdas">CAQDAS</a>
             <a class="dropdown-item" href="/insights">Insights</a>
             <a class="dropdown-item" href="/synopsis">Synopsis</a>
+            <a class="dropdown-item" id="uploadonto" href="/uploadonto">Upload Ontology</a>
             <a class="dropdown-item" href="/rag">RAG</a>
           </div>
+        </li>
+        <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" id="semanticAnnotation">Semantic Annotation</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" id="infosheet" href="/infosheet">Infosheet</a></li>
+            <li><a class="dropdown-item" id="dictionaryMapping" href="/dictionaryMapping">Dictionary Mapping</a></li>
+            <li><a class="dropdown-item" id="codeBook" href="/codeBook">Codebook</a></li>
+            <li><a class="dropdown-item" id="generate" href="/generate">Generate</a></li>
+          </ul>
         </li>
         <a class="nav-item nav-link" id="logout" href="/logout">Logout</a>
         {% else %}
