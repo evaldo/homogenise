@@ -14,7 +14,9 @@
         let projectDropDown = [];
         let attributePaths = {};
         const saveButton = document.getElementById('save-button');
-        const defaultAttributes = ["Code Mapping", "CodeBook", "Dictionary Mapping", "Imports", "TimeLine", "Project"];
+        const defaultAttributes = ["Type", "Title", "Alternative Title", "Comment", "Description", "Date Created", "Creators", "Contributors", "Publisher", 
+        "Date of Issue", "Link", "Identifier", "Keywords", "License", "Rights", "Language", "Version", "Version Of", "Previous Version", "Standards", "Source", 
+        "File Format", "Documentation", "Dictionary Mapping", "CodeBook", "Code Mapping", "TimeLine", "Imports", "Project"];
         let handsOnTable;
         let currentProject;
 
@@ -88,10 +90,12 @@
                 if (data.length > 0) {
                     initializeTable(data);
                 } else {
+                    const pathAttributes = ["Code Mapping", "CodeBook", "Dictionary Mapping", "TimeLine"];
+
                     const defaultDataOption = defaultAttributes.map(it => {
                         if (it === "Project") {
                             return [it, project];
-                        } else {
+                        } else if (pathAttributes.includes(it)) {
                             const relativePath = attributePaths[it];
 
                             if (relativePath && relativePath.trim() !== "") {
@@ -99,6 +103,8 @@
                             } else {
                                 return [it, ""];
                             }
+                        } else {
+                            return [it, attributePaths[it] ?? ""];
                         }
                     });
                     initializeTable(defaultDataOption);

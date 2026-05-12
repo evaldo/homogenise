@@ -1,6 +1,6 @@
 {% extends "base.html" %} {% block title %}Project - {{ type_operation }}{% endblock %} 
 {% block content%}
-<form method="POST"> 
+<form method="POST" enctype="multipart/form-data"> 
   <input type="text" name="project_id" id="project_id" class="form-control" value="{{project_id}}" style="display:none"></input>
   <input type="text" name="type_operation" id="type_operation" class="form-control" value="{{type_operation}}" style="display:none"></input>
   <h1 align="left">Project - {{ type_operation }}</h1>  
@@ -13,10 +13,13 @@
     <label for="project_description">Project Description:</label>
     <input type="text" id="project_description" name="project_description" class="form-control"  value="{{ project_description }}"/>  
   </div>
-  </div>
-    <div class="form-group">
+  <div class="form-group">
     <label for="project_base_uri">Base URI:</label>
     <input type="text" id="project_base_uri" name="project_base_uri" class="form-control"  value="{{ project_base_uri }}"/>  
+  </div>
+  <div class="form-group">
+    <label for="project_data_csv">Data:</label>
+    <input type="file" id="project_data_csv" name="project_data_csv" class="form-control" accept=".csv" required/>
   </div>
   <div class="form-group">
     <label for="research_line_id">Research Line: </label>

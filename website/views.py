@@ -30,6 +30,7 @@ from langchain.tools import tool
 from langchain import hub
 from website.features.synopsis.synopsis_repository import SynopsisRepository
 from website.features.synopsis.triple_conversion import TripleConversion
+from datetime import datetime
 
 views = Blueprint('views', __name__)
 
@@ -984,6 +985,8 @@ def projectdata():
         project_description = request.form.get("project_description")
         research_line_id = request.form.get("research_line_id")
         project_base_uri = request.form.get("project_base_uri")
+        project_data_csv_file = request.files.get("project_data_csv")
+        project_data_csv = project_data_csv_file.filename if project_data_csv_file else ""
 
         if research_line_id == 'null':
             flash('Fill out all data to execute transaction!', category='error')
@@ -1044,8 +1047,9 @@ def projectdata():
                     data_path = os.path.join(project_input_path, 'Data')
                     os.makedirs(data_path, exist_ok=True)
 
-                    emrMentalHealthData_path = os.path.join(data_path, "emrMentalHealthData.csv")
-                    open(emrMentalHealthData_path, 'w').close()
+                    if project_data_csv_file and project_data_csv_file.filename:
+                        csv_save_path = os.path.join(data_path, project_data_csv_file.filename)
+                        project_data_csv_file.save(csv_save_path)
 
                     dictionaryMapping_path = os.path.join(project_input_path, 'DM')
                     os.makedirs(dictionaryMapping_path, exist_ok=True)
@@ -1094,12 +1098,12 @@ def projectdata():
                         f.write(f'dictionary = {project_name}/input/DM/DictionaryMapping.csv\n')
                         f.write(f'codebook = {project_name}/input/CB/CodeBook.csv\n')
                         f.write(f'timeline = {project_name}/input/TL/TimeLine.csv\n')
-                        f.write(f'data_file = {project_name}/input/Data/emrMentalHealthData.csv\n')
+                        f.write(f'data_file = {project_name}/input/Data/{project_data_csv}\n')
                         f.write(f'code_mappings = {project_name}/config/CodeMappings.csv\n')
                         f.write(f'infosheet = {project_name}/config/Infosheet.csv\n')
                         f.write(f'properties = {project_name}/config/Properties.csv\n\n')
                         f.write("[Output Files]\n")
-                        f.write(f'out_file = {project_name}/output/trig/kg_{project_name}.ttl\n')
+                        f.write(f'out_file = {project_name}/output/ttl/kg_{project_name}.ttl\n')
                         f.write(f'query_file = {project_name}/output/sparql/qry_{project_name}\n')
                         f.write(f'swrl_file = {project_name}/output/swrl/swrl_{project_name}\n')
 
@@ -1776,10 +1780,36 @@ def fillPrefixes(project_name):
     
 @views.route('/infosheetDefaultOptions')
 def infosheetDefaultOptions():
+    dateProject = datetime.now()
+    dateProjectFmt = dateProject.strftime('%Y-%m-%d')
+
     defaultsOptions = {
-        "Code Mapping": "config/CodeMappings.csv",
-        "CodeBook": "input/CB/CodeBook.csv",
+        "Type": "http://purl.org/dc/dcmitype/Dataset",
+        "Title": "An Example Project",
+        "Alternative Title": "Example",
+        "Comment": "This is an example knowledge graph fragment created using the SDD approach.",
+        "Description": "Annotated data from an example project was used to demonstrate the SDD functionality",
+        "Date Created": dateProjectFmt,
+        "Creators": "",
+        "Contributors": "",
+        "Publisher": "",
+        "Date of Issue": dateProjectFmt,
+        "Link": "",
+        "Identifier": "ontriscal",
+        "Keywords": "",
+        "License": "",
+        "Rights": "",
+        "Language": "",
+        "Version": "",
+        "Version Of": "",
+        "Previous Version": "",
+        "Standards": "",
+        "Source": "",
+        "File Format": "csv",
+        "Documentation": "",
         "Dictionary Mapping": "input/DM/DictionaryMapping.csv",
+        "CodeBook": "input/CB/CodeBook.csv",
+        "Code Mapping": "config/CodeMappings.csv",
         "Imports": "",
         "TimeLine": "input/TL/TimeLine.csv"
     }
