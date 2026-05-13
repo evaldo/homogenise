@@ -19,7 +19,7 @@
   </div>
   <div class="form-group">
     <label for="project_data_csv">Data:</label>
-    <input type="file" id="project_data_csv" name="project_data_csv" class="form-control" accept=".csv" required/>
+    <input type="file" id="project_data_csv" name="project_data_csv" class="form-control" accept=".csv"/>
   </div>
   <div class="form-group">
     <label for="research_line_id">Research Line: </label>
@@ -47,4 +47,16 @@
   <br />
     
 </form>
+
+<script>
+    const typeOperation = "{{ type_operation }}";
+    const fileInput = document.getElementById('project_data_csv');
+    
+    if (typeOperation === 'Add') {
+        fileInput.required = true;
+    } else {
+        fileInput.required = false;
+    }
+</script>
+
 {% endblock %}
