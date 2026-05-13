@@ -9,7 +9,7 @@
             <option value="">Select a project...</option>
         </select>
         <br>
-        <button id="btn" class="btn btn-primary" onclick="rodarComando()" disabled>Executar script</button>
+        <button id="btn" class="btn btn-primary" onclick="rodarComando()" disabled>Run script</button>
     </div>
 
     <div id="alertContainer" class="mt-3"></div>
@@ -47,7 +47,7 @@
                 btn.disabled = false;
 
             } catch (err) {
-                select.innerHTML = '<option value="">Erro ao carregar projetos</option>';
+                select.innerHTML = '<option value="">Error loading projects</option>';
                 console.error('Erro ao buscar projetos:', err);
             }
         }
@@ -78,8 +78,13 @@
                     source.close();
                     btn.disabled = false;
                     select.disabled = false;
-                    btn.textContent = 'Executar script';
-                    showAlert(`Script executado com sucesso para o projeto ${projectName}.`, "success");
+                    btn.textContent = 'Run script';
+
+                    showAlert(`
+                        Script executed successfully for project ${projectName}.<br><br>
+                        The file was generated in the folder: homogenise/${projectName}/output/ttl/kg_${projectName}.ttl
+                    `, "success");
+
                     return;
                 }
             };
@@ -88,11 +93,10 @@
                 source.close();
                 btn.disabled = false;
                 select.disabled = false;
-                btn.textContent = 'Executar script';
-                showAlert("Script não foi executado corretamente.", "danger");
+                btn.textContent = 'Run script';
+                showAlert("The script did not run correctly.", "danger");
             };
         }
-
 
         carregarProjetos();
     </script>

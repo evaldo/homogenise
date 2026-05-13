@@ -1829,7 +1829,7 @@ def rodar_comando():
     conn.close()
 
     if not result:
-        return "Projeto não encontrado", 404
+        return "Project not found", 404
 
     project_name = result[0]
 
