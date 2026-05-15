@@ -1119,7 +1119,7 @@ def projectdata():
                 return redirect(url_for('views.projectresearch'))
 
             if request.args.get('type_operation', '') == 'U':
-                cur.execute("SELECT project_name FROM app.project WHERE project_id = " + project_id)
+                cur.execute("SELECT project_name FROM app.project WHERE project_id = %s", (project_id,))
                 old_project_name = cur.fetchone()[0]
 
                 if old_project_name != project_name:
@@ -1133,22 +1133,68 @@ def projectdata():
                         new_project_path = os.path.join(project_root, project_name)
 
                         if os.path.exists(old_project_path):
-                            if not os.path.exists(new_project_path):
-                                os.rename(old_project_path, new_project_path)
-                                flash(f"Project folder renamed from {old_project_name} to {project_name} successfully!", category='success')
-
-                            else:
+                            if os.path.exists(new_project_path):
                                 flash(f"A folder with the name {project_name} already exists.", category='error')
                                 return redirect(url_for('views.projectresearch'))
-                            
+
+                            shutil.copytree(old_project_path, new_project_path)
+                            shutil.rmtree(old_project_path)
+
+                            files_to_rename = [
+                                (f'config/config_{old_project_name}.ini', f'config/config_{project_name}.ini'),
+                                (f'output/ttl/kg_{old_project_name}.ttl', f'output/ttl/kg_{project_name}.ttl'),
+                                (f'output/sparql/qry_{old_project_name}', f'output/sparql/qry_{project_name}'),
+                                (f'output/sparql/{old_project_name}Query', f'output/sparql/{project_name}Query'),
+                                (f'output/swrl/swrl_{old_project_name}', f'output/swrl/swrl_{project_name}'),
+                                (f'output/swrl/{old_project_name}SWRL', f'output/swrl/{project_name}SWRL'),
+                            ]
+
+                            for old_rel, new_rel in files_to_rename:
+                                old_file = os.path.join(new_project_path, old_rel)
+                                new_file = os.path.join(new_project_path, new_rel)
+                                if os.path.exists(old_file):
+                                    os.rename(old_file, new_file)
+
+                            config_ini_path = os.path.join(new_project_path, f'config/config_{project_name}.ini')
+                            if os.path.exists(config_ini_path):
+                                with open(config_ini_path, 'r', encoding='utf-8') as f:
+                                    content = f.read()
+                                content = content.replace(old_project_name, project_name)
+                                with open(config_ini_path, 'w', encoding='utf-8') as f:
+                                    f.write(content)
+
+                            prefixes_path = os.path.join(new_project_path, 'config/prefixes.csv')
+                            if os.path.exists(prefixes_path):
+                                with open(prefixes_path, 'r', encoding='utf-8') as f:
+                                    content = f.read()
+                                if old_project_name in content:
+                                    content = content.replace(old_project_name, project_name)
+                                    with open(prefixes_path, 'w', encoding='utf-8') as f:
+                                        f.write(content)
+
+                            infosheet_path = os.path.join(new_project_path, 'config/Infosheet.csv')
+                            if os.path.exists(infosheet_path):
+                                with open(infosheet_path, 'r', encoding='utf-8') as f:
+                                    content = f.read()
+                                if old_project_name in content:
+                                    content = content.replace(old_project_name, project_name)
+                                    with open(infosheet_path, 'w', encoding='utf-8') as f:
+                                        f.write(content)
+
+                            flash(f"Project folder renamed from {old_project_name} to {project_name} successfully!", category='success')
+
                         else:
                             flash(f"Project folder {old_project_name} not found.", category='warning')
 
                     except OSError as ex:
                         flash(f"Error renaming project folder: {ex}", category='error')
                         return redirect(url_for('views.projectresearch'))
-                    
-                cur.execute("update app.project set project_name = '" + project_name + "', project_description = '" + project_description + "' , research_line_id = " + research_line_id + ", user_id_log = " + current_user.get_id()  + ", user_name_log = '" + current_user.first_name  + "' where project_id = " + project_id)
+
+                cur.execute(
+                    "UPDATE app.project SET project_name = %s, project_description = %s, "
+                    "research_line_id = %s, user_id_log = %s, user_name_log = %s WHERE project_id = %s",
+                    (project_name, project_description, research_line_id, current_user.get_id(), current_user.first_name, project_id)
+                )
                 cur.close()
                 flash('Data updated!', category='success')
                 return redirect(url_for('views.projectresearch'))
