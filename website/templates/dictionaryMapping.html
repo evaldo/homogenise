@@ -48,6 +48,12 @@
             }
         });
 
+        window.addEventListener('resize', () => {
+            if (handsOnTable) {
+                handsOnTable.updateSettings({ height: window.innerHeight - 250 });
+            }
+        });
+
         function getEmptyData() {
             return [Array(colHeaders.length).fill("")];
         }
@@ -62,6 +68,7 @@
                 rowHeaders: true,
                 columns: colHeaders.map(() => ({ type: 'text' })),
                 minSpareRows: 1,
+                height: window.innerHeight - 250,
                 themeName: 'ht-theme-main',
                 licenseKey: 'non-commercial-and-evaluation'
             });
